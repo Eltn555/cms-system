@@ -24,6 +24,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
         return view('dashboard.index');
     });
     Route::resource('products', ProductController::class);
+    Route::resource('tags', \App\Http\Controllers\TagController::class);
 });
 
 Auth::routes();

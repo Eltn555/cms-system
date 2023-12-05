@@ -4,7 +4,7 @@
     <div class="h-full flex items-center">
         <!-- BEGIN: Logo -->
         <a href="" class="logo -intro-x hidden md:flex xl:w-[200px] block">
-            <img alt="Midone - HTML Admin Template" class="logo__image w-6"
+            <img alt="" class="logo__image w-6"
                  src="{{ asset('individual/main-white.png') }}">
             <span class="logo__text text-white text-lg ml-3">Business House KG</span>
         </a>
