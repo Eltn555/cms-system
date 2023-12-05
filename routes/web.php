@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
         return view('dashboard.index');
     });
     Route::resource('products', ProductController::class);
+    Route::resource('categories', CategoriesController::class);
     Route::resource('tags', \App\Http\Controllers\TagController::class);
 });
 
