@@ -5,7 +5,13 @@
         <li>
             <a href="{{ route('products.index') }}" class="side-menu side-menu{{ request()->is("admin/products") ? "--active" : "" }}">
                 <div class="side-menu__icon"><i data-lucide="cart"></i></div>
-                <div class="side-menu__title">Продукты</div>
+                <div class="side-menu__title">Products</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('categories.index') }}" class="side-menu side-menu{{ request()->is("admin/categories") ? "--active" : "" }}">
+                <div class="side-menu__icon"><i data-lucide="folder"></i></div>
+                <div class="side-menu__title">Categories</div>
             </a>
         </li>
         <li>
