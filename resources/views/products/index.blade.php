@@ -7,7 +7,7 @@
         <!-- BEGIN: Top Navigation -->
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-                <button class="btn btn-primary shadow-md mr-2">Add New Product</button>
+                <a data-tw-toggle="modal" data-tw-target="#create-modal" class="btn btn-primary shadow-md mr-2">Add New Product</a>
                 <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="plus" class="lucide lucide-plus w-4 h-4" data-lucide="plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> </span>
@@ -188,4 +188,8 @@
             </div>
         </div>
         <!-- END: Delete Confirmation Modal -->
+
+
+    @include('products.create-modal')
+
 @endsection

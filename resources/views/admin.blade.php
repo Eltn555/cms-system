@@ -23,6 +23,8 @@
             height: 70vh;
         }
         </style>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
 </head>
 <body class="py-5 md:py-0">
 @include('sections.mobileMenu')
@@ -64,6 +66,7 @@
 
     })
 </script>
+
 @yield('script')
 
 </body>
