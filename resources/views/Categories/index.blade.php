@@ -6,7 +6,7 @@
         </h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-                <button class="btn btn-primary shadow-md mr-2">Add New Product</button>
+                <button class="btn btn-primary shadow-md mr-2">Add New Category</button>
                 <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -56,9 +56,8 @@
                                 <img alt="{{$category->title}}" class="rounded-lg border-1 border-white shadow-md tooltip" src="dist/images/preview-9.jpg" title="Updated at {{(is_null($category->updated_at) ? $category->created_at : $category->updated_at)}}">
                             </div>
                         </td>
-                        <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Tag & tags</div>
+                        <td class="editable" data-field="title">
+                            <a href="#" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
                         </td>
                         <td>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
@@ -70,8 +69,12 @@
                                 </select>
                             </div>
                         </td>
-                        <td class="text-center">{{$category->order_id}}</td>
-                        <td class="text-center">{{$category->description}}</td>
+                        <td class="editable" data-field="order_id">
+                            <div class="text-center">{{$category->order_id}}</div>
+                        </td>
+                        <td class="editable" data-field="description">
+                            <div class="text-center">{{$category->description}}</div>
+                        </td>
                         <td class="">
                             <div class="form-check form-switch w-full h-full flex justify-center">
                                 <input id="product-status-active" class="form-check-input" type="checkbox" {{($category->is_active) ? 'checked' : ''}}>
@@ -145,4 +148,58 @@
         </div>
         <!-- END: Delete Confirmation Modal -->
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function () {
+            // Double-click event to make text editable
+            $('.editable').on('dblclick', function () {
+                var field = $(this).data('field');
+                var originalText = $.trim($(this).text());
+
+                switch(field) {
+                    case 'order_id':
+                        $(this).html('<input type="number" class="form-control" value="' + originalText + '" />');
+                        break;
+                    case 'description':
+                        $(this).html('<div class="mt-2"><div class="editor"><p>'+originalText+'</p></div></div>');
+                        break;
+                    default:
+                        $(this).html('<input type="text" class="form-control" value="' + originalText + '" />');
+                }
+                // Replace text with input field
+
+
+                // Focus on the input field
+                $(this).find('input').focus();
+            });
+
+            // Focus-out event to send AJAX request on input blur
+            $(document).on('blur', '.editable input', function () {
+                var field = $(this).closest('.editable').data('field');
+                var newValue = '<div class="text-center">'+$(this).val()+'</div>';
+                var categoryId = 15/* Add logic to get the category ID */;
+
+                // Send AJAX request to update the category
+                $.ajax({
+                    url: '/update-category', // Replace with your route for updating the category
+                    method: 'POST',
+                    data: {
+                        field: field,
+                        value: newValue,
+                        categoryId: categoryId
+                    },
+                    success: function (response) {
+                        // Handle success response if needed
+                    },
+                    error: function (error) {
+                        // Handle error response if needed
+                    }
+                });
+
+                // Replace input field with the updated text
+                $(this).closest('.editable').html(newValue);
+            });
+        });
+    </script>
 @endsection
