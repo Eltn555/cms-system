@@ -1,8 +1,6 @@
 <!-- BEGIN: Side Menu -->
 <nav class="side-nav">
     <ul>
-        <li class="side-nav__devider my-6"></li>
-
         <li>
             <a href="" class="side-menu side-menu{{--{{ request()->is("admin/products") ? "--active" : "" }}--}}">
                 <div class="side-menu__icon"><i data-lucide="home"></i></div>

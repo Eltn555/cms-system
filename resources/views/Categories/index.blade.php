@@ -1,6 +1,5 @@
 @extends('admin')
 @section('content')
-    <div class="content pt-0">
         <h2 class="intro-y text-lg font-medium mt-10">
             Categories
         </h2>
@@ -50,34 +49,36 @@
                     <tbody>
                     @foreach($categories as $category)
 
-                    <tr class="intro-x">
+                    <tr class="intro-x" data-action="{{$category->id}}">
                         <td class="">
                             <div class="w-10 h-10 image-fit zoom-in">
                                 <img alt="{{$category->title}}" class="rounded-lg border-1 border-white shadow-md tooltip" src="dist/images/preview-9.jpg" title="Updated at {{(is_null($category->updated_at) ? $category->created_at : $category->updated_at)}}">
                             </div>
                         </td>
-                        <td class="editable" data-field="title">
+                        <td class="editable" data-field="title" data-action="read" data-selectable="text">
                             <a href="#" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
                         </td>
                         <td>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select id="category" class="form-select">
+                                <select class="form-select edition" data-field="parent_category_id">
                                     @foreach($categories as $lilcat)
+                                        @if($category->id != $lilcat->id)
                                         <option value="{{$lilcat->id}}" {{($lilcat->id == $category->parent_category_id) ? 'selected' : ''}}>{{$lilcat->title}}</option>
+                                        @endif
                                     @endforeach
                                     <option value="null" {{ is_null($category->parent_category_id) ? 'selected' : '' }}>Not Selected</option>
                                 </select>
                             </div>
                         </td>
-                        <td class="editable" data-field="order_id">
+                        <td class="editable" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="text-center">{{$category->order_id}}</div>
                         </td>
-                        <td class="editable" data-field="description">
+                        <td class="editable" data-field="description" data-action="read" data-selectable="text">
                             <div class="text-center">{{$category->description}}</div>
                         </td>
                         <td class="">
                             <div class="form-check form-switch w-full h-full flex justify-center">
-                                <input id="product-status-active" class="form-check-input" type="checkbox" {{($category->is_active) ? 'checked' : ''}}>
+                                <input class="form-check-input activation" data-field="is_active" type="checkbox" {{($category->is_active) ? 'checked' : ''}}>
                             </div>
                         </td>
                         <td class="table-report__action w-56">
@@ -147,40 +148,29 @@
             </div>
         </div>
         <!-- END: Delete Confirmation Modal -->
-    </div>
 @endsection
 @section('script')
     <script>
         $(document).ready(function () {
-            // Double-click event to make text editable
             $('.editable').on('dblclick', function () {
-                var field = $(this).data('field');
-                var originalText = $.trim($(this).text());
-
-                switch(field) {
-                    case 'order_id':
-                        $(this).html('<input type="number" class="form-control" value="' + originalText + '" />');
-                        break;
-                    case 'description':
-                        $(this).html('<div class="mt-2"><div class="editor"><p>'+originalText+'</p></div></div>');
-                        break;
-                    default:
-                        $(this).html('<input type="text" class="form-control" value="' + originalText + '" />');
+                if ($(this).data('action') == 'read'){
+                    $(this).html('<input type="'+$(this).data('selectable')+'" class="form-control" value="' + $.trim($(this).text()) + '" />');
+                    $(this).find('input').focus();
+                    $(this).data('action', 'write');
                 }
-                // Replace text with input field
-
-
-                // Focus on the input field
-                $(this).find('input').focus();
             });
-
-            // Focus-out event to send AJAX request on input blur
             $(document).on('blur', '.editable input', function () {
-                var field = $(this).closest('.editable').data('field');
+                $(this).parent('.editable').data('action', 'read');
                 var newValue = '<div class="text-center">'+$(this).val()+'</div>';
-                var categoryId = 15/* Add logic to get the category ID */;
-
-                // Send AJAX request to update the category
+                ajax($(this).closest('.editable').data('field'), $(this).val(), $(this).parents('.intro-x').data('action'));
+                $(this).closest('.editable').html(newValue);
+            });
+            $('.edition, .activation').on('change', function () {
+                var value = $(this).hasClass('activation') ? this.checked ? 1 : 0 : $(this).val();
+                ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'));
+            });
+            function ajax(field, newValue, categoryId) {
+                alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
                 $.ajax({
                     url: '/update-category', // Replace with your route for updating the category
                     method: 'POST',
@@ -196,10 +186,7 @@
                         // Handle error response if needed
                     }
                 });
-
-                // Replace input field with the updated text
-                $(this).closest('.editable').html(newValue);
-            });
+            }
         });
     </script>
 @endsection

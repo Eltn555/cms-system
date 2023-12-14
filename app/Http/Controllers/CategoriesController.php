@@ -19,9 +19,11 @@ class CategoriesController extends Controller
     // Show a specific category
     public function show($id)
     {
+
         $category = Category::findOrFail($id);
         return 'show';
 //        return view('categories.show', ['category' => $category]);
+
     }
 
     // Add other CRUD methods as needed (create, store, edit, update, delete)
