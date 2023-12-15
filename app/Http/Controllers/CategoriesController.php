@@ -58,18 +58,19 @@ class CategoriesController extends Controller
     }
 
     // Update the specified category in the database
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|max:255|unique:categories,title,' . $id,
-            'description' => 'nullable',
-            // Add validation rules for other fields as needed
-        ]);
+        $field = $request->input('field');
+        $value = $request->input('value');
+        $id = $request->input('categoryId');
+        $data = [
+          $field => $value,
+        ];
 
         $category = Category::findOrFail($id);
-        $category->update($validatedData);
+        $category->update($data);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('categories.index')->with('success', 'success');
     }
 
     // Remove the specified category from the database

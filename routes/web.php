@@ -26,6 +26,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     });
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoriesController::class);
+    Route::post('categories/update', 'CategoriesController@update')->name('categories.update');
     Route::resource('tags', \App\Http\Controllers\TagController::class);
 });
 

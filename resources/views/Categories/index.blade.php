@@ -170,9 +170,9 @@
                 ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'));
             });
             function ajax(field, newValue, categoryId) {
-                alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
+                // alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
                 $.ajax({
-                    url: '/update-category', // Replace with your route for updating the category
+                    url: '/categories/update', // Replace with your route for updating the category
                     method: 'POST',
                     data: {
                         field: field,
@@ -180,10 +180,10 @@
                         categoryId: categoryId
                     },
                     success: function (response) {
-                        // Handle success response if needed
+                        alert(response);
                     },
                     error: function (error) {
-                        // Handle error response if needed
+                        console.error('Update failed:', error);
                     }
                 });
             }
