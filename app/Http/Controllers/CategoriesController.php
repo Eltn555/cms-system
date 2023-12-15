@@ -70,7 +70,9 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id);
         $category->update($data);
 
-        return redirect()->route('categories.index')->with('success', 'success');
+        return [
+            'response' => "Category " . $category->title . " updated successfully"
+        ];
     }
 
     // Remove the specified category from the database

@@ -151,6 +151,13 @@
 @endsection
 @section('script')
     <script>
+
+        $("body").bind("ajaxSend", function(elm, xhr, s){
+            if (s.type == "POST") {
+                xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
+            }
+        });
+
         $(document).ready(function () {
             $('.editable').on('dblclick', function () {
                 if ($(this).data('action') == 'read'){
@@ -172,17 +179,22 @@
             function ajax(field, newValue, categoryId) {
                 // alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
                 $.ajax({
-                    url: '/categories/update', // Replace with your route for updating the category
-                    method: 'POST',
+                    url: "categories/" + categoryId, // Replace with your route for updating the category
+                    method: 'PUT',
+                    dataType: "json",
+                    encode: true,
                     data: {
                         field: field,
                         value: newValue,
-                        categoryId: categoryId
+                        categoryId: categoryId,
+                        _token: "{{ csrf_token() }}"
                     },
                     success: function (response) {
-                        alert(response);
+                        alert(response['response']);
+                        console.log(response);
                     },
                     error: function (error) {
+                        console.log(error);
                         console.error('Update failed:', error);
                     }
                 });
