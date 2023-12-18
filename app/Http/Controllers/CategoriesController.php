@@ -19,7 +19,6 @@ class CategoriesController extends Controller
     // Show a specific category
     public function show($id)
     {
-
         $category = Category::findOrFail($id);
         return 'show';
 //        return view('categories.show', ['category' => $category]);
@@ -58,20 +57,18 @@ class CategoriesController extends Controller
     }
 
     // Update the specified category in the database
-    public function update(Request $request)
+    public function update(Request $request, Category $category): array
     {
         $field = $request->input('field');
         $value = $request->input('value');
-        $id = $request->input('categoryId');
         $data = [
           $field => $value,
         ];
 
-        $category = Category::findOrFail($id);
         $category->update($data);
 
         return [
-            'response' => "Category " . $category->title . " updated successfully"
+            'response' => "Category updated successfully"
         ];
     }
 
@@ -81,6 +78,8 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return [
+            'response' => "Category deleted successfully"
+        ];
     }
 }
