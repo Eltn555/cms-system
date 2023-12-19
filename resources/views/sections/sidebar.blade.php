@@ -9,7 +9,7 @@
         </li>
 
         <li>
-            <a href="{{ route('products.index') }}"
+            <a href="{{ route('admin.products.index') }}"
                class="side-menu side-menu{{ request()->is("admin/products") ? "--active" : "" }}">
                 <div class="side-menu__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -24,7 +24,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('categories.index') }}"
+            <a href="{{ route('admin.categories.index') }}"
                class="side-menu side-menu{{ request()->is("admin/categories") ? "--active" : "" }}">
                 <div class="side-menu__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -40,7 +40,7 @@
             </a>
         </li>
         <li>
-            <a href="" class="side-menu side-menu{{ request()->is("dairy") ? "--active" : "" }}">
+            <a href="{{ route('admin.tags.index') }}" class="side-menu side-menu{{ request()->is("dairy") ? "--active" : "" }}">
                 <div class="side-menu__icon"><i data-lucide="tag"></i></div>
                 <div class="side-menu__title">Tags</div>
             </a>
