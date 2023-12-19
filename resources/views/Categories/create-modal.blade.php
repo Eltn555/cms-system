@@ -3,7 +3,7 @@
 <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content"> <!-- BEGIN: Modal Header -->
-            <form class="form-control" action="{{ route() }}">
+            <form class="form-control" action="">
             <div class="modal-header">
                 <h2 class="font-medium text-base mr-auto">New category</h2>
                 <button class="btn btn-outline-secondary hidden sm:flex">

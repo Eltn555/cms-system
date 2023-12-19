@@ -2,12 +2,50 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index()
+    {
+        $categories = Category::all();
         $products = Product::all();
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'categories'));
+    }
+
+    public function create()
+    {
+        return view('products.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'short_description' => 'required',
+            'long_description' => 'required',
+            'price' => 'required',
+            'category_id' => 'required',
+            'additional' => 'required',
+            'seo_title' => 'required',
+            'seo_description' => 'required',
+            'status' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120',
+        ]);
+
+        foreach ($request->image as $file) {
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $filesize = $file->getSize();
+            $file->storeAS('public/', $filename);
+            $fileModel = new  Product;
+            $fileModel->name = $filename;
+            $fileModel->size = $filesize;
+            $fileModel->location = 'storage/' . $filename;
+            $fileModel->save();
+        }
+
+        return redirect()->route('products.index')->with('message', "This is Success Created");
     }
 }
