@@ -1,4 +1,5 @@
 <!-- BEGIN: Modal Content -->
+
 <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content"> <!-- BEGIN: Modal Header -->
@@ -70,7 +71,9 @@
                 </div>
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-1" class="form-label">Activated</label>
-                    <input class="form-check-input" name="is_active" type="checkbox" checked>
+                    <div class="form-check form-switch p-0">
+                        <input class="form-check-input" name="is_active" type="checkbox" checked>
+                    </div>
                 </div><div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-1" class="form-label">Order</label>
                     <input name="order_id" id="modal-form-1" type="number" class="form-control" placeholder="0">
@@ -90,20 +93,9 @@
                 <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">
                     Cancel
                 </button>
-                <button type="button" class="btn btn-primary w-20">Send</button>
+                <button type="submit" class="btn btn-primary w-20">Create</button>
             </div> <!-- END: Modal Footer -->
         </div>
     </div>
 </div> <!-- END: Modal Content -->
 
-@section('script')
-    <script type="text/javascript">
-
-        $("#modal-form-3").each(function () {
-            const el = this;
-            ClassicEditor.create(el).catch((error) => {
-                console.error(error);
-            });
-        });
-    </script>
-@endsection

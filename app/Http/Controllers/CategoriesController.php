@@ -37,6 +37,8 @@ class CategoriesController extends Controller
     // Store a newly created category in the database
     public function store(Request $request)
     {
+
+        dd($request);
         $validatedData = $request->validate([
             'title' => 'required|unique:categories|max:255',
             'description' => 'nullable',

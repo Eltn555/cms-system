@@ -61,6 +61,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VDDWMRSTH"></script>
 <script>
+
     $('#main-search').on('keyup', function () {
         let pattern = $('#main-search').val()
 
@@ -78,6 +79,7 @@
         })
 
     })
+
 </script>
 
 @yield('script')

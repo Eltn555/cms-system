@@ -70,7 +70,7 @@
                                 </select>
                             </div>
                         </td>
-                        <td class="editable" data-field="order_id" data-action="read" data-selectable="number">
+                        <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="text-center">{{$category->order_id}}</div>
                         </td>
                         <td class="editabledesc" data-field="description" data-action="read" data-selectable="text">
@@ -151,8 +151,15 @@
         @include('categories.create-modal')
           <!-- END: Delete Confirmation Modal -->
 @endsection
+
 @section('script')
-    <script>
+    <script type="text/javascript">
+        $("#modal-form-3").each(function () {
+            const el = this;
+            ClassicEditor.create(el).catch((error) => {
+                console.error(error);
+            });
+        });
         let id;
         $("body").bind("ajaxSend", function(elm, xhr, s){
             if (s.type == "POST") {
@@ -170,7 +177,7 @@
             $(document).on('blur', '.editable input', function () {
                 var $editable = $(this).parent('.editable');
                 $editable.data('action', 'read');
-                var newValue = '<div class="text-center">' + $(this).val() + '</div>';
+                var newValue = '<div class="font-medium whitespace-nowrap">' + $(this).val() + '</div>';
                 ajax($editable.data('field'), $(this).val(), $editable.parents('.intro-x').data('action'), 'PUT');
                 $editable.html(newValue);
             });
