@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -28,12 +29,18 @@ class ProductController extends Controller
             'long_description' => 'required',
             'price' => 'required',
             'category_id' => 'required',
-            'additional' => 'required',
+            'additional' => '',
             'seo_title' => 'required',
             'seo_description' => 'required',
             'status' => 'required',
             'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120',
         ]);
+//        $file = $request->file('image');
+//        $path = Storage::putFile('/images', $request->file('image'));
+
+
+//        $data = $request->all();
+//        $data['image'] = Storage::put('/images', $request['image']);
 
         foreach ($request->image as $file) {
             $filename = time() . '_' . $file->getClientOriginalName();
@@ -45,6 +52,7 @@ class ProductController extends Controller
             $fileModel->location = 'storage/' . $filename;
             $fileModel->save();
         }
+        Product::create($request);
 
         return redirect()->route('products.index')->with('message', "This is Success Created");
     }

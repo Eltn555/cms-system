@@ -58,12 +58,22 @@
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-2" class="form-label">Description</label>
                         <input id="modal-form-2" name="short_description" type="text" class="form-control"
-                               placeholder="">
+                               placeholder="Short Description">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="modal-form-2" class="form-label">Price</label>
+                        <input id="modal-form-2" name="price" type="number" class="form-control"
+                               placeholder="Price write...">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="modal-form-2" class="form-label">Status</label>
+                        <input id="modal-form-2" name="status" type="number" class="form-control"
+                               placeholder="Status write...">
                     </div>
                     <div class="col-span-12">
                         <label for="modal-form-3" class="form-label">Long Description</label>
-                        <textarea id="modal-form-3" class="" name="long_description" placeholder="Long Description"
-                                  required></textarea>
+                        <textarea id="modal-form-3" class="" name="long_description"
+                                  placeholder="Long Description"></textarea>
                     </div>
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-6" class="form-label">Category</label>
@@ -92,6 +102,11 @@
                                 id="post-form-3"
                                 multiple="multiple" name="seo_title" tabindex="-1" hidden="hidden">
                         </select>
+                    </div>
+                    <div class="col-span-6 mt-3">
+                        <label for="modal-form-4" class="form-label">Long Description</label>
+                        <textarea id="modal-form-4" class="form-control" name="seo_description"
+                                  placeholder="Seo Description" rows="3"></textarea>
                     </div>
                 </div> <!-- END: Modal Body --> <!-- BEGIN: Modal Footer -->
                 <div class="modal-footer">
