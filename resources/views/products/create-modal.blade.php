@@ -51,24 +51,14 @@
 
                     </div>
 
-                    <div class="col-span-12 sm:col-span-6">
+                    <div class="col-span-12 sm:col-span-12">
                         <label for="modal-form-1" class="form-label">Title</label>
                         <input id="modal-form-1" name="title" type="text" class="form-control" placeholder="Table Lamp">
                     </div>
-                    <div class="col-span-12 sm:col-span-6">
+                    <div class="col-span-12 sm:col-span-12">
                         <label for="modal-form-2" class="form-label">Description</label>
-                        <input id="modal-form-2" name="short_description" type="text" class="form-control"
-                               placeholder="Short Description">
-                    </div>
-                    <div class="col-span-12 sm:col-span-6">
-                        <label for="modal-form-2" class="form-label">Price</label>
-                        <input id="modal-form-2" name="price" type="number" class="form-control"
-                               placeholder="Price write...">
-                    </div>
-                    <div class="col-span-12 sm:col-span-6">
-                        <label for="modal-form-2" class="form-label">Status</label>
-                        <input id="modal-form-2" name="status" type="number" class="form-control"
-                               placeholder="Status write...">
+                        <textarea id="modal-form-2" class="form-control h-[110px]" name="short_description"
+                                  placeholder="Short Description"></textarea>
                     </div>
                     <div class="col-span-12">
                         <label for="modal-form-3" class="form-label">Long Description</label>
@@ -76,8 +66,19 @@
                                   placeholder="Long Description"></textarea>
                     </div>
                     <div class="col-span-12 sm:col-span-6">
-                        <label for="modal-form-6" class="form-label">Category</label>
+                        <label for="modal-form-4" class="form-label"><b class="text-">* </b>Price</label>
+                        <input id="modal-form-4" name="price" type="number" class="form-control"
+                               placeholder="Price write...">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="modal-form-7" class="form-label">Discount Price</label>
+                        <input id="modal-form-7" name="discount_price" type="number" class="form-control"
+                               placeholder="Price write...">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="modal-form-6" class="form-label"><b class="text-">* </b>Category</label>
                         <select id="modal-form-6" class="form-select">
+                            <option value="" disabled selected>Not selected</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">
                                     {{ $category->title }}
@@ -86,9 +87,15 @@
                         </select>
                     </div>
                     <div class="col-span-12 sm:col-span-6">
-                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Tags</label>
+                        <label for="modal-form-5" class="form-label">Visible</label>
+                        <div class="form-check form-switch p-0">
+                            <input id="modal-form-5" class="form-check-input" name="status" type="checkbox" checked>
+                        </div>
+                    </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar products</label>
                         <select data-placeholder="Select categories" class="tom-select w-full tomselected"
-                                id="post-form-3"
+                                id="post-form-3" name="similar_products"
                                 multiple="multiple" tabindex="-1" hidden="hidden">
                             <option value="1" selected="true">Horror</option>
                             <option value="3" selected="true">Action</option>
@@ -96,17 +103,25 @@
                             <option value="4" selected="true">Drama</option>
                         </select>
                     </div>
-                    <div class="col-span-12 sm:col-span-6 mt-3">
-                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">SEO</label>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Additional products</label>
                         <select data-placeholder="Select categories" class="tom-select w-full tomselected"
-                                id="post-form-3"
-                                multiple="multiple" name="seo_title" tabindex="-1" hidden="hidden">
+                                id="post-form-3" name="additional_products"
+                                multiple="multiple" tabindex="-1" hidden="hidden">
+                            <option value="1" selected="true">Horror</option>
+                            <option value="3" selected="true">Action</option>
+                            <option value="5" selected="true">Comedy</option>
+                            <option value="4" selected="true">Drama</option>
                         </select>
                     </div>
-                    <div class="col-span-6 mt-3">
-                        <label for="modal-form-4" class="form-label">Long Description</label>
+                    <div class="col-span-12 sm:col-span-12 mt-3">
+                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">SEO</label>
+                        <input id="modal-form-1" name="seo_title" type="text" class="form-control" placeholder="SEO Title">
+                    </div>
+                    <div class="col-span-12 sm:col-span-12 mt-3">
+                        <label for="modal-form-4" class="form-label">SEO Description</label>
                         <textarea id="modal-form-4" class="form-control" name="seo_description"
-                                  placeholder="Seo Description" rows="3"></textarea>
+                                  placeholder="SEO Description" rows="3"></textarea>
                     </div>
                 </div> <!-- END: Modal Body --> <!-- BEGIN: Modal Footer -->
                 <div class="modal-footer">
@@ -123,9 +138,15 @@
 @section('script')
     <script type="text/javascript">
 
-        $("#modal-form-3").each(function () {
+        $("#modal-form-2").each(function () {
             const el = this;
             ClassicEditor.create(el).catch((error) => {
+                console.error(error);
+            });
+        });
+        $("#modal-form-3").each(function () {
+            const el1 = this;
+            ClassicEditor.create(el1).catch((error) => {
                 console.error(error);
             });
         });

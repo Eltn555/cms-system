@@ -23,17 +23,18 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        dd($request);
         $request->validate([
             'title' => 'required',
-            'short_description' => 'required',
-            'long_description' => 'required',
+            'short_description' => 'nullable',
+            'long_description' => 'nullable',
             'price' => 'required',
             'category_id' => 'required',
-            'additional' => '',
-            'seo_title' => 'required',
-            'seo_description' => 'required',
+            'additional' => 'nullable',
+            'seo_title' => 'nullable',
+            'seo_description' => 'nullable',
             'status' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120',
         ]);
 //        $file = $request->file('image');
 //        $path = Storage::putFile('/images', $request->file('image'));
