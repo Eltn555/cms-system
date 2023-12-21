@@ -1,0 +1,116 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-service-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="container container-v1">
+    <div class="section-service-v1 mt-all">
+      <div class="row justify-content-center ">
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == "service" %}
+        <div class="itemtservice col-lg-3 col-md-6 mb-3 mb-lg-0 ">
+          <div class="box-service" >
+            <div class="number">
+              {% if block.settings.img_icon != blank %}
+              <img data-src="{{block.settings.img_icon |img_url : 'master'}}" class="lazyload" alt="_img">
+              {% endif %}
+            </div>
+            <div class="info">
+              {% if block.settings.block_title != blank %}
+              <h4 class="title" >{{block.settings.block_title}}</h4>
+              {% endif %}
+              {% if block.settings.block_content != blank %}          	
+              <p class="content" >{{block.settings.block_content}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "SERVICE BOX",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img_icon",
+          "label": "Image Icon"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title",
+          "default": " SHIPPING & RETURN"
+        },
+        {
+          "type": "text",
+          "id": "block_content",
+          "label": "Content",
+          "default": " If your glasses aren't perfect, return them within 30 days<br> for a full refund. We'll even pay shipping."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SERVICE BOX",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "block_title": "SHIPPING & RETURN",
+            "block_content": "If your glasses aren't perfect, return them within 30 days for a full refund. We'll even pay shipping."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_title": " SAFE PAYMENT",
+            "block_content": "Pay with the world's most popular and secure payment methods"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_title": "SHOP WITH CONFIDENCE",
+            "block_content": "Our Buyer Protection covers your purchase from click to delivery."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

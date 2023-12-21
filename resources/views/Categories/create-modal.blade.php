@@ -3,7 +3,8 @@
 <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content"> <!-- BEGIN: Modal Header -->
-            <form class="form-control" action="">
+            <form action="{{route('admin.categories.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
             <div class="modal-header">
                 <h2 class="font-medium text-base mr-auto">New category</h2>
                 <button class="btn btn-outline-secondary hidden sm:flex">
@@ -29,9 +30,9 @@
             <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
 
                 <div class="col-span-12">
-                    <form data-single="true" action="/file-upload" class="dropzone">
+{{--                    <form data-single="true" action="/file-upload" class="dropzone">--}}
                         <div class="fallback">
-                            <input name="file" type="file"/>
+                            <input name="image" type="file" id="files" name="files" accept=".png, .jpg, .jpeg, .webp, .gif" multiple>
                         </div>
                         <div class="dz-message" data-dz-message>
                             <div class="text-lg font-medium">Drop files here or click to upload.</div>
@@ -39,21 +40,21 @@
                                     class="font-medium">not</span> actually uploaded.
                             </div>
                         </div>
-                    </form>
+{{--                    </form>--}}
                 </div>
 
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-1" class="form-label">Title</label>
-                    <input id="modal-form-1" type="text" class="form-control" placeholder="Category title">
+                    <input name="title" id="modal-form-1" type="text" class="form-control" placeholder="Category title">
                 </div>
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-2" class="form-label">Parent category</label>
                     <div class="w-full xl:mt-0 flex-1">
-                        <select class="form-select edition" data-field="parent_category_id">
+                        <select name="parent_category_id" class="form-select edition" data-field="parent_category_id">
                             @foreach($categories as $lilcat)
                                     <option value="{{$lilcat->id}}">{{$lilcat->title}}</option>
                             @endforeach
-                            <option value="" selected>Not Selected</option>
+                            <option value="5" selected>Not Selected</option>
                         </select>
                     </div>
                 </div>

@@ -1,0 +1,176 @@
+<div class="wrap-bread-crumb breadcrumb_collection2">
+  <div class="text-center bg-breadcrumb" style="background-image : url({% if section.settings.bg_breadcrumb != blank  %}{{section.settings.bg_breadcrumb | img_url : 'master'}} {% else %}//placehold.it/1920x510 {% endif %})">
+    <div class="title-page">
+
+      <h2 class="">{{page.title}}</h2>
+
+    </div>
+    {% include 'breadcrumb' %}
+  </div>
+</div>
+<section id="content">
+  <div class="content-page contact-page">
+    
+    <div class="container container-v2">
+    	 <div class="contact-form">
+          <div class="row">
+
+            <div class="col-md-6">
+              {% if section.settings.enable_map %}	
+              <a class="d-block" style="margin-bottom: 50px" target="_blank" href="{{section.settings.link_map}}">
+                <img src="{% if section.settings.image_map != blank %} {{section.settings.image_map | img_url : 'master'}} {% else %}//placehold.it/685x580 {% endif %}">
+              </a>
+              {% endif %}
+
+            </div>
+
+            {% if section.settings.enable_s_contactform %}
+            <div class="col-md-6 col-sm-6 col-12">
+              <div class="contact-form-page">
+              
+                {% form 'contact' %}
+
+                {% if form.posted_successfully? %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <p style="margin-bottom: 5px;">
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                </div>
+                {% endif %}
+
+                {% if form.errors %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+                  <p style="margin-bottom: 5px;">Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+                  {% for field in form.errors %}
+                  <p style="margin-bottom: 5px;">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+                  {% endfor %}
+                </div>
+                {% endif %}
+                <div class="contact-form">
+                  <p class="contact-name">
+                    <input class="" placeholder="{{section.settings.contactform_name}}" type="text" id="contactFormName" name="contact[name]" required>
+                  </p>
+                  <p class="contact-email">
+                    <input class="" placeholder="{{section.settings.contactform_email}}" type="email" id="contactFormEmail" name="contact[email]" required>
+                  </p>
+                  <p class="contact-subject">
+                    <input class="dark border" placeholder="{{section.settings.contactform_subject}}" type="text" id="contactFormSubject" name="contact[subject]" required>
+                  </p>
+                  <p class="contact-message">
+                    <textarea class="" placeholder="{{section.settings.contactform_content}}" cols="30" rows="10" id="contactFormMessage" name="contact[body]" required></textarea>
+                  </p>
+                  <p class="contact-submit">
+                    <input  class="shop-button" type="submit" value="{{section.settings.contactform_btn}}">
+                  </p>
+                </div>
+                {% endform %}
+              </div>
+            </div>
+            {% endif %}
+       		
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Us",
+  "settings": [
+	
+	{
+    "type" : "image_picker",
+    "id": "bg_breadcrumb",
+    "label" : "Background Image Breadcrumb",
+    "info" : "1920x510px recommended"
+    },
+	{
+		"type" : "header",
+		"content" : "Config Map"
+	},
+	{
+      "type": "checkbox",
+      "id": "enable_map",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+    "type" : "image_picker",
+    "id": "image_map",
+    "label" : "Image Map",
+    "info" : "685x580px recommended"
+    },
+	{
+		"type" : "url",
+		"id" : "link_map",
+		"label" : "link map"
+	},
+   	{
+      "type": "text",
+      "id": "describe",
+      "label": "Describe",
+      "default": "Contact us to find out more or how we can help you better."
+    },
+	
+    {
+      "type": "header",
+      "content": "Section Contact Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_s_contactform",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contactform_name",
+      "label": "Placeholder name",
+      "default": "User name*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_email",
+      "label": "Placeholder email",
+      "default": "Email*"
+    },
+	{
+      "type": "text",
+      "id": "contactform_subject",
+      "label": "Placeholder Subject",
+      "default": "Subject"
+    },
+    {
+      "type": "text",
+      "id": "contactform_content",
+      "label": "Placeholder Message",
+      "default": "Message*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_btn",
+      "label": "Button name",
+      "default": "Send"
+    }
+  ],
+
+
+  "presets": [
+    {
+      "name": "Contact Us"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

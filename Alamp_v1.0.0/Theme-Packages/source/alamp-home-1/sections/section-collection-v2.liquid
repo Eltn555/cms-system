@@ -1,0 +1,146 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-collection-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-collection-v2" style="background: url({% if section.settings.bg_collection != blank %} {{section.settings.bg_collection | img_url : 'master'}}  {% else %} //placehold.it/2000x1800 {% endif %} )">
+    <div class="lazyload">
+      <div class="container container-v1">
+        {% if section.settings.title_heading != blank %}
+        <h3 class="title_heading text-center" style="color: {{section.settings.color_title}}">{{section.settings.title_heading}}</h3>
+        {% endif %}
+        <div class="row js-collection-v2">
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == 'colection' %}
+          <div class="col-lg-4 col-md-4 col-sm-6 col-12 col-item">
+            <div class="item">
+              <div class="box-img">
+                <a href="{{block.settings.brand_url}}" title="{{block.settings.title_collection}}">
+                  {% if block.settings.brand_img != blank %}
+                  <img data-src="{{block.settings.brand_img|img_url:'master'}}" class="lazyload img-fluid w-100" alt="collection">
+                  {% else %}
+                  <img data-src="https://placehold.it/456x456" class="lazyload img-fluid w-100" alt="collection">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="category-info">
+                <div class="box-info">
+                  {% if block.settings.title_collection != blank %}
+                  <a href="{{block.settings.brand_url}}" class="content-box">{{block.settings.title_collection}}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "COLLECTION V2",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_heading",
+      "label": "Title Heading",
+      "default": "Types of Ceramic"
+    },
+    {
+      "type": "color",
+      "id": "color_title",
+      "label": "Color Title Heading",
+      "default": "#fff"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_collection",
+      "info": "1920 x 1080px recommended",
+      "label": "Background Collection v2"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "colection",
+      "name": "Item Collection v2",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_img",
+          "info": "456 x 456px recommended",
+          "label": "Collection 1"
+        },
+        {
+          "type": "text",
+          "id": "title_collection",
+          "label": "Label Collection",
+          "default": " Plantza"
+        },
+        {
+          "type": "url",
+          "id": "brand_url",
+          "label": "URL collection",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "COLLECTION V2",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "colection",
+          "settings": {
+            "title_collection": "Porcelain"
+          }
+        },
+        {
+          "type": "colection",
+          "settings": {
+            "title_collection": "Bone China"
+          }
+        },
+        {
+          "type": "colection",
+          "settings": {
+            "title_collection": "Earthenware"
+          }
+        },
+        {
+          "type": "colection",
+          "settings": {
+            "title_collection": "Stoneware"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

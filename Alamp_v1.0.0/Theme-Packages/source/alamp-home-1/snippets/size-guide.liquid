@@ -1,0 +1,104 @@
+<div class="ciloe-size-guide relative">
+  <a href="#" class="btn_size_guide">Size guide</a>
+  <div class="content_size_guide fixed delay05 text-center">
+    <div class="layout_size_guide text-center">
+      <div class="relative inline-block">
+        {% if section.settings.img_size_women == blank %}
+        <img src="{{ settings.img_size_women | img_url:'master' }}" class="img-responsive">
+        {% endif %}
+        <div class="close_size_guide absolute">
+          <a href="#" class="set-16-svg fill-white">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 298.667 298.667" style="enable-background:new 0 0 298.667 298.667;" xml:space="preserve">
+              <g>
+                <g>
+                  <polygon points="298.667,30.187 268.48,0 149.333,119.147 30.187,0 0,30.187 119.147,149.333 0,268.48 30.187,298.667     149.333,179.52 268.48,298.667 298.667,268.48 179.52,149.333   "></polygon>
+                </g>
+              </g>
+
+            </svg>
+          </a>
+        </div>
+      </div>
+      {% if section.settings.img_size_men == blank %}
+      <img src="{{settings.img_size_men | img_url:'master' }}" class="img-responsive">
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+<div class="overlay"></div>
+<style>
+  .ciloe-size-guide{
+    padding-top: 20px;
+  }
+  .ciloe-size-guide .close_size_guide{
+    top: 0;
+    right: -30px;
+  }
+  .ciloe-size-guide .close_size_guide a{
+    color:#fff;
+  }
+  .ciloe-size-guide .btn_size_guide{
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 31px;
+    font-weight: 400;
+    cursor: pointer;
+    background: url(//cdn.shopify.com/s/files/1/0082/8509/3968/t/13/assets/Forma-1.png?216455) no-repeat;
+    min-width: 150px;
+    background-position-y: 8px;
+    background-position-x: 0px;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .ciloe-size-guide .content_size_guide{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow-y:auto;
+    z-index:999999;
+    display:inline-block;
+    transform:scale(0);
+  }
+  .ciloe-size-guide .content_size_guide .layout_size_guide{
+    max-width:750px;
+    margin:5% auto;
+  }
+  .ciloe-size-guide .content_size_guide.active{
+    transform:scale(1);
+  }
+  .ciloe-size-guide .content_size_guide img{
+    margin:0 auto;
+  }
+  @media (max-width:767px){
+    .ciloe-size-guide .content_size_guide .layout_size_guide{
+      max-width:290px;
+    }
+  }
+  @media (min-width:767px) and (max-width:992px) {
+    .ciloe-size-guide .content_size_guide .layout_size_guide{
+      max-width : 600px;
+    }
+  }
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 30;
+    background: rgba(29, 29, 31, 0.6);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+  }  
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>

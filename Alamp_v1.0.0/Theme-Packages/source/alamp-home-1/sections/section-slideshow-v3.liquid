@@ -1,0 +1,180 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-v3" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slideshow-v3">      
+    {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+    {% if block.type == "slideshow" %}
+    <div class="itemv-slide-h3" style="background-image: url({% if block.settings.backgroud_slide != blank %}{{block.settings.backgroud_slide |img_url:'master'}}{% else %}//placehold.it/1881x1080{% endif %})">
+      <div class="container container-v2">
+        <div class="content {% if block.settings.select_pos =='left' %} text-left {% elsif block.settings.select_pos == 'center' %} text-center {% elsif block.settings.select_pos == 'right' %} text-right {% endif %}">
+          {% if block.settings.block_title != blank %}
+          <h3 class="mb-0 title-slideshow" style="color:{{block.settings.color_title}};">{{block.settings.block_title}}</h3>
+          {% endif %}
+          {% if block.settings.block_subtitle != blank %}
+          <p class="mb-0 sub-title-content" style="color:{{block.settings.color_subtitle}};">{{block.settings.block_subtitle}}</p>
+          {% endif %}
+          {% if block.settings.block_buton != blank %}
+          <a  href="{{block.settings.block_url}}" style="color:{{block.settings.color_block_button}};border-color : {{block.settings.color_block_button}} " class="mt-3 button-shop-{{section.id}}-{{block.id}}">
+            {{block.settings.block_buton}}
+          </a> 
+          {% endif%}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+<style>
+  {% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+  {% if block.type == "slideshow" %}
+  .section-slideshow-v3 .itemv-slide-h3 .content .button-shop-{{section.id}}-{{block.id}}:hover{
+    color : {{block.settings.color_block_button_hover}} !important;
+    border-color : {{block.settings.bg_color_block_button_hover}} !important;
+    background: {{block.settings.bg_color_block_button_hover}} !important;
+  }
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "SLIDESHOW V3",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "slideshow",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "backgroud_slide",
+          "label": "Image slideshow",
+          "info": "1881 x 1080px recommended"
+        },
+        {
+          "type": "select",
+          "id": "select_pos",
+          "label": "Select Position Content",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title sideshow",
+          "default": "Nutrition and Health Benefits"
+        },
+        {
+          "type": "color",
+          "id": "color_title",
+          "label": "Color Title sideshow",
+          "default": "#333333"
+        },
+        {
+          "type": "text",
+          "id": "block_subtitle",
+          "label": "Sub Title sideshow",
+          "default": "Benefits of Eating Vegetables"
+        },
+        {
+          "type": "color",
+          "id": "color_subtitle",
+          "label": "Color Sub Title sideshow",
+          "default": "#acabab"
+        },
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button slideshow",
+          "default": "Shop now"
+        },
+        {
+          "type": "color",
+          "id": "color_block_button",
+          "label": "Color button",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "color_block_button_hover",
+          "label": "Color button hover ",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_block_button_hover",
+          "label": "background Color button hover ",
+          "default": "#fff"
+        },
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "URL button slideshow",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SLIDESHOW V3",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "slideshow",
+          "settings": {
+            
+          }
+        },
+        {
+          "type": "slideshow",
+          "settings": {
+            
+          }
+        },
+        {
+          "type": "slideshow",
+          "settings": {
+            
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

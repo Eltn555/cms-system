@@ -1,0 +1,206 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-v5" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slideshow-v5">
+    <div class="slick-side-h5">       
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      {% if block.type == "slideshow" %}
+      <div class="itemv-slide-h1">
+        <div class="info-sideh1">
+          <div class="picture-slideshow">
+            {% if block.settings.block_banerimage != blank %}
+            <img src="{{block.settings.block_banerimage | img_url: 'master'}}" class="img-responsive img_slideh1" alt="">
+            {% else %}
+            <img src="//placehold.it/1920x950" class="img-responsive img_slideh1" alt="slideshow">
+            {% endif %}
+          </div>
+          <div class="picture_left">
+            <div class="box-images">
+              <a href="{{settings.block.block_url}}">
+                {% if block.settings.block_picture_left != blank%}
+                <img src="{{block.settings.block_picture_left | img_url: 'master'}}" class="img-responsive" alt="">
+                {% else %}
+                <img src="//placehold.it/680x600" class="img-responsive" alt="img-slideshow">
+                {% endif%}
+              </a>
+            </div>
+          </div>
+
+          <div class="box-content">
+            {% if block.settings.block_subtitle != blank %}
+            <p class="mb-0" style="color:{{block.settings.color_subtitle}};">{{block.settings.block_subtitle}}</p>
+            {% endif %}              
+            <div class="box-title">
+              {% if block.settings.block_title_top != blank %}
+              <h3 class="titlebig mb-0" style="color:{{block.settings.color_block_title_top}};">{{ block.settings.block_title_top }}</h3>
+              {% endif %} 
+            </div>
+            <div class="box-title2">
+              {% if block.settings.block_title_top2 != blank %}
+              <h3 class="title-small mb-0" style="color:{{block.settings.color_content}};">{{ block.settings.block_title_top2 }}</h3>
+              {% endif %}
+            </div>
+            <div class="box-button">
+              {% if block.settings.block_buton != blank %}
+              <a class="button-shop" href="{{block.settings.block_url}}" style="color:{{block.settings.color_block_button}}; background-color:{{block.settings.color_bg_block_button}}">
+                {{ block.settings.block_buton }}
+              </a>
+              {% endif %}
+            </div>              
+          </div>
+
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+<style>
+  {% for block in section.blocks %}
+  {% if block.type == 'slideshow' %}
+  .section-slideshow-v5 .info-sideh1 .box-content .box-button .button-shop:hover {
+    color: {{block.settings.color_button_hover}}!important;
+    background: {{block.settings.bg_button_hover}}!important;
+  }
+
+  {% endif %}
+  {% endfor %}
+</style>
+{% schema %}
+{
+  "name": "SLIDESHOW V5",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "slideshow",
+      "settings": [
+		{
+          "type": "image_picker",
+          "id": "block_banerimage",
+          "label": "Image slideshow",
+          "info": "1920 x 950px recommended"
+        },
+		{
+          "type": "image_picker",
+          "id": "block_picture_left",
+          "label": "Image banner",
+          "info": "680 x 600px png recommended"
+        },
+		{
+          "type": "text",
+          "id": "block_subtitle",
+          "label": "Sub Title sideshow",
+          "default": "WELCOME TO OUR"
+        },
+		{
+           "type": "color",
+           "id": "color_subtitle",
+           "label": "Color Sub Title sideshow",
+           "default": "#878787"
+        },
+        {
+          "type": "text",
+          "id": "block_title_top",
+          "label": "Title sideshow top",
+          "default": "FURNITURE"
+        },
+		{
+           "type": "color",
+           "id": "color_block_title_top",
+           "label": "Color Title sideshow top",
+           "default": "#010101"
+        },
+		{
+          "type": "text",
+          "id": "block_title_top2",
+          "label": "Content",
+          "default": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable"
+        },
+		{
+           "type": "color",
+           "id": "color_content",
+           "label": "Color Content",
+           "default": "#878787"
+        },
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button slideshow",
+          "default": "Shop now"
+        },
+		{
+           "type": "color",
+           "id": "color_block_button",
+           "label": "Color button",
+           "default": "#fff"
+        },
+		{
+           "type": "color",
+           "id": "color_bg_block_button",
+           "label": "Color background button",
+           "default": "#e5ae49"
+        },
+		{
+           "type": "color",
+           "id": "color_button_hover",
+           "label": "Color button hover",
+           "default": "#ffffff"
+        },
+		{
+           "type": "color",
+           "id": "bg_button_hover",
+           "label": "Background button hover",
+           "default": "#e5ae49"
+        },
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "URL button slideshow",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SLIDESHOW V5",
+      "category": "HOME",
+	  "blocks": [
+        {
+          "type": "slideshow",
+          "settings": {
+          }
+        }		
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

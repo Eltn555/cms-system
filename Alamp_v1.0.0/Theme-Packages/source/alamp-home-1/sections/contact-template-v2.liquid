@@ -1,0 +1,292 @@
+<div class="wrap-bread-crumb breadcrumb_collection2">
+  <div class="text-center bg-breadcrumb" style="background-image : url({% if section.settings.bg_breadcrumb != blank  %}{{section.settings.bg_breadcrumb | img_url : 'master'}} {% else %}//placehold.it/1920x510 {% endif %})">
+    <div class="title-page">
+
+      <h2 class="">{{page.title}}</h2>
+
+    </div>
+    {% include 'breadcrumb' %}
+  </div>
+</div>
+<section class="page_aboutus_v1 page_contact">
+ 
+  {% if section.settings.enable_map %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="contact-google-map">
+          <div id="map" class="map-custom"></div>
+          <script>
+            function initMap() {
+              var myLatLng = {lat: {{settings.gmap_latitude}}, lng: {{settings.gmap_longitude}}};
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: myLatLng
+              });
+
+              var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+              });
+            }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key={{settings.gmap_key}}&callback=initMap" async defer></script>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+   <!-- End Google Map -->
+  
+  {% if section.settings.enable_get_find %}
+  <div class="get_find">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div class="box_getin">
+            {% if section.settings.title_get_left != blank %}
+            <h5>{{section.settings.title_get_left}}</h5>
+            {% endif %}
+            {% if section.settings.description_get_left != blank %}
+            <p>{{section.settings.description_get_left}}</p>
+            {%  endif %}
+            {% if section.settings.enable_email%}
+            <div class=" box-email">
+              
+              {% form 'contact' %}
+              {% if form.posted_successfully? %}
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p style="margin-bottom: 5px;">
+                  {{ 'contact.form.post_success' | t }}
+                </p>
+              </div>
+              {% endif %}
+              {% if form.errors %}
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+                <p style="margin-bottom: 5px;">Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+                {% for field in form.errors %}
+                <p style="margin-bottom: 5px;">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+                {% endfor %}
+              </div>
+              {% endif %}
+              
+              <input type="text" class="form-control" id="name" placeholder="{{section.settings.placeholder_input_name}}" name="contact[name]" required>
+              <input type="Email" class="form-control" id="mail" placeholder="{{section.settings.placeholder_input_mail}}" name="contact[email]" required>
+              <div class="input-group mb-2 mr-sm-2 mr-md-0 mb-0">
+                <input type="text" class="form-control border_bottomform" id="ib" placeholder="{{section.settings.placeholder_input_message}}"name="contact[body]" required>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="{{section.settings.iconmail}}"></i></div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary w-100" type="submit"  value="{{section.settings.button_sunmit_mail}}">{{section.settings.button_sunmit_mail}}</button>
+
+              {% endform %}
+            </div>
+            {% endif %}
+            
+          </div>
+        </div>
+        {% if section.settings.enable_find_right %}
+        <div class="col-lg-6 col-md-6">
+          <div class="box_getin box_find">
+            {% if section.settings.title_find_right != blank%}
+            <h5>{{section.settings.title_find_right}}</h5>
+            {% endif %}
+            {% if section.settings.description_find_right != blank%}
+            <p>{{section.settings.description_find_right}}</p>
+            {% endif %}
+            <div class="info_find">
+              {% if section.blocks.size > 0 %}
+              {% for block in section.blocks %}
+              {% if block.type == "findget" %}
+                {% if block.settings.block_texticon != blank%}
+                <p>
+                  	<span class="{{block.settings.icon_office}}"></span>
+                {{block.settings.block_texticon}}
+                </p>
+              	{% endif %}
+
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div> 
+  {% endif %}
+  
+</section>
+
+{% schema %}
+  {
+    "name": "Contact Us",
+    "settings": [
+	{
+      "type": "header",
+      "content": "Breadcrumb"
+    },
+    {
+    "type" : "image_picker",
+    "id": "bg_breadcrumb",
+    "label" : "Background Image Breadcrumb",
+    "info" : "1920x510px recommended"
+    },
+	{
+      "type": "header",
+      "info": "Google Map: Setting in Login Store > Customize theme > Theme settings tab > Google Maps",
+      "content": "Section Map"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_map",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "Section Get Find"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_get_find",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_get_left",
+      "label": "Title Get left",
+      "default": "Get In Touch With Us"
+    },
+	{
+      "type": "text",
+      "id": "description_get_left",
+      "label": "Description Get left",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursuscommodo, tortor mauris condimentum nibh, ut fermentum massa justo."
+    },
+
+	{
+      "type": "checkbox",
+      "id": "enable_email",
+      "label": "Enable Mail?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "placeholder_input_name",
+      "label": "Placeholder input Name",
+      "default": "YOUR NAME"
+    },
+	{
+      "type": "text",
+      "id": "placeholder_input_mail",
+      "label": "Placeholder input Mail",
+      "default": "YOUR MAIL"
+    },
+	{
+      "type": "text",
+      "id": "placeholder_input_message",
+      "label": "Placeholder input Message",
+      "default": "YOUR MESSAGE"
+    },
+	{
+      "type": "text",
+      "id": "iconmail",
+      "label": "Icon mail right",
+      "default": "ti-email",
+      "info": "[Get icon in here](https://themify.me/themify-icons)"
+     },
+	{
+	"type":"text",
+	"id": "button_sunmit_mail",
+	"label": "Button Submit Mail",
+	"default": "SEND MESSAGE"
+	},
+	{
+      "type": "checkbox",
+      "id": "enable_find_right",
+      "label": "Enable find_right?",
+      "default": true
+    },	
+	{
+      "type": "text",
+      "id": "title_find_right",
+      "label": "Title Find Right",
+      "default": "Find Our Office"
+    },
+
+	{
+      "type": "text",
+      "id": "description_find_right",
+      "label": "Description Find Right",
+      "default": "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Sed posuere est at lobortis."
+    }
+	
+	],
+	  "blocks": [
+    {
+      "type": "findget",
+      "name": "Find - Get",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_office",
+          "label": "Icon Office",
+          "default": "ti-headphone-alt",
+		  "info": "[Get icon in here](https://themify.me/themify-icons)"	
+        },
+        {
+          "type": "text",
+          "id": "block_texticon",
+          "label": "Description Office",
+          "default": "Call us on +(1) 111-1230-981-11"
+        }
+      ]
+    }
+	
+  ],
+  "presets": [
+    {
+      "name": "Find - Get",
+      "blocks": [
+        {
+          "type": "findget",
+          "settings": {
+            "icon_office": "ti-headphone-alt",
+            "block_texticon": "Call us on +(1) 111-1230-981-11"            
+          }
+        },
+		{
+          "type": "findget",
+          "settings": {
+            "icon_office": "ti-bell",
+            "block_texticon": "Mon - Sat 8 AM - 8PM"            
+          }
+        },
+		{
+          "type": "findget",
+          "settings": {
+            "icon_office": "ti-location-pin",
+            "block_texticon": "111 West Avenue, NYC"            
+          }
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

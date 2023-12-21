@@ -1,0 +1,161 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v6" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v6" style="{% if section.settings.style_bg == 'color' %}background-color:{{section.settings.bgsection_color}}{% else %}background-image: url({% if section.settings.bg_img != blank %}{{section.settings.bg_img | img_url: 'master'}}{% else %}//placehold.it/1920x620{% endif %}){% endif %};">
+    <div class="lazyload">
+      <div class="container container-v2">
+        <div class="row align-items-center">        
+          <div class="col-lg-6 col-md-6 order-2 order-md-1">
+            <div class="box-video">
+              <a data-fancybox href="{{ section.settings.section_video_url }}">              
+                {% if section.settings.banner_img != blank %}
+                <img data-src="{{section.settings.banner_img|img_url:'master'}}" class="lazyload img-fluid w-100" alt="">
+                {% else %}
+                <img data-src="//placehold.it/855x598" class="lazyload img-fluid w-100" alt>
+                {% endif %}
+                <i class="fa fa-play"></i>
+              </a>        
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 order-1 order-md-2">
+            <div class="box-info">
+              <div class="content-banner">
+                {% if section.settings.sub_title != blank %}
+                <h5>{{section.settings.sub_title}}</h5>
+                {% endif %}
+
+                {% if section.settings.banner_title != blank %}
+                <h2>{{section.settings.banner_title}}</h2>
+                {% endif %}
+
+                {% if section.settings.banner_content != blank %}
+                <p class="content">{{section.settings.banner_content}}</p>
+                {% endif %}
+
+                {% if section.settings.banner_btn_name != blank %}
+                <a href="{{section.settings.banner_url}}">{{section.settings.banner_btn_name}}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}{
+"name": "BANNER V6",
+"settings": [
+  {
+    "type": "radio",
+    "id": "style_bg",
+    "label": "Style Background",
+    "options": [
+      {
+        "value": "color",
+        "label": "Color"
+      },
+      {
+        "value": "image",
+        "label": "Image"
+      }
+    ],
+    "default": "image"
+  },
+  {
+    "type": "image_picker",
+    "id": "bg_img",
+    "label": "Background Image",
+    "info": "1920 x 620px recommended"
+  },
+  {
+    "type": "color",
+    "id": "bgsection_color",
+    "label": "Background color section",
+    "default": "#fffaf8"
+  },
+  {
+    "type": "header",
+    "content": "Banner Image"
+  },
+  {
+    "type": "image_picker",
+    "id": "banner_img",
+    "info": "855 x 598px recommended",
+    "label": "Banner Image"
+  },
+  {
+    "type": "header",
+    "content": "Video"
+  },
+  {
+    "type": "url",
+    "id": "section_video_url",
+    "label": "URL Video",
+    "info": "[Upload video .mp4 in here](/admin/settings/files)"
+  },
+  {
+    "type": "header",
+    "content": "setting banner info"
+  },
+  {
+    "type": "text",
+    "id": "sub_title",
+    "label": "sub title",
+    "default": "The Meaning and History of Japanese Tea"
+  },
+  {
+    "type": "text",
+    "id": "banner_title",
+    "label": "Title banner",
+    "default": "Japanese Tea Ceremony"
+  },
+  {
+    "type": "textarea",
+    "id": "banner_content",
+    "label": "Banner content",
+    "info": "Replace enter with the <br> tag",
+    "default": "Centrally located in one of kyoto's most fashionable areas. Tea ceremony with a difference, as you get to experience grinding your own matcha tea! Reservation by phone. Japanese Calligraphy. Ikenaba (kado) Tea Ceremony (sado) Japanese harp (koto)."
+  },
+  {
+    "type": "text",
+    "id": "banner_btn_name",
+    "label": "Button name",
+    "default": "Shop Now"
+  },
+  {
+    "type": "url",
+    "id": "banner_url",
+    "label": "Banner URL",
+    "default": "/collections/all"
+  },
+  {
+    "type": "header",
+    "content": "Section Space"
+  },
+  {
+    "type": "text",
+    "id": "margin_top",
+    "label": "Margin Top",
+    "info": "Defined in pixels. Do not add the 'px' unit."
+  },
+  {
+    "type": "text",
+    "id": "margin_bottom",
+    "label": "Margin Bottom",
+    "info": "Defined in pixels. Do not add the 'px' unit."
+  }
+],
+"presets": [
+  {
+    "name": "BANNER V6",
+    "category": "HOME"
+  }
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -37,18 +37,28 @@ class CategoriesController extends Controller
     // Store a newly created category in the database
     public function store(Request $request)
     {
+        try {
+            $validatedData = $request->validate([
+                'parent_category_id' => 'nullable|integer',
+                'order_id' => 'nullable|integer',
+                'title' => 'required',
+                'description' => 'nullable|unique:categories|max:255',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
+                'seo_title' => 'nullable',
+                'seo_description' => 'nullable',
+                'is_active' => 'required|integer',
+                // Add validation rules for other fields as needed
+            ]);
 
-        dd($request);
-        $validatedData = $request->validate([
-            'title' => 'required|unique:categories|max:255',
-            'description' => 'nullable',
-            // Add validation rules for other fields as needed
-        ]);
+            $imagePath = $request->file('image')->store('images', 'public');
 
-        Category::create($validatedData);
+            Category::create($validatedData);
 
-        return 'sample created';
-//        return redirect()->route('categories.index')->with('success', 'Category created successfully');
+            return 'sample created';
+            // return redirect()->route('categories.index')->with('success', 'Category created successfully');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        }
     }
 
     // Show the form to edit a specific category

@@ -1,0 +1,170 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v4" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-banner-v4 mt-all">
+    <div class="container container-v2">
+      <div class="row">        
+        <div class="col-lg-6 col-md-6 col-12 col-sm-12 pb-sm-4">
+          <div class="box-info">
+            <div class="box-img-one">
+              {% if section.settings.img_banner1 != blank %}
+              <a href="{{section.settings.url_banner1}}"><img data-src="{{section.settings.img_banner1 | img_url:'master'}}" class="lazyload w-100 img-fluid"></a>
+              {% else %}
+              <a href="{{section.settings.url_banner1}}"><img data-src="//placehold.it/810x525" class="lazyload w-100 img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+
+            <div class="content-banner">
+              {% if section.settings.title_1 != blank %}
+              <h3 class="title mb-0">{{section.settings.title_1}}</h3>
+              {% endif %}
+
+              <div class="list-inline info-bottom"> 
+                {% if section.settings.button_1 != blank %}
+                <a href="{{section.settings.url_button1}}" class="button-shop list-inline-item mr-0">{{section.settings.button_1}}</a>
+                {% endif %}
+
+                {% if section.settings.title_icon1 != blank %}
+                <span class="icon list-inline-item mr-0"><i class="{{section.settings.title_icon1}}"></i></span>
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 col-sm-12">
+          <div class="box-info">
+            <div class="box-img-one">
+              {% if section.settings.img_banner2 != blank %}
+              <a href="{{section.settings.url_banner2}}"><img data-src="{{section.settings.img_banner2 | img_url:'master'}}" class="lazyload w-100 img-fluid" alt></a>
+              {% else %}
+              <a href="{{section.settings.url_banner2}}"><img data-src="//placehold.it/810x525" class="lazyload w-100 img-fluid" alt=""></a>
+              {% endif %}
+            </div>
+
+            <div class="content-banner">
+              {% if section.settings.title_2 != blank %}
+              <h3 class="title mb-0">{{section.settings.title_2}}</h3>
+              {% endif %}
+
+              <div class="list-inline info-bottom"> 
+                {% if section.settings.button_2 != blank %}
+                <a href="{{section.settings.url_button2}}" class="button-shop list-inline-item mr-0">{{section.settings.button_2}}</a>
+                {% endif %}
+
+                {% if section.settings.title_icon2 != blank %}
+                <span class="icon list-inline-item mr-0"><i class="{{section.settings.title_icon2}}"></i></span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "BANNER V4",
+  "settings": [
+  	{
+      "type": "header",
+      "content": "setting banner 1"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner1",
+      "label": "Image",
+	  "info": "690 x 525px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL images banner 1",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_1",
+      "label": "Title banner 1",
+      "default": "Ceramic handmade"
+    },
+  	{
+      "type": "text",
+      "id": "button_1",
+      "label": "button 1",
+      "default": "EXPLORE ALL"
+    },
+  	{
+      "type": "url",
+      "id": "url_button1",
+      "label": "URL button 1",
+      "default": "/collections/all"
+    },
+
+	{
+      "type": "header",
+      "content": "setting banner 2"
+    },
+	{
+      "type": "image_picker",
+      "id": "img_banner2",
+      "label": "Image",
+	  "info": "810 x 525px recommended"
+    },
+  	{
+      "type": "url",
+      "id": "url_banner2",
+      "label": "URL images banner 2",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "title_2",
+      "label": "Title banner 2",
+      "default": "Ceramic handmade"
+    },
+
+  	{
+      "type": "text",
+      "id": "button_2",
+      "label": "button 2",
+      "default": "EXPLORE ALL"
+    },
+  	{
+      "type": "url",
+      "id": "url_button2",
+      "label": "URL button 2",
+      "default": "/collections/all"
+    },	
+
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "BANNER V4",
+      "category": "HOME"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

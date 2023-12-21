@@ -1,0 +1,242 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-v4" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %}">
+  <div class="section-slideshow-v4 ">
+    <div class="container container-v1 p-0">
+      <div class="row no-gutters">
+        <div class="col-9_slider">
+          <div class="js-slide-item4 p-0">
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+            {% if block.type == "slide" %}
+            <div class="slide-item">
+              <div class="slider-image">
+                {% if block.settings.img_slider != blank %}
+                <a href="{{block.settings.button_url}}" class="d-block">
+                  <img data-src="{{block.settings.img_slider | img_url : 'master'}}" class="lazyload img-fluid w-100">
+                </a> 
+                {% else %}
+                <img data-src="//placehold.it/1235x800" class="lazyload img-fluid w-100">
+                {% endif %}
+              </div>
+              <div class="slider-content">
+                {% if block.settings.slider_title != blank %}
+                <h3 class="slider-title" style="color: {{block.settings.title_color}}">{{block.settings.slider_title}}</h3>
+                {% endif %}
+                {% if block.settings.slider_sub_title != blank %}
+                <p class="mb-0 sub-title" style="color: {{block.settings.sub_title_color}}">{{block.settings.slider_sub_title}}</p>
+                {% endif %}
+                <div class="box-button">
+                  {% if block.settings.slider_button != blank %}
+                  <a href="{{block.settings.button_url}}" class="button-shop-{{section.id}}-{{block.id}}" style="">{{block.settings.slider_button}}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-3_slider">
+          <div class="row">
+            <div class="col-12 col_12_slider">
+              <div class="slider-banner slider-banner1">
+                <a href="{{section.settings.url_banner1}}" class="slider-banner">
+                  {% if section.settings.img_banner1 != blank %}
+                  <img data-src="{{section.settings.img_banner1 | img_url : 'master'}}" class="lazyload img-fluid w-100">
+                  {% else %}
+                  <img data-src="//placehold.it/400x385" class="lazyload img-fluid w-100">
+                  {%  endif%}
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col_12_slider">
+              <div class="slider-banner slider-banner2">
+                <a href="{{section.settings.url_banner2}}" class="slider-banner">
+                  {% if section.settings.img_banner2 != blank %}
+                  <img data-src="{{section.settings.img_banner2 | img_url: 'master'}}" class="lazyload img-fluid w-100">
+                  {% else %}
+                  <img data-src="//placehold.it/400x385" class="lazyload img-fluid w-100">
+                  {% endif %}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  {% for block in section.blocks %}
+  {% if block.type == 'slide' %}
+  .section-slideshow-v4 .slide-item .slider-content .box-button a {
+  	color:{{block.settings.color_button}};
+    background:{{block.settings.bg_color_button}}
+  }
+  .section-slideshow-v4 .slide-item .slider-content .box-button a:hover {
+    color: {{block.settings.color_button_hover}}!important;
+    background: {{block.settings.bg_color_button_hover}}!important;
+  }
+  {% endif %}
+  {% endfor %}
+</style>
+{% schema %}
+{
+  "name": "SLIDESHOW V4",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "header",
+      "content": "Slider banner 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner1",
+      "info": "410 x 385px recommended",
+      "label": "Banner1"
+    },
+    {
+      "type": "url",
+      "id": "url_banner1",
+      "label": "URL Banner 1 ",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Slider banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_banner2",
+      "info": "410 x 385px recommended",
+      "label": "Banner1"
+    },
+    {
+      "type": "url",
+      "id": "url_banner2",
+      "label": "URL Banner 2 ",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slideshow",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img_slider",
+          "info": "1235 x 800px recommended",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "slider_title",
+          "label": "Slider Title ",
+          "default": "Fresh Vegetables"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "slider_sub_title",
+          "label": "Sub Title",
+          "default": "Nutrients and health benefits"
+        },
+        {
+          "type": "color",
+          "id": "sub_title_color",
+          "label": "Sub Title Color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "slider_button",
+          "label": "Text Button",
+          "default": "Shop Now"
+        },
+        {
+          "type": "color",
+          "id": "color_button",
+          "label": "Color Button",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_button",
+          "label": "Bg Color Button",
+          "default": "#222"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "URL Button ",
+          "default": "/collections/all"
+        },
+        {
+          "type": "header",
+          "content": "Button Hover"
+        },
+        {
+          "type": "color",
+          "id": "color_button_hover",
+          "label": "Color Button Hover",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_button_hover",
+          "label": "Bg Color Button Hover",
+          "default": "#82AE46"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SLIDESHOW V4",
+      "category": "HOME",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

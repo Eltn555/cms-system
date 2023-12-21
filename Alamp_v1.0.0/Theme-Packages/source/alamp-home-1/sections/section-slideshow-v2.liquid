@@ -1,0 +1,198 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slideshow-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slideshow-v2">
+    <div class="">
+      <div class="slick-side-h2">       
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == "slideshow" %}
+        <div class="itemv-slide-h2">
+          <div class="info-sideh2">
+            <div class="picture-slideshow">
+              {% if block.settings.block_banerimage != blank %}
+              <a href="{{block.settings.block_url}}">
+                <img src="{{block.settings.block_banerimage | img_url: 'master'}}" class="img-responsive img_slideh1" alt="">
+              </a>
+              {% else %}
+              <img src="//placehold.it/1920x900" class="img-responsive img_slideh1" alt="slideshow">
+              {% endif %}
+            </div>
+            <div class="box-content">
+              {% if block.settings.block_title_top != blank %}
+              <div class="box-title">                
+                <h3 class="titlebig mb-0" style="color:{{block.settings.color_block_title_top}}">{{ block.settings.block_title_top }}</h3>                
+              </div>              
+              {% endif %}
+
+              <div class="subtitle-2">
+                {% if block.settings.block_subtitle2 != blank %}
+                <p class="mb-0" style="color:{{block.settings.color_subtitle}};">{{block.settings.block_subtitle2}}</p>
+                {% endif %}
+              </div>
+
+              {% if block.settings.block_buton != blank %}
+              <div class="box-button">
+                <a class="button-main1 button-shop-{{section.id}}-{{block.id}}" href="{{block.settings.block_url}}" style="color:{{block.settings.color_block_button}}; background:{{block.settings.bg_block_button}}">
+                  {{ block.settings.block_buton }}
+                </a>
+              </div>
+              {% endif %}              
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  {% for block in section.blocks %}
+  {% if block.type == 'slideshow' %}
+  .section-slideshow-v2 .slick-active .info-sideh2 .box-content .button-shop-{{section.id}}-{{block.id}}:hover{
+    color: {{block.settings.color_block_button_hover}} !important;
+    background :  {{block.settings.color_bg_block_button_hover}} !important;
+  }
+
+  {% endif %}
+  {% endfor %}
+</style>
+{% schema %}
+{
+  "name": "SLIDESHOW V2",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slideshow",
+      "name": "slideshow",
+      "settings": [
+		{
+          "type": "image_picker",
+          "id": "block_banerimage",
+          "label": "Image slideshow",
+          "info": "1920 x 900px recommended"
+        },
+		{
+          "type": "text",
+          "id": "block_subtitle2",
+          "label": "Sub Title sideshow",
+          "default": "Sale up to 60% off today"
+        },
+		{
+           "type": "color",
+           "id": "color_subtitle",
+           "label": "Color Sub Title sideshow",
+           "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "block_title_top",
+          "label": "Title big sideshow ",
+          "default": "Holiday Collection"
+        },
+		{
+           "type": "color",
+           "id": "color_block_title_top",
+           "label": "Color Title sideshow top",
+           "default": "#fff"
+        },
+		
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button slideshow",
+          "default": "Shop now"
+        },
+		{
+           "type": "color",
+           "id": "color_block_button",
+           "label": "Color button",
+           "default": "#fff"
+        },
+		{
+           "type": "color",
+           "id": "bg_block_button",
+           "label": " background color button",
+           "default": "#7FA15A"
+        },
+		{
+           "type": "color",
+           "id": "color_block_button_hover",
+           "label": "Color button hover",
+           "default": "#222"
+        },
+		{
+           "type": "color",
+           "id": "color_bg_block_button_hover",
+           "label": "Background color button hover",
+           "default": "#fff"
+        },
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "URL slideshow",
+          "default": "/collections/all"
+        }
+		
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SLIDESHOW V2",
+      "category": "HOME",
+	  "blocks": [
+        {
+          "type": "slideshow",
+          "settings": {
+            "block_subtitle2": "Sale up to 50% off today",
+			"block_title_top": "Titanium Carbide",
+			"block_buton": "Shop All Collection "
+          }
+        },
+		 {
+          "type": "slideshow",
+          "settings": {
+            "block_subtitle2": "Sale up to 50% off today",
+			"block_title_top": "Barium Titanate",
+			"block_buton": "Shop All Collection"
+          }
+        },
+		 {
+          "type": "slideshow",
+          "settings": {
+            "block_subtitle2": "Sale up to 50% off today",
+			"block_title_top": "Boron Carbide",
+			"block_buton": "Shop All Collection"
+          }
+        }		
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

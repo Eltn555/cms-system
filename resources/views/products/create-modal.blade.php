@@ -89,7 +89,7 @@
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-5" class="form-label">Visible</label>
                         <div class="form-check form-switch p-0">
-                            <input id="modal-form-5" class="form-check-input" name="status" type="checkbox" checked>
+                            <input id="modal-form-5" class="form-check-input" name="status" type="checkbox" value="1" checked>
                         </div>
                     </div>
                     <div class="col-span-12 sm:col-span-6">

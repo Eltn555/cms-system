@@ -16,12 +16,15 @@ class Product extends Model
         'short_description',
         'long_description',
         'price',
+        'discount_price',
+        'amount',
         'category_id',
         'additional',
         'seo_title',
         'seo_description',
         'image',
         'similar_products',
+        'additional_products',
         'status',
         'rate'
     ];

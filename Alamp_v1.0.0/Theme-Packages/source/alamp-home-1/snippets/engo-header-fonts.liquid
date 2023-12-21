@@ -1,0 +1,56 @@
+{% if settings.font_type == 'google_fonts' %}
+
+{% assign fonts_1 = false %}
+{% if settings.fonts_name_1 != blank %}
+{% assign fonts_1 = true %}
+{% endif %}
+
+{% assign fonts_2 = false %}
+{% if settings.fonts_name_2 != blank %}
+{% assign fonts_2 = true %}
+{% endif %}
+
+{% assign fonts_3 = false %}
+{% if settings.fonts_name_3 != blank %}
+{% assign fonts_3 = true %}
+{% endif %}
+
+
+<script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 
+      {% if fonts_1 %}
+      '{{ settings.fonts_name_1 }}:100,200,300,400,500,600,700,800,900'
+      {% endif %}
+
+      {% if fonts_2 %}
+      {% if fonts_1 %}
+      ,
+      {% endif %}      
+      '{{ settings.fonts_name_2 }}:100,200,300,400,500,600,700,800,900'
+      {% endif %}
+
+      {% if fonts_3 %}
+      {% if fonts_1 or fonts_2 %}
+      ,
+      {% endif %}      
+      '{{ settings.fonts_name_3 }}:100,200,300,400,500,600,700,800,900'
+      {% endif %}
+
+    ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+</script>
+{% else %}
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+
+{% endif %}
