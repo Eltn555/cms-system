@@ -61,6 +61,18 @@ class CategoriesController extends Controller
         }
     }
 
+    public function image(Request $request) {
+        $file = $request->file('image');
+        // Process the file, save it, etc.
+
+        $imagePath = $request->file('image')->store('images', 'public');
+
+        return response()->json([
+            'message' => $imagePath,
+            // Include any other response data you need
+        ]);
+    }
+
     // Show the form to edit a specific category
     public function edit($id)
     {

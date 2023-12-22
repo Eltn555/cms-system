@@ -1,4 +1,43 @@
 <!-- BEGIN: Modal Content -->
+@section('styles')
+    <style>
+        #drop-area {
+            border: 2px dashed #ccc;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        #drop-area.highlight {
+            border-color: purple;
+        }
+        p {
+            margin-top: 0;
+        }
+        .my-form {
+            margin-bottom: 10px;
+        }
+        #gallery img {
+            border-radius: 20px;
+            width: 100px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px;
+            background: #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .button:hover {
+            background: #ddd;
+        }
+        #fileElem {
+            display: none;
+        }
+    </style>
+@endsection
 
 <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -29,19 +68,29 @@
             </div> <!-- END: Modal Header --> <!-- BEGIN: Modal Body -->
             <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
 
-                <div class="col-span-12">
-{{--                    <form data-single="true" action="/file-upload" class="dropzone">--}}
-                        <div class="fallback">
-                            <input name="image" type="file" id="files" name="files" accept=".png, .jpg, .jpeg, .webp, .gif" multiple>
+                <div class="col-span-12 p-2">
+                    <div id="drop-area" class="w-full">
+                        <div class="my-form">
+                            <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                            <label class="button" for="fileElem">Select some files</label>
                         </div>
-                        <div class="dz-message" data-dz-message>
-                            <div class="text-lg font-medium">Drop files here or click to upload.</div>
-                            <div class="text-slate-500"> This is just a demo dropzone. Selected files are <span
-                                    class="font-medium">not</span> actually uploaded.
-                            </div>
-                        </div>
-{{--                    </form>--}}
+                        <progress id="progress-bar" max=100 value=0></progress>
+                        <div id="gallery" class="mt-1 flex overflow-x-auto"></div>
+                    </div>
                 </div>
+{{--                    <form data-single="true" action="/file-upload" class="dropzone">--}}
+{{--                        <div class="fallback">--}}
+{{--                            <input name="image" type="file" id="files" name="files" accept=".png, .jpg, .jpeg, .webp, .gif" multiple>--}}
+{{--                        </div>--}}
+{{--                        <div class="dz-message" data-dz-message>--}}
+{{--                            <div class="text-lg font-medium">Drop files here or click to upload.</div>--}}
+{{--                            <div class="text-slate-500"> This is just a demo dropzone. Selected files are <span--}}
+{{--                                    class="font-medium">not</span> actually uploaded.--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+
 
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-1" class="form-label">Title</label>
