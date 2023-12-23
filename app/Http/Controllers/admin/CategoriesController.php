@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 // Make sure to import your Category model
 
@@ -37,31 +39,28 @@ class CategoriesController extends Controller
     // Store a newly created category in the database
     public function store(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'parent_category_id' => 'nullable|integer',
-                'order_id' => 'nullable|integer',
-                'title' => 'required',
-                'description' => 'nullable|unique:categories|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
-                'seo_title' => 'nullable',
-                'seo_description' => 'nullable',
-                'is_active' => 'required|integer',
-                // Add validation rules for other fields as needed
-            ]);
-
-            $imagePath = $request->file('image')->store('images', 'public');
-
-            Category::create($validatedData);
-
-            return 'sample created';
-            // return redirect()->route('categories.index')->with('success', 'Category created successfully');
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return redirect()->back()->withErrors($e->errors())->withInput();
+        $data = $request->all();
+        $images = $data['images'];
+        unset($data['images']);
+        if(array_key_exists('is_active', $data)){
+            $data['is_active'] = $data['is_active'] === 'on' ? 1 : 0;
+        }else{
+            $data['is_active'] = 0;
         }
+        Category::create($data);
+        foreach ($images as $key => $image){
+            $name = Storage::put('/', $image);
+            Image::create([
+                'image'=> $name,
+                'alt' =>$data['title'] . $key+1
+            ]);
+        }
+        return 'sample created';
+        // return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
 
-    public function image(Request $request) {
+    public function image(Request $request)
+    {
         $file = $request->file('image');
         // Process the file, save it, etc.
 
@@ -86,7 +85,7 @@ class CategoriesController extends Controller
         $field = $request->input('field');
         $value = $request->input('value');
         $data = [
-          $field => $value,
+            $field => $value,
         ];
 
         $category->update($data);

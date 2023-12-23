@@ -72,7 +72,7 @@
                     <div id="drop-area" class="w-full">
                         <div class="my-form">
                             <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
-                            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                            <input name="images[]" type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
                             <label class="button" for="fileElem">Select some files</label>
                         </div>
                         <progress id="progress-bar" max=100 value=0></progress>
@@ -108,9 +108,8 @@
                     </div>
                 </div>
                 <div class="col-span-12">
-                    <label for="modal-form-3" class="form-label">Long Description</label>
-                   <div id="editorfield">
-                   </div>
+                    <label for="modal-form-3" class="form-label">Description</label>
+                   <textarea name="description" id="editorfield"></textarea>
                 </div>
                 <div class="col-span-12 sm:col-span-12">
                     <label for="modal-form-1" class="form-label">SEO title</label>

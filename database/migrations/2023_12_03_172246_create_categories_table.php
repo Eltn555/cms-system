@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('parent_category_id')->nullable();
             $table->unsignedInteger('order_id')->default(0);
@@ -27,10 +27,10 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key constraint for parent_category_id referencing category table
-            $table->foreign('parent_category_id')->references('id')->on('category')->onDelete('set null');
+            /*$table->foreign('parent_category_id')->references('id')->on('category')->onDelete('set null');*/
 
             // Indexes
-            $table->index('order_id');
+            /*$table->index('order_id');*/
             // Add other indexes if needed
         });
     }
