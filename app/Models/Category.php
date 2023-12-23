@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Image;
 
 class Category extends Model
 {
@@ -23,4 +24,8 @@ class Category extends Model
     ];
 
     // Define relationships or additional methods as needed
+
+    public function images() {
+        return $this->belongsToMany(Image::class, 'category_images', 'category_id', 'image_id');
+    }
 }

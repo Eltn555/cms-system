@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Category;
+use App\Models\CategoryImage;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,12 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $category = Category::findOrFail($id);
-        return 'show';
+        $data = '';
+
+        foreach ($category->images as $image){
+            $data .= '<img src="'.  asset('storage/' . $image->image) . '" alt="' . $image->alt .'"> <br><br>';
+        }
+        return $data;
 //        return view('categories.show', ['category' => $category]);
 
     }
@@ -42,6 +48,9 @@ class CategoriesController extends Controller
         $data = $request->all();
         $images = $data['images'];
         unset($data['images']);
+
+        $category    Category::create($data);
+
         if(array_key_exists('is_active', $data)){
             $data['is_active'] = $data['is_active'] === 'on' ? 1 : 0;
         }else{
@@ -54,6 +63,10 @@ class CategoriesController extends Controller
                 'image'=> $name,
                 'alt' =>$data['title'] . $key+1
             ]);
+            CategoryImage::create([
+'category_id'=>$
+
+            ])
         }
         return 'sample created';
         // return redirect()->route('categories.index')->with('success', 'Category created successfully');
