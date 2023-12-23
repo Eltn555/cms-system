@@ -47,29 +47,16 @@ class CategoriesController extends Controller
         }else{
             $data['is_active'] = 0;
         }
-        Category::create($data);
+
         foreach ($images as $key => $image){
-            $name = Storage::put('/', $image);
-            Image::create([
+            $name = Storage::put('public/', $image);
+            $img = Image::create([
                 'image'=> $name,
                 'alt' =>$data['title'] . $key+1
             ]);
         }
         return 'sample created';
         // return redirect()->route('categories.index')->with('success', 'Category created successfully');
-    }
-
-    public function image(Request $request)
-    {
-        $file = $request->file('image');
-        // Process the file, save it, etc.
-
-        $imagePath = $request->file('image')->store('images', 'public');
-
-        return response()->json([
-            'message' => $imagePath,
-            // Include any other response data you need
-        ]);
     }
 
     // Show the form to edit a specific category
