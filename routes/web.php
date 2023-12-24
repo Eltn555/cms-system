@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\TagController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
     //Route::post('categories/update', 'CategoriesController@update')->name('categories.update');
     Route::resource('tags', TagController::class, ['as'=>'admin']);
+    Route::resource('reviews', ReviewController::class);
 });
 
 

@@ -49,13 +49,9 @@ class CategoriesController extends Controller
         $images = $data['images'];
         unset($data['images']);
 
-        $category    Category::create($data);
+        array_key_exists('is_active', $data) ? $data['is_active'] = 1 : $data['is_active'] = 0;
 
-        if(array_key_exists('is_active', $data)){
-            $data['is_active'] = $data['is_active'] === 'on' ? 1 : 0;
-        }else{
-            $data['is_active'] = 0;
-        }
+        $created = Category::create($data);
 
         foreach ($images as $key => $image){
             $name = Storage::put('public/', $image);
@@ -64,9 +60,9 @@ class CategoriesController extends Controller
                 'alt' =>$data['title'] . $key+1
             ]);
             CategoryImage::create([
-'category_id'=>$
-
-            ])
+                'category_id'=> $created->id,
+                ''
+            ]);
         }
         return 'sample created';
         // return redirect()->route('categories.index')->with('success', 'Category created successfully');
