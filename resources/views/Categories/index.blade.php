@@ -74,7 +74,7 @@
                             <div class="text-center">{{$category->order_id}}</div>
                         </td>
                         <td class="editabledesc" data-field="description" data-action="read" data-selectable="text">
-                            <xmp class="text-center overflow-hidden" style="max-width: 400px;">{{$category->description}}</xmp>
+                            <div class="text-center overflow-hidden" style="max-width: 400px;">{!! $category->description !!}</div>
                         </td>
                         <td class="">
                             <div class="form-check form-switch w-full h-full flex justify-center">

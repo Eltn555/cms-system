@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="{{ asset('individual/main-black-cut.png') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Business House | Admin</title>
+    <title>Lumen LUX | Admin</title>
     <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
