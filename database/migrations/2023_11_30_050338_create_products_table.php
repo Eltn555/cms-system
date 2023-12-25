@@ -16,19 +16,19 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('short_description');
-            $table->text('long_description');
+            $table->text('short_description')->nullable();
+            $table->text('long_description')->nullable();
             $table->unsignedBigInteger('price');
-            $table->unsignedBigInteger('discount_price');
-            $table->unsignedBigInteger('amount');
+            $table->unsignedBigInteger('discount_price')->nullable();
+            $table->unsignedBigInteger('amount')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->text('additional');
-            $table->text('seo_title');
-            $table->text('seo_description');
-            $table->string('image');
-            $table->unsignedBigInteger('status');
-            $table->unsignedBigInteger('similar_products');//tags
-            $table->unsignedBigInteger('additional_products');//tags
+            $table->text('additional')->nullable();
+            $table->text('seo_title')->nullable();
+            $table->text('seo_description')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('status')->nullable();
+            $table->unsignedBigInteger('similar_products')->nullable();//tags
+            $table->unsignedBigInteger('additional_products')->nullable();//tags
             $table->softDeletes();
             $table->timestamps();
         });
