@@ -213,6 +213,10 @@
                 type="text/javascript"></script>
         <script src="cdn/shop/t/3/assets/handlebars.minff44.js?v=79044469952368397291594441391"
                 type="text/javascript"></script>
+        <script src="{{ asset('engo-scripts.js') }}"
+                type="text/javascript"></script>
     </div>
+
+
 </body>
 </html>
