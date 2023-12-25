@@ -15,26 +15,26 @@
     <!-- /snippets/social-meta-tags.liquid -->
 
 
-    <link rel="shortcut icon" href="cdn/shop/t/3/assets/favicon4eb5.png?v=82255381804818286541595294682"
+    <link rel="shortcut icon" href="{{asset('cdn/shop/t/3/assets/favicon4eb5.png?v=82255381804818286541595294682')}}"
           type="image/png"/>
 
-    <link rel="apple-touch-icon-precomposed" href="cdn/shop/t/3/assets/icon-for-mobile7b7a.html?2020"/>
+    <link rel="apple-touch-icon-precomposed" href="{{asset('cdn/shop/t/3/assets/icon-for-mobile7b7a.html?2020')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="57x57"
-          href="cdn/shop/t/3/assets/icon-for-mobile_57x577b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_57x577b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="60x60"
-          href="cdn/shop/t/3/assets/icon-for-mobile_60x607b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_60x607b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="cdn/shop/t/3/assets/icon-for-mobile_72x727b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_72x727b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="76x76"
-          href="cdn/shop/t/3/assets/icon-for-mobile_76x767b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_76x767b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="cdn/shop/t/3/assets/icon-for-mobile_114x1147b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_114x1147b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="120x120"
-          href="cdn/shop/t/3/assets/icon-for-mobile_120x1207b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_120x1207b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="cdn/shop/t/3/assets/icon-for-mobile_144x1447b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_144x1447b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="152x152"
-          href="cdn/shop/t/3/assets/icon-for-mobile_152x1527b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_152x1527b7a.html')}}"/>
 
 
     <meta property="og:type" content="website">
@@ -54,28 +54,28 @@
     <link rel="canonical" href="index.html">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#7fc9c4">
-    <link rel="icon" href="cdn/shop/t/3/assets/favicon4eb5.png?v=82255381804818286541595294682" type="image/png"
+    <link rel="icon" href="{{asset('cdn/shop/t/3/assets/favicon4eb5.png')}}" type="image/png"
           sizes="16x16">
 
     <!-- font -->
 
-    <link href="cdn/shop/t/3/assets/timber.scssa984.css?v=112806577381706839711678424618" rel="stylesheet"
+    <link href="{{asset('cdn/shop/t/3/assets/timber.scssa984.css')}}" rel="stylesheet"
           type="text/css" media="all"/>
 
 
-    <link href="cdn/shop/t/3/assets/bootstrap.minaac1.css?v=174392269533316748021594441380" rel="stylesheet"
+    <link href="{{asset('cdn/shop/t/3/assets/bootstrap.minaac1.css')}}" rel="stylesheet"
           type="text/css" media="all"/>
-    <link href="cdn/shop/t/3/assets/slick8a8d.css?v=98340474046176884051594441403" rel="stylesheet" type="text/css"
+    <link href="{{asset('cdn/shop/t/3/assets/slick8a8d.css')}}" rel="stylesheet" type="text/css"
           media="all"/>
-    <link href="cdn/shop/t/3/assets/slick-theme847d.css?v=184272576841816378971594441402" rel="stylesheet"
+    <link href="{{asset('cdn/shop/t/3/assets/slick-theme847d.css')}}" rel="stylesheet"
           type="text/css" media="all"/>
-    <link rel="stylesheet" href="cdn/shop/t/3/assets/jquery.fancybox.mind5ed.css?v=19278034316635137701594441396"
+    <link rel="stylesheet" href="{{asset('cdn/shop/t/3/assets/jquery.fancybox.mind5ed.css')}}"
           media="nope!" onload="this.media='all'">
-    <link href="cdn/shop/t/3/assets/style-main.scss9bfd.css?v=123387318511783977221594441432" rel="stylesheet"
+    <link href="{{asset('cdn/shop/t/3/assets/style-main.scss9bfd.css')}}" rel="stylesheet"
           type="text/css" media="all"/>
-    <link href="cdn/shop/t/3/assets/engo-customize.scss8368.css?v=160980551261591219031678424618" rel="stylesheet"
+    <link href="{{asset('cdn/shop/t/3/assets/engo-customize.scss8368.css')}}" rel="stylesheet"
           type="text/css" media="all"/>
-    <link href="cdn/shop/t/3/assets/animate.min63e1.css?v=30636256313253750241594441378" rel="stylesheet"
+    <link href="{{asset('cdn/shop/t/3/assets/animate.min63e1.css')}}" rel="stylesheet"
           type="text/css" media="all"/>
     <script type="text/javascript">
         WebFontConfig = {
@@ -137,46 +137,46 @@
     <script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script>
 
 
-    <script src="cdn/shop/t/3/assets/jquery-3.5.0.min184a.js?v=16874778797910128561594441393"
+    <script src="{{asset('cdn/shop/t/3/assets/jquery-3.5.0.min184a.js')}}"
             type="text/javascript"></script>
-    <link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('../maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
     <script
-        src="cdn/shopifycloud/shopify/assets/themes_support/api.jquery-b0af070cfe3f5cf7c92f9e2a5da2665ee07ed2aad63bb408f8d6672f894a5996.js"
+        src="{{asset('cdn/shopifycloud/shopify/assets/themes_support/api.jquery-b0af070cfe3f5cf7c92f9e2a5da2665ee07ed2aad63bb408f8d6672f894a5996.js')}}"
         type="text/javascript"></script>
-    <script src="cdn/shop/t/3/assets/modernizr-2.8.3.min9f44.js?v=174727525422211915231594441400"
+    <script src="{{asset('cdn/shop/t/3/assets/modernizr-2.8.3.min9f44.js')}}"
             type="text/javascript"></script>
     <script
-        src="cdn/shopifycloud/shopify/assets/themes_support/option_selection-86cdd286ddf3be7e25d68b9fc5965d7798a3ff6228ff79af67b3f4e41d6a34be.js"
+        src="{{asset('cdn/shopifycloud/shopify/assets/themes_support/option_selection-86cdd286ddf3be7e25d68b9fc5965d7798a3ff6228ff79af67b3f4e41d6a34be.js')}}"
         type="text/javascript"></script>
-    <script src="cdn/shop/t/3/assets/lazysizes.min96e8.js?v=18178776694225242271594441398"
+    <script src="{{asset('cdn/shop/t/3/assets/lazysizes.min96e8.js')}}"
             type="text/javascript"></script>
     <script integrity="sha256-h4dvokWvGcvRSqiG7VnGqoonxF0k3NeoHPLSMjUGIz4="
             data-source-attribution="shopify.loadfeatures" defer="defer"
-            src="cdn/shopifycloud/shopify/assets/storefront/load_feature-87876fa245af19cbd14aa886ed59c6aa8a27c45d24dcd7a81cf2d2323506233e.js"
+            src="{{asset('cdn/shopifycloud/shopify/assets/storefront/load_feature-87876fa245af19cbd14aa886ed59c6aa8a27c45d24dcd7a81cf2d2323506233e.js')}}"
             crossorigin="anonymous"></script>
     <script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script>
 
 
-    <link rel="shortcut icon" href="cdn/shop/t/3/assets/favicon4eb5.png?v=82255381804818286541595294682"
+    <link rel="shortcut icon" href="{{asset('cdn/shop/t/3/assets/favicon4eb5.png')}}"
           type="image/png"/>
 
-    <link rel="apple-touch-icon-precomposed" href="cdn/shop/t/3/assets/icon-for-mobile7b7a.html?2020"/>
+    <link rel="apple-touch-icon-precomposed" href="{{asset('cdn/shop/t/3/assets/icon-for-mobile7b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="57x57"
-          href="cdn/shop/t/3/assets/icon-for-mobile_57x577b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_57x577b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="60x60"
-          href="cdn/shop/t/3/assets/icon-for-mobile_60x607b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_60x607b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="cdn/shop/t/3/assets/icon-for-mobile_72x727b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_72x727b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="76x76"
-          href="cdn/shop/t/3/assets/icon-for-mobile_76x767b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_76x767b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="cdn/shop/t/3/assets/icon-for-mobile_114x1147b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_114x1147b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="120x120"
-          href="cdn/shop/t/3/assets/icon-for-mobile_120x1207b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_120x1207b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="cdn/shop/t/3/assets/icon-for-mobile_144x1447b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_144x1447b7a.html')}}"/>
     <link rel="apple-touch-icon-precomposed" sizes="152x152"
-          href="cdn/shop/t/3/assets/icon-for-mobile_152x1527b7a.html?2020"/>
+          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_152x1527b7a.html')}}"/>
 
 
     <meta property="og:type" content="website">
@@ -204,14 +204,14 @@
     <div class="contentbody">
         @yield('content')
 
-        <script src="cdn/shop/t/3/assets/fastclick0838.js?v=180948248748138531451594441386"
+        <script src="{{asset('cdn/shop/t/3/assets/fastclick0838.js')}}"
                 type="text/javascript"></script>
-        <script src="cdn/s/javascripts/currencies.js" type="text/javascript"></script>
-        <script src="cdn/shop/t/3/assets/jquery.currencies.minea05.js?v=175057760772006623221594441394"
+        <script src="{{asset('cdn/s/javascripts/currencies.js')}}" type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/jquery.currencies.minea05.js')}}"
                 type="text/javascript"></script>
-        <script src="cdn/shop/t/3/assets/timbere1ea.js?v=118109709416041923331594441432"
+        <script src="{{asset('cdn/shop/t/3/assets/timbere1ea.js')}}"
                 type="text/javascript"></script>
-        <script src="cdn/shop/t/3/assets/handlebars.minff44.js?v=79044469952368397291594441391"
+        <script src="{{asset('cdn/shop/t/3/assets/handlebars.minff44.js')}}"
                 type="text/javascript"></script>
     </div>
 </body>
