@@ -112,16 +112,16 @@
             src="checkouts/internal/preloads3d09.js?permanent-domain=alamp-store-demo.myshopify.com&amp;locale=en-US"></script>
     <script integrity="sha256-h4dvokWvGcvRSqiG7VnGqoonxF0k3NeoHPLSMjUGIz4="
             data-source-attribution="shopify.loadfeatures" defer="defer"
-            src="cdn/shopifycloud/shopify/assets/storefront/load_feature-87876fa245af19cbd14aa886ed59c6aa8a27c45d24dcd7a81cf2d2323506233e.js"
+            src="{{asset('cdn/shopifycloud/shopify/assets/storefront/load_feature-87876fa245af19cbd14aa886ed59c6aa8a27c45d24dcd7a81cf2d2323506233e.js')}}"
             crossorigin="anonymous"></script>
     <script integrity="sha256-HAs5a9TQVLlKuuHrahvWuke+s1UlxXohfHeoYv8G2D8="
             data-source-attribution="shopify.dynamic-checkout" defer="defer"
-            src="cdn/shopifycloud/shopify/assets/storefront/features-1c0b396bd4d054b94abae1eb6a1bd6ba47beb35525c57a217c77a862ff06d83f.js"
+            src="{{asset('cdn/shopifycloud/shopify/assets/storefront/features-1c0b396bd4d054b94abae1eb6a1bd6ba47beb35525c57a217c77a862ff06d83f.js')}}"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" media="screen" href="cdn/shop/t/3/compiled_assets/styles7b7a.css?2020">
+    <link rel="stylesheet" media="screen" href="{{asset('cdn/shop/t/3/compiled_assets/styles7b7a.css')}}">
     <script id="sections-script"
             data-sections="section-slideshow-v2,section-banner-v3,section-product-v3,section-testimonial-v1,section-product-v1,section-blog-v1,section-instagram-v3"
-            defer="defer" src="cdn/shop/t/3/compiled_assets/scripts7b7a.js?2020"></script>
+            defer="defer" src="{{asset('cdn/shop/t/3/compiled_assets/scripts7b7a.js')}}"></script>
 
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
@@ -202,8 +202,8 @@
 
 <div class="wrap">
     <div class="contentbody">
+        @include('front.header.index')
         @yield('content')
-
         <script src="{{asset('cdn/shop/t/3/assets/fastclick0838.js')}}"
                 type="text/javascript"></script>
         <script src="{{asset('cdn/s/javascripts/currencies.js')}}" type="text/javascript"></script>
@@ -215,7 +215,26 @@
                 type="text/javascript"></script>
         <script src="{{ asset('engo-scripts.js') }}"
                 type="text/javascript"></script>
+        @include('front.footer.index')
+        <script src="{{asset('cdn/shop/t/3/assets/ajax-cart91ce.js')}}" type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/bootstrap.bundle.min1634.js')}}"
+                type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/slick.min5264.js')}}" type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/instafeed.mind540.js')}}" type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/jquery.fancybox.min7bd3.js')}}"
+                type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/engo-plugins870e.js')}}"
+                type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/quickviewa027.js')}}"
+                type="text/javascript"></script>
+
+        <script src="{{asset('cdn/shop/t/3/assets/collectiond301.js')}}"
+                type="text/javascript"></script>
+        <script src="{{asset('cdn/shop/t/3/assets/engo-scripts96bf.js')}}"
+                type="text/javascript"></script>
+
     </div>
+</div>
 
 
 </body>
