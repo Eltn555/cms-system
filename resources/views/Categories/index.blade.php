@@ -129,7 +129,7 @@
                             <td class="editable text-center" data-field="seo_description" data-action="read" data-selectable="text">
                                 <div class="text-center font-medium whitespace-nowrap">{{$category->seo_description}}</div>
                             </td>
-                        <td class="editabledesc" data-field="description" data-action="read" data-selectable="text">
+                        <td class="editable" data-field="description" data-action="read" data-selectable="text">
                             <div class="text-center overflow-hidden" style="max-width: 400px;">{{ $category->description }}</div>
                         </td>
                         <td class="">
