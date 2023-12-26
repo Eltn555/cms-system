@@ -44,17 +44,19 @@
             </div>
         </div>
     </div>
+
+
     <div class="slider-category-area">
-        <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4" style="background-image:url(assets/images/slider/slider-fix-img.jpg)">
+        <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4" style="background-image:url({{ asset($slider->image) }})">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="slider-content-4 pt-145 text-center">
-                            <h5 data-aos="fade-up" data-aos-delay="200">new arrival</h5>
-                            <h1 data-aos="fade-up" data-aos-delay="400">Summer New <br>Collection</h1>
+                            <h5 data-aos="fade-up" data-aos-delay="200">{{ $slider->subtitle }}</h5>
+                            <h1 data-aos="fade-up" data-aos-delay="400">{{ $slider->title }}</h1>
                             <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="600">
-                                <a href="product-details.html" class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
-                                    Shop Now <i class=" ti-arrow-right "></i>
+                                <a href="{{ $slider->href }}" class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
+                                    Sotib olish <i class=" ti-arrow-right "></i>
                                 </a>
                             </div>
                         </div>
@@ -62,23 +64,30 @@
                 </div>
             </div>
         </div>
+
+
+
         <div class="category-area category-area-position">
             <div class="container">
                 <div class="category-slider-active-2 swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                                <div class="category-img-2">
-                                    <a href="shop.html">
-                                        <img class="category-normal-img" src="assets/images/category/category-6.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-6.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="shop.html">Wooden Sat</a></h4>
+
+                        @foreach($categories as $category)
+                            <div class="swiper-slide">
+                                <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="category-img-2">
+                                        <a href="#">
+                                            <img class="category-normal-img" src="{{ asset($category->image ?? '') }}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="category-content-2">
+                                        <h4><a href="#">{{ $category->title }}</a></h4>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        @endforeach
+
                         <div class="swiper-slide">
                             <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="400">
                                 <div class="category-img-2">
@@ -92,76 +101,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="600">
-                                <div class="category-img-2">
-                                    <a href="shop.html">
-                                        <img class="category-normal-img" src="assets/images/category/category-8.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-8.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="shop.html">Bedroom Light</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="800">
-                                <div class="category-img-2">
-                                    <a href="shop.html">
-                                        <img class="category-normal-img" src="assets/images/category/category-9.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-9.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="shop.html">Bathroom Kit</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="1000">
-                                <div class="category-img-2">
-                                    <a href="shop.html">
-                                        <img class="category-normal-img" src="assets/images/category/category-10.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-10.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="shop.html">Kitchen Kit</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center">
-                                <div class="category-img-2">
-                                    <a href="#">
-                                        <img class="category-normal-img" src="assets/images/category/category-11.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-11.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="#">Computer Table</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center">
-                                <div class="category-img-2">
-                                    <a href="#">
-                                        <img class="category-normal-img" src="assets/images/category/category-7.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-7.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="#">Office Cabin</a></h4>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <div class="banner-area padding-22-row-col pt-100 pb-65">
         <div class="container">
             <div class="row">
