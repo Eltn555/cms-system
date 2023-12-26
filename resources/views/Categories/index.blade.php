@@ -1,4 +1,48 @@
-@extends('admin')
+@extends('admin')@section('styles')
+    <style>
+        .editable, .editabledesc{
+            min-width: 10px;
+            max-width: 150px;
+            overflow: hidden;
+        }
+        #drop-area {
+            border: 2px dashed #ccc;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        #drop-area.highlight {
+            border-color: purple;
+        }
+        p {
+            margin-top: 0;
+        }
+        .my-form {
+            margin-bottom: 10px;
+        }
+        #gallery img {
+            border-radius: 20px;
+            width: 100px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px;
+            background: #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .button:hover {
+            background: #ddd;
+        }
+        #fileElem {
+            display: none;
+        }
+    </style>
+@endsection
+
 @section('content')
         <h2 class="intro-y text-lg font-medium mt-10">
             Categories
@@ -41,7 +85,9 @@
                         <th class="whitespace-nowrap">Category name</th>
                         <th class="whitespace-nowrap">Parent Category</th>
                         <th class="whitespace-nowrap">Order</th>
-                        <th class="text-center whitespace-nowrap">Desciption</th>
+                        <th class="text-center whitespace-nowrap">SEO_title</th>
+                        <th class="text-center whitespace-nowrap">SEO_description</th>
+                        <th class="text-center whitespace-nowrap">Description</th>
                         <th class="text-center whitespace-nowrap">Status</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
@@ -49,12 +95,16 @@
                     <tbody>
                     @foreach($categories as $category)
 
-                    <tr id="{{$category->id}}" class="intro-x" data-action="{{$category->id}}">
-                        <td class="">
-                            <div class="w-10 h-10 image-fit zoom-in">
-                                <img alt="{{$category->title}}" class="rounded-lg border-1 border-white shadow-md tooltip" src="dist/images/preview-9.jpg" title="Updated at {{(is_null($category->updated_at) ? $category->created_at : $category->updated_at)}}">
-                            </div>
-                        </td>
+                        <tr id="{{$category->id}}" class="intro-x" data-action="{{$category->id}}">
+                            <td class="">
+                                <button class="btn" data-tw-toggle="modal" data-tw-target="#image_modal">
+                                    @if(!$category->images->isEmpty())
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="{{$category->images[0]->alt}}" class="rounded-lg border-1 border-white shadow-md tooltip" src="{{asset($category->images[0]->image)}}" title="Updated at {{$category->images[0]->updated_at}}">
+                                        </div>
+                                    @endif
+                                </button>
+                            </td>
                         <td class="editable" data-field="title" data-action="read" data-selectable="text">
                             <a href="#" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
                         </td>
@@ -71,10 +121,16 @@
                             </div>
                         </td>
                         <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
-                            <div class="text-center">{{$category->order_id}}</div>
+                            <div class="">{{$category->order_id}}</div>
                         </td>
+                            <td class="editable text-center" data-field="seo_title" data-action="read" data-selectable="text">
+                                <div class="text-center font-medium whitespace-nowrap">{{$category->seo_title}}</div>
+                            </td>
+                            <td class="editable text-center" data-field="seo_description" data-action="read" data-selectable="text">
+                                <div class="text-center font-medium whitespace-nowrap">{{$category->seo_description}}</div>
+                            </td>
                         <td class="editabledesc" data-field="description" data-action="read" data-selectable="text">
-                            <div class="text-center overflow-hidden" style="max-width: 400px;">{!! $category->description !!}</div>
+                            <div class="text-center overflow-hidden" style="max-width: 400px;">{{ $category->description }}</div>
                         </td>
                         <td class="">
                             <div class="form-check form-switch w-full h-full flex justify-center">
@@ -83,7 +139,7 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                                <a class="flex items-center mr-3 updateMore" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                                 <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
@@ -170,7 +226,7 @@
             $('.editable').on('dblclick', function () {
                 if ($(this).data('action') === 'read') {
                     var $input = $('<input type="' + $(this).data('selectable') + '" class="form-control" value="' + $.trim($(this).text()) + '" />');
-                    $(this).html($input).data('action', 'write');
+                    $(this).html($input).data('action', 'write').css('width', '600px').css('max-width', 'unset');
                     $input.focus();
                 }
             });
@@ -179,7 +235,7 @@
                 $editable.data('action', 'read');
                 var newValue = '<div class="font-medium whitespace-nowrap">' + $(this).val() + '</div>';
                 ajax($editable.data('field'), $(this).val(), $editable.parents('.intro-x').data('action'), 'PUT');
-                $editable.html(newValue);
+                $editable.html(newValue).css('width', 'unset').css('max-width', '150px');
             });
             $('.edition, .activation').on('change', function () {
                 var value = $(this).hasClass('activation') ? this.checked ? 1 : 0 : $(this).val();

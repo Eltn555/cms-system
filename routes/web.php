@@ -32,7 +32,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
     //Route::post('categories/update', 'CategoriesController@update')->name('categories.update');
     Route::resource('tags', TagController::class, ['as'=>'admin']);
-    Route::resource('reviews', ReviewController::class);
+    Route::resource('reviews', ReviewController::class, ['as'=>'admin']);
 });
 
 

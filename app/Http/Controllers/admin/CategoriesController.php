@@ -48,6 +48,9 @@ class CategoriesController extends Controller
         $data = $request->all();
         $images = $data['images'];
         unset($data['images']);
+        if ($data['order_id'] == null){
+            unset($data['order_id']);
+        }
 
         array_key_exists('is_active', $data) ? $data['is_active'] = 1 : $data['is_active'] = 0;
 
@@ -61,7 +64,7 @@ class CategoriesController extends Controller
             ]);
             CategoryImage::create([
                 'category_id'=> $created->id,
-                ''
+                'image_id' => $img->id
             ]);
         }
         return 'sample created';

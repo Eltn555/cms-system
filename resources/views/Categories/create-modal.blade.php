@@ -1,44 +1,4 @@
 <!-- BEGIN: Modal Content -->
-@section('styles')
-    <style>
-        #drop-area {
-            border: 2px dashed #ccc;
-            border-radius: 20px;
-            padding: 20px;
-        }
-        #drop-area.highlight {
-            border-color: purple;
-        }
-        p {
-            margin-top: 0;
-        }
-        .my-form {
-            margin-bottom: 10px;
-        }
-        #gallery img {
-            border-radius: 20px;
-            width: 100px;
-            margin-bottom: 10px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px;
-            background: #ccc;
-            cursor: pointer;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .button:hover {
-            background: #ddd;
-        }
-        #fileElem {
-            display: none;
-        }
-    </style>
-@endsection
-
 <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content"> <!-- BEGIN: Modal Header -->
