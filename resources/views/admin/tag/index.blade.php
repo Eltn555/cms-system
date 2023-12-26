@@ -10,7 +10,8 @@
                class="btn btn-primary shadow-md mr-2">New Order</a>
             <div class="pos-dropdown dropdown ml-auto sm:ml-0" style="position: relative;">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center"> <svg xmlns="http://www.w3.org/2000/svg"
+                    <span class="w-5 h-5 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
                                                                                  width="24" height="24"
                                                                                  viewBox="0 0 24 24" fill="none"
                                                                                  stroke="currentColor" stroke-width="2"
