@@ -66,31 +66,31 @@
                         <td class="editable" data-field="title" data-action="read" data-selectable="text">
                             <a href="#" class="font-medium whitespace-nowrap">{{ $review->text }}</a>
                         </td>
-                        <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
+                        <td class="edition text-center" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select class="form-select edition" data-field="parent_category_id">
+                                <select class="form-select edition" data-field="user_id">
 {{--                                    @foreach($users as $user)--}}
 {{--                                            <option value="{{$user->id}}" {{($user->id == $review->user_id) ? 'selected' : ''}}>{{$user->name}}</option>--}}
 {{--                                    @endforeach--}}
 {{--                                    <option value="" {{ is_null($review->user_id) ? 'selected' : '' }}>Not Selected</option>--}}
-                                    <option value="" selected >Not Selected</option>
+                                    <option value="1" selected >Not Selected</option>
                                 </select>
                             </div>
                         </td>
-                        <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
+                        <td class="edition text-center" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select class="form-select edition" data-field="parent_category_id">
+                                <select class="form-select edition" data-field="product_id">
 {{--                                    @foreach($products as $product)--}}
 {{--                                        <option value="{{$product->id}}" {{($product->id == $review->product_id) ? 'selected' : ''}}>{{$product->name}}</option>--}}
 {{--                                    @endforeach--}}
 {{--                                    <option value="" {{ is_null($review->product_id) ? 'selected' : '' }}>Not Selected</option>--}}
-                                    <option value="" selected >Not Selected</option>
+                                    <option value="1" selected >Not Selected</option>
                                 </select>
                             </div>
                         </td>
-                        <td class="">
+                        <td class="edition">
                             <div class="form-check form-switch w-full h-full flex justify-center">
-                                <select class="form-select edition" data-field="parent_category_id">
+                                <select class="form-select edition" data-field="status">
                                     <option value="approved"  >Approved</option>
                                     <option value="disabled"  >Disabled</option>
                                     <option value="new" selected >New</option>
