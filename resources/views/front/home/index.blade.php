@@ -189,6 +189,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="400">
+                        <a href="product-details.html"><img src="assets/images/banner/banner-7.png" alt=""></a>
+                        <div class="banner-content-5">
+                            <span>Up To 40% Off</span>
+                            <h2>Bed Furniture</h2>
+                            <div class="btn-style-3 btn-hover">
+                                <a class="btn hover-border-radius" href="product-details.html">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="400">
+                        <a href="product-details.html"><img src="assets/images/banner/banner-7.png" alt=""></a>
+                        <div class="banner-content-5">
+                            <span>Up To 40% Off</span>
+                            <h2>Bed Furniture</h2>
+                            <div class="btn-style-3 btn-hover">
+                                <a class="btn hover-border-radius" href="product-details.html">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -18,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('front.home.index'); });
+
+Route::group(['prefix'=>'/'], function (){
+   Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
+});
+
+
+
 Route::get('/category', function () { return view('front.category.index'); })->name('category.index');
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');

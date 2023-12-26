@@ -1,9 +1,7 @@
 <?php
 namespace App\Http\Controllers\admin;
 
-use App\Models\Category;
-use App\Models\User;
-use App\Models\Product;
+use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
