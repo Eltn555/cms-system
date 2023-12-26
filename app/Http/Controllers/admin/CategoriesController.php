@@ -87,11 +87,24 @@ class CategoriesController extends Controller
         $data = [
             $field => $value,
         ];
+        if ($field != 'image'){
+            $category->update($data);
+        } else{
+            unset($data['images']);
+            $name = Storage::put('public/storage', $value);
+            $img = Image::create([
+                'image'=> $name,
+                'alt' =>$category->title,
+            ]);
+            CategoryImage::create([
+                'category_id'=> $category->id,
+                'image_id' => $img->id
+            ]);
+        }
 
-        $category->update($data);
 
         return [
-            'response' => "Category updated successfully"
+            'response' => $value,
         ];
     }
 

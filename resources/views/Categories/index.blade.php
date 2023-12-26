@@ -361,6 +361,7 @@
                     },
                     success: function (response) {
                         $("#message").fadeIn(500).fadeOut(2000);
+                        console.log(response);
                     },
                     error: function (error) {
                         console.error('Update failed:', error);
