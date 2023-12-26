@@ -49,6 +49,7 @@
 
 <body>
 <div class="main-wrapper main-wrapper-2">
+    @include('front.header.index')
     @yield('content')
     @include('front.footer.index')
 </div>

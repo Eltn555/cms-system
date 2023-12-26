@@ -39,26 +39,17 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-6 col-6">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="logo"></a>
+                        <a href="#"><img src="assets/images/logo/logo.png" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
                     <div class="main-menu text-center">
                         <nav>
                             <ul>
-                                <li><a href="index.html">HOME</a>
-                                    <ul class="sub-menu-style">
-                                        <li><a href="index.html">Home version 1 </a></li>
-                                        <li><a href="index-2.html">Home version 2</a></li>
-                                        <li><a href="index-3.html">Home version 3</a></li>
-                                        <li><a href="index-4.html">Home version 4</a></li>
-                                        <li><a href="index-5.html">Home version 5</a></li>
-                                        <li><a href="index-6.html">Home version 6</a></li>
-                                        <li><a href="index-7.html">Home version 7</a></li>
-                                        <li><a href="index-8.html">Home version 8</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="#">HOME</a>
                                 </li>
-                                <li><a href="shop.html">SHOP</a>
+                                <li><a href="{{route('category.index')}}">SHOP</a>
                                     <ul class="mega-menu-style mega-menu-mrg-1">
                                         <li>
                                             <ul>
@@ -71,17 +62,6 @@
                                                         <li><a href="shop-list-sidebar.html">shop list sidebar</a></li>
                                                         <li><a href="shop-right-sidebar.html">shop right sidebar</a></li>
                                                         <li><a href="shop-location.html">store location</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-title" href="#">Products Layout</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">tab style 1</a></li>
-                                                        <li><a href="product-details-2.html">tab style 2</a></li>
-                                                        <li><a href="product-details-gallery.html">gallery style </a></li>
-                                                        <li><a href="product-details-affiliate.html">affiliate style</a></li>
-                                                        <li><a href="product-details-group.html">group style</a></li>
-                                                        <li><a href="product-details-fixed-img.html">fixed image style </a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
@@ -103,15 +83,11 @@
                                         <li><a href="login-register.html">login / register </a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">BLOG</a>
-                                    <ul class="sub-menu-style">
-                                        <li><a href="blog.html">blog standard </a></li>
-                                        <li><a href="blog-sidebar.html">blog sidebar</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                    </ul>
+                                <li>
+                                    <a href="{{route('blog.index')}}">BLOG</a>
                                 </li>
                                 <li><a href="about-us.html">ABOUT</a></li>
-                                <li><a href="contact-us.html">CONTACT US</a></li>
+                                <li><a href="{{route('contact.index')}}">CONTACT US</a></li>
                             </ul>
                         </nav>
                     </div>

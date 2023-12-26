@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.home.index');
-});
+Route::get('/', function () { return view('front.home.index'); });
+Route::get('/category', function () { return view('front.category.index'); })->name('category.index');
+Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
+Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
 
 Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function (){

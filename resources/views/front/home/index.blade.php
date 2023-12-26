@@ -1,6 +1,5 @@
 @extends('front.master')
 @section('content')
-    @include('front.header.index')
     <!-- mini cart start -->
     <div class="sidebar-cart-active">
         <div class="sidebar-cart-all">
