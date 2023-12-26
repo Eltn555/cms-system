@@ -16,7 +16,7 @@ class CategoriesController extends Controller
     // Show all categories
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('order_id', 'asc')->get();
         return view('categories.index', compact('categories'));
     }
 
@@ -58,7 +58,7 @@ class CategoriesController extends Controller
         $created = Category::create($data);
 
         foreach ($images as $key => $image){
-            $name = Storage::put('public/', $image);
+            $name = Storage::put('public/storage', $image);
             $img = Image::create([
                 'image'=> $name,
                 'alt' =>$data['title'] . $key+1

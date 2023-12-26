@@ -40,6 +40,73 @@
         #fileElem {
             display: none;
         }
+        table td{
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+        }
+        .avatar-wrapper {
+            position: relative;
+            /*margin: 20px auto;*/
+            /*margin: -100px auto 20px auto;*/
+            border-radius: 50%;
+            overflow: hidden;
+            /*box-shadow: 1px 1px 15px -5px black;*/
+            box-shadow: none;
+            transition: all .3s ease;
+        }
+
+        .avatar-wrapper:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .avatar-wrapper:hover .profile-pic {
+            opacity: .5;
+        }
+
+        .avatar-wrapper .profile-pic {
+            height: 100%;
+            width: 100%;
+            transition: all .3s ease;
+        }
+
+        .avatar-wrapper .profile-pic:after {
+            font-family: FontAwesome;
+            content: "\f007";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 190px;
+            background: #ecf0f1;
+            color: #34495e;
+            text-align: center;
+        }
+
+        .avatar-wrapper .upload-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .avatar-wrapper .upload-button .fa-arrow-circle-up {
+            position: absolute;
+            font-size: 243px;
+            top: -16px;
+            left: -5px;
+            text-align: center;
+            opacity: 0;
+            transition: all .3s ease;
+            color: #e4eae7;
+        }
+
+        .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+            background-color: #4a5568;
+            opacity: .7;
+        }
     </style>
 @endsection
 
@@ -84,26 +151,36 @@
                         <th class="whitespace-nowrap">Image</th>
                         <th class="whitespace-nowrap">Category name</th>
                         <th class="whitespace-nowrap">Parent Category</th>
+                        <th class="text-center whitespace-nowrap">Description</th>
                         <th class="whitespace-nowrap">Order</th>
+                        <th class="text-center whitespace-nowrap">Status</th>
                         <th class="text-center whitespace-nowrap">SEO_title</th>
                         <th class="text-center whitespace-nowrap">SEO_description</th>
-                        <th class="text-center whitespace-nowrap">Description</th>
-                        <th class="text-center whitespace-nowrap">Status</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($categories as $category)
 
-                        <tr id="{{$category->id}}" class="intro-x" data-action="{{$category->id}}">
-                            <td class="">
-                                <button class="btn" data-tw-toggle="modal" data-tw-target="#image_modal">
-                                    @if(!$category->images->isEmpty())
-                                        <div class="w-10 h-10 image-fit zoom-in">
-                                            <img alt="{{$category->images[0]->alt}}" class="rounded-lg border-1 border-white shadow-md tooltip" src="{{asset($category->images[0]->image)}}" title="Updated at {{$category->images[0]->updated_at}}">
+                        <tr id="{{$category->id}}" class="intro-x" data-action="{{$category->id}}" style="order: {{$category->order_id}}" >
+                            <td class="py-0.5">
+                                @if(!$category->images->isEmpty())
+                                    <div class="avatar-wrapper w-16 h-16 image-fit zoom-in tooltip" title="Updated at {{$category->images[0]->updated_at}}">
+                                        <img id="pic{{$category->id}}" class="profile-pic w-10 h-10" alt="{{$category->images[0]->alt}}" src="{{asset($category->images[0]->image)}}"/>
+                                        <div class="upload-button flex items-center justify-center">
+                                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-12 h-12 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                         </div>
-                                    @endif
-                                </button>
+                                        <input class="file-upload" type="file" accept="image/*"/>
+                                    </div>
+                                @else
+                                    <div class="avatar-wrapper w-16 h-16 image-fit zoom-in tooltip" title="Click to upload">
+                                        <img id="pic{{$category->id}}" class="profile-pic w-10 h-10" alt="" src="{{asset("no_photo.jpg")}}" />
+                                        <div class="upload-button flex items-center justify-center">
+                                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-12 h-12 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                                        </div>
+                                        <input class="file-upload" type="file" accept="image/*"/>
+                                    </div>
+                                @endif
                             </td>
                         <td class="editable" data-field="title" data-action="read" data-selectable="text">
                             <a href="#" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
@@ -120,23 +197,23 @@
                                 </select>
                             </div>
                         </td>
+                            <td class="editable tooltip" data-field="description" data-action="read" data-selectable="text" title="{{ $category->description }}">
+                                <div class="text-center overflow-hidden" style="max-width: 400px;">{{ $category->description }}</div>
+                            </td>
                         <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="">{{$category->order_id}}</div>
-                        </td>
-                            <td class="editable text-center" data-field="seo_title" data-action="read" data-selectable="text">
-                                <div class="text-center font-medium whitespace-nowrap">{{$category->seo_title}}</div>
-                            </td>
-                            <td class="editable text-center" data-field="seo_description" data-action="read" data-selectable="text">
-                                <div class="text-center font-medium whitespace-nowrap">{{$category->seo_description}}</div>
-                            </td>
-                        <td class="editable" data-field="description" data-action="read" data-selectable="text">
-                            <div class="text-center overflow-hidden" style="max-width: 400px;">{{ $category->description }}</div>
                         </td>
                         <td class="">
                             <div class="form-check form-switch w-full h-full flex justify-center">
                                 <input class="form-check-input activation" data-field="is_active" type="checkbox" {{($category->is_active) ? 'checked' : ''}}>
                             </div>
                         </td>
+                            <td class="editable text-center tooltip" title="{{$category->seo_title}}" data-field="seo_title" data-action="read" data-selectable="text">
+                                <div class="text-center font-medium whitespace-nowrap">{{$category->seo_title}}</div>
+                            </td>
+                            <td class="editable text-center tooltip" title="{{$category->seo_description}}" data-field="seo_description" data-action="read" data-selectable="text">
+                                <div class="text-center font-medium whitespace-nowrap">{{$category->seo_description}}</div>
+                            </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3 updateMore" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
@@ -248,6 +325,27 @@
                 $('#'+id).addClass('hidden');
                 ajax('', '', id, 'Delete');
             });
+
+            //update image
+            $(".file-upload").on('change',function(){
+                let id_parent = $(this).parents('.intro-x').data('action');
+                let input = this;
+                if(input.files && input.files[0]){
+                    var reader= new FileReader();
+                    reader.onload=function(e)
+                    {
+                        var fileurl=e.target.result;
+                        alert($(this).siblings('.profile-pic').attr('src'));
+                        $('#pic'+id_parent).attr('src',fileurl);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+                ajax('image', $(this).val(), id_parent, 'PUT');
+            });
+            $(".upload-button").on('click',function(){
+                $(this).siblings('.file-upload').click();
+            });
+
             function ajax(field, newValue, categoryId, method) {
                 // alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
                 $.ajax({
