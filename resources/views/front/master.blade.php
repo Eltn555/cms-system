@@ -1,241 +1,82 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Title and description ================================================== -->
-    <title>
-        Alamp - Interior Decor and Lights Responsive Shopify Theme
-    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Urdan - Minimal eCommerce HTML Template</title>
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="description"
+          content="Urdan Minimal eCommerce Bootstrap 5 Template is a stunning eCommerce website template that is the best choice for any online store.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link rel="canonical" href="https://htmldemo.hasthemes.com/urdan/index.html"/>
 
+    <!-- Open Graph (OG) meta tags are snippets of code that control how URLs are displayed when shared on social media  -->
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Urdan - Minimal eCommerce HTML Template"/>
+    <meta property="og:url" content="https://htmldemo.hasthemes.com/urdan/index.html"/>
+    <meta property="og:site_name" content="Urdan - Minimal eCommerce HTML Template"/>
+    <!-- For the og:image content, replace the # with a link of an image -->
+    <meta property="og:image" content="#"/>
+    <meta property="og:description"
+          content="Urdan Minimal eCommerce Bootstrap 5 Template is a stunning eCommerce website template that is the best choice for any online store."/>
+    <!-- Add site Favicon -->
+    <link rel="icon" href="{{asset('assets/images/favicon/cropped-favicon-32x32.png" sizes="32x32')}}"/>
+    <link rel="icon" href="{{asset('assets/images/favicon/cropped-favicon-192x192.png" sizes="192x192')}}"/>
+    <link rel="apple-touch-icon" href="{{asset('assets/images/favicon/cropped-favicon-180x180.png')}}"/>
+    <meta name="msapplication-TileImage" content="{{asset('assets/images/favicon/cropped-favicon-270x270.png')}}"/>
 
-    <!-- Helpers ================================================== -->
-    <!-- /snippets/social-meta-tags.liquid -->
-
-
-    <link rel="shortcut icon" href="{{asset('cdn/shop/t/3/assets/favicon4eb5.png?v=82255381804818286541595294682')}}"
-          type="image/png"/>
-
-    <link rel="apple-touch-icon-precomposed" href="{{asset('cdn/shop/t/3/assets/icon-for-mobile7b7a.html?2020')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="57x57"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_57x577b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="60x60"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_60x607b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_72x727b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="76x76"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_76x767b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_114x1147b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="120x120"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_120x1207b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_144x1447b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="152x152"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_152x1527b7a.html')}}"/>
-
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Alamp - Interior Decor and Lights Responsive Shopify Theme">
-
-    <meta property="og:image" content="cdn/shop/t/3/assets/logo7b7a.html?2020">
-    <meta property="og:image:secure_url" content="cdn/shop/t/3/assets/logo7b7a.html?2020">
-
-
-    <meta property="og:url" content="index.html">
-    <meta property="og:site_name" content="Alamp - Interior Decor and Lights Responsive Shopify Theme">
-
-
-    <meta name="twitter:card" content="summary">
-
-
-    <link rel="canonical" href="index.html">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#7fc9c4">
-    <link rel="icon" href="{{asset('cdn/shop/t/3/assets/favicon4eb5.png')}}" type="image/png"
-          sizes="16x16">
-
-    <!-- font -->
-
-    <link href="{{asset('cdn/shop/t/3/assets/timber.scssa984.css')}}" rel="stylesheet"
-          type="text/css" media="all"/>
-
-
-    <link href="{{asset('cdn/shop/t/3/assets/bootstrap.minaac1.css')}}" rel="stylesheet"
-          type="text/css" media="all"/>
-    <link href="{{asset('cdn/shop/t/3/assets/slick8a8d.css')}}" rel="stylesheet" type="text/css"
-          media="all"/>
-    <link href="{{asset('cdn/shop/t/3/assets/slick-theme847d.css')}}" rel="stylesheet"
-          type="text/css" media="all"/>
-    <link rel="stylesheet" href="{{asset('cdn/shop/t/3/assets/jquery.fancybox.mind5ed.css')}}"
-          media="nope!" onload="this.media='all'">
-    <link href="{{asset('cdn/shop/t/3/assets/style-main.scss9bfd.css')}}" rel="stylesheet"
-          type="text/css" media="all"/>
-    <link href="{{asset('cdn/shop/t/3/assets/engo-customize.scss8368.css')}}" rel="stylesheet"
-          type="text/css" media="all"/>
-    <link href="{{asset('cdn/shop/t/3/assets/animate.min63e1.css')}}" rel="stylesheet"
-          type="text/css" media="all"/>
-    <script type="text/javascript">
-        WebFontConfig = {
-            google: {
-                families: [
-
-                    'Jost:100,200,300,400,500,600,700,800,900'
-
-
-                    ,
-
-                    'Jost:100,200,300,400,500,600,700,800,900'
-
-
-                    ,
-
-                    'Jost:100,200,300,400,500,600,700,800,900'
-
-
-                ]
-            }
-        };
-        (function () {
-            var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
-    <script async="async"
-            src="checkouts/internal/preloads3d09.js?permanent-domain=alamp-store-demo.myshopify.com&amp;locale=en-US"></script>
-    <script integrity="sha256-h4dvokWvGcvRSqiG7VnGqoonxF0k3NeoHPLSMjUGIz4="
-            data-source-attribution="shopify.loadfeatures" defer="defer"
-            src="{{asset('cdn/shopifycloud/shopify/assets/storefront/load_feature-87876fa245af19cbd14aa886ed59c6aa8a27c45d24dcd7a81cf2d2323506233e.js')}}"
-            crossorigin="anonymous"></script>
-    <script integrity="sha256-HAs5a9TQVLlKuuHrahvWuke+s1UlxXohfHeoYv8G2D8="
-            data-source-attribution="shopify.dynamic-checkout" defer="defer"
-            src="{{asset('cdn/shopifycloud/shopify/assets/storefront/features-1c0b396bd4d054b94abae1eb6a1bd6ba47beb35525c57a217c77a862ff06d83f.js')}}"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" media="screen" href="{{asset('cdn/shop/t/3/compiled_assets/styles7b7a.css')}}">
-    <script id="sections-script"
-            data-sections="section-slideshow-v2,section-banner-v3,section-product-v3,section-testimonial-v1,section-product-v1,section-blog-v1,section-instagram-v3"
-            defer="defer" src="{{asset('cdn/shop/t/3/compiled_assets/scripts7b7a.js')}}"></script>
-
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
-    <script src="//alamp-store-demo.myshopify.com/cdn/shop/t/3/assets/respond.min.js?2020"
-            type="text/javascript"></script>
-    <link href="//alamp-store-demo.myshopify.com/cdn/shop/t/3/assets/respond-proxy.html" id="respond-proxy"
-          rel="respond-proxy"/>
-    <link href="//alamp-store-demo.myshopify.com/search?q=43cdf08646ac499d56b20cc4abfe49a7" id="respond-redirect"
-          rel="respond-redirect"/>
-    <script src="//alamp-store-demo.myshopify.com/search?q=43cdf08646ac499d56b20cc4abfe49a7"
-            type="text/javascript"></script>
-    <![endif]-->
-    <script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script>
-
-
-    <script src="{{asset('cdn/shop/t/3/assets/jquery-3.5.0.min184a.js')}}"
-            type="text/javascript"></script>
-    <link rel="stylesheet" href="{{asset('../maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
-    <script
-        src="{{asset('cdn/shopifycloud/shopify/assets/themes_support/api.jquery-b0af070cfe3f5cf7c92f9e2a5da2665ee07ed2aad63bb408f8d6672f894a5996.js')}}"
-        type="text/javascript"></script>
-    <script src="{{asset('cdn/shop/t/3/assets/modernizr-2.8.3.min9f44.js')}}"
-            type="text/javascript"></script>
-    <script
-        src="{{asset('cdn/shopifycloud/shopify/assets/themes_support/option_selection-86cdd286ddf3be7e25d68b9fc5965d7798a3ff6228ff79af67b3f4e41d6a34be.js')}}"
-        type="text/javascript"></script>
-    <script src="{{asset('cdn/shop/t/3/assets/lazysizes.min96e8.js')}}"
-            type="text/javascript"></script>
-    <script integrity="sha256-h4dvokWvGcvRSqiG7VnGqoonxF0k3NeoHPLSMjUGIz4="
-            data-source-attribution="shopify.loadfeatures" defer="defer"
-            src="{{asset('cdn/shopifycloud/shopify/assets/storefront/load_feature-87876fa245af19cbd14aa886ed59c6aa8a27c45d24dcd7a81cf2d2323506233e.js')}}"
-            crossorigin="anonymous"></script>
-    <script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script>
-
-
-    <link rel="shortcut icon" href="{{asset('cdn/shop/t/3/assets/favicon4eb5.png')}}"
-          type="image/png"/>
-
-    <link rel="apple-touch-icon-precomposed" href="{{asset('cdn/shop/t/3/assets/icon-for-mobile7b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="57x57"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_57x577b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="60x60"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_60x607b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_72x727b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="76x76"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_76x767b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_114x1147b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="120x120"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_120x1207b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_144x1447b7a.html')}}"/>
-    <link rel="apple-touch-icon-precomposed" sizes="152x152"
-          href="{{asset('cdn/shop/t/3/assets/icon-for-mobile_152x1527b7a.html')}}"/>
-
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Alamp - Interior Decor and Lights Responsive Shopify Theme">
-
-    <meta property="og:image" content="http://alamp-store-demo.myshopify.com/cdn/shop/t/3/assets/logo.png?2020">
-    <meta property="og:image:secure_url"
-          content="https://alamp-store-demo.myshopify.com/cdn/shop/t/3/assets/logo.png?2020">
-
-
-    <meta property="og:url" content="https://alamp-store-demo.myshopify.com/">
-    <meta property="og:site_name" content="Alamp - Interior Decor and Lights Responsive Shopify Theme">
-
-
-    <meta name="twitter:card" content="summary">
-
-
-    <!-- "snippets/weglot_hreftags.liquid" was not rendered, the associated app was uninstalled -->
-    <!-- "snippets/weglot_switcher.liquid" was not rendered, the associated app was uninstalled -->
-    <link href="https://monorail-edge.shopifysvc.com/" rel="dns-prefetch">
+    <!-- All CSS is here
+	============================================ -->
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/pe-icon-7-stroke.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/themify-icons.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/animate.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/aos.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/magnific-popup.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/swiper.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/jquery-ui.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/nice-select.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/select2.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/easyzoom.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
 </head>
-<body class="preload push_filter_left js_overhidden relative" style="background: #ffffff;">
 
-<div class="wrap">
-    <div class="contentbody">
-        @include('front.header.index')
-        @yield('content')
-        <script src="{{asset('cdn/shop/t/3/assets/fastclick0838.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/s/javascripts/currencies.js')}}" type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/jquery.currencies.minea05.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/timbere1ea.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/handlebars.minff44.js')}}"
-                type="text/javascript"></script>
-        <script src="{{ asset('engo-scripts.js') }}"
-                type="text/javascript"></script>
-        @include('front.footer.index')
-        <script src="{{asset('cdn/shop/t/3/assets/ajax-cart91ce.js')}}" type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/bootstrap.bundle.min1634.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/slick.min5264.js')}}" type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/instafeed.mind540.js')}}" type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/jquery.fancybox.min7bd3.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/engo-plugins870e.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/quickviewa027.js')}}"
-                type="text/javascript"></script>
 
-        <script src="{{asset('cdn/shop/t/3/assets/collectiond301.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('cdn/shop/t/3/assets/engo-scripts96bf.js')}}"
-                type="text/javascript"></script>
-
-    </div>
+<body>
+<div class="main-wrapper main-wrapper-2">
+    @yield('content')
+    @include('front.footer.index')
 </div>
-
-
+<!-- All JS is here -->
+<script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/popper.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/wow.js')}}"></script>
+<script src="{{asset('assets/js/plugins/scrollup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/aos.js')}}"></script>
+<script src="{{asset('assets/js/plugins/magnific-popup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.syotimer.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/swiper.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery-ui.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery-ui-touch-punch.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/waypoints.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.counterup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/select2.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/easyzoom.js')}}"></script>
+<script src="{{asset('assets/js/plugins/slinky.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/ajax-mail.js')}}"></script>
+<!-- Main JS -->
+<script src="{{asset('assets/js/main.js')}}"></script>
 </body>
+
 </html>
