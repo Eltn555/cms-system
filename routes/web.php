@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=>'/'], function (){
    Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
-})->name('home.index');
+});
 
 
 

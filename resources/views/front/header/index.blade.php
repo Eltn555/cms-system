@@ -47,7 +47,7 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="{{route('home.index')}}">HOME</a>
+                                    <a href="/">HOME</a>
                                 </li>
                                 <li><a href="{{route('category.index')}}">SHOP</a>
                                     <ul class="mega-menu-style mega-menu-mrg-1">
