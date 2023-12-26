@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\admin;
 
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Review;
@@ -50,7 +51,8 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
-        return view('reviews.edit', compact('review'));
+        $review = Review::findOrFail($id);
+        return view('reviews.edit', ['category' => $review]);
     }
 
     /**
@@ -58,14 +60,17 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-        ]);
+        $field = $request->input('field');
+        $value = $request->input('value');
+        $data = [
+            $field => $value,
+        ];
 
-        $review->update($request->all());
-        return redirect()->route('reviews.index')
-            ->with('success', 'Review updated successfully');
+        $connection = $review->update($data);
+
+        return [
+            'response' => $connection,
+        ];
     }
 
     /**

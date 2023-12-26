@@ -41,13 +41,6 @@
     var editor = new FroalaEditor('#editorfield');
 
 </script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
 <script
     src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -60,8 +53,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VDDWMRSTH"></script>
-<script>
 
+<script>
     $('#main-search').on('keyup', function () {
         let pattern = $('#main-search').val()
 

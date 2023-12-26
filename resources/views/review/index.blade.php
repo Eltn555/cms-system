@@ -52,13 +52,14 @@
                         <td class="">
                             <div class="flex items-center">
                                 @for ($i = 0; $i < 5; $i++)
-                                    @if ($i < $review->rate)
-                                        {{-- Golden Star for Rated --}}
-                                        <i class="fas fa-star text-yellow-400"></i>
-                                    @else
-                                        {{-- Light Slate Star for Unrated --}}
-                                        <i class="far fa-star text-gray-300"></i>
-                                    @endif
+                                    <button class="rate" value="{{$i+1}}" data-field="rate">
+                                        @if ($i < $review->rate)
+                                            <svg color="yellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        @else
+                                            {{-- Light Slate Star for Unrated --}}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star text-slate-500"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        @endif
+                                    </button>
                                 @endfor
                             </div>
                         </td>
@@ -196,6 +197,10 @@
                 ajax($editable.data('field'), $(this).val(), $editable.parents('.intro-x').data('action'), 'PUT');
                 $editable.html(newValue);
             });
+            $('.rate').on('click', function () {
+                var value = $(this).val();
+                ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'), 'PUT');
+            });
             $('.edition, .activation').on('change', function () {
                 var value = $(this).hasClass('activation') ? this.checked ? 1 : 0 : $(this).val();
                 ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'), 'PUT');
@@ -221,6 +226,7 @@
                     },
                     success: function (response) {
                         $("#message").fadeIn(500).fadeOut(2000);
+                        console.log(response);
                     },
                     error: function (error) {
                         console.error('Update failed:', error);
