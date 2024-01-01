@@ -7,7 +7,7 @@
             </h2>
         </div>
         <div class="p-5">
-            <form action="{{route('admin.sliders.store')}}" method="POST"
+            <form action="{{route('admin.sliders.edit')}}" method="POST"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-col-reverse xl:flex-row flex-col">
