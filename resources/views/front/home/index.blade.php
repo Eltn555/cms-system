@@ -113,7 +113,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
-                        <a href="product-details.html"><img src="assets/images/banner/banner-6.png" alt=""></a>
+                        <a href=""><img src="assets/images/banner/banner-6.png" alt=""></a>
                         <div class="banner-content-5">
                             <span>Up To 40% Off</span>
                             <h2>Dining Furniture</h2>
