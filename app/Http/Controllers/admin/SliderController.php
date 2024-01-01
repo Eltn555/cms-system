@@ -23,7 +23,7 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        dd($data);
         $image = Storage::put('/images', $data['image']);
 
         Slider::create([
