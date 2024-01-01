@@ -47,7 +47,8 @@
 
 
     <div class="slider-category-area">
-        <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4" style="background-image:url({{ asset($slider->image) }})">
+        <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
+             style="background-image:url({{ asset('storage/'.$slider->image) }})">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -55,7 +56,8 @@
                             <h5 data-aos="fade-up" data-aos-delay="200">{{ $slider->subtitle }}</h5>
                             <h1 data-aos="fade-up" data-aos-delay="400">{{ $slider->title }}</h1>
                             <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="600">
-                                <a href="{{ $slider->href }}" class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
+                                <a href="{{ $slider->href }}"
+                                   class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
                                     Sotib olish <i class=" ti-arrow-right "></i>
                                 </a>
                             </div>
@@ -64,7 +66,6 @@
                 </div>
             </div>
         </div>
-
 
 
         <div class="category-area category-area-position">
@@ -77,7 +78,8 @@
                                 <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
                                     <div class="category-img-2">
                                         <a href="#">
-                                            <img class="category-normal-img" src="{{ asset($category->image ?? '') }}" alt="">
+                                            <img class="category-normal-img" src="{{ asset($category->image ?? '') }}"
+                                                 alt="">
                                         </a>
                                     </div>
                                     <div class="category-content-2">
@@ -92,8 +94,10 @@
                             <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="400">
                                 <div class="category-img-2">
                                     <a href="shop.html">
-                                        <img class="category-normal-img" src="assets/images/category/category-7.png" alt="">
-                                        <img class="category-hover-img" src="assets/images/category/category-hover-7.png" alt="icon">
+                                        <img class="category-normal-img" src="assets/images/category/category-7.png"
+                                             alt="">
+                                        <img class="category-hover-img"
+                                             src="assets/images/category/category-hover-7.png" alt="icon">
                                     </a>
                                 </div>
                                 <div class="category-content-2">
@@ -186,13 +190,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -211,13 +219,17 @@
                                             <img src="assets/images/product/product-4.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -238,13 +250,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -263,13 +279,17 @@
                                             <img src="assets/images/product/product-2.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -290,13 +310,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -324,13 +348,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -349,13 +377,17 @@
                                             <img src="assets/images/product/product-2.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -376,13 +408,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -401,13 +437,17 @@
                                             <img src="assets/images/product/product-4.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -428,13 +468,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -462,13 +506,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -487,13 +535,17 @@
                                             <img src="assets/images/product/product-3.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -514,13 +566,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -539,13 +595,17 @@
                                             <img src="assets/images/product/product-1.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -566,13 +626,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -600,13 +664,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -625,13 +693,17 @@
                                             <img src="assets/images/product/product-1.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -652,13 +724,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -677,13 +753,17 @@
                                             <img src="assets/images/product/product-3.png" alt="">
                                         </a>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -704,13 +784,17 @@
                                             <span>-10%</span>
                                         </div>
                                         <div class="product-action-wrap">
-                                            <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                            <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button class="product-action-btn-1" title="Wishlist"><i
+                                                    class="pe-7s-like"></i></button>
+                                            <button class="product-action-btn-1" title="Quick View"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 <i class="pe-7s-look"></i>
                                             </button>
                                         </div>
                                         <div class="product-action-2-wrap">
-                                            <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                            <button class="product-action-btn-2" title="Add To Cart"><i
+                                                    class="pe-7s-cart"></i> Add to cart
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -739,7 +823,8 @@
                             <h4>Urdan Collection</h4>
                         </div>
                         <div class="btn-style-6 btn-style-6-position btn-hover">
-                            <a href="product-details.html" class="btn btn-border-radius hover-border-radius theme-color padding-dec">
+                            <a href="product-details.html"
+                               class="btn btn-border-radius hover-border-radius theme-color padding-dec">
                                 Shop Now
                             </a>
                         </div>
@@ -753,7 +838,8 @@
                             <h4>Urdan Office Collection</h4>
                         </div>
                         <div class="btn-style-6 btn-style-6-position btn-hover">
-                            <a href="product-details.html" class="btn btn-border-radius hover-border-radius theme-color padding-dec">
+                            <a href="product-details.html"
+                               class="btn btn-border-radius hover-border-radius theme-color padding-dec">
                                 Shop Now
                             </a>
                         </div>
@@ -767,7 +853,8 @@
                             <h4>Urdan Collection</h4>
                         </div>
                         <div class="btn-style-6 btn-style-6-position btn-hover">
-                            <a href="product-details.html" class="btn btn-border-radius hover-border-radius theme-color padding-dec">
+                            <a href="product-details.html"
+                               class="btn btn-border-radius hover-border-radius theme-color padding-dec">
                                 Shop Now
                             </a>
                         </div>
@@ -805,13 +892,17 @@
                                         <img src="assets/images/product/product-7.png" alt="">
                                     </a>
                                     <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
+                                        </button>
+                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                             <i class="pe-7s-look"></i>
                                         </button>
                                     </div>
                                     <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                        <button class="product-action-btn-2" title="Add To Cart"><i
+                                                class="pe-7s-cart"></i> Add to cart
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -832,13 +923,17 @@
                                         <span>-10%</span>
                                     </div>
                                     <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
+                                        </button>
+                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                             <i class="pe-7s-look"></i>
                                         </button>
                                     </div>
                                     <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                        <button class="product-action-btn-2" title="Add To Cart"><i
+                                                class="pe-7s-cart"></i> Add to cart
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -860,13 +955,17 @@
                                         <span>-10%</span>
                                     </div>
                                     <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
+                                        </button>
+                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                             <i class="pe-7s-look"></i>
                                         </button>
                                     </div>
                                     <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                        <button class="product-action-btn-2" title="Add To Cart"><i
+                                                class="pe-7s-cart"></i> Add to cart
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -885,13 +984,17 @@
                                         <img src="assets/images/product/product-9.png" alt="">
                                     </a>
                                     <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
+                                        </button>
+                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                             <i class="pe-7s-look"></i>
                                         </button>
                                     </div>
                                     <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                        <button class="product-action-btn-2" title="Add To Cart"><i
+                                                class="pe-7s-cart"></i> Add to cart
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -997,7 +1100,8 @@
                                 </ul>
                             </div>
                             <h3><a href="blog-details.html">Lorem ipsum dolor consectet.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut labo et dolore magna aliqua.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut
+                                labo et dolore magna aliqua.</p>
                             <div class="blog-btn-2 btn-hover">
                                 <a class="btn hover-border-radius theme-color" href="blog-details.html">Read More</a>
                             </div>
@@ -1022,7 +1126,8 @@
                                 </ul>
                             </div>
                             <h3><a href="blog-details.html">Duis et volutpat pellentesque.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut labo et dolore magna aliqua.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut
+                                labo et dolore magna aliqua.</p>
                             <div class="blog-btn-2 btn-hover">
                                 <a class="btn hover-border-radius theme-color" href="blog-details.html">Read More</a>
                             </div>
@@ -1047,7 +1152,8 @@
                                 </ul>
                             </div>
                             <h3><a href="blog-details.html">Vivamus vitae dolor convallis.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut labo et dolore magna aliqua.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut
+                                labo et dolore magna aliqua.</p>
                             <div class="blog-btn-2 btn-hover">
                                 <a class="btn hover-border-radius theme-color" href="blog-details.html">Read More</a>
                             </div>
@@ -1096,10 +1202,12 @@
                                         <li><a title="Purple" class="purple" href="#">purple</a></li>
                                     </ul>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare tincidunt neque vel semper. Cras placerat enim sed nisl mattis eleifend.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare tincidunt
+                                    neque vel semper. Cras placerat enim sed nisl mattis eleifend.</p>
                                 <div class="product-details-action-wrap">
                                     <div class="product-quality">
-                                        <input class="cart-plus-minus-box input-text qty text" name="qtybutton" value="1">
+                                        <input class="cart-plus-minus-box input-text qty text" name="qtybutton"
+                                               value="1">
                                     </div>
                                     <div class="single-product-cart btn-hover">
                                         <a href="#">Add to cart</a>
@@ -1211,7 +1319,8 @@
                     </div>
                 </div>
                 <div class="language-wrap">
-                    <a class="language-active" href="#"><img src="assets/images/icon-img/flag.png" alt=""> English <i class=" ti-angle-down "></i></a>
+                    <a class="language-active" href="#"><img src="assets/images/icon-img/flag.png" alt=""> English <i
+                            class=" ti-angle-down "></i></a>
                     <div class="language-dropdown">
                         <ul>
                             <li><a href="#"><img src="assets/images/icon-img/flag.png" alt="">English </a></li>

@@ -1,5 +1,4 @@
 @extends('admin')
-
 @section('content')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
@@ -23,18 +22,23 @@
 
                             <!-- BEGIN: Modal Body -->
                             <div class="modal-body gap-4 gap-y-3">
-
-                                <div class="flex items-center justify-center w-full">
-                                    <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                            </svg>
-                                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                <div class="w-100 mx-auto xl:mr-0 xl:ml-6">
+                                    <div
+                                        class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                        <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                                            <img class="rounded-md" alt="Midone - HTML Admin Template"
+                                                 src="{{asset('dist/images/profile-10.jpg')}}" id="profile2">
+                                            <div
+                                                class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                                                <i data-lucide="x"></i>
+                                            </div>
                                         </div>
-                                        <input id="dropzone-file" type="file" class="hidden" name="image"/>
-                                    </label>
+                                        <div class="mx-auto cursor-pointer relative mt-5">
+                                            <button type="button" class="btn btn-primary w-full">Change Photo</button>
+                                            <input type="file" name="image" class="w-full h-full  top-0 left-0 absolute opacity-0"
+                                                   id="input-file2">
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
