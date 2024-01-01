@@ -59,5 +59,4 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="{{asset('dist/js/uploadfile.js')}}"></script>
 @endsection

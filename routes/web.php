@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CategoriesController;
+use App\Http\Controllers\admin\PartnersController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SliderController;
@@ -42,7 +43,13 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('tags', TagController::class, ['as'=>'admin']);
     Route::resource('reviews', ReviewController::class, ['as'=>'admin']);
     Route::resource('sliders', SliderController::class, ['as'=>'admin']);
+    Route::resource('partners', PartnersController::class, ['as'=>'admin']);
 });
-
+Route::post('/teststore', function (\Illuminate\Http\Request $request){
+    dd($request->all());
+})->name('test.store');
+Route::get('/teststores', function (){
+    return view('test');
+})->name('test.stores');
 
 Auth::routes();
