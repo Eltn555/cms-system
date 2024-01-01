@@ -10,9 +10,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $slider = Slider::all()[0];
+        $slider = Slider::firstOrFail();
         $categories = Category::all();
-
         return view('front.home.index', compact('slider', 'categories'));
     }
 }
