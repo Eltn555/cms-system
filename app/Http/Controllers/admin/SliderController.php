@@ -32,7 +32,7 @@ class SliderController extends Controller
             'image' => $image,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('admin.sliders.index');
     }
 
     public function edit($id)

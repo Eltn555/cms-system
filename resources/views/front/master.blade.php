@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Urdan - Minimal eCommerce HTML Template</title>
+    <title>Lumen LUX</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description"
           content="Urdan Minimal eCommerce Bootstrap 5 Template is a stunning eCommerce website template that is the best choice for any online store.">

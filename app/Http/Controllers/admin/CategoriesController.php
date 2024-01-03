@@ -17,6 +17,11 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::orderBy('order_id', 'asc')->get();
+        foreach ($categories as $category) {
+            dump($category);
+            dump($category->images);
+        }
+        //dd();
         return view('categories.index', compact('categories'));
     }
 

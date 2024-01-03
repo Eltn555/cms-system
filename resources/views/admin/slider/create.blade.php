@@ -15,23 +15,23 @@
                         <div class="grid grid-cols-12 gap-x-5">
                             <div class="col-span-12 2xl:col-span-6">
                                 <div>
-                                    <label for="update-profile-form-1" class="form-label">Sub Title</label>
-                                    <input id="update-profile-form-1" type="text" name="subtitle" class="form-control"
-                                           placeholder="Input text">
+                                    <label for="subtitle" class="form-label">Sub Title</label>
+                                    <input id="subtitle" type="text" name="subtitle" class="form-control"
+                                           placeholder="New SubTitle">
+                                </div>
+                            </div>
+                            <div class="col-span-12 2xl:col-span-6">
+                                <div>
+                                    <label for="title" class="form-label">Title</label>
+                                    <input id="title" name="title" type="text" class="form-control"
+                                           placeholder="New Title">
                                 </div>
                             </div>
                             <div class="col-span-12 2xl:col-span-6 mt-4">
                                 <div>
-                                    <label for="update-profile-form-1" class="form-label">Title</label>
-                                    <input id="update-profile-form-1" name="title" type="text" class="form-control"
-                                           placeholder="Input text">
-                                </div>
-                            </div>
-                            <div class="col-span-12 2xl:col-span-6 mt-4">
-                                <div>
-                                    <label for="update-profile-form-1" class="form-label">Href</label>
-                                    <input id="update-profile-form-1" name="href" type="text" class="form-control"
-                                           placeholder="Input text">
+                                    <label for="href" class="form-label">Href</label>
+                                    <input id="href" name="href" type="text" class="form-control"
+                                           placeholder="Redirect Link">
                                 </div>
                             </div>
                         </div>

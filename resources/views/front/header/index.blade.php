@@ -39,7 +39,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-6 col-6">
                     <div class="logo">
-                        <a href="#"><img src="assets/images/logo/logo.png" alt="logo"></a>
+                        <a href="#"><img src="{{ asset('logo-black.png') }}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
