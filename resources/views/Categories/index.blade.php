@@ -340,7 +340,8 @@
                     }
                     reader.readAsDataURL(input.files[0]);
                 }
-                ajax('image', $(this).val(), id_parent, 'PUT');
+                let files = $('.file-upload')[0].files[0]
+                ajax('image', files, id_parent, 'PUT');
             });
             $(".upload-button").on('click',function(){
                 $(this).siblings('.file-upload').click();
