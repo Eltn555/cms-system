@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -23,37 +24,26 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
-        $request->validate([
-            'title' => 'required',
-            'short_description' => 'nullable',
-            'long_description' => 'nullable',
-            'price' => 'required',
-            'category_id' => 'required',
-            'additional' => 'nullable',
-            'seo_title' => 'nullable',
-            'seo_description' => 'nullable',
-            'status' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120',
+
+        $data = $request->all();
+        $image = Storage::put('/images', $data['image']);
+
+        Product::create([
+            'title' => $data['title'],
+            'short_description' => $data['short_description'],
+            'long_description' => $data['long_description'],
+            'price' => $data['price'],
+            'discount_price' => $data['discount_price'],
+            'amount' => $data['amount'],
+            'category_id' => $data['category_id'],
+            'additional' => $data['additional'],
+            'seo_title' => $data['seo_title'],
+            'seo_description' => $data['seo_description'],
+            'status' => $data['status'],
+            'similar_products' => $data['similar_products'],
+            'additional_products' => $data['additional_products'],
+            'image' => $image,
         ]);
-//        $file = $request->file('image');
-//        $path = Storage::putFile('/images', $request->file('image'));
-
-
-//        $data = $request->all();
-//        $data['image'] = Storage::put('/images', $request['image']);
-
-        foreach ($request->image as $file) {
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $filesize = $file->getSize();
-            $file->storeAS('public/', $filename);
-            $fileModel = new  Product;
-            $fileModel->name = $filename;
-            $fileModel->size = $filesize;
-            $fileModel->location = 'storage/' . $filename;
-            $fileModel->save();
-        }
-        Product::create($request);
 
         return redirect()->route('products.index')->with('message', "This is Success Created");
     }

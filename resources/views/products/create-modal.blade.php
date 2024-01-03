@@ -28,27 +28,44 @@
                 </div> <!-- END: Modal Header --> <!-- BEGIN: Modal Body -->
                 <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
                     <div class="col-span-12">
-                        <div class="flex items-center justify-center w-full">
-                            <label for="dropzone-file"
-                                   class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                              stroke-width="2"
-                                              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                            class="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG, WEBP, JPEG or GIF
-                                        (MAX.
-                                        800x400px)</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">(MAX. SIZE 5mb)</p>
+{{--                        <div id="dropBox" class="w-52 mx-auto xl:mr-0 xl:ml-6">--}}
+{{--                            <div--}}
+{{--                                class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">--}}
+{{--                                <div id="gallery" class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">--}}
+{{--                                    <img class="rounded-md" alt="Midone - HTML Admin Template"--}}
+{{--                                         src="{{asset('dist/images/profile-10.jpg')}}" id="profile">--}}
+{{--                                    <div--}}
+{{--                                        class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">--}}
+{{--                                        <i data-lucide="x"></i>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="mx-auto cursor-pointer relative mt-5">--}}
+{{--                                    <button type="button" class="btn btn-primary w-full">Change Photo</button>--}}
+{{--                                    <input type="file" name="image" class="w-full h-full  top-0 left-0 absolute opacity-0"--}}
+{{--                                           id="imgUpload" multiple accept="image/*">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                        <div  class="mt-3">
+                            <label class="form-label">Upload Image</label>
+                            <div id="dropBox" class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
+                                <div class="flex flex-wrap px-4">
+                                    <div id="gallery" class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                                        <img class="rounded-md" alt="Midone - HTML Admin Template"
+                                             src="{{asset('dist/images/preview-5.jpg')}}">
+                                        <div title="Remove this image?"
+                                             class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                                            <i data-lucide="x" class="w-4 h-4"></i></div>
+                                    </div>
                                 </div>
-                                <input id="dropzone-file" type="file" name="image" class="hidden"/>
-                            </label>
+                                <div class="px-4 pb-4 flex items-center cursor-pointer relative">
+                                    <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload a file</span>
+                                    or drag and drop
+                                    <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0"
+                                           name="image[]" id="imgUpload" multiple accept="image/*">
+                                </div>
+                            </div>
                         </div>
-
                     </div>
 
                     <div class="col-span-12 sm:col-span-12">
@@ -89,11 +106,13 @@
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-5" class="form-label">Visible</label>
                         <div class="form-check form-switch p-0">
-                            <input id="modal-form-5" class="form-check-input" name="status" type="checkbox" value="1" checked>
+                            <input id="modal-form-5" class="form-check-input" name="status" type="checkbox" value="1"
+                                   checked>
                         </div>
                     </div>
                     <div class="col-span-12 sm:col-span-6">
-                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar products</label>
+                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar
+                            products</label>
                         <select data-placeholder="Select categories" class="tom-select w-full tomselected"
                                 id="post-form-3" name="similar_products"
                                 multiple="multiple" tabindex="-1" hidden="hidden">
@@ -104,7 +123,8 @@
                         </select>
                     </div>
                     <div class="col-span-12 sm:col-span-6">
-                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Additional products</label>
+                        <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Additional
+                            products</label>
                         <select data-placeholder="Select categories" class="tom-select w-full tomselected"
                                 id="post-form-3" name="additional_products"
                                 multiple="multiple" tabindex="-1" hidden="hidden">
@@ -116,7 +136,8 @@
                     </div>
                     <div class="col-span-12 sm:col-span-12 mt-3">
                         <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">SEO</label>
-                        <input id="modal-form-1" name="seo_title" type="text" class="form-control" placeholder="SEO Title">
+                        <input id="modal-form-1" name="seo_title" type="text" class="form-control"
+                               placeholder="SEO Title">
                     </div>
                     <div class="col-span-12 sm:col-span-12 mt-3">
                         <label for="modal-form-4" class="form-label">SEO Description</label>
@@ -150,5 +171,47 @@
                 console.error(error);
             });
         });
+        const dropBox = document.getElementById('dropBox');
+        const gallery = document.getElementById('gallery');
+
+        dropBox.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Prevent default behavior
+            dropBox.classList.add('highlight');
+        });
+
+        dropBox.addEventListener('dragleave', (e) => {
+            dropBox.classList.remove('highlight');
+        });
+
+        dropBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropBox.classList.remove('highlight');
+            filesManager(e.dataTransfer.files); // Handle dropped files
+        });
+
+        const imgUpload = document.getElementById('imgUpload');
+        imgUpload.addEventListener('change', (e) => {
+            filesManager(e.target.files); // Handle selected files
+        });
+
+        function filesManager(files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.classList.add('preview');
+                    img.src = URL.createObjectURL(file);
+                    gallery.appendChild(img);
+
+                    // Optional: Add delete button for each preview
+                    img.addEventListener('click', () => {
+                        gallery.removeChild(img);
+                        URL.revokeObjectURL(img.src);
+                    });
+                }
+            }
+        }
+
+
     </script>
 @endsection
