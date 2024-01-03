@@ -331,11 +331,13 @@
                 let id_parent = $(this).parents('.intro-x').data('action');
                 let input = this;
                 if(input.files && input.files[0]){
+                    var formData = new FormData(); // Create a FormData object
+                    formData.append('image', input.files[0]); // Append the file to FormData
+                    formData.append('_token', "{{ csrf_token() }}");
                     var reader= new FileReader();
                     reader.onload=function(e)
                     {
                         var fileurl=e.target.result;
-                        alert($(this).siblings('.profile-pic').attr('src'));
                         $('#pic'+id_parent).attr('src',fileurl);
                     }
                     reader.readAsDataURL(input.files[0]);
@@ -349,8 +351,10 @@
 
             function ajax(field, newValue, categoryId, method) {
                 // alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
+                urL = (field === 'image') ? 'upload/' : "categories/" + categoryId;
+                alert(urL);
                 $.ajax({
-                    url: "categories/" + categoryId, // Replace with your route for updating the category
+                    url: urL, // Replace with your route for updating the category
                     method: method,
                     dataType: "json",
                     encode: true,

@@ -31,15 +31,14 @@ Route::get('/category', function () { return view('front.category.index'); })->n
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
 
+Route::post('/admin/upload', 'CategoriesController@image')->name('categories.upload');
 Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function (){
         return view('dashboard.index');
     });
-    Route::post('/upload', 'CategoriesController@image')->name('categories.upload');
     // In your web.php or api.php
     Route::resource('products', ProductController::class, ['as'=>'admin']);
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
-    //Route::post('categories/update', 'CategoriesController@update')->name('categories.update');
     Route::resource('tags', TagController::class, ['as'=>'admin']);
     Route::resource('reviews', ReviewController::class, ['as'=>'admin']);
     Route::resource('sliders', SliderController::class, ['as'=>'admin']);

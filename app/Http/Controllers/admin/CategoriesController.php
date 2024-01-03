@@ -77,6 +77,12 @@ class CategoriesController extends Controller
         // return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
 
+    public function image(Request $request){
+        return[
+          'Response' => 'done',
+        ];
+    }
+
     // Show the form to edit a specific category
     public function edit($id)
     {
@@ -89,6 +95,9 @@ class CategoriesController extends Controller
     {
         $field = $request->input('field');
         $value = $request->input('value');
+        return [
+            'response' => $value,
+        ];
         $data = [
             $field => $value,
         ];
