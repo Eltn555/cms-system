@@ -60,8 +60,7 @@
                         <div class="tab-content jump">
                             <div id="shop-1" class="tab-pane active" role="tabpanel">
 
-                                <div class="row">
-
+                                <div id="product-list" class="row">
 
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
@@ -96,8 +95,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
                                              data-aos-delay="400">
@@ -346,6 +343,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="pagination-style-1 aos-init" data-aos="fade-up" data-aos-delay="200">
                                     <ul>
@@ -647,7 +645,8 @@
                },
                success: function (response) {
                    $('#main-title').html(response.title)
-                   console.log(response);
+                   $('#product-list').html(response.productsList)
+                   console.log(response.productsList);
                },
                error: function (error) {
                    console.error('Update failed:', error);

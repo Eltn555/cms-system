@@ -28,8 +28,10 @@ class CategoryControoller extends Controller
     public function search() {
         $data = request()->all();
         $category = Category::find((int)$data['id']);
+        $products = $category->products;
         $response = [
-            'title'=> $category->title
+            'title'=> $category->title,
+            'productsList'=> view('front.category.product-card', compact('products'))->render()
         ];
         return $response;
     }

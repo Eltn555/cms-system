@@ -1,11 +1,11 @@
 
-
+@foreach($products as $product)
 <div class="col-lg-4 col-md-4 col-sm-6 col-12">
     <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
          data-aos-delay="400">
         <div class="product-img img-zoom mb-25">
             <a href="product-details.html">
-                <img src="assets/images/product/product-6.png" alt="">  
+                <img src="assets/images/product/product-6.png" alt="">
             </a>
             <div class="product-action-wrap">
                 <button class="product-action-btn-1" title="Wishlist"><i
@@ -22,10 +22,11 @@
             </div>
         </div>
         <div class="product-content">
-            <h3><a href="product-details.html">Stylish Dining Chair</a></h3>
+            <h3><a href="product-details.html">{{ $product->title }}</a></h3>
             <div class="product-price">
-                <span>$50.25 </span>
+                <span>{{ $product->price }}</span>
             </div>
         </div>
     </div>
 </div>
+@endforeach
