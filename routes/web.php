@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TagController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +27,12 @@ Route::group(['prefix'=>'/'], function (){
 });
 
 
-
-Route::get('/category', function () { return view('front.category.index'); })->name('category.index');
+Route::get('/category/search',[\App\Http\Controllers\front\CategoryControoller::class,'search'])->name('front.category.search');
+Route::resource('/category',\App\Http\Controllers\front\CategoryControoller::class, ['as'=>'front']);
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
 
-Route::post('/admin/upload', 'CategoriesController@image')->name('categories.upload');
+Route::post('/admin/upload', [CategoriesController::class, 'image'])->name('categories.upload');
 Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function (){
         return view('dashboard.index');

@@ -1,5 +1,25 @@
 @extends('front.master')
 @section('content')
+
+    <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2 id="main-title" data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">{{ $category->title }}</h2>
+                <ul data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
+                    <li><a href="{{ route('front..index') }}">Home</a></li>
+                    <li><i class="ti-angle-right"></i></li>
+                    <li>Categories</li>
+                </ul>
+            </div>
+        </div>
+        <div class="breadcrumb-img-1 aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">
+            <img src="assets/images/banner/breadcrumb-1.png" alt="">
+        </div>
+        <div class="breadcrumb-img-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+            <img src="assets/images/banner/breadcrumb-2.png" alt="">
+        </div>
+    </div>
+
     <div class="shop-area shop-page-responsive pt-100 pb-100">
         <div class="container">
             <div class="row flex-row-reverse">
@@ -39,7 +59,10 @@
                     <div class="shop-bottom-area">
                         <div class="tab-content jump">
                             <div id="shop-1" class="tab-pane active" role="tabpanel">
+
                                 <div class="row">
+
+
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
                                              data-aos-delay="200">
@@ -73,6 +96,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
                                              data-aos-delay="400">
@@ -524,6 +549,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="col-lg-3">
                     <div class="sidebar-wrapper">
                         <div class="sidebar-widget mb-40 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
@@ -559,52 +587,25 @@
                         </div>
                         <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
                              data-aos="fade-up" data-aos-delay="200">
+
+                            <!-- SIDEBAR CATEGORY LIST -->
+
                             <div class="sidebar-widget-title mb-25">
                                 <h3>Product Categories</h3>
                             </div>
+
                             <div class="sidebar-list-style">
                                 <ul>
-                                    <li><a href="shop.html">Accessories <span>4</span></a></li>
-                                    <li><a href="shop.html">Book <span>9</span></a></li>
-                                    <li><a href="shop.html">Clothing <span>5</span></a></li>
-                                    <li><a href="shop.html">Homelife <span>3</span></a></li>
-                                    <li><a href="shop.html">Kids &amp; Baby <span>4</span></a></li>
-                                    <li><a href="shop.html">Stationery <span>8</span></a></li>
-                                    <li><a href="shop.html">Health &amp; Beauty <span>3</span></a></li>
-                                    <li><a href="shop.html">Home Appliances <span>4</span></a></li>
+                                    @foreach($categories as $category)
+                                        <li><a onclick="changeTitle({{$category->id}})" id="select-category-{{ $category->id }}">{{ $category->title }}<span>{{ $category->products->count() }}</span></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
+
                         </div>
-                        <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init" data-aos="fade-up"
-                             data-aos-delay="200">
-                            <div class="sidebar-widget-title mb-25">
-                                <h3>Choose Colour</h3>
-                            </div>
-                            <div class="sidebar-widget-color sidebar-list-style">
-                                <ul>
-                                    <li><a class="black" href="#">Black <span>4</span></a></li>
-                                    <li><a class="blue" href="#">Blue <span>9</span></a></li>
-                                    <li><a class="brown" href="#">Brown <span>5</span></a></li>
-                                    <li><a class="red" href="#">Red <span>3</span></a></li>
-                                    <li><a class="orange" href="#">Orange <span>4</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init" data-aos="fade-up"
-                             data-aos-delay="200">
-                            <div class="sidebar-widget-title mb-25">
-                                <h3>Size</h3>
-                            </div>
-                            <div class="sidebar-widget-size sidebar-list-style">
-                                <ul>
-                                    <li><a href="#">XL <span>4</span></a></li>
-                                    <li><a href="#">M <span>9</span></a></li>
-                                    <li><a href="#">LM <span>5</span></a></li>
-                                    <li><a href="#">L <span>3</span></a></li>
-                                    <li><a href="#">ML <span>4</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
+
+
+
                         <div class="sidebar-widget aos-init" data-aos="fade-up" data-aos-delay="200">
                             <div class="sidebar-widget-title mb-25">
                                 <h3>Tags</h3>
@@ -627,4 +628,34 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+
+   <script type="text/javascript">
+
+       // Changing Title
+
+       function changeTitle(id) {
+            console.log(id)
+           $.ajax({
+               url: '{{ route('front.category.search') }}',
+               method: 'GET',
+               encode: true,
+               data: {
+                   id: id,
+               },
+               success: function (response) {
+                   $('#main-title').html(response.title)
+                   console.log(response);
+               },
+               error: function (error) {
+                   console.error('Update failed:', error);
+               }
+           });
+
+       }
+
+   </script>
+
 @endsection

@@ -28,4 +28,9 @@ class Category extends Model
     public function images() {
         return $this->belongsToMany(Image::class, 'category_images', 'category_id', 'image_id');
     }
+
+    public function products() {
+        return $this->hasMany(Product::class,'category_id', 'id');
+    }
+
 }

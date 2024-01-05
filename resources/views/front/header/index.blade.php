@@ -49,7 +49,7 @@
                                 <li>
                                     <a href="/">HOME</a>
                                 </li>
-                                <li><a href="{{route('category.index')}}">SHOP</a>
+                                <li><a href="{{route('front.category.index')}}">SHOP</a>
                                     <ul class="mega-menu-style mega-menu-mrg-1">
                                         <li>
                                             <ul>
