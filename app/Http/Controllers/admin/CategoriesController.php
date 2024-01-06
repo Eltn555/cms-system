@@ -17,11 +17,6 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::orderBy('order_id', 'asc')->get();
-//        foreach ($categories as $category) {
-//            dump($category);
-//            dump($category->images);
-//        }
-        //dd();
         return view('categories.index', compact('categories'));
     }
 
@@ -52,29 +47,38 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $images = $data['images'];
+        $icon = $data['icon'];
+        $background = $data['background'];
         unset($data['images']);
+        unset($data['icon']);
+        unset($data['background']);
         if ($data['order_id'] == null){
             unset($data['order_id']);
         }
 
+        $name = Storage::put('images', $icon);
+        $icon = Image::create([
+            'image' => $name,
+            'alt' => "icon " . $data['title'],
+        ]);
+        $name2 = Storage::put('images', $background);
+        $background = Image::create([
+            'image' => $name2,
+            'alt' => "background " . $data['title'],
+        ]);
+
         array_key_exists('is_active', $data) ? $data['is_active'] = 1 : $data['is_active'] = 0;
 
         $created = Category::create($data);
-
-        foreach ($images as $key => $image){
-            $name = Storage::put('public/storage', $image);
-            $img = Image::create([
-                'image'=> $name,
-                'alt' =>$data['title'] . $key+1
-            ]);
-            CategoryImage::create([
-                'category_id'=> $created->id,
-                'image_id' => $img->id
-            ]);
-        }
-        return 'sample created';
-        // return redirect()->route('categories.index')->with('success', 'Category created successfully');
+        CategoryImage::create([
+            'category_id' => $created->id,
+            'image_id' => $icon->id
+        ]);
+        CategoryImage::create([
+            'category_id' => $created->id,
+            'image_id' => $background->id
+        ]);
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully');
     }
 
     public function image(Request $request){

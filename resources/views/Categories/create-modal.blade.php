@@ -27,18 +27,35 @@
                 </div>
             </div> <!-- END: Modal Header --> <!-- BEGIN: Modal Body -->
             <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-
-                <div class="col-span-12 p-2">
-                    <div id="drop-area" class="w-full">
-                        <div class="my-form">
-                            <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
-                            <input name="images[]" type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
-                            <label class="button" for="fileElem">Select some files</label>
+                <div class="col-span-12 p-2 flex items-center">
+                    <label for="icon" class="form-label font-bold font">Icon</label>
+                        <div class="avatar-wrapper w-24 h-24 image-fit zoom-in tooltip" title="Click to upload">
+                            <img id="" class="img_category profile-pic w-24 h-24" alt="" src="{{asset('no_photo.jpg')}}"/>
+                            <div class="upload-button flex items-center justify-center">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="border-radius: 15%; transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-20 h-20 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                            </div>
+                            <input id="icon" name="icon" class="file-upload" type="file" accept="image/*" data-selectable="create"/>
                         </div>
-                        <progress id="progress-bar" max=100 value=0></progress>
-                        <div id="gallery" class="mt-1 flex overflow-x-auto"></div>
-                    </div>
+                    <label for="background" class="form-label font-bold font ml-8">Background</label>
+                        <div class="avatar-wrapper w-24 h-24 image-fit zoom-in tooltip" title="Click to upload">
+                            <img id="" class="img_category profile-pic w-24 h-24" alt="" src="{{asset('no_photo.jpg')}}"/>
+                            <div class="upload-button flex items-center justify-center">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="border-radius: 15%; transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-20 h-20 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                            </div>
+                            <input id="background" name="background" class="file-upload" type="file" accept="image/*" data-selectable="create"/>
+                        </div>
                 </div>
+{{--                <div class="col-span-12 p-2">--}}
+{{--                    <div id="drop-area" class="w-full">--}}
+{{--                        <div class="my-form">--}}
+{{--                            <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>--}}
+{{--                            <input name="images[]" type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">--}}
+{{--                            <label class="button" for="fileElem">Select some files</label>--}}
+{{--                        </div>--}}
+{{--                        <progress id="progress-bar" max=100 value=0></progress>--}}
+{{--                        <div id="gallery" class="mt-1 flex overflow-x-auto"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 {{--                    <form data-single="true" action="/file-upload" class="dropzone">--}}
 {{--                        <div class="fallback">--}}
 {{--                            <input name="image" type="file" id="files" name="files" accept=".png, .jpg, .jpeg, .webp, .gif" multiple>--}}
@@ -59,7 +76,7 @@
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-2" class="form-label">Parent category</label>
                     <div class="w-full xl:mt-0 flex-1">
-                        <select name="parent_category_id" class="form-select edition" data-field="parent_category_id">
+                        <select id="modal-form-2" name="parent_category_id" class="form-select" data-field="parent_category_id">
                             @foreach($categories as $lilcat)
                                     <option value="{{$lilcat->id}}">{{$lilcat->title}}</option>
                             @endforeach
@@ -68,8 +85,8 @@
                     </div>
                 </div>
                 <div class="col-span-12">
-                    <label for="modal-form-3" class="form-label">Description</label>
-                   <textarea name="description" id="editorfield"></textarea>
+                    <label for="modal-form-8" class="form-label">Description</label>
+                   <textarea name="description" class="form-control" id="modal-form-8"></textarea>
                 </div>
                 <div class="col-span-12 sm:col-span-12">
                     <label for="modal-form-1" class="form-label">SEO title</label>

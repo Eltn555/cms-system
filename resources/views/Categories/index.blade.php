@@ -48,7 +48,7 @@
             position: relative;
             /*margin: 20px auto;*/
             /*margin: -100px auto 20px auto;*/
-            border-radius: 50%;
+            border-radius: 15%;
             overflow: hidden;
             /*box-shadow: 1px 1px 15px -5px black;*/
             box-shadow: none;
@@ -151,8 +151,8 @@
                         <th class="whitespace-nowrap">Icon</th>
                         <th class="whitespace-nowrap">Background</th>
                         <th class="whitespace-nowrap">Category name</th>
-                        <th class="whitespace-nowrap">Parent Category</th>
                         <th class="text-center whitespace-nowrap">Description</th>
+                        <th class="whitespace-nowrap">Parent Category</th>
                         <th class="whitespace-nowrap">Order</th>
                         <th class="text-center whitespace-nowrap">Status</th>
                         <th class="text-center whitespace-nowrap">SEO_title</th>
@@ -201,7 +201,10 @@
                         <td class="editable" data-field="title" data-action="read" data-selectable="text">
                             <a href="#" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
                         </td>
-                        <td>
+                            <td class="editable tooltip" data-field="description" data-action="read" data-selectable="text" title="{{ $category->description }}">
+                                <div class="text-center overflow-hidden whitespace-nowrap" style="max-width: 400px;">{{ $category->description }}</div>
+                            </td>
+                            <td>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
                                 <select class="form-select edition" data-field="parent_category_id">
                                     @foreach($categories as $lilcat)
@@ -213,9 +216,6 @@
                                 </select>
                             </div>
                         </td>
-                            <td class="editable tooltip" data-field="description" data-action="read" data-selectable="text" title="{{ $category->description }}">
-                                <div class="text-center overflow-hidden whitespace-nowrap" style="max-width: 400px;">{{ $category->description }}</div>
-                            </td>
                         <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="">{{$category->order_id}}</div>
                         </td>
@@ -345,22 +345,33 @@
             });
 
             //update image
-            $(".file-upload").on('change',function(){
-                let id_parent = $(this).parents('.intro-x').data('action');
+            $(".file-upload").on('change', function() {
                 let input = this;
                 let form = $(this).parents('form');
-                var formData = new FormData(form[0]);
-                if(input.files && input.files[0]){
-                    var reader= new FileReader();
-                    reader.onload=function(e)
-                    {
-                        var fileurl=e.target.result;
-                        $(input).closest('.avatar-wrapper').find('.img_category').attr('src', fileurl);
+                let formData = new FormData(form[0]);
+                let id_parent = $(this).parents('.intro-x').data('action');
+
+                // Function to handle file preview
+                function previewFile() {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            var fileurl = e.target.result;
+                            $(input).closest('.avatar-wrapper').find('.img_category').attr('src', fileurl);
+                        }
+                        reader.readAsDataURL(input.files[0]);
                     }
-                    reader.readAsDataURL(input.files[0]);
                 }
-                ajax('image', formData, id_parent, 'POST');
+
+                // Preview the file
+                previewFile();
+
+                // Handle the 'create' case separately
+                if ($(this).data('selectable') !== 'create') {
+                    ajax('image', formData, id_parent, 'POST');
+                }
             });
+
             $(".upload-button").on('click',function(){
                 $(this).siblings('.file-upload').click();
             });
