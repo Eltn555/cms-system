@@ -28,24 +28,6 @@
                 </div> <!-- END: Modal Header --> <!-- BEGIN: Modal Body -->
                 <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
                     <div class="col-span-12">
-{{--                        <div id="dropBox" class="w-52 mx-auto xl:mr-0 xl:ml-6">--}}
-{{--                            <div--}}
-{{--                                class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">--}}
-{{--                                <div id="gallery" class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">--}}
-{{--                                    <img class="rounded-md" alt="Midone - HTML Admin Template"--}}
-{{--                                         src="{{asset('dist/images/profile-10.jpg')}}" id="profile">--}}
-{{--                                    <div--}}
-{{--                                        class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">--}}
-{{--                                        <i data-lucide="x"></i>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="mx-auto cursor-pointer relative mt-5">--}}
-{{--                                    <button type="button" class="btn btn-primary w-full">Change Photo</button>--}}
-{{--                                    <input type="file" name="image" class="w-full h-full  top-0 left-0 absolute opacity-0"--}}
-{{--                                           id="imgUpload" multiple accept="image/*">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <div  class="mt-3">
                             <label class="form-label">Upload Image</label>
                             <div id="dropBox" class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">

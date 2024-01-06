@@ -71,18 +71,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">PAGES</a>
-                                    <ul class="sub-menu-style">
-                                        <li><a href="about-us.html">about us </a></li>
-                                        <li><a href="cart.html">cart page</a></li>
-                                        <li><a href="checkout.html">checkout </a></li>
-                                        <li><a href="my-account.html">my account</a></li>
-                                        <li><a href="wishlist.html">wishlist </a></li>
-                                        <li><a href="compare.html">compare </a></li>
-                                        <li><a href="contact-us.html">contact us </a></li>
-                                        <li><a href="login-register.html">login / register </a></li>
-                                    </ul>
-                                </li>
                                 <li>
                                     <a href="{{route('blog.index')}}">BLOG</a>
                                 </li>
