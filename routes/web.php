@@ -32,12 +32,12 @@ Route::resource('/category',\App\Http\Controllers\front\CategoryControoller::cla
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
 
-Route::post('/admin/upload', [CategoriesController::class, 'image'])->name('categories.upload');
 Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function (){
         return view('dashboard.index');
     });
     // In your web.php or api.php
+    Route::post('/upload', [CategoriesController::class, 'image'])->name('categories.upload');
     Route::resource('products', ProductController::class, ['as'=>'admin']);
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
     Route::resource('tags', TagController::class, ['as'=>'admin']);

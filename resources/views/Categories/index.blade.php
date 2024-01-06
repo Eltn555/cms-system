@@ -2,7 +2,7 @@
     <style>
         .editable, .editabledesc{
             min-width: 10px;
-            max-width: 150px;
+            max-width: 200px;
             overflow: hidden;
         }
         #drop-area {
@@ -148,7 +148,8 @@
                 <table class="table table-report -mt-2">
                     <thead>
                     <tr>
-                        <th class="whitespace-nowrap">Image</th>
+                        <th class="whitespace-nowrap">Icon</th>
+                        <th class="whitespace-nowrap">Background</th>
                         <th class="whitespace-nowrap">Category name</th>
                         <th class="whitespace-nowrap">Parent Category</th>
                         <th class="text-center whitespace-nowrap">Description</th>
@@ -161,26 +162,41 @@
                     </thead>
                     <tbody>
                     @foreach($categories as $category)
-
+                        @php
+                            if(!$category->images->isEmpty()){
+                                $background = $icon = null;
+                                foreach ($category->images as $image) {
+                                    $background = $background ?: (strpos($image->alt, 'background') !== false ? $image : null);
+                                    $icon = $icon ?: (strpos($image->alt, 'icon') !== false ? $image : null);
+                                }
+                            }
+                        @endphp
                         <tr id="{{$category->id}}" class="intro-x" data-action="{{$category->id}}" style="order: {{$category->order_id}}" >
-                            <td class="py-0.5">
-                                @if(!$category->images->isEmpty())
-                                    <div class="avatar-wrapper w-16 h-16 image-fit zoom-in tooltip" title="Updated at {{$category->images[0]->updated_at}}">
-                                        <img id="pic{{$category->id}}" class="profile-pic w-10 h-10" alt="{{$category->images[0]->alt}}" src="{{asset($category->images[0]->image)}}"/>
+                            <td class="py-0.5 w-20">
+                                <form id="" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="avatar-wrapper w-16 h-16 image-fit zoom-in tooltip" title="{{($icon == null) ? 'Click to upload' : "Updated at ".$icon->updated_at}}">
+                                        <img id="" class="img_category profile-pic w-10 h-10" alt="{{($icon == null) ? '' : $icon->alt}}" src="{{asset(($icon == null) ? 'no_photo.jpg' : "storage/".$icon->image)}}"/>
                                         <div class="upload-button flex items-center justify-center">
                                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-12 h-12 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                         </div>
-                                        <input class="file-upload" type="file" accept="image/*"/>
+                                        <input name="icon" class="file-upload" type="file" accept="image/*"/>
+                                        <input name="id" class="hidden" value="{{$category->id}}"/>
                                     </div>
-                                @else
-                                    <div class="avatar-wrapper w-16 h-16 image-fit zoom-in tooltip" title="Click to upload">
-                                        <img id="pic{{$category->id}}" class="profile-pic w-10 h-10" alt="" src="{{asset("no_photo.jpg")}}" />
+                                </form>
+                            </td>
+                            <td class="py-0.5 w-20">
+                                <form id="" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="avatar-wrapper w-16 h-16 image-fit zoom-in tooltip" title="{{($background == null) ? 'Click to upload' : "Updated at ".$background->updated_at}}">
+                                        <img id="" class="img_category profile-pic w-10 h-10" alt="{{($background == null) ? '' : $background->alt}}" src="{{asset(($background == null) ? 'no_photo.jpg' : "storage/".$background->image)}}"/>
                                         <div class="upload-button flex items-center justify-center">
                                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-12 h-12 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                         </div>
-                                        <input class="file-upload" type="file" accept="image/*"/>
+                                        <input name="background" class="file-upload" type="file" accept="image/*"/>
+                                        <input name="id" class="hidden" value="{{$category->id}}"/>
                                     </div>
-                                @endif
+                                </form>
                             </td>
                         <td class="editable" data-field="title" data-action="read" data-selectable="text">
                             <a href="#" class="font-medium whitespace-nowrap">{{ $category->title }}</a>
@@ -198,7 +214,7 @@
                             </div>
                         </td>
                             <td class="editable tooltip" data-field="description" data-action="read" data-selectable="text" title="{{ $category->description }}">
-                                <div class="text-center overflow-hidden" style="max-width: 400px;">{{ $category->description }}</div>
+                                <div class="text-center overflow-hidden whitespace-nowrap" style="max-width: 400px;">{{ $category->description }}</div>
                             </td>
                         <td class="editable text-center" data-field="order_id" data-action="read" data-selectable="number">
                             <div class="">{{$category->order_id}}</div>
@@ -214,13 +230,15 @@
                             <td class="editable text-center tooltip" title="{{$category->seo_description}}" data-field="seo_description" data-action="read" data-selectable="text">
                                 <div class="text-center font-medium whitespace-nowrap">{{$category->seo_description}}</div>
                             </td>
-                        <td class="table-report__action w-56">
+                        <td class="table-report__action w-20 ">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3 updateMore" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                                 <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>
+                        @php
+                            $background = $icon = null;
+                        @endphp
                     @endforeach
                     </tbody>
                 </table>
@@ -330,40 +348,40 @@
             $(".file-upload").on('change',function(){
                 let id_parent = $(this).parents('.intro-x').data('action');
                 let input = this;
+                let form = $(this).parents('form');
+                var formData = new FormData(form[0]);
                 if(input.files && input.files[0]){
-                    var formData = new FormData(); // Create a FormData object
-                    formData.append('image', input.files[0]); // Append the file to FormData
-                    formData.append('_token', "{{ csrf_token() }}");
                     var reader= new FileReader();
                     reader.onload=function(e)
                     {
                         var fileurl=e.target.result;
-                        $('#pic'+id_parent).attr('src',fileurl);
+                        $(input).closest('.avatar-wrapper').find('.img_category').attr('src', fileurl);
                     }
                     reader.readAsDataURL(input.files[0]);
                 }
-                let files = $('.file-upload')[0].files[0]
-                ajax('image', files, id_parent, 'PUT');
+                ajax('image', formData, id_parent, 'POST');
             });
             $(".upload-button").on('click',function(){
                 $(this).siblings('.file-upload').click();
             });
 
             function ajax(field, newValue, categoryId, method) {
-                // alert('field:'+field+"\n value:"+newValue+"\n ID:"+categoryId);
-                urL = (field === 'image') ? 'upload/' : "categories/" + categoryId;
-                alert(urL);
+                const apiUrl = field === 'image' ? '{{ route('categories.upload') }}' : 'categories/' + categoryId;
+                const requestData = field === 'image' ? newValue : {
+                    field,
+                    value: newValue,
+                    categoryId,
+                    _token: "{{ csrf_token() }}"
+                };
+
                 $.ajax({
-                    url: urL, // Replace with your route for updating the category
-                    method: method,
+                    url: apiUrl,
+                    type: method,
                     dataType: "json",
                     encode: true,
-                    data: {
-                        field: field,
-                        value: newValue,
-                        categoryId: categoryId,
-                        _token: "{{ csrf_token() }}"
-                    },
+                    processData: field === 'image' ? false : true,
+                    contentType: field === 'image' ? false : 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: requestData,
                     success: function (response) {
                         $("#message").fadeIn(500).fadeOut(2000);
                         console.log(response);

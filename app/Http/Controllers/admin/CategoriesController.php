@@ -17,10 +17,10 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::orderBy('order_id', 'asc')->get();
-        foreach ($categories as $category) {
-            dump($category);
-            dump($category->images);
-        }
+//        foreach ($categories as $category) {
+//            dump($category);
+//            dump($category->images);
+//        }
         //dd();
         return view('categories.index', compact('categories'));
     }
@@ -78,9 +78,29 @@ class CategoriesController extends Controller
     }
 
     public function image(Request $request){
-        return[
-          'Response' => 'done',
-        ];
+            $placeImg = $request->has('icon') ? 'icon' : 'background';
+            $value = $request->file($placeImg);
+
+            $category = Category::findOrFail($request->input('id'));
+
+            $existingImage = $category->images->first(fn($image) => strpos($image->alt, $placeImg) !== false);
+            if ($existingImage) {
+                $existingImage->delete();
+            }
+
+            $name = Storage::put('images', $value);
+            $img = Image::create([
+                'image' => $name,
+                'alt' => $placeImg . " " . $category->title,
+            ]);
+            CategoryImage::create([
+                'category_id' => $category->id,
+                'image_id' => $img->id
+            ]);
+
+            return [
+                'Response' => 'Image uploaded successfully.',
+            ];
     }
 
     // Show the form to edit a specific category
@@ -95,9 +115,7 @@ class CategoriesController extends Controller
     {
         $field = $request->input('field');
         $value = $request->input('value');
-        return [
-            'response' => $value,
-        ];
+
         $data = [
             $field => $value,
         ];
