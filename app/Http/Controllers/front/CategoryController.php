@@ -15,14 +15,9 @@ class CategoryController extends Controller
         return view('front.category.index', compact('category', 'categories'));
     }
 
-    public function show($id) {
-        $category = Category::find($id);
-
-        dump($category);
-
-        Dump($category->products);
-        Dump($category->products[0]->images);
-
+    public function show(Category $category) {
+        $categories = Category::all();
+        return view('front.category.index', compact('category', 'categories'));
     }
 
     public function search() {
