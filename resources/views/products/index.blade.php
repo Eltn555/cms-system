@@ -59,7 +59,7 @@
                     <tr class="intro-x">
                         <td class="w-40">
                             <div class="flex">
-                                @if($product->images()->count() !== 0 )
+                                @if(0 !== 0 )
                                 @for($i = 0; $i < 3; $i++)
                                 <div class="w-10 h-10 image-fit zoom-in">
                                     <img alt="" class="tooltip rounded-full" src="{{ $product->images()[$i]->image }}">
@@ -71,13 +71,19 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{ $product->title }}</a>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center w-40">
                             {{ $product->short_description }}
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->long_description }}</div>
                         </td>
                         <td class="text-center">{{ $product->price }}</td>
-                        <td class="text-center">{{ $product->category()[0]->title }}</td>
+                        <td class="text-center"> {{ $product->category->title ?? '' }}</td>
                         <td class="text-center">{{ $product->rate }}</td>
+                        <td class="text-center">
+                            <div class="flex items-center">
+                                <div class="flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="star" data-lucide="star" class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="star" data-lucide="star" class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="star" data-lucide="star" class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="star" data-lucide="star" class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="star" data-lucide="star" class="lucide lucide-star text-slate-400 fill-slate/30 w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> </div>
+                                <div class="text-xs text-slate-500 ml-1">(4.5+)</div>
+                            </div>
+                        </td>
                         <td class="w-40">
                             <div class="flex items-center justify-center text-danger"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="check-square" data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg> Inactive </div>
                         </td>
