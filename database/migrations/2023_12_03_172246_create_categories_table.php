@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->string('slug')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

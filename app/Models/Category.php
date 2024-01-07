@@ -20,6 +20,7 @@ class Category extends Model
         'image',
         'seo_title',
         'seo_description',
+        'slug',
         'is_active',
     ];
 

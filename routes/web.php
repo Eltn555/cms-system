@@ -27,8 +27,8 @@ Route::group(['prefix'=>'/'], function (){
 });
 
 
-Route::get('/category/search',[\App\Http\Controllers\front\CategoryControoller::class,'search'])->name('front.category.search');
-Route::resource('/category',\App\Http\Controllers\front\CategoryControoller::class, ['as'=>'front']);
+Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
+Route::resource('/category',\App\Http\Controllers\front\CategoryController::class, ['as'=>'front']);
 Route::resource('/wishlist',\App\Http\Controllers\front\WishlistController::class, ['as'=>'front']);
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');

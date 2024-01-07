@@ -29,6 +29,7 @@ return new class extends Migration
             $table->unsignedBigInteger('status')->nullable();
             $table->unsignedBigInteger('similar_products')->nullable();//tags
             $table->unsignedBigInteger('additional_products')->nullable();//tags
+            $table->string('slug');
             $table->softDeletes();
             $table->timestamps();
         });
