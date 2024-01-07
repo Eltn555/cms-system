@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(){
         $sliders = Slider::all();
         $slider = Slider::all()[$sliders->count()-1];
-        $categories = Category::all();
+        $categories = Category::with('images')->get();
         return view('front.home.index', compact('slider', 'categories'));
     }
 }

@@ -5,41 +5,7 @@
             max-width: 200px;
             overflow: hidden;
         }
-        #drop-area {
-            border: 2px dashed #ccc;
-            border-radius: 20px;
-            padding: 20px;
-        }
-        #drop-area.highlight {
-            border-color: purple;
-        }
-        p {
-            margin-top: 0;
-        }
-        .my-form {
-            margin-bottom: 10px;
-        }
-        #gallery img {
-            border-radius: 20px;
-            width: 100px;
-            margin-bottom: 10px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px;
-            background: #ccc;
-            cursor: pointer;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .button:hover {
-            background: #ddd;
-        }
-        #fileElem {
-            display: none;
-        }
+
         table td{
             padding-top: 5px !important;
             padding-bottom: 5px !important;
@@ -180,7 +146,7 @@
                                         <div class="upload-button flex items-center justify-center">
                                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-12 h-12 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                         </div>
-                                        <input name="icon" class="file-upload" type="file" accept="image/*"/>
+                                        <input name="icon" class="file-upload hidden" type="file" accept="image/*"/>
                                         <input name="id" class="hidden" value="{{$category->id}}"/>
                                     </div>
                                 </form>
@@ -193,7 +159,7 @@
                                         <div class="upload-button flex items-center justify-center">
                                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-12 h-12 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                         </div>
-                                        <input name="background" class="file-upload" type="file" accept="image/*"/>
+                                        <input name="background" class="file-upload hidden" type="file" accept="image/*"/>
                                         <input name="id" class="hidden" value="{{$category->id}}"/>
                                     </div>
                                 </form>
@@ -403,109 +369,5 @@
                 });
             }
         });
-
-        // ************************ Drag and drop ***************** //
-        let dropArea = document.getElementById("drop-area")
-
-// Prevent default drag behaviors
-        ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, preventDefaults, false)
-            document.body.addEventListener(eventName, preventDefaults, false)
-        })
-
-// Highlight drop area when item is dragged over it
-        ;['dragenter', 'dragover'].forEach(eventName => {
-            dropArea.addEventListener(eventName, highlight, false)
-        })
-
-        ;['dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, unhighlight, false)
-        })
-
-        // Handle dropped files
-        dropArea.addEventListener('drop', handleDrop, false)
-
-        function preventDefaults (e) {
-            e.preventDefault()
-            e.stopPropagation()
-        }
-
-        function highlight(e) {
-            dropArea.classList.add('highlight')
-        }
-
-        function unhighlight(e) {
-            dropArea.classList.remove('active')
-        }
-
-        function handleDrop(e) {
-            var dt = e.dataTransfer
-            var files = dt.files
-
-            handleFiles(files)
-        }
-
-        let uploadProgress = []
-        let progressBar = document.getElementById('progress-bar')
-
-        function initializeProgress(numFiles) {
-            progressBar.value = 0
-            uploadProgress = []
-
-            for(let i = numFiles; i > 0; i--) {
-                uploadProgress.push(0)
-            }
-        }
-
-        function updateProgress(fileNumber, percent) {
-            uploadProgress[fileNumber] = percent
-            let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
-            progressBar.value = total
-        }
-
-        function handleFiles(files) {
-            files = [...files]
-            initializeProgress(files.length)
-            files.forEach(uploadFile)
-            files.forEach(previewFile)
-        }
-
-        function previewFile(file) {
-            let reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onloadend = function() {
-                let img = document.createElement('img')
-                img.src = reader.result
-                document.getElementById('gallery').appendChild(img)
-            }
-        }
-
-        function uploadFile(file, i) {
-            var url = 'upload'
-            var xhr = new XMLHttpRequest();
-            var formData = new FormData();
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
-            // Include CSRF token, required by Laravel for POST requests
-            // var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            // xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
-
-
-            xhr.addEventListener('readystatechange', function(e) {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    updateProgress(i, 100) // <- Add this
-                    // var response = JSON.parse(xhr.responseText);
-                    // alert(response);
-                }
-                else if (xhr.readyState == 4 && xhr.status != 200) {
-                    // Error. Inform the user
-                }
-            })
-
-            // formData.append('upload_preset', 'ujpu6gyk')
-            formData.append('file', file)
-            xhr.send(formData)
-        }
     </script>
 @endsection

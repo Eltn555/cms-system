@@ -68,18 +68,18 @@
         </div>
 
 
-        <div class="category-area category-area-position">
+        <div class="category-area category-area-position pb-3" style="bottom: 0px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(0255,255,255,0.5), rgba(255,255,255,0.7));">
             <div class="container">
                 <div class="category-slider-active-2 swiper-container">
                     <div class="swiper-wrapper">
-
                         @foreach($categories as $category)
                             <div class="swiper-slide">
                                 <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="category-img-2">
+                                    <div class="category-img-2 overflow-hidden">
                                         <a href="#">
-                                            <img class="category-normal-img" src="{{ asset($category->image ?? '') }}"
-                                                 alt="">
+                                            @foreach($category->images as $image)
+                                                {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 90%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}
+                                            @endforeach
                                         </a>
                                     </div>
                                     <div class="category-content-2">
@@ -87,30 +87,12 @@
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
-
-                        <div class="swiper-slide">
-                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="400">
-                                <div class="category-img-2">
-                                    <a href="shop.html">
-                                        <img class="category-normal-img" src="assets/images/category/category-7.png"
-                                             alt="">
-                                        <img class="category-hover-img"
-                                             src="assets/images/category/category-hover-7.png" alt="icon">
-                                    </a>
-                                </div>
-                                <div class="category-content-2">
-                                    <h4><a href="shop.html">Office Cabin</a></h4>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="product-area pb-95 mt-4">
         <div class="container">
