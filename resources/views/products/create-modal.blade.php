@@ -76,7 +76,7 @@
                     </div>
                     <div class="col-span-12 sm:col-span-6">
                         <label for="modal-form-6" class="form-label"><b class="text-">* </b>Category</label>
-                        <select id="modal-form-6" class="form-select">
+                        <select id="modal-form-6" name="category_id" class="form-select">
                             <option value="" disabled selected>Not selected</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">
@@ -95,13 +95,12 @@
                     <div class="col-span-12 sm:col-span-6">
                         <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar
                             products</label>
-                        <select data-placeholder="Select categories" class="tom-select w-full tomselected"
-                                id="post-form-3" name="similar_products"
+                        <select data-placeholder="Select tags" class="tom-select w-full tomselected"
+                                id="post-form-3" name="tags[]"
                                 multiple="multiple" tabindex="-1" hidden="hidden">
-                            <option value="1" selected="true">Horror</option>
-                            <option value="3" selected="true">Action</option>
-                            <option value="5" selected="true">Comedy</option>
-                            <option value="4" selected="true">Drama</option>
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-span-12 sm:col-span-6">

@@ -8,57 +8,6 @@
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#new-order-modal"
                class="btn btn-primary shadow-md mr-2">New Order</a>
-            <div class="pos-dropdown dropdown ml-auto sm:ml-0" style="position: relative;">
-                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                 width="24" height="24"
-                                                                                 viewBox="0 0 24 24" fill="none"
-                                                                                 stroke="currentColor" stroke-width="2"
-                                                                                 stroke-linecap="round"
-                                                                                 stroke-linejoin="round"
-                                                                                 icon-name="chevron-down"
-                                                                                 class="lucide lucide-chevron-down w-4 h-4"
-                                                                                 data-lucide="chevron-down"><polyline
-                                points="6 9 12 15 18 9"></polyline></svg> </span>
-                </button>
-                <div class="pos-dropdown__dropdown-menu dropdown-menu" id="_7juwrhmgc"
-                     data-popper-placement="bottom-end"
-                     style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 37.6px, 0px);">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="activity" data-lucide="activity"
-                                     class="lucide lucide-activity w-4 h-4 mr-2">
-                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                </svg>
-                                <span class="truncate">INV-0206020 - Angelina Jolie</span> </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="activity" data-lucide="activity"
-                                     class="lucide lucide-activity w-4 h-4 mr-2">
-                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                </svg>
-                                <span class="truncate">INV-0206022 - Al Pacino</span> </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="activity" data-lucide="activity"
-                                     class="lucide lucide-activity w-4 h-4 mr-2">
-                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                </svg>
-                                <span class="truncate">INV-0206021 - Johnny Depp</span> </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
     <div class="intro-y grid grid-cols-12 gap-5 mt-5">
@@ -85,46 +34,51 @@
                     <option>Highest Price</option>
                 </select>
             </div>
-            <div class="grid grid-cols-12 gap-5 mt-5">
-                <ul class="" role="tablist">
+
+            <ul class="nav nav-tabs grid grid-cols-12 gap-5 mt-5" role="tablist">
                 @foreach($tags as $key => $tag)
-                        <li id="tag-id{{ $tag->id }}-tab" class="nav-item flex-1" role="presentation">
-                <button class="col-span-12 sm:col-span-4 2xl:col-span-3 box p-5 cursor-pointer zoom-in" data-tw-toggle="pill" data-tw-target="#tag-id{{ $tag->id }}"
-                     type="button" role="tab" aria-controls="tag-id{{ $tag->id }}" aria-selected="{{ $key === 0 ? 'true' : 'false' }}">
-                    <div class="font-medium text-base">{{ $tag->title }}</div>
-                    <div class="text-slate-500">5 Items</div>
-                </button>
-                        </li>
+                <li id="example-{{ $tag->id }}-tab" class="col-span-12 sm:col-span-4 2xl:col-span-3 box p-5 cursor-pointer zoom-in" role="presentation">
+                    <button class="{{ $key === 0 ? 'active' : '' }}" data-tw-toggle="pill" data-tw-target="#example-tab-{{ $tag->id }}"
+                            type="button" role="tab" aria-controls="example-tab-{{ $tag->id }}" aria-selected="{{ $key === 0 ?'true' : '' }}">
+                        <div class="font-medium text-base">{{ $tag->title }}</div>
+                        <div class="text-opacity-80 dark:text-slate-500">8 Items
+                        </div>
+                    </button>
+                </li>
                 @endforeach
-                </ul>
-                <div class="col-span-12 sm:col-span-4 2xl:col-span-3 box bg-primary p-5 cursor-pointer zoom-in">
-                    <div class="font-medium text-base text-white">Pancake &amp; Toast</div>
-                    <div class="text-white text-opacity-80 dark:text-slate-500">8 Items</div>
+            </ul>
+            <div class="tab-content border-l border-r border-b">
+                @foreach($tags as $key => $tag)
+                <div id="example-tab-{{ $tag->id }}" class="tab-pane leading-relaxed p-5 {{ $key === 0 ? 'active' : 'false' }}" role="tabpanel"
+                     aria-labelledby="example-{{ $tag->id }}-tab">
+                        {{ $tag->title }}
+                        {{ $tag->title }}
+                        {{ $tag->title }}
+                        {{ $tag->title }}
+                    Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                    unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
+                    not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                    Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+                    versions of Lorem Ipsum.
                 </div>
+                @endforeach
+            </div>
 
 
+            <div class="grid grid-cols-12 gap-5 mt-5">
+                @foreach($tags as $key => $tag)
+                    <button
+                        class="col-span-12 sm:col-span-4 2xl:col-span-3 box {{ $key === 0 ? 'bg-primary' : '' }} p-5 cursor-pointer zoom-in">
+                        <div class="font-medium text-base {{ $key === 0 ? 'text-white' : '' }}">{{ $tag->title }}</div>
+                        <div class="{{ $key === 0 ? 'text-white' : '' }} text-opacity-80 dark:text-slate-500">8 Items
+                        </div>
+                    </button>
+                @endforeach
             </div>
-            <div class="tab-content mt-5">
-            @foreach($tags as $key => $tag)
-                <div class="grid grid-cols-12 gap-5 mt-5 pt-5 border-t" id="tag-id{{ $tag->id }}" role="tabpanel"
-                     aria-labelledby="tag-id{{ $tag->id }}">
-                    @for($i = 0; $i <= $key; $i++)
-                        <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal"
-                           class="intro-y block col-span-12 sm:col-span-4 2xl:col-span-3">
-                            <div class="box rounded-md p-3 relative zoom-in">
-                                <div class="flex-none relative block before:block before:w-full before:pt-[100%]">
-                                    <div class="absolute top-0 left-0 w-full h-full image-fit">
-                                        <img alt="Midone - HTML Admin Template" class="rounded-md"
-                                             src="dist/images/food-beverage-2.jpg">
-                                    </div>
-                                </div>
-                                <div class="block font-medium text-center truncate mt-3">Milkshake</div>
-                            </div>
-                        </a>
-                    @endfor
-                </div>
-            @endforeach
-            </div>
+
+            {{-- !!!!!! --}}
             <div class="grid grid-cols-12 gap-5 mt-5 pt-5 border-t">
 
                 <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#add-item-modal"
@@ -213,6 +167,7 @@
                 </a>
 
             </div>
+            {{-- !!!!!! --}}
         </div>
         <!-- END: Item List -->
         <!-- BEGIN: Add Item Modal -->
@@ -256,10 +211,6 @@
             </div>
         </div>
         <!-- END: Add Item Modal -->
-
-
-
-
 
 
         <div class="">
