@@ -17,11 +17,7 @@ class CategoryController extends Controller
 
     public function show(Category $category) {
         $categories = Category::all();
-        $background = $icon = null;
-        foreach ($category->images as $image){
-            strpos($image->alt, 'icon') !== false ? $icon = $image : $background = $image;
-        }
-        return view('front.category.index', compact('category', 'categories', 'icon', 'background'));
+        return view('front.category.index', compact('category', 'categories'));
     }
 
     public function search() {
