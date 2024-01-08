@@ -45,6 +45,7 @@ class ProductSeeder extends Seeder
                 'seo_description' => 'SEO Description for ' . $product[1],
                 'created_at' => now(),
                 'updated_at' => now(),
+                'slug' => $slugBase,
                 // 'slug' is not included here as the ID is not known yet
             ]);
 
