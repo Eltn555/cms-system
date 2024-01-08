@@ -8645,7 +8645,7 @@ textarea {
   font-weight: 500;
   color: #323232;
   line-height: 1;
-  margin: 0 0 29px;
+  margin: 0 0 5px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
@@ -8711,25 +8711,38 @@ textarea {
 }
 
 .breadcrumb-padding-1 {
-  padding: 151px 0 152px;
+  padding: 250px 0 0;
+}
+
+.breadcrumb-content img{
+    width: 200px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .breadcrumb-padding-1 {
-    padding: 101px 0 102px;
+    padding: 200px 0 0;
   }
+    .breadcrumb-content img{
+        width: 140px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breadcrumb-padding-1 {
-    padding: 81px 0 82px;
+    padding: 110px 0 0px;
   }
+    .breadcrumb-content img{
+        width: 100px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
   .breadcrumb-padding-1 {
-    padding: 61px 0 62px;
+    padding: 95px 0 0;
   }
+    .breadcrumb-content img{
+        width: 70px;
+    }
 }
 
 /*-------- Sidebar style ---------*/
