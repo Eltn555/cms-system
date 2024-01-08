@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Behat\Transliterator\Transliterator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,7 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($categories as $category) {
+            $slug = Str::slug(Transliterator::transliterate($category), '-');
             DB::table('categories')->insert([
                 'parent_category_id' => null, // Assuming top-level categories
                 'order_id' => rand(1, 10), // Random order_id for example
@@ -36,6 +38,7 @@ class CategorySeeder extends Seeder
                 'seo_title' => 'SEO Title for ' . $category,
                 'seo_description' => 'SEO Description for ' . $category,
                 'is_active' => true,
+                'slug' => $slug,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\Product;
 
 class ProductSeeder extends Seeder
 {
@@ -31,17 +32,24 @@ class ProductSeeder extends Seeder
             ['ModernP*3 12W', 'Направленный свет Цвет свечения: 4000K Цвет корпуса: белый+черный Modern P*1 84*235*H82mm '],
         ];
         foreach ($products as $product) {
-            DB::table('products')->insert([
+            $slugBase = Str::slug(Transliterator::transliterate($product[0]), '-');
+            $productId = DB::table('products')->insertGetId([
                 'title' => $product[0],
-                'short_description' => $product[1], // Assuming top-level categories
-                'long_description' => Str::random(100), // Random string for description
+                'short_description' => $product[1], // Assuming this is the short description
+                'long_description' => Str::random(100),
                 'price' => rand(100, 999) * 1000,
-                'category_id' => rand(0, 5),
-                'image' => null, // Assuming no image
+                'category_id' => rand(1, 5), // Assuming category IDs start from 1
+                'image' => null,
                 'seo_title' => 'SEO Title for ' . $product[0],
                 'seo_description' => 'SEO Description for ' . $product[1],
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
+                // 'slug' is not included here as the ID is not known yet
+            ]);
+
+            // Update the product with the slug that includes the ID
+            DB::table('products')->where('id', $productId)->update([
+                'slug' => $slugBase . '-' . $productId,
             ]);
         }
     }
