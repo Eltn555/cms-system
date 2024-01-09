@@ -43,8 +43,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/easyzoom.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
+    @livewireStyles
 </head>
-
 
 <body>
 <div class="main-wrapper main-wrapper-2">
@@ -52,6 +52,7 @@
     @yield('content')
     @include('front.footer.index')
 </div>
+@livewireScripts
 <!-- All JS is here -->
 <script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
 <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>

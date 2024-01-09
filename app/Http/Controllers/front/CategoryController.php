@@ -11,8 +11,11 @@ class CategoryController extends Controller
     public function index() {
         $category = Category::firstOrFail();
         $categories = Category::all();
-
-        return view('front.category.index', compact('category', 'categories'));
+        $background = $icon = null;
+        foreach ($category->images as $image){
+            strpos($image->alt, 'icon') !== false ? $icon = $image : $background = $image;
+        }
+        return view('front.category.index', compact('category', 'categories', 'icon', 'background'));
     }
 
     public function show(Category $category) {
