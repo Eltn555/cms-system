@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use \App\Models\Category;
 
 class CategoryBanner extends Component
 {
@@ -10,11 +11,11 @@ class CategoryBanner extends Component
     public $icon;
     public $category;
 
-    public function mount($background, $icon, $category)
+    public function mount()
     {
-        $this->background = $background;
-        $this->icon = $icon;
-        $this->category = $category;
+        $this->background = '';
+        $this->icon = '';
+        $this->category = Category::all();
     }
 
     public function render()
