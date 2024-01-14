@@ -76,14 +76,14 @@
                             <div class="swiper-slide">
                                 <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
                                     <div class="category-img-2 overflow-hidden">
-{{--                                        <a href="{{ route('front.category.show', $category->slug) }}">--}}
-{{--                                            @foreach($category->images as $image)--}}
-{{--                                                {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 90%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}--}}
-{{--                                            @endforeach--}}
-{{--                                        </a>--}}
+                                        <a href="{{ route('front.category.show', $category->slug) }}">
+                                            @foreach($category->images as $image)
+                                                {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 90%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}
+                                            @endforeach
+                                        </a>
                                     </div>
                                     <div class="category-content-2">
-{{--                                        <h4><a href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>--}}
+                                        <h4><a href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>
                                     </div>
                                 </div>
                             </div>

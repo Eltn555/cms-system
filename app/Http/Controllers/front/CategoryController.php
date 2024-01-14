@@ -13,6 +13,9 @@ class CategoryController extends Controller
         $category = Category::firstOrFail();
         $categories = Category::all();
         $background = $icon = null;
+        foreach ($category->images as $image){
+            strpos($image->alt, 'icon') !== false ? $icon = $image : $background = $image;
+        }
         return view('front.category.index', compact('category', 'categories', 'icon', 'background'));
     }
 
@@ -20,6 +23,9 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $background = $icon = null;
+        foreach ($category->images as $image){
+            strpos($image->alt, 'icon') !== false ? $icon = $image : $background = $image;
+        }
         return view('front.category.index', compact('category', 'categories', 'icon', 'background'));
     }
 

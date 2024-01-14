@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Lumen LUX</title>
+    <title>Lumen LUX || @yield('title')</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description"
           content="Urdan Minimal eCommerce Bootstrap 5 Template is a stunning eCommerce website template that is the best choice for any online store.">
@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
     @livewireStyles
+    @stack('styles')
 
     @livewireScripts
 </head>
@@ -54,6 +55,7 @@
     @yield('content')
     <x-footer></x-footer>
 </div>
+@stack('scripts')
 <!-- All JS is here -->
 <script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
 <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
