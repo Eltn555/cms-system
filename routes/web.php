@@ -35,6 +35,10 @@ Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
 
+
+// ADMIN PANEL
+
+
 Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function (){
         return view('dashboard.index');
@@ -52,6 +56,14 @@ Route::post('/teststore', function (\Illuminate\Http\Request $request){
     dd($request->all());
 })->name('test.store');
 Route::get('/teststores', function (){
+    $product = \App\Models\Tag::find(1);
+    dump($product);
+    dump($product->products);
+    foreach ($product->products as $tag){
+        dump($tag->title);
+    }
+    die();
+
     return view('test');
 })->name('test.stores');
 

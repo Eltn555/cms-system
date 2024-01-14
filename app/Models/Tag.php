@@ -12,7 +12,8 @@ class Tag extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title'
+        'title',
+        'visible'
     ];
 
     public function products() {
