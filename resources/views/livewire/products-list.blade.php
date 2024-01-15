@@ -1,5 +1,3 @@
-
-
 <div class="shop-bottom-area">
     <div class="tab-content jump">
         <div id="shop-1" class="tab-pane active" role="tabpanel">

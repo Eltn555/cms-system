@@ -9,13 +9,13 @@ class CategoryBanner extends Component
 {
     public $background;
     public $icon;
-    public $category;
+    public $categories;
 
     public function mount()
     {
         $this->background = '';
         $this->icon = '';
-        $this->category = Category::all();
+        $this->categories = Category::all();
     }
 
     public function render()
