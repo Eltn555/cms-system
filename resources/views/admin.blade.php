@@ -43,7 +43,7 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VDDWMRSTH"></script>
-{{--<script type="text/javascript" src="{{asset('dist/js/uploadfile.js')}}"></script>--}}
+<script type="text/javascript" src="{{asset('dist/js/uploadfile.js')}}"></script>
 @yield('script')
 </body>
 </html>
