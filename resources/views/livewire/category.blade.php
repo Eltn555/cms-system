@@ -12,7 +12,7 @@
                     <li><i class="ti-angle-right"></i></li>
                     <li>{{ $category->title }}</li>
                 </ul>
-                <img src="{{asset(($icon != null) ? 'storage/'.$icon->image : '')}}" alt="{{$icon->alt}}">
+                <img src="{{asset(($icon != null) ? 'storage/'.$icon->image : '')}}" alt="{{$icon->alt ?? ''}}">
             </div>
         </div>
         <div class="breadcrumb-img-1 aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">
