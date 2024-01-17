@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Lumen LUX || @yield('title')</title>
+    <title>Lumen LUX | @yield('title')</title>
     <meta name="robots" content="noindex, follow"/>
-    <meta name="description"
-          content="Urdan Minimal eCommerce Bootstrap 5 Template is a stunning eCommerce website template that is the best choice for any online store.">
+    <meta name="description" content="@yield('seo_description')">
+    <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="canonical" href="https://htmldemo.hasthemes.com/urdan/index.html"/>
@@ -14,13 +14,13 @@
     <!-- Open Graph (OG) meta tags are snippets of code that control how URLs are displayed when shared on social media  -->
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Urdan - Minimal eCommerce HTML Template"/>
+    <meta property="og:title" content="Lumen LUX | @yield('title')"/>
     <meta property="og:url" content="https://htmldemo.hasthemes.com/urdan/index.html"/>
-    <meta property="og:site_name" content="Urdan - Minimal eCommerce HTML Template"/>
+    <meta property="og:site_name" content="Lumen Lux"/>
     <!-- For the og:image content, replace the # with a link of an image -->
     <meta property="og:image" content="#"/>
     <meta property="og:description"
-          content="Urdan Minimal eCommerce Bootstrap 5 Template is a stunning eCommerce website template that is the best choice for any online store."/>
+          content="@yield('description')"/>
     <!-- Add site Favicon -->
     <link rel="icon" href="{{asset('assets/images/favicon/cropped-favicon-32x32.png" sizes="32x32')}}"/>
     <link rel="icon" href="{{asset('assets/images/favicon/cropped-favicon-192x192.png" sizes="192x192')}}"/>

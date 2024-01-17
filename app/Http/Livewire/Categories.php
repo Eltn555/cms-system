@@ -36,6 +36,11 @@ class Categories extends Component
     {
         $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
         $this->loadCategory($this->category);
+        $this->dispatchBrowserEvent('metaChanged', [
+            'description' => $this->category->seo_description,
+            'keywords' => $this->category->seo_title // Assuming you have seo_keywords
+        ]);
+        $this->dispatchBrowserEvent('titleChanged', ['title' => 'Lumen Lux | '.$this->category->title]);
     }
 
     public function render()

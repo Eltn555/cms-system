@@ -1,4 +1,6 @@
-@section('title', $category->title)
+@section('title', $this->category->title)
+{{--@section('description', $this->category->seo_description)--}}
+@section('keyword', $this->category->seo_title)
     <div>
         <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1" style="background-image:url({{ asset(($background != null) ? 'storage/'.$background->image : '') }}); background-position: center; background-size: cover ;">
             <div class="container">
@@ -632,7 +634,16 @@
 
     <script type="text/javascript">
 
-        // Changing Title
+        window.addEventListener('titleChanged', event => {
+            document.title = event.detail.title;
+        });
+        window.addEventListener('metaChanged', event => {
+            const { description, keywords } = event.detail;
+            // Update meta description
+            document.querySelector('meta[name="description"]').setAttribute('content', description);
+            // Update meta keywords
+            document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+        });
 
     </script>
 
