@@ -7,8 +7,10 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductTag;
 use App\Models\Tag;
+use Behat\Transliterator\Transliterator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -45,13 +47,17 @@ class ProductController extends Controller
             //'status' => $data['status'],
             'additional_products' => $data['additional_products'],
             //'image' => $image,
+            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
         ]);
 
-        foreach ($data['tags'] as $tag) {
-            ProductTag::create([
-               'product_id'=>$product->id,
-               'tag_id'=>$tag
+        foreach ($data['tags'] as $tagName) {
+            $tag = Tag::firstOrCreate([
+                'title' => $tagName
+            ], [
+                'visible' => 1
             ]);
+
+            $product->tags()->attach($tag->id);
         }
 
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");

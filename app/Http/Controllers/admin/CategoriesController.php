@@ -44,6 +44,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $data = $request->except(['images', 'icon', 'background']);
+//        $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-');
         $data['is_active'] = $request->has('is_active') ? 1 : 0;
 
         if (empty($data['order_id'])) {

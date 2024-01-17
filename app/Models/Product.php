@@ -23,6 +23,7 @@ class Product extends Model
         'seo_title',
         'seo_description',
         'image',
+        'slug',
         'similar_products',
         'additional_products',
         'status',
