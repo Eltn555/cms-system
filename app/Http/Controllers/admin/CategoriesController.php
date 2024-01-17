@@ -19,20 +19,16 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::orderBy('order_id', 'asc')->get();
-        return view('categories.index', compact('categories'));
+        $icon = '';
+        $background = '';
+        return view('categories.index', compact('background','icon','categories'));
     }
 
     // Show a specific category
     public function show($id)
     {
         $category = Category::findOrFail($id);
-        $data = '';
-
-        foreach ($category->images as $image){
-            $data .= '<img src="'.  asset('storage/' . $image->image) . '" alt="' . $image->alt .'"> <br><br>';
-        }
-        return $data;
-//        return view('categories.show', ['category' => $category]);
+       return view('categories.show', ['category' => $category]);
 
     }
 
