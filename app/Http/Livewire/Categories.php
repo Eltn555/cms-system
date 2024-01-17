@@ -14,13 +14,12 @@ class Categories extends Component
 
     public function mount($slug)
     {
-        // Load the category based on the provided slug
-        $this->category = Category::where('slug', $slug)->firstOrFail();
+        $this->setCategory($slug);
+        $this->categories = Category::all();
     }
 
     public function loadCategory(Category $category)
     {
-        $this->categories = Category::all();
         $this->icon = null;
         $this->background = null;
 
@@ -33,12 +32,14 @@ class Categories extends Component
         }
     }
 
+    public function setCategory($slug)
+    {
+        $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
+        $this->loadCategory($this->category);
+    }
+
     public function render()
     {
-        // Call the loadCategory method to load category data and images
-        $this->loadCategory($this->category);
-
-        // Your Livewire component logic goes here
         return view('livewire.category')->extends('front.layout')
             ->section('content');
     }
