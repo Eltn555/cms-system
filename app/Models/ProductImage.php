@@ -6,19 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Slider extends Model
+class ProductImage extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-
     protected $fillable = [
-        'subtitle',
-        'title',
-        'href',
-        'image'
+        'product_id',
+        'image_id'
     ];
-
-
 }

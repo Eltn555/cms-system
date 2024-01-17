@@ -1,4 +1,4 @@
-<form wire:submit.prevent="submit">
+<form wire:submit="submit" enctype="multipart/form-data">
     <div class="flex flex-col-reverse xl:flex-row flex-col">
         <div class="flex-1 mt-6 xl:mt-0">
             <div class="grid grid-cols-12 gap-x-5">
@@ -7,13 +7,19 @@
                         <label for="subtitle" class="form-label">Sub Title</label>
                         <input id="subtitle" type="text" name="subtitle" class="form-control"
                                placeholder="New SubTitle" wire:model.defer="slider.subtitle">
+                        <div class="validation-message">
+                            {{ $errors->first('slider.subtitle') }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-12 2xl:col-span-6">
-                    <div>
+                    <div class="form-group invalid">
                         <label for="title" class="form-label">Title</label>
                         <input id="title" name="title" type="text" class="form-control"
                                placeholder="New Title" wire:model.defer="slider.title">
+                        <div class="validation-message">
+                            {{ $errors->first('slider.title') }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-12 2xl:col-span-6 mt-4">
@@ -21,6 +27,9 @@
                         <label for="href" class="form-label">Href</label>
                         <input id="href" name="href" type="text" class="form-control"
                                placeholder="Redirect Link" wire:model.defer="slider.href">
+                        <div class="validation-message">
+                            {{ $errors->first('slider.href') }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,7 +48,7 @@
                 </div>
                 <div class="mx-auto cursor-pointer relative mt-5">
                     <button type="button" class="btn btn-primary w-full">Change Photo</button>
-                    <input type="file" wire:model="image"  class="w-full h-full  top-0 left-0 absolute opacity-0"
+                    <input type="file" wire:model="image" name="image" class="w-full h-full  top-0 left-0 absolute opacity-0"
                            id="input-file">
                 </div>
             </div>

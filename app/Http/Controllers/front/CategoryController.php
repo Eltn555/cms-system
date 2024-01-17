@@ -16,7 +16,7 @@ class CategoryController extends Controller
         foreach ($category->images as $image){
             strpos($image->alt, 'icon') !== false ? $icon = $image : $background = $image;
         }
-        return view('front.category.index', compact('category', 'categories', 'icon', 'background'));
+        return view('front.category.index', compact( 'category','categories', 'icon', 'background'));
     }
 
     public function show(Category $category)

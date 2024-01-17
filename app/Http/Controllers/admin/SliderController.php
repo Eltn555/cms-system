@@ -24,7 +24,6 @@ class SliderController extends Controller
     {
         $data = $request->all();
         $image = Storage::put('/images', $data['image']);
-
         Slider::create([
             'title' => $data['title'],
             'subtitle' => $data['subtitle'],

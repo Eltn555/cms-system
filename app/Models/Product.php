@@ -29,10 +29,10 @@ class Product extends Model
         'rate'
     ];
 
-    /*public function images()
+    public function images()
     {
-        return $this->hasMany(Image::class, 'product_id', 'id')->get();
-    }*/
+        return $this->belongsToMany(Image::class, 'product_images', 'product_id', 'image_id');
+    }
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');

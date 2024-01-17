@@ -15,6 +15,7 @@ class Create extends Component
     public function mount(Slider $slider)
     {
         $this->slider = $slider;
+        dd($this->slider);
 
     }
 
@@ -27,9 +28,8 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
-
         $this->slider->save();
-
+        return 'Works';
         return redirect()->route('admin.slider.index');
     }
 
@@ -37,13 +37,13 @@ class Create extends Component
     {
         return [
             'slider.href' => [
-                ''
+                'string'
             ],
             'slider.title' => [
-                ''
+                'string'
             ],
             'slider.subtitle' => [
-                ''
+                'string'
             ],
         ];
     }

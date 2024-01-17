@@ -7,8 +7,10 @@ use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TagController;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,14 +56,28 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('partners', PartnersController::class, ['as'=>'admin']);
 });
 Route::post('/teststore', function (\Illuminate\Http\Request $request){
-    dd($request->all());
+    $data = $request->all();
+
+    foreach ($data['filepond'] as $image){
+
+        $path = Storage::put('/images', $image);
+
+        \App\Models\Image::create([
+           'alt'=>$path,
+            'image'=>$path
+        ]);
+    }
+
+
 })->name('test.store');
 Route::get('/teststores', function (){
-    $product = \App\Models\Tag::find(1);
+
+
+    $product = Product::find(1);
     dump($product);
-    dump($product->products);
-    foreach ($product->products as $tag){
-        dump($tag->title);
+    dump($product->images);
+    foreach ($product->images as $tag){
+        dump($tag);
     }
     die();
 
