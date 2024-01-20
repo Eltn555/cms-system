@@ -1,4 +1,4 @@
-<header class="header-area header-responsive-padding header-height-2">
+<header class="header-area header-responsive-padding">
 {{--    <div class="header-top d-none d-lg-block bg-gray">--}}
 {{--        <div class="container">--}}
 {{--            <div class="row align-items-center">--}}
@@ -37,7 +37,7 @@
     <div class="header-bottom sticky-bar">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-3 col-md-6 col-6">
+                <div class="col-lg-3 col-md-6 col-6 p-2">
                     <div class="logo">
                         <a href="#"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
                     </div>
@@ -47,11 +47,11 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="/">HOME</a>
+                                    <a style="line-height: 80px !important; href="/">HOME</a>
                                 </li>
                                 <li>
                                     {{--                                    <a href="{{route('category.index')}}">SHOP</a>--}}
-                                    <a href="">SHOP</a>
+                                    <a style="line-height: 80px !important;" href="">SHOP</a>
                                     <ul class="mega-menu-style mega-menu-mrg-1">
                                         <li>
                                             <ul>
@@ -74,10 +74,10 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="{{route('blog.index')}}">BLOG</a>
+                                    <a style="line-height: 80px !important;" href="{{route('blog.index')}}">BLOG</a>
                                 </li>
-                                <li><a href="about-us.html">ABOUT</a></li>
-                                <li><a href="{{route('contact.index')}}">CONTACT US</a></li>
+                                <li><a style="line-height: 80px !important;" href="about-us.html">ABOUT</a></li>
+                                <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">CONTACT US</a></li>
                             </ul>
                         </nav>
                     </div>

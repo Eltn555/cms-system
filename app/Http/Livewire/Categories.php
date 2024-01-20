@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Category;
+use Livewire\WithPagination;
 
 class Categories extends Component
 {
+    use WithPagination;
+
     public $category;
     public $categories;
     public $icon;
@@ -46,7 +49,10 @@ class Categories extends Component
 
     public function render()
     {
-        return view('livewire.category')->extends('front.layout')
+        $products = $this->category
+            ? $this->category->products()->paginate(12)
+            : collect();
+        return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
     }
 }

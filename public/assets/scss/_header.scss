@@ -54,7 +54,7 @@
             }
         }
     }
-    .currency-wrap , 
+    .currency-wrap ,
     .language-wrap {
         position: relative;
         > a {
@@ -65,7 +65,7 @@
                 font-size: 9px;
             }
         }
-        .currency-dropdown , 
+        .currency-dropdown ,
         .language-dropdown {
             background: #fff none repeat scroll 0 0;
             padding: 25px 15px 25px;
@@ -100,9 +100,9 @@
     }
     &.language-currency-wrap-modify {
         justify-content: flex-start;
-        .currency-wrap , 
+        .currency-wrap ,
         .language-wrap {
-            .currency-dropdown , 
+            .currency-dropdown ,
             .language-dropdown {
                 width: 120px;
                 left: 0;
@@ -496,7 +496,7 @@
             z-index: 9999;
         }
     }
-} 
+}
 
 .sidebar-cart-active {
 	position: fixed;
@@ -645,7 +645,7 @@
                     }
                 }
             }
-            .cart-btn , 
+            .cart-btn ,
             .checkout-btn {
                 display: block;
                 width: 100%;
@@ -700,7 +700,7 @@
         opacity: 1;
         visibility: visible;
     }
-} 
+}
 
 .off-canvas-active {
 	position: fixed;

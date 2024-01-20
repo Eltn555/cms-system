@@ -63,7 +63,7 @@
                                 <div id="shop-1" class="tab-pane active" role="tabpanel">
 
                                     <div id="product-list" class="row">
-                                        @foreach($category->products as $product)
+                                        @foreach($products as $product)
 
                                             <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                                 <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
@@ -100,14 +100,15 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <div class="pagination-style-1 aos-init" data-aos="fade-down" data-aos-delay="200">
-                                        <ul>
-                                            <li><a class="active" href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>
-                                        </ul>
-                                    </div>
+{{--                                    <div class="pagination-style-1 aos-init" data-aos="fade-down" data-aos-delay="200">--}}
+                                    {{$products->links('pagination::default')}}
+{{--                                        <ul>--}}
+{{--                                            <li><a class="active" href="#">1</a></li>--}}
+{{--                                            <li><a href="#">2</a></li>--}}
+{{--                                            <li><a href="#">3</a></li>--}}
+{{--                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
                                 </div>
 {{--                                <div id="shop-2" class="tab-pane" role="tabpanel">--}}
 {{--                                    <div class="shop-list-wrap mb-30">--}}
