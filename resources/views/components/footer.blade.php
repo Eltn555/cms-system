@@ -6,11 +6,11 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-about mb-40">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="assets/images/logo/logo.png" alt="logo"></a>
+                                <a href="index.html"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
                             </div>
                             <p>Lorem ipsum dolor sit amet, cons adipi elit, sed do eiusmod tempor incididunt ut aliqua.</p>
                             <div class="payment-img">
-                                <a href="#"><img src="assets/images/icon-img/payment.png" alt="logo"></a>
+                                <a href="#"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
                             </div>
                         </div>
                     </div>

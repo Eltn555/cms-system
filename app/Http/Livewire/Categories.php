@@ -22,7 +22,6 @@ class Categories extends Component
     {
         $this->icon = null;
         $this->background = null;
-
         foreach ($category->images as $image) {
             if (strpos($image->alt, 'icon') !== false) {
                 $this->icon = $image;
@@ -40,6 +39,8 @@ class Categories extends Component
             'description' => $this->category->seo_description,
             'keywords' => $this->category->seo_title // Assuming you have seo_keywords
         ]);
+
+        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug]);
         $this->dispatchBrowserEvent('titleChanged', ['title' => 'Lumen Lux | '.$this->category->title]);
     }
 

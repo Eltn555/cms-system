@@ -1,45 +1,45 @@
-<header class="header-area header-responsive-padding header-height-1">
-    <div class="header-top d-none d-lg-block bg-gray">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-6">
-                    <div class="welcome-text">
-                        <p>Default Welcome Msg! </p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-6">
-                    <div class="language-currency-wrap">
-                        <div class="currency-wrap border-style">
-                            <a class="currency-active" href="#">$ Dollar (US) <i class=" ti-angle-down "></i></a>
-                            <div class="currency-dropdown">
-                                <ul>
-                                    <li><a href="#">Taka (BDT) </a></li>
-                                    <li><a href="#">Riyal (SAR) </a></li>
-                                    <li><a href="#">Rupee (INR) </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="language-wrap">
-                            <a class="language-active" href="#"><img src="assets/images/icon-img/flag.png" alt=""> English <i class=" ti-angle-down "></i></a>
-                            <div class="language-dropdown">
-                                <ul>
-                                    <li><a href="#"><img src="assets/images/icon-img/flag.png" alt="">English </a></li>
-                                    <li><a href="#"><img src="assets/images/icon-img/spanish.png" alt="">Spanish</a></li>
-                                    <li><a href="#"><img src="assets/images/icon-img/arabic.png" alt="">Arabic </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<header class="header-area header-responsive-padding header-height-2">
+{{--    <div class="header-top d-none d-lg-block bg-gray">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row align-items-center">--}}
+{{--                <div class="col-lg-6 col-6">--}}
+{{--                    <div class="welcome-text">--}}
+{{--                        <p>Default Welcome Msg! </p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-6 col-6">--}}
+{{--                    <div class="language-currency-wrap">--}}
+{{--                        <div class="currency-wrap border-style">--}}
+{{--                            <a class="currency-active" href="#">$ Dollar (US) <i class=" ti-angle-down "></i></a>--}}
+{{--                            <div class="currency-dropdown">--}}
+{{--                                <ul>--}}
+{{--                                    <li><a href="#">Taka (BDT) </a></li>--}}
+{{--                                    <li><a href="#">Riyal (SAR) </a></li>--}}
+{{--                                    <li><a href="#">Rupee (INR) </a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="language-wrap">--}}
+{{--                            <a class="language-active" href="#"><img src="assets/images/icon-img/flag.png" alt=""> English <i class=" ti-angle-down "></i></a>--}}
+{{--                            <div class="language-dropdown">--}}
+{{--                                <ul>--}}
+{{--                                    <li><a href="#"><img src="assets/images/icon-img/flag.png" alt="">English </a></li>--}}
+{{--                                    <li><a href="#"><img src="assets/images/icon-img/spanish.png" alt="">Spanish</a></li>--}}
+{{--                                    <li><a href="#"><img src="assets/images/icon-img/arabic.png" alt="">Arabic </a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="header-bottom sticky-bar">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-6 col-6">
                     <div class="logo">
-                        <a href="#"><img src="{{ asset('logo-black.png') }}" alt="logo"></a>
+                        <a href="#"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
@@ -67,7 +67,7 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="shop.html"><img src="assets/images/banner/menu.png" alt=""></a>
+{{--                                                    <a href="shop.html"><img src="assets/images/banner/menu.png" alt=""></a>--}}
                                                 </li>
                                             </ul>
                                         </li>
