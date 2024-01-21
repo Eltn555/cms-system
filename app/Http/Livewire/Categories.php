@@ -21,30 +21,31 @@ class Categories extends Component
         $this->categories = Category::all();
     }
 
-    public function loadCategory(Category $category)
+    public function gotoPage($page)
     {
+        $this->setPage($page);
+        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug."?page=".$page]);
+    }
+
+    public function setCategory($slug)
+    {
+        $this->resetPage();
+        $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
+        $this->dispatchBrowserEvent('metaChanged', [
+            'title' => 'Lumen Lux | '.$this->category->title,
+            'description' => $this->category->seo_description,
+            'keywords' => $this->category->seo_title // Assuming you have seo_keywords
+        ]);
         $this->icon = null;
         $this->background = null;
-        foreach ($category->images as $image) {
+        foreach ($this->category->images as $image) {
             if (strpos($image->alt, 'icon') !== false) {
                 $this->icon = $image;
             } else {
                 $this->background = $image;
             }
         }
-    }
-
-    public function setCategory($slug)
-    {
-        $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
-        $this->loadCategory($this->category);
-        $this->dispatchBrowserEvent('metaChanged', [
-            'description' => $this->category->seo_description,
-            'keywords' => $this->category->seo_title // Assuming you have seo_keywords
-        ]);
-
         $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug]);
-        $this->dispatchBrowserEvent('titleChanged', ['title' => 'Lumen Lux | '.$this->category->title]);
     }
 
     public function render()
@@ -52,6 +53,7 @@ class Categories extends Component
         $products = $this->category
             ? $this->category->products()->paginate(12)
             : collect();
+
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
     }

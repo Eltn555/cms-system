@@ -3,12 +3,10 @@
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                    <a aria-hidden="true" class="next"><i class=" ti-angle-double-left "></i></a>
-                </li>
+
             @else
                 <li>
-                    <a href="{{ $paginator->previousPageUrl() }}" class="next" rel="prev" aria-label="@lang('pagination.previous')"><i class=" ti-angle-double-left "></i></a>
+                    <a wire:click="previousPage" wire:loading.attr="disabled" class="next" rel="prev" aria-label="@lang('pagination.previous')"><i class=" ti-angle-double-left "></i></a>
                 </li>
             @endif
 
@@ -23,9 +21,13 @@
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
-                            <li class="active" aria-current="page"><a>{{ $page }}</a></li>
+                            <li style="font-weight: bold; font-size: larger; width: 35px; height: 35px; display:flex; justify-content: center; align-items: center" class="active" aria-current="page">{{ $page }}</li>
                         @else
-                            <li><a href="{{ $url }}">{{ $page }}</a></li>
+                            <li wire:key="paginator-page-{{ $page }}">
+                                <a class="next" wire:click="gotoPage({{ $page }})" wire:loading.attr="disabled">
+                                    {{ $page }}
+                                </a>
+                            </li>
                         @endif
                     @endforeach
                 @endif
@@ -33,13 +35,11 @@
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li>
-                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="next" aria-label="@lang('pagination.next')"><i class=" ti-angle-double-right "></i></a>
-                </li>
+                <a wire:click="nextPage" wire:loading.attr="disabled" rel="next" class="next p-2" aria-label="@lang('pagination.next')">
+                    <i class=" ti-angle-double-right "></i>
+                </a>
             @else
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <a aria-hidden="true" class="next"><i class=" ti-angle-double-right "></i></a>
-                </li>
+
             @endif
         </ul>
     </nav>

@@ -100,17 +100,9 @@
                                             </div>
                                         @endforeach
                                     </div>
-{{--                                    <div class="pagination-style-1 aos-init" data-aos="fade-down" data-aos-delay="200">--}}
                                     {{$products->links('pagination::default')}}
-{{--                                        <ul>--}}
-{{--                                            <li><a class="active" href="#">1</a></li>--}}
-{{--                                            <li><a href="#">2</a></li>--}}
-{{--                                            <li><a href="#">3</a></li>--}}
-{{--                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
                                 </div>
-{{--                                <div id="shop-2" class="tab-pane" role="tabpanel">--}}
+                                <div id="shop-2" class="tab-pane" role="tabpanel">
 {{--                                    <div class="shop-list-wrap mb-30">--}}
 {{--                                        <div class="row">--}}
 {{--                                            <div class="col-lg-4 col-sm-5">--}}
@@ -299,7 +291,7 @@
 {{--                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>--}}
 {{--                                        </ul>--}}
 {{--                                    </div>--}}
-{{--                                </div>--}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -355,10 +347,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-
                             </div>
-
-
 
                             <div class="sidebar-widget aos-init" data-aos="fade-up" data-aos-delay="200">
                                 <div class="sidebar-widget-title mb-25">
@@ -410,21 +399,22 @@
     <!-- Main JS -->
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script type="text/javascript">
-
-        window.addEventListener('titleChanged', event => {
-            document.title = event.detail.title;
-        });
         window.addEventListener('metaChanged', event => {
             const { description, keywords } = event.detail;
             // Update meta description
             document.querySelector('meta[name="description"]').setAttribute('content', description);
             // Update meta keywords
             document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+            document.title = event.detail.title;
         });
         window.addEventListener('urlChanged', event => {
-            const {url} = event.detail;
-            window.history.pushState(null, null, url);
+            setTimeout(() => {
+                window.history.pushState(null, null, event.detail.url);
+            }, 1500); // 5000 milliseconds = 5 seconds
+            AOS.init();
         });
+
+
 
     </script>
 @endpush
