@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="header-action-style">
-                            <a title="Login Register" href="login-register.html"><i class="pe-7s-user"></i></a>
+                            <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i class="pe-7s-user"></i></a>
                         </div>
                         <div class="header-action-style">
                             <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
