@@ -70,7 +70,7 @@
                                                      data-aos-delay="200">
                                                     <div class="product-img img-zoom mb-25">
                                                         <a href="product-details.html">
-                                                            <img src="{{asset('no_photo.jpg')}}" alt="">
+                                                            <img src="{{asset('product/'.random_int(1, 22).'.jpg')}}" alt="">
                                                         </a>
                                                         <div class="product-badge badge-top badge-right badge-pink">
                                                             <span>-10%</span>
