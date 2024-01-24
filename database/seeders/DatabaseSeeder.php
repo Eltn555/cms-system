@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(TagSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
