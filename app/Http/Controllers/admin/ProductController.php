@@ -18,6 +18,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::all();
+        $products = Product::find(175);
+        dd($products->additional_tags()->get());
         $tags = Tag::all();
         return view('products.index', compact('products', 'categories', 'tags'));
     }
@@ -45,16 +47,25 @@ class ProductController extends Controller
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
             //'status' => $data['status'],
-            'additional_products' => $data['additional_products'],
             //'image' => $image,
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
         ]);
+
+        foreach ($data['additional_products'] as $additional_product){
+            $tag = Tag::firstOrCreate([
+                'title' => $additional_product
+            ], [
+                'visible' => 0
+            ]);
+
+            $product->additional_tags()->attach($tag->id);
+        }
 
         foreach ($data['tags'] as $tagName) {
             $tag = Tag::firstOrCreate([
                 'title' => $tagName
             ], [
-                'visible' => 1
+                'visible' => 0
             ]);
 
             $product->tags()->attach($tag->id);

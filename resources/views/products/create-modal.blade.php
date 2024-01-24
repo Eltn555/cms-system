@@ -99,7 +99,7 @@
                                 id="post-form-3" name="tags[]"
                                 multiple="multiple" tabindex="-1" hidden="hidden">
                             @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                <option value="{{ $tag->title }}">{{ $tag->title }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -107,12 +107,11 @@
                         <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Additional
                             products</label>
                         <select data-placeholder="Select categories" class="tom-select w-full tomselected"
-                                id="post-form-3" name="additional_products"
+                                id="post-form-3" name="additional_products[]"
                                 multiple="multiple" tabindex="-1" hidden="hidden">
-                            <option value="1" selected="true">Horror</option>
-                            <option value="3" selected="true">Action</option>
-                            <option value="5" selected="true">Comedy</option>
-                            <option value="4" selected="true">Drama</option>
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->title }}">{{ $tag->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-span-12 sm:col-span-12 mt-3">
