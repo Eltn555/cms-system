@@ -71,7 +71,7 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{ $product->title }}</a>
                         </td>
-                        <td class="text-center w-40">
+                        <td class="text-center">
                             {{ $product->short_description }}
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->long_description }}</div>
                         </td>
