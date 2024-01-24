@@ -61,7 +61,7 @@
         <!-- BEGIN: Users Layout -->
 
         @foreach($tags as $tag)
-            <div class="intro-y col-span-12 md:col-span-6">
+            <div id="{{$tag->id}}" class="intro-y col-span-12 md:col-span-6">
                 <div class="box">
                     <div class="flex flex-col lg:flex-row items-center p-5 intro-x" data-action="{{$tag->id}}">
                         <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
@@ -78,6 +78,9 @@
                                 <input class="form-check-input activation" data-field="visible" type="checkbox" {{($tag->visible) ? 'checked' : ''}}>
                             </div>
                             <a href="{{ route('admin.tags.show', $tag->id) }}" class="btn btn-primary py-1 px-2 mr-2">View</a>
+                            <div class="flex justify-center items-center">
+                                <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +88,27 @@
 
         @endforeach
         <div id="message" class="m-0 fixed alert border-success bg-white show px-3 py-2 rounded absolute flex items-center text-success font-bold" style=" left:50%; transform: translateX(-50%); z-index: 9999; top: 100px; display: none" role="alert"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-check"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>  Updated</div>
-
+        <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="p-5 text-center">
+                            <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                            <div class="text-3xl mt-5">Are you sure?</div>
+                            <div class="text-slate-500 mt-2">
+                                Do you really want to delete these records?
+                                <br>
+                                This process cannot be undone.
+                            </div>
+                        </div>
+                        <div class="px-5 pb-8 text-center">
+                            <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                            <button id="delete" data-tw-dismiss="modal" type="button" class="btn btn-danger w-24">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- BEGIN: Users Layout -->
     </div>
 @endsection
