@@ -10,5 +10,9 @@ class WishlistController extends Controller
     {
         return view('front.wishlist.index');
     }
+
+    public function create($id) {
+        $user = auth()->user();
+    }
 }
 
