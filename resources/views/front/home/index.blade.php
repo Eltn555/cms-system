@@ -1,50 +1,5 @@
 @extends('front.master')
 @section('content')
-    <!-- mini cart start -->
-    <div class="sidebar-cart-active">
-        <div class="sidebar-cart-all">
-            <a class="cart-close" href="#"><i class="pe-7s-close"></i></a>
-            <div class="cart-content">
-                <h3>Shopping Cart</h3>
-                <ul>
-                    <li>
-                        <div class="cart-img">
-                            <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Stylish Swing Chair</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="cart-img">
-                            <a href="#"><img src="assets/images/cart/cart-2.jpg" alt=""></a>
-                        </div>
-                        <div class="cart-title">
-                            <h4><a href="#">Modern Chairs</a></h4>
-                            <span> 1 × $49.00	</span>
-                        </div>
-                        <div class="cart-delete">
-                            <a href="#">×</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="cart-total">
-                    <h4>Subtotal: <span>$170.00</span></h4>
-                </div>
-                <div class="cart-btn btn-hover">
-                    <a class="theme-color" href="cart.html">view cart</a>
-                </div>
-                <div class="checkout-btn btn-hover">
-                    <a class="theme-color" href="checkout.html">checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div class="slider-category-area">
         <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
@@ -76,14 +31,14 @@
                             <div class="swiper-slide">
                                 <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
                                     <div class="category-img-2 overflow-hidden">
-                                        <a href="{{ route('front.category.show', $category->slug) }}">
-                                            @foreach($category->images as $image)
-                                                {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 90%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}
-                                            @endforeach
-                                        </a>
+{{--                                        <a href="{{ route('front.category.show', $category->slug) }}">--}}
+{{--                                            @foreach($category->images as $image)--}}
+{{--                                                {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 90%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}--}}
+{{--                                            @endforeach--}}
+{{--                                        </a>--}}
                                     </div>
                                     <div class="category-content-2">
-                                        <h4><a href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>
+{{--                                        <h4><a href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>--}}
                                     </div>
                                 </div>
                             </div>

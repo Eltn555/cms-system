@@ -1,4 +1,4 @@
-@section('title', $this->category->title)
+{{--@section('title', $this->category->title)--}}
 {{--@section('description', $this->category->seo_description)--}}
 @section('keyword', $this->category->seo_title)
     <div>
@@ -62,239 +62,239 @@
                             <div class="tab-content jump">
                                 <div id="shop-1" class="tab-pane active" role="tabpanel">
 
-                                    <div id="product-list" class="row">
-                                        @foreach($products as $product)
-
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                                <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
-                                                     data-aos-delay="200">
-                                                    <div class="product-img img-zoom mb-25">
-                                                        <a href="product-details.html">
-                                                            <img src="{{asset('no_photo.jpg')}}" alt="">
-                                                        </a>
-                                                        <div class="product-badge badge-top badge-right badge-pink">
-                                                            <span>-10%</span>
-                                                        </div>
-                                                        <div class="product-action-wrap">
-                                                            <button class="product-action-btn-1" title="Wishlist"><i
-                                                                    class="pe-7s-like"></i></button>
-                                                            <button class="product-action-btn-1" title="Quick View"
-                                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                                <i class="pe-7s-look"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="product-action-2-wrap">
-                                                            <button class="product-action-btn-2" title="Add To Cart"><i
-                                                                    class="pe-7s-cart"></i> Add to cart
-                                                            </button>
-                                                        </div>
+                                <div id="product-list" class="row">
+                                    @foreach($products as $product)
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                            <div class="product-wrap mb-35 aos-init aos-animate" data-aos="fade-up"
+                                                 data-aos-delay="200">
+                                                <div class="product-img img-zoom mb-25">
+                                                    <a href="product-details.html">
+                                                        <img src="{{asset('no_photo.jpg')}}" alt="">
+                                                    </a>
+                                                    <div class="product-badge badge-top badge-right badge-pink">
+                                                        <span>-10%</span>
                                                     </div>
-                                                    <div class="product-content">
-                                                        <h3><a href="product-details.html">{{$product->title}}</a></h3>
-                                                        <div class="product-price">
-                                                            <span class="{{($product->discount_price != null) ? 'old-price' : ''}}">{{$product->price}}</span>
-                                                            <span class="new-price">{{$product->discount_price}}</span>
-                                                        </div>
+                                                    <div class="product-action-wrap">
+                                                        <button class="product-action-btn-1" title="Wishlist"><i
+                                                                class="pe-7s-like"></i></button>
+                                                        <button class="product-action-btn-1" title="Quick View"
+                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="pe-7s-look"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="product-action-2-wrap">
+                                                        <button class="product-action-btn-2" title="Add To Cart"><i
+                                                                class="pe-7s-cart"></i> Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="product-details.html">{{$product->title}}</a></h3>
+                                                    <div class="product-price">
+                                                        <span
+                                                            class="{{($product->discount_price != null) ? 'old-price' : ''}}">{{$product->price}}</span>
+                                                        <span class="new-price">{{$product->discount_price}}</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
-                                    {{$products->links('pagination::default')}}
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div id="shop-2" class="tab-pane" role="tabpanel">
-{{--                                    <div class="shop-list-wrap mb-30">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-lg-4 col-sm-5">--}}
-{{--                                                <div class="product-list-img">--}}
-{{--                                                    <a href="product-details.html">--}}
-{{--                                                        <img src="assets/images/product/product-5.png" alt="Product Style">--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
-{{--                                                        <span>-20%</span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-quickview">--}}
-{{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-{{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                                            <i class="pe-7s-look"></i>--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-lg-8 col-sm-7">--}}
-{{--                                                <div class="shop-list-content">--}}
-{{--                                                    <h3><a href="product-details.html">Interior moderno render</a></h3>--}}
-{{--                                                    <div class="product-price">--}}
-{{--                                                        <span class="old-price">$70.89 </span>--}}
-{{--                                                        <span class="new-price">$55.25 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-rating">--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                    </div>--}}
-{{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-{{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-{{--                                                    <div class="product-list-action">--}}
-{{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-{{--                                                                class="pe-7s-cart"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-{{--                                                                class="pe-7s-like"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-{{--                                                                class="pe-7s-shuffle"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="shop-list-wrap mb-30">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-lg-4 col-sm-5">--}}
-{{--                                                <div class="product-list-img">--}}
-{{--                                                    <a href="product-details.html">--}}
-{{--                                                        <img src="assets/images/product/product-7.png" alt="Product Style">--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="product-list-quickview">--}}
-{{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-{{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                                            <i class="pe-7s-look"></i>--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-lg-8 col-sm-7">--}}
-{{--                                                <div class="shop-list-content">--}}
-{{--                                                    <h3><a href="product-details.html">Round Standard Chair</a></h3>--}}
-{{--                                                    <div class="product-price">--}}
-{{--                                                        <span>$50.25 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-rating">--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                    </div>--}}
-{{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-{{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-{{--                                                    <div class="product-list-action">--}}
-{{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-{{--                                                                class="pe-7s-cart"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-{{--                                                                class="pe-7s-like"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-{{--                                                                class="pe-7s-shuffle"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="shop-list-wrap mb-30">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-lg-4 col-sm-5">--}}
-{{--                                                <div class="product-list-img">--}}
-{{--                                                    <a href="product-details.html">--}}
-{{--                                                        <img src="assets/images/product/product-4.png" alt="Product Style">--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
-{{--                                                        <span>-10%</span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-quickview">--}}
-{{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-{{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                                            <i class="pe-7s-look"></i>--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-lg-8 col-sm-7">--}}
-{{--                                                <div class="shop-list-content">--}}
-{{--                                                    <h3><a href="product-details.html">Stylish Swing Chair</a></h3>--}}
-{{--                                                    <div class="product-price">--}}
-{{--                                                        <span class="old-price">$80.89 </span>--}}
-{{--                                                        <span class="new-price">$60.25 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-rating">--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                    </div>--}}
-{{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-{{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-{{--                                                    <div class="product-list-action">--}}
-{{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-{{--                                                                class="pe-7s-cart"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-{{--                                                                class="pe-7s-like"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-{{--                                                                class="pe-7s-shuffle"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="shop-list-wrap mb-30">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-lg-4 col-sm-5">--}}
-{{--                                                <div class="product-list-img">--}}
-{{--                                                    <a href="product-details.html">--}}
-{{--                                                        <img src="assets/images/product/product-8.png" alt="Product Style">--}}
-{{--                                                    </a>--}}
-{{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
-{{--                                                        <span>-10%</span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-quickview">--}}
-{{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-{{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                                            <i class="pe-7s-look"></i>--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-lg-8 col-sm-7">--}}
-{{--                                                <div class="shop-list-content">--}}
-{{--                                                    <h3><a href="product-details.html">Modern Swivel Chair</a></h3>--}}
-{{--                                                    <div class="product-price">--}}
-{{--                                                        <span class="old-price">$45.89 </span>--}}
-{{--                                                        <span class="new-price">$30.25 </span>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="product-list-rating">--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                        <i class=" ti-star"></i>--}}
-{{--                                                    </div>--}}
-{{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-{{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-{{--                                                    <div class="product-list-action">--}}
-{{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-{{--                                                                class="pe-7s-cart"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-{{--                                                                class="pe-7s-like"></i></button>--}}
-{{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-{{--                                                                class="pe-7s-shuffle"></i></button>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="pagination-style-1">--}}
-{{--                                        <ul>--}}
-{{--                                            <li><a class="active" href="#">1</a></li>--}}
-{{--                                            <li><a href="#">2</a></li>--}}
-{{--                                            <li><a href="#">3</a></li>--}}
-{{--                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </div>--}}
-                                </div>
+{{--                                {{$products->links()}}--}}
+                            </div>
+                            <div id="shop-2" class="tab-pane" role="tabpanel">
+                                {{--                                    <div class="shop-list-wrap mb-30">--}}
+                                {{--                                        <div class="row">--}}
+                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
+                                {{--                                                <div class="product-list-img">--}}
+                                {{--                                                    <a href="product-details.html">--}}
+                                {{--                                                        <img src="assets/images/product/product-5.png" alt="Product Style">--}}
+                                {{--                                                    </a>--}}
+                                {{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
+                                {{--                                                        <span>-20%</span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-quickview">--}}
+                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
+                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+                                {{--                                                            <i class="pe-7s-look"></i>--}}
+                                {{--                                                        </button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
+                                {{--                                                <div class="shop-list-content">--}}
+                                {{--                                                    <h3><a href="product-details.html">Interior moderno render</a></h3>--}}
+                                {{--                                                    <div class="product-price">--}}
+                                {{--                                                        <span class="old-price">$70.89 </span>--}}
+                                {{--                                                        <span class="new-price">$55.25 </span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-rating">--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
+                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
+                                {{--                                                    <div class="product-list-action">--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
+                                {{--                                                                class="pe-7s-cart"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
+                                {{--                                                                class="pe-7s-like"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
+                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="shop-list-wrap mb-30">--}}
+                                {{--                                        <div class="row">--}}
+                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
+                                {{--                                                <div class="product-list-img">--}}
+                                {{--                                                    <a href="product-details.html">--}}
+                                {{--                                                        <img src="assets/images/product/product-7.png" alt="Product Style">--}}
+                                {{--                                                    </a>--}}
+                                {{--                                                    <div class="product-list-quickview">--}}
+                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
+                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+                                {{--                                                            <i class="pe-7s-look"></i>--}}
+                                {{--                                                        </button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
+                                {{--                                                <div class="shop-list-content">--}}
+                                {{--                                                    <h3><a href="product-details.html">Round Standard Chair</a></h3>--}}
+                                {{--                                                    <div class="product-price">--}}
+                                {{--                                                        <span>$50.25 </span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-rating">--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
+                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
+                                {{--                                                    <div class="product-list-action">--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
+                                {{--                                                                class="pe-7s-cart"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
+                                {{--                                                                class="pe-7s-like"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
+                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="shop-list-wrap mb-30">--}}
+                                {{--                                        <div class="row">--}}
+                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
+                                {{--                                                <div class="product-list-img">--}}
+                                {{--                                                    <a href="product-details.html">--}}
+                                {{--                                                        <img src="assets/images/product/product-4.png" alt="Product Style">--}}
+                                {{--                                                    </a>--}}
+                                {{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
+                                {{--                                                        <span>-10%</span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-quickview">--}}
+                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
+                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+                                {{--                                                            <i class="pe-7s-look"></i>--}}
+                                {{--                                                        </button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
+                                {{--                                                <div class="shop-list-content">--}}
+                                {{--                                                    <h3><a href="product-details.html">Stylish Swing Chair</a></h3>--}}
+                                {{--                                                    <div class="product-price">--}}
+                                {{--                                                        <span class="old-price">$80.89 </span>--}}
+                                {{--                                                        <span class="new-price">$60.25 </span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-rating">--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
+                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
+                                {{--                                                    <div class="product-list-action">--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
+                                {{--                                                                class="pe-7s-cart"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
+                                {{--                                                                class="pe-7s-like"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
+                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="shop-list-wrap mb-30">--}}
+                                {{--                                        <div class="row">--}}
+                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
+                                {{--                                                <div class="product-list-img">--}}
+                                {{--                                                    <a href="product-details.html">--}}
+                                {{--                                                        <img src="assets/images/product/product-8.png" alt="Product Style">--}}
+                                {{--                                                    </a>--}}
+                                {{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
+                                {{--                                                        <span>-10%</span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-quickview">--}}
+                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
+                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+                                {{--                                                            <i class="pe-7s-look"></i>--}}
+                                {{--                                                        </button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
+                                {{--                                                <div class="shop-list-content">--}}
+                                {{--                                                    <h3><a href="product-details.html">Modern Swivel Chair</a></h3>--}}
+                                {{--                                                    <div class="product-price">--}}
+                                {{--                                                        <span class="old-price">$45.89 </span>--}}
+                                {{--                                                        <span class="new-price">$30.25 </span>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <div class="product-list-rating">--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                        <i class=" ti-star"></i>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
+                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
+                                {{--                                                    <div class="product-list-action">--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
+                                {{--                                                                class="pe-7s-cart"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
+                                {{--                                                                class="pe-7s-like"></i></button>--}}
+                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
+                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
+                                {{--                                                    </div>--}}
+                                {{--                                                </div>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="pagination-style-1">--}}
+                                {{--                                        <ul>--}}
+                                {{--                                            <li><a class="active" href="#">1</a></li>--}}
+                                {{--                                            <li><a href="#">2</a></li>--}}
+                                {{--                                            <li><a href="#">3</a></li>--}}
+                                {{--                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>--}}
+                                {{--                                        </ul>--}}
+                                {{--                                    </div>--}}
                             </div>
                         </div>
                     </div>
+                </div>
 
 
 
@@ -349,22 +349,21 @@
                                 </div>
                             </div>
 
-                            <div class="sidebar-widget aos-init" data-aos="fade-up" data-aos-delay="200">
-                                <div class="sidebar-widget-title mb-25">
-                                    <h3>Tags</h3>
-                                </div>
-                                <div class="sidebar-widget-tag">
-                                    <a href="#">All, </a>
-                                    <a href="#">Clothing, </a>
-                                    <a href="#"> Kids, </a>
-                                    <a href="#">Accessories, </a>
-                                    <a href="#">Stationery, </a>
-                                    <a href="#">Homelife, </a>
-                                    <a href="#">Appliances, </a>
-                                    <a href="#">Clothing, </a>
-                                    <a href="#">Baby, </a>
-                                    <a href="#">Beauty </a>
-                                </div>
+                        <div class="sidebar-widget aos-init" data-aos="fade-up" data-aos-delay="200">
+                            <div class="sidebar-widget-title mb-25">
+                                <h3>Tags</h3>
+                            </div>
+                            <div class="sidebar-widget-tag">
+                                <a href="#">All, </a>
+                                <a href="#">Clothing, </a>
+                                <a href="#"> Kids, </a>
+                                <a href="#">Accessories, </a>
+                                <a href="#">Stationery, </a>
+                                <a href="#">Homelife, </a>
+                                <a href="#">Appliances, </a>
+                                <a href="#">Clothing, </a>
+                                <a href="#">Baby, </a>
+                                <a href="#">Beauty </a>
                             </div>
                         </div>
                     </div>
@@ -372,54 +371,21 @@
             </div>
         </div>
     </div>
+</div>
 
-@push('scripts')
-    <script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/wow.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/scrollup.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/aos.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/magnific-popup.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/jquery.syotimer.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/swiper.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/isotope.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/jquery-ui.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/jquery-ui-touch-punch.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/jquery.nice-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/waypoints.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/jquery.counterup.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/select2.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/easyzoom.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/slinky.min.js')}}"></script>
-    <script src="{{asset('assets/js/plugins/ajax-mail.js')}}"></script>
-    <!-- Main JS -->
-    <script src="{{asset('assets/js/main.js')}}"></script>
-    <script type="text/javascript">
-        window.addEventListener('metaChanged', event => {
-            const { description, keywords } = event.detail;
-            // Update meta description
-            document.querySelector('meta[name="description"]').setAttribute('content', description);
-            // Update meta keywords
-            document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
-            document.title = event.detail.title;
-        });
-        window.addEventListener('urlChanged', event => {
-            setTimeout(() => {
-                window.history.pushState(null, null, event.detail.url);
-            }, 1500); // 5000 milliseconds = 5 seconds
-            AOS.init();
-        });
-
-
-
-    </script>
-@endpush
-{{--@section('scripts')--}}
-
-
-
-{{--@endsection--}}
+<script type="text/javascript">
+    window.addEventListener('metaChanged', event => {
+        const {description, keywords} = event.detail;
+        // Update meta description
+        document.querySelector('meta[name="description"]').setAttribute('content', description);
+        // Update meta keywords
+        document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+        document.title = event.detail.title;
+    });
+    window.addEventListener('urlChanged', event => {
+        setTimeout(() => {
+            window.history.pushState(null, null, event.detail.url);
+        }, 1500); // 5000 milliseconds = 5 seconds
+        AOS.init();
+    });
+</script>

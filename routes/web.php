@@ -31,7 +31,7 @@ Route::group(['prefix'=>'/'], function (){
 
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
 //Route::get('/{category}', \App\Http\Livewire\CategoryBanner::class);
-//Route::resource('/category',\App\Http\Controllers\front\CategoryController::class, ['as'=>'front']);
+Route::resource('/category',\App\Http\Controllers\front\CategoryController::class, ['as'=>'front']);
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
 Route::resource('/wishlist',\App\Http\Controllers\front\WishlistController::class, ['as'=>'front']);
 Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
