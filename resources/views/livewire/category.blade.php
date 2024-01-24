@@ -1,66 +1,68 @@
 {{--@section('title', $this->category->title)--}}
 {{--@section('description', $this->category->seo_description)--}}
 @section('keyword', $this->category->seo_title)
-    <div>
-        <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1" style="background-image:url({{ asset(($background != null) ? 'storage/'.$background->image : '') }}); background-position: center; background-size: cover ;">
-            <div class="container">
-                <div class="breadcrumb-content text-center">
-                    <h2 id="main-title" data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">{{ $category->title }}</h2>
-                    <ul data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
-                        <li><a href="{{ route('front..index') }}">Home</a></li>
-                        <li><i class="ti-angle-right"></i></li>
-                        <li>{{ $this->category->title }}</li>
-                    </ul>
-                    <img src="{{asset(($icon != null) ? 'storage/'.$icon->image : '')}}" alt="{{$icon->alt ?? ''}}">
-                </div>
+<div>
+    <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1"
+         style="background-image:url({{ asset(($background != null) ? 'storage/'.$background->image : '') }}); background-position: center; background-size: cover ;">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2 id="main-title" data-aos="fade-up" data-aos-delay="200"
+                    class="aos-init aos-animate">{{ $category->title }}</h2>
+                <ul data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
+                    <li><a href="{{ route('front..index') }}">Home</a></li>
+                    <li><i class="ti-angle-right"></i></li>
+                    <li>{{ $this->category->title }}</li>
+                </ul>
+                <img src="{{asset(($icon != null) ? 'storage/'.$icon->image : '')}}" alt="{{$icon->alt ?? ''}}">
             </div>
-{{--            <div class="breadcrumb-img-1 aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">--}}
-{{--                <img src="assets/images/banner/breadcrumb-1.png" alt="">--}}
-{{--            </div>--}}
-{{--            <div class="breadcrumb-img-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">--}}
-{{--                <img src="assets/images/banner/breadcrumb-2.png" alt="">--}}
-{{--            </div>--}}
         </div>
+        {{--            <div class="breadcrumb-img-1 aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">--}}
+        {{--                <img src="assets/images/banner/breadcrumb-1.png" alt="">--}}
+        {{--            </div>--}}
+        {{--            <div class="breadcrumb-img-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">--}}
+        {{--                <img src="assets/images/banner/breadcrumb-2.png" alt="">--}}
+        {{--            </div>--}}
+    </div>
 
-        <div class="shop-area shop-page-responsive pt-100 pb-100">
-            <div class="container">
-                <div class="row flex-row-reverse">
-                    <div class="col-lg-9">
-                        <div class="shop-topbar-wrapper mb-40">
-                            <div class="shop-topbar-left">
-                                <div class="showing-item">
-                                    <span>Showing 1–12 of 60 results</span>
-                                </div>
-                            </div>
-                            <div class="shop-topbar-right">
-                                <div class="shop-sorting-area">
-                                    <select class="nice-select nice-select-style-1" style="display: none;">
-                                        <option>Default Sorting</option>
-                                        <option>Sort by popularity</option>
-                                        <option>Sort by average rating</option>
-                                        <option>Sort by latest</option>
-                                    </select>
-                                    <div class="nice-select nice-select-style-1" tabindex="0"><span class="current">Default Sorting</span>
-                                        <ul class="list">
-                                            <li data-value="Default Sorting" class="option selected">Default Sorting</li>
-                                            <li data-value="Sort by popularity" class="option">Sort by popularity</li>
-                                            <li data-value="Sort by average rating" class="option">Sort by average rating
-                                            </li>
-                                            <li data-value="Sort by latest" class="option">Sort by latest</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="shop-view-mode nav" role="tablist">
-                                    <a class="active" href="#shop-1" data-bs-toggle="tab" aria-selected="true" role="tab"><i
-                                            class=" ti-layout-grid3 "></i> </a>
-                                    <a href="#shop-2" data-bs-toggle="tab" class="" aria-selected="false" tabindex="-1"
-                                       role="tab"><i class=" ti-view-list-alt "></i></a>
-                                </div>
+    <div class="shop-area shop-page-responsive pt-100 pb-100">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-9">
+                    <div class="shop-topbar-wrapper mb-40">
+                        <div class="shop-topbar-left">
+                            <div class="showing-item">
+                                <span>Showing 1–12 of 60 results</span>
                             </div>
                         </div>
-                        <div class="shop-bottom-area">
-                            <div class="tab-content jump">
-                                <div id="shop-1" class="tab-pane active" role="tabpanel">
+                        <div class="shop-topbar-right">
+                            <div class="shop-sorting-area">
+                                <select class="nice-select nice-select-style-1" style="display: none;">
+                                    <option>Default Sorting</option>
+                                    <option>Sort by popularity</option>
+                                    <option>Sort by average rating</option>
+                                    <option>Sort by latest</option>
+                                </select>
+                                <div class="nice-select nice-select-style-1" tabindex="0"><span class="current">Default Sorting</span>
+                                    <ul class="list">
+                                        <li data-value="Default Sorting" class="option selected">Default Sorting</li>
+                                        <li data-value="Sort by popularity" class="option">Sort by popularity</li>
+                                        <li data-value="Sort by average rating" class="option">Sort by average rating
+                                        </li>
+                                        <li data-value="Sort by latest" class="option">Sort by latest</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="shop-view-mode nav" role="tablist">
+                                <a class="active" href="#shop-1" data-bs-toggle="tab" aria-selected="true" role="tab"><i
+                                        class=" ti-layout-grid3 "></i> </a>
+                                <a href="#shop-2" data-bs-toggle="tab" class="" aria-selected="false" tabindex="-1"
+                                   role="tab"><i class=" ti-view-list-alt "></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-bottom-area">
+                        <div class="tab-content jump">
+                            <div id="shop-1" class="tab-pane active" role="tabpanel">
 
                                 <div id="product-list" class="row">
                                     @foreach($products as $product)
@@ -297,57 +299,58 @@
                 </div>
 
 
-
-                    <div class="col-lg-3">
-                        <div class="sidebar-wrapper">
-                            <div class="sidebar-widget mb-40 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                                <div class="search-wrap-2">
-                                    <form class="search-2-form" action="#">
-                                        <input placeholder="Search*" type="text">
-                                        <button class="button-search"><i class=" ti-search "></i></button>
-                                    </form>
-                                </div>
+                <div class="col-lg-3">
+                    <div class="sidebar-wrapper">
+                        <div class="sidebar-widget mb-40 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                            <div class="search-wrap-2">
+                                <form class="search-2-form" action="#">
+                                    <input placeholder="Search*" type="text">
+                                    <button class="button-search"><i class=" ti-search "></i></button>
+                                </form>
                             </div>
-                            <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
-                                 data-aos="fade-up" data-aos-delay="200">
-                                <div class="sidebar-widget-title mb-30">
-                                    <h3>Filter By Price</h3>
-                                </div>
-                                <div class="price-filter">
-                                    <div id="slider-range"
-                                         class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                        <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                             style="left: 0%; width: 77.7778%;"></div>
-                                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
-                                              style="left: 0%;"></span><span tabindex="0"
-                                                                             class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                             style="left: 77.7778%;"></span></div>
-                                    <div class="price-slider-amount">
-                                        <div class="label-input">
-                                            <label>Price:</label>
-                                            <input type="text" id="amount" name="price" placeholder="Add Your Price">
-                                        </div>
-                                        <button type="button">Filter</button>
+                        </div>
+                        <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
+                             data-aos="fade-up" data-aos-delay="200">
+                            <div class="sidebar-widget-title mb-30">
+                                <h3>Filter By Price</h3>
+                            </div>
+                            <div class="price-filter">
+                                <div id="slider-range"
+                                     class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"
+                                         style="left: 0%; width: 77.7778%;"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                                          style="left: 0%;"></span><span tabindex="0"
+                                                                         class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                         style="left: 77.7778%;"></span></div>
+                                <div class="price-slider-amount">
+                                    <div class="label-input">
+                                        <label>Price:</label>
+                                        <input type="text" id="amount" name="price" placeholder="Add Your Price">
                                     </div>
+                                    <button type="button">Filter</button>
                                 </div>
                             </div>
-                            <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
-                                 data-aos="fade-up" data-aos-delay="200">
+                        </div>
+                        <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
+                             data-aos="fade-up" data-aos-delay="200">
 
-                                <!-- SIDEBAR CATEGORY LIST -->
+                            <!-- SIDEBAR CATEGORY LIST -->
 
-                                <div class="sidebar-widget-title mb-25">
-                                    <h3>Product Categories</h3>
-                                </div>
-
-                                <div class="sidebar-list-style">
-                                    <ul>
-                                        @foreach($categories as $category)
-                                            <li wire:click="setCategory('{{$category->slug}}')"><a id="select-category-{{ $category->id }}">{{ $category->title }}<span>{{ $category->products->count() }}</span></a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                            <div class="sidebar-widget-title mb-25">
+                                <h3>Product Categories</h3>
                             </div>
+
+                            <div class="sidebar-list-style">
+                                <ul>
+                                    @foreach($categories as $category)
+                                        <li wire:click="setCategory('{{$category->slug}}')"><a
+                                                id="select-category-{{ $category->id }}">{{ $category->title }}
+                                                <span>{{ $category->products->count() }}</span></a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
 
                         <div class="sidebar-widget aos-init" data-aos="fade-up" data-aos-delay="200">
                             <div class="sidebar-widget-title mb-25">
