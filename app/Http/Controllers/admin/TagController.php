@@ -16,8 +16,6 @@ class TagController extends Controller
     public function show($id) {
         $tag = Tag::find($id);
         $products = $tag->products;
-        foreach ($products as $product){
-        }
         return view('admin.tag.show', compact('tag', 'products'));
     }
 
@@ -28,5 +26,24 @@ class TagController extends Controller
         $data['visible'] = 1;
         Tag::create($data);
         return redirect()->route('admin.tags.index');
+    }
+
+    public function update(Request $request, Tag $tag){
+        $field = $request->input('field');
+        $value = $request->input('value');
+        $data = [$field => $value];
+
+        $tag->update($data);
+        return ['response' => $value];
+    }
+
+    public function destroy($id)
+    {
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+
+        return [
+            'response' => "Tag deleted successfully"
+        ];
     }
 }
