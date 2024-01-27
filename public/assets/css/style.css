@@ -498,6 +498,11 @@ textarea {
   }
 }
 
+.back-color-primary{
+    background-color: var(--theme-color)!important;
+    color: #ffffff!important;
+}
+
 #scrollUp:hover {
   background-color: var(--theme-color);
 }
@@ -4938,7 +4943,7 @@ textarea {
 }
 
 .product-wrap .product-img .product-action-wrap .product-action-btn-1:hover {
-  color: #ffffff;
+    color: #ffffff;
   background-color: var(--theme-color);
 }
 
