@@ -78,10 +78,10 @@
                                                         <span>-10%</span>
                                                     </div>
                                                     <div class="product-action-wrap">
-                                                        <form wire:click="addProduct({{$product->id}})">
-                                                            <button class="product-action-btn-1" title="Wishlist"><i
-                                                                    class="pe-7s-like"></i></button>
-                                                        </form>
+                                                            <a wire:click="addProduct({{$product->id}})"
+                                                                    class="product-action-btn-1 {{ $this->check($product->id) ? 'back-color-primary' : '' }}" title="Wishlist">
+                                                                <i class="pe-7s-like"></i>
+                                                            </a>
                                                         <button class="product-action-btn-1" title="Quick View"
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#exampleModal">

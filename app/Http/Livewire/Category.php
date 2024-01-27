@@ -22,10 +22,14 @@ class Category extends Component
         $this->category = \App\Models\Category::firstOrFail();
     }
 
+    public function check($productid) {
+        return WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
+    }
+
     public function addProduct($productid)
     {
         if (Auth::check()) {
-            if (WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists()) {
+            if ($this->check($productid)) {
                 session()->flash('message', 'Already added product to wishlist');
                 return false;
             } else {
@@ -36,7 +40,6 @@ class Category extends Component
             }
         }
 
-        return redirect()->route('front.category.index');
     }
 
 
