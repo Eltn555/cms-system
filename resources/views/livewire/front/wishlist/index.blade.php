@@ -37,10 +37,9 @@
                                 <tbody>
 
                                 @foreach($products as $product)
-
                                     <tr>
                                         <td class="product-remove">
-                                            <button type="button" wire:click="deleteproduct({{ $product->id }})">×
+                                            <button type="button" wire:click="removeProduct({{ $product->id }})">×
                                             </button>
                                         </td>
                                         <td class="product-thumbnail">

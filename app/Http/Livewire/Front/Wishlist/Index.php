@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Front\Wishlist;
 
-use App\Models\Product;
-use App\Models\Wishlist;
+
+use App\Models\WishlistProduct;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
@@ -22,9 +23,22 @@ class Index extends Component
         return view('livewire.front.wishlist.index',);
     }
 
-    public function deleteproduct()
+    public function removeProduct($productid)
     {
-        $product = Product::find($this->product_wishlist);
-        $product->delete();
+        if (Auth::check()) {
+            if (WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists()) {
+                session()->flash('message', 'Already added product to wishlist');
+                return false;
+            } else {
+                WishlistProduct::destroy([
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $productid
+                ]);
+            }
+        }
+//        WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
+//        session()->flash('message', 'Already added product to wishlist');
+//        return view('livewire.front.wishlist');
     }
+
 }
