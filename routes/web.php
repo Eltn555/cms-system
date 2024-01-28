@@ -53,6 +53,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('tags', TagController::class, ['as'=>'admin']);
     Route::resource('reviews', ReviewController::class, ['as'=>'admin']);
     Route::resource('sliders', SliderController::class, ['as'=>'admin']);
+    Route::get('/partners/search', [PartnersController::class, 'search'])->name('admin.partners.search');
     Route::resource('partners', PartnersController::class, ['as'=>'admin']);
 });
 Route::post('/teststore', function (\Illuminate\Http\Request $request){
