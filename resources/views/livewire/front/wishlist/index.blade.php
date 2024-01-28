@@ -20,48 +20,47 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="#">
-                    <div class="wishlist-table-content">
-                        <div class="table-content table-responsive">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th class="width-remove"></th>
-                                    <th class="width-thumbnail"></th>
-                                    <th class="width-name">Product</th>
-                                    <th class="width-price"> Unit price</th>
-                                    <th class="width-stock-status"> Stock status</th>
-                                    <th class="width-wishlist-cart"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                <div class="wishlist-table-content">
+                    <div class="table-content table-responsive">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="width-remove"></th>
+                                <th class="width-thumbnail"></th>
+                                <th class="width-name">Product</th>
+                                <th class="width-price"> Unit price</th>
+                                <th class="width-stock-status"> Stock status</th>
+                                <th class="width-wishlist-cart"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                                @foreach($products as $product)
-                                    <tr>
-                                        <td class="product-remove">
-                                            <button type="button" wire:click="removeProduct({{ $product->id }})">×
-                                            </button>
-                                        </td>
-                                        <td class="product-thumbnail">
-                                            <a href="{{ route('front..index') }}"><img src="{{ asset('no-photo.jpg') }}"
-                                                                                       alt=""></a>
-                                        </td>
-                                        <td class="product-name">
-                                            <h5><a href="{{ route('front..index') }}">{{ $product->title }}</a></h5>
-                                        </td>
-                                        <td class="product-wishlist-price"><span
-                                                class="amount">{{ $product->price }}</span></td>
-                                        <td class="stock-status">
-                                            <span><i class="las la-check"></i> In Stock</span>
-                                        </td>
-                                        <td class="wishlist-cart btn-hover"><a href="#">Add to Cart</a></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                            @foreach($products as $product)
+                                <tr>
+                                    <td class="product-remove">
+                                        <a wire:id="${{ $product->id }}" wire:click="deleteProduct({{ $product->id }})">×
+                                        </a>
+                                    </td>
+                                    <td class="product-thumbnail">
+                                        <a href="{{ route('front..index') }}">
+                                            <img src="{{ asset('no-photo.jpg') }}" alt="">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <h5><a href="{{ route('front..index') }}">{{ $product->title }}</a></h5>
+                                    </td>
+                                    <td class="product-wishlist-price"><span
+                                            class="amount">{{ $product->price }}</span></td>
+                                    <td class="stock-status">
+                                        <span><i class="las la-check"></i> In Stock</span>
+                                    </td>
+                                    <td class="wishlist-cart btn-hover"><a href="#">Add to Cart</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
