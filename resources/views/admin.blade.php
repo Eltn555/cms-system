@@ -26,9 +26,9 @@
 <div class="flex overflow-hidden">
     @include('sections.sidebar')
     <div class="content">
-<textarea id="default-editor">
+{{--<textarea id="default-editor">
   <p><em>Hello</em>, <span style="text-decoration: underline;"><strong>World!</strong></span></p>
-</textarea>
+</textarea>--}}
 
         @yield('content')
     </div>
@@ -36,11 +36,13 @@
 
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
 <script>
-    var editor = new FroalaEditor('#editorfield');
+    let editor = new FroalaEditor('#editorfield');
     tinymce.init({
         selector: 'textarea#default-editor',
         plugins: 'code',
-        toolbar: 'code | undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image',
+        toolbar: 'undo redo | formatselect | bold italic backcolor | ' +
+            'alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ' +
+            '| removeformat | link image | code',
         promotion: false
     });
 </script>
