@@ -24,15 +24,14 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('products.create', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
     {
-
         $data = $request->all();
-        //$image = Storage::put('/images', $data['image']);
-
         $product = Product::create([
             'title' => $data['title'],
             'short_description' => $data['short_description'],
@@ -45,9 +44,9 @@ class ProductController extends Controller
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
             //'status' => $data['status'],
-            //'image' => $image,
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
         ]);
+        //$image = Storage::put('/images', $data['image']);
 
         foreach ($data['additional_products'] as $additional_product){
             $tag = Tag::firstOrCreate([
@@ -55,7 +54,6 @@ class ProductController extends Controller
             ], [
                 'visible' => 0
             ]);
-
             $product->additional_tags()->attach($tag->id);
         }
 
@@ -65,10 +63,8 @@ class ProductController extends Controller
             ], [
                 'visible' => 0
             ]);
-
             $product->tags()->attach($tag->id);
         }
-
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");
     }
 }

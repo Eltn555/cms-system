@@ -31,22 +31,22 @@
         </div>
 
         <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
-            <label for="modal-form-1" class="form-label">Title</label>
-            <input id="modal-form-1" name="title" type="text" class="form-control" placeholder="Table Lamp">
+            <label for="Title" class="form-label">Title</label>
+            <input id="Title" name="title" required type="text" class="form-control" placeholder="Table Lamp">
         </div>
         <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
-            <label for="modal-form-4" class="form-label"><b class="text-danger">* </b>Price</label>
-            <input id="modal-form-4" name="price" type="number" class="form-control"
-                   placeholder="Price write...">
+            <label for="Price" class="form-label"><b class="text-danger">* </b>Price</label>
+            <input id="Price" required name="price" type="number" class="form-control"
+                   placeholder="Enter a price...">
         </div>
         <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
-            <label for="modal-form-7" class="form-label">Discount Price</label>
-            <input id="modal-form-7" name="discount_price" type="number" class="form-control"
-                   placeholder="Price write...">
+            <label for="Discount-price" class="form-label">Discount Price</label>
+            <input id="Discount-price" name="discount_price" type="number" class="form-control"
+                   placeholder="Enter a discount price... (optional)">
         </div>
         <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
-            <label for="modal-form-6" class="form-label"><b class="text-danger">* </b>Category</label>
-            <select id="modal-form-6" name="category_id" class="form-select">
+            <label for="category" class="form-label"><b class="text-danger">* </b>Category</label>
+            <select id="category" required name="category_id" class="form-select">
                 <option value="" disabled selected>Not selected</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">
@@ -56,21 +56,21 @@
             </select>
         </div>
         <div class="col-span-2 mx-3 sm:col-span-2 mt-3">
-            <label for="modal-form-5" class="form-label">Visible</label>
+            <label for="visible" class="form-label">Visible</label>
             <div class="form-check form-switch p-0">
-                <input id="modal-form-5" class="form-check-input"
+                <input id="visible" class="form-check-input"
                        name="status" type="checkbox" value="1" checked>
             </div>
         </div>
 
         <div class="col-span-12 sm:col-span-12 mt-3">
             <label for="short-description" class="form-label">Description</label>
-            <textarea id="short-description" class="form-control h-[110px]" name="short_description"
+            <textarea id="short-description" class="description form-control h-[110px]" name="short_description"
                       placeholder="Short Description"></textarea>
         </div>
         <div class="col-span-12 sm:col-span-12 mt-3">
             <label for="modal-form-3" class="form-label">Long Description</label>
-            <textarea id="modal-form-3" class="form-control h-[110px]" name="long_description"
+            <textarea id="modal-form-3" class="description form-control h-[110px]" name="long_description"
                       placeholder="Long Description"></textarea>
         </div>
 
@@ -108,10 +108,24 @@
         </div>
 
         <div class="text-right mt-5 col-span-12">
-            <button type="button" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+            <a href="{{ URL::previous() }}" type="button" class="btn btn-outline-secondary w-24 mr-1">Cancel</a>
             <button type="submit" class="btn btn-primary w-24">Save</button>
         </div>
 
     </div>
     </form>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+
+            tinymce.init({
+                selector: 'textarea.description',
+                plugins: 'code table powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
+                language: 'ru',
+                promotion: false,
+                branding: false
+            });
+
+    </script>
 @endsection
