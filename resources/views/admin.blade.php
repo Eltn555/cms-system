@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="{{ asset('dist/css/bootstrapicons-iconpicker.css') }}" rel="stylesheet">
     @yield('styles')
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
     {{--    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>--}}
 </head>
 <body class="py-5 md:py-0">
@@ -25,6 +26,10 @@
 <div class="flex overflow-hidden">
     @include('sections.sidebar')
     <div class="content">
+<textarea id="default-editor">
+  <p><em>Hello</em>, <span style="text-decoration: underline;"><strong>World!</strong></span></p>
+</textarea>
+
         @yield('content')
     </div>
 </div>
@@ -32,6 +37,12 @@
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
 <script>
     var editor = new FroalaEditor('#editorfield');
+    tinymce.init({
+        selector: 'textarea#default-editor',
+        plugins: 'code',
+        toolbar: 'code | undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image',
+        promotion: false
+    });
 </script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
