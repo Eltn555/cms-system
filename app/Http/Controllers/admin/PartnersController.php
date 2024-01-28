@@ -19,11 +19,18 @@ class PartnersController extends Controller
     {
         $data = $request->all();
         $image = Storage::put('/images', $data['image']);
-
         Partner::create([
             'image' => $image
         ]);
-
         return redirect()->back();
+    }
+    public function delete(Request $request) {
+
+    }
+
+    public function search(Request $request) {
+        $data = $request->all();
+        $partner = Partner::find($data['id']);
+        return $partner->toArray();
     }
 }

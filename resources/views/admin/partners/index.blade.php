@@ -65,22 +65,67 @@
                         <a class="flex items-center mr-3" href="javascript:;">
                             <i data-lucide="check-square"></i>
                             Edit </a>
-                        <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
-                           data-tw-target="#delete-confirmation-modal">
+                        <div class="flex items-center text-danger"
+                             onclick="getElement({{ $partner->id }})" data-tw-toggle="modal"
+                             data-tw-target="#delete-modal">
                             <i data-lucide="trash-2"></i>
-                            Delete </a>
+                            Delete
+                        </div>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
 
-    <script>
-        let image = document.getElementById("image");
-        let input = document.getElementById("input");
+    <!-- BEGIN: Modal Content -->
+    <div id="delete-modal" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="p-5 text-center">
+                        <div
+                            class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
+                            <img id="delete-preview" src="">
+                        </div>
+                        <div class="text-3xl mt-5">Вы уверены?</div>
+                        <div class="text-slate-500 mt-2">Вы уверены что хотите удалить эту запись? <br>Это действие
+                            нельзя отменить.
+                        </div>
+                    </div>
+                    <div class="px-5 pb-8 text-center">
+                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">
+                            Отмена
+                        </button>
+                        <button type="button" class="btn btn-danger w-24">Удалить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- END: Modal Content -->
 
-        input.onchange = function () {
-            image.src = URL.createObjectURL(input.files[0]);
+@endsection
+
+@section('script')
+    <script>
+
+        function getElement(id) {
+            console.log(id);
+            $.ajax({
+                url: '{{ route('admin.partners.search') }}',
+                method: 'GET',
+                encode: true,
+                data: {
+                    id: id,
+                },
+                success: function (response) {
+                    console.log({{ asset('storage/') }} + response.image)
+                    $('#delete-preview').attr('src', {{ asset('storage/') }} + response.image);
+                },
+                error: function (error) {
+                    console.error('Update failed:', error);
+                }
+            });
         }
+
     </script>
 @endsection
