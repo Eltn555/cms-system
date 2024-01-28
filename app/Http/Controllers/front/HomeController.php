@@ -16,7 +16,7 @@ class HomeController extends Controller
 {
     public function index(){
         $sliders = Slider::all();
-        $slider = Slider::all()[$sliders->count()-1];
+        $slider = Slider::latest()->get();
         $categories = Category::with('images')->get();
         $partners = Partner::all();
         $tagsIndex = Tag::take(4)->get();

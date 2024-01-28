@@ -2,18 +2,19 @@
 @section('content')
 
     <div class="slider-category-area">
+        @dd($slider->image ?? '')
         <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
-             style="background-image:url({{ asset('storage/'.$slider->image) }})">
+             style="background-image:url({{$slider->image !== null ? asset('storage/'.$slider->image) : ''}})">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="slider-content-4 pt-145 text-center">
-                            <h5 data-aos="fade-up" data-aos-delay="200">{{ $slider->subtitle }}</h5>
-                            <h1 data-aos="fade-up" data-aos-delay="400">{{ $slider->title }}</h1>
+                            <h5 data-aos="fade-up" data-aos-delay="200">{{ $slider->subtitle ?? '' }}</h5>
+                            <h1 data-aos="fade-up" data-aos-delay="400">{{ $slider->title ?? '' }}</h1>
                             <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="600">
-                                <a href="{{ $slider->href }}"
+                                <a href="{{ $slider->href ?? '' }}"
                                    class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
-                                    Sotib olish <i class=" ti-arrow-right "></i>
+                                    Sotib olish <i class=" ti-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
