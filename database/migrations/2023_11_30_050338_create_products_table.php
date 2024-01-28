@@ -27,8 +27,6 @@ return new class extends Migration
             $table->text('seo_description')->nullable();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('status')->nullable();
-            $table->unsignedBigInteger('similar_products')->nullable();//tags
-            $table->unsignedBigInteger('additional_products')->nullable();//tags
             $table->string('slug')->nullable();
             $table->softDeletes();
             $table->timestamps();
