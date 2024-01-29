@@ -39,8 +39,8 @@
                                     <div class="upload-button flex items-center justify-center rounded">
                                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-24 h-24 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                     </div>
-                                    <input name="image[]" class="file-upload hidden" type="file" multiple accept="image/*" data-action="{{$next}}"/>
-                                    <input name="id" class="hidden" value="{{ $next }}"/>
+{{--                                    <input name="image[]" class="file-upload hidden" type="file" multiple accept="image/*" data-action="{{$next}}"/>--}}
+{{--                                    <input name="id" class="hidden" value="{{ $next }}"/>--}}
                                     <div class="hidden load-wrap w-full h-full flex justify-center items-center">
                                         <div class="load-1" style="z-index: 3">
                                             <div class="line"></div>

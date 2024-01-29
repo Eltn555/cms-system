@@ -21,7 +21,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $tags = Tag::all();
-        return view('products.index', compact('products', 'categories', 'tags', 'next'));
+        return view('products.index', compact('products', 'categories', 'tags'));
     }
 
     public function create()
