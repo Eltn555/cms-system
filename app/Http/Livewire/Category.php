@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Product;
 use App\Models\WishlistProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
 class Category extends Component
@@ -42,9 +42,7 @@ class Category extends Component
 
     }
 
-
-    public
-    function render()
+    public function render()
     {
         return view('livewire.category');
     }

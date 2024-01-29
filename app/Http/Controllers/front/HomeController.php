@@ -14,9 +14,10 @@ use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $sliders = Slider::all();
-        $slider = Slider::latest()->get();
+        $slider = Slider::latest()->first();
         $categories = Category::with('images')->get();
         $partners = Partner::all();
         $tagsIndex = Tag::take(4)->get();

@@ -24,13 +24,18 @@ class PartnersController extends Controller
         ]);
         return redirect()->back();
     }
-    public function delete(Request $request) {
 
-    }
-
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $data = $request->all();
         $partner = Partner::find($data['id']);
         return $partner->toArray();
+    }
+
+    public function destroy(Partner $partner)
+    {
+        $partner->delete();
+        return redirect()->route('admin.partners.index')
+            ->with('success', 'Review deleted successfully');
     }
 }
