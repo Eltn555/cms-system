@@ -1,4 +1,5 @@
-@extends('admin')@section('styles')
+@extends('admin')
+@section('styles')
     <style>
         .editable, .editabledesc{
             min-width: 10px;

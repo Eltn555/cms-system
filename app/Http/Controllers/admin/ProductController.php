@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\ProductTag;
 use App\Models\Tag;
 use Behat\Transliterator\Transliterator;
@@ -19,7 +21,8 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $tags = Tag::all();
-        return view('products.index', compact('products', 'categories', 'tags'));
+        $next = Product::orderBy('id','desc')->first()->id + 1;
+        return view('products.index', compact('products', 'categories', 'tags', 'next'));
     }
 
     public function create()
@@ -27,6 +30,41 @@ class ProductController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         return view('products.create', compact('categories', 'tags'));
+    }
+
+    public function image(Request $request){
+        $images = $request->file('image');
+        $id = [];
+        // Iterate through each uploaded file
+        foreach ($images as $image) {
+            $path = $image->store('images', 'public');
+            $image = Image::create([
+                'image' => $path,
+                'alt' => ' ',
+            ]);
+            ProductImage::create([
+                'product_id' => $request['id'],
+                'image_id' => $image->id
+            ]);
+            array_push($id, $image->id);
+            // Store the file in the "images" folder
+        }
+        return ['Response' => 'Created successfully', 'id' => $id];
+    }
+
+    protected function storeImage($product, $file, $type)
+    {
+        if ($file) {
+            $imageName = Storage::put('images', $file);
+            $image = Image::create([
+                'image' => $imageName,
+                'alt' => $type . " " . $product->title,
+            ]);
+            ProductImage::create([
+                'category_id' => $product->id,
+                'image_id' => $image->id
+            ]);
+        }
     }
 
     public function store(Request $request)

@@ -40,14 +40,13 @@ Route::get('/blog', function () { return view('front.blog.index'); })->name('blo
 
 
 // ADMIN PANEL
-
-
 Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function (){
         return view('dashboard.index');
     });
     // In your web.php or api.php
     Route::post('/upload', [CategoriesController::class, 'image'])->name('categories.upload');
+    Route::post('/productUpload', [ProductController::class, 'image'])->name('products.upload');
     Route::resource('products', ProductController::class, ['as'=>'admin']);
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
     Route::resource('tags', TagController::class, ['as'=>'admin']);

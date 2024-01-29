@@ -1,4 +1,109 @@
 @extends('admin')
+
+@section('styles')
+    <style>
+        .line {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            background-color: #4b9cdb;
+        }
+        .load-wrap{
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 3;
+            position: absolute;
+        }
+        .load-1 .line:nth-last-child(1) {
+            animation: loadingA 1.5s 1s infinite;
+        }
+        .load-1 .line:nth-last-child(2) {
+            animation: loadingA 1.5s 0.5s infinite;
+        }
+        .load-1 .line:nth-last-child(3) {
+            animation: loadingA 1.5s 0s infinite;
+        }
+        .editable, .editabledesc{
+            min-width: 10px;
+            max-width: 200px;
+            overflow: hidden;
+        }
+
+        table td{
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+        }
+        .avatar-wrapper {
+            position: relative;
+            /*margin: 20px auto;*/
+            /*margin: -100px auto 20px auto;*/
+            border-radius: 15%;
+            overflow: hidden;
+            /*box-shadow: 1px 1px 15px -5px black;*/
+            box-shadow: none;
+            transition: all .3s ease;
+        }
+
+        .avatar-wrapper:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .avatar-wrapper:hover .profile-pic {
+            opacity: .5;
+        }
+
+        .avatar-wrapper .profile-pic {
+            height: 100%;
+            width: 100%;
+            transition: all .3s ease;
+        }
+
+        .avatar-wrapper .profile-pic:after {
+            font-family: FontAwesome;
+            content: "\f007";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 190px;
+            background: #ecf0f1;
+            color: #34495e;
+            text-align: center;
+        }
+
+        .avatar-wrapper .upload-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .avatar-wrapper .upload-button .fa-arrow-circle-up {
+            position: absolute;
+            font-size: 243px;
+            top: -16px;
+            left: -5px;
+            text-align: center;
+            opacity: 0;
+            transition: all .3s ease;
+            color: #e4eae7;
+        }
+
+        .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+            background-color: #4a5568;
+            opacity: .7;
+        }
+        @keyframes loadingA {
+            0% {height: 15px;}
+            50% {height: 35px;}
+            100% {height: 15px;}
+        }
+    </style>
+@endsection
+
 @section('content')
     <h2 class="intro-y text-lg font-medium mt-10">
         Product List
