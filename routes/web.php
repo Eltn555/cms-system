@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CategoriesController;
+use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\PartnersController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ReviewController;
@@ -45,8 +46,10 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
         return view('dashboard.index');
     });
     // In your web.php or api.php
+    Route::resource('/images', ImageController::class, ['as'=>'admin']);
     Route::post('/upload', [CategoriesController::class, 'image'])->name('categories.upload');
     Route::post('/productUpload', [ProductController::class, 'image'])->name('products.upload');
+    Route::delete('/images', [ImageController::class, 'delete'])->name('image.delete');
     Route::resource('products', ProductController::class, ['as'=>'admin']);
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
     Route::resource('tags', TagController::class, ['as'=>'admin']);

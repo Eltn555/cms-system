@@ -29,11 +29,9 @@
                     <label class="form-label">Upload Image</label>
                     <div id="dropBox" class="border-2 border-dashed dark:border-darkmode-400 rounded-md p-2">
                         <div class="flex flex-wrap px-4">
-
                             <div id="imgs" class="flex">
                                 <!-- rasmla shettan chqadi -->
                             </div>
-
                             <form id="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="avatar-wrapper w-24 h-24 image-fit zoom-in">
@@ -52,8 +50,6 @@
                                     </div>
                                 </div>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -187,7 +183,7 @@
                             let fileurl = e.target.result;
                             $('#imgs').append(`<div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
                         <img class="rounded-md" src="` + fileurl + `">
-                        <button data-action="${id[i]}" class="w-5 h-5 flex items-center justify-center absolute text-center rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                        <button data-action="${id[i]}" class="deleteImage w-5 h-5 flex items-center justify-center absolute text-center rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
                             ✘
                         </button>
                     </div>`);
@@ -202,12 +198,29 @@
                 $(this).siblings('.file-upload').click();
             });
 
-            function ajax(field, newValue, ProductId, method) {
-                const apiUrl = field === 'image' ? '{{ route('products.upload') }}' : 'products/' + ProductId;
+            $(document).on('click', '.deleteImage', function () {
+                $(this).parents('.image-fit').addClass('hidden');
+                // ajax('', '', id, 'Delete');
+            });
+
+            function ajax(field, newValue, ID, method) {
+                let apiUrl;
+                switch (field) {
+                    case 'image':
+                        apiUrl = '{{ route('products.upload') }}';
+                        break;
+                    case 'imageDelete':
+                        apiUrl = 'images/' + ID;
+                        break;
+                    default:
+                        apiUrl = 'products/' + ID;
+                        break;
+                }
+                // const apiUrl = field === 'image' ?  : 'products/' + ID;
                 const requestData = field === 'image' ? newValue : {
                     field,
                     value: newValue,
-                    ProductId,
+                    ID,
                     _token: "{{ csrf_token() }}"
                 };
 
