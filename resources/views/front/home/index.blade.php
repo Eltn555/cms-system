@@ -2,9 +2,9 @@
 @section('content')
 
     <div class="slider-category-area">
-        @dd($slider->image ?? '')
         <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
-             style="background-image:url({{$slider->image !== null ? asset('storage/'.$slider->image) : ''}})">
+             style="background-image:url({{$slider->image  ? asset('storage/'.$slider->image) : ''}})"
+        >
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -70,7 +70,8 @@
                                             <a href="product-details.html">
                                                 <img src="assets/images/product/product-3.png" alt="">
                                             </a>
-                                            <div class="product-badge flex justify-end badge-top badge-right badge-pink">
+                                            <div
+                                                class="product-badge flex justify-end badge-top badge-right badge-pink">
                                                 @if($tagsIndex[0]->visible === 1)
                                                     @foreach($tagsIndex as $tag)
                                                         <div>{{ $tag->visible === 1 ? $tag->title : '' }}</div>
