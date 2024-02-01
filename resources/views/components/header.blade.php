@@ -47,7 +47,7 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a style="line-height: 80px !important;" href="/" >HOME</a>
+                                    <a style="line-height: 80px !important;" href="/">HOME</a>
                                 </li>
                                 <li>
                                     <a href="{{route('front.category.index')}}">SHOP</a>
@@ -101,8 +101,11 @@
                             <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
                                     class="pe-7s-user"></i></a>
                         </div>
-                        <div class="header-action-style">
-                            <a title="Wishlist" href="{{route('front.wishlist.index')}}"><i class="pe-7s-like"></i></a>
+                        <div class="header-action-style header-action-cart">
+                            <a class="cart-active" title="Wishlist" href="{{route('front.wishlist.index')}}"><i
+                                    class="pe-7s-like"></i>
+                                <span class="product-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
+                            </a>
                         </div>
                         <div class="header-action-style header-action-cart">
                             <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>

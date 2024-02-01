@@ -33,6 +33,7 @@ class Category extends Component
                 session()->flash('message', 'Already added product to wishlist');
                 return false;
             } else {
+                $this->emit('wishlistAddUpdated');
                 WishlistProduct::create([
                     'user_id' => auth()->user()->id,
                     'product_id' => $productid
