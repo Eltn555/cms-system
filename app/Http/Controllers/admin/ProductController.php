@@ -21,15 +21,15 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $tags = Tag::all();
-        $next = Product::orderBy('id','desc')->first()->id + 1;
-        return view('products.index', compact('products', 'categories', 'tags', 'next'));
+        return view('products.index', compact('products', 'categories', 'tags'));
     }
 
     public function create()
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('products.create', compact('categories', 'tags'));
+        $next = Product::orderBy('id','desc')->first()->id + 1;
+        return view('products.create', compact('categories', 'tags', 'next'));
     }
 
     public function image(Request $request){

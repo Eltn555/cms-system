@@ -1,35 +1,147 @@
 @extends('admin')
 
+@section('styles')
+    <style>
+        .line {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            background-color: #4b9cdb;
+        }
+        .load-wrap{
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 3;
+            position: absolute;
+        }
+        .load-1 .line:nth-last-child(1) {
+            animation: loadingA 1.5s 1s infinite;
+        }
+        .load-1 .line:nth-last-child(2) {
+            animation: loadingA 1.5s 0.5s infinite;
+        }
+        .load-1 .line:nth-last-child(3) {
+            animation: loadingA 1.5s 0s infinite;
+        }
+        .editable, .editabledesc{
+            min-width: 10px;
+            max-width: 200px;
+            overflow: hidden;
+        }
+
+        table td{
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+        }
+        .avatar-wrapper {
+            position: relative;
+            /*margin: 20px auto;*/
+            /*margin: -100px auto 20px auto;*/
+            border-radius: 15%;
+            overflow: hidden;
+            /*box-shadow: 1px 1px 15px -5px black;*/
+            box-shadow: none;
+            transition: all .3s ease;
+        }
+
+        .avatar-wrapper:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .avatar-wrapper:hover .profile-pic {
+            opacity: .5;
+        }
+
+        .avatar-wrapper .profile-pic {
+            height: 100%;
+            width: 100%;
+            transition: all .3s ease;
+        }
+
+        .avatar-wrapper .profile-pic:after {
+            font-family: FontAwesome;
+            content: "\f007";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 190px;
+            background: #ecf0f1;
+            color: #34495e;
+            text-align: center;
+        }
+
+        .avatar-wrapper .upload-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .avatar-wrapper .upload-button .fa-arrow-circle-up {
+            position: absolute;
+            font-size: 243px;
+            top: -16px;
+            left: -5px;
+            text-align: center;
+            opacity: 0;
+            transition: all .3s ease;
+            color: #e4eae7;
+        }
+
+        .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+            background-color: #4a5568;
+            opacity: .7;
+        }
+        @keyframes loadingA {
+            0% {height: 15px;}
+            50% {height: 35px;}
+            100% {height: 15px;}
+        }
+    </style>
+@endsection
+
 @section('content')
 
     <h2 class="intro-y text-lg font-medium my-10">Create New Product</h2>
-
-    <form action="{{ route('admin.products.store') }}" method="POST">
-        @csrf
     <div class="intro-y box m-auto w-2/3 py-5 px-5 grid col-span-12">
         <div class="col-span-12">
             <div  class="mt-3">
                 <label class="form-label">Upload Image</label>
-                <div id="dropBox" class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
+                <div id="dropBox" class="border-2 border-dashed dark:border-darkmode-400 rounded-md p-2">
                     <div class="flex flex-wrap px-4">
-                        <div id="gallery" class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                            <img class="rounded-md" alt="Midone - HTML Admin Template"
-                                 src="{{asset('dist/images/preview-5.jpg')}}">
-                            <div title="Remove this image?"
-                                 class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                <i data-lucide="x" class="w-4 h-4"></i></div>
+                        <div id="imgs" class="flex">
+                            <!-- rasmla shettan chqadi -->
                         </div>
-                    </div>
-                    <div class="px-4 pb-4 flex items-center cursor-pointer relative">
-                        <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload a file</span>
-                        or drag and drop
-                        <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0"
-                               name="image[]" id="imgUpload" multiple accept="image/*">
+                        <form id="" enctype="multipart/form-data">
+                            @csrf
+                            <div class="avatar-wrapper w-24 h-24 image-fit zoom-in">
+                                <img id="" class="img_category profile-pic w-24 h-24" src="{{asset('add.png')}}"/>
+                                <div class="upload-button flex items-center justify-center rounded">
+                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-24 h-24 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                                </div>
+                                <input name="image[]" class="file-upload hidden" type="file" multiple accept="image/*" data-action="{{$next}}"/>
+                                <input name="id" class="hidden" value="{{ $next }}"/>
+                                <div class="hidden load-wrap w-full h-full flex justify-center items-center">
+                                    <div class="load-1" style="z-index: 3">
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
+    <form action="{{ route('admin.products.store') }}" method="POST">
+        @csrf
+    <div class="intro-y box m-auto w-2/3 py-5 px-5 grid col-span-12">
         <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
             <label for="Title" class="form-label">Title</label>
             <input id="Title" name="title" required type="text" class="form-control" placeholder="Table Lamp">
@@ -126,6 +238,109 @@
                 promotion: false,
                 branding: false
             });
+
+            var id;
+            let input, form, formdata, id_parent;
+            $("#modal-form-2").each(function () {
+                const el = this;
+                ClassicEditor.create(el).catch((error) => {
+                    console.error(error);
+                });
+            });
+            $("#modal-form-3").each(function () {
+                const el1 = this;
+                ClassicEditor.create(el1).catch((error) => {
+                    console.error(error);
+                });
+            });
+
+            $(document).ready(function () {
+                $(".file-upload").on('change', function() {
+                    $('.load-wrap').removeClass('hidden');
+                    input = this;
+                    form = $(this).parents('form');
+                    formData = new FormData(form[0]);
+                    id_parent = $(this).parents('.intro-x').data('action');
+                    // Handle the 'create' case separately
+                    if ($(this).data('selectable') !== 'create') {
+                        ajax('image', formData, $(this).data('action'), 'POST');
+                    }
+                    // Function to handle file preview
+
+                });
+
+                function previewFiles(id) {
+                    if (input.files && input.files.length > 0) {
+                        for (let i = 0; i < input.files.length; i++) {
+                            let reader = new FileReader();
+                            reader.onload = function(e) {
+                                let fileurl = e.target.result;
+                                $('#imgs').append(`<div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
+                        <img class="rounded-md" src="` + fileurl + `">
+                        <button data-action="${id[i]}" class="deleteImage w-5 h-5 flex items-center justify-center absolute text-center rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                            ✘
+                        </button>
+                    </div>`);
+                            };
+                            reader.readAsDataURL(input.files[i]);
+                            $('.load-wrap').addClass('hidden');
+                        }
+                    }
+                }
+
+                $(".upload-button").on('click',function(){
+                    $(this).siblings('.file-upload').click();
+                });
+
+                $(document).on('click', '.deleteImage', function () {
+                    $(this).parents('.image-fit').addClass('hidden');
+                    let imageId = $(this).data('action');
+                    ajax('imageDelete', '', imageId, 'Delete');
+                });
+
+                function ajax(field, newValue, ID, method) {
+                    let apiUrl;
+                    switch (field) {
+                        case 'image':
+                            apiUrl = '{{ route('products.upload') }}';
+                            break;
+                        case 'imageDelete':
+                            apiUrl = '{{ route('image.delete') }}';
+                            break;
+                        default:
+                            apiUrl = 'products/' + ID;
+                            break;
+                    }
+                    const requestData = field === 'image' ? newValue : {
+                        field,
+                        value: newValue,
+                        ID,
+                        _token: "{{ csrf_token() }}"
+                    };
+
+                    $.ajax({
+                        url: apiUrl,
+                        type: method,
+                        dataType: "json",
+                        encode: true,
+                        processData: field !== 'image',
+                        contentType: field === 'image' ? false : 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: requestData,
+                        success: function (response) {
+                            $("#message").fadeIn(500).fadeOut(2000);
+                            console.log(response);
+                            if (field === 'image'){
+                                id = response.id;
+                                console.log(id);
+                                previewFiles(id);
+                            }
+                        },
+                        error: function (error) {
+                            console.error('Update failed:', error);
+                        }
+                    });
+                }
+            })
 
     </script>
 @endsection

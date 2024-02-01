@@ -29,11 +29,9 @@
                     <label class="form-label">Upload Image</label>
                     <div id="dropBox" class="border-2 border-dashed dark:border-darkmode-400 rounded-md p-2">
                         <div class="flex flex-wrap px-4">
-
                             <div id="imgs" class="flex">
                                 <!-- rasmla shettan chqadi -->
                             </div>
-
                             <form id="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="avatar-wrapper w-24 h-24 image-fit zoom-in">
@@ -41,8 +39,8 @@
                                     <div class="upload-button flex items-center justify-center rounded">
                                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="transform: translateX(-50%) translateY(-50%); top:50%; left: 50%;" stroke-linejoin="round" class="w-24 h-24 fa-arrow-circle-up lucide lucide-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                                     </div>
-                                    <input name="image[]" class="file-upload hidden" type="file" multiple accept="image/*" data-action="{{$next}}"/>
-                                    <input name="id" class="hidden" value="{{ $next }}"/>
+{{--                                    <input name="image[]" class="file-upload hidden" type="file" multiple accept="image/*" data-action="{{$next}}"/>--}}
+{{--                                    <input name="id" class="hidden" value="{{ $next }}"/>--}}
                                     <div class="hidden load-wrap w-full h-full flex justify-center items-center">
                                         <div class="load-1" style="z-index: 3">
                                             <div class="line"></div>
@@ -52,8 +50,6 @@
                                     </div>
                                 </div>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -187,7 +183,7 @@
                             let fileurl = e.target.result;
                             $('#imgs').append(`<div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
                         <img class="rounded-md" src="` + fileurl + `">
-                        <button data-action="${id[i]}" class="w-5 h-5 flex items-center justify-center absolute text-center rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
+                        <button data-action="${id[i]}" class="deleteImage w-5 h-5 flex items-center justify-center absolute text-center rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
                             ✘
                         </button>
                     </div>`);
@@ -202,12 +198,29 @@
                 $(this).siblings('.file-upload').click();
             });
 
-            function ajax(field, newValue, ProductId, method) {
-                const apiUrl = field === 'image' ? '{{ route('products.upload') }}' : 'products/' + ProductId;
+            $(document).on('click', '.deleteImage', function () {
+                $(this).parents('.image-fit').addClass('hidden');
+                // ajax('', '', id, 'Delete');
+            });
+
+            function ajax(field, newValue, ID, method) {
+                let apiUrl;
+                switch (field) {
+                    case 'image':
+                        apiUrl = '{{ route('products.upload') }}';
+                        break;
+                    case 'imageDelete':
+                        apiUrl = 'images/' + ID;
+                        break;
+                    default:
+                        apiUrl = 'products/' + ID;
+                        break;
+                }
+                // const apiUrl = field === 'image' ?  : 'products/' + ID;
                 const requestData = field === 'image' ? newValue : {
                     field,
                     value: newValue,
-                    ProductId,
+                    ID,
                     _token: "{{ csrf_token() }}"
                 };
 
