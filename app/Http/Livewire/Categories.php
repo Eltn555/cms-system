@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Product;
 use App\Models\WishlistProduct;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -16,16 +17,19 @@ class Categories extends Component
     public $categories;
     public $icon;
     public $background;
-
+    public $search;
+    public $products;
 
 
     public function mount($slug)
     {
         $this->setCategory($slug);
         $this->categories = Category::all();
+        $this->products = Product::all();
     }
 
-    public function check($productid) {
+    public function check($productid)
+    {
         return WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
     }
 
@@ -49,7 +53,7 @@ class Categories extends Component
     public function gotoPage($page)
     {
         $this->setPage($page);
-        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug."?page=".$page]);
+        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug . "?page=" . $page]);
     }
 
     public function setCategory($slug)
@@ -57,7 +61,7 @@ class Categories extends Component
         $this->resetPage();
         $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
         $this->dispatchBrowserEvent('metaChanged', [
-            'title' => 'Lumen Lux | '.$this->category->title,
+            'title' => 'Lumen Lux | ' . $this->category->title,
             'description' => $this->category->seo_description,
             'keywords' => $this->category->seo_title // Assuming you have seo_keywords
         ]);
@@ -75,6 +79,8 @@ class Categories extends Component
 
     public function render()
     {
+        $search = '%' . $this->search . '%';
+        $this->products = Product::where('title', 'like', $search)->get();
         $products = $this->category->products()->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')

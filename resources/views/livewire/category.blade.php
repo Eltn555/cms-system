@@ -308,7 +308,7 @@
                         <div class="sidebar-widget mb-40 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                             <div class="search-wrap-2">
                                 <form class="search-2-form" action="#">
-                                    <input placeholder="Search*" type="text">
+                                    <input placeholder="Search*" type="text" wire:model="search">
                                     <button class="button-search"><i class=" ti-search "></i></button>
                                 </form>
                             </div>
