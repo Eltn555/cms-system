@@ -106,7 +106,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                {{$products->links('pagination::default')}}
+                                {{$products->links('pagination::default') }}
                             </div>
                             <div id="shop-2" class="tab-pane" role="tabpanel">
                                 {{--                                    <div class="shop-list-wrap mb-30">--}}
