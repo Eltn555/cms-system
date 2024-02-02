@@ -50,7 +50,7 @@
                                     <a style="line-height: 80px !important;" href="/">HOME</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('front.category.index')}}">SHOP</a>
+                                    <a href="">SHOP</a>
                                     <ul class="mega-menu-style mega-menu-mrg-1">
                                         <li>
                                             <ul>

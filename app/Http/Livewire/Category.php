@@ -22,26 +22,7 @@ class Category extends Component
         $this->category = \App\Models\Category::firstOrFail();
     }
 
-    public function check($productid) {
-        return WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
-    }
 
-    public function addProduct($productid)
-    {
-        if (Auth::check()) {
-            if ($this->check($productid)) {
-                session()->flash('message', 'Already added product to wishlist');
-                return false;
-            } else {
-                $this->emit('wishlistAddUpdated');
-                WishlistProduct::create([
-                    'user_id' => auth()->user()->id,
-                    'product_id' => $productid
-                ]);
-            }
-        }
-
-    }
 
     public function render()
     {
