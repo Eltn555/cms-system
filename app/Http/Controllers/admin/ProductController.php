@@ -10,9 +10,11 @@ use App\Models\ProductImage;
 use App\Models\ProductTag;
 use App\Models\Tag;
 use Behat\Transliterator\Transliterator;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 
 class ProductController extends Controller
 {
@@ -70,6 +72,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
+
+        foreach ($matches[0] as $value) {
+            $encode = substr($value, 5, strlen($value)-6);
+            $decoder = new Base64ImageDecoder($encode,['jpeg', 'jpg','png', 'gif']);
+            $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
+            Storage::put($fileName, $decoder->getDecodedContent());
+            $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
+        }
+
         $product = Product::create([
             'title' => $data['title'],
             'short_description' => $data['short_description'],

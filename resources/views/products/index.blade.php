@@ -228,8 +228,16 @@
                         <td>
                             <a href="" class="font-medium whitespace-nowrap">{{ $product->title }}</a>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" data-tw-toggle="modal" data-tw-target="#short_description_{{ $product->id }}">
                             {{ $product->short_description }}
+                            <!-- BEGIN: Super Large Modal Content -->
+                            <div id="short_description_{{ $product->id }}" class="modal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content py-10 px-10">
+                                        {!! $product->short_description !!}
+                                    </div>
+                                </div>
+                            </div> <!-- END: Super Large Modal Content -->
                             <div
                                 class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->long_description }}</div>
                         </td>
