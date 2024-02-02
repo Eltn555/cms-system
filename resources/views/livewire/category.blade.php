@@ -379,20 +379,21 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    window.addEventListener('metaChanged', event => {
-        const {description, keywords} = event.detail;
-        // Update meta description
-        document.querySelector('meta[name="description"]').setAttribute('content', description);
-        // Update meta keywords
-        document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
-        document.title = event.detail.title;
-    });
-    window.addEventListener('urlChanged', event => {
-        setTimeout(() => {
-            window.history.pushState(null, null, event.detail.url);
-        }, 1500); // 5000 milliseconds = 5 seconds
-        AOS.init();
-    });
-</script>
+@push('scripts')
+    <script type="text/javascript">
+        window.addEventListener('metaChanged', event => {
+            const {description, keywords} = event.detail;
+            // Update meta description
+            document.querySelector('meta[name="description"]').setAttribute('content', description);
+            // Update meta keywords
+            document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+            document.title = event.detail.title;
+        });
+        window.addEventListener('urlChanged', event => {
+            setTimeout(() => {
+                window.history.pushState(null, null, event.detail.url);
+            }, 1500); // 5000 milliseconds = 5 seconds
+            AOS.init();
+        });
+    </script>
+@endpush
