@@ -11,6 +11,7 @@ class Index extends Component
 {
     public $products;
 
+    protected $listeners = ['wishlistRemove' => 'wishlistRemove'];
 
     public function mount()
     {
@@ -18,27 +19,15 @@ class Index extends Component
         $this->products = $user->wishlists;
     }
 
+    public function wishlistRemove()
+    {
+        dd('test');
+    }
+
     public function render()
     {
-        return view('livewire.front.wishlist.index',);
+        return view('livewire.front.wishlist.index');
     }
-
-    public function removeProduct($productid)
-    {
-        if (Auth::check()) {
-            if (WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists()) {
-                session()->flash('message', 'Already added product to wishlist');
-                return false;
-            } else {
-                WishlistProduct::destroy([
-                    'user_id' => auth()->user()->id,
-                    'product_id' => $productid
-                ]);
-            }
-        }
-//        WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
-//        session()->flash('message', 'Already added product to wishlist');
-//        return view('livewire.front.wishlist');
-    }
-
 }
+
+

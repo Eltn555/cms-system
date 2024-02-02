@@ -102,9 +102,9 @@
                                     class="pe-7s-user"></i></a>
                         </div>
                         <div class="header-action-style header-action-cart">
-                            <a class="cart-active" title="Wishlist" href="{{route('front.wishlist.index')}}"><i
+                            <a class="" title="Wishlist" href="{{route('front.wishlist.index')}}"><i
                                     class="pe-7s-like"></i>
-                                <span class="product-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
+                                <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
                             </a>
                         </div>
                         <div class="header-action-style header-action-cart">

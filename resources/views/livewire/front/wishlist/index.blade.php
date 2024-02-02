@@ -39,8 +39,8 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td class="product-remove">
-                                            <button type="button" wire:click="removeProduct({{ $product->id }})">×
-                                            </button>
+                                            <a type="button" wire:click="wishlistRemove({{ $product->id }})">×
+                                            </a>
                                         </td>
                                         <td class="product-thumbnail">
                                             <a href="{{ route('front..index') }}"><img src="{{ asset('no-photo.jpg') }}"
