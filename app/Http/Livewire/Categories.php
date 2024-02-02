@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\WishlistProduct;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
@@ -15,10 +17,33 @@ class Categories extends Component
     public $icon;
     public $background;
 
+
+
     public function mount($slug)
     {
         $this->setCategory($slug);
         $this->categories = Category::all();
+    }
+
+    public function check($productid) {
+        return WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
+    }
+
+    public function addProduct($productid)
+    {
+        if (Auth::check()) {
+            if ($this->check($productid)) {
+                session()->flash('message', 'Already added product to wishlist');
+                return false;
+            } else {
+                $this->emit('wishlistAddUpdated');
+                WishlistProduct::create([
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $productid
+                ]);
+            }
+        }
+
     }
 
     public function gotoPage($page)
@@ -50,9 +75,7 @@ class Categories extends Component
 
     public function render()
     {
-        $products = $this->category
-            ? $this->category->products()->paginate(12)
-            : collect();
+        $products = $this->category->products()->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
