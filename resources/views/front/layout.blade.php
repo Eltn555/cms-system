@@ -57,30 +57,31 @@
 </div>
 @stack('scripts')
 <!-- All JS is here -->
-{{--<script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/vendor/jquery-migrate-3.3.2.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/vendor/popper.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/vendor/bootstrap.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/wow.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/scrollup.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/aos.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/magnific-popup.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/jquery.syotimer.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/swiper.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/imagesloaded.pkgd.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/isotope.pkgd.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/jquery-ui.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/jquery-ui-touch-punch.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/jquery.nice-select.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/waypoints.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/jquery.counterup.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/select2.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/easyzoom.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/slinky.min.js', true)}}"></script>--}}
-{{--<script src="{{asset('assets/js/plugins/ajax-mail.js', true)}}"></script>--}}
+<script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/popper.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/wow.js')}}"></script>
+<script src="{{asset('assets/js/plugins/scrollup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/aos.js')}}"></script>
+<script src="{{asset('assets/js/plugins/magnific-popup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.syotimer.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/swiper.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery-ui.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery-ui-touch-punch.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/waypoints.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/jquery.counterup.js')}}"></script>
+<script src="{{asset('assets/js/plugins/select2.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/easyzoom.js')}}"></script>
+<script src="{{asset('assets/js/plugins/slinky.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/ajax-mail.js')}}"></script>
 <!-- Main JS -->
-<script src="{{asset('assets/js/main.js', true)}}"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
+<!-- Main JS -->
 @yield('scripts')
 </body>
 
