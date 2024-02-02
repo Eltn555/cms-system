@@ -50,9 +50,7 @@ class Categories extends Component
 
     public function render()
     {
-        $products = $this->category
-            ? $this->category->products()->paginate(12)
-            : collect();
+        $products = $this->category->products()->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
