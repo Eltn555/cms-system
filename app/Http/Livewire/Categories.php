@@ -78,7 +78,7 @@ class Categories extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
-//        $this->products = Product::where('title', 'like', $search)->get();
+//        $products = Product::where('title', 'like', $search)->get();
         $products = $this->category->products()->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')

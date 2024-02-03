@@ -29,7 +29,6 @@ Route::group(['prefix'=>'/'], function (){
    Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
 });
 
-
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
 //Route::get('/{category}', \App\Http\Livewire\CategoryBanner::class);
 //Route::resource('/category',\App\Http\Controllers\front\CategoryController::class, ['as'=>'front']);
