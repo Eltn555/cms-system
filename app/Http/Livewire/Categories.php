@@ -17,7 +17,6 @@ class Categories extends Component
     public $categories;
     public $icon;
     public $background;
-    public $search;
 
 
     public function mount($slug)
@@ -77,8 +76,6 @@ class Categories extends Component
 
     public function render()
     {
-        $search = '%' . $this->search . '%';
-//        $products = Product::where('title', 'like', $search)->get();
         $products = $this->category->products()->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')
