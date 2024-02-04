@@ -54,6 +54,16 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "KyivType";
+    src: url("kyiv.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'Cormorant';
+    src: url("cormorant.ttf") format("truetype");
+}
+
 @media only screen and (min-width: 1200px) {
     .container {
         max-width: 1200px;
@@ -7767,8 +7777,16 @@ textarea {
     margin-right: 12px;
 }
 
+.font-kyiv{
+    font-family: 'KyivType', sans-serif !important;
+}
+
+.font-cormorant{
+    font-family: 'Cormorant', sans-serif !important;
+}
+
 .product-details-content .product-details-price span.new-price {
-    color: var(--theme-color);
+    color: #232323;
     font-size: 20px;
 }
 
