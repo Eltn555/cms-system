@@ -2,6 +2,7 @@
     <div class="product-details-area pb-100 pt-100">
         <div class="container">
             <div class="row">
+                <div class="col-12 mb-5">Главная / Магазин / {{$product->category->title}}</div>
                 <div class="col-lg-6">
                     <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="200">
                         <div class="product-details-small-img-wrap">
@@ -41,12 +42,18 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product-details-content" data-aos="fade-up" data-aos-delay="400">
-                        <h2 class="font-cormorant fw-bold">{{$product->title}}</h2>
-                        <div class="product-details-price font-kyiv">
-                            <span class="{{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  </span>
-                            <span class="{{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}}</span>
+                        <div class="d-flex">
+                            <h2 class="font-cormorant fw-bold h1">{{$product->title}}</h2>
+                            <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
+                                <div class="">
+                                    <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                </div>
+                                <div class="single-product-compare">
+                                    <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="product-details-review">
+                        <div class="product-details-review pt-4">
                             <div class="product-rating">
                                 <i class=" ti-star"></i>
                                 <i class=" ti-star"></i>
@@ -54,15 +61,41 @@
                                 <i class=" ti-star"></i>
                                 <i class=" ti-star"></i>
                             </div>
-                            <span>( 1 Customer Review )</span>
+                            <span>8 отзывов</span>
+                        </div>
+                        <div class="product-details-meta">
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet animi consectetur esse est maxime modi placeat, quis reprehenderit velit! Consectetur cumque dolorem fugit repudiandae voluptas! Dolor dolores odio quisquam?</li>
+                                <li><span class="title">Tags:</span>
+                                    <ul >
+                                        @foreach($product->tags as $tag)
+                                            <li ><a class="text-info" href="#">{{$tag->title}}</a>,</li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li><span class="title">Categories:</span>
+                                    <ul class="tag ">
+                                        <li><a class="text-info" href="#">{{$product->category->title}}</a></li>
+                                    </ul>
+                                </li>
+                                <li><span class="title">Доступность:</span>
+                                    <ul class="tag">
+                                        <li class="text-success">Есть в наличии</li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                         <div class="product-color product-color-active product-details-color">
                             <span>Color :</span>
                             <ul>
-                                <li><a title="Pink" class="pink" href="#">pink</a></li>
-                                <li><a title="Yellow" class="active yellow" href="#">yellow</a></li>
-                                <li><a title="Purple" class="purple" href="#">purple</a></li>
+                                <li><a title="Pink" class="pink rounded-circle" href="#">pink</a></li>
+                                <li><a title="Yellow" class="active yellow rounded-circle" href="#">yellow</a></li>
+                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>
                             </ul>
+                        </div>
+                        <div class="product-details-price font-kyiv">
+                            <span class="{{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  </span>
+                            <span class="{{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}}</span>
                         </div>
                         <div class="product-details-action-wrap">
                             <div class="product-quality">
@@ -71,28 +104,6 @@
                             <div class="single-product-cart btn-hover">
                                 <a href="#">Add to cart</a>
                             </div>
-                            <div class="single-product-wishlist">
-                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                            </div>
-                            <div class="single-product-compare">
-                                <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-details-meta">
-                            <ul>
-                                <li><span class="title">SKU:</span> Ch-256xl</li>
-                                <li><span class="title">Category:</span>
-                                    <ul>
-                                        <li><a href="#">Office</a>,</li>
-                                        <li><a href="#">Home</a></li>
-                                    </ul>
-                                </li>
-                                <li><span class="title">Tags:</span>
-                                    <ul class="tag">
-                                        <li><a href="#">Furniture</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                         <div class="social-icon-style-4">
                             <a href="#"><i class="fa fa-facebook"></i></a>
