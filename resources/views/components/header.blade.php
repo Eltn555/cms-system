@@ -102,10 +102,15 @@
                                     class="pe-7s-user"></i></a>
                         </div>
                         <div class="header-action-style header-action-cart">
-                            <a class="" title="Wishlist" href="{{route('front.wishlist.index')}}"><i
+
+                            <a class="" title="Wishlist"
+                               href="@if(auth()->user()){{route('front.wishlist.index')}}@endif"><i
                                     class="pe-7s-like"></i>
-                                <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
+                                @if(auth()->user())
+                                    <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
+                                @endif
                             </a>
+
                         </div>
                         <div class="header-action-style header-action-cart">
                             <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
