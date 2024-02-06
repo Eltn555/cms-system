@@ -5267,24 +5267,24 @@ textarea {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    margin: 32px 0 56px;
+    margin: 10px 0;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .product-color {
-        margin: 25px 0 31px;
+        margin: 10px 0;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .product-color {
-        margin: 20px 0 26px;
+        margin: 10px 0;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .product-color {
-        margin: 20px 0 26px;
+        margin: 10px 0;
     }
 }
 
@@ -5349,7 +5349,7 @@ textarea {
 }
 
 .product-color.product-details-color {
-    margin: 22px 0 32px;
+    margin: 10px 0;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -5442,33 +5442,12 @@ textarea {
     line-height: 60px;
 }
 
-.single-product-cart {
-    margin: 0 24px 0 10px;
-}
-
-.single-product-cart.mrg-none {
-    margin: 0 24px 0 0px;
-}
-
-@media only screen and (max-width: 767px) {
-    .single-product-cart {
-        margin: 0 10px 0 10px;
-    }
-}
-
 .single-product-cart > a {
     display: inline-block;
     font-weight: 600;
     color: #ffffff;
-    background-color: var(--theme-color);
-    padding: 20px 37px;
+    background-color: #F8B301;
     z-index: 1;
-}
-
-@media only screen and (max-width: 767px) {
-    .single-product-cart > a {
-        padding: 20px 17px;
-    }
 }
 
 .single-product-wishlist {
@@ -7763,7 +7742,7 @@ textarea {
 }
 
 .product-details-content .product-details-price {
-    margin: 14px 0 23px;
+    margin: 0;
 }
 
 .product-details-content .product-details-price span {
@@ -7842,6 +7821,15 @@ textarea {
     }
 }
 
+.product-count{
+    width: 150px;
+    padding: 5px 0;
+    border: solid 0.5px lightgray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .product-details-content .product-details-meta {
     margin: 15px 0;
     padding-bottom: 10px;
@@ -7866,12 +7854,12 @@ textarea {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    margin: 0 0 13px;
+    margin: 0 0 5px;
 }
 
 @media only screen and (max-width: 767px) {
     .product-details-content .product-details-meta > ul > li {
-        margin: 0 0 7px;
+        margin: 0 0 4px;
     }
 }
 

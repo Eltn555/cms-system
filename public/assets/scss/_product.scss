@@ -482,12 +482,12 @@
 }
 
 .product-quality {
-    width: 80px;
+    width: 150px;
     overflow: hidden;
     position: relative;
     border: 1px solid #e8e8e8;
     > input {
-        width: 83px;
+        width: 150px;
         border: none;
         height: 60px;
         line-height: 50px;
@@ -510,13 +510,13 @@
         color: #8f8f8f;
         left: 10px;
         cursor: pointer;
-        
+
         &.inc {
             left: auto;
             right: 10px;
             font-size: 20px;
             top: 15px;
-            
+
         }
         &.dec {
             top: -2px;
@@ -551,7 +551,7 @@
     margin-right: 23px;
 }
 
-.single-product-wishlist , 
+.single-product-wishlist ,
 .single-product-compare {
     a {
         font-size: 18px;
@@ -585,7 +585,7 @@
 
 .quickview-modal-style {
     .modal-dialog {
-        max-width: 1070px; 
+        max-width: 1070px;
         @media #{$lg-layout} {
             max-width: 910px;
         }
@@ -623,7 +623,7 @@
                     top: 15px;
                 }
                 a {
-                    background-color: #333; 
+                    background-color: #333;
                     font-size: 15px;
                     color: $white;
                     text-align: center;

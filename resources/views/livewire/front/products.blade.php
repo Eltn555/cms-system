@@ -65,17 +65,17 @@
                         </div>
                         <div class="product-details-meta">
                             <ul>
-                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet animi consectetur esse est maxime modi placeat, quis reprehenderit velit! Consectetur cumque dolorem fugit repudiandae voluptas! Dolor dolores odio quisquam?</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet animi consectetur esse est maxime modi placeat, quis reprehenderit velit!</li>
                                 <li><span class="title">Tags:</span>
                                     <ul >
                                         @foreach($product->tags as $tag)
-                                            <li ><a class="text-info" href="#">{{$tag->title}}</a>,</li>
+                                            <li ><a class="" href="#">{{$tag->title}}</a>,</li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li><span class="title">Categories:</span>
                                     <ul class="tag ">
-                                        <li><a class="text-info" href="#">{{$product->category->title}}</a></li>
+                                        <li><a class="" href="#">{{$product->category->title}}</a></li>
                                     </ul>
                                 </li>
                                 <li><span class="title">Доступность:</span>
@@ -93,25 +93,32 @@
                                 <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>
                             </ul>
                         </div>
-                        <div class="product-details-price font-kyiv">
-                            <span class="{{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  </span>
-                            <span class="{{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}}</span>
-                        </div>
-                        <div class="product-details-action-wrap">
-                            <div class="product-quality">
-                                <input class="cart-plus-minus-box input-text qty text" name="qtybutton" value="1">
+                        <div class="product-details-action-wrap font-kyiv">
+                            <div class="product-count h4">
+                                <button class="border-0 bg-transparent">-</button>
+                                <span>1</span>
+                                <button class="border-0 bg-transparent">+</button>
                             </div>
-                            <div class="single-product-cart btn-hover">
-                                <a href="#">Add to cart</a>
+                            <div class="product-details-price p-3">
+                                <span class="p-2 {{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
+                                <span class="p-2 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} сум</span>
                             </div>
                         </div>
-                        <div class="social-icon-style-4">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <div class="d-flex">
+                            <div class="single-product-cart btn-hover w-50 pe-1 text-center">
+                                <a href="#" class="w-100 p-3 text-dark">Добавить в корзину</a>
+                            </div>
+                            <div class="single-product-cart btn-hover w-50 ps-1 text-center">
+                                <a href="#" class="w-100 p-3 text-dark bg-light border border-1">Купить в один клик</a>
+                            </div>
                         </div>
+{{--                        <div class="social-icon-style-4">--}}
+{{--                            <a href="#"><i class="fa fa-facebook"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-dribbble"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-pinterest-p"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-twitter"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-linkedin"></i></a>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>
