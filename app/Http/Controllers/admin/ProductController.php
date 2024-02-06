@@ -30,11 +30,12 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        $next = Product::orderBy('id','desc')->first()->id + 1;
+        $next = Product::orderBy('id', 'desc')->first()->id + 1;
         return view('products.create', compact('categories', 'tags', 'next'));
     }
 
-    public function image(Request $request){
+    public function image(Request $request)
+    {
         $images = $request->file('image');
         $id = [];
         // Iterate through each uploaded file
@@ -72,6 +73,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        /*dd($data);
+        // Process Short description images
         preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
 
         foreach ($matches[0] as $value) {
@@ -81,7 +84,9 @@ class ProductController extends Controller
             Storage::put($fileName, $decoder->getDecodedContent());
             $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
         }
+        // END
 
+        // Create product
         $product = Product::create([
             'title' => $data['title'],
             'short_description' => $data['short_description'],
@@ -95,10 +100,16 @@ class ProductController extends Controller
             'seo_description' => $data['seo_description'],
             //'status' => $data['status'],
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
-        ]);
-        //$image = Storage::put('/images', $data['image']);
+        ]);*/
 
-        foreach ($data['additional_products'] as $additional_product){
+        // Images process
+        foreach ($data['images'] as $image) {
+            $storage = Storage::put('/images/', $image);
+            dump($storage);
+        }
+        die();
+        // Additional products (tags) process
+        foreach ($data['additional_products'] as $additional_product) {
             $tag = Tag::firstOrCreate([
                 'title' => $additional_product
             ], [
