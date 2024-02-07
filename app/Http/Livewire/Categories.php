@@ -17,6 +17,7 @@ class Categories extends Component
     public $categories;
     public $icon;
     public $background;
+    public $search;
 
 
     public function mount($slug)
@@ -27,7 +28,7 @@ class Categories extends Component
 
     public function check($productid)
     {
-        return WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists();
+        return Auth::check() ? WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists() : false;
     }
 
     public function addProduct($productid)
@@ -76,7 +77,14 @@ class Categories extends Component
 
     public function render()
     {
-        $products = $this->category->products()->paginate(12);
+        $products = $this->category->products()->where(function ($query) {
+            $query->where('title', 'LIKE', '%' . $this->search . '%')->
+            orWhere('short_description', 'LIKE', '%' . $this->search . '%')->
+            orWhere('long_description', 'LIKE', '%' . $this->search . '%')->
+            orWhere('price', 'LIKE', '%' . $this->search . '%')->
+            orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
+            orWhere('additional', 'LIKE', '%' . $this->search . '%');
+        })->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
