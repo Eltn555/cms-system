@@ -230,147 +230,88 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </div>--}}
-{{--    <div class="related-product-area pb-95">--}}
-{{--        <div class="container">--}}
-{{--            <div class="section-title-2 st-border-center text-center mb-75" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                <h2>Related Products</h2>--}}
-{{--            </div>--}}
-{{--            <div class="related-product-active swiper-container">--}}
-{{--                <div class="swiper-wrapper">--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a href="product-details.html">--}}
-{{--                                    <img src="assets/images/product/product-1.png" alt="">--}}
-{{--                                </a>--}}
-{{--                                <div class="product-badge badge-top badge-right badge-pink">--}}
-{{--                                    <span>-10%</span>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-wrap">--}}
-{{--                                    <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>--}}
-{{--                                    <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                        <i class="pe-7s-look"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-2-wrap">--}}
-{{--                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content">--}}
-{{--                                <h3><a href="product-details.html">New Modern Sofa Set</a></h3>--}}
-{{--                                <div class="product-price">--}}
-{{--                                    <span class="old-price">$25.89 </span>--}}
-{{--                                    <span class="new-price">$20.25 </span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="400">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a href="product-details.html">--}}
-{{--                                    <img src="assets/images/product/product-2.png" alt="">--}}
-{{--                                </a>--}}
-{{--                                <div class="product-action-wrap">--}}
-{{--                                    <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>--}}
-{{--                                    <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                        <i class="pe-7s-look"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-2-wrap">--}}
-{{--                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content">--}}
-{{--                                <h3><a href="product-details.html">New Modern Sofa Set</a></h3>--}}
-{{--                                <div class="product-price">--}}
-{{--                                    <span>$50.25 </span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="600">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a href="product-details.html">--}}
-{{--                                    <img src="assets/images/product/product-3.png" alt="">--}}
-{{--                                </a>--}}
-{{--                                <div class="product-badge badge-top badge-right badge-pink">--}}
-{{--                                    <span>-10%</span>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-wrap">--}}
-{{--                                    <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>--}}
-{{--                                    <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                        <i class="pe-7s-look"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-2-wrap">--}}
-{{--                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content">--}}
-{{--                                <h3><a href="product-details.html">Easy Modern Chair</a></h3>--}}
-{{--                                <div class="product-price">--}}
-{{--                                    <span class="old-price">$45.00 </span>--}}
-{{--                                    <span class="new-price">$40.00 </span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="800">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a href="product-details.html">--}}
-{{--                                    <img src="assets/images/product/product-4.png" alt="">--}}
-{{--                                </a>--}}
-{{--                                <div class="product-action-wrap">--}}
-{{--                                    <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>--}}
-{{--                                    <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                        <i class="pe-7s-look"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-2-wrap">--}}
-{{--                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content">--}}
-{{--                                <h3><a href="product-details.html">Stylish Swing Chair</a></h3>--}}
-{{--                                <div class="product-price">--}}
-{{--                                    <span>$30.25 </span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <div class="product-wrap">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a href="product-details.html">--}}
-{{--                                    <img src="assets/images/product/product-2.png" alt="">--}}
-{{--                                </a>--}}
-{{--                                <div class="product-badge badge-top badge-right badge-pink">--}}
-{{--                                    <span>-10%</span>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-wrap">--}}
-{{--                                    <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>--}}
-{{--                                    <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                                        <i class="pe-7s-look"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-action-2-wrap">--}}
-{{--                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content">--}}
-{{--                                <h3><a href="product-details.html">New Modern Sofa Set</a></h3>--}}
-{{--                                <div class="product-price">--}}
-{{--                                    <span class="old-price">$80.50 </span>--}}
-{{--                                    <span class="new-price">$75.25 </span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="related-product-area pb-95">
+        <div class="container">
+            <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="shadow-text-1 font-cormorant fw-bold">В одном <br>стиле</h2>
+                <h2 class="shadow-text-2 font-cormorant fw-bold">В одном <br>стиле</h2>
+            </div>
+            <div class="related-product-active swiper-container">
+                <div class="swiper-wrapper">
+                    @foreach($relatedProducts as $product)
+                        <div class="swiper-slide">
+                            <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                                <div class="product-img img-zoom mb-25">
+                                    <a href="product-details.html">
+                                        <img src="{{asset('no_photo.jpg')}}" alt="">
+                                    </a>
+                                    <div class="product-badge badge-top badge-right badge-pink">
+                                        <span>-10%</span>
+                                    </div>
+                                    <div class="product-action-wrap">
+                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
+                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="pe-7s-look"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-action-2-wrap">
+                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    </div>
+                                </div>
+                                <div class="product-content d-flex justify-content-between flex-column" style="height: 100px">
+                                    <h3 class="fw-semibold fs-6"><a href="product-details.html">{{$product->title}}</a></h3>
+                                    <div class="product-price">
+                                        <span class="p-2 {{($product->discount_price == "") ? 'visually-hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
+                                        <span class="p-2 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} сум</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="related-product-area pb-95">
+        <div class="container">
+            <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="shadow-text-1 font-cormorant fw-bold">Покупают с<br>этим</h2>
+                <h2 class="shadow-text-2 font-cormorant fw-bold">Покупают с<br>этим</h2>
+            </div>
+            <div class="related-product-active swiper-container">
+                <div class="swiper-wrapper">
+                    @foreach($additionalProducts as $product)
+                        <div class="swiper-slide">
+                            <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                                <div class="product-img img-zoom mb-25">
+                                    <a href="product-details.html">
+                                        <img src="{{asset('no_photo.jpg')}}" alt="">
+                                    </a>
+                                    <div class="product-badge badge-top badge-right badge-pink">
+                                        <span>-10%</span>
+                                    </div>
+                                    <div class="product-action-wrap">
+                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
+                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="pe-7s-look"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-action-2-wrap">
+                                        <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
+                                    </div>
+                                </div>
+                                <div class="product-content d-flex justify-content-between flex-column" style="height: 100px">
+                                    <h3 class="fw-semibold fs-6"><a href="product-details.html">{{$product->title}}</a></h3>
+                                    <div class="product-price">
+                                        <span class="p-2 {{($product->discount_price == "") ? 'visually-hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
+                                        <span class="p-2 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} сум</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

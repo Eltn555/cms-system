@@ -200,7 +200,7 @@
 
             $(document).on('click', '.deleteImage', function () {
                 $(this).parents('.image-fit').addClass('hidden');
-                // ajax('', '', id, 'Delete');
+                ajax('', '', id, 'Delete');
             });
 
             function ajax(field, newValue, ID, method) {

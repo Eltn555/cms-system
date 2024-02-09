@@ -25,7 +25,6 @@ class Products extends Component
 
     public function render()
     {
-//        dd($this->product->category);
         return view('livewire.front.products')->extends('front.layout')->section('content');
     }
 }

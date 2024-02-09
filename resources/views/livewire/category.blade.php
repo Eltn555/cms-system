@@ -396,7 +396,7 @@
         window.addEventListener('urlChanged', event => {
             AOS.init();
             setTimeout(() => {
-                window.history.pushState(null, null, event.detail.url);
+                window.history.replaceState(null, null, event.detail.url);
             }, 1500); // 5000 milliseconds = 5 seconds
         });
     </script>
