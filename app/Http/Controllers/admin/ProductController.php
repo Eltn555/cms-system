@@ -73,13 +73,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        //dd($data);
         // Process Short description images
         preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
 
         foreach ($matches[0] as $value) {
-            $encode = substr($value, 5, strlen($value)-6);
-            $decoder = new Base64ImageDecoder($encode,['jpeg', 'jpg','png', 'gif']);
+            $encode = substr($value, 5, strlen($value) - 6);
+            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif']);
             $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
             Storage::put($fileName, $decoder->getDecodedContent());
             $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
@@ -108,8 +107,79 @@ class ProductController extends Controller
 
             dump($storage);
             $storedImage = Image::create([
-                'image'=> $storage,
-                'alt'=>$product->title
+                'image' => $storage,
+                'alt' => $product->title
+            ]);
+            $product->images()->attach($storedImage->id);
+        }
+        // Additional products (tags) process
+        foreach ($data['additional_products'] as $additional_product) {
+            $tag = Tag::firstOrCreate([
+                'title' => $additional_product
+            ], [
+                'visible' => 0
+            ]);
+            $product->additional_tags()->attach($tag->id);
+        }
+
+        foreach ($data['tags'] as $tagName) {
+            $tag = Tag::firstOrCreate([
+                'title' => $tagName
+            ], [
+                'visible' => 0
+            ]);
+            $product->tags()->attach($tag->id);
+        }
+        return redirect()->route('admin.products.index')->with('message', "This is Success Created");
+    }
+
+    public function edit($id)
+    {
+        $categories = Category::all();
+        $tags = Tag::all();
+        $products = Product::findOrFail($id);
+        return view('products.edit', compact('products', 'categories', 'tags'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        // Process Short description images
+        preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
+
+        foreach ($matches[0] as $value) {
+            $encode = substr($value, 5, strlen($value) - 6);
+            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif']);
+            $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
+            Storage::put($fileName, $decoder->getDecodedContent());
+            $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
+        }
+        // END
+
+        // Create product
+        $product = Product::create([
+            'title' => $data['title'],
+            'short_description' => $data['short_description'],
+            'long_description' => $data['long_description'],
+            'price' => $data['price'],
+            'discount_price' => $data['discount_price'],
+            //'amount' => $data['amount'],
+            'category_id' => $data['category_id'],
+            'additional' => $data['additional'],
+            'seo_title' => $data['seo_title'],
+            'seo_description' => $data['seo_description'],
+            //'status' => $data['status'],
+            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
+        ]);
+
+        // Images process
+        foreach ($data['images'] as $image) {
+            $storage = Storage::put('/images', $image);
+
+            dump($storage);
+            $storedImage = Image::create([
+                'image' => $storage,
+                'alt' => $product->title
             ]);
             $product->images()->attach($storedImage->id);
         }
@@ -134,3 +204,4 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");
     }
 }
+
