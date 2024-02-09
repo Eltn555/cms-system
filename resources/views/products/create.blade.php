@@ -120,7 +120,7 @@
 @section('content')
 
     <h2 class="intro-y text-lg font-medium my-6">Create New Product</h2>
-    <form action="{{ route('admin.products.store') }}" method="POST">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="intro-y box m-auto w-2/3 py-5 px-5 grid col-span-12">
             <div class="col-span-12">
@@ -191,20 +191,57 @@
 
             <div class="col-span-12 sm:col-span-12 mt-3">
                 <label for="short-description" class="form-label">Description</label>
-                <textarea id="short-description" class="description form-control h-[110px]" name="short_description"
+                <textarea id="short-description" class="form-control h-[110px]" name="short_description"
                           placeholder="Short Description"></textarea>
             </div>
             <div class="col-span-12 sm:col-span-12 mt-3">
                 <label for="modal-form-3" class="form-label">Long Description</label>
-                <textarea id="modal-form-3" class="description form-control h-[110px]" name="long_description"
-                          placeholder="Long Description"></textarea>
+                <textarea id="modal-form-3" class="tinyeditor form-control h-[110px]" name="long_description"
+                          placeholder="Long Description">
+
+                </textarea>
+            </div>
+
+            <div class="col-span-12 sm:col-span-12 mt-3">
+                <label for="additional" class="form-label">Additional</label>
+                <textarea id="additional" class="tinyeditor form-control h-[110px]" name="additional"
+                          placeholder="Additional">
+                    <table class="table table-striped" style="height: 181px; width: 93.0348%;">
+<tbody>
+<tr>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Вес внутреннего блока</span></td>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Блока</span></td>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Охлаждение</span></td>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Инвертор</span></td>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Длина упаковки</span></td>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Страна производителя</span></td>
+<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+                </textarea>
             </div>
 
             <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
                 <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar
                     products</label>
                 <select data-placeholder="Select tags" class="tom-select w-full tomselected"
-                        id="post-form-3" name="tags[]"
+                        id="post-form-3" name="tags[]" required
                         multiple="multiple" tabindex="-1" hidden="hidden">
                     @foreach($tags as $tag)
                         <option value="{{ $tag->title }}">{{ $tag->title }}</option>
@@ -221,7 +258,7 @@
                     products</label>
                 <select data-placeholder="Select categories" class="tom-select w-full tomselected"
                         id="post-form-3" name="additional_products[]"
-                        multiple="multiple" tabindex="-1" hidden="hidden">
+                        multiple="multiple" required tabindex="-1" hidden="hidden">
                     @foreach($tags as $tag)
                         <option value="{{ $tag->title }}">{{ $tag->title }}</option>
                     @endforeach
@@ -246,7 +283,7 @@
     <script type="text/javascript">
 
         tinymce.init({
-            selector: 'textarea.description',
+            selector: 'textarea.tinyeditor',
             plugins: 'code table powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
             language: 'ru',
             promotion: false,
@@ -255,18 +292,6 @@
 
         var id;
         let input, form, formdata, id_parent;
-        $("#modal-form-2").each(function () {
-            const el = this;
-            ClassicEditor.create(el).catch((error) => {
-                console.error(error);
-            });
-        });
-        $("#modal-form-3").each(function () {
-            const el1 = this;
-            ClassicEditor.create(el1).catch((error) => {
-                console.error(error);
-            });
-        });
 
         $(document).ready(function () {
             $(".file-upload").on('change', function () {
@@ -280,7 +305,6 @@
                     ajax('image', formData, $(this).data('action'), 'POST');
                 }
                 // Function to handle file preview
-
             });
 
             function previewFiles(id) {

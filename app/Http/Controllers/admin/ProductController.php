@@ -73,7 +73,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        /*dd($data);
+        //dd($data);
         // Process Short description images
         preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
 
@@ -95,19 +95,24 @@ class ProductController extends Controller
             'discount_price' => $data['discount_price'],
             //'amount' => $data['amount'],
             'category_id' => $data['category_id'],
-            //'additional' => $data['additional'],
+            'additional' => $data['additional'],
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
             //'status' => $data['status'],
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
-        ]);*/
+        ]);
 
         // Images process
         foreach ($data['images'] as $image) {
-            $storage = Storage::put('/images/', $image);
+            $storage = Storage::put('/images', $image);
+
             dump($storage);
+            $storedImage = Image::create([
+                'image'=> $storage,
+                'alt'=>$product->title
+            ]);
+            $product->images()->attach($storedImage->id);
         }
-        die();
         // Additional products (tags) process
         foreach ($data['additional_products'] as $additional_product) {
             $tag = Tag::firstOrCreate([
