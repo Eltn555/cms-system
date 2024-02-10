@@ -157,7 +157,7 @@ class ProductController extends Controller
         // END
 
         // Create product
-        $product = Product::create([
+        $product = Product::find($id)->update([
             'title' => $data['title'],
             'short_description' => $data['short_description'],
             'long_description' => $data['long_description'],
@@ -172,7 +172,7 @@ class ProductController extends Controller
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
         ]);
 
-        // Images process
+        /*// Images process
         foreach ($data['images'] as $image) {
             $storage = Storage::put('/images', $image);
 
@@ -200,7 +200,7 @@ class ProductController extends Controller
                 'visible' => 0
             ]);
             $product->tags()->attach($tag->id);
-        }
+        }*/
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");
     }
 }

@@ -162,7 +162,7 @@
             <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
                 <label for="Title" class="form-label">Title</label>
                 <input id="Title" name="title" required type="text" class="form-control" placeholder="Table Lamp"
-                       value="{{$products->title}}">
+                       value="{{ $products->title }}">
             </div>
             <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
                 <label for="Price" class="form-label"><b class="text-danger">* </b>Price</label>
@@ -208,36 +208,7 @@
             <div class="col-span-12 sm:col-span-12 mt-3">
                 <label for="additional" class="form-label">Additional</label>
                 <textarea id="additional" class="tinyeditor form-control h-[110px]" name="additional"
-                          placeholder="Additional">
-                    <table class="table table-striped" style="height: 181px; width: 93.0348%;">
-<tbody>
-<tr>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Вес внутреннего блока</span></td>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
-</tr>
-<tr>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Блока</span></td>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
-</tr>
-<tr>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Охлаждение</span></td>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
-</tr>
-<tr>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Инвертор</span></td>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
-</tr>
-<tr>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Длина упаковки</span></td>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
-</tr>
-<tr>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 50.5487%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">Страна производителя</span></td>
-<td class="ck-editor__editable ck-editor__nested-editable" style="width: 49.4838%;" role="textbox" contenteditable="true"><span class="ck-table-bogus-paragraph">&nbsp;</span></td>
-</tr>
-</tbody>
-</table>
-                </textarea>
+                          placeholder="Additional">{!! $products->additional !!}</textarea>
             </div>
 
             <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
@@ -247,7 +218,11 @@
                         id="post-form-3" name="tags[]" required
                         multiple="multiple" tabindex="-1" hidden="hidden">
                     @foreach($tags as $tag)
-                        <option value="{{ $tag->title }}">{{ $tag->title }}</option>
+                        @if($products->tags->contains($tag->id))
+                            <option value="{{ $tag->title }}" selected>{{ $tag->title }}</option>
+                        @else
+                            <option value="{{ $tag->title }}">{{ $tag->title }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
@@ -263,7 +238,11 @@
                         id="post-form-3" name="additional_products[]"
                         multiple="multiple" required tabindex="-1" hidden="hidden">
                     @foreach($tags as $tag)
-                        <option value="{{ $tag->title }}">{{ $tag->title }}</option>
+                        @if($products->additional_tags->contains($tag->id))
+                            <option value="{{ $tag->title }}" selected>{{ $tag->title }}</option>
+                        @else
+                            <option value="{{ $tag->title }}">{{ $tag->title }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
