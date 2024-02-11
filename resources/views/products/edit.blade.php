@@ -154,7 +154,8 @@
                             </div>
                             <input name="images[]" class="file-upload hidden" type="file" multiple accept="image/*"
                                    data-action=""/>
-                            <input name="id" class="hidden" value=""/>
+                            <input name="id" class="hidden" value="{{$products->id}}"/>
+                            <input name="title" class="hidden" value="{{$products->title}}"/>
                             <div class="hidden load-wrap w-full h-full flex justify-center items-center">
                                 <div class="load-1" style="z-index: 3">
                                     <div class="line"></div>

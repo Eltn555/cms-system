@@ -39,13 +39,14 @@ class ProductController extends Controller
     {
         $images = $request->file('images');
         $id = [];
+        $alt = $request->has('title') ? $request->input('title') : ' ';
         // Iterate through each uploaded file
         if ($images){
             foreach ($images as $image) {
                 $path = $image->store('images', 'public');
                 $image = Image::create([
                     'image' => $path,
-                    'alt' => ' ',
+                    'alt' => $alt,
                 ]);
 
                 ProductImage::create([
@@ -53,7 +54,6 @@ class ProductController extends Controller
                     'image_id' => $image->id
                 ]);
                 array_push($id, $image->id);
-                // Store the file in the "images" folder
             }
             return ['Response' => 'Created successfully', 'id' => $id];
         }
