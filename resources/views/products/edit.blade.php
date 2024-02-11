@@ -207,7 +207,7 @@
                 <div class="col-span-12 sm:col-span-12 mt-3">
                     <label for="short-description" class="form-label">Description</label>
                     <textarea id="short-description" class="form-control h-[110px]" name="short_description"
-                              placeholder="Short Description">{{$products->short_description}}</textarea>
+                              placeholder="Description">{{$products->short_description}}</textarea>
                 </div>
                 <div class="col-span-12 sm:col-span-12 mt-3">
                     <label for="modal-form-3" class="form-label">Long Description</label>
@@ -218,9 +218,9 @@
                 </div>
 
                 <div class="col-span-12 sm:col-span-12 mt-3">
-                    <label for="additional" class="form-label">Additional</label>
+                    <label for="additional" class="form-label">Tech specs</label>
                     <textarea id="additional" class="tinyeditor form-control h-[110px]" name="additional"
-                              placeholder="Additional">{!! $products->additional !!}</textarea>
+                              placeholder="Tech specs">{!! $products->additional !!}</textarea>
                 </div>
 
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
@@ -239,8 +239,8 @@
                     </select>
                 </div>
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
-                    <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">SEO</label>
-                    <input id="modal-form-1" name="seo_title" type="text" class="form-control"
+                    <label for="seoTitle" class="form-label" id="post-form-3-ts-label">SEO</label>
+                    <input id="seoTitle" name="seo_title" type="text" class="form-control"
                            placeholder="SEO Title" value="{{$products->seo_title}}">
                 </div>
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3 h-[110px]">
@@ -259,8 +259,8 @@
                     </select>
                 </div>
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
-                    <label for="modal-form-4" class="form-label">SEO Description</label>
-                    <textarea id="modal-form-4" class="form-control h-[215px]" name="seo_description"
+                    <label for="seoDescription" class="form-label">SEO Description</label>
+                    <textarea id="seoDescription" class="form-control h-[215px]" name="seo_description"
                               placeholder="SEO Description" rows="3">{{$products->seo_description}}</textarea>
                 </div>
 
@@ -288,6 +288,14 @@
         let input, form, formdata, id_parent;
 
         $(document).ready(function () {
+            $('#Title').on('input', function () {
+                $('#seoTitle').val($(this).val());
+            });
+
+            $('#short-description').on('input', function () {
+                $('#seoDescription').val($(this).val());
+            });
+
             $(".file-upload").on('change', function () {
                 $('.load-wrap').removeClass('hidden');
                 input = this;
