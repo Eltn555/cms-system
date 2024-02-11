@@ -36,23 +36,27 @@ class ProductController extends Controller
 
     public function image(Request $request)
     {
-        $images = $request->file('image');
+        $images = $request->file('images');
         $id = [];
         // Iterate through each uploaded file
-        foreach ($images as $image) {
-            $path = $image->store('images', 'public');
-            $image = Image::create([
-                'image' => $path,
-                'alt' => ' ',
-            ]);
-            ProductImage::create([
-                'product_id' => $request['id'],
-                'image_id' => $image->id
-            ]);
-            array_push($id, $image->id);
-            // Store the file in the "images" folder
+        if ($images){
+            foreach ($images as $image) {
+                $path = $image->store('images', 'public');
+                $image = Image::create([
+                    'image' => $path,
+                    'alt' => ' ',
+                ]);
+
+                ProductImage::create([
+                    'product_id' => $request['id'],
+                    'image_id' => $image->id
+                ]);
+                array_push($id, $image->id);
+                // Store the file in the "images" folder
+            }
+            return ['Response' => 'Created successfully', 'id' => $id];
         }
-        return ['Response' => 'Created successfully', 'id' => $id];
+        return ['Response' => 'No images to store', 'images' => count($images)];
     }
 
     protected function storeImage($product, $file, $type)
@@ -85,6 +89,7 @@ class ProductController extends Controller
         }
         // END
 
+        $next = Product::orderBy('id', 'desc')->first()->id + 1;
         // Create product
         $product = Product::create([
             'title' => $data['title'],
@@ -98,7 +103,7 @@ class ProductController extends Controller
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
             //'status' => $data['status'],
-            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
+            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next,
         ]);
 
         // Images process
