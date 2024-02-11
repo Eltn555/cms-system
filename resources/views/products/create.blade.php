@@ -253,8 +253,8 @@
                     </select>
                 </div>
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
-                    <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">SEO</label>
-                    <input id="modal-form-1" name="seo_title" type="text" class="form-control"
+                    <label for="seoTitle" class="form-label" id="post-form-3-ts-label">SEO</label>
+                    <input id="seoTitle" name="seo_title" type="text" class="form-control"
                            placeholder="SEO Title">
                 </div>
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3 h-[110px]">
@@ -269,8 +269,8 @@
                     </select>
                 </div>
                 <div class="col-span-6 mx-2 sm:col-span-6 mt-3">
-                    <label for="modal-form-4" class="form-label">SEO Description</label>
-                    <textarea id="modal-form-4" class="form-control h-[215px]" name="seo_description"
+                    <label for="seoDescription" class="form-label">SEO Description</label>
+                    <textarea id="seoDescription" class="form-control h-[215px]" name="seo_description"
                               placeholder="SEO Description" rows="3"></textarea>
                 </div>
 
@@ -296,7 +296,13 @@
         let input, form, formdata, id_parent;
 
         $(document).ready(function () {
-            $('#Title').
+            $('#Title').on('input', function () {
+                $('#seoTitle').val($(this).val());
+            });
+
+            $('#short-description').on('input', function () {
+                $('#seoDescription').val($(this).val());
+            });
 
             $(".file-upload").on('change', function () {
                 $('.load-wrap').removeClass('hidden');

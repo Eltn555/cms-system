@@ -106,16 +106,10 @@ class ProductController extends Controller
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next,
         ]);
 
+
         // Images process
         foreach ($data['images'] as $image) {
-            $storage = Storage::put('/images', $image);
 
-            dump($storage);
-            $storedImage = Image::create([
-                'image' => $storage,
-                'alt' => $product->title
-            ]);
-            $product->images()->attach($storedImage->id);
         }
         // Additional products (tags) process
         foreach ($data['additional_products'] as $additional_product) {
