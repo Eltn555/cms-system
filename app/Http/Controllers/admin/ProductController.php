@@ -11,6 +11,7 @@ use App\Models\ProductTag;
 use App\Models\Tag;
 use Behat\Transliterator\Transliterator;
 use Carbon\Carbon;
+use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -106,11 +107,21 @@ class ProductController extends Controller
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next,
         ]);
 
-
+        $images = ProductImage::where('product_id', $next)->with('image')->get();
         // Images process
-        foreach ($data['images'] as $image) {
+        foreach ($images as $productImage) {
+            // Access image properties, e.g., $productImage->image->id, $productImage->image->url, etc.
+            $image = $productImage->image;
 
+            // Check if $productId and $createdProductId are different
+            if ($next != $product->id) {
+                // Update ProductImage's product_id
+                $productImage->update(['product_id' => $product->id]);
+            }
+            // Update associated Image's alt
+            $image->update(['alt' => $data['title']]);
         }
+
         // Additional products (tags) process
         foreach ($data['additional_products'] as $additional_product) {
             $tag = Tag::firstOrCreate([

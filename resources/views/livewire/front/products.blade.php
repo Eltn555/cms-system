@@ -73,7 +73,7 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><span class="title">Categories:</span>
+                                <li><span class="title">Categories</span>
                                     <ul class="tag ">
                                         <li><a class="" href="#">{{$product->category->title}}</a></li>
                                     </ul>
