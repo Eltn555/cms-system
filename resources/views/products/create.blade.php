@@ -158,7 +158,7 @@
                     </div>
             </div>
 
-            <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="col-span-12 grid grid-cols-12" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
                     <label for="Title" class="form-label">Title</label>
@@ -168,11 +168,6 @@
                     <label for="Price" class="form-label"><b class="text-danger">* </b>Price</label>
                     <input id="Price" required name="price" type="number" class="form-control"
                            placeholder="Enter a price...">
-                </div>
-                <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
-                    <label for="Discount-price" class="form-label">Discount Price</label>
-                    <input id="Discount-price" name="discount_price" type="number" class="form-control"
-                           placeholder="Enter a discount price... (optional)">
                 </div>
                 <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
                     <label for="category" class="form-label"><b class="text-danger">* </b>Category</label>
@@ -192,7 +187,11 @@
                                name="status" type="checkbox" value="1" checked>
                     </div>
                 </div>
-
+                <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
+                    <label for="Discount-price" class="form-label">Discount Price</label>
+                    <input id="Discount-price" name="discount_price" type="number" class="form-control"
+                           placeholder="Enter a discount price... (optional)">
+                </div>
                 <div class="col-span-12 sm:col-span-12 mt-3">
                     <label for="short-description" class="form-label">Info</label>
                     <textarea id="short-description" class="form-control h-[110px]" name="short_description"
