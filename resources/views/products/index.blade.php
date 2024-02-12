@@ -228,6 +228,14 @@
                 <tr class="intro-x">
                     <td class="w-40">
                         <div class="flex">
+                            @foreach($product->images as $image)
+                                <div class="w-10 h-10 image-fit zoom-in">
+                                    <img alt="{{ $image->alt }}" title="{{ $image->alt }}" class="tooltip rounded-full"
+                                         src="{{ asset('storage/' . $image->image) }}">
+                                </div>
+                            @endforeach
+                        </div>
+                        {{--<div class="flex">
                             @if(0 !== 0 )
                                 @for($i = 0; $i < 3; $i++)
                                     <div class="w-10 h-10 image-fit zoom-in">
@@ -236,14 +244,14 @@
                                     </div>
                                 @endfor
                             @endif
-                        </div>
+                        </div>--}}
                     </td>
                     <td>
                         <a href="" class="font-medium whitespace-nowrap">{{ $product->title }}</a>
                     </td>
                     <td class="text-center" data-tw-toggle="modal"
                         data-tw-target="#short_description_{{ $product->id }}">
-                        {{ $product->short_description }}
+                        {{ substr($product->short_description, 0, 45) }}
                         <!-- BEGIN: Super Large Modal Content -->
                         <div id="short_description_{{ $product->id }}" class="modal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
@@ -253,7 +261,7 @@
                             </div>
                         </div> <!-- END: Super Large Modal Content -->
                         <div
-                            class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->long_description }}</div>
+                            class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ substr($product->long_description, 0, 20) }}</div>
                     </td>
                     <td class="text-center">{{ $product->price }}</td>
                     <td class="text-center"> {{ $product->category->title ?? '' }}</td>
@@ -415,6 +423,7 @@
 
     <!-- BEGIN: Pagination -->
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+        {{ $products->links() }}
         <nav class="w-full sm:w-auto sm:mr-auto">
             <ul class="pagination">
                 <li class="page-item">

@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $products = Product::all();
+        $products = Product::paginate(10);
         $tags = Tag::all();
         return view('products.index', compact('products', 'categories', 'tags'));
     }
