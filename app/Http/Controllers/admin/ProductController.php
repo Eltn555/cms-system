@@ -153,6 +153,26 @@ class ProductController extends Controller
         return view('products.edit', compact('products', 'categories', 'tags'));
     }
 
+    public function ajaxUpdate(Request $request, Product $product){
+        $field = $request->input('field');
+        $value = $request->input('value');
+        $id = $request->input('productID');
+        $data = [$field => $value];
+
+        if ($field === 'title') {
+            $data['slug'] = Str::slug(Transliterator::transliterate($value), '-');
+        } elseif ($field === 'delete'){
+            $productDestroy = Product::findOrFail($id);
+            $productDestroy->delete();
+
+            return [
+                'response' => "Product deleted successfully"
+            ];
+        }
+        Product::find($id)->update($data);
+        return ['Response' => 'Updated successfully'];
+    }
+
     public function update(Request $request, $id)
     {
         $data = $request->all();
