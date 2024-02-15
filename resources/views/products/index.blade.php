@@ -228,11 +228,18 @@
                 <tr class="intro-x">
                     <td class="w-40">
                         <div class="flex">
+                            @php $imageCount = 0 @endphp
+
                             @foreach($product->images as $image)
-                                <div class="w-10 h-10 image-fit zoom-in">
-                                    <img alt="{{ $image->alt }}" title="{{ $image->alt }}" class="tooltip rounded-full"
-                                         src="{{ asset('storage/' . $image->image) }}">
-                                </div>
+                                @if ($imageCount < 3)
+                                    <div class="w-10 h-10 image-fit zoom-in">
+                                        <img alt="{{ $image->alt }}" title="{{ $image->alt }}" class="tooltip rounded-full"
+                                             src="{{ asset('storage/' . $image->image) }}">
+                                    </div>
+                                    @php $imageCount++ @endphp
+                                @else
+                                    @break
+                                @endif
                             @endforeach
                         </div>
                         {{--<div class="flex">
@@ -246,22 +253,21 @@
                             @endif
                         </div>--}}
                     </td>
-                    <td>
-                        <a href="" class="font-medium whitespace-nowrap">{{ $product->title }}</a>
+                    <td class="">
+                        <a href="" class="font-medium">{{ $product->title }}</a>
                     </td>
-                    <td class="text-center" data-tw-toggle="modal"
+                    <td class="text-center tooltip" title="{{$product->short_description}}" data-tw-toggle="modal"
                         data-tw-target="#short_description_{{ $product->id }}">
-                        {{ substr($product->short_description, 0, 45) }}
+                        {{ substr($product->short_description, 0, 35) }}
                         <!-- BEGIN: Super Large Modal Content -->
                         <div id="short_description_{{ $product->id }}" class="modal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
-                                <div class="modal-content py-10 px-10">
-                                    {!! $product->short_description !!}
+                                <div class="modal-content py-10 px-10 ">
+                                    {!! substr($product->short_description, 0, 35) !!}
                                 </div>
                             </div>
                         </div> <!-- END: Super Large Modal Content -->
-                        <div
-                            class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ substr($product->long_description, 0, 20) }}</div>
+                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ substr($product->long_description, 0, 40) }}</div>
                     </td>
                     <td class="text-center">{{ $product->price }}</td>
                     <td class="text-center"> {{ $product->category->title ?? '' }}</td>
@@ -349,138 +355,28 @@
                 </tr>
 
             @endforeach
-
-            <tr class="intro-x">
-                <td class="w-40">
-                    <div class="flex">
-                        <div class="w-10 h-10 image-fit zoom-in">
-                            <img alt="Midone - HTML Admin Template" class="tooltip rounded-full"
-                                 src="dist/images/preview-9.jpg">
-                        </div>
-                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                            <img alt="Midone - HTML Admin Template" class="tooltip rounded-full"
-                                 src="dist/images/preview-5.jpg">
-                        </div>
-                        <div class="w-10 h-10 image-fit zoom-in -ml-5">
-                            <img alt="Midone - HTML Admin Template" class="tooltip rounded-full"
-                                 src="dist/images/preview-10.jpg">
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <a href="" class="font-medium whitespace-nowrap">Title</a>
-                </td>
-                <td class="text-center">Short Description
-                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Long Description</div>
-                </td>
-                <td class="text-center">Price</td>
-                <td class="text-center">Category Title</td>
-                <td class="text-center">Tags</td>
-                <td class="text-center">Rating</td>
-                <td class="w-40">
-                    <div class="flex items-center justify-center text-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"
-                             class="lucide lucide-check-square w-4 h-4 mr-2">
-                            <polyline points="9 11 12 14 22 4"></polyline>
-                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
-                        </svg>
-                        Inactive
-                    </div>
-                </td>
-                <td class="table-report__action w-56">
-                    <div class="flex justify-center items-center">
-                        <a class="flex items-center mr-3" href="javascript:;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"
-                                 class="lucide lucide-check-square w-4 h-4 mr-1">
-                                <polyline points="9 11 12 14 22 4"></polyline>
-                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
-                            </svg>
-                            Edit </a>
-                        <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
-                           data-tw-target="#delete-confirmation-modal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" icon-name="trash-2" data-lucide="trash-2"
-                                 class="lucide lucide-trash-2 w-4 h-4 mr-1">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
-                                <line x1="10" y1="11" x2="10" y2="17"></line>
-                                <line x1="14" y1="11" x2="14" y2="17"></line>
-                            </svg>
-                            Delete </a>
-                    </div>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>
     <!-- END: Data List -->
 
     <!-- BEGIN: Pagination -->
-    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-        {{ $products->links() }}
-        <nav class="w-full sm:w-auto sm:mr-auto">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" icon-name="chevrons-left"
-                             class="lucide lucide-chevrons-left w-4 h-4" data-lucide="chevrons-left">
-                            <polyline points="11 17 6 12 11 7"></polyline>
-                            <polyline points="18 17 13 12 18 7"></polyline>
-                        </svg>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" icon-name="chevron-left"
-                             class="lucide lucide-chevron-left w-4 h-4" data-lucide="chevron-left">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" icon-name="chevron-right"
-                             class="lucide lucide-chevron-right w-4 h-4" data-lucide="chevron-right">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" icon-name="chevrons-right"
-                             class="lucide lucide-chevrons-right w-4 h-4" data-lucide="chevrons-right">
-                            <polyline points="13 17 18 12 13 7"></polyline>
-                            <polyline points="6 17 11 12 6 7"></polyline>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <select class="w-20 form-select box mt-3 sm:mt-0">
-            <option>10</option>
-            <option>25</option>
-            <option>35</option>
-            <option>50</option>
-        </select>
+    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center grid grid-cols-12">
+        <div class="" style="grid-column: span 8 / span 8;">
+            {{ $products->links('vendor.pagination.bootstrap-5') }}
+        </div>
+        <div class="pagination-count col-span-4 flex justify-end">
+            <form action="{{ route('admin.products.index') }}" method="get">
+                @csrf
+                <label for="perPage">Items per page:</label>
+                <select name="perPage" id="perPage" onchange="this.form.submit()">
+                    <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                    <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </form>
+        </div>
     </div>
     <!-- END: Pagination -->
     {{--    </div>--}}

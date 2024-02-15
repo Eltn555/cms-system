@@ -19,12 +19,14 @@ use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = $request->input('perPage', 10); // Default to 10 items per page
         $categories = Category::all();
-        $products = Product::paginate(10);
+        $products = Product::orderBy('created_at', 'desc')->paginate($perPage);
         $tags = Tag::all();
-        return view('products.index', compact('products', 'categories', 'tags'));
+
+        return view('products.index', compact('products', 'categories', 'tags', 'perPage'));
     }
 
     public function create()
