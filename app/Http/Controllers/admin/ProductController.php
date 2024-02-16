@@ -25,7 +25,6 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = Product::orderBy('created_at', 'desc')->paginate($perPage);
         $tags = Tag::all();
-
         return view('products.index', compact('products', 'categories', 'tags', 'perPage'));
     }
 
@@ -34,6 +33,14 @@ class ProductController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $next = Product::orderBy('id', 'desc')->first()->id + 1;
+        $images = ProductImage::where('product_id', $next)->with('image')->get();
+        if ($images){
+            foreach ($images as $image){
+                ProductImage::destroy($image->id);
+            }
+        }else{
+            dd('Images deleted', $images);
+        }
         return view('products.create', compact('categories', 'tags', 'next'));
     }
 
@@ -43,7 +50,7 @@ class ProductController extends Controller
         $id = [];
         $alt = $request->has('title') ? $request->input('title') : ' ';
         // Iterate through each uploaded file
-        if ($images){
+        if (is_array($images)){
             foreach ($images as $image) {
                 $path = $image->store('images', 'public');
                 $image = Image::create([
@@ -58,6 +65,8 @@ class ProductController extends Controller
                 array_push($id, $image->id);
             }
             return ['Response' => 'Created successfully', 'id' => $id];
+        }else{
+            return ['Response' => 'Empty', 'id' => 'null'];
         }
         return ['Response' => 'No images to store', 'images' => count($images)];
     }
