@@ -4833,12 +4833,19 @@ textarea {
     display: none;
 }
 
+.sw-sl{
+    width:280px !important;
+    margin-right:20px!important;
+}
+
 .product-wrap {
     overflow: hidden;
     position: relative;
 }
 
 .product-wrap .product-img {
+    background-color: #F4F4F4;
+    height: 350px;
     overflow: hidden;
     position: relative;
 }

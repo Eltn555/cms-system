@@ -190,7 +190,7 @@ class ProductController extends Controller
 
         foreach ($matches[0] as $value) {
             $encode = substr($value, 5, strlen($value) - 6);
-            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif']);
+            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif',]);
             $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
             Storage::put($fileName, $decoder->getDecodedContent());
             $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
