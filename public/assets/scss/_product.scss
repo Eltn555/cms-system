@@ -207,7 +207,7 @@
     .product-content {
         h3 {
             font-weight: 500;
-            margin: 0 0 10px;
+            margin: 0 0 5px !important;
             font-size: 16px;
             a {
                 color: $black;
@@ -658,22 +658,6 @@
 }
 .grid-sizer {
 	width: 25%;
-}
-
-.product-price {
-    span {
-        color: #808080;
-        font-size: 18px;
-        font-weight: 500;
-        &.new-price {
-            color: $theme-color-pink;
-        }
-        &.old-price {
-            margin-right: 13px;
-            color: #555252;
-            text-decoration: line-through;
-        }
-    }
 }
 
 .tab-style-1 {

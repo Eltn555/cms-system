@@ -95,9 +95,9 @@
                         </div>
                         <div class="product-details-action-wrap font-kyiv">
                             <div class="product-count h4">
-                                <button class="border-0 bg-transparent">-</button>
-                                <span>1</span>
                                 <button class="border-0 bg-transparent">+</button>
+                                <span>1</span>
+                                <button class="border-0 bg-transparent">-</button>
                             </div>
                             <div class="product-details-price p-3">
                                 <span class="p-2 {{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
