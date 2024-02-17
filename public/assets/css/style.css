@@ -8196,11 +8196,7 @@ textarea {
 
 .description-review-topbar {
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
     -ms-flex-pack: center;
-    justify-content: center;
-    background-color: #f2f2f2;
-    padding: 13px 10px;
     margin: 0 0 42px;
 }
 
@@ -8212,10 +8208,11 @@ textarea {
 }
 
 .description-review-topbar a {
-    font-size: 16px;
+    font-size: 20px;
     color: #919191;
     display: inline-block;
-    margin: 0 21px;
+    padding: 10px 25px;
+    border-bottom: 1px solid #A1A1A1;
 }
 
 @media only screen and (max-width: 767px) {
@@ -8231,7 +8228,10 @@ textarea {
 }
 
 .description-review-topbar a.active {
-    color: var(--theme-color);
+    color: #232323;
+    font-weight: 700;
+    height: 100%;
+    border-bottom: 1px solid #232323;
 }
 
 .product-description-content p {
