@@ -199,7 +199,9 @@
                             </td>
                         <td class="table-report__action w-20 ">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                                <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal"
+                                   data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2"
+                                   class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>

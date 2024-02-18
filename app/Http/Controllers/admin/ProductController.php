@@ -19,12 +19,13 @@ use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = $request->input('perPage', 10); // Default to 10 items per page
         $categories = Category::all();
-        $products = Product::paginate(10);
+        $products = Product::orderBy('created_at', 'desc')->paginate($perPage);
         $tags = Tag::all();
-        return view('products.index', compact('products', 'categories', 'tags'));
+        return view('products.index', compact('products', 'categories', 'tags', 'perPage'));
     }
 
     public function create()
@@ -32,6 +33,14 @@ class ProductController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $next = Product::orderBy('id', 'desc')->first()->id + 1;
+        $images = ProductImage::where('product_id', $next)->with('image')->get();
+        if ($images){
+            foreach ($images as $image){
+                ProductImage::destroy($image->id);
+            }
+        }else{
+            dd('Images deleted', $images);
+        }
         return view('products.create', compact('categories', 'tags', 'next'));
     }
 
@@ -41,7 +50,7 @@ class ProductController extends Controller
         $id = [];
         $alt = $request->has('title') ? $request->input('title') : ' ';
         // Iterate through each uploaded file
-        if ($images){
+        if (is_array($images)){
             foreach ($images as $image) {
                 $path = $image->store('images', 'public');
                 $image = Image::create([
@@ -56,6 +65,8 @@ class ProductController extends Controller
                 array_push($id, $image->id);
             }
             return ['Response' => 'Created successfully', 'id' => $id];
+        }else{
+            return ['Response' => 'Empty', 'id' => 'null'];
         }
         return ['Response' => 'No images to store', 'images' => count($images)];
     }
@@ -151,6 +162,26 @@ class ProductController extends Controller
         return view('products.edit', compact('products', 'categories', 'tags'));
     }
 
+    public function ajaxUpdate(Request $request, Product $product){
+        $field = $request->input('field');
+        $value = $request->input('value');
+        $id = $request->input('productID');
+        $data = [$field => $value];
+
+        if ($field === 'title') {
+            $data['slug'] = Str::slug(Transliterator::transliterate($value), '-');
+        } elseif ($field === 'delete'){
+            $productDestroy = Product::findOrFail($id);
+            $productDestroy->delete();
+
+            return [
+                'response' => "Product deleted successfully"
+            ];
+        }
+        Product::find($id)->update($data);
+        return ['Response' => 'Updated successfully'];
+    }
+
     public function update(Request $request, $id)
     {
         $data = $request->all();
@@ -159,7 +190,7 @@ class ProductController extends Controller
 
         foreach ($matches[0] as $value) {
             $encode = substr($value, 5, strlen($value) - 6);
-            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif']);
+            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif',]);
             $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
             Storage::put($fileName, $decoder->getDecodedContent());
             $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);

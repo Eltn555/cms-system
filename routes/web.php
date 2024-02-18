@@ -49,6 +49,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('/images', ImageController::class, ['as'=>'admin']);
     Route::post('/upload', [CategoriesController::class, 'image'])->name('categories.upload');
     Route::post('/productUpload', [ProductController::class, 'image'])->name('products.upload');
+    Route::post('/productUpdate', [ProductController::class, 'ajaxUpdate'])->name('products.update');
     Route::delete('/images', [ImageController::class, 'delete'])->name('image.delete');
     Route::resource('products', ProductController::class, ['as'=>'admin']);
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
