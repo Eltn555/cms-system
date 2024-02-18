@@ -285,7 +285,8 @@
     <script type="text/javascript">
         tinymce.init({
             selector: 'textarea.tinyeditor',
-            plugins: 'code table powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
+            plugins: 'code table searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +
+                'help charmap emoticons autosave',
             language: 'ru',
             promotion: false,
             branding: false
