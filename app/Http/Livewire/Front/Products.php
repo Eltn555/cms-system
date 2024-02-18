@@ -19,8 +19,8 @@ class Products extends Component
         $relatedTags = $this->product->tags()->with('products')->inRandomOrder()->take(10)->get();
         $additionalTags = $this->product->additional_tags()->with('products')->inRandomOrder()->take(10)->get();
 
-        $this->relatedProducts = $relatedTags->pluck('products')->flatten()->shuffle()->take(10);
-        $this->additionalProducts = $additionalTags->pluck('products')->flatten()->shuffle()->take(10);
+        $this->relatedProducts = $relatedTags->pluck('products')->flatten()->shuffle()->unique('id')->take(10);
+        $this->additionalProducts = $additionalTags->pluck('products')->flatten()->shuffle()->unique('id')->take(10);
     }
 
     public function render()

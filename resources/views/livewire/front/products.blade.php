@@ -212,34 +212,38 @@
             </div>
         </div>
     </div>
-    <div class="related-product-area pb-95">
-        <div class="container">
-            <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
-                <h2 class="shadow-text-1 font-cormorant fw-bold">В одном <br>стиле</h2>
-                <h2 class="shadow-text-2 font-cormorant fw-bold">В одном <br>стиле</h2>
-            </div>
-            <div class="related-product-active swiper-container">
-                <div class="swiper-wrapper">
-                    @foreach($relatedProducts as $product)
-                        <livewire:front.component.product-card :product="$product" :key="$product->id" />
-                    @endforeach
+    @if(count($relatedProducts) > 0)
+        <div class="related-product-area pb-95">
+            <div class="container">
+                <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="shadow-text-1 font-cormorant fw-bold">В одном <br>стиле</h2>
+                    <h2 class="shadow-text-2 font-cormorant fw-bold">В одном <br>стиле</h2>
+                </div>
+                <div class="related-product-active swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach($relatedProducts as $product)
+                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="related-product-area pb-95">
-        <div class="container">
-            <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
-                <h2 class="shadow-text-1 font-cormorant fw-bold">Покупают с<br>этим</h2>
-                <h2 class="shadow-text-2 font-cormorant fw-bold">Покупают с<br>этим</h2>
-            </div>
-            <div class="related-product-active swiper-container">
-                <div class="swiper-wrapper">
-                    @foreach($additionalProducts as $product)
-                        <livewire:front.component.product-card :product="$product" :key="$product->id" />
-                    @endforeach
+    @endif
+    @if(count($additionalProducts) > 0)
+        <div class="related-product-area pb-95">
+            <div class="container">
+                <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="shadow-text-1 font-cormorant fw-bold">Покупают с<br>этим</h2>
+                    <h2 class="shadow-text-2 font-cormorant fw-bold">Покупают с<br>этим</h2>
+                </div>
+                <div class="related-product-active swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach($additionalProducts as $product)
+                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 </div>
