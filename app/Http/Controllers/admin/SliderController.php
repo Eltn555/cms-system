@@ -11,8 +11,8 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::all();
-        return view('admin.slider.index', compact('sliders'));
+        $slider = Slider::find(1);
+        return view('admin.slider.index', compact('slider'));
     }
 
     public function create()
@@ -24,13 +24,8 @@ class SliderController extends Controller
     {
         $data = $request->all();
         $image = Storage::put('/images', $data['image']);
-        Slider::create([
-            'title' => $data['title'],
-            'subtitle' => $data['subtitle'],
-            'href' => $data['href'],
-            'image' => $image,
-        ]);
-
+        $data['image'] = $image;
+        Slider::create($data);
         return redirect()->route('admin.sliders.index');
     }
 
@@ -40,9 +35,21 @@ class SliderController extends Controller
         return view('admin.slider.edit', ['category' => $slider]);
     }
 
-    public function update()
+    public function update($slider, Request $request)
     {
+        $data = $request->all();
+        $slider = Slider::find($slider);
+        $image = Storage::put('/images', $data['image']);
+        $slider->update([
+           'title' => $data['title'],
+            'subtitle' =>$data['subtitle'],
+            'href'=>$data['href'],
+            'image' => $image
+        ]);
+        return redirect()->back();
+    }
 
+    public function show($id) {
     }
 
 }
