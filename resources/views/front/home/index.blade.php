@@ -49,7 +49,7 @@
                 <div class="category-slider-active-2 swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($categories as $category)
-                            <div class="swiper-slide border p-1 me-0">
+                            <div class="swiper-slide border p-1 me-0 d-flex justify-content-center align-items-end">
                                 <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
                                     <div class="category-img-2 overflow-hidden">
                                         <a href="{{ route('front.category.show', $category->slug) }}">
@@ -59,7 +59,7 @@
                                         </a>
                                     </div>
                                     <div class="category-content-2">
-                                        <h4><a class="fs-6" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>
+                                        <h4 class="w-100 mb-3"><a class="fs-6 text-dark" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>
                                     </div>
                                 </div>
                             </div>
