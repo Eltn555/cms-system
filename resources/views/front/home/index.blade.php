@@ -24,7 +24,7 @@
             </div>
         @else
             <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
-                 style="background-image:url('{{asset('no_photo.jpg')}}')">
+                 style="background-image:url('{{asset('slider.jpg')}}')">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
