@@ -533,7 +533,7 @@ textarea {
 }
 
 .bg-gray-2 {
-    background-color: #f4f4f4;
+    background-color: #232323;
 }
 
 .bg-gray-3 {
@@ -7789,6 +7789,13 @@ textarea {
 }
 
 .font-kyiv{
+    font-family: 'KyivType', sans-serif !important;
+}
+
+.blog-text{
+    font-weight: 400 !important;
+    size: 14px !important;
+    line-height: 20px !important;
     font-family: 'KyivType', sans-serif !important;
 }
 

@@ -86,12 +86,12 @@
                 <div class="col-lg-3 col-md-6 col-6">
                     <div class="header-action-wrap">
                         @livewire('search-bar')
-                        <div class="header-action-style">
-                            <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
-                                    class="pe-7s-user"></i></a>
+                        <div class="header-action-style header-action-cart">
+                            <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
+                                <span class="product-count bg-black">01</span>
+                            </a>
                         </div>
                         <div class="header-action-style header-action-cart">
-
                             <a class="" title="Wishlist"
                                href="@if(auth()->user()){{route('front.wishlist.index')}}@endif"><i
                                     class="pe-7s-like"></i>
@@ -99,15 +99,13 @@
                                     <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
                                 @endif
                             </a>
-
-                        </div>
-                        <div class="header-action-style header-action-cart">
-                            <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
-                                <span class="product-count bg-black">01</span>
-                            </a>
                         </div>
                         <div class="header-action-style d-block d-lg-none">
                             <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
+                        </div>
+                        <div class="header-action-style">
+                            <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
+                                    class="pe-7s-user"></i></a>
                         </div>
                     </div>
                 </div>

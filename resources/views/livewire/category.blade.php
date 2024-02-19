@@ -63,7 +63,6 @@
                     <div class="shop-bottom-area">
                         <div class="tab-content jump">
                             <div id="shop-1" class="tab-pane active" role="tabpanel">
-
                                 <div id="product-list" class="row">
                                     @foreach($products as $product)
                                         <div class="swiper-slide sw-sl align-self-stretch">

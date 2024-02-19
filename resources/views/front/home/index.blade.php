@@ -22,25 +22,24 @@
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="category-area category-area-position pb-3"
-             style="bottom: 0px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(0255,255,255,0.5), rgba(255,255,255,0.7));">
+        <div class="category-area py-5">
             <div class="container">
                 <div class="category-slider-active-2 swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($categories as $category)
-                            <div class="swiper-slide">
+                            <div class="swiper-slide border p-1 me-0">
                                 <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
                                     <div class="category-img-2 overflow-hidden">
-                                                                                <a href="{{ route('front.category.show', $category->slug) }}">
-                                                                                    @foreach($category->images as $image)
-                                                                                        {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 90%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}
-                                                                                    @endforeach
-                                                                                </a>
+                                        <a href="{{ route('front.category.show', $category->slug) }}">
+                                            @foreach($category->images as $image)
+                                                {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 80%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}
+                                            @endforeach
+                                        </a>
                                     </div>
                                     <div class="category-content-2">
-                                                                                <h4><a href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>
+                                        <h4><a class="fs-6" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a></h4>
                                     </div>
                                 </div>
                             </div>
@@ -49,193 +48,21 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="product-area pb-95 mt-4">
+    <div class="new-categories pb-95 mt-4">
         <div class="container">
-            <div class="tab-style-1 tab-style-1-modify tab-center nav" data-aos="fade-up" data-aos-delay="200">
-                <a id="tag-1" href="#pro-1" data-bs-toggle="tab">Hot Products </a>
-                <a id="tag-2" class="active" href="#pro-2" data-bs-toggle="tab">New Arrivals </a>
-                <a id="tag-3" href="#pro-3" data-bs-toggle="tab" class=""> Best Sellers </a>
-                <a id="tag-4" href="#pro-4" data-bs-toggle="tab" class=""> Sale Items </a>
-            </div>
-            <div class="tab-content jump">
-                <div id="pro-1" class="tab-pane">
-                    <div class="product-slider-active-2 swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach($tagsIndex[0]->products as $product)
-                                <div class="swiper-slide">
-                                    <div class="product-wrap">
-                                        <div class="product-img img-zoom mb-25">
-                                            <a href="product-details.html">
-                                                <img src="assets/images/product/product-3.png" alt="">
-                                            </a>
-                                            <div
-                                                class="product-badge flex justify-end badge-top badge-right badge-pink">
-                                                @if($tagsIndex[0]->visible === 1)
-                                                    @foreach($tagsIndex as $tag)
-                                                        <div>{{ $tag->visible === 1 ? $tag->title : '' }}</div>
-                                                    @endforeach
-                                                @endif
-                                            </div>
-                                            <div class="product-action-wrap">
-                                                <button class="product-action-btn-1" title="Wishlist"><i
-                                                        class="pe-7s-like"></i></button>
-                                                <button class="product-action-btn-1" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="pe-7s-look"></i>
-                                                </button>
-                                            </div>
-                                            <div class="product-action-2-wrap">
-                                                <button class="product-action-btn-2" title="Add To Cart"><i
-                                                        class="pe-7s-cart"></i> Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3><a href="product-details.html">{{ $product->title }}</a></h3>
-                                            <div class="product-price">
-                                                <span class="old-price">$25.89 </span>
-                                                <span class="new-price">$20.25 </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6">
+                    <h5 class="shadow-text-1 font-cormorant fw-bold">Новое<br>поступление</h5>
+                    <h5 class="shadow-text-2 font-cormorant fw-bold">Новое<br>поступление</h5>
                 </div>
-                <div id="pro-2" class="tab-pane active">
-                    <div class="product-slider-active-2 swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach($tagsIndex[1]->products as $product)
-                                <div class="swiper-slide">
-                                    <div class="product-wrap">
-                                        <div class="product-img img-zoom mb-25">
-                                            <a href="product-details.html">
-                                                <img src="assets/images/product/product-3.png" alt="">
-                                            </a>
-                                            @if($tagsIndex[1]->visible === 1)
-                                                <div class="product-badge badge-top badge-right badge-pink">
-                                                    <span>{{ $tagsIndex[1]->title }}</span>
-                                                </div>
-                                            @endif
-                                            <div class="product-action-wrap">
-                                                <button class="product-action-btn-1" title="Wishlist"><i
-                                                        class="pe-7s-like"></i></button>
-                                                <button class="product-action-btn-1" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="pe-7s-look"></i>
-                                                </button>
-                                            </div>
-                                            <div class="product-action-2-wrap">
-                                                <button class="product-action-btn-2" title="Add To Cart"><i
-                                                        class="pe-7s-cart"></i> Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3><a href="product-details.html">{{ $product->title }}</a></h3>
-                                            <div class="product-price">
-                                                <span class="old-price">$25.89 </span>
-                                                <span class="new-price">$20.25 </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div id="pro-3" class="tab-pane">
-                    <div class="product-slider-active-2 swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach($tagsIndex[2]->products as $product)
-                                <div class="swiper-slide">
-                                    <div class="product-wrap">
-                                        <div class="product-img img-zoom mb-25">
-                                            <a href="product-details.html">
-                                                <img src="assets/images/product/product-3.png" alt="">
-                                            </a>
-                                            @if($tagsIndex[2]->visible === 1)
-                                                <div class="product-badge badge-top badge-right badge-pink">
-                                                    <span>{{ $tagsIndex[2]->title }}</span>
-                                                </div>
-                                            @endif
-                                            <div class="product-action-wrap">
-                                                <button class="product-action-btn-1" title="Wishlist"><i
-                                                        class="pe-7s-like"></i></button>
-                                                <button class="product-action-btn-1" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="pe-7s-look"></i>
-                                                </button>
-                                            </div>
-                                            <div class="product-action-2-wrap">
-                                                <button class="product-action-btn-2" title="Add To Cart"><i
-                                                        class="pe-7s-cart"></i> Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3><a href="product-details.html">{{ $product->title }}</a></h3>
-                                            <div class="product-price">
-                                                <span class="old-price">$25.89 </span>
-                                                <span class="new-price">$20.25 </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div id="pro-4" class="tab-pane">
-                    <div class="product-slider-active-2 swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach($tagsIndex[3]->products as $product)
-                                <div class="swiper-slide">
-                                    <div class="product-wrap">
-                                        <div class="product-img img-zoom mb-25">
-                                            <a href="product-details.html">
-                                                <img src="assets/images/product/product-3.png" alt="">
-                                            </a>
-                                            @if($tagsIndex[3]->visible === 1)
-                                                <div class="product-badge badge-top badge-right badge-pink">
-                                                    <span>{{ $tagsIndex[3]->title }}</span>
-                                                </div>
-                                            @endif
-                                            <div class="product-action-wrap">
-                                                <button class="product-action-btn-1" title="Wishlist"><i
-                                                        class="pe-7s-like"></i></button>
-                                                <button class="product-action-btn-1" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="pe-7s-look"></i>
-                                                </button>
-                                            </div>
-                                            <div class="product-action-2-wrap">
-                                                <button class="product-action-btn-2" title="Add To Cart"><i
-                                                        class="pe-7s-cart"></i> Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3><a href="product-details.html">{{ $product->title }}</a></h3>
-                                            <div class="product-price">
-                                                <span class="old-price">$25.89 </span>
-                                                <span class="new-price">$20.25 </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+                <div class="col-6 justify-content-end align-items-end d-flex">
+                    <div class="single-product-cart btn-hover ps-1 text-end">
+                        <a href="#" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в магазин</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="banner-area pb-75 padding-20-row-col">
-        <div class="container">
+
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 order-lg-0 order-md-1 order-sm-1 col-12">
                     <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="400">
@@ -285,153 +112,220 @@
             </div>
         </div>
     </div>
-    <div class="product-area pb-60">
-        <div class="container">
-            <div class="section-title-2 st-border-center text-center mb-75" data-aos="fade-up" data-aos-delay="200">
-                <h2>Hot Products</h2>
-            </div>
+{{--    <div class="product-area pb-60">--}}
+{{--        <div class="container">--}}
+{{--            <div class="section-title-2 st-border-center text-center mb-75" data-aos="fade-up" data-aos-delay="200">--}}
+{{--                <h2>Hot Products</h2>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-xl-6 col-lg-6">--}}
+{{--                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="200">--}}
+{{--                        <a href="shop.html"><img src="assets/images/banner/banner-23.png" alt=""></a>--}}
+{{--                        <div class="banner-content-10-position top-inc">--}}
+{{--                            <div class="banner-content-10 banner-content-10-responsive">--}}
+{{--                                <h3>Exceptional</h3>--}}
+{{--                                <h4>Officr Chair</h4>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="banner-btn-1">--}}
+{{--                            <a href="#">21 Products</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-6 col-lg-6">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
+{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="200">--}}
+{{--                                <div class="product-img img-zoom mb-25">--}}
+{{--                                    <a href="product-details.html">--}}
+{{--                                        <img src="assets/images/product/product-7.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                    <div class="product-action-wrap">--}}
+{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
+{{--                                                data-bs-target="#exampleModal">--}}
+{{--                                            <i class="pe-7s-look"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="product-action-2-wrap">--}}
+{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
+{{--                                                class="pe-7s-cart"></i> Add to cart--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="product-content">--}}
+{{--                                    <h3><a href="product-details.html">Round Standard Chair</a></h3>--}}
+{{--                                    <div class="product-price">--}}
+{{--                                        <span>$30.25 </span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
+{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="400">--}}
+{{--                                <div class="product-img img-zoom mb-25">--}}
+{{--                                    <a href="product-details.html">--}}
+{{--                                        <img src="assets/images/product/product-5.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                    <div class="product-badge badge-top badge-right badge-pink">--}}
+{{--                                        <span>-10%</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="product-action-wrap">--}}
+{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
+{{--                                                data-bs-target="#exampleModal">--}}
+{{--                                            <i class="pe-7s-look"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="product-action-2-wrap">--}}
+{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
+{{--                                                class="pe-7s-cart"></i> Add to cart--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="product-content">--}}
+{{--                                    <h3><a href="product-details.html">Interior moderno render</a></h3>--}}
+{{--                                    <div class="product-price">--}}
+{{--                                        <span class="old-price">$25.89 </span>--}}
+{{--                                        <span class="new-price">$20.25 </span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
+{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="600">--}}
+{{--                                <div class="product-img img-zoom mb-25">--}}
+{{--                                    <a href="product-details.html">--}}
+{{--                                        <img src="assets/images/product/product-3.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                    <div class="product-badge badge-top badge-right badge-pink">--}}
+{{--                                        <span>-10%</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="product-action-wrap">--}}
+{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
+{{--                                                data-bs-target="#exampleModal">--}}
+{{--                                            <i class="pe-7s-look"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="product-action-2-wrap">--}}
+{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
+{{--                                                class="pe-7s-cart"></i> Add to cart--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="product-content">--}}
+{{--                                    <h3><a href="product-details.html">Easy Modern Chair</a></h3>--}}
+{{--                                    <div class="product-price">--}}
+{{--                                        <span class="old-price">$45.00 </span>--}}
+{{--                                        <span class="new-price">$40.00 </span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
+{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="800">--}}
+{{--                                <div class="product-img img-zoom mb-25">--}}
+{{--                                    <a href="product-details.html">--}}
+{{--                                        <img src="assets/images/product/product-9.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                    <div class="product-action-wrap">--}}
+{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
+{{--                                                data-bs-target="#exampleModal">--}}
+{{--                                            <i class="pe-7s-look"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="product-action-2-wrap">--}}
+{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
+{{--                                                class="pe-7s-cart"></i> Add to cart--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="product-content">--}}
+{{--                                    <h3><a href="product-details.html">Modern Lounge Chairs</a></h3>--}}
+{{--                                    <div class="product-price">--}}
+{{--                                        <span>$30.25 </span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+    <div class="calculator-area pb-70">
+        <div class="container bg-dark">
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
-                        <a href="shop.html"><img src="assets/images/banner/banner-23.png" alt=""></a>
-                        <div class="banner-content-10-position top-inc">
-                            <div class="banner-content-10 banner-content-10-responsive">
-                                <h3>Exceptional</h3>
-                                <h4>Officr Chair</h4>
-                            </div>
-                        </div>
-                        <div class="banner-btn-1">
-                            <a href="#">21 Products</a>
+                <div class="col-lg-5 col-md-12">
+
+                </div>
+                <div class="col-lg-7 col-md-12 p-5 pe-1">
+                    <div class="mt-4 pt-1 position-relative">
+                        <div class="ms-5 d-flex">
+                            <h5 style="font-size: 60px !important;" class="text-white shadow-text-1 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
+                            <h5 style="font-size: 60px !important;" class=" shadow-text-2 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="200">
-                                <div class="product-img img-zoom mb-25">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/product/product-7.png" alt="">
-                                    </a>
-                                    <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
-                                        </button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                            <i class="pe-7s-look"></i>
-                                        </button>
-                                    </div>
-                                    <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i
-                                                class="pe-7s-cart"></i> Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3><a href="product-details.html">Round Standard Chair</a></h3>
-                                    <div class="product-price">
-                                        <span>$30.25 </span>
-                                    </div>
-                                </div>
+                    <div class="p-5 pt-2 pb-0">
+                        <p class="font-kyiv fs-5 text-white">
+                            Мы рассчитаем, сколько и каких светильников вам нужно, чтобы сделать ваш дом светлым.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-2">
+                            <div class="single-product-cart btn-hover text-start">
+                                <a href="#" class="p-2 ps-4 pe-4 text-dark border border-1 font-kyiv">Посмотреть все блоги</a>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="400">
-                                <div class="product-img img-zoom mb-25">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/product/product-5.png" alt="">
-                                    </a>
-                                    <div class="product-badge badge-top badge-right badge-pink">
-                                        <span>-10%</span>
-                                    </div>
-                                    <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
-                                        </button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                            <i class="pe-7s-look"></i>
-                                        </button>
-                                    </div>
-                                    <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i
-                                                class="pe-7s-cart"></i> Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3><a href="product-details.html">Interior moderno render</a></h3>
-                                    <div class="product-price">
-                                        <span class="old-price">$25.89 </span>
-                                        <span class="new-price">$20.25 </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="600">
-                                <div class="product-img img-zoom mb-25">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/product/product-3.png" alt="">
-                                    </a>
-                                    <div class="product-badge badge-top badge-right badge-pink">
-                                        <span>-10%</span>
-                                    </div>
-                                    <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
-                                        </button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                            <i class="pe-7s-look"></i>
-                                        </button>
-                                    </div>
-                                    <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i
-                                                class="pe-7s-cart"></i> Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3><a href="product-details.html">Easy Modern Chair</a></h3>
-                                    <div class="product-price">
-                                        <span class="old-price">$45.00 </span>
-                                        <span class="new-price">$40.00 </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="800">
-                                <div class="product-img img-zoom mb-25">
-                                    <a href="product-details.html">
-                                        <img src="assets/images/product/product-9.png" alt="">
-                                    </a>
-                                    <div class="product-action-wrap">
-                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>
-                                        </button>
-                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                            <i class="pe-7s-look"></i>
-                                        </button>
-                                    </div>
-                                    <div class="product-action-2-wrap">
-                                        <button class="product-action-btn-2" title="Add To Cart"><i
-                                                class="pe-7s-cart"></i> Add to cart
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <h3><a href="product-details.html">Modern Lounge Chairs</a></h3>
-                                    <div class="product-price">
-                                        <span>$30.25 </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="product-area pb-95 mt-4">
+        <div class="container">
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6">
+                    <h5 class="shadow-text-1 font-cormorant fw-bold">Трендовые<br>товары</h5>
+                    <h5 class="shadow-text-2 font-cormorant fw-bold">Трендовые<br>товары</h5>
+                </div>
+                <div class="col-6 justify-content-end align-items-end d-flex">
+                    <div class="single-product-cart btn-hover ps-1 text-end">
+                        <a href="#" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в магазин</a>
+                    </div>
+                </div>
+            </div>
+
+            {{--            <div class="tab-style-1 tab-style-1-modify tab-center nav" data-aos="fade-up" data-aos-delay="200">--}}
+            {{--                <a id="tag-1" href="#pro-1" data-bs-toggle="tab">Hot Products </a>--}}
+            {{--                <a id="tag-2" class="active" href="#pro-2" data-bs-toggle="tab">New Arrivals </a>--}}
+            {{--                <a id="tag-3" href="#pro-3" data-bs-toggle="tab" class=""> Best Sellers </a>--}}
+            {{--                <a id="tag-4" href="#pro-4" data-bs-toggle="tab" class=""> Sale Items </a>--}}
+            {{--            </div>--}}
+            <div class="tab-content jump">
+                @foreach($tagsIndex as $index => $tag)
+                    <div id="pro-{{ $index + 1 }}" class="tab-pane {{ $index == 0 ? 'active' : '' }}">
+                        <div class="product-slider-active-2 swiper-container">
+                            <div class="swiper-wrapper">
+                                @foreach($tag->products as $product)
+                                    <div class="swiper-slide sw-sl align-self-stretch">
+                                        <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
     <div class="banner-area padding-22-row-col pb-70">
         <div class="container">
             <div class="row">
@@ -476,87 +370,111 @@
             </div>
         </div>
     </div>
+    <div class="form-area pb-70">
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 p-5 pe-1">
+                    <div class="pt-5 ps-5">
+                        <div class="d-flex position-relative">
+                            <h5 style="font-size: 60px !important;" class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                            <h5 style="font-size: 60px !important;" class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-2">
+                        <p class="font-kyiv fs-5">
+                            Загрузите изображение понравившейся люстры и введите свои данные и мы обязательно с вами свяжемся.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="blog-area pb-70">
         <div class="container">
-            <div class="section-title-2 st-border-center text-center mb-75" data-aos="fade-up" data-aos-delay="200">
-                <h2>Latest News</h2>
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6">
+                    <h5 class="shadow-text-1 font-cormorant fw-bold">Наш блог</h5>
+                    <h5 class="shadow-text-2 font-cormorant fw-bold">Наш блог</h5>
+                </div>
+                <div class="col-6 justify-content-end align-items-end d-flex">
+                    <div class="single-product-cart btn-hover ps-1 text-end">
+                        <a href="#" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все блоги</a>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6 px-2">
                     <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
                                 <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
                             </div>
-                            <div class="blog-date">
-                                <h5>05 <span>May</span></h5>
-                            </div>
                         </div>
                         <div class="blog-content">
                             <div class="blog-meta">
-                                <ul>
-                                    <li><a href="#">Furniture</a>,</li>
-                                    <li>By:<a href="#"> Admin</a></li>
+                                <ul class="card-brand fw-bold font-kyiv">
+                                    15.01.2024
                                 </ul>
                             </div>
-                            <h3><a href="blog-details.html">Lorem ipsum dolor consectet.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut
-                                labo et dolore magna aliqua.</p>
-                            <div class="blog-btn-2 btn-hover">
-                                <a class="btn hover-border-radius theme-color" href="blog-details.html">Read More</a>
-                            </div>
+                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
+                            <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-lg-3 col-md-6 px-2">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-2.png" alt=""></a>
-                            </div>
-                            <div class="blog-date">
-                                <h5>06 <span>May</span></h5>
+                                <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
                             </div>
                         </div>
                         <div class="blog-content">
                             <div class="blog-meta">
-                                <ul>
-                                    <li><a href="#">Furniture</a>,</li>
-                                    <li>By:<a href="#"> Admin</a></li>
+                                <ul class="card-brand fw-bold font-kyiv">
+                                    15.01.2024
                                 </ul>
                             </div>
-                            <h3><a href="blog-details.html">Duis et volutpat pellentesque.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut
-                                labo et dolore magna aliqua.</p>
-                            <div class="blog-btn-2 btn-hover">
-                                <a class="btn hover-border-radius theme-color" href="blog-details.html">Read More</a>
-                            </div>
+                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
+                            <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="600">
+                <div class="col-lg-3 col-md-6 px-2">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
-                                <a href="blog-details.html"><img src="assets/images/blog/blog-3.png" alt=""></a>
-                            </div>
-                            <div class="blog-date">
-                                <h5>07 <span>May</span></h5>
+                                <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
                             </div>
                         </div>
                         <div class="blog-content">
                             <div class="blog-meta">
-                                <ul>
-                                    <li><a href="#">Furniture</a>,</li>
-                                    <li>By:<a href="#"> Admin</a></li>
+                                <ul class="card-brand fw-bold font-kyiv">
+                                    15.01.2024
                                 </ul>
                             </div>
-                            <h3><a href="blog-details.html">Vivamus vitae dolor convallis.</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut
-                                labo et dolore magna aliqua.</p>
-                            <div class="blog-btn-2 btn-hover">
-                                <a class="btn hover-border-radius theme-color" href="blog-details.html">Read More</a>
+                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
+                            <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 px-2">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
+                        <div class="blog-img-date-wrap mb-25">
+                            <div class="blog-img">
+                                <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
                             </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <ul class="card-brand fw-bold font-kyiv">
+                                    15.01.2024
+                                </ul>
+                            </div>
+                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
+                            <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
                         </div>
                     </div>
                 </div>
