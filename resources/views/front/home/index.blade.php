@@ -3,7 +3,7 @@
 
     <div class="slider-category-area">
         <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
-             style="background-image:url({{$slider->image  ? asset('storage/'.$slider->image) : ''}})"
+             style="background-image:url({{$slider->image == null  ? asset('no_photo.jpg') : asset('storage/'.$slider->image)}})"
         >
             <div class="container">
                 <div class="row">
