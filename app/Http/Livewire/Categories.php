@@ -26,28 +26,6 @@ class Categories extends Component
         $this->categories = Category::all();
     }
 
-    public function check($productid)
-    {
-        return Auth::check() ? WishlistProduct::where('user_id', auth()->user()->id)->where('product_id', $productid)->exists() : false;
-    }
-
-    public function addProduct($productid)
-    {
-        if (Auth::check()) {
-            if ($this->check($productid)) {
-                session()->flash('message', 'Already added product to wishlist');
-                return false;
-            } else {
-                $this->emit('wishlistAddUpdated');
-                WishlistProduct::create([
-                    'user_id' => auth()->user()->id,
-                    'product_id' => $productid
-                ]);
-            }
-        }
-
-    }
-
     public function gotoPage($page)
     {
         $this->setPage($page);

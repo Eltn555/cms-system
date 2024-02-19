@@ -222,7 +222,9 @@
                 <div class="related-product-active swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($relatedProducts as $product)
-                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                            <div class="swiper-slide sw-sl align-self-stretch">
+                                <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -239,7 +241,9 @@
                 <div class="related-product-active swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($additionalProducts as $product)
-                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                            <div class="swiper-slide sw-sl align-self-stretch">
+                                <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                            </div>
                         @endforeach
                     </div>
                 </div>
