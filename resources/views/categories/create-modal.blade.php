@@ -45,34 +45,12 @@
                             <input id="background" name="background" class="file-upload" type="file" accept="image/*" data-selectable="create"/>
                         </div>
                 </div>
-{{--                <div class="col-span-12 p-2">--}}
-{{--                    <div id="drop-area" class="w-full">--}}
-{{--                        <div class="my-form">--}}
-{{--                            <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>--}}
-{{--                            <input name="images[]" type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">--}}
-{{--                            <label class="button" for="fileElem">Select some files</label>--}}
-{{--                        </div>--}}
-{{--                        <progress id="progress-bar" max=100 value=0></progress>--}}
-{{--                        <div id="gallery" class="mt-1 flex overflow-x-auto"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                    <form data-single="true" action="/file-upload" class="dropzone">--}}
-{{--                        <div class="fallback">--}}
-{{--                            <input name="image" type="file" id="files" name="files" accept=".png, .jpg, .jpeg, .webp, .gif" multiple>--}}
-{{--                        </div>--}}
-{{--                        <div class="dz-message" data-dz-message>--}}
-{{--                            <div class="text-lg font-medium">Drop files here or click to upload.</div>--}}
-{{--                            <div class="text-slate-500"> This is just a demo dropzone. Selected files are <span--}}
-{{--                                    class="font-medium">not</span> actually uploaded.--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
-
 
                 <div class="col-span-12 sm:col-span-6">
-                    <label for="modal-form-1" class="form-label">Title</label>
-                    <input name="title" id="modal-form-1" type="text" class="form-control" placeholder="Category title">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="title" id="title" type="text" class="form-control" placeholder="Category title">
                 </div>
+
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-2" class="form-label">Parent category</label>
                     <div class="w-full xl:mt-0 flex-1">
@@ -85,16 +63,16 @@
                     </div>
                 </div>
                 <div class="col-span-12">
-                    <label for="modal-form-8" class="form-label">Description</label>
-                   <textarea name="description" class="form-control" id="modal-form-8"></textarea>
+                    <label for="description" class="form-label">Description</label>
+                   <textarea name="description" class="form-control" id="description"></textarea>
                 </div>
                 <div class="col-span-12 sm:col-span-12">
-                    <label for="modal-form-1" class="form-label">SEO title</label>
-                    <input name="seo_title" id="modal-form-1" type="text" class="form-control" placeholder="SEO title">
+                    <label for="seo_title" class="form-label">SEO title</label>
+                    <input name="seo_title" id="seo_title" type="text" class="form-control" placeholder="SEO title">
                 </div>
                 <div class="col-span-12 sm:col-span-12">
-                    <label for="modal-form-1" class="form-label">SEO description</label>
-                    <input name="seo_description" id="modal-form-1" type="text" class="form-control" placeholder="SEO description">
+                    <label for="seo_description" class="form-label">SEO description</label>
+                    <input name="seo_description" id="seo_description" type="text" class="form-control" placeholder="SEO description">
                 </div>
                 <div class="col-span-12 sm:col-span-6">
                     <label for="modal-form-1" class="form-label">Activated</label>

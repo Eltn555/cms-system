@@ -138,7 +138,7 @@
                                 }
                             }
                         @endphp
-                        <tr id="{{$category->id}}" class="intro-x" data-action="{{$category->id}}" style="order: {{$category->order_id}}" >
+                        <tr id="{{$category->slug}}" class="intro-x" data-action="{{$category->slug}}" style="order: {{$category->order_id}}" >
                             <td class="py-0.5 w-20">
                                 <form id="" enctype="multipart/form-data">
                                     @csrf
@@ -287,6 +287,13 @@
             }
         });
         $(document).ready(function () {
+            $('#title').on('input', function () {
+                $('#seo_title').val($(this).val());
+            });
+
+            $('#description').on('input', function () {
+                $('#seo_description').val($(this).val());
+            });
             $('.editable').on('dblclick', function () {
                 if ($(this).data('action') === 'read') {
                     var $input = $('<input type="' + $(this).data('selectable') + '" class="form-control" value="' + $.trim($(this).text()) + '" />');
