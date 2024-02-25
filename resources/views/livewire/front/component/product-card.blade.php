@@ -1,6 +1,6 @@
         <div class="product-wrap h-100 d-flex flex-column">
             <div class="product-img img-zoom mb-25">
-                <a wire:click="showProduct('{{ $product->slug }}')" style="cursor: pointer;" >
+                <a wire:click="showProduct('{{ $product->slug }}')">
                     <img src="{{asset(($image) ? 'storage/'.$image->image : 'no_photo.jpg')}}" alt="">
                 </a>
                 <div

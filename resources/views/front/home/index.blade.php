@@ -9,9 +9,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider-content-4 pt-145 text-center">
-                                <h5 data-aos="fade-up" data-aos-delay="200">{{ $slider->subtitle ?? '' }}</h5>
-                                <h1 data-aos="fade-up" data-aos-delay="400">{{ $slider->title ?? '' }}</h1>
-                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="600">
+                                <h5 data-aos="fade-up" data-aos-delay="50">{{ $slider->subtitle ?? '' }}</h5>
+                                <h1 data-aos="fade-up" data-aos-delay="100">{{ $slider->title ?? '' }}</h1>
+                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="0">
                                     <a href="{{ $slider->href ?? '' }}"
                                        class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
                                         Sotib olish <i class=" ti-arrow-right"></i>
@@ -29,9 +29,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider-content-4 pt-145 text-center">
-                                <h5 data-aos="fade-up" data-aos-delay="200">Slider subtitle</h5>
-                                <h1 data-aos="fade-up" data-aos-delay="400">Slider title</h1>
-                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="600">
+                                <h5 data-aos="fade-up" data-aos-delay="50">Slider subtitle</h5>
+                                <h1 data-aos="fade-up" data-aos-delay="100">Slider title</h1>
+                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="0">
                                     <a class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
                                         Sotib olish <i class=" ti-arrow-right"></i>
                                     </a>
@@ -50,7 +50,7 @@
                     <div class="swiper-wrapper">
                         @foreach($categories as $category)
                             <div class="swiper-slide border p-1 me-0 d-flex justify-content-center align-items-end">
-                                <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                                <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="50">
                                     <div class="category-img-2 overflow-hidden">
                                         <a href="{{ route('front.category.show', $category->slug) }}">
                                             @foreach($category->images as $image)
@@ -71,7 +71,7 @@
 
     <div class="new-categories pb-95 mt-4">
         <div class="container">
-            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="200">
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                 <div class="col-6">
                     <h5 class="shadow-text-1 font-cormorant fw-bold">Новое<br>поступление</h5>
                     <h5 class="shadow-text-2 font-cormorant fw-bold">Новое<br>поступление</h5>
@@ -85,7 +85,7 @@
 
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 order-lg-0 order-md-1 order-sm-1 col-12">
-                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="400">
+                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="100">
                         <a href="product-details.html"><img src="assets/images/banner/banner-13.png" alt=""></a>
                         <div class="banner-content-9">
                             <h3>Bedroom Sofa</h3>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12">
-                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="200">
+                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="50">
                         <a href="product-details.html"><img src="assets/images/banner/banner-14.png" alt=""></a>
                         <div class="banner-content-9">
                             <h3>Modern New Sofa</h3>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 order-lg-2 order-md-2 order-sm-2 col-12">
-                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="600">
+                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="100">
                         <a href="product-details.html"><img src="assets/images/banner/banner-15.png" alt=""></a>
                         <div class="banner-content-9">
                             <h3>Office Chair</h3>
@@ -310,7 +310,7 @@
 
     <div class="product-area pb-95 mt-4">
         <div class="container">
-            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="200">
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                 <div class="col-6">
                     <h5 class="shadow-text-1 font-cormorant fw-bold">Трендовые<br>товары</h5>
                     <h5 class="shadow-text-2 font-cormorant fw-bold">Трендовые<br>товары</h5>
@@ -350,7 +350,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                         <a href="product-details.html"><img src="assets/images/banner/banner-24.png" alt=""></a>
                         <div class="banner-content-12">
                             <h2>Exceptional Furniture Set</h2>
@@ -361,7 +361,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="400">
+                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="100">
                         <a href="product-details.html"><img src="assets/images/banner/banner-25.png" alt=""></a>
                         <div class="banner-content-12 banner-content-12-width">
                             <h2>Modern Sofa</h2>
@@ -381,7 +381,7 @@
 
                     @foreach($partners as $key =>$partner)
                         <div class="swiper-slide">
-                            <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="{{ ($key + 1) * 200 }}">
+                            <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="50">
                                 <a href="#"><img src="{{ asset('storage/' . $partner->image) }}" alt=""></a>
                             </div>
                         </div>
@@ -414,7 +414,7 @@
     </div>
     <div class="blog-area pb-70">
         <div class="container">
-            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="200">
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                 <div class="col-6">
                     <h5 class="shadow-text-1 font-cormorant fw-bold">Наш блог</h5>
                     <h5 class="shadow-text-2 font-cormorant fw-bold">Наш блог</h5>
@@ -427,7 +427,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
                                 <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
@@ -445,7 +445,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
                                 <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
@@ -463,7 +463,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
                                 <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>
@@ -481,7 +481,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                         <div class="blog-img-date-wrap mb-25">
                             <div class="blog-img">
                                 <a href="blog-details.html"><img src="assets/images/blog/blog-1.png" alt=""></a>

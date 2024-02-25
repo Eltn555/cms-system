@@ -24,15 +24,12 @@
                             <div class="swiper-wrapper">
                                 @foreach($product->images as $image)
                                     <div class="swiper-slide">
-                                        <div class="easyzoom-style">
-                                            <div class="easyzoom easyzoom--overlay">
-                                                <a href="{{asset('storage/'.$image->image)}}">
-                                                    <img src="{{asset('storage/'.$image->image)}}" alt="{{$image->alt}}">
+                                        <div class="">
+                                            <div class="">
+                                                <a class="img-popup" href="{{asset('storage/'.$image->image)}}">
+                                                    <img class="w-100" src="{{asset('storage/'.$image->image)}}" alt="{{$image->alt}}">
                                                 </a>
                                             </div>
-                                            <a class="easyzoom-pop-up img-popup" href="{{asset('storage/'.$image->image)}}">
-                                                <i class="pe-7s-search"></i>
-                                            </a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -65,7 +62,7 @@
                         </div>
                         <div class="product-details-meta">
                             <ul>
-                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet animi consectetur esse est maxime modi placeat, quis reprehenderit velit!</li>
+                                <li>{{$product->short_description}}</li>
                                 <li><span class="title">Tags:</span>
                                     <ul >
                                         @foreach($product->tags as $tag)

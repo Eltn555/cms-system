@@ -4862,7 +4862,7 @@ textarea {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    height: 100%;
+    width: 100%;
     -webkit-transition: all .4s ease 0s;
     -o-transition: all .4s ease 0s;
     transition: all .4s ease 0s;
