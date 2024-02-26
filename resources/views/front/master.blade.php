@@ -157,6 +157,20 @@
 </div>
 </div>
 
+<script>
+    function onHover(id) {
+        let images = $('#categoryImages').children('a').children('.d-block')
+        console.log(images)
+        images.each(function () {
+            $(this).removeClass('d-block')
+            $(this).addClass('d-none')
+        })
+        $('#categoryImage-' + id).removeClass('d-none')
+        $('#categoryImage-' + id).addClass('d-block')
+    }
+</script>
+
+
 <!-- All JS is here -->
 <script src="{{asset('assets/js/plugins/aos.js')}}"></script>
 <script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
