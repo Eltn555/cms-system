@@ -27,7 +27,7 @@
             <div class="product-content d-flex justify-content-between flex-column flex-grow-1">
                 <div>
                     <h3 class=" p-1 mb-0 card-brand"><a class="card-brand" wire:click="showProduct('{{ $product->slug }}')" style="cursor: pointer;">Asscher • Спальная</a></h3>
-                    <h3 class=" p-1 mb-0"><a class="" wire:click="showProduct('{{ $product->slug }}')" style="font-size: 10px">{{$info}}</a></h3>
+{{--                    <h3 class=" p-1 mb-0"><a class="" wire:click="showProduct('{{ $product->slug }}')" style="font-size: 10px">{{$info}}</a></h3>--}}
                     <h3 class="fw-semibold fs-6 p-1 mb-1"><a wire:click="showProduct('{{ $product->slug }}')" style="cursor: pointer;">{{ $product->title }}</a></h3>
                 </div>
                 <div class="font-kyiv">
