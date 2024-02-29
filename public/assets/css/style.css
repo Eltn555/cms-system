@@ -5088,7 +5088,7 @@ textarea {
 }
 
 .product-wrap:hover .product-img a img {
-    height: 120%;
+    width: 110%;
 }
 
 .product-wrap:hover .product-img .product-badge-2 {
