@@ -49,7 +49,7 @@
 </head>
 
 <body>
-<div class="main-wrapper main-wrapper-2">
+<div class="main-wrapper main-wrapper-2">searc
     <x-header></x-header>
     @yield('content')
     <!-- mini cart start -->
@@ -156,19 +156,6 @@
     </div>
 </div>
 </div>
-
-<script>
-    function onHover(id) {
-        let images = $('#categoryImages').children('a').children('.d-block')
-        console.log(images)
-        images.each(function () {
-            $(this).removeClass('d-block')
-            $(this).addClass('d-none')
-        })
-        $('#categoryImage-' + id).removeClass('d-none')
-        $('#categoryImage-' + id).addClass('d-block')
-    }
-</script>
 
 
 <!-- All JS is here -->

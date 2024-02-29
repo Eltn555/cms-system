@@ -52,40 +52,44 @@
                                 <li>
                                     <a>CATEGORIES</a>
                                     <ul class="mega-menu-style d mega-menu-mrg-1">
+                                        {{--Category lists--}}
+                                        <li>
+                                            <ul class="d-flex">
+                                                @foreach($categoriesChild as $key => $category)
+                                                    <li>
+                                                        <a onmouseover="onHover({{$category->id}})" class="dropdown-title">{{ $category->title }}</a>
+                                                        <ul>
+                                                            @foreach($category->children as $childKey => $child)
+                                                                <li>
+                                                                    <a onmouseover="onHover({{$child->id}})"
+                                                                       href="{{ route('front.category.show', $child->slug) }}">{{ $child->title }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                @endforeach
+                                        </li>
                                         <li>
                                             <ul>
-                                                <li>
-                                                    <ul>
-                                                        @foreach($categories as $category)
-                                                            <li><a onmouseover="onHover({{$category->id}})"
-                                                                   href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
-                                                <li id="categoryImages">
-                                                    <a>@foreach($categories as $key => $category)
-                                                            @if(!$category->images->isEmpty())
-                                                                <img id="categoryImage-{{$category->id}}"
-                                                                     style="max-width: 288px"
-                                                                     class="{{ $key === 0 ? 'd-block' : 'd-none' }}"
-                                                                     src="{{ asset('storage/' . $category->images[0]->image) ?? ''}}"
-                                                                     alt="">
-                                                            @else
-                                                            @endif
-                                                        @endforeach
-                                                    </a>
-                                                </li>
+                                            @foreach($categories as $category)
+                                                    <li>
+                                                        <a onmouseover="onHover({{$category->id}})"
+                                                           href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
+                                                    </li>
+                                            @endforeach
                                             </ul>
                                         </li>
+                                        {{--Category lists End--}}
                                     </ul>
                                 </li>
-                                <li>
-                                    <a style="line-height: 80px !important;" href="{{route('blog.index')}}">BLOG</a>
-                                </li>
-                                <li><a style="line-height: 80px !important;" href="about-us.html">ABOUT</a></li>
-                                <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">CONTACT
-                                        US</a></li>
+                            </ul>
+                            </li>
+                            <li>
+                                <a style="line-height: 80px !important;" href="{{route('blog.index')}}">BLOG</a>
+                            </li>
+                            <li><a style="line-height: 80px !important;" href="about-us.html">ABOUT</a></li>
+                            <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">CONTACT
+                                    US</a></li>
                             </ul>
                         </nav>
                     </div>
