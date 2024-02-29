@@ -104,11 +104,9 @@
                         </div>
                         <div class="header-action-style header-action-cart">
                             <a class="" title="Wishlist"
-                               href="@if(auth()->user()){{route('front.wishlist.index')}}@endif"><i
+                               href="{{route('front.wishlist.index')}}"><i
                                     class="pe-7s-like"></i>
-                                @if(auth()->user())
                                     <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
-                                @endif
                             </a>
                         </div>
                         <div class="header-action-style d-block d-lg-none">
