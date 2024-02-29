@@ -49,7 +49,7 @@
 </head>
 
 <body>
-<div class="main-wrapper main-wrapper-2">searc
+<div class="main-wrapper main-wrapper-2">
     <x-header></x-header>
     @yield('content')
     <!-- mini cart start -->
