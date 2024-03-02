@@ -62,7 +62,9 @@ class Categories extends Component
             orWhere('price', 'LIKE', '%' . $this->search . '%')->
             orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
             orWhere('additional', 'LIKE', '%' . $this->search . '%');
-        })->paginate(12);
+        })
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
