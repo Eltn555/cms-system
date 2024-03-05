@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\PartnersController;
@@ -58,10 +59,11 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('sliders', SliderController::class, ['as'=>'admin']);
     Route::get('/partners/search', [PartnersController::class, 'search'])->name('admin.partners.search');
     Route::resource('partners', PartnersController::class, ['as'=>'admin']);
+    Route::resource('banner', BannerController::class, ['as'=>'admin']);
 });
 Route::post('/teststore', function (\Illuminate\Http\Request $request){
     $data = $request->all();
-
+    dd($data);
     foreach ($data['filepond'] as $image){
 
         $path = Storage::put('/images', $image);
@@ -77,7 +79,10 @@ Route::post('/teststore', function (\Illuminate\Http\Request $request){
 Route::get('/teststores', function (){
 
 
-    $product = Product::find(1);
+    $product = Product::all();
+    dd($product->toArray());
+    echo $product->toArray();
+    die();
     dump($product);
     dump($product->images);
     foreach ($product->images as $tag){

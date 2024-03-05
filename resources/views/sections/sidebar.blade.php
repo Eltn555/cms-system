@@ -18,6 +18,15 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.banner.index') }}"
+               class="side-menu side-menu{{ request()->is("admin/banner") || request()->is("admin/banner/*") ? "--active" : "" }}">
+                <div class="side-menu__icon">
+                    <i data-lucide="monitor"></i>
+                </div>
+                <div class="side-menu__title">Banners</div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('admin.products.index') }}"
                class="side-menu side-menu{{ request()->is("admin/products") ? "--active" : "" }}">
                 <div class="side-menu__icon">
