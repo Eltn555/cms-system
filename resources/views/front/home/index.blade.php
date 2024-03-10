@@ -83,52 +83,76 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 order-lg-0 order-md-1 order-sm-1 col-12">
-                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="100">
-                        <a href="product-details.html"><img src="assets/images/banner/banner-13.png" alt=""></a>
-                        <div class="banner-content-9">
-                            <h3>Bedroom Sofa</h3>
-                            <h4>Urdan Collection</h4>
-                        </div>
-                        <div class="btn-style-6 btn-style-6-position btn-hover">
-                            <a href="product-details.html"
-                               class="btn btn-border-radius hover-border-radius theme-color padding-dec">
-                                Shop Now
-                            </a>
+            <div class="row justify-content-around">
+                <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 order-lg-0 order-md-1 order-sm-1 col-12 big-banner">
+                    <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                        <a href="product-details.html" class="h-100 position-relative">
+                            <img src="{{ asset('storage/' . $banners[0]->image) }}" alt="" class="h-100"></a>
+                        <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                            <p class="card-brand mb-1 fw-semibold">{{$banners[0]->tag->products->count()}}вида товаров</p>
+                            <h5 class="fw-bolder font-kyiv">{{ $banners[0]->title }}</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12">
-                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="50">
-                        <a href="product-details.html"><img src="assets/images/banner/banner-14.png" alt=""></a>
-                        <div class="banner-content-9">
-                            <h3>Modern New Sofa</h3>
-                            <h4>Urdan Office Collection</h4>
-                        </div>
-                        <div class="btn-style-6 btn-style-6-position btn-hover">
-                            <a href="product-details.html"
-                               class="btn btn-border-radius hover-border-radius theme-color padding-dec">
-                                Shop Now
-                            </a>
+                <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 row p-0">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
+                        <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                            <a href="product-details.html" class="h-100 position-relative">
+                                <img src="" alt="" class="h-100"></a>
+                            <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                                <p class="card-brand mb-1 fw-semibold">Modern New Sofa</p>
+                                <h5 class="fw-bolder font-kyiv">Urdan Office Collection</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 order-lg-2 order-md-2 order-sm-2 col-12">
-                    <div class="banner-wrap mb-20" data-aos="fade-up" data-aos-delay="100">
-                        <a href="product-details.html"><img src="assets/images/banner/banner-15.png" alt=""></a>
-                        <div class="banner-content-9">
-                            <h3>Office Chair</h3>
-                            <h4>Urdan Collection</h4>
-                        </div>
-                        <div class="btn-style-6 btn-style-6-position btn-hover">
-                            <a href="product-details.html"
-                               class="btn btn-border-radius hover-border-radius theme-color padding-dec">
-                                Shop Now
-                            </a>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
+                        <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                            <a href="product-details.html" class="h-100"><img src="assets/images/banner/banner-14.png" alt="" class="h-100"></a>
+                            <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                                <p class="card-brand mb-1 fw-semibold">Modern New Sofa</p>
+                                <h5 class="fw-bolder font-kyiv">Urdan Office Collection</h5>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
+                        <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                            <a href="product-details.html" class="h-100"><img src="assets/images/banner/banner-14.png" alt="" class="h-100"></a>
+                            <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                                <p class="card-brand mb-1 fw-semibold">Modern New Sofa</p>
+                                <h5 class="fw-bolder font-kyiv">Urdan Office Collection</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
+                        <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                            <a href="product-details.html" class="h-100"><img src="assets/images/banner/banner-14.png" alt="" class="h-100"></a>
+                            <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                                <p class="card-brand mb-1 fw-semibold">Modern New Sofa</p>
+                                <h5 class="fw-bolder font-kyiv">Urdan Office Collection</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
+                        <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                            <a href="product-details.html" class="h-100"><img src="assets/images/banner/banner-14.png" alt="" class="h-100"></a>
+                            <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                                <p class="card-brand mb-1 fw-semibold">Modern New Sofa</p>
+                                <h5 class="fw-bolder font-kyiv">Urdan Office Collection</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
+                        <div class="overflow-hidden h-100 img-banner" data-aos="fade-up" data-aos-delay="50">
+                            <a href="product-details.html" class="h-100"><img src="assets/images/banner/banner-14.png" alt="" class="h-100"></a>
+                            <div class="btn-style-6 btn-style-6-position btn-hover d-block">
+                                <p class="card-brand mb-1 fw-semibold">Modern New Sofa</p>
+                                <h5 class="fw-bolder font-kyiv">Urdan Office Collection</h5>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -289,8 +313,8 @@
                 <div class="col-lg-7 col-md-12 p-5 pe-1">
                     <div class="mt-4 pt-1 position-relative">
                         <div class="ms-5 d-flex">
-                            <h5 style="font-size: 60px !important;" class="text-white shadow-text-1 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
-                            <h5 style="font-size: 60px !important;" class=" shadow-text-2 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
+                            <h5  class="text-white shadow-text-1 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
+                            <h5  class=" shadow-text-2 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
                         </div>
                     </div>
                     <div class="p-5 pt-2 pb-0">
@@ -396,8 +420,8 @@
                 <div class="col-lg-7 col-md-12 p-5 pe-1">
                     <div class="pt-5 ps-5">
                         <div class="d-flex position-relative">
-                            <h5 style="font-size: 60px !important;" class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
-                            <h5 style="font-size: 60px !important;" class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                            <h5  class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                            <h5  class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
                         </div>
                     </div>
                     <div class="p-5 pt-2">

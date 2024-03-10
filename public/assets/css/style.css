@@ -4478,8 +4478,15 @@ textarea {
 
 .btn-style-6-position {
     position: absolute;
-    left: 30px;
-    bottom: 20px;
+    width: 100%;
+    padding:10px 20px;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0));
+}
+
+.btn-style-6-position h5{
+    color: white !important;
 }
 
 .btn-style-7 a {
@@ -5068,6 +5075,74 @@ textarea {
     transition: all .5s ease 0s;
     opacity: 0;
     visibility: hidden;
+}
+
+.small-banner{
+    padding: 7.5px 7.5px !important;
+    height: 290px !important;
+}
+.small-banner div{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.big-banner{
+    height:580px;
+    padding: 7.5px !important;
+}
+
+.big-banner div{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .big-banner{
+        height:300px;
+    }
+    .big-banner .img-banner a img{
+        height: unset !important;
+        width: 100%;
+    }
+    .big-banner .img-banner a{
+        height: unset !important;
+        width: 100%;
+    }
+    .big-banner .img-banner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 100% !important;
+        width: 100%;
+    }
+    .small-banner .img-banner a img{
+        height: unset !important;
+        width: 100%;
+    }
+    .small-banner .img-banner a{
+        height: unset !important;
+        width: 100%;
+    }
+    .small-banner .img-banner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 100% !important;
+        width: 100%;
+    }
+    .shadow-text-2{
+        display: none;
+    }
+    .shadow-text-1{
+        font-size: 40px !important;
+        line-height: 40px !important;
+    }
 }
 
 .product-wrap.product-overly:before {
@@ -7812,7 +7887,7 @@ textarea {
 .shadow-text-1{
     position:relative;
     font-weight: 700 !important;
-    font-size: 72px;
+    font-size: 65px;
     line-height: 56px;
     letter-spacing: -4%;
     color: ##232323; /* Set the text color */

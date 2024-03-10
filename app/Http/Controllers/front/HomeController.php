@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Partner;
 use App\Models\Slider;
 use App\Models\Tag;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use Behat\Transliterator\Transliterator;
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $banners = Banner::all();
         $sliders = Slider::all();
         $slider = Slider::latest()->first();
         $categories = Category::with('images')->get();
@@ -33,6 +35,6 @@ class HomeController extends Controller
 //            ];
 //            $category->update($data);
 //        }
-        return view('front.home.index', compact('slider', 'categories', 'partners', 'tagsIndex'));
+        return view('front.home.index', compact('slider', 'categories', 'partners', 'tagsIndex', 'banners'));
     }
 }

@@ -8,7 +8,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
 
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            @if($banners->count()<6)
+            @if($banners->count()<7)
                 <a href="{{ route('admin.banner.create') }}" class="btn btn-primary shadow-md mr-2">Add New Item</a>
             @endif
             <div class="hidden md:block mx-auto text-slate-500">Showing {{ $banners->count() }} entries</div>
