@@ -5977,6 +5977,10 @@ textarea {
 
 .blog-wrap .blog-img-date-wrap .blog-img {
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
 }
 
 .blog-wrap .blog-img-date-wrap .blog-img a {
