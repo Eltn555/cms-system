@@ -43,7 +43,7 @@
                     </div>
                     <div
                         class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <a class="flex items-center mr-3" href="javascript:;">
+                        <a class="flex items-center mr-3" href="{{ route('admin.banner.edit', $banner->id) }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
