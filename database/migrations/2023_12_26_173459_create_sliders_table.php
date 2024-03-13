@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('subtitle');
             $table->string('title');
-            $table->string('href');
+            $table->longText('text');
+            $table->string('btn_text');
+            $table->string('btn_link');
             $table->string('image');
             $table->timestamps();
             $table->softDeletes();

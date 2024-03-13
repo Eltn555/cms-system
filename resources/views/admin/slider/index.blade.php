@@ -1,70 +1,105 @@
 @extends('admin')
 @section('content')
 
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Slider
-    </h2>
+    <h2 class="intro-y text-lg font-medium mt-10">Slider</h2>
 
-    <div class="intro-y box lg:mt-5 w-2/3 2xl:w-full">
-        <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-            <h2 class="font-medium text-base mr-auto">
-                Display Information
-            </h2>
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <a href="{{ route('admin.sliders.create') }}" class="btn btn-primary shadow-md mr-2">Add New Product</a>
+            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
         </div>
-        <div class="p-5">
-            <form action="{{ route('admin.sliders.update', $slider->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="flex flex-col-reverse xl:flex-row flex-col">
-                    <div class="flex-1 mt-6 xl:mt-0">
-                        <div class="grid grid-cols-12 gap-x-5">
-                            <div class="col-span-10 2xl:col-span-8">
-                                <div>
-                                    <label for="slider-title" class="form-label">Slider Title</label>
-                                    <input id="slider-title" type="text" class="form-control" name="title"
-                                           placeholder="Slider Title" value="{{ $slider->title }}">
-                                </div>
-                                <div class="mt-3">
-                                    <label for="slider-subtitle" class="form-label">Slider Subtitle</label>
-                                    <input id="slider-subtitle" type="text" class="form-control" name="subtitle"
-                                           placeholder="Slider Subtitle" value="{{ $slider->subtitle }}">
-                                </div>
-                                <div class="mt-3">
-                                    <label for="slider-link" class="form-label">Slider Link</label>
-                                    <input id="slider-link" type="text" class="form-control" name="href"
-                                           placeholder="https://www.lumenlux.uz" value="{{ $slider->href }}">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-20 mt-3">Save</button>
-                    </div>
-                    <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
+
+        @foreach ($sliders as $slider)
+            <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
+                <div class="box">
+                    <div class="p-5">
                         <div
-                            class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                            <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                <img id="profile" class="rounded-md" alt="Midone - HTML Admin Template"
-                                     src="{{ asset('storage/' . $slider->image) }}">
-                                <div
-                                    class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" icon-name="x" data-lucide="x"
-                                         class="lucide lucide-x w-4 h-4">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </div>
+                            class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
+                            <img alt="{{ $slider->title }}" class="rounded-md"
+                                 src="{{ asset('storage/' . $slider->image) }}">
+                            <div class="absolute bottom-0 text-white px-5 pb-6 z-10"><a href=""
+                                                                                        class="block font-medium text-base">{{ $slider->title }}</a>
+                                <span class="text-white/90 text-xs mt-3">{{ $slider->text }}</span></div>
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-500 mt-5">
+                            <div class="flex items-center mt-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" icon-name="layers" data-lucide="layers"
+                                     class="lucide lucide-layers w-4 h-4 mr-2">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                                Button Text: {{ $slider->btn_text }}
                             </div>
-                            <div class="mx-auto cursor-pointer relative mt-5">
-                                <button type="button" class="btn btn-primary w-full">Change Photo</button>
-                                <input type="file" name="image" id="input-file"
-                                       class="w-full h-full top-0 left-0 absolute opacity-0">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" icon-name="link" data-lucide="link"
+                                     class="lucide lucide-link w-4 h-4 mr-2">
+                                    <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+                                </svg>
+                                Button Link: <a class="underline decoration-dotted whitespace-nowrap" href="{{ $slider->btn_link }}">{{ $slider->btn_link }}</a>
                             </div>
                         </div>
+                    </div>
+                    <div
+                        class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                        <a class="flex items-center mr-3" href="{{ route('admin.sliders.edit', $slider->id) }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"
+                                 class="lucide lucide-check-square w-4 h-4 mr-1">
+                                <polyline points="9 11 12 14 22 4"></polyline>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                            </svg>
+                            Edit </a>
+                        <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
+                           data-tw-target="#delete-modal-preview-{{ $slider->id }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 icon-name="trash-2" data-lucide="trash-2" class="lucide lucide-trash-2 w-4 h-4 mr-1">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                            Delete </a>
+                        <!-- BEGIN: Modal Content -->
+                        <div id="delete-modal-preview-{{ $slider->id }}" class="modal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form action="{{ route('admin.sliders.destroy', $slider->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-body p-0">
+                                            <div class="p-5 text-center"><i data-lucide="x-circle"
+                                                                            class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                                                <div class="text-3xl mt-5">Are you sure?</div>
+                                                <div class="text-slate-500 mt-2">Do you really want to delete "{{ $slider->title }}"
+                                                    <br>This process cannot be undone.
+                                                </div>
+                                            </div>
+                                            <div class="px-5 pb-8 text-center">
+                                                <button type="button" data-tw-dismiss="modal"
+                                                        class="btn btn-outline-secondary w-24 mr-1">Cancel
+                                                </button>
+                                                <button type="submit" class="btn btn-danger w-24">Delete</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> <!-- END: Modal Content -->
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        @endforeach
+
     </div>
 
 @endsection
