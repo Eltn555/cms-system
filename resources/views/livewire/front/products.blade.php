@@ -82,14 +82,14 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="product-color product-color-active product-details-color">
-                            <span>Color :</span>
-                            <ul>
-                                <li><a title="Pink" class="pink rounded-circle" href="#">pink</a></li>
-                                <li><a title="Yellow" class="active yellow rounded-circle" href="#">yellow</a></li>
-                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>
-                            </ul>
-                        </div>
+{{--                        <div class="product-color product-color-active product-details-color">--}}
+{{--                            <span>Color :</span>--}}
+{{--                            <ul>--}}
+{{--                                <li><a title="Pink" class="pink rounded-circle" href="#">pink</a></li>--}}
+{{--                                <li><a title="Yellow" class="active yellow rounded-circle" href="#">yellow</a></li>--}}
+{{--                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                         <div class="product-details-action-wrap font-kyiv">
                             <div class="product-count h4">
                                 <button class="border-0 bg-transparent">+</button>
@@ -97,8 +97,8 @@
                                 <button class="border-0 bg-transparent">-</button>
                             </div>
                             <div class="product-details-price p-3">
-                                <span class="p-2 {{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
-                                <span class="p-2 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} сум</span>
+                                <span class="p-1 {{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
+                                <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} сум</span>
                             </div>
                         </div>
                         <div class="d-flex">
