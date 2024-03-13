@@ -213,6 +213,7 @@ class ProductController extends Controller
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
         ]);
 
+        $product = Product::find($id);
         /*// Images process
         foreach ($data['images'] as $image) {
             $storage = Storage::put('/images', $image);
@@ -223,25 +224,20 @@ class ProductController extends Controller
                 'alt' => $product->title
             ]);
             $product->images()->attach($storedImage->id);
-        }
+        }*/
         // Additional products (tags) process
-        foreach ($data['additional_products'] as $additional_product) {
-            $tag = Tag::firstOrCreate([
-                'title' => $additional_product
-            ], [
-                'visible' => 0
-            ]);
-            $product->additional_tags()->attach($tag->id);
+
+        // Update or attach tags
+        foreach ($request->input('tags', []) as $tagName) {
+            $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
+            $product->tags()->syncWithoutDetaching($tag->id); // Sync tags without detaching existing ones
         }
 
-        foreach ($data['tags'] as $tagName) {
-            $tag = Tag::firstOrCreate([
-                'title' => $tagName
-            ], [
-                'visible' => 0
-            ]);
-            $product->tags()->attach($tag->id);
-        }*/
+        // Update or attach additional products
+        foreach ($request->input('additional_products', []) as $additionalProductName) {
+            $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
+            $product->additional_tags()->syncWithoutDetaching($additionalProduct->id); // Sync additional products without detaching existing ones
+        }
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");
     }
 }

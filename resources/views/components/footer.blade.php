@@ -16,8 +16,7 @@
                             <ul class="text-white font-kyiv">
                                 <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGjUId">г. Ташкент, Ц5  (Напротив Респуликанской пожарки)</a></li>
                                 <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGjYmD">Ул. Паркентская, дом 241</a></li>
-                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGj45G">Ул. Шота Руставели дом 136/1</a></li>
-                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGjJol">г. Самарканд, Микрорайон (Напротив поликлиники)</a></li>
+                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFc5IMG">г. Самарканд, Микрорайон (Напротив поликлиники)</a></li>
                             </ul>
                         </div>
                     </div>
