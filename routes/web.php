@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\BannerController;
+use App\Http\Controllers\admin\BlogCategoryController;
+use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\PartnersController;
@@ -60,6 +62,11 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::get('/partners/search', [PartnersController::class, 'search'])->name('admin.partners.search');
     Route::resource('partners', PartnersController::class, ['as'=>'admin']);
     Route::resource('banner', BannerController::class, ['as'=>'admin']);
+    Route::group(['prefix'=>'blog'], function () {
+        Route::resource('categories', BlogCategoryController::class, ['as'=>'admin.blog']);
+    });
+    Route::resource('/blog', BlogController::class, ['as'=>'admin']);
+
 });
 Route::post('/teststore', function (\Illuminate\Http\Request $request){
     $data = $request->all();
