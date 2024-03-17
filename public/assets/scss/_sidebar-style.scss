@@ -11,8 +11,9 @@
                 border: 1px solid #b7b7b7;
                 height: 45px;
                 color: #6d6d6d;
-                font-weight: 300;
-                font-style: italic;
+                font-weight: 500;
+                font-family: Kyiv;
+                font-size: 14px;
                 padding: 2px 50px 2px 15px;
                 &::-moz-input-placeholder {
                     color: #6d6d6d;
@@ -27,7 +28,7 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                right: 15px;
+                left: 15px;
                 border: none;
                 background-color: transparent;
                 font-size: 18px;
@@ -249,9 +250,11 @@
                 border: 1px solid #dcdcdc;
                 height: 60px;
                 color: #a6a6a6;
-                font-weight: 300;
+                font-weight: 500;
+                font-family: Kyiv;
+                font-size: 14px;
                 font-style: italic;
-                padding: 2px 70px 2px 25px;
+                padding: 2px 70px 2px 50px;
                 &::-moz-input-placeholder {
                     color: #a6a6a6;
                     opacity: 1;
@@ -265,7 +268,7 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                right: 19px;
+                left: 19px;
                 border: none;
                 background-color: transparent;
                 font-size: 18px;

@@ -2,70 +2,69 @@
 {{--@section('description', $this->category->seo_description)--}}
 @section('keyword', $this->category->seo_title)
 <div>
-    <div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1"
-         style="background-image:url({{ asset(($background != null) ? 'storage/'.$background->image : '') }}); background-position: center; background-size: cover ;">
-        <div class="container">
-            <div class="breadcrumb-content text-center">
-                <h2 id="main-title" data-aos="fade-up" data-aos-delay="200"
-                    class="aos-init aos-animate">{{ $category->title }}</h2>
-                <ul data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
-                    <li><a href="{{ route('front..index') }}">Home</a></li>
-                    <li><i class="ti-angle-right"></i></li>
-                    <li>{{ $this->category->title }}</li>
-                </ul>
-                <img src="{{asset(($icon != null) ? 'storage/'.$icon->image : '')}}" alt="{{$icon->alt ?? ''}}">
+    <div class="container pt-5">
+        <div class="mb-20 font-cormorant position-relative">
+            <h2 class="shadow-text-1 font-cormorant fw-bold">Магазин</h2>
+            <h2 class="shadow-text-2 font-cormorant fw-bold">Магазин</h2>
+        </div>
+        <div class="py-2 row">
+            <div class="search-wrap-2 col-9 col-md-10">
+                <div class="sidebar-widget mb-10 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                    <div class="search-wrap-2">
+                        <form class="search-2-form" action="#">
+                            <input placeholder="Поиск товаров, брендов" type="text" wire:model="search">
+                            <button class="button-search"><i class=" ti-search "></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="ps-0 single-product-cart btn-hover text-center col-md-2 col-3">
+                <a class="button search w-100 py-2 text-dark d-flex justify-content-center align-items-center" style="height: 45px">Поиск</a>
             </div>
         </div>
-        {{--            <div class="breadcrumb-img-1 aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">--}}
-        {{--                <img src="assets/images/banner/breadcrumb-1.png" alt="">--}}
-        {{--            </div>--}}
-        {{--            <div class="breadcrumb-img-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">--}}
-        {{--                <img src="assets/images/banner/breadcrumb-2.png" alt="">--}}
-        {{--            </div>--}}
     </div>
-
-    <div class="shop-area shop-page-responsive pt-100 pb-100">
+    <div class="shop-area shop-page-responsive py-10">
         <div class="container">
             <div class="row flex-row-reverse">
                 <div class="col-lg-9">
-                    <div class="shop-topbar-wrapper mb-40">
-                        <div class="shop-topbar-left">
-                            <div class="showing-item">
-                                <span>Showing 1–12 of 60 results</span>
-                            </div>
-                        </div>
-                        <div class="shop-topbar-right">
-                            <div class="shop-sorting-area">
-                                <select class="nice-select nice-select-style-1" style="display: none;">
-                                    <option>Default Sorting</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by average rating</option>
-                                    <option>Sort by latest</option>
-                                </select>
-                                <div class="nice-select nice-select-style-1" tabindex="0"><span class="current">Default Sorting</span>
-                                    <ul class="list">
-                                        <li data-value="Default Sorting" class="option selected">Default Sorting</li>
-                                        <li data-value="Sort by popularity" class="option">Sort by popularity</li>
-                                        <li data-value="Sort by average rating" class="option">Sort by average rating
-                                        </li>
-                                        <li data-value="Sort by latest" class="option">Sort by latest</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="shop-view-mode nav" role="tablist">
-                                <a class="active" href="#shop-1" data-bs-toggle="tab" aria-selected="true" role="tab"><i
-                                        class=" ti-layout-grid3 "></i> </a>
-                                <a href="#shop-2" data-bs-toggle="tab" class="" aria-selected="false" tabindex="-1"
-                                   role="tab"><i class=" ti-view-list-alt "></i></a>
-                            </div>
-                        </div>
+                    <div class="shop-topbar-wrapper">
+{{--                        <div class="shop-topbar-left">--}}
+{{--                            <div class="showing-item">--}}
+{{--                                <span>Showing 1–12 of 60 results</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="shop-topbar-right">--}}
+{{--                            <div class="shop-sorting-area">--}}
+{{--                                <select class="nice-select nice-select-style-1" style="display: none;">--}}
+{{--                                    <option>Default Sorting</option>--}}
+{{--                                    <option>Sort by popularity</option>--}}
+{{--                                    <option>Sort by average rating</option>--}}
+{{--                                    <option>Sort by latest</option>--}}
+{{--                                </select>--}}
+{{--                                <div class="nice-select nice-select-style-1" tabindex="0"><span class="current">Default Sorting</span>--}}
+{{--                                    <ul class="list">--}}
+{{--                                        <li data-value="Default Sorting" class="option selected">Default Sorting</li>--}}
+{{--                                        <li data-value="Sort by popularity" class="option">Sort by popularity</li>--}}
+{{--                                        <li data-value="Sort by average rating" class="option">Sort by average rating--}}
+{{--                                        </li>--}}
+{{--                                        <li data-value="Sort by latest" class="option">Sort by latest</li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="shop-view-mode nav" role="tablist">--}}
+{{--                                <a class="active" href="#shop-1" data-bs-toggle="tab" aria-selected="true" role="tab"><i--}}
+{{--                                        class=" ti-layout-grid3 "></i> </a>--}}
+{{--                                <a href="#shop-2" data-bs-toggle="tab" class="" aria-selected="false" tabindex="-1"--}}
+{{--                                   role="tab"><i class=" ti-view-list-alt "></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     <div class="shop-bottom-area">
                         <div class="tab-content jump">
                             <div id="shop-1" class="tab-pane active" role="tabpanel">
                                 <div id="product-list" class="row">
                                     @foreach($products as $product)
-                                        <div class="swiper-slide sw-sl align-self-stretch">
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-6 align-self-stretch p-2">
                                             <livewire:front.component.product-card :product="$product" :key="$product->id" />
                                         </div>
                                     @endforeach
@@ -267,19 +266,11 @@
                 </div>
 
 
-                <div class="col-lg-3">
+                <div class="col-lg-3 mt-3">
                     <div class="sidebar-wrapper">
-                        <div class="sidebar-widget mb-40 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                            <div class="search-wrap-2">
-                                <form class="search-2-form" action="#">
-                                    <input placeholder="Search*" type="text" wire:model="search">
-                                    <button class="button-search"><i class=" ti-search "></i></button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
+                        <div class="sidebar-widget sidebar-widget-border mb-20 pb-35 aos-init aos-animate"
                              data-aos="fade-up" data-aos-delay="200">
-                            <div class="sidebar-widget-title mb-30">
+                            <div class="sidebar-widget-title mb-20">
                                 <h3>Filter By Price</h3>
                             </div>
                             <div class="price-filter">

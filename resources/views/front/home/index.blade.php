@@ -315,11 +315,13 @@
                     <div id="pro-{{ $index + 1 }}" class="tab-pane {{ $index == 0 ? 'active' : '' }}">
                         <div class="product-slider-active-2 swiper-container">
                             <div class="swiper-wrapper">
-                                @foreach($tag->products as $product)
-                                    <div class="swiper-slide sw-sl align-self-stretch">
-                                        <livewire:front.component.product-card :product="$product" :key="$product->id" />
-                                    </div>
-                                @endforeach
+                                @if(!$tag->products == null)
+                                    @foreach($tag->products as $product)
+                                        <div class="swiper-slide sw-sl align-self-stretch">
+                                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

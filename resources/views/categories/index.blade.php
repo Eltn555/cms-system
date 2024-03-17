@@ -138,7 +138,7 @@
                                 }
                             }
                         @endphp
-                        <tr id="{{$category->slug}}" class="intro-x" data-action="{{$category->slug}}" style="order: {{$category->order_id}}" >
+                        <tr id="{{$category->slug}}" class="intro-x" data-action="{{$category->slug}}" data-field="{{$category->id}}" style="order: {{$category->order_id}}" >
                             <td class="py-0.5 w-20">
                                 <form id="" enctype="multipart/form-data">
                                     @csrf
@@ -281,6 +281,7 @@
             });
         });
         let id;
+        let slug;
         $("body").bind("ajaxSend", function(elm, xhr, s){
             if (s.type == "POST") {
                 xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
@@ -313,10 +314,11 @@
                 ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'), 'PUT');
             });
             $(document).on('click', '.deletion', function () {
-                id = $(this).parents('.intro-x').data('action');
+                id = $(this).parents('.intro-x').data('field');
+                slug = $(this).parents('.intro-x').attr('id');
             });
             $(document).on('click', '#delete', function () {
-                $('#'+id).addClass('hidden');
+                $('#'+slug).addClass('hidden');
                 ajax('', '', id, 'Delete');
             });
 

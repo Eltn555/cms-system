@@ -572,7 +572,7 @@ textarea {
 }
 
 .btn-hover a:hover, .btn-hover button:hover {
-    color: #fff;
+    color: #fff !important;
 }
 
 .btn-hover a::before, .btn-hover a::after, .btn-hover button::before, .btn-hover button::after {
@@ -4842,7 +4842,7 @@ textarea {
 
 .sw-sl{
     width:280px !important;
-    margin-right:20px!important;
+    margin-right:10px!important;
 }
 
 .product-wrap {
@@ -8943,9 +8943,9 @@ textarea {
     border: 1px solid #b7b7b7;
     height: 45px;
     color: #6d6d6d;
-    font-weight: 300;
-    font-style: italic;
-    padding: 2px 50px 2px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 2px 50px 2px 50px;
 }
 
 .sidebar-widget .search-wrap-2 .search-2-form input::-moz-input-placeholder {
@@ -8964,7 +8964,7 @@ textarea {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: 15px;
+    left: 15px;
     border: none;
     background-color: transparent;
     font-size: 18px;
