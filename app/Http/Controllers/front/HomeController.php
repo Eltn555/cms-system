@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $banners = Banner::all();
         $sliders = Slider::all();
-        $slider = Slider::latest()->first();
+        $slider = Slider::all();
         $categories = Category::with('images')->get();
         $partners = Partner::all();
         $tagsIndex = Tag::take(4)->get();

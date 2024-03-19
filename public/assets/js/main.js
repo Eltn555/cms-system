@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    
+
     /*--
     currency active
     -----------------------------------*/
@@ -26,7 +26,7 @@
             }
         });
     }
-    
+
     /*--
     language active
     -----------------------------------*/
@@ -52,7 +52,7 @@
             }
         });
     }
-    
+
     // Hero slider active
     var sliderActive = new Swiper('.slider-active', {
         loop: true,
@@ -64,7 +64,7 @@
             prevEl: '.home-slider-prev , .home-slider-prev2 , .home-slider-prev3',
         }
     });
-    
+
     /*------ Timer active ----*/
     $('#timer-1-active').syotimer({
         year: 2022,
@@ -76,7 +76,7 @@
         periodic: false,
         periodUnit: 'd'
     });
-    
+
     // Product slider active 1
     var sliderActiveTwo = new Swiper('.product-slider-active-1', {
         loop: true,
@@ -103,7 +103,7 @@
             }
         },
     });
-    
+
     // Brand logo active
     var sliderActiveThree = new Swiper('.brand-logo-active', {
         loop: true,
@@ -123,8 +123,8 @@
             }
         },
     });
-    
-    
+
+
     // Category slider active
     var sliderActiveFour = new Swiper('.category-slider-active', {
         loop: true,
@@ -144,7 +144,7 @@
             }
         },
     });
-    
+
     // Category slider active 2
     var sliderActiveFive = new Swiper('.category-slider-active-2', {
         loop: true,
@@ -168,7 +168,7 @@
             }
         },
     });
-    
+
     // Product slider active 2
     var sliderActiveSix = new Swiper('.product-slider-active-2', {
         loop: true,
@@ -191,7 +191,7 @@
             }
         },
     });
-    
+
     // Testimonial active
     var sliderActiveSeven = new Swiper('.testimonial-active', {
         loop: true,
@@ -217,7 +217,7 @@
             }
         },
     });
-    
+
     /*----------------------------
     	Cart Plus Minus Button
     ------------------------------ */
@@ -239,7 +239,7 @@
         }
         $button.parent().find("input").val(newVal);
     });
-    
+
     /*------ ScrollUp -------- */
     $.scrollUp({
         scrollText: '<i class=" ti-arrow-up "></i>',
@@ -247,7 +247,7 @@
         scrollSpeed: 900,
         animation: 'fade'
     });
-    
+
     /*-----------------
         Menu Stick
     -----------------*/
@@ -261,7 +261,7 @@
             header.addClass('stick');
         }
     });
-    
+
     /*-------------------------------
 	   Header Search Toggle
     -----------------------------------*/
@@ -276,41 +276,41 @@
            $(this).siblings('.search-wrap-1').addClass('open');
         }
     })
-    
+
     /*====== SidebarCart ======*/
     function miniCart() {
         var navbarTrigger = $('.cart-active'),
             endTrigger = $('.cart-close'),
             container = $('.sidebar-cart-active'),
             wrapper = $('.main-wrapper');
-        
+
         wrapper.prepend('<div class="body-overlay"></div>');
-        
+
         navbarTrigger.on('click', function(e) {
             e.preventDefault();
             container.addClass('inside');
             wrapper.addClass('overlay-active');
         });
-        
+
         endTrigger.on('click', function() {
             container.removeClass('inside');
             wrapper.removeClass('overlay-active');
         });
-        
+
         $('.body-overlay').on('click', function() {
             container.removeClass('inside');
             wrapper.removeClass('overlay-active');
         });
     };
     miniCart();
-    
+
     /*====== product-color-active ======*/
     $(".product-color-active ul li a").on('click', function(e) {
         e.preventDefault();
         $(".product-color-active ul li a").removeClass("active");
         $(this).addClass("active");
     });
-    
+
     /*--------------------------
         Isotope active 1
     ---------------------------- */
@@ -326,7 +326,7 @@
             }
         });
     });
-    
+
     /*---------------------
         Price range
     --------------------- */
@@ -344,18 +344,18 @@
         });
         amountprice.val("$" + sliderrange.slider("values", 0) +
             " - $" + sliderrange.slider("values", 1));
-    }); 
-    
-    
+    });
+
+
     /* NiceSelect */
     $('.nice-select').niceSelect();
-    
+
     /*---- CounterUp ----*/
     $('.count').counterUp({
         delay: 10,
         time: 2000
     });
-    
+
     /*---------------------
         Select active
     --------------------- */
@@ -363,31 +363,31 @@
     $(window).on('resize', function(){
         $('.select-two-active').select2()
     });
-    
+
     /*--- checkout toggle function ----*/
     $('.checkout-click1').on('click', function(e) {
         e.preventDefault();
         $('.checkout-login-info').slideToggle(900);
     });
-    
-    
+
+
     /*--- checkout toggle function ----*/
     $('.checkout-click3').on('click', function(e) {
         e.preventDefault();
         $('.checkout-login-info3').slideToggle(1000);
     });
-    
+
     /*-------------------------
     Create an account toggle
     --------------------------*/
     $('.checkout-toggle2').on('click', function() {
         $('.open-toggle2').slideToggle(1000);
     });
-    
+
     $('.checkout-toggle').on('click', function() {
         $('.open-toggle').slideToggle(1000);
     });
-    
+
     /*-------------------------
     checkout one click toggle function
     --------------------------*/
@@ -399,10 +399,10 @@
         $( '.payment-box' ).slideUp(900);
         $(this).siblings( '.payment-box' ).slideToggle(900);
     });
-    
+
     // Instantiate EasyZoom instances
     var $easyzoom = $('.easyzoom').easyZoom();
-    
+
     /*----------------------------------------
 		Product details small img slider 1
     -----------------------------------------*/
@@ -430,7 +430,7 @@
             },
         }
     });
-    
+
     /*----------------------------------------
 		Product details big img slider 1
     -----------------------------------------*/
@@ -443,10 +443,10 @@
             swiper: productDetailsSmallOne
         }
     });
-    
+
     /*----------------------------------------
 		Product details small img slider 2
-    -----------------------------------------*/ 
+    -----------------------------------------*/
     var productDetailsSmallTwo = new Swiper('.product-details-small-img-slider-2', {
         loop: false,
         spaceBetween: 20,
@@ -473,7 +473,7 @@
             },
         }
     });
-    
+
     /*----------------------------------------
 		Product details big img slider 2
     -----------------------------------------*/
@@ -486,7 +486,7 @@
             swiper: productDetailsSmallTwo
         }
     });
-    
+
     // Related product active
     var relatedProductActive = new Swiper('.related-product-active', {
         loop: true,
@@ -509,7 +509,7 @@
             }
         },
     });
-    
+
     /*-----------------------
         Image Popup active
     ------------------------*/
@@ -519,39 +519,39 @@
             enabled: true
         }
     });
-    
+
     /*====== mobile-menu active ======*/
     const slinky = $('#mobile-menu').slinky();
     const slinky2 = $('#mobile-currency').slinky();
     const slinky3 = $('#mobile-language').slinky();
-    
+
     /*====== off canvas active ======*/
     function mobileMainMenu() {
         var navbarTrigger = $('.mobile-menu-active-button'),
             endTrigger = $('.off-canvas-close'),
             container = $('.off-canvas-active'),
             wrapper = $('.main-wrapper-2');
-        
+
         wrapper.prepend('<div class="body-overlay-2"></div>');
-        
+
         navbarTrigger.on('click', function(e) {
             e.preventDefault();
             container.addClass('inside');
             wrapper.addClass('overlay-active-2');
         });
-        
+
         endTrigger.on('click', function() {
             container.removeClass('inside');
             wrapper.removeClass('overlay-active-2');
         });
-        
+
         $('.body-overlay-2').on('click', function() {
             container.removeClass('inside');
             wrapper.removeClass('overlay-active-2');
         });
     };
     mobileMainMenu();
-    
+
     /*-------------------------
       Scroll Animation
     --------------------------*/
@@ -559,6 +559,46 @@
         once: true,
         duration: 1000,
     });
-    
+
 })(jQuery);
+
+let nextButton = document.getElementById('next');
+let prevButton = document.getElementById('prev');
+let carousel = document.querySelector('.carousel');
+let listHTML = document.querySelector('.carousel .list');
+let seeMoreButtons = document.querySelectorAll('.seeMore');
+let backButton = document.getElementById('back');
+
+nextButton.onclick = function(){
+    showSlider('next');
+}
+prevButton.onclick = function(){
+    showSlider('prev');
+}
+let unAcceppClick;
+const showSlider = (type) => {
+    nextButton.style.pointerEvents = 'none';
+    prevButton.style.pointerEvents = 'none';
+
+    carousel.classList.remove('next', 'prev');
+    let items = document.querySelectorAll('.carousel .list .item');
+    if(type === 'next'){
+        listHTML.appendChild(items[0]);
+        carousel.classList.add('next');
+    }else{
+        listHTML.prepend(items[items.length - 1]);
+        carousel.classList.add('prev');
+    }
+    clearTimeout(unAcceppClick);
+    unAcceppClick = setTimeout(()=>{
+        nextButton.style.pointerEvents = 'auto';
+        prevButton.style.pointerEvents = 'auto';
+    }, 2000)
+}
+seeMoreButtons.forEach((button) => {
+    button.onclick = function(){
+        carousel.classList.remove('next', 'prev');
+        carousel.classList.add('showDetail');
+    }
+});
 

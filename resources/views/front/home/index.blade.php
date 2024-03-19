@@ -1,47 +1,71 @@
 @extends('front.master')
 @section('content')
+    <div class="bg-black mt-5">
+        <div class="carousel">
+            <div class="list">
+                @foreach($slider as $slide)
+                    <div class="item">
+                        <img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->title}}">
+                        <div class="introduce">
+                            <div class="topic d-flex pt-2">
+                                <h5 style="font-size: 120px;" class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
+                                <h5 style="font-size: 120px; left: 30px"  class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
+                            </div>
+                            <div class="des fs-6 text-white">{{$slide->text}}</div>
+                            <a href="{{$slide->btn_link}}" class="seeMore py-3 px-4 text-dark border border-1 font-kyiv">{{$slide->btn_text}}</a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
+            <div class="arrows">
+                <button id="prev"><</button>
+                <button id="next">></button>
+            </div>
+        </div>
+    </div>
     <div class="slider-category-area">
-        @if($slider)
-            <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
-                 style="background-image:url({{$slider->image == null  ? asset('no_photo.jpg') : asset('storage/'.$slider->image)}})">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider-content-4 pt-145 text-center">
-                                <h5 data-aos="fade-up" data-aos-delay="50">{{ $slider->subtitle ?? '' }}</h5>
-                                <h1 data-aos="fade-up" data-aos-delay="100">{{ $slider->title ?? '' }}</h1>
-                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="0">
-                                    <a href="{{ $slider->href ?? '' }}"
-                                       class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
-                                        Sotib olish <i class=" ti-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @else
-            <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"
-                 style="background-image:url('{{asset('slider.jpg')}}')">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider-content-4 pt-145 text-center">
-                                <h5 data-aos="fade-up" data-aos-delay="50">Slider subtitle</h5>
-                                <h1 data-aos="fade-up" data-aos-delay="100">Slider title</h1>
-                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="0">
-                                    <a class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">
-                                        Sotib olish <i class=" ti-arrow-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
+
+{{--        @if($slider)--}}
+{{--            <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"--}}
+{{--                 style="background-image:url({{$slider->image == null  ? asset('no_photo.jpg') : asset('storage/'.$slider->image)}})">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <div class="slider-content-4 pt-145 text-center">--}}
+{{--                                <h5 data-aos="fade-up" data-aos-delay="50">{{ $slider->subtitle ?? '' }}</h5>--}}
+{{--                                <h1 data-aos="fade-up" data-aos-delay="100">{{ $slider->title ?? '' }}</h1>--}}
+{{--                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="0">--}}
+{{--                                    <a href="{{ $slider->href ?? '' }}"--}}
+{{--                                       class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">--}}
+{{--                                        Sotib olish <i class=" ti-arrow-right"></i>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @else--}}
+{{--            <div class="slider-fixed-image slider-height-4 bg-img slider-bg-color-4"--}}
+{{--                 style="background-image:url('{{asset('slider.jpg')}}')">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <div class="slider-content-4 pt-145 text-center">--}}
+{{--                                <h5 data-aos="fade-up" data-aos-delay="50">Slider subtitle</h5>--}}
+{{--                                <h1 data-aos="fade-up" data-aos-delay="100">Slider title</h1>--}}
+{{--                                <div class="slider-btn btn-hover" data-aos="fade-up" data-aos-delay="0">--}}
+{{--                                    <a class="btn btn-bg-white btn-text-black btn-border-radius btn-padding-inc hover-border-radius">--}}
+{{--                                        Sotib olish <i class=" ti-arrow-right"></i>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endif--}}
     </div>
 
         <div class="category-area py-5">
@@ -114,153 +138,6 @@
             </div>
         </div>
     </div>
-{{--    <div class="product-area pb-60">--}}
-{{--        <div class="container">--}}
-{{--            <div class="section-title-2 st-border-center text-center mb-75" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                <h2>Hot Products</h2>--}}
-{{--            </div>--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-6 col-lg-6">--}}
-{{--                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                        <a href="shop.html"><img src="assets/images/banner/banner-23.png" alt=""></a>--}}
-{{--                        <div class="banner-content-10-position top-inc">--}}
-{{--                            <div class="banner-content-10 banner-content-10-responsive">--}}
-{{--                                <h3>Exceptional</h3>--}}
-{{--                                <h4>Officr Chair</h4>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="banner-btn-1">--}}
-{{--                            <a href="#">21 Products</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-6 col-lg-6">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
-{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                                <div class="product-img img-zoom mb-25">--}}
-{{--                                    <a href="product-details.html">--}}
-{{--                                        <img src="assets/images/product/product-7.png" alt="">--}}
-{{--                                    </a>--}}
-{{--                                    <div class="product-action-wrap">--}}
-{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
-{{--                                        </button>--}}
-{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
-{{--                                                data-bs-target="#exampleModal">--}}
-{{--                                            <i class="pe-7s-look"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-action-2-wrap">--}}
-{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
-{{--                                                class="pe-7s-cart"></i> Add to cart--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-content">--}}
-{{--                                    <h3><a href="product-details.html">Round Standard Chair</a></h3>--}}
-{{--                                    <div class="product-price">--}}
-{{--                                        <span>$30.25 </span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
-{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="400">--}}
-{{--                                <div class="product-img img-zoom mb-25">--}}
-{{--                                    <a href="product-details.html">--}}
-{{--                                        <img src="assets/images/product/product-5.png" alt="">--}}
-{{--                                    </a>--}}
-{{--                                    <div class="product-badge badge-top badge-right badge-pink">--}}
-{{--                                        <span>-10%</span>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-action-wrap">--}}
-{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
-{{--                                        </button>--}}
-{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
-{{--                                                data-bs-target="#exampleModal">--}}
-{{--                                            <i class="pe-7s-look"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-action-2-wrap">--}}
-{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
-{{--                                                class="pe-7s-cart"></i> Add to cart--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-content">--}}
-{{--                                    <h3><a href="product-details.html">Interior moderno render</a></h3>--}}
-{{--                                    <div class="product-price">--}}
-{{--                                        <span class="old-price">$25.89 </span>--}}
-{{--                                        <span class="new-price">$20.25 </span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
-{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="600">--}}
-{{--                                <div class="product-img img-zoom mb-25">--}}
-{{--                                    <a href="product-details.html">--}}
-{{--                                        <img src="assets/images/product/product-3.png" alt="">--}}
-{{--                                    </a>--}}
-{{--                                    <div class="product-badge badge-top badge-right badge-pink">--}}
-{{--                                        <span>-10%</span>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-action-wrap">--}}
-{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
-{{--                                        </button>--}}
-{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
-{{--                                                data-bs-target="#exampleModal">--}}
-{{--                                            <i class="pe-7s-look"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-action-2-wrap">--}}
-{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
-{{--                                                class="pe-7s-cart"></i> Add to cart--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-content">--}}
-{{--                                    <h3><a href="product-details.html">Easy Modern Chair</a></h3>--}}
-{{--                                    <div class="product-price">--}}
-{{--                                        <span class="old-price">$45.00 </span>--}}
-{{--                                        <span class="new-price">$40.00 </span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-12">--}}
-{{--                            <div class="product-wrap mb-35" data-aos="fade-up" data-aos-delay="800">--}}
-{{--                                <div class="product-img img-zoom mb-25">--}}
-{{--                                    <a href="product-details.html">--}}
-{{--                                        <img src="assets/images/product/product-9.png" alt="">--}}
-{{--                                    </a>--}}
-{{--                                    <div class="product-action-wrap">--}}
-{{--                                        <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i>--}}
-{{--                                        </button>--}}
-{{--                                        <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal"--}}
-{{--                                                data-bs-target="#exampleModal">--}}
-{{--                                            <i class="pe-7s-look"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="product-action-2-wrap">--}}
-{{--                                        <button class="product-action-btn-2" title="Add To Cart"><i--}}
-{{--                                                class="pe-7s-cart"></i> Add to cart--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="product-content">--}}
-{{--                                    <h3><a href="product-details.html">Modern Lounge Chairs</a></h3>--}}
-{{--                                    <div class="product-price">--}}
-{{--                                        <span>$30.25 </span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 
     <div class="calculator-area pb-70">
         <div class="container bg-dark">
@@ -330,34 +207,7 @@
         </div>
     </div>
 
-{{--    <div class="banner-area padding-22-row-col pb-70">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-lg-8">--}}
-{{--                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="50">--}}
-{{--                        <a href="product-details.html"><img src="assets/images/banner/banner-24.png" alt=""></a>--}}
-{{--                        <div class="banner-content-12">--}}
-{{--                            <h2>Exceptional Furniture Set</h2>--}}
-{{--                            <div class="btn-style-7">--}}
-{{--                                <a href="product-details.html">Shop Now</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-4">--}}
-{{--                    <div class="banner-wrap mb-30" data-aos="fade-up" data-aos-delay="100">--}}
-{{--                        <a href="product-details.html"><img src="assets/images/banner/banner-25.png" alt=""></a>--}}
-{{--                        <div class="banner-content-12 banner-content-12-width">--}}
-{{--                            <h2>Modern Sofa</h2>--}}
-{{--                            <div class="btn-style-7">--}}
-{{--                                <a href="product-details.html">Shop Now</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+
     <div class="brand-logo-area pb-95">
         <div class="container">
             <div class="brand-logo-active swiper-container">
