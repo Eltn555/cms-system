@@ -39,8 +39,13 @@ class SliderController extends Controller
     {
         $data = $request->all();
         $slider = Slider::find($slider);
-        $image = Storage::put('/images', $data['image']);
-        $data['image'] = $image;
+
+        //to'g'illamumudiz
+        if (array_key_exists('image', $data)){
+            $image = Storage::put('/images', $data['image']);
+            $data['image'] = $image;
+        }
+
         $slider->update($data);
         return redirect()->route('admin.sliders.index');
     }
