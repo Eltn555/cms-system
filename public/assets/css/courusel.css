@@ -27,7 +27,18 @@
     --item5-opacity: 0;
 }
 
+.bg-carousel{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 /* carousel */
+.topic .shadow-text-2{
+    opacity: 20%;
+    font-size: 120px;
+    top: -50px;
+    left: 200px;
+    width: 500px;
+}
 .carousel{
     position: relative;
     height: 800px;
@@ -47,7 +58,7 @@
     width: 80%;
     height: 100%;
     font-size: 15px;
-    transition: left 0.5s, opacity 0.5s, width 0.5s;
+    transition: left 0.3s, opacity 0.3s, width 0.3s;
 }
 .carousel .list .item:nth-child(n + 6){
     opacity: 0;
@@ -62,7 +73,7 @@
     right: 0;
     top: -50px;
     scale: 120%;
-    transition: right 1.5s;
+    transition: right 0.5s;
 }
 
 .carousel .list .item .introduce{
@@ -99,7 +110,7 @@
     background-color: #F8B301;
     font-weight: bold;
     letter-spacing: 3px;
-    transition: background 0.5s;
+    transition: background 0.3s;
 }
 .carousel .list .item .introduce .seeMore:hover{
     background: #eee;
@@ -133,7 +144,7 @@
 .carousel .list .item:nth-child(2) .introduce .des,
 .carousel .list .item:nth-child(2) .introduce .seeMore{
     opacity: 0;
-    animation: showContent 0.5s 1s ease-in-out 1 forwards;
+    animation: showContent 0.2s 0s ease-in-out 1 forwards;
 }
 @keyframes showContent{
     from{
@@ -146,15 +157,15 @@
      }
 }
 .carousel .list .item:nth-child(2) .introduce .topic{
-    animation-delay: 1.2s;
+    animation-delay: 0.4s;
     margin-bottom: 3rem;
 }
 .carousel .list .item:nth-child(2) .introduce .des{
-    animation-delay: 1.4s;
+    animation-delay: 0.5s;
     margin-bottom: 3rem;
 }
 .carousel .list .item:nth-child(2) .introduce .seeMore{
-    animation-delay: 1.6s;
+    animation-delay: 0.6s;
 }
 /* next click */
 .carousel.next .item:nth-child(1){

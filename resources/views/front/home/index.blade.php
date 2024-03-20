@@ -1,6 +1,6 @@
 @extends('front.master')
 @section('content')
-    <div class="bg-black mt-5">
+    <div class="bg-carousel mt-5" style="background-image: url('{{asset('preview.png')}}')">
         <div class="carousel">
             <div class="list">
                 @foreach($slider as $slide)
@@ -9,7 +9,7 @@
                         <div class="introduce">
                             <div class="topic d-flex pt-2">
                                 <h5 style="font-size: 120px;" class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
-                                <h5 style="font-size: 120px; left: 30px"  class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
+                                <h5 class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
                             </div>
                             <div class="des fs-6 text-white">{{$slide->text}}</div>
                             <a href="{{$slide->btn_link}}" class="seeMore py-3 px-4 text-dark border border-1 font-kyiv">{{$slide->btn_text}}</a>

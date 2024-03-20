@@ -34,87 +34,91 @@
         {{--            </div>--}}
         {{--        </div>--}}
     </div>
-    <div class="header-bottom sticky-bar">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-md-6 col-6 p-2">
-                    <div class="logo">
-                        <a href="#"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
-                    <div class="main-menu text-center">
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a style="line-height: 80px !important;" href="/">HOME</a>
-                                </li>
-                                <li>
-                                    <a>CATEGORIES</a>
-                                    <ul class="mega-menu-style d mega-menu-mrg-1">
-                                        {{--Category lists--}}
+    <div class="header-bottom sticky-bar stick">
+        <div class="blurry-backgorund">
+            <div class="blurry-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
+                            <div class="logo">
+                                <a href="#"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
+                            <div class="main-menu text-center">
+                                <nav>
+                                    <ul>
                                         <li>
-                                            <ul class="d-flex">
-                                                @foreach($categoriesChild as $key => $category)
-                                                    <li>
-                                                        <a onmouseover="onHover({{$category->id}})" class="dropdown-title">{{ $category->title }}</a>
-                                                        <ul>
-                                                            @foreach($category->children as $childKey => $child)
-                                                                <li>
-                                                                    <a onmouseover="onHover({{$child->id}})"
-                                                                       href="{{ route('front.category.show', $child->slug) }}">{{ $child->title }}</a>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </li>
-                                                @endforeach
+                                            <a style="line-height: 80px !important;" href="/">HOME</a>
                                         </li>
                                         <li>
-                                            <ul>
-                                            @foreach($categories as $category)
-                                                    <li>
-                                                        <a onmouseover="onHover({{$category->id}})"
-                                                           href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
-                                                    </li>
-                                            @endforeach
+                                            <a>CATEGORIES</a>
+                                            <ul class="mega-menu-style d mega-menu-mrg-1">
+                                                {{--Category lists--}}
+                                                <li>
+                                                    <ul class="d-flex">
+                                                        @foreach($categoriesChild as $key => $category)
+                                                            <li>
+                                                                <a onmouseover="onHover({{$category->id}})" class="dropdown-title">{{ $category->title }}</a>
+                                                                <ul>
+                                                                    @foreach($category->children as $childKey => $child)
+                                                                        <li>
+                                                                            <a onmouseover="onHover({{$child->id}})"
+                                                                               href="{{ route('front.category.show', $child->slug) }}">{{ $child->title }}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </li>
+                                                            @endforeach
+                                                            </li>
+                                                            <li>
+                                                                <ul>
+                                                                    @foreach($categories as $category)
+                                                                        <li>
+                                                                            <a onmouseover="onHover({{$category->id}})"
+                                                                               href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </li>
+                                                            {{--Category lists End--}}
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </li>
-                                        {{--Category lists End--}}
+                                        <li>
+                                            <a style="line-height: 80px !important;" href="{{route('blog.index')}}">BLOG</a>
+                                        </li>
+                                        <li><a style="line-height: 80px !important;" href="about-us.html">ABOUT</a></li>
+                                        <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">CONTACT
+                                                US</a></li>
                                     </ul>
-                                </li>
-                            </ul>
-                            </li>
-                            <li>
-                                <a style="line-height: 80px !important;" href="{{route('blog.index')}}">BLOG</a>
-                            </li>
-                            <li><a style="line-height: 80px !important;" href="about-us.html">ABOUT</a></li>
-                            <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">CONTACT
-                                    US</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="header-action-wrap">
-                        @livewire('search-bar')
-                        <div class="header-action-style header-action-cart">
-                            <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
-                                <span class="product-count bg-black">01</span>
-                            </a>
+                                </nav>
+                            </div>
                         </div>
-                        <div class="header-action-style header-action-cart">
-                            <a class="" title="Wishlist"
-                               href="{{route('front.wishlist.index')}}"><i
-                                    class="pe-7s-like"></i>
-                                    <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
-                            </a>
-                        </div>
-                        <div class="header-action-style d-block d-lg-none">
-                            <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
-                        </div>
-                        <div class="header-action-style">
-                            <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
-                                    class="pe-7s-user"></i></a>
+                        <div class="col-lg-3 col-md-6 col-6">
+                            <div class="header-action-wrap">
+                                @livewire('search-bar')
+                                <div class="header-action-style header-action-cart">
+                                    <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
+                                        <span class="product-count bg-black">01</span>
+                                    </a>
+                                </div>
+                                <div class="header-action-style header-action-cart">
+                                    <a class="" title="Wishlist"
+                                       href="{{route('front.wishlist.index')}}"><i
+                                            class="pe-7s-like"></i>
+                                        <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
+                                    </a>
+                                </div>
+                                <div class="header-action-style d-block d-lg-none">
+                                    <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
+                                </div>
+                                <div class="header-action-style">
+                                    <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
+                                            class="pe-7s-user"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
