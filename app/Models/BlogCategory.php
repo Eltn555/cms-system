@@ -15,4 +15,8 @@ class BlogCategory extends Model
         'title',
         'status'
     ];
+
+    public function news() {
+        return $this->hasMany(Blog::class, 'category_id', 'id');
+    }
 }

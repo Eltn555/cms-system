@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Livewire\Blog;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,9 @@ Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('f
 Route::resource('/wishlist',\App\Http\Controllers\front\WishlistController::class, ['as'=>'front']);
 Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
-Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
+Route::get('/blog', Blog::class)->name('blog.index');
+Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.details');
+//Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
 
 
 // ADMIN PANEL
