@@ -7906,6 +7906,7 @@ textarea {
     font-size: 72px;
     line-height: 56px;
     letter-spacing: -4%;
+    opacity: 60%;
     color: transparent; /* Set the text color */
     -webkit-text-stroke: 2px rgba(202, 202, 202, 0.4); /* Set the text stroke for WebKit browsers (Chrome, Safari) */
 }

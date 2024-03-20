@@ -593,7 +593,7 @@ const showSlider = (type) => {
     unAcceppClick = setTimeout(()=>{
         nextButton.style.pointerEvents = 'auto';
         prevButton.style.pointerEvents = 'auto';
-    }, 2000)
+    }, 500)
 }
 seeMoreButtons.forEach((button) => {
     button.onclick = function(){
