@@ -251,16 +251,16 @@
     /*-----------------
         Menu Stick
     -----------------*/
-    var header = $('.sticky-bar');
-    var $window = $(window);
-    $window.on('scroll', function() {
-        var scroll = $window.scrollTop();
-        if (scroll < 200) {
-            header.removeClass('stick');
-        } else {
-            header.addClass('stick');
-        }
-    });
+    // var header = $('.sticky-bar');
+    // var $window = $(window);
+    // $window.on('scroll', function() {
+    //     var scroll = $window.scrollTop();
+    //     if (scroll < 200) {
+    //         header.removeClass('stick');
+    //     } else {
+    //         header.addClass('stick');
+    //     }
+    // });
 
     /*-------------------------------
 	   Header Search Toggle
@@ -593,7 +593,7 @@ const showSlider = (type) => {
     unAcceppClick = setTimeout(()=>{
         nextButton.style.pointerEvents = 'auto';
         prevButton.style.pointerEvents = 'auto';
-    }, 2000)
+    }, 500)
 }
 seeMoreButtons.forEach((button) => {
     button.onclick = function(){

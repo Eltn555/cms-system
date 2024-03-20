@@ -1277,10 +1277,35 @@ textarea {
     width: 100%;
     z-index: 999;
     left: 0;
-    background-color: #ffffff;
     -webkit-transition: all .3s ease 0s;
     -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
+}
+
+.blurry-backgorund{
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+    width: 100%;
+}
+
+.blurry-backgorund::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    backdrop-filter: blur(7px);
+}
+
+.blurry-content{
+    /*position: absolute;*/
+    /*right: 50%;*/
+    /*top: 50%;*/
+    /*transform: translate(50%, 0);*/
+    z-index: 1000;
+    width: 100%;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -7906,6 +7931,7 @@ textarea {
     font-size: 72px;
     line-height: 56px;
     letter-spacing: -4%;
+    opacity: 60%;
     color: transparent; /* Set the text color */
     -webkit-text-stroke: 2px rgba(202, 202, 202, 0.4); /* Set the text stroke for WebKit browsers (Chrome, Safari) */
 }
