@@ -130,6 +130,13 @@
                 <div class="side-menu__title">Partners</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.account.index') }}"
+               class="side-menu side-menu{{ request()->is("account") || request()->is('account/*') ? "--active" : "" }}">
+                <div class="side-menu__icon"><i data-lucide="users"></i></div>
+                <div class="side-menu__title">Accounts</div>
+            </a>
+        </li>
     </ul>
 </nav>
 <!-- END: Side Menu -->
