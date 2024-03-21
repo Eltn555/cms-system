@@ -159,7 +159,7 @@
                     </div>
                     <div class="p-5 pt-2">
                             <div class="single-product-cart btn-hover text-start">
-                                <a href="#" class="p-2 ps-4 pe-4 text-dark border border-1 font-kyiv">Посмотреть все блоги</a>
+                                <a href="#" class="p-2 ps-4 pe-4 text-dark border font-kyiv">Посмотреть все блоги</a>
                             </div>
                     </div>
                 </div>
