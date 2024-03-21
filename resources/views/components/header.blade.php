@@ -41,7 +41,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
                             <div class="logo">
-                                <a href="#"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
+                                <a href="/"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
                             </div>
                         </div>
                         <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
@@ -49,22 +49,22 @@
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a style="line-height: 80px !important;" href="/">HOME</a>
+                                            <a style="line-height: 80px !important;" href="/">Магазин</a>
                                         </li>
-                                        <li>
-                                            <a>CATEGORIES</a>
-                                            <ul class="mega-menu-style d mega-menu-mrg-1">
+                                        <li class="">
+                                            <a>Каталог</a>
+                                            <ul class="mega-menu-style d mega-menu-mrg-1 p-4 rounded-1 category-hover">
                                                 {{--Category lists--}}
                                                 <li>
                                                     <ul class="d-flex">
                                                         @foreach($categoriesChild as $key => $category)
                                                             <li>
-                                                                <a onmouseover="onHover({{$category->id}})" class="dropdown-title">{{ $category->title }}</a>
+                                                                <a onmouseover="onHover({{$category->id}})" class="dropdown-title text-black">{{ $category->title }}</a>
                                                                 <ul>
                                                                     @foreach($category->children as $childKey => $child)
                                                                         <li>
                                                                             <a onmouseover="onHover({{$child->id}})"
-                                                                               href="{{ route('front.category.show', $child->slug) }}">{{ $child->title }}</a>
+                                                                               href="{{ route('front.category.show', $child->slug) }}" class="text-black">{{ $child->title }}</a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
@@ -76,7 +76,7 @@
                                                                     @foreach($categories as $category)
                                                                         <li>
                                                                             <a onmouseover="onHover({{$category->id}})"
-                                                                               href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
+                                                                               href="{{ route('front.category.show', $category->slug) }}" class="text-black">{{ $category->title }}</a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
@@ -86,12 +86,9 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a style="line-height: 80px !important;" href="{{route('blog.index')}}">BLOG</a>
-                                        </li>
-                                        <li><a style="line-height: 80px !important;" href="about-us.html">ABOUT</a></li>
-                                        <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">CONTACT
-                                                US</a></li>
+                                        <li><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></li>
+                                        <li><a style="line-height: 80px !important;" href="{{route('blog.index')}}">Блог</a></li>
+                                        <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">Контакты</a></li>
                                     </ul>
                                 </nav>
                             </div>

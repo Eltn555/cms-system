@@ -10,6 +10,10 @@
         .mainPage-navbar a {
             color: #FFFFFF !important;
         }
+        .mega-menu-style li>a{
+            color: #0b0b0b !important;
+        }
+
     </style>
     <div class="bg-carousel mt-5" style="background-image: url('{{asset('preview.png')}}')">
         <div class="carousel">

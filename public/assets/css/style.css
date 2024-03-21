@@ -972,6 +972,16 @@ textarea {
     }
 }
 
+.category-hover a:hover{
+    color: orange !important;
+    background-color: rgba(232, 220, 181, 0.3);
+    transition: 0.5s;
+}
+
+.category-hover a{
+    padding: 10px 5px;
+}
+
 .main-menu > nav > ul > li {
     display: -webkit-inline-box;
     display: -webkit-inline-flex;
@@ -1081,7 +1091,7 @@ textarea {
 }
 
 .main-menu > nav > ul > li > ul.mega-menu-style > li > ul > li ul li {
-    margin-bottom: 22px;
+    margin-bottom: 2px;
 }
 
 .main-menu > nav > ul > li > ul.mega-menu-style > li > ul > li ul li:last-child {
