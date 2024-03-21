@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\BlogCategoryController;
 use App\Http\Controllers\admin\BlogController;
@@ -69,6 +70,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
         Route::resource('categories', BlogCategoryController::class, ['as'=>'admin.blog']);
     });
     Route::resource('/blog', BlogController::class, ['as'=>'admin']);
+    Route::resource('/account', AccountController::class, ['as'=>'admin']);
 
 });
 Route::post('/teststore', function (\Illuminate\Http\Request $request){
