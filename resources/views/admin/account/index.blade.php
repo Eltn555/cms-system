@@ -12,342 +12,144 @@
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="search" class="lucide lucide-search w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         icon-name="search" class="lucide lucide-search w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"
+                         data-lucide="search">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                 </div>
             </div>
         </div>
-        <!-- BEGIN: Users Layout -->
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-5.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Angelina Jolie</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Backend Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
+
+        <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                <tr>
+                    <th class="whitespace-nowrap">USER</th>
+                    <th class="text-center whitespace-nowrap">PHONE</th>
+                    <th class="text-center whitespace-nowrap">ADDRESS</th>
+                    <th class="text-center whitespace-nowrap">STATUS</th>
+                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($accounts as $account)
+                    <tr class="intro-x">
+                        <td class="!py-3.5">
+                            <div class="flex items-center">
+                                <div class="w-9 h-9 image-fit zoom-in">
+                                    <img alt="Midone - HTML Admin Template"
+                                         class="rounded-lg border-white shadow-md tooltip"
+                                         src="{{ asset('storage/' . $account->image) }}">
+                                </div>
+                                <div class="ml-4">
+                                    <a href=""
+                                       class="font-medium whitespace-nowrap">{{ $account->lastname }} {{ $account->name }}</a>
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                        {{ $account->email }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center"><a class="flex items-center justify-center underline decoration-dotted"
+                                                   href="tel:{{ $account->phone }}">{{ $account->phone }}</a></td>
+                        <td class="text-center capitalize">{{ $account->address }}</td>
+                        <td class="w-40">
+                            <div class="flex items-center justify-center text-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"
+                                     class="lucide lucide-check-square w-4 h-4 mr-2">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                </svg>
+                                Active
+                            </div>
+                        </td>
+                        <td class="table-report__action w-56">
+                            <div class="flex justify-center items-center">
+                                <a class="flex items-center mr-3" href="{{ route('admin.account.edit', $account->id) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"
+                                         class="lucide lucide-check-square w-4 h-4 mr-1">
+                                        <polyline points="9 11 12 14 22 4"></polyline>
+                                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                    </svg>
+                                    Edit </a>
+                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
+                                   data-tw-target="#delete-confirmation-modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" icon-name="trash-2" data-lucide="trash-2"
+                                         class="lucide lucide-trash-2 w-4 h-4 mr-1">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                            d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                    Delete </a>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-5.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Robert De Niro</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Johnny Depp</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Frontend Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Russell Crowe</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-11.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Sylvester Stallone</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Frontend Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-6.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Robert De Niro</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Tom Cruise</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Backend Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Robert De Niro</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Frontend Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Arnold Schwarzenegger</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Brad Pitt</a>
-                        <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facebook" class="lucide lucide-facebook w-3 h-3 fill-current" data-lucide="facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="twitter" class="lucide lucide-twitter w-3 h-3 fill-current" data-lucide="twitter"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0023 3z"></path></svg> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="linkedin" class="lucide lucide-linkedin w-3 h-3 fill-current" data-lucide="linkedin"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <!-- END: Users Layout -->
+
+
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="chevrons-left" class="lucide lucide-chevrons-left w-4 h-4" data-lucide="chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg> </a>
+                        <a class="page-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="chevrons-left"
+                                 class="lucide lucide-chevrons-left w-4 h-4" data-lucide="chevrons-left">
+                                <polyline points="11 17 6 12 11 7"></polyline>
+                                <polyline points="18 17 13 12 18 7"></polyline>
+                            </svg>
+                        </a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="chevron-left" class="lucide lucide-chevron-left w-4 h-4" data-lucide="chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> </a>
+                        <a class="page-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="chevron-left"
+                                 class="lucide lucide-chevron-left w-4 h-4" data-lucide="chevron-left">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </a>
                     </li>
-                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                    <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
                     <li class="page-item">
-                        <a class="page-link" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="chevron-right" class="lucide lucide-chevron-right w-4 h-4" data-lucide="chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                        <a class="page-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="chevron-right"
+                                 class="lucide lucide-chevron-right w-4 h-4" data-lucide="chevron-right">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="chevrons-right" class="lucide lucide-chevrons-right w-4 h-4" data-lucide="chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg> </a>
+                        <a class="page-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="chevrons-right"
+                                 class="lucide lucide-chevrons-right w-4 h-4" data-lucide="chevrons-right">
+                                <polyline points="13 17 18 12 13 7"></polyline>
+                                <polyline points="6 17 11 12 6 7"></polyline>
+                            </svg>
+                        </a>
                     </li>
                 </ul>
             </nav>
