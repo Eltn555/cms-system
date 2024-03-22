@@ -1,5 +1,20 @@
 @extends('front.master')
+
 @section('content')
+    <style>
+        .mainPage-navbar{
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            color: #FFFFFF !important;
+            transition: 1s;
+        }
+        .mainPage-navbar a {
+            color: #FFFFFF !important;
+        }
+        .mega-menu-style li>a{
+            color: #0b0b0b !important;
+        }
+
+    </style>
     <div class="bg-carousel mt-5" style="background-image: url('{{asset('preview.png')}}')">
         <div class="carousel">
             <div class="list">
@@ -159,7 +174,7 @@
                     </div>
                     <div class="p-5 pt-2">
                             <div class="single-product-cart btn-hover text-start">
-                                <a href="#" class="p-2 ps-4 pe-4 text-dark border font-kyiv">Посмотреть все блоги</a>
+                                <a href="#" class="p-2 ps-4 pe-4 text-dark font-kyiv">Посмотреть все блоги</a>
                             </div>
                     </div>
                 </div>
@@ -504,4 +519,20 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var header = $('.blurry-backgorund');
+        var $window = $(window);
+        header.addClass('mainPage-navbar');
+        $window.on('scroll', function() {
+            var scroll = $window.scrollTop();
+            if (scroll < 400) {
+                header.addClass('mainPage-navbar');
+            } else {
+                header.removeClass('mainPage-navbar');
+            }
+        });
+    </script>
 @endsection
