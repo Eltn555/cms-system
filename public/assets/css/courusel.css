@@ -21,7 +21,7 @@
     --item4-zIndex: 8;
     --item4-opacity: 1;
 
-    --item5-transform: translate(60%,30%) scale(0.3);
+    --item5-transform: translate(60%,-20%) scale(0.3);
     --item5-filter: blur(40px);
     --item5-zIndex: 7;
     --item5-opacity: 0;
