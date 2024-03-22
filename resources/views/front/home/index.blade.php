@@ -1,5 +1,20 @@
 @extends('front.master')
+
 @section('content')
+    <style>
+        .mainPage-navbar{
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            color: #FFFFFF !important;
+            transition: 1s;
+        }
+        .mainPage-navbar a {
+            color: #FFFFFF !important;
+        }
+        .mega-menu-style li>a{
+            color: #0b0b0b !important;
+        }
+
+    </style>
     <div class="bg-carousel mt-5" style="background-image: url('{{asset('preview.png')}}')">
         <div class="carousel">
             <div class="list">
@@ -504,4 +519,20 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var header = $('.blurry-backgorund');
+        var $window = $(window);
+        header.addClass('mainPage-navbar');
+        $window.on('scroll', function() {
+            var scroll = $window.scrollTop();
+            if (scroll < 400) {
+                header.addClass('mainPage-navbar');
+            } else {
+                header.removeClass('mainPage-navbar');
+            }
+        });
+    </script>
 @endsection

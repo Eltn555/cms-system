@@ -42,6 +42,7 @@ Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('f
 Route::resource('/wishlist',\App\Http\Controllers\front\WishlistController::class, ['as'=>'front']);
 Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
+Route::get('/about', function () { return view('front.about.index'); })->name('about.index');
 Route::get('/blog', Blog::class)->name('blog.index');
 Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.details');
 //Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
