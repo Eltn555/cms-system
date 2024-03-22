@@ -111,7 +111,7 @@
                                 <div class="header-action-style d-block d-lg-none">
                                     <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
                                 </div>
-                                <div class="header-action-style">
+                                <div class="header-action-style" style="z-index: 1">
                                     <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
                                             class="pe-7s-user"></i></a>
                                 </div>
