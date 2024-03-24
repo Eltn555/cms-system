@@ -47,7 +47,28 @@
             margin-right: 20px !important;
         }
         .brand-container > div{
+            width: 195px !important;
             border-right: 1px solid #E0E0E0;
+            padding: 0 10px!important;
+            margin-right: 0!important;
+        }
+        .map-container{
+            position: relative;
+            padding-bottom: 80%; /* 16:9 */
+            height: 0;
+        }
+        .map-radio input{
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+        }
+        .map-radio{
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .selected_map{
+            color: #F8B301 !important;
+            border-color: #F8B301 !important;
         }
     </style>
 @endsection
@@ -93,7 +114,7 @@
             </div>
         </div>
     </div>
-    <div class="product-area pb-95">
+    <div class="product-area">
         <div class="container pb-5">
             <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                 <div class="col-8">
@@ -111,7 +132,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('about/1.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
                                 </a>
                                 <div class="product-action-wrap">
                                     <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
@@ -133,7 +154,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('about/2.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/2.jpg')}}" alt="LumenLux team">
                                 </a>
                                 <div class="product-action-wrap">
                                     <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
@@ -155,7 +176,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('about/3.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/3.jpg')}}" alt="LumenLux team">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -168,7 +189,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('about/1.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
                                 </a>
                                 <div class="product-action-wrap">
                                     <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
@@ -190,7 +211,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('about/1.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
                                 </a>
                                 <div class="product-action-wrap">
                                     <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
@@ -212,8 +233,8 @@
             </div>
         </div>
     </div>
-    <div class="brand-logo-area pb-95" data-aos="fade-up" data-aos-delay="100">
-        <div class="container pb-5">
+    <div class="brand-logo-area" data-aos="fade-up" data-aos-delay="100">
+        <div class="container">
             <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                 <div class="col-8">
                     <h5 class="shadow-text-1 font-cormorant fw-bold">Наши<br>партнеры</h5>
@@ -235,9 +256,37 @@
             </div>
         </div>
     </div>
+    <div class="container " data-aos="fade-up" data-aos-delay="100">
+        <div class="row pb-5">
+            <div class="col-12 position-relative pt-3">
+                <h5 class="shadow-text-1 font-cormorant fw-bold">Контакты</h5>
+                <h5 class="shadow-text-2 font-cormorant fw-bold">Контакты</h5>
+            </div>
+            <div class="col-6 h-100 mt-2 font-kyiv">
+                <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
+                    <input class="radio" type="radio" name="location" value="41.328629, 69.273486">
+                    <p class="mb-0 fw-semibold">г. Ташкент, Ц5  (Напротив Респуликанской пожарки)</p>
+                </div>
+                <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
+                    <input class="radio" type="radio" name="location" value="41.309927, 69.335936">
+                    <p class="mb-0 fw-semibold">Ул. Паркентская, дом 241</p>
+                </div>
+                <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
+                    <input class="radio" type="radio" name="location" value="39.647911, 66.925854">
+                    <p class="mb-0 fw-semibold">г. Самарканд, Микрорайон (Напротив поликлиники)</p>
+                </div>
+            </div>
+            <div class="col-6 p-0 mt-2">
+                <div class="map-container">
+                    <div id="map" class="h-100 w-100 position-absolute"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=da1d75ee-0a8e-4889-afe1-4f70ff26ee4d" type="text/javascript"></script>
     <script>
         setTimeout(function() {
             $('.counter-count').each(function () {
@@ -252,5 +301,63 @@
                 });
             });
         }, 1000); // 1000 milliseconds = 1 second
+
+
+
+        //map
+        var myMap;
+
+        // Дождёмся загрузки API и готовности DOM.
+        ymaps.ready(init);
+
+        function init () {
+            // Создание экземпляра карты и его привязка к контейнеру с
+            // заданным id ("map").
+            myMap = new ymaps.Map('map', {
+                // При инициализации карты обязательно нужно указать
+                // её центр и коэффициент масштабирования.
+                center: [41.31, 69.25],
+                zoom: 11,
+                controls: []
+            }, {
+                searchControlProvider: 'yandex#search'
+            });
+            var placemarks = [
+                {
+                    coordinates: [41.328629, 69.273486],
+                    hintContent: 'г. Ташкент, Ц5  (Напротив Респуликанской пожарки)',
+                    balloonContent: 'г. Ташкент, Ц5  (Напротив Респуликанской пожарки)'
+                },
+                {
+                    coordinates: [41.309927, 69.335936],
+                    hintContent: 'Ул. Паркентская, дом 241',
+                    balloonContent: 'Ул. Паркентская, дом 241'
+                },
+                {
+                    coordinates: [39.647911, 66.925854],
+                    hintContent: 'г. Самарканд, Микрорайон (Напротив поликлиники)',
+                    balloonContent: 'г. Самарканд, Микрорайон (Напротив поликлиники)'
+                }
+            ];
+
+
+
+            $('.map-radio').click(function() {
+                // Trigger click event on the radio button when the div is clicked
+                $('.radio').removeClass('selected_map');
+                let coordinates = $(this).find('.radio').prop('checked', true).addClass('selected_map').val().split(',').map(parseFloat);
+                myMap.setCenter(coordinates, 15);
+            });
+
+
+            placemarks.forEach(function(placemark) {
+                var newPlacemark = new ymaps.Placemark(placemark.coordinates, {
+                    hintContent: placemark.hintContent,
+                    balloonContent: placemark.balloonContent
+                });
+
+                myMap.geoObjects.add(newPlacemark);
+            });
+        }
     </script>
 @endsection
