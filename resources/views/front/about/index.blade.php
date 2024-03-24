@@ -46,6 +46,9 @@
             width: 280px !important;
             margin-right: 20px !important;
         }
+        .brand-container > div{
+            border-right: 1px solid #E0E0E0;
+        }
     </style>
 @endsection
 
@@ -154,15 +157,6 @@
                                 <a>
                                     <img src="{{asset('about/3.jpg')}}" alt="LumenLux team">
                                 </a>
-                                <div class="product-action-wrap">
-                                    <button class="product-action-btn-1" title="Wishlist"><i class="pe-7s-like"></i></button>
-                                    <button class="product-action-btn-1" title="Quick View" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="pe-7s-look"></i>
-                                    </button>
-                                </div>
-                                <div class="product-action-2-wrap">
-                                    <button class="product-action-btn-2" title="Add To Cart"><i class="pe-7s-cart"></i> Add to cart</button>
-                                </div>
                             </div>
                             <div class="product-content font-kyiv">
                                 <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
@@ -216,6 +210,53 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="brand-logo-area pb-95" data-aos="fade-up" data-aos-delay="100">
+        <div class="container pb-5">
+            <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
+                <div class="col-8">
+                    <h5 class="shadow-text-1 font-cormorant fw-bold">Наши<br>партнеры</h5>
+                    <h5 class="shadow-text-2 font-cormorant fw-bold">Наши<br>партнеры</h5>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="brand-logo-active border-0 swiper-container">
+                <div class="swiper-wrapper brand-container">
+                    <div class="swiper-slide border-">
+                        <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="200">
+                            <a href="#"><img src="assets/images/brand-logo/brand-logo-2.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="400">
+                            <a href="#"><img src="assets/images/brand-logo/brand-logo-2.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="600">
+                            <a href="#"><img src="assets/images/brand-logo/brand-logo-3.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="800">
+                            <a href="#"><img src="assets/images/brand-logo/brand-logo-4.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="1000">
+                            <a href="#"><img src="assets/images/brand-logo/brand-logo-5.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="1200">
+                            <a href="#"><img src="assets/images/brand-logo/brand-logo-1.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
