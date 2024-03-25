@@ -14,6 +14,9 @@ class BlogController extends Controller
 {
     public function index() {
         $news = Blog::all();
+        foreach ($news as $item) {
+            $item->created_at = Carbon::parse($item->created_at);
+        }
         return view('admin.blog.index', compact('news'));
     }
 
@@ -28,6 +31,7 @@ class BlogController extends Controller
         $image = Storage::put('/images', $data['image']);
         unset($data['image']);
         $data['image'] = $image;
+        $data['author_id'] = auth()->user()->id;
         Blog::create($data);
         return redirect()->route('admin.blog.index');
     }

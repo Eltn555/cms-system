@@ -3,7 +3,7 @@
 @section('content')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Blog Layout
+            Blog News
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a href="{{ route('admin.blog.create') }}" class="btn btn-primary shadow-md mr-2">Add New Post</a>
@@ -23,8 +23,8 @@
                             {{--<img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">--}}
                         </div>
                         <div class="ml-3 text-white mr-auto">
-                            <a href="" class="font-medium">Angelina Jolie</a>
-                            <div class="text-xs mt-0.5">49 seconds ago</div>
+                            <a href="" class="font-medium">{{ $item->author->name }}</a>
+                            <div class="text-xs mt-0.5">{{ $item->created_at->diffForHumans() }}</div>
                         </div>
                         <div class="dropdown ml-3">
                             <a href="javascript:;"
@@ -74,22 +74,12 @@
                 <div class="p-5 text-slate-600 dark:text-slate-500">
                     {{ $item->description }}
                 </div>
-                {{--<div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
+                <div class="mb-auto flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
                     <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="bookmark" data-lucide="bookmark" class="lucide lucide-bookmark w-3 h-3"><path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"></path></svg> </a>
-                    <div class="intro-x flex mr-2">
-                        <div class="intro-x w-8 h-8 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="dist/images/profile-15.jpg">
-                        </div>
-                        <div class="intro-x w-8 h-8 image-fit -ml-4">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="dist/images/profile-13.jpg">
-                        </div>
-                        <div class="intro-x w-8 h-8 image-fit -ml-4">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="dist/images/profile-1.jpg">
-                        </div>
-                    </div>
+                    <div class="ml-auto"> Likes: <span class="font-medium">{{ $item->likes->count() }}</span> </div>
                     <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="share-2" data-lucide="share-2" class="lucide lucide-share-2 w-3 h-3"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> </a>
                     <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white ml-2 tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="share" data-lucide="share" class="lucide lucide-share w-3 h-3"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> </a>
-                </div>--}}
+                </div>
                 {{--<div class="px-5 pt-3 pb-5 border-t border-slate-200/60 dark:border-darkmode-400">
                     <div class="w-full flex text-slate-500 text-xs sm:text-sm">
                         <div class="mr-2"> Comments: <span class="font-medium">55</span> </div>
