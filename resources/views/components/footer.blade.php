@@ -6,7 +6,7 @@
                     <div class="col-lg-2 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-about mb-40">
                             <div class="footer-logo">
-                                <a href="index.html"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
+                                <a href="index.html"><img height="75px" src="{{ asset('logo-white.png') }}" alt="logo"></a>
                             </div>
                         </div>
                     </div>
