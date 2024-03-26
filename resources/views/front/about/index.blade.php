@@ -46,8 +46,16 @@
             width: 280px !important;
             margin-right: 20px !important;
         }
+        .brand-container{
+            height: 112px;
+        }
+        .brand-container img{
+            max-height: 112px;
+            width: 100%;
+        }
         .brand-container > div{
-            width: 195px !important;
+            height: 100%;
+            width: 204px !important;
             border-right: 1px solid #E0E0E0;
             padding: 0 10px!important;
             margin-right: 0!important;
@@ -85,6 +93,25 @@
                 border-right:none;
                 border-bottom: 1px solid #E0E0E0;
             }
+            .greeting-txt h1{
+                font-size: 42px;
+                font-weight: 700;
+                color:rgba(35, 35, 35, 1);
+                line-height: 44px;
+            }
+            .greeting-txt{
+                padding-top: 180px;
+            }
+            .greeting-img img{
+                width: 70%;
+                right: 0;
+            }
+        }
+        @media (max-width: 490px) {
+            .greeting-img img{
+                width: 90%;
+                right: -50px;
+            }
         }
     </style>
 @endsection
@@ -92,13 +119,15 @@
 @section('content')
     <div class="container mt-5 pt-5">
         <div class="row">
-            <div class="col-6 greeting-txt">
-                <h5 class="counter"></h5>
-                <h1 class="font-cormorant mt-5">Lumenlux - где элегантность сочетается с освещением.</h1>
-                <p class="font-kyiv mt-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</p>
-            </div>
-            <div class="col-6 greeting-img position-relative">
-                <img src="{{asset('abouthdr.png')}}" alt="lumen lux about">
+            <div class="col-12 row">
+                <div class="col-md-12 col-lg-6 order-lg-0 order-md-1 order-sm-1 order-1 mt-md-5 greeting-txt">
+                    <h5 class="counter pt-md-5"></h5>
+                    <h1 class="font-cormorant mt-5">Lumenlux - где элегантность сочетается с освещением.</h1>
+                    <p class="font-kyiv mt-1 mt-sm-1 mt-md-3 mt-lg-5 mt-xl-5 mt-xxl-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</p>
+                </div>
+                <div class="col-md-12 col-lg-6 order-md-0 order-lg-1 order-sm-0 order-0 greeting-img position-relative">
+                    <img src="{{asset('abouthdr.png')}}" alt="lumen lux about">
+                </div>
             </div>
             <div class="col-12 video-container">
                 <iframe src="https://www.youtube-nocookie.com/embed/y7_Spedf2BI?si=WEWJHwT3kSZR1UcW&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -213,23 +242,7 @@
             </div>
         </div>
     </div>
-{{--    <div class="brand-logo-area pb-95">--}}
-{{--        <div class="container">--}}
-{{--            <div class="brand-logo-active swiper-container">--}}
-{{--                <div class="swiper-wrapper">--}}
-
-{{--                    @foreach($partners as $key =>$partner)--}}
-{{--                        <div class="swiper-slide">--}}
-{{--                            <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="50">--}}
-{{--                                <a href="#"><img src="{{ asset('storage/' . $partner->image) }}" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <div class="brand-logo-area" data-aos="fade-up" data-aos-delay="100">
+    <div class="brand-logo-area" data-aos="fade-up" data-aos-delay="50">
         <div class="container">
             <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                 <div class="col-8">
@@ -239,15 +252,15 @@
             </div>
         </div>
         <div class="container">
-            <div class="brand-logo-active border-0 swiper-container">
+            <div class="brand-logo-active  border-0 swiper-container">
                 <div class="swiper-wrapper brand-container">
-                    @for($i = 0; $i < 8; $i++)
-                        <div class="swiper-slide border-">
-                            <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="200">
-                                <a href="#"><img src="{{asset('no_photo.jpg')}}" alt=""></a>
+                    @foreach($partners as $key =>$partner)
+                        <div class="swiper-slide d-flex justify-content-center align-items-center">
+                            <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="50">
+                                <a href="#"><img src="{{asset('storage/' . $partner->image)}}" alt="LumenLux Pratners"></a>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>
