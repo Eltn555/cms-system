@@ -81,6 +81,10 @@
             .map-container{
                 padding-bottom: 55%; /* 16:9 */
             }
+            .infoNumber>div{
+                border-right:none;
+                border-bottom: 1px solid #E0E0E0;
+            }
         }
     </style>
 @endsection
@@ -101,21 +105,21 @@
             </div>
             <div class="col-12">
                 <div class="row my-5 py-4 infoNumber">
-                    <div class="col-4 text-center px-3 py-0" data-aos="fade-up" data-aos-delay="50">
+                    <div class="col-lg-4 col-md-12 text-center px-3 py-0" data-aos="fade-up" data-aos-delay="50">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">100</h5><span>+</span>
                         </div>
                         <p class="mb-0 fw-bolder">Количество проектов!</p>
                         <p class="px-5">Высокое разрешение и красивый дизайн только для вас!</p>
                     </div>
-                    <div class="col-4 text-center px-3 py-0" data-aos="fade-up" data-aos-delay="150">
+                    <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0" data-aos="fade-up" data-aos-delay="150">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">2500</h5><span>+</span>
                         </div>
                         <p class="mb-0 fw-bolder">Довольные покупатели!</p>
                         <p class="px-5">Покупатели очень благодарны за нашу работу!</p>
                     </div>
-                    <div class="col-4 text-center px-3 py-0 border-end-0" data-aos="fade-up" data-aos-delay="250">
+                    <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up" data-aos-delay="250">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">10</h5><span>+</span>
                         </div>
@@ -209,6 +213,22 @@
             </div>
         </div>
     </div>
+{{--    <div class="brand-logo-area pb-95">--}}
+{{--        <div class="container">--}}
+{{--            <div class="brand-logo-active swiper-container">--}}
+{{--                <div class="swiper-wrapper">--}}
+
+{{--                    @foreach($partners as $key =>$partner)--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="50">--}}
+{{--                                <a href="#"><img src="{{ asset('storage/' . $partner->image) }}" alt=""></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="brand-logo-area" data-aos="fade-up" data-aos-delay="100">
         <div class="container">
             <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
