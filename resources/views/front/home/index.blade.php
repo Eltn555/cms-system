@@ -27,7 +27,7 @@
                                 <h5 class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
                             </div>
                             <div class="des fs-6 text-white">{{$slide->text}}</div>
-                            <a href="{{$slide->btn_link}}" class="seeMore py-3 px-4 text-dark border border-1 font-kyiv">{{$slide->btn_text}}</a>
+                            <a href="{{$slide->btn_link}}" class="seeMore py-3 px-4 text-dark font-kyiv">{{$slide->btn_text}}</a>
                         </div>
                     </div>
                 @endforeach
