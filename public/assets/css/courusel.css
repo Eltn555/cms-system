@@ -109,7 +109,7 @@
     border-bottom: 1px solid #555;
     background-color: #F8B301;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     transition: background 0.3s;
 }
 .carousel .list .item .introduce .seeMore:hover{
