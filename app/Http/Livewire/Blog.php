@@ -20,6 +20,6 @@ class Blog extends Component
     public function render()
     {
 
-        return view('components.blog')->extends('front.layout')->section('content');
+        return view('livewire.blog')->extends('front.layout')->section('content');
     }
 }
