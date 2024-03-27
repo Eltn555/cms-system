@@ -188,13 +188,13 @@
                         </div>
                     </div>
                     <div class="p-5 pt-2 pb-0">
-                        <p class="font-kyiv fs-5 text-white">
+                        <p class="font-kyiv fs-5" style="color: rgba(182, 182, 182, 1)">
                             Мы рассчитаем, сколько и каких светильников вам нужно, чтобы сделать ваш дом светлым.
                         </p>
                     </div>
                     <div class="p-5 pt-2">
                             <div class="single-product-cart btn-hover text-start">
-                                <a href="#" class="p-2 ps-4 pe-4 text-dark font-kyiv">Посмотреть все блоги</a>
+                                <a href="#" class="p-2 ps-4 pe-4 text-dark font-kyiv">Рассчитать галогены</a>
                             </div>
                     </div>
                 </div>
