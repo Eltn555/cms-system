@@ -46,7 +46,7 @@
                                 <h5 style="font-size: 120px;" class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
                                 <h5 class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
                             </div>
-                            <div class="des fs-6 text-white">{{$slide->text}}</div>
+                            <div class="des font-kyiv fs-5" style="color: rgba(182, 182, 182, 1);">{{$slide->text}}</div>
                             <a href="{{$slide->btn_link}}" class="seeMore py-3 px-4 text-dark font-kyiv">{{$slide->btn_text}}</a>
                         </div>
                     </div>
