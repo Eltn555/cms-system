@@ -75,6 +75,128 @@
                 <h5 class="shadow-text-1 font-cormorant fw-bold">{{$category1->title}}</h5>
                 <h5 class="shadow-text-2 font-cormorant fw-bold">{{$category1->title}}</h5>
             </div>
+            <div class="col-12">
+                    <div class="row pt-5 d-xl">
+                        <div class="col-12 col-xl-6 row">
+                            @foreach($category1->news as $key => $blog)
+                                <div class="col-xl-6 col-lg-4 col-md-6 px-2{{ ($key + 1) > 4 ? ' d-xl-none' : '' }}">
+                                    <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
+                                        <div class="blog-img-date-wrap mb-2">
+                                            <div class="blog-img">
+                                                <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}"></a>
+                                            </div>
+                                        </div>
+                                        <div class="blog-content">
+                                            <div class="blog-meta">
+                                                <ul class="card-brand fw-bolder font-kyiv">
+                                                    {{(new DateTime($blog->created_at))->format('d.m.Y')}}
+                                                </ul>
+                                            </div>
+                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                            <p class="blog-text mb-0">{{$blog->description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="col-xl-6 d-lg-none d-xl-block d-md-none d-sm-none d-none px-0">
+                            @foreach($category1->news as $key => $blog)
+                                <div class="h-100 w-100 px-2 {{ ($key + 1) != 5 ? 'd-xl-none' : '' }}">
+                                    <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
+                                        <div class="blog-img-date-wrap mb-2">
+                                            <div class="blog-img" style="height: 630px">
+                                                <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}" style="height: 100%; width: unset;"></a>
+                                            </div>
+                                        </div>
+                                        <div class="blog-content">
+                                            <div class="blog-meta">
+                                                <ul class="card-brand fw-bolder font-kyiv">
+                                                    {{(new DateTime($blog->created_at))->format('d.m.Y')}}
+                                                </ul>
+                                            </div>
+                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                            <p class="blog-text mb-0">{{$blog->description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+            </div>
+            <div class="col-12 mt-3 font-cormorant position-relative blog-categoryText">
+                <h5 class="shadow-text-1 font-cormorant fw-bold">{{$category2->title}}</h5>
+                <h5 class="shadow-text-2 font-cormorant fw-bold">{{$category2->title}}</h5>
+            </div>
+            <div class="col-12">
+                <div class="row pt-5 d-xl">
+                    <div class="col-xl-6 d-lg-none d-xl-block d-md-none d-sm-none d-none p-0">
+                        @foreach($category2->news as $key => $blog)
+                            <div class="h-100 w-100 px-2 {{ ($key + 1) != 1 ? 'd-xl-none' : '' }}">
+                                <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
+                                    <div class="blog-img-date-wrap mb-2">
+                                        <div class="blog-img" style="height: 630px">
+                                            <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}" style="height: 100%; width: unset;"></a>
+                                        </div>
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <ul class="card-brand fw-bolder font-kyiv">
+                                                {{(new DateTime($blog->created_at))->format('d.m.Y')}}
+                                            </ul>
+                                        </div>
+                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                        <p class="blog-text mb-0">{{$blog->description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-12 col-xl-6 row">
+                        @foreach($category2->news as $key => $blog)
+                            <div class="col-xl-6 col-lg-4 col-md-6 px-2 {{ ($key + 1) < 2 ? ' d-xl-none' : '' }} {{ ($key + 1) == 6 ? ' d-xl-none' : '' }}">
+                                <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
+                                    <div class="blog-img-date-wrap mb-2">
+                                        <div class="blog-img">
+                                            <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}"></a>
+                                        </div>
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <ul class="card-brand fw-bolder font-kyiv">
+                                                {{(new DateTime($blog->created_at))->format('d.m.Y')}}
+                                            </ul>
+                                        </div>
+                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                        <p class="blog-text mb-0">{{$blog->description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-area pb-70">
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 p-5 pe-1">
+                    <div class="pt-5 ps-5">
+                        <div class="d-flex position-relative">
+                            <h5  class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                            <h5  class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-2">
+                        <p class="font-kyiv fs-5">
+                            Загрузите изображение понравившейся люстры и введите свои данные и мы обязательно с вами свяжемся.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
