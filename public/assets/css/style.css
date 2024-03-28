@@ -7929,8 +7929,7 @@ textarea {
     font-weight: 700 !important;
     font-size: 65px;
     line-height: 56px;
-    letter-spacing: -4%;
-    color: ##232323; /* Set the text color */
+    color: #232323; /* Set the text color */
     z-index: 1;
 }
 
@@ -7941,7 +7940,6 @@ textarea {
     font-weight: 100 !important;
     font-size: 72px;
     line-height: 56px;
-    letter-spacing: -4%;
     opacity: 60%;
     color: transparent; /* Set the text color */
     -webkit-text-stroke: 1px rgba(202, 202, 202, 0.4); /* Set the text stroke for WebKit browsers (Chrome, Safari) */

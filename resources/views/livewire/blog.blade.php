@@ -1,3 +1,7 @@
+@section('title', 'Блог')
+@section('description', $this->description)
+@section('keyword', 'LumenLux, lumen, lux, '.$this->description)
+
 <div class="my-5 pt-1">
     <style>
         .blog-category{
@@ -21,12 +25,15 @@
             border: solid 1px #777777;
 
         }
+        .blog-categoryText h5{
+            width: 40%;
+        }
     </style>
     <div class="container mt-3 py-5">
         <div class="pt-3 row" data-aos-delay="50">
             <div class="col-12 font-cormorant position-relative">
-                <h5 class="shadow-text-1 font-cormorant fw-bold">Наши<br>партнеры</h5>
-                <h5 class="shadow-text-2 font-cormorant fw-bold">Наши<br>партнеры</h5>
+                <h5 class="shadow-text-1 font-cormorant fw-bold">Наш блог</h5>
+                <h5 class="shadow-text-2 font-cormorant fw-bold">Наш блог</h5>
             </div>
             <div class="col-12">
                 <div class="blog-category w-100 d-flex mt-4 font-kyiv">
@@ -64,11 +71,23 @@
                     @endforeach
                 </div>
             </div>
+            <div class="col-12 mt-3 font-cormorant position-relative blog-categoryText">
+                <h5 class="shadow-text-1 font-cormorant fw-bold">{{$category1->title}}</h5>
+                <h5 class="shadow-text-2 font-cormorant fw-bold">{{$category1->title}}</h5>
+            </div>
         </div>
     </div>
 </div>
 @push('scripts')
     <script>
+        window.addEventListener('metaChanged', event => {
+            const {description, keywords} = event.detail;
+            // Update meta description
+            document.querySelector('meta[name="description"]').setAttribute('content', description);
+            // Update meta keywords
+            document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+            document.title = event.detail.title;
+        });
         window.addEventListener('refresh', event => {
             AOS.init();
             $('.notActive').removeClass('activeBlog');
