@@ -1,164 +1,78 @@
 <div class="my-5 pt-1">
     <style>
+        .blog-category{
+            height: 48px;
+            overflow-x: scroll;
+        }
+        .blog-category::-webkit-scrollbar{
+            display: none;
+        }
+        .blog-category a {
+            margin-right: 15px;
+        }
+        .activeBlog{
+            background-color: #F8B301 !important;
+            border: none !important;
+            pointer-events: none;
+            cursor: default;
+        }
+        .notActive{
+            background-color: #f4f4f4;
+            border: solid 1px #777777;
 
+        }
     </style>
     <div class="container mt-3 py-5">
-        <div class="pt-3 row" data-aos="fade-up" data-aos-delay="50">
+        <div class="pt-3 row" data-aos-delay="50">
             <div class="col-12 font-cormorant position-relative">
                 <h5 class="shadow-text-1 font-cormorant fw-bold">Наши<br>партнеры</h5>
                 <h5 class="shadow-text-2 font-cormorant fw-bold">Наши<br>партнеры</h5>
             </div>
             <div class="col-12">
-
+                <div class="blog-category w-100 d-flex mt-4 font-kyiv">
+                    <a id="blogCategory" wire:click="setBlog('')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-4 notActive activeBlog">
+                        Все
+                    </a>
+                    @foreach($categories as $category)
+                        <a id="blogCategory{{$category->id}}" wire:click="setBlog('{{$category->id}}')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-4 notActive">
+                            {{$category->title}}
+                        </a>
+                    @endforeach
+                </div>
             </div>
             <div class="col-12">
                 <div class="row pt-5">
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/1.png')}}" alt=""></a>
+                    @foreach($news as $blog)
+                        <div class="col-lg-4 col-xl-3 col-md-6 px-2">
+                            <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
+                                <div class="blog-img-date-wrap mb-25">
+                                    <div class="blog-img">
+                                        <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt=""></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        15.01.2024
-                                    </ul>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <ul class="card-brand fw-bolder font-kyiv">
+                                            {{(new DateTime($blog->created_at))->format('d.m.Y')}}
+                                        </ul>
+                                    </div>
+                                    <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                    <p class="blog-text">{{$blog->description}}</p>
                                 </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Люстра Rivoli Adora 5041-306</a></h3>
-                                <p class="blog-text">Название этой серии переводится с итальянского как "обожаемая". В ней собрано все, что так любимо в светильниках - благородный оттенок золота, традиционны...</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/2.png')}}" alt="" class="h-100"></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        12.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Люстры в Ташкенте. Цена, где купить?</a></h3>
-                                <p class="blog-text">Фабричное и собственное производство по эскизам гарантия все товары сертифицированы и имеют гарантию качес...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/3.png')}}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        04.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
-                                <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/4.png')}}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        01.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
-                                <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/1.png')}}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        15.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Люстра Rivoli Adora 5041-306</a></h3>
-                                <p class="blog-text">Название этой серии переводится с итальянского как "обожаемая". В ней собрано все, что так любимо в светильниках - благородный оттенок золота, традиционны...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/2.png')}}" alt="" class="h-100"></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        12.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Люстры в Ташкенте. Цена, где купить?</a></h3>
-                                <p class="blog-text">Фабричное и собственное производство по эскизам гарантия все товары сертифицированы и имеют гарантию качес...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/3.png')}}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        04.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
-                                <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                            <div class="blog-img-date-wrap mb-25">
-                                <div class="blog-img">
-                                    <a href="blog-details.html"><img src="{{asset('/storage/blog/4.png')}}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <ul class="card-brand fw-bold font-kyiv">
-                                        01.01.2024
-                                    </ul>
-                                </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для праздничных огней</a></h3>
-                                <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        window.addEventListener('refresh', event => {
+            AOS.init();
+            $('.notActive').removeClass('activeBlog');
+            $('#blogCategory'+event.detail.id).addClass('activeBlog');
+        });
+    </script>
+@endpush

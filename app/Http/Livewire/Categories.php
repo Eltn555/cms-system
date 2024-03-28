@@ -41,15 +41,6 @@ class Categories extends Component
             'description' => $this->category->seo_description,
             'keywords' => $this->category->seo_title // Assuming you have seo_keywords
         ]);
-        $this->icon = null;
-        $this->background = null;
-        foreach ($this->category->images as $image) {
-            if (strpos($image->alt, 'icon') !== false) {
-                $this->icon = $image;
-            } else {
-                $this->background = $image;
-            }
-        }
         $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug]);
     }
 
