@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav class="pagination-style-1 aos-init" data-aos="fade-down" data-aos-delay="200">
+    <nav class="pagination-style-1 mt-3">
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
