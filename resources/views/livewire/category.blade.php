@@ -1,6 +1,6 @@
-@section('title', $this->category->title)
+@section('title', $this->category->title ?? '')
 {{--@section('description', $this->category->seo_description)--}}
-@section('keyword', $this->category->seo_title)
+@section('keyword', $this->category->seo_title ?? '')
 <div>
     <div class="container pt-5">
         <div class="mb-20 font-cormorant position-relative">

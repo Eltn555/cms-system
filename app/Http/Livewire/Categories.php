@@ -20,10 +20,14 @@ class Categories extends Component
     public $search;
 
 
-    public function mount($slug)
+    public function mount($slug = null)
     {
-        $this->setCategory($slug);
-        $this->categories = Category::all();
+        if ($slug) {
+            $this->setCategory($slug);
+            $this->categories = Category::all();
+        }else {
+
+        }
     }
 
     public function gotoPage($page)
@@ -55,17 +59,19 @@ class Categories extends Component
 
     public function render()
     {
-        $products = $this->category->products()->where(function ($query) {
-            $query->where('title', 'LIKE', '%' . $this->search . '%')->
-            orWhere('short_description', 'LIKE', '%' . $this->search . '%')->
-            orWhere('long_description', 'LIKE', '%' . $this->search . '%')->
-            orWhere('price', 'LIKE', '%' . $this->search . '%')->
-            orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
-            orWhere('additional', 'LIKE', '%' . $this->search . '%');
-        })
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
-
+        if($this->category) {
+            $products = $this->category->products()->where(function ($query) {
+                $query->where('title', 'LIKE', '%' . $this->search . '%')->
+                orWhere('short_description', 'LIKE', '%' . $this->search . '%')->
+                orWhere('long_description', 'LIKE', '%' . $this->search . '%')->
+                orWhere('price', 'LIKE', '%' . $this->search . '%')->
+                orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
+                orWhere('additional', 'LIKE', '%' . $this->search . '%');
+            })->orderBy('created_at', 'desc')->paginate(12);
+        }else {
+            $products = Product::paginate(12);
+            $this->categories = Category::all();
+        }
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
     }
