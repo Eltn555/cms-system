@@ -569,17 +569,24 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
     <script>
         var header = $('.blurry-backgorund');
         var $window = $(window);
         header.addClass('mainPage-navbar');
+        var debounceTimer;
         $window.on('scroll', function() {
-            var scroll = $window.scrollTop();
-            if (scroll < 400) {
-                header.addClass('mainPage-navbar');
-            } else {
-                header.removeClass('mainPage-navbar');
-            }
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() {
+                var scroll = $window.scrollTop();
+                if (scroll < 400) {
+                    header.addClass('mainPage-navbar');
+                } else {
+                    header.removeClass('mainPage-navbar');
+                }
+            }, 50); // Adjust debounce delay as needed
         });
         let nextButton = document.getElementById('next');
         let prevButton = document.getElementById('prev');
@@ -621,8 +628,4 @@
             }
         });
     </script>
-@endsection
-
-@section('scripts')
-
 @endsection
