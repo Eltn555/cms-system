@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Lumen LUX | @yield('title')</title>
     <meta name="robots" content="noindex, follow"/>
-    <meta name="description" content="@yield('seo_description')">
-    <meta name="keywords" content="@yield('keywords')">
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keyword')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="canonical" href="https://htmldemo.hasthemes.com/urdan/index.html"/>
@@ -43,9 +43,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/easyzoom.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/courusel.css')}}"/>
     @livewireStyles
     @stack('styles')
-
+    @yield('style')
     @livewireScripts
 </head>
 

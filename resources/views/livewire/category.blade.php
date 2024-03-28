@@ -1,9 +1,9 @@
-@section('title', $this->category->title ?? '')
-{{--@section('description', $this->category->seo_description)--}}
-@section('keyword', $this->category->seo_title ?? '')
-<div>
-    <div class="container pt-5">
-        <div class="mb-20 font-cormorant position-relative">
+@section('title', $this->category->title ?? 'Магазин')
+@section('description', $this->category->seo_description ?? 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет')
+@section('keyword', $this->category->seo_title.' '.$this->category->seo_description)
+<div class="">
+    <div class="container pt-5 mt-5">
+        <div class="mt-4 mb-20 font-cormorant position-relative">
             <h2 class="shadow-text-1 font-cormorant fw-bold">Магазин</h2>
             <h2 class="shadow-text-2 font-cormorant fw-bold">Магазин</h2>
         </div>

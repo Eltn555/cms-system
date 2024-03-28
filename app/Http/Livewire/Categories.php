@@ -42,8 +42,8 @@ class Categories extends Component
         $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
         $this->dispatchBrowserEvent('metaChanged', [
             'title' => 'Lumen Lux | ' . $this->category->title,
-            'description' => $this->category->seo_description,
-            'keywords' => $this->category->seo_title // Assuming you have seo_keywords
+            'description' => $this->category->seo_description ?? 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет',
+            'keywords' => $this->category->seo_title.' '.$this->category->seo_description // Assuming you have seo_keywords
         ]);
         $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug]);
     }
