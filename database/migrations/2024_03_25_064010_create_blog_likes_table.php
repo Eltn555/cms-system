@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('blog_likes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->unsignedBigInteger('author_id');
-            $table->text('description');
-            $table->longText('content');
-            $table->string('image');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('blog_id');
+            $table->unsignedBigInteger('account_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('blog_likes');
     }
 };

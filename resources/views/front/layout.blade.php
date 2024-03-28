@@ -55,7 +55,6 @@
     @yield('content')
     <x-footer></x-footer>
 </div>
-@stack('scripts')
 <!-- All JS is here -->
 <script src="{{asset('assets/js/plugins/aos.js')}}"></script>
 <script src="{{asset('assets/js/vendor/modernizr-3.11.7.min.js')}}"></script>
@@ -82,6 +81,7 @@
 <!-- Main JS -->
 <script src="{{asset('assets/js/main.js')}}"></script>
 <!-- Main JS -->
+@stack('scripts')
 @yield('scripts')
 </body>
 

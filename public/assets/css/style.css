@@ -7944,7 +7944,7 @@ textarea {
     letter-spacing: -4%;
     opacity: 60%;
     color: transparent; /* Set the text color */
-    -webkit-text-stroke: 2px rgba(202, 202, 202, 0.4); /* Set the text stroke for WebKit browsers (Chrome, Safari) */
+    -webkit-text-stroke: 1px rgba(202, 202, 202, 0.4); /* Set the text stroke for WebKit browsers (Chrome, Safari) */
 }
 
 .product-details-content .product-details-price span.new-price {

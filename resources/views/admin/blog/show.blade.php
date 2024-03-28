@@ -1,7 +1,6 @@
 @extends('admin')
 
 @section('content')
-
     <div class="intro-y news xl:w-3/5 p-5 box mt-8">
         <!-- BEGIN: Blog Layout -->
         <h2 class="intro-y font-medium text-xl sm:text-2xl">
@@ -19,7 +18,7 @@
         </div>
         <div class="intro-y flex relative pt-16 sm:pt-6 items-center pb-6">
             <a href="" class="intro-x w-8 h-8 sm:w-10 sm:h-10 flex flex-none items-center justify-center rounded-full border border-slate-300 dark:border-darkmode-400 dark:bg-darkmode-300 dark:text-slate-300 text-slate-500 mr-2 tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="bookmark" data-lucide="bookmark" class="lucide lucide-bookmark w-3 h-3"><path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"></path></svg> </a>
-            <div class="intro-x flex mr-3">
+            {{--<div class="intro-x flex mr-3">
                 <div class="intro-x w-8 h-8 sm:w-10 sm:h-10 image-fit">
                     <img alt="Midone - HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="dist/images/profile-1.jpg">
                 </div>
@@ -29,11 +28,9 @@
                 <div class="intro-x w-8 h-8 sm:w-10 sm:h-10 image-fit -ml-4">
                     <img alt="Midone - HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="dist/images/profile-10.jpg">
                 </div>
-            </div>
+            </div>--}}
             <div class="absolute sm:relative -mt-12 sm:mt-0 w-full flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm">
-                <div class="intro-x mr-1 sm:mr-3"> Comments: <span class="font-medium">44</span> </div>
-                <div class="intro-x mr-1 sm:mr-3"> Views: <span class="font-medium">175k</span> </div>
-                <div class="intro-x sm:mr-3 ml-auto"> Likes: <span class="font-medium">26k</span> </div>
+                <div class="intro-x sm:mr-3 ml-auto"> Likes: <span class="font-medium">{{ $news->likes->count() }}</span> </div>
             </div>
             <a href="" class="intro-x w-8 h-8 sm:w-10 sm:h-10 flex flex-none items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto sm:ml-0 tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="share-2" data-lucide="share-2" class="lucide lucide-share-2 w-3 h-3"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> </a>
             <a href="" class="intro-x w-8 h-8 sm:w-10 sm:h-10 flex flex-none items-center justify-center rounded-full bg-primary text-white ml-2 tooltip"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="share" data-lucide="share" class="lucide lucide-share w-3 h-3"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> </a>
@@ -45,8 +42,7 @@
                     <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
                 </div>
                 <div class="ml-3 mr-auto">
-                    <a href="" class="font-medium">Denzel Washington</a>, Author
-                    <div class="text-slate-500">Senior Frontend Engineer</div>
+                    <a href="#" class="font-medium">{{ $news->author->name }}</a>, Author
                 </div>
             </div>
             <div class="flex items-center text-slate-600 dark:text-slate-500 sm:ml-auto mt-5 sm:mt-0">
@@ -57,41 +53,6 @@
             </div>
         </div>
         <!-- END: Blog Layout -->
-        <!-- BEGIN: Comments -->
-        <div class="intro-y mt-5 pt-5 border-t border-slate-200/60 dark:border-darkmode-400">
-            <div class="text-base sm:text-lg font-medium">2 Responses</div>
-            <div class="news__input relative mt-5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="message-circle" data-lucide="message-circle" class="lucide lucide-message-circle w-5 h-5 absolute my-auto inset-y-0 ml-6 left-0 text-slate-500"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
-                <textarea class="form-control border-transparent bg-slate-100 pl-16 py-6 resize-none" rows="1" placeholder="Post a comment..."></textarea>
-            </div>
-        </div>
-        <div class="intro-y mt-5 pb-10">
-            <div class="pt-5">
-                <div class="flex">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-none image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
-                    </div>
-                    <div class="ml-3 flex-1">
-                        <div class="flex items-center"> <a href="" class="font-medium">Denzel Washington</a> <a href="" class="ml-auto text-xs text-slate-500">Reply</a> </div>
-                        <div class="text-slate-500 text-xs sm:text-sm">60 minutes ago</div>
-                        <div class="mt-2">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-5 pt-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                <div class="flex">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-none image-fit">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-10.jpg">
-                    </div>
-                    <div class="ml-3 flex-1">
-                        <div class="flex items-center"> <a href="" class="font-medium">Russell Crowe</a> <a href="" class="ml-auto text-xs text-slate-500">Reply</a> </div>
-                        <div class="text-slate-500 text-xs sm:text-sm">20 hours ago</div>
-                        <div class="mt-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: Comments -->
     </div>
 
 @endsection
