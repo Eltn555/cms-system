@@ -81,6 +81,15 @@
 <script src="{{asset('assets/js/plugins/ajax-mail.js')}}"></script>
 <!-- Main JS -->
 <script src="{{asset('assets/js/main.js')}}"></script>
+
+<script>
+    window.addEventListener('wishlistUpdated', event => {
+        document.querySelector('.wishlist-count').innerText = event.detail.count;
+    });
+    window.addEventListener('console', event => {
+        console.log(event.detail.console);
+    });
+</script>
 <!-- Main JS -->
 @stack('scripts')
 @yield('scripts')

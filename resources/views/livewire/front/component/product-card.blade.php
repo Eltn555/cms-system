@@ -10,9 +10,7 @@
                         @endforeach
                 </div>
                 <div class="product-action-wrap">
-                    <button wire:click="addProduct({{$product->id}})"
-                            class="product-action-btn-1 {{ $this->check($product->id) ? 'back-color-primary' : '' }}" title="Wishlist"><i
-                            class="pe-7s-like"></i></button>
+                    @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
                     <button class="product-action-btn-1" title="Quick View"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="pe-7s-look"></i>

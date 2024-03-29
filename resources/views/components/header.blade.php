@@ -101,19 +101,16 @@
                                         <span class="product-count bg-black">01</span>
                                     </a>
                                 </div>
-                                <div class="header-action-style header-action-cart">
-                                    <a class="" title="Wishlist"
-                                       href="{{route('front.wishlist.index')}}"><i
-                                            class="pe-7s-like"></i>
-                                        <span class="wishlist-count bg-black"><livewire:front.wishlist.wishlist-count/></span>
+                                <livewire:front.wishlist.wishlist-count/>
+                                <div class="header-action-style d-block d-lg-none">
+                                    <a class="mobile-menu-active-button" href="#">
+                                        <i class="pe-7s-menu"></i>
                                     </a>
                                 </div>
-                                <div class="header-action-style d-block d-lg-none">
-                                    <a class="mobile-menu-active-button" href="#"><i class="pe-7s-menu"></i></a>
-                                </div>
                                 <div class="header-action-style" style="z-index: 1">
-                                    <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register"><i
-                                            class="pe-7s-user"></i></a>
+                                    <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register">
+                                        <i class="pe-7s-user"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
