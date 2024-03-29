@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
+use App\Models\Tag;
 use App\Models\WishlistProduct;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -18,15 +19,17 @@ class Categories extends Component
     public $icon;
     public $background;
     public $search;
+    public $tag;
+    public $tags;
+    public $price;
 
 
     public function mount($slug = null)
     {
+        $this->categories = Category::all();
+        $this->tags = Tag::all();
         if ($slug) {
             $this->setCategory($slug);
-            $this->categories = Category::all();
-        }else {
-
         }
     }
 
@@ -34,6 +37,11 @@ class Categories extends Component
     {
         $this->setPage($page);
         $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug . "?page=" . $page]);
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
     public function setCategory($slug)
@@ -46,23 +54,37 @@ class Categories extends Component
             'keywords' => $this->category->seo_title.' '.$this->category->seo_description // Assuming you have seo_keywords
         ]);
         $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug]);
+        $this->tag = null;
+    }
+
+    public function setTag($id)
+    {
+        $this->tag = Tag::find($id);
+        $tagId = $this->tag->id;
     }
 
     public function render()
     {
-        if($this->category) {
-            $products = $this->category->products()->where(function ($query) {
-                $query->where('title', 'LIKE', '%' . $this->search . '%')->
-                orWhere('short_description', 'LIKE', '%' . $this->search . '%')->
-                orWhere('long_description', 'LIKE', '%' . $this->search . '%')->
-                orWhere('price', 'LIKE', '%' . $this->search . '%')->
-                orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
-                orWhere('additional', 'LIKE', '%' . $this->search . '%');
-            })->orderBy('created_at', 'desc')->paginate(12);
-        }else {
-            $products = Product::paginate(12);
-            $this->categories = Category::all();
+
+        if ($this->category && $this->tag === null) {
+            $products = $this->category->products();
+        } else if ($this->tag && $this->category) {
+            $tagId = $this->tag->id;
+            $products = Product::where('category_id', $this->category->id)
+                ->whereHas('tags', function ($query) use ($tagId) {
+                    $query->whereIn('tags.id',[$tagId]);
+                });
+        } else {
+            $products = new Product;
         }
+        $products = $products->where(function ($query) {
+            $query->where('title', 'LIKE', '%' . $this->search . '%')->
+            orWhere('short_description', 'LIKE', '%' . $this->search . '%')->
+            orWhere('long_description', 'LIKE', '%' . $this->search . '%')->
+            orWhere('price', 'LIKE', '%' . $this->search . '%')->
+            orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
+            orWhere('additional', 'LIKE', '%' . $this->search . '%');
+        })->orderBy('created_at', 'desc')->paginate(12);
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');
     }

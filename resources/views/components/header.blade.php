@@ -52,7 +52,7 @@
                                             <a style="line-height: 80px !important;" href="/">Магазин</a>
                                         </li>
                                         <li class="">
-                                            <a>Каталог</a>
+                                            <a href="{{ route('front.category.index') }}">Каталог</a>
                                             <ul class="mega-menu-style d mega-menu-mrg-1 p-4 rounded-1 category-hover">
                                                 {{--Category lists--}}
                                                 <li>

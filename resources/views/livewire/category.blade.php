@@ -1,6 +1,6 @@
 @section('title', $this->category->title ?? 'Магазин')
 @section('description', $this->category->seo_description ?? 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет')
-@section('keyword', $this->category->seo_title.' '.$this->category->seo_description)
+@section('keyword', $this->category ? ($this->category->seo_title.' '.$this->category->seo_description) : '')
 <div class="">
     <div class="container pt-5 mt-5">
         <div class="mt-4 mb-20 font-cormorant position-relative">
@@ -285,7 +285,7 @@
                                 <div class="price-slider-amount">
                                     <div class="label-input">
                                         <label>Price:</label>
-                                        <input type="text" id="amount" name="price" placeholder="Add Your Price">
+                                        <input wire:model="price" wire:change="setPrice($(this).val())" type="text" id="amount" name="price" placeholder="Add Your Price">
                                     </div>
                                     <button type="button">Filter</button>
                                 </div>
@@ -316,16 +316,9 @@
                                 <h3>Tags</h3>
                             </div>
                             <div class="sidebar-widget-tag">
-                                <a href="#">All, </a>
-                                <a href="#">Clothing, </a>
-                                <a href="#"> Kids, </a>
-                                <a href="#">Accessories, </a>
-                                <a href="#">Stationery, </a>
-                                <a href="#">Homelife, </a>
-                                <a href="#">Appliances, </a>
-                                <a href="#">Clothing, </a>
-                                <a href="#">Baby, </a>
-                                <a href="#">Beauty </a>
+                                @foreach($tags as $tag)
+                                <a wire:click="setTag('{{$tag->id}}')">{{ $tag->title }}, </a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
