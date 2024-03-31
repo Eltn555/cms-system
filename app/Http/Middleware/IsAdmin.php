@@ -12,8 +12,7 @@ class IsAdmin
             if (auth()->user()->role === 1) {
                 return $next($request);
             } else {
-                return $next($request);
-//            return redirect()->route('front..index')->with('error', 'You don\'t have permission to access this page');
+            return redirect()->route('front..index')->with('error', 'You don\'t have permission to access this page');
             }
         }
 
