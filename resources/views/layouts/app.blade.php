@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link href="{{asset('individual/main-black-cut.png')}}" rel="shortcut icon">
     <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
-    <title>Business House</title>
+    <title>Lumen LUX</title>
     @yield('styles')
 </head>
 <body class="login">
