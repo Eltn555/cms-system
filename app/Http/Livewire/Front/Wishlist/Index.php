@@ -35,7 +35,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.front.wishlist.index')->extends('front.layout')->section('content');
+        return view('livewire.front.wishlist.empty')->extends('front.layout')->section('content');
     }
 }
 
