@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\TagController;
 use App\Http\Livewire\Blog;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -36,8 +37,6 @@ Route::group(['prefix'=>'/'], function (){
 });
 
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
-//Route::get('/{category}', \App\Http\Livewire\CategoryBanner::class);
-//Route::resource('/category',\App\Http\Controllers\front\CategoryController::class, ['as'=>'front']);
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
 Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.category.index');
 Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('front.product.show');
@@ -47,11 +46,14 @@ Route::get('/contact', function () { return view('front.contact.index'); })->nam
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/blog', Blog::class)->name('blog.index');
 Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.details');
-//Route::get('/blog', function () { return view('front.blog.index'); })->name('blog.index');
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/', \App\Http\Livewire\Profile::class)->name('front.profile.index');
+});
+
 
 
 // ADMIN PANEL
-Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'is_admin']], function () {
     Route::get('/', function (){
         return view('dashboard.index');
     });
@@ -75,7 +77,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
     Route::resource('/blog', BlogController::class, ['as'=>'admin']);
     Route::resource('/account', AccountController::class, ['as'=>'admin']);
 
-});
+})->middleware([\App\Http\Middleware\Authenticate::class, \App\Http\Middleware\IsAdmin::class]);
 Route::post('/teststore', function (\Illuminate\Http\Request $request){
     $data = $request->all();
     dd($data);
@@ -93,18 +95,39 @@ Route::post('/teststore', function (\Illuminate\Http\Request $request){
 })->name('test.store');
 Route::get('/teststores', function (){
 
+    $category = Category::find(1);
+    dump(Product::where('category_id', $category->id)->get());
+    $products = Product::where('category_id', $category->id)
+        ->whereHas('tags', function ($query) {
+            $query->whereIn('tags.id',[1]);
+        })
+        ->get();
+    dd($products);
 
-    $product = Product::all();
-    dd($product->toArray());
-    echo $product->toArray();
-    die();
-    dump($product);
-    dump($product->images);
-    foreach ($product->images as $tag){
-        dump($tag);
-    }
-    die();
+    $products = Product::all();
+    dump($products);
+    $categories = Category::all();
+    dump($categories);
+    $newproducts = $categories[0]->products;
+    dump($newproducts);
+    $producttags = $newproducts->whereHas('tags', function ($tags) {
+        $tags->whereIn('id', [1]);
+    })->get();
+    dd($producttags);
+    $tags = Tag::all();
+    dump($tags[0]->products->toArray());
+    $id = $categories[0]->id;
+    $tagproducts = $tags[0]->products->where(function ($query, $id) {
+        $query->category->id = 1;
+    });
+    dump($tagproducts);
 
+
+
+
+
+
+    die();
     return view('test');
 })->name('test.stores');
 
