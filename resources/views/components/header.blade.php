@@ -96,9 +96,9 @@
                         <div class="col-lg-3 col-md-6 col-6">
                             <div class="header-action-wrap">
                                 @livewire('search-bar')
-                                <div class="header-action-style header-action-cart">
+                                <div class="header-action-style" style="z-index: 1;">
                                     <a class="cart-active" href="#"><i class="pe-7s-shopbag"></i>
-                                        <span class="product-count bg-black">01</span>
+{{--                                        <span class="product-count bg-black">01</span>--}}
                                     </a>
                                 </div>
                                 <livewire:front.wishlist.wishlist-count/>
@@ -108,7 +108,7 @@
                                     </a>
                                 </div>
                                 <div class="header-action-style" style="z-index: 1">
-                                    <a title="Login Register" data-bs-toggle="modal" data-bs-target="#login-register">
+                                    <a href="{{ route('front.profile.index') }}" title="Login Register">
                                         <i class="pe-7s-user"></i>
                                     </a>
                                 </div>
