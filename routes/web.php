@@ -40,7 +40,7 @@ Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::c
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
 Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.category.index');
 Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('front.product.show');
-Route::resource('/wishlist',\App\Http\Controllers\front\WishlistController::class, ['as'=>'front']);
+Route::get('/wishlist',\App\Http\Livewire\Front\Wishlist\Index::class)->name('front.wishlist.index');
 Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
@@ -128,6 +128,7 @@ Route::get('/teststores', function (){
 
 
     die();
+
     return view('test');
 })->name('test.stores');
 

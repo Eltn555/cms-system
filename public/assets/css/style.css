@@ -5332,6 +5332,15 @@ textarea {
         margin-left: 0px;
         margin-bottom: 25px;
     }
+    .product-wrap .product-img{
+        height: 320px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .product-wrap .product-img{
+        height: 250px;
+    }
 }
 
 .home-single-product-img a {
