@@ -8,6 +8,10 @@ class Profile extends Component
 {
     public function render()
     {
-        return view('livewire.profile-login-register')->extends('front.layout')->section('content');
+        if(auth()->user()){
+            return view('livewire.profile-page')->extends('front.layout')->section('content');
+        }else{
+            return view('livewire.profile-login-register')->extends('front.layout')->section('content');
+        }
     }
 }
