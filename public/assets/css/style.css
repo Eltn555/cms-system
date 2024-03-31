@@ -11201,23 +11201,17 @@ textarea {
 }
 
 .myaccount-tab-menu a {
-    border: 1px solid #ccc;
-    border-bottom: none;
     display: block;
-    padding: 10px 15px;
-    text-transform: capitalize;
-    font-size: 15px;
+    padding: 16px;
+    font-size: 14px;
     font-weight: 500;
-}
-
-.myaccount-tab-menu a:last-child {
-    border-bottom: 1px solid #ccc;
+    color: #A1A1A1;
+    font-family: 'KyivType', sans-serif;
 }
 
 .myaccount-tab-menu a:hover, .myaccount-tab-menu a.active {
-    background-color: var(--theme-color);
-    border-color: var(--theme-color);
-    color: #ffffff;
+    background-color: #f4f4f4;
+    color: #4d4d4d;
 }
 
 .myaccount-tab-menu a i.fa {
@@ -11249,8 +11243,6 @@ textarea {
 
 .myaccount-content h3 {
     font-size: 20px;
-    border-bottom: 1px dashed #ccc;
-    padding-bottom: 10px;
     margin-bottom: 25px;
 }
 
@@ -11289,17 +11281,19 @@ textarea {
     margin: 0 0 5px;
 }
 
-.myaccount-content .account-details-form .single-input-item input {
-    border: 1px solid #e8e8e8;
+.myaccount-content .account-details-form .single-input-item input,
+.myaccount-content .account-details-form .single-input-item select{
+    border: 1px solid #E0E0E0;
     height: 50px;
-    background-color: transparent;
+    background-color: #f4f4f4;
     padding: 2px 20px;
     color: #1f2226;
     font-size: 13px;
     width: 100%;
 }
 
-.myaccount-content .account-details-form .single-input-item input:focus {
+.myaccount-content .account-details-form .single-input-item input:focus,
+.myaccount-content .account-details-form .single-input-item select:focus{
     border: 1px solid #343538;
 }
 

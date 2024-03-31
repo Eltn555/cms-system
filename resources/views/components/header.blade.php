@@ -37,8 +37,7 @@
     <div class="header-bottom sticky-bar stick">
         <div class="blurry-backgorund">
             <div class="blurry-content">
-                <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center mx-5">
                         <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
                             <div class="logo">
                                 <a href="/"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
@@ -115,7 +114,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
