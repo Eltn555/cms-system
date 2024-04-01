@@ -198,17 +198,16 @@
                 @if(isset($tagsIndex[0]))
                     @php
                         $tag = $tagsIndex[0];
+                        $products = $tag->products->take(8);
                     @endphp
                     <div id="pro-1" class="tab-pane active">
                         <div class="product-slider-active-2 swiper-container">
                             <div class="swiper-wrapper">
-                                @if(!$tag->products == null)
-                                    @foreach($tag->products as $product)
-                                        <div class="swiper-slide sw-sl align-self-stretch">
-                                            <livewire:front.component.product-card :product="$product" :key="$product->id"/>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                @foreach($products as $product)
+                                    <div class="swiper-slide sw-sl align-self-stretch">
+                                        <livewire:front.component.product-card :product="$product" :key="$product->id"/>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
