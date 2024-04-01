@@ -122,7 +122,7 @@
             <ul>
                 <li>
                     <div class="cart-img">
-                        <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
+                        <a href="#"><img src="" alt=""></a>
                     </div>
                     <div class="cart-title">
                         <h4><a href="#">Stylish Swing Chair</a></h4>
@@ -134,7 +134,7 @@
                 </li>
                 <li>
                     <div class="cart-img">
-                        <a href="#"><img src="assets/images/cart/cart-2.jpg" alt=""></a>
+                        <a href="#"><img src="" alt=""></a>
                     </div>
                     <div class="cart-title">
                         <h4><a href="#">Modern Chairs</a></h4>

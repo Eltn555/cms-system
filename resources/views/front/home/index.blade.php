@@ -3,6 +3,7 @@
 @section('description', 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет')
 @section('keyword', 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет')
 @section('style')
+    <link rel="stylesheet" href="{{asset('assets/css/courusel.css')}}"/>
     <style>
         .mainPage-navbar {
             background-color: rgba(0, 0, 0, 0.2) !important;
