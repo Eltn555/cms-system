@@ -1151,6 +1151,7 @@ textarea {
 }
 
 .header-action-wrap .header-action-style {
+    z-index: 1;
     margin-right: 17px;
 }
 
@@ -1321,13 +1322,13 @@ textarea {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .sticky-bar.stick.header-bottom {
-        padding: 25px 0;
+        /*padding: 25px 0;*/
     }
 }
 
 @media only screen and (max-width: 767px) {
     .sticky-bar.stick.header-bottom {
-        padding: 20px 0;
+        /*padding: 20px 0;*/
     }
 }
 
@@ -1539,7 +1540,7 @@ textarea {
 @media only screen and (max-width: 767px) {
     .sidebar-cart-active {
         padding: 60px 15px 50px;
-        width: 300px;
+        width: 100%;
     }
 }
 
@@ -1810,15 +1811,10 @@ textarea {
     }
 }
 
-@media only screen and (max-width: 767px) {
-    .off-canvas-active {
-        width: 280px;
-    }
-}
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (max-width: 576px) {
     .off-canvas-active {
-        width: 300px;
+        width: 100%;
     }
 }
 
@@ -1832,16 +1828,15 @@ textarea {
 
 .off-canvas-active .off-canvas-close {
     position: absolute;
-    left: -40px;
+    right: 0px;
     top: 0px;
     z-index: 9;
     width: 40px;
     height: 40px;
-    color: #fff;
+    color: #000 !important;
     line-height: 40px;
     text-align: center;
     font-size: 16px;
-    background-color: var(--theme-color);
 }
 
 @media only screen and (max-width: 767px) {
@@ -1859,7 +1854,7 @@ textarea {
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     display: inline-block;
-    color: #fff;
+    color: #000;
     line-height: 40px;
 }
 
@@ -1896,7 +1891,6 @@ textarea {
 .off-canvas-active .off-canvas-wrap .off-canvas-margin-padding-2 {
     border-bottom: 1px solid #ddd;
     margin-bottom: 22px;
-    padding-bottom: 29px;
 }
 
 .slinky-mobile-menu {
@@ -1995,13 +1989,13 @@ textarea {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-responsive-padding {
-        padding: 25px 0;
+        /*padding: 25px 0;*/
     }
 }
 
 @media only screen and (max-width: 767px) {
     .header-responsive-padding {
-        padding: 20px 0;
+        /*padding: 20px 0;*/
     }
 }
 
@@ -8009,6 +8003,22 @@ textarea {
     .product-details-content p {
         margin: 0 0 21px;
     }
+}
+
+.prod-count{
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    width: 21px;
+    height: 21px;
+    line-height: 21px;
+    border-radius: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
 }
 
 .product-count{
