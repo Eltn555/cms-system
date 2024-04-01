@@ -195,22 +195,24 @@
                 </div>
             </div>
             <div class="tab-content jump" data-aos="fade-up" data-aos-delay="100">
-                @foreach($tagsIndex as $index => $tag)
-                    <div id="pro-{{ $index + 1 }}" class="tab-pane {{ $index == 0 ? 'active' : '' }}">
+                @if(isset($tagsIndex[0]))
+                    @php
+                        $tag = $tagsIndex[0];
+                    @endphp
+                    <div id="pro-1" class="tab-pane active">
                         <div class="product-slider-active-2 swiper-container">
                             <div class="swiper-wrapper">
                                 @if(!$tag->products == null)
                                     @foreach($tag->products as $product)
                                         <div class="swiper-slide sw-sl align-self-stretch">
-                                            <livewire:front.component.product-card :product="$product"
-                                                                                   :key="$product->id"/>
+                                            <livewire:front.component.product-card :product="$product" :key="$product->id"/>
                                         </div>
                                     @endforeach
                                 @endif
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endif
             </div>
         </div>
     </div>
