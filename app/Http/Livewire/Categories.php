@@ -36,7 +36,7 @@ class Categories extends Component
     public function gotoPage($page)
     {
         $this->setPage($page);
-        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug . "?page=" . $page]);
+        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug ?? '' . "?page=" . $page]);
     }
 
     public function setPrice($price)
