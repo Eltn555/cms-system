@@ -24,10 +24,9 @@ class WishlistCount extends Component
             if ($wishlistCookie) {
                 $wishlistArray = json_decode($wishlistCookie, true);
                 return count($wishlistArray);
-            } else {
-                return ""; // No wishlist items for non-logged-in users
             }
         }
+        return ""; // No wishlist items for non-logged-in users
     }
 
     public function render()

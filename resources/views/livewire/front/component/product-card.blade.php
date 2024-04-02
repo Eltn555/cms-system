@@ -16,11 +16,7 @@
                         <i class="pe-7s-look"></i>
                     </button>
                 </div>
-                <div class="product-action-2-wrap">
-                    <button class="product-action-btn-2" title="Add To Cart"><i
-                            class="pe-7s-cart"></i> Add to cart
-                    </button>
-                </div>
+                @livewire('front.cart.cart-count-btn', ['product' => $product], key($product->id))
             </div>
             <div class="product-content d-flex justify-content-between flex-column flex-grow-1">
                 <div>

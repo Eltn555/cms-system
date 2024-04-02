@@ -81,6 +81,9 @@
     window.addEventListener('wishlistUpdated', event => {
         document.querySelector('.wishlist-count').innerText = event.detail.count;
     });
+    window.addEventListener('cartUpdate', event => {
+        document.querySelector('.cart-count').innerText = event.detail.count;
+    });
     window.addEventListener('console', event => {
         console.log(event.detail.console);
     });

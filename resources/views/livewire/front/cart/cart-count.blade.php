@@ -10,6 +10,6 @@
             <path d="M9 6V5C9 3.34315 10.3431 2 12 2C13.6569 2 15 3.34315 15 5V6" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
             <path d="M9.1709 15C9.58273 16.1652 10.694 17 12.0002 17C13.3064 17 14.4177 16.1652 14.8295 15" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <span class="prod-count bg-black">01</span>
+        <span class="prod-count cart-count bg-black">{{$cartCount}}</span>
     </a>
 </div>
