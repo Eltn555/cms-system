@@ -1299,6 +1299,7 @@ textarea {
     height: 100%;
     background: inherit;
     backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 }
 
 .blurry-content{
