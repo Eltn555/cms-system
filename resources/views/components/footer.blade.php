@@ -1,6 +1,6 @@
 <footer class="footer-area">
     <div class="bg-gray-2">
-        <div class="container">
+        <div class="mx-5">
             <div class="footer-top pt-80 pb-35">
                 <div class="row">
                     <div class="col-lg-2 col-md-6 col-sm-6 col-12">

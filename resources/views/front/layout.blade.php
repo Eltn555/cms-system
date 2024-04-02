@@ -22,10 +22,6 @@
     <meta property="og:description"
           content="@yield('description')"/>
     <!-- Add site Favicon -->
-    <link rel="icon" href="{{asset('assets/images/favicon/cropped-favicon-32x32.png" sizes="32x32')}}"/>
-    <link rel="icon" href="{{asset('assets/images/favicon/cropped-favicon-192x192.png" sizes="192x192')}}"/>
-    <link rel="apple-touch-icon" href="{{asset('assets/images/favicon/cropped-favicon-180x180.png')}}"/>
-    <meta name="msapplication-TileImage" content="{{asset('assets/images/favicon/cropped-favicon-270x270.png')}}"/>
 
     <!-- All CSS is here
 	============================================ -->
@@ -43,7 +39,6 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/easyzoom.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
-    <link rel="stylesheet" href="{{asset('assets/css/courusel.css')}}"/>
     @livewireStyles
     @stack('styles')
     @yield('style')
