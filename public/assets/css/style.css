@@ -1299,6 +1299,7 @@ textarea {
     height: 100%;
     background: inherit;
     backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 }
 
 .blurry-content{
@@ -5027,18 +5028,19 @@ textarea {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -20px;
+    bottom: 0px;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: all .4s ease 0s;
-    -o-transition: all .4s ease 0s;
-    transition: all .4s ease 0s;
+    -webkit-transition: all .1s ease 0s;
+    -o-transition: all .1s ease 0s;
+    transition: all .1s ease 0s;
 }
 
 .product-wrap .product-img .product-action-2-wrap .product-action-btn-2 {
     border: none;
     color: #fff;
     padding: 0;
+    font-size: 0.875rem !important;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;

@@ -42,7 +42,6 @@ class WishlistButton extends Component
                     'product_id' => $this->product->id
                 ]);
             }
-            $this->updateWishlistData();
         } else {
             // Handle adding/removing product from cookie
             $this->wishList = json_decode(Cookie::get('wishlist', '[]'), true);
@@ -55,9 +54,9 @@ class WishlistButton extends Component
             }
 
             Cookie::queue('wishlist', json_encode($this->wishList), 60 * 24 * 30);
-            $this->updateWishlistData();
             // Update wishlist count and check if product is in wishlist
         }
+        $this->updateWishlistData();
     }
 
     private function updateWishlistData()
