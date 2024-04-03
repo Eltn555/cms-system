@@ -32,6 +32,32 @@
                                             <input id="update-profile-form-1" type="email" class="form-control"
                                                    placeholder="username@lumenlux.uz" name="email">
                                         </div>
+                                        <div class="mt-3"> <label>City</label>
+                                            <div class="mt-2">
+                                                <select data-placeholder="Select your city" class="tom-select w-full" name="city">
+                                                    <option value="tashkent">Ташкент</option>
+                                                    <option value="tashkentobl">Ташкентская область</option>
+                                                    <option value="samarkand">Самарканд</option>
+                                                    <option value="nukus">Нукус</option>
+                                                    <option value="andijon">Андижон</option>
+                                                    <option value="namangan">Наманган</option>
+                                                    <option value="fergana">Фергана</option>
+                                                    <option value="karshi">Карши</option>
+                                                    <option value="termez">Термез</option>
+                                                    <option value="bukhoro">Бухара</option>
+                                                    <option value="jizzax">Джизак</option>
+                                                    <option value="navoi">Навои</option>
+                                                    <option value="urganch">Ургенч</option>
+                                                    <option value="guliston">Гулистан</option>
+                                                    <option value="nurafshon">Нурафшон</option>
+                                                    <option value="syrdarya">Сырдарьинская область</option>
+                                                </select> </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="update-profile-form-4" class="form-label">Address</label>
+                                            <input id="update-profile-form-4" type="text" class="form-control"
+                                                   placeholder="12 kvartal" name="address">
+                                        </div>
                                     </div>
                                     <div class="col-span-5 2xl:col-span-5">
                                         <div class="mt-3 2xl:mt-0">
@@ -43,6 +69,16 @@
                                             <label for="update-profile-form-4" class="form-label">Phone Number</label>
                                             <input id="update-profile-form-4" type="text" class="form-control"
                                                    placeholder="+998 (__) ___-__-__" name="phone">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="update-profile-form-4" class="form-label">State</label>
+                                            <input id="update-profile-form-4" type="text" class="form-control"
+                                                   placeholder="Yunusobod" name="state">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="update-profile-form-4" class="form-label">Home</label>
+                                            <input id="update-profile-form-4" type="text" class="form-control"
+                                                   placeholder="40" name="home">
                                         </div>
                                     </div>
                                     <div class="mx-auto xl:mr-0 col-span-2 xl:ml-6">
@@ -64,13 +100,6 @@
                                                 <input id="file-upload" name="image" type="file"
                                                        class="w-full h-full top-0 left-0 absolute opacity-0">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-span-12">
-                                        <div class="mt-3">
-                                            <label for="update-profile-form-5" class="form-label">Address</label>
-                                            <textarea id="update-profile-form-5" name="address" class="form-control"
-                                                      placeholder="Address"></textarea>
                                         </div>
                                     </div>
                                 </div>
