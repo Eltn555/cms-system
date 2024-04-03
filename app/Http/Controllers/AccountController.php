@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
     public function index() {
-        $accounts = Account::all();
+        $accounts = User::all();
         return view('admin.account.index', compact('accounts'));
     }
 
@@ -18,7 +19,7 @@ class AccountController extends Controller
         return view('admin.account.create');
     }
 
-    public function edit(Account $account) {
+    public function edit(User $account) {
         return view('admin.account.edit', compact('account'));
     }
 
@@ -29,13 +30,18 @@ class AccountController extends Controller
         Account::create($data);
         return redirect()->route('admin.account.index');
     }
-    public function update(Account $account, Request $request) {
+    public function update(User $account, Request $request) {
         $data = $request->all();
         if(array_key_exists('image', $data)) {
             $image = Storage::put('/images', $data['image']);
             $data['image'] = $image;
         }
         $account->update($data);
+        return redirect()->route('admin.account.index');
+    }
+
+    public function destroy($id) {
+        $res=User::where('id',$id)->delete();
         return redirect()->route('admin.account.index');
     }
 }

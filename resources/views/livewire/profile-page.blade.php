@@ -38,7 +38,7 @@
                                             <div class="single-input-item">
                                                 <label for="first-name" class="required">Имя</label>
                                                 <div class="position-relative">
-                                                    <input type="text" id="first-name" placeholder="Ваш имя"/>
+                                                    <input type="text" id="first-name" placeholder="Ваш имя" value="{{ $profile->name }}"/>
                                                     <div class="position-absolute icon-input">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_1334_4361)">
@@ -60,7 +60,7 @@
                                             <div class="single-input-item">
                                                 <label for="last-name" class="required">Фамилия</label>
                                                 <div class="position-relative">
-                                                    <input type="text" id="last-name" placeholder="Ваш фамилия"/>
+                                                    <input type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname }}"/>
                                                     <div class="position-absolute icon-input">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_1334_4361)">
@@ -82,7 +82,7 @@
                                             <div class="single-input-item">
                                                 <label for="display-name" class="required">Телефон номер</label>
                                                 <div class="position-relative">
-                                                    <input type="tel" id="display-name" placeholder="+998 555 005 444"/>
+                                                    <input type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone }}"/>
                                                     <div class="position-absolute icon-input">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10.834 2.5C10.834 2.5 12.6673 2.66667 15.0007 5C17.334 7.33333 17.5007 9.16667 17.5007 9.16667" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
@@ -97,7 +97,7 @@
                                             <div class="single-input-item">
                                                 <label for="email" class="required">Электронная почта</label>
                                                 <div class="position-relative">
-                                                    <input type="email" id="email" placeholder="sample@mail.uz"/>
+                                                    <input type="email" id="email" placeholder="sample@mail.uz" value="{{ $profile->email }}"/>
                                                     <div class="position-absolute icon-input">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M1.66602 10C1.66602 6.85734 1.66602 5.286 2.64233 4.30968C3.61864 3.33337 5.18999 3.33337 8.33268 3.33337L11.666 3.33337C14.8087 3.33337 16.3801 3.33337 17.3564 4.30968C18.3327 5.286 18.3327 6.85734 18.3327 10C18.3327 13.1427 18.3327 14.7141 17.3564 15.6904C16.3801 16.6667 14.8087 16.6667 11.666 16.6667H8.33268C5.18999 16.6667 3.61864 16.6667 2.64233 15.6904C1.66602 14.7141 1.66602 13.1427 1.66602 10Z" stroke="#8C8C8C" stroke-width="1.5"/>
@@ -145,13 +145,13 @@
                                             <div class="col-lg-6">
                                                 <div class="single-input-item">
                                                     <label for="last-name" class="required">Улица</label>
-                                                    <input type="text" id="last-name" placeholder="Напишите полное"/>
+                                                    <input type="text" id="last-name" placeholder="Напишите полное" value="{{ $profile->address }}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="single-input-item">
                                                     <label for="display-name" class="required">Дом</label>
-                                                    <input type="text" id="display-name" placeholder="Напишите дом, подйез, этаж"/>
+                                                    <input type="text" id="display-name" placeholder="Напишите дом, подйез, этаж" value="{{ $profile->home }}"/>
                                                 </div>
                                             </div>
                                         </div>
