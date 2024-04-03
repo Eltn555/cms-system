@@ -274,21 +274,21 @@
                                 <h3>Filter By Price</h3>
                             </div>
                             <div class="price-filter">
-                                <div id="slider-range"
-                                     class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                         style="left: 0%; width: 77.7778%;"></div>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
-                                          style="left: 0%;"></span><span tabindex="0"
-                                                                         class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                         style="left: 77.7778%;"></span></div>
-                                <div class="price-slider-amount">
-                                    <div class="label-input">
-                                        <label>Price:</label>
-                                        <input wire:model="price" wire:change="setPrice($(this).val())" type="text" id="amount" name="price" placeholder="Add Your Price">
-                                    </div>
-                                    <button type="button">Filter</button>
-                                </div>
+{{--                                <div id="slider-range"--}}
+{{--                                     class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">--}}
+{{--                                    <div class="ui-slider-range ui-corner-all ui-widget-header"--}}
+{{--                                         style="left: 0%; width: 77.7778%;"></div>--}}
+{{--                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"--}}
+{{--                                          style="left: 0%;"></span><span tabindex="0"--}}
+{{--                                                                         class="ui-slider-handle ui-corner-all ui-state-default"--}}
+{{--                                                                         style="left: 77.7778%;"></span></div>--}}
+{{--                                <div class="price-slider-amount">--}}
+{{--                                    <div class="label-input">--}}
+{{--                                        <label>Price:</label>--}}
+{{--                                        <input wire:model="price" wire:change="setPrice($(this).val())" type="text" id="amount" name="price" placeholder="Add Your Price">--}}
+{{--                                    </div>--}}
+{{--                                    <button type="button">Filter</button>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                         <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
