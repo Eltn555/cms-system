@@ -25,7 +25,7 @@
                             <h3 class="footer-title text-white font-kyiv">Интернет магазин</h3>
                             <ul>
                                 <li class="text-white font-kyiv"><a href="{{asset('/')}}" class="text-white font-kyiv">Главная</a></li>
-                                <li class="text-white font-kyiv"><a href="{{asset('/category')}}" class="text-white font-kyiv">Магазин</a></li>
+                                <li class="text-white font-kyiv"><a href="{{ route('front.category.index') }}" class="text-white font-kyiv">Магазин</a></li>
                                 <li class="text-white font-kyiv"><a href="{{asset('/calculator')}}" class="text-white font-kyiv">Калькулятор</a></li>
                             </ul>
                         </div>
@@ -34,9 +34,9 @@
                         <div class="footer-widget footer-widget-margin-2 footer-address mb-40">
                             <h3 class="footer-title text-white font-kyiv">О Люмен Люкс</h3>
                             <ul>
-                                <li class="text-white font-kyiv"><span class="text-white font-kyiv">О нас</span></li>
-                                <li class="text-white font-kyiv"><span class="text-white font-kyiv">Блог</span></li>
-                                <li class="text-white font-kyiv"><span class="text-white font-kyiv">Контакты</span></li>
+                                <li class="text-white font-kyiv"><a href="{{route('about.index')}}" class="text-white font-kyiv">О нас</a></li>
+                                <li class="text-white font-kyiv"><a href="{{route('blog.index')}}" class="text-white font-kyiv">Блог</a></li>
+                                <li class="text-white font-kyiv"><a href="{{route('contact.index')}}" class="text-white font-kyiv">Контакты</a></li>
                             </ul>
                         </div>
                     </div>

@@ -11,10 +11,10 @@
                 </div>
                 <div class="product-action-wrap">
                     @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
-                    <button class="product-action-btn-1" title="Quick View"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="pe-7s-look"></i>
-                    </button>
+{{--                    <button class="product-action-btn-1" title="Quick View"--}}
+{{--                            data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
+{{--                        <i class="pe-7s-look"></i>--}}
+{{--                    </button>--}}
                 </div>
                 @livewire('front.cart.cart-count-btn', ['product' => $product], key($product->id))
             </div>
