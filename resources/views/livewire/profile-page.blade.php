@@ -1,6 +1,6 @@
 @section('style')
     <style>
-        .icon-input{
+        .icon-input {
             top: 0;
             right: 0;
             padding: 12px 15px;
@@ -34,17 +34,24 @@
                             <div class="account-details-form">
                                 <form action="#">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6" style="height: 100px">
                                             <div class="single-input-item">
                                                 <label for="first-name" class="required">Имя</label>
                                                 <div class="position-relative">
-                                                    <input type="text" id="first-name" placeholder="Ваш имя" value="{{ $profile->name }}"/>
+                                                    <input style="display: none" type="text" id="first-name" placeholder="Ваш имя" value="{{ $profile->name ?? '' }}"/>
+                                                    <span class="p-3 position-absolute top-50">{{ $profile->name ?? 'Undefined'}}</span>
                                                     <div class="position-absolute icon-input">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_1334_4361)">
-                                                                <circle cx="10" cy="7.5" r="2.5" stroke="#8C8C8C" stroke-width="1.5"/>
-                                                                <circle cx="9.99935" cy="9.99996" r="8.33333" stroke="#8C8C8C" stroke-width="1.5"/>
-                                                                <path d="M14.974 16.6667C14.8414 14.2571 14.1037 12.5 9.99971 12.5C5.89576 12.5 5.15801 14.2571 5.02539 16.6667" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
+                                                                <circle cx="10" cy="7.5" r="2.5" stroke="#8C8C8C"
+                                                                        stroke-width="1.5"/>
+                                                                <circle cx="9.99935" cy="9.99996" r="8.33333"
+                                                                        stroke="#8C8C8C" stroke-width="1.5"/>
+                                                                <path
+                                                                    d="M14.974 16.6667C14.8414 14.2571 14.1037 12.5 9.99971 12.5C5.89576 12.5 5.15801 14.2571 5.02539 16.6667"
+                                                                    stroke="#8C8C8C" stroke-width="1.5"
+                                                                    stroke-linecap="round"/>
                                                             </g>
                                                             <defs>
                                                                 <clipPath id="clip0_1334_4361">
@@ -56,17 +63,24 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6" style="height: 100px">
                                             <div class="single-input-item">
                                                 <label for="last-name" class="required">Фамилия</label>
                                                 <div class="position-relative">
-                                                    <input type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname }}"/>
+                                                    <input style="display:none;" type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname ?? ''}}"/>
+                                                    <span class="p-3 position-absolute top-50">{{ $profile->lastname ?? 'Undefined'}}</span>
                                                     <div class="position-absolute icon-input">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <g clip-path="url(#clip0_1334_4361)">
-                                                                <circle cx="10" cy="7.5" r="2.5" stroke="#8C8C8C" stroke-width="1.5"/>
-                                                                <circle cx="9.99935" cy="9.99996" r="8.33333" stroke="#8C8C8C" stroke-width="1.5"/>
-                                                                <path d="M14.974 16.6667C14.8414 14.2571 14.1037 12.5 9.99971 12.5C5.89576 12.5 5.15801 14.2571 5.02539 16.6667" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
+                                                                <circle cx="10" cy="7.5" r="2.5" stroke="#8C8C8C"
+                                                                        stroke-width="1.5"/>
+                                                                <circle cx="9.99935" cy="9.99996" r="8.33333"
+                                                                        stroke="#8C8C8C" stroke-width="1.5"/>
+                                                                <path
+                                                                    d="M14.974 16.6667C14.8414 14.2571 14.1037 12.5 9.99971 12.5C5.89576 12.5 5.15801 14.2571 5.02539 16.6667"
+                                                                    stroke="#8C8C8C" stroke-width="1.5"
+                                                                    stroke-linecap="round"/>
                                                             </g>
                                                             <defs>
                                                                 <clipPath id="clip0_1334_4361">
@@ -78,30 +92,48 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6" style="height: 100px">
                                             <div class="single-input-item">
                                                 <label for="display-name" class="required">Телефон номер</label>
                                                 <div class="position-relative">
-                                                    <input type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone }}"/>
+                                                    <input style="display:none;" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
+                                                    <span class="p-3 position-absolute top-50">{{ $profile->phone ?? 'Undefined'}}</span>
                                                     <div class="position-absolute icon-input">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M10.834 2.5C10.834 2.5 12.6673 2.66667 15.0007 5C17.334 7.33333 17.5007 9.16667 17.5007 9.16667" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
-                                                            <path d="M11.0059 5.44641C11.0059 5.44641 11.8308 5.68211 13.0683 6.91955C14.3057 8.15699 14.5414 8.98194 14.5414 8.98194" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
-                                                            <path d="M7.53132 5.26344L8.07217 6.23254C8.56025 7.10711 8.36432 8.25439 7.59559 9.02312C7.59559 9.02313 7.59559 9.02313 7.59559 9.02313C7.59548 9.02324 6.66325 9.95568 8.35376 11.6462C10.0436 13.3361 10.976 12.4052 10.9768 12.4044C10.9769 12.4043 10.9768 12.4044 10.9769 12.4043C11.7456 11.6356 12.8929 11.4397 13.7674 11.9278L14.7365 12.4686C16.0571 13.2056 16.2131 15.0577 15.0523 16.2185C14.3548 16.916 13.5003 17.4587 12.5558 17.4945C10.9656 17.5548 8.26523 17.1524 5.55642 14.4435C2.84761 11.7347 2.44518 9.03431 2.50546 7.4442C2.54127 6.49963 3.084 5.64516 3.7815 4.94765C4.9423 3.78686 6.79431 3.94282 7.53132 5.26344Z" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M10.834 2.5C10.834 2.5 12.6673 2.66667 15.0007 5C17.334 7.33333 17.5007 9.16667 17.5007 9.16667"
+                                                                stroke="#8C8C8C" stroke-width="1.5"
+                                                                stroke-linecap="round"/>
+                                                            <path
+                                                                d="M11.0059 5.44641C11.0059 5.44641 11.8308 5.68211 13.0683 6.91955C14.3057 8.15699 14.5414 8.98194 14.5414 8.98194"
+                                                                stroke="#8C8C8C" stroke-width="1.5"
+                                                                stroke-linecap="round"/>
+                                                            <path
+                                                                d="M7.53132 5.26344L8.07217 6.23254C8.56025 7.10711 8.36432 8.25439 7.59559 9.02312C7.59559 9.02313 7.59559 9.02313 7.59559 9.02313C7.59548 9.02324 6.66325 9.95568 8.35376 11.6462C10.0436 13.3361 10.976 12.4052 10.9768 12.4044C10.9769 12.4043 10.9768 12.4044 10.9769 12.4043C11.7456 11.6356 12.8929 11.4397 13.7674 11.9278L14.7365 12.4686C16.0571 13.2056 16.2131 15.0577 15.0523 16.2185C14.3548 16.916 13.5003 17.4587 12.5558 17.4945C10.9656 17.5548 8.26523 17.1524 5.55642 14.4435C2.84761 11.7347 2.44518 9.03431 2.50546 7.4442C2.54127 6.49963 3.084 5.64516 3.7815 4.94765C4.9423 3.78686 6.79431 3.94282 7.53132 5.26344Z"
+                                                                stroke="#8C8C8C" stroke-width="1.5"
+                                                                stroke-linecap="round"/>
                                                         </svg>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6" style="height: 100px">
                                             <div class="single-input-item">
                                                 <label for="email" class="required">Электронная почта</label>
                                                 <div class="position-relative">
-                                                    <input type="email" id="email" placeholder="sample@mail.uz" value="{{ $profile->email }}"/>
+                                                    <input style="display:none;" type="email" id="email" placeholder="sample@mail.uz" value="{{ $profile->email ?? ''}}"/>
+                                                    <span class="p-3 position-absolute top-50">{{ $profile->email ?? 'Undefined'}}</span>
                                                     <div class="position-absolute icon-input">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M1.66602 10C1.66602 6.85734 1.66602 5.286 2.64233 4.30968C3.61864 3.33337 5.18999 3.33337 8.33268 3.33337L11.666 3.33337C14.8087 3.33337 16.3801 3.33337 17.3564 4.30968C18.3327 5.286 18.3327 6.85734 18.3327 10C18.3327 13.1427 18.3327 14.7141 17.3564 15.6904C16.3801 16.6667 14.8087 16.6667 11.666 16.6667H8.33268C5.18999 16.6667 3.61864 16.6667 2.64233 15.6904C1.66602 14.7141 1.66602 13.1427 1.66602 10Z" stroke="#8C8C8C" stroke-width="1.5"/>
-                                                            <path d="M5 6.66663L6.79908 8.16586C8.32961 9.4413 9.09488 10.079 10 10.079C10.9051 10.079 11.6704 9.4413 13.2009 8.16586L15 6.66663" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M1.66602 10C1.66602 6.85734 1.66602 5.286 2.64233 4.30968C3.61864 3.33337 5.18999 3.33337 8.33268 3.33337L11.666 3.33337C14.8087 3.33337 16.3801 3.33337 17.3564 4.30968C18.3327 5.286 18.3327 6.85734 18.3327 10C18.3327 13.1427 18.3327 14.7141 17.3564 15.6904C16.3801 16.6667 14.8087 16.6667 11.666 16.6667H8.33268C5.18999 16.6667 3.61864 16.6667 2.64233 15.6904C1.66602 14.7141 1.66602 13.1427 1.66602 10Z"
+                                                                stroke="#8C8C8C" stroke-width="1.5"/>
+                                                            <path
+                                                                d="M5 6.66663L6.79908 8.16586C8.32961 9.4413 9.09488 10.079 10 10.079C10.9051 10.079 11.6704 9.4413 13.2009 8.16586L15 6.66663"
+                                                                stroke="#8C8C8C" stroke-width="1.5"
+                                                                stroke-linecap="round"/>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -145,19 +177,24 @@
                                             <div class="col-lg-6">
                                                 <div class="single-input-item">
                                                     <label for="last-name" class="required">Улица</label>
-                                                    <input type="text" id="last-name" placeholder="Напишите полное" value="{{ $profile->address }}"/>
+                                                    <input type="text" id="last-name" placeholder="Напишите полное"
+                                                           value="{{ $profile->address ?? ''}}"/>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="single-input-item">
                                                     <label for="display-name" class="required">Дом</label>
-                                                    <input type="text" id="display-name" placeholder="Напишите дом, подйез, этаж" value="{{ $profile->home }}"/>
+                                                    <input type="text" id="display-name"
+                                                           placeholder="Напишите дом, подйез, этаж"
+                                                           value="{{ $profile->home ?? ''}}"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="single-input-item btn-hover">
                                         <button class="check-btn sqr-btn">Save Changes</button>
+                                        <button class="check-btn sqr-btn">Edit</button>
+                                        <button class="check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
                                     </div>
                                 </form>
                             </div>
@@ -213,7 +250,9 @@
     </div>
 
 </div>
-
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
 @section('scripts')
     <script>
         // Define regions for each city
@@ -254,7 +293,7 @@
             });
         }
 
-        window.onload = function() {
+        window.onload = function () {
             populateRegions();
         };
 
