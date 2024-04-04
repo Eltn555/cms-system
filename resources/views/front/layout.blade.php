@@ -88,6 +88,12 @@
         console.log(event.detail.console);
     });
 </script>
+<script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
+<script>
+    SaleBotPro.init({
+        onlineChatId: ''
+    });
+</script>
 <!-- Main JS -->
 @stack('scripts')
 @yield('scripts')

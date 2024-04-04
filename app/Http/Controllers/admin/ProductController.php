@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CartProduct;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductTag;
 use App\Models\Tag;
+use App\Models\WishlistProduct;
 use Behat\Transliterator\Transliterator;
 use Carbon\Carbon;
 use Faker\Provider\Lorem;
@@ -172,6 +174,16 @@ class ProductController extends Controller
             $data['slug'] = Str::slug(Transliterator::transliterate($value), '-');
         } elseif ($field === 'delete'){
             $productDestroy = Product::findOrFail($id);
+            $wishlistItem = WishlistProduct::where('product_id', $productDestroy->id)->get();
+            if ($wishlistItem) {
+                // Delete the Wishlist item
+                $wishlistItem->each->delete();
+            }
+            $cartItem = CartProduct::where('product_id', $productDestroy->id)->get();
+            if ($cartItem) {
+                // Delete the Wishlist item
+                $cartItem->each->delete();
+            }
             $productDestroy->delete();
 
             return [
