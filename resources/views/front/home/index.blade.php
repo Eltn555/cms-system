@@ -307,7 +307,7 @@
                 </div>
                 <div class="col-6 justify-content-end align-items-end d-flex">
                     <div class="single-product-cart btn-hover ps-1 text-end">
-                        <a href="https://lumenlux.uz/category" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
+                        <a href="category/?tagId" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
                             магазин</a>
                     </div>
                 </div>
