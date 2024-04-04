@@ -71,196 +71,6 @@
                                 </div>
                                 {{$products->links('pagination::default') }}
                             </div>
-                            <div id="shop-2" class="tab-pane" role="tabpanel">
-                                {{--                                    <div class="shop-list-wrap mb-30">--}}
-                                {{--                                        <div class="row">--}}
-                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
-                                {{--                                                <div class="product-list-img">--}}
-                                {{--                                                    <a href="product-details.html">--}}
-                                {{--                                                        <img src="assets/images/product/product-5.png" alt="Product Style">--}}
-                                {{--                                                    </a>--}}
-                                {{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
-                                {{--                                                        <span>-20%</span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-quickview">--}}
-                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-                                {{--                                                            <i class="pe-7s-look"></i>--}}
-                                {{--                                                        </button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
-                                {{--                                                <div class="shop-list-content">--}}
-                                {{--                                                    <h3><a href="product-details.html">Interior moderno render</a></h3>--}}
-                                {{--                                                    <div class="product-price">--}}
-                                {{--                                                        <span class="old-price">$70.89 </span>--}}
-                                {{--                                                        <span class="new-price">$55.25 </span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-rating">--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-                                {{--                                                    <div class="product-list-action">--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-                                {{--                                                                class="pe-7s-cart"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-                                {{--                                                                class="pe-7s-like"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="shop-list-wrap mb-30">--}}
-                                {{--                                        <div class="row">--}}
-                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
-                                {{--                                                <div class="product-list-img">--}}
-                                {{--                                                    <a href="product-details.html">--}}
-                                {{--                                                        <img src="assets/images/product/product-7.png" alt="Product Style">--}}
-                                {{--                                                    </a>--}}
-                                {{--                                                    <div class="product-list-quickview">--}}
-                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-                                {{--                                                            <i class="pe-7s-look"></i>--}}
-                                {{--                                                        </button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
-                                {{--                                                <div class="shop-list-content">--}}
-                                {{--                                                    <h3><a href="product-details.html">Round Standard Chair</a></h3>--}}
-                                {{--                                                    <div class="product-price">--}}
-                                {{--                                                        <span>$50.25 </span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-rating">--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-                                {{--                                                    <div class="product-list-action">--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-                                {{--                                                                class="pe-7s-cart"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-                                {{--                                                                class="pe-7s-like"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="shop-list-wrap mb-30">--}}
-                                {{--                                        <div class="row">--}}
-                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
-                                {{--                                                <div class="product-list-img">--}}
-                                {{--                                                    <a href="product-details.html">--}}
-                                {{--                                                        <img src="assets/images/product/product-4.png" alt="Product Style">--}}
-                                {{--                                                    </a>--}}
-                                {{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
-                                {{--                                                        <span>-10%</span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-quickview">--}}
-                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-                                {{--                                                            <i class="pe-7s-look"></i>--}}
-                                {{--                                                        </button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
-                                {{--                                                <div class="shop-list-content">--}}
-                                {{--                                                    <h3><a href="product-details.html">Stylish Swing Chair</a></h3>--}}
-                                {{--                                                    <div class="product-price">--}}
-                                {{--                                                        <span class="old-price">$80.89 </span>--}}
-                                {{--                                                        <span class="new-price">$60.25 </span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-rating">--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-                                {{--                                                    <div class="product-list-action">--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-                                {{--                                                                class="pe-7s-cart"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-                                {{--                                                                class="pe-7s-like"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="shop-list-wrap mb-30">--}}
-                                {{--                                        <div class="row">--}}
-                                {{--                                            <div class="col-lg-4 col-sm-5">--}}
-                                {{--                                                <div class="product-list-img">--}}
-                                {{--                                                    <a href="product-details.html">--}}
-                                {{--                                                        <img src="assets/images/product/product-8.png" alt="Product Style">--}}
-                                {{--                                                    </a>--}}
-                                {{--                                                    <div class="product-list-badge badge-right badge-pink">--}}
-                                {{--                                                        <span>-10%</span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-quickview">--}}
-                                {{--                                                        <button class="product-action-btn-2" title="Quick View"--}}
-                                {{--                                                                data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-                                {{--                                                            <i class="pe-7s-look"></i>--}}
-                                {{--                                                        </button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="col-lg-8 col-sm-7">--}}
-                                {{--                                                <div class="shop-list-content">--}}
-                                {{--                                                    <h3><a href="product-details.html">Modern Swivel Chair</a></h3>--}}
-                                {{--                                                    <div class="product-price">--}}
-                                {{--                                                        <span class="old-price">$45.89 </span>--}}
-                                {{--                                                        <span class="new-price">$30.25 </span>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <div class="product-list-rating">--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                        <i class=" ti-star"></i>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                    <p>Lorem ipsum dolor sit amet, consectetur adipic it, sed do eiusmod--}}
-                                {{--                                                        tempor labor incididunt ut et dolore magna aliqua.</p>--}}
-                                {{--                                                    <div class="product-list-action">--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Add to cart"><i--}}
-                                {{--                                                                class="pe-7s-cart"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Wishlist"><i--}}
-                                {{--                                                                class="pe-7s-like"></i></button>--}}
-                                {{--                                                        <button class="product-action-btn-3" title="Compare"><i--}}
-                                {{--                                                                class="pe-7s-shuffle"></i></button>--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="pagination-style-1">--}}
-                                {{--                                        <ul>--}}
-                                {{--                                            <li><a class="active" href="#">1</a></li>--}}
-                                {{--                                            <li><a href="#">2</a></li>--}}
-                                {{--                                            <li><a href="#">3</a></li>--}}
-                                {{--                                            <li><a class="next" href="#"><i class=" ti-angle-double-right "></i></a></li>--}}
-                                {{--                                        </ul>--}}
-                                {{--                                    </div>--}}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,21 +84,21 @@
                                 <h3>Filter By Price</h3>
                             </div>
                             <div class="price-filter">
-{{--                                <div id="slider-range"--}}
-{{--                                     class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">--}}
-{{--                                    <div class="ui-slider-range ui-corner-all ui-widget-header"--}}
-{{--                                         style="left: 0%; width: 77.7778%;"></div>--}}
-{{--                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"--}}
-{{--                                          style="left: 0%;"></span><span tabindex="0"--}}
-{{--                                                                         class="ui-slider-handle ui-corner-all ui-state-default"--}}
-{{--                                                                         style="left: 77.7778%;"></span></div>--}}
-{{--                                <div class="price-slider-amount">--}}
-{{--                                    <div class="label-input">--}}
-{{--                                        <label>Price:</label>--}}
-{{--                                        <input wire:model="price" wire:change="setPrice($(this).val())" type="text" id="amount" name="price" placeholder="Add Your Price">--}}
-{{--                                    </div>--}}
-{{--                                    <button type="button">Filter</button>--}}
-{{--                                </div>--}}
+                                <div id="slider-range"
+                                     class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"
+                                         style="left: 0%; width: 77.7778%;"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                                          style="left: 0%;"></span><span tabindex="0"
+                                                                         class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                         style="left: 77.7778%;"></span></div>
+                                <div class="price-slider-amount">
+                                    <div class="label-input">
+                                        <label>Price:</label>
+                                        <input wire:model="price" wire:change="setPrice($(this).val())" type="text" id="amount" name="price" placeholder="Add Your Price">
+                                    </div>
+                                    <button type="button">Filter</button>
+                                </div>
                             </div>
                         </div>
                         <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
@@ -311,7 +121,7 @@
                             </div>
                         </div>
 
-                        <div class="sidebar-widget aos-init" data-aos="fade-up" data-aos-delay="200">
+                        <div class="sidebar-widget aos-init">
                             <div class="sidebar-widget-title mb-25">
                                 <h3>Tags</h3>
                             </div>
@@ -343,10 +153,13 @@
         });
         window.addEventListener('urlChanged', event => {
             AOS.init();
-            setTimeout(() => {
                 window.history.replaceState(null, null, event.detail.url);
-            }, 1500); // 5000 milliseconds = 5 seconds
         });
+        function toTop() {
+            // Trigger a click event on the element with id #scrollUp
+            document.getElementById('scrollUp').click();
+        }
+
     </script>
 
 @endpush
