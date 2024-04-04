@@ -440,7 +440,7 @@
                 </div>
                 <div class="col-6 justify-content-end align-items-end d-flex">
                     <div class="single-product-cart btn-hover ps-1 text-end">
-                        <a href="#" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все
+                        <a href="https://lumenlux.uz/blog" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все
                             блоги</a>
                     </div>
                 </div>
