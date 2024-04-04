@@ -7,8 +7,8 @@
             <h2 class="shadow-text-2 font-cormorant fw-bold">Список<br>пожеланий</h2>
         </div>
         <div class="row">
-            @foreach($wishList as $product)
-                {{dd($product)}}
+            {{dd($wishList)}}
+        @foreach($wishList as $product)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-self-stretch p-2">
                     <livewire:front.component.product-card :product="$product" :key="$product->id" />
                 </div>
