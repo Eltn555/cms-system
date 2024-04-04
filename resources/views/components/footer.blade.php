@@ -44,7 +44,7 @@
                         <div class="footer-widget footer-list mb-40">
                             <h3 class="footer-title text-white font-kyiv">+998 555 005 444</h3>
                             <ul>
-                                <li class="text-white font-kyiv"><a class="text-white font-kyiv" href="my-account.html">My Account</a></li>
+                                <li class="text-white font-kyiv"><a class="text-white font-kyiv" href="https://lumenlux.uz/profile">My Account</a></li>
                             </ul>
                         </div>
                     </div>

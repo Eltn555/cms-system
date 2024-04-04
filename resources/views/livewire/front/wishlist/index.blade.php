@@ -8,9 +8,11 @@
         </div>
         <div class="row">
             @foreach($wishList as $product)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-self-stretch p-2">
-                    <livewire:front.component.product-card :product="$product" :key="$product->id" />
-                </div>
+                @if($product)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-self-stretch p-2">
+                        <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>
