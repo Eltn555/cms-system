@@ -1,10 +1,6 @@
 @section('style')
     <style>
-        .icon-input {
-            top: 0;
-            right: 0;
-            padding: 12px 15px;
-        }
+
     </style>
 @endsection
 
