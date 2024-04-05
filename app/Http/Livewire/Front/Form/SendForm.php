@@ -22,7 +22,7 @@ class SendForm extends Component
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image validation rules as needed
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:20480', // Adjust image validation rules as needed
         ]);
         $telegramBotToken = '5757752738:AAEjFYkPsPY3w7p9-x5gZO5n3al-ki7fUFs';
         $chatId = '791430493'; // You'll need to obtain your chat ID from your bot
