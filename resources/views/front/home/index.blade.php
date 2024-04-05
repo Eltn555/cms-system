@@ -452,6 +452,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div class="blog-area pb-70">
         <div class="container">
