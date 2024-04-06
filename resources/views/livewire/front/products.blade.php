@@ -97,8 +97,8 @@
                                 <button class="border-0 bg-transparent">-</button>
                             </div>
                             <div class="product-details-price p-3">
-                                <span class="p-1 {{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  сум</span>
-                                <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} сум</span>
+                                <span class="p-1 {{($product->discount_price == "") ? 'hidden' : 'new-price'}}">{{$product->discount_price}}  {{$product->discount_price > 10000 ? 'сум' : '$'}}</span>
+                                <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} {{$product->price > 10000 ? 'сум' : '$'}}</span>
                             </div>
                         </div>
                         <div class="d-flex">

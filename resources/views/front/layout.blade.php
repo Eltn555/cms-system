@@ -43,13 +43,6 @@
     @stack('styles')
     @yield('style')
     @livewireScripts
-    <script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
-    <script>
-        SaleBotPro.init({
-            onlineChatId: ''
-        });
-    </script>
-
 </head>
 
 <body>

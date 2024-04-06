@@ -24,18 +24,20 @@ class SendForm extends Component
             'phone' => 'required|string|max:20',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:20480', // Adjust image validation rules as needed
         ]);
-        $telegramBotToken = '5757752738:AAEjFYkPsPY3w7p9-x5gZO5n3al-ki7fUFs';
-        $chatId = '791430493'; // You'll need to obtain your chat ID from your bot
+        $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+        $chatId = ['791430493',  '1641704306']; // You'll need to obtain your chat ID from your bot
         $message = "New form submission:\nName: {$this->name}\nPhone: {$this->phone}\nImages: " . implode(', ', $imageUrls);
 
         // Process image uploads (if any)
         foreach ($this->images as $image) {
             $imageData = file_get_contents($image->getRealPath());
-            $response = Http::attach('photo', $imageData, $image->getClientOriginalName())
-                ->post("https://api.telegram.org/bot{$telegramBotToken}/sendPhoto", [
-                    'chat_id' => $chatId,
-                    'caption' => "Name: {$this->name}\nPhone: {$this->phone}",
-                ]);
+            foreach ($chatId as $chat){
+                $response = Http::attach('photo', $imageData, $image->getClientOriginalName())
+                    ->post("https://api.telegram.org/bot{$telegramBotToken}/sendPhoto", [
+                        'chat_id' => $chat,
+                        'caption' => "Name: {$this->name}\nPhone: {$this->phone}",
+                    ]);
+            }
         }
         $this->dispatchBrowserEvent('FormInfo', ['text' => $message]);
         // Clear form fields after submission
