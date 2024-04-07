@@ -41,7 +41,7 @@
 /*-- Google Font --*/
 
 :root {
-    --theme-color: #ffd858;
+    --theme-color: #F8B301;
 }
 
 @font-face {
@@ -11036,6 +11036,7 @@ textarea {
     font-size: 14px;
     text-transform: capitalize;
     display: block;
+    font-weight: 500;
     margin: 0 0 5px;
 }
 
@@ -11046,21 +11047,23 @@ textarea {
     background-color: #f4f4f4;
     padding: 2px 20px;
     color: #1f2226;
-    font-size: 13px;
+    font-size: 15px;
+    font-weight: 600;
     width: 100%;
 }
 
 .myaccount-content .account-details-form .single-input-item input:focus,
 .myaccount-content .account-details-form .single-input-item select:focus{
-    border: 1px solid #343538;
+    border: 1px solid #F8B301;
 }
 
 .myaccount-content .account-details-form .single-input-item button {
     border: none;
+    font-family: 'KyivType', sans-serif;
     background-color: var(--theme-color);
     text-transform: capitalize;
     padding: 9px 25px 10px;
-    color: #fff;
+    color: #000000;
     font-size: 14px;
     font-weight: 500;
     z-index: 1;

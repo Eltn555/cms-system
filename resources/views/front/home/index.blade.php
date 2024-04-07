@@ -5,6 +5,28 @@
 @section('style')
     <link rel="stylesheet" href="{{asset('assets/css/courusel.css')}}"/>
     <style>
+        .file-input{
+            display: inline-block;
+            padding-top: 50px !important;
+            padding-bottom: 0 !important;
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
+            height: 50px !important;
+        }
+        .file-text{
+            left: 20px;
+            top: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #757575;
+        }
+        .icon-input {
+            top: 0;
+            right: 0;
+            padding: 12px 15px;
+        }
         .mainPage-navbar {
             background-color: rgba(0, 0, 0, 0.2) !important;
             color: #FFFFFF !important;
@@ -158,7 +180,7 @@
     <div class="calculator-area pb-70">
         <div class="container bg-dark">
             <div class="row">
-                <div class="col-lg-5 col-md-12">
+                <div class="p-0 col-lg-5 col-md-12 order-1 order-lg-0 d-flex">
                     <svg class="object" width="572" height="466" viewBox="0 0 572 466" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M255.456 532.133H255.297C255.138 532.133 255.138 531.974 255.138 531.815V519.397C255.138 519.238 255.297 519.079 255.297 519.079L275.038 513.347V501.566C275.038 501.407 275.198 501.248 275.198 501.248L294.302 495.994V483.894C294.302 483.735 294.461 483.576 294.621 483.576L505.09 431.197C505.249 431.197 505.249 431.197 505.408 431.197C505.408 431.197 505.568 431.356 505.568 431.516V456.192C505.568 456.352 505.408 456.511 505.408 456.511L255.456 532.133ZM255.775 519.556V531.337L504.931 456.033V431.993L295.257 484.053V496.153C295.257 496.312 295.098 496.471 295.098 496.471L275.994 501.725V513.506C275.994 513.666 275.834 513.825 275.834 513.825L255.775 519.556Z" fill="#A1A1A1"/>
                         <path d="M294.78 496.471L-83.4921 446.64C-83.6513 446.64 -83.8105 446.48 -83.8105 446.321V438.042C-83.8105 437.883 -83.8105 437.883 -83.6513 437.724C-83.6513 437.724 -83.4921 437.565 -83.3329 437.724L294.78 483.257C294.939 483.257 295.098 483.416 295.098 483.575C295.098 483.734 294.939 483.894 294.78 483.894L-83.1737 438.52V446.162L294.78 495.834C294.939 495.834 295.098 495.993 295.098 496.152C295.098 496.312 294.939 496.471 294.78 496.471Z" fill="#A1A1A1"/>
@@ -276,7 +298,7 @@
                         <path d="M186.202 265.146V266.897H185.247V265.146H182.381V264.19L185.088 257.981H186.202V264.19H186.998V265.146H186.202ZM183.337 264.19H185.247V259.733L183.337 264.19Z" fill="#A1A1A1"/>
                     </svg>
                 </div>
-                <div class="col-lg-7 col-md-12 p-5 pe-1">
+                <div class="col-lg-7 col-md-12 p-2 p-lg-3 pe-1 order-0 order-lg-1">
                     <div class="mt-4 pt-1 position-relative">
                         <div class="ms-5 d-flex">
                             <h5 class="text-white shadow-text-1 font-cormorant fw-bold">Онлайн<br>калькулятор</h5>
@@ -411,7 +433,7 @@
     <div class="form-area pb-70">
         <div class="container bg-light">
             <div class="row">
-                <div class="col-lg-7 col-md-12 p-5 pe-1">
+                <div class="col-lg-7 col-md-12 p-1 p-lg-5 pe-1">
                     <div class="pt-5 ps-5">
                         <div class="d-flex position-relative">
                             <h5 class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
@@ -426,10 +448,11 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12">
-
+                    <livewire:front.form.send-form/>
                 </div>
             </div>
         </div>
+
     </div>
     <div class="blog-area pb-70">
         <div class="container">
@@ -440,8 +463,7 @@
                 </div>
                 <div class="col-6 justify-content-end align-items-end d-flex">
                     <div class="single-product-cart btn-hover ps-1 text-end">
-                        <a href="https://lumenlux.uz/blog" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все
-                            блоги</a>
+                        <a href="https://lumenlux.uz/blog" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все</a>
                     </div>
                 </div>
             </div>
@@ -654,6 +676,11 @@
                 carousel.classList.remove('next', 'prev');
                 carousel.classList.add('showDetail');
             }
+        });
+        document.addEventListener('livewire:load', function () {
+            window.livewire.on('FormInfo', (event) => {
+                console.log(event.text);
+            });
         });
     </script>
 @endsection

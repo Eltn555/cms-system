@@ -8,7 +8,7 @@
         "php": "^8.0.2",
         "behat/transliterator": "^1.5",
         "enyo/dropzone": "^5.9",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
