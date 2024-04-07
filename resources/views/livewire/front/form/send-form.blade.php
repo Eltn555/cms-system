@@ -69,14 +69,13 @@
                          <div class="single-input-item">
                              <label for="file" class="required">Загрузите изображения</label>
                              <div class="position-relative">
-                                 <input name="images" class="file-input" wire:model="images" multiple type="file" id="file" placeholder="png, jpg"/>
+                                 <input name="images" class="file-input" onchange="updateFileText(this)" wire:model="images" multiple type="file" id="file" placeholder="png, jpg"/>
                                  <span class="file-text position-absolute">png, jpg   max-10MB</span>
                                  <div class="position-absolute icon-input">
                                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                          <path d="M17.2787 13.6755L14.9307 8.12869C14.1355 6.24688 12.6726 6.171 11.6899 7.96176L10.2721 10.5493C9.55193 11.862 8.20913 11.9758 7.27892 10.7997L7.11388 10.5872C6.14616 9.35794 4.78085 9.5097 4.08319 10.9135L2.79289 13.5313C1.88518 15.3524 3.19798 17.4998 5.20844 17.4998H14.7806C16.7311 17.4998 18.0439 15.489 17.2787 13.6755Z" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                          <path d="M6.24984 6.66667C7.40043 6.66667 8.33317 5.73393 8.33317 4.58333C8.33317 3.43274 7.40043 2.5 6.24984 2.5C5.09924 2.5 4.1665 3.43274 4.1665 4.58333C4.1665 5.73393 5.09924 6.66667 6.24984 6.66667Z" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                      </svg>
-
                                  </div>
                              </div>
                          </div>

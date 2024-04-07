@@ -35,7 +35,7 @@ class SendForm extends Component
                 $response = Http::attach('photo', $imageData, $image->getClientOriginalName())
                     ->post("https://api.telegram.org/bot{$telegramBotToken}/sendPhoto", [
                         'chat_id' => $chat,
-                        'caption' => "Name: {$this->name}\nPhone: {$this->phone}",
+                        'caption' => "Имя: {$this->name}\nНомер: {$this->phone}",
                     ]);
             }
         }
