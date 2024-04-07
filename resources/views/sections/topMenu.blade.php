@@ -153,7 +153,7 @@
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 bg-white rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
                  role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                <img alt="Midone - HTML Admin Template" src="{{ asset('no_photo.jpg') }}">
+                <img alt="Midone - HTML Admin Template" src="{{ auth()->user()->image === 'no_photo.jpg' ? asset('no_photo.jpg') : asset('storage/' . auth()->user()->image) }}">
             </div>
             <div class="dropdown-menu w-56">
                 <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
