@@ -1,5 +1,4 @@
-<div class="sidebar-cart-active">
-    <div class="sidebar-cart-all">
+<div class="sidebar-cart-all">
         <a class="cart-close"><i class="pe-7s-close"></i></a>
         <h1 class="font-cormorant fw-bolder pb-4 border-bottom border-1 mb-5">Корзина</h1>
         <div class="cart-content">
@@ -39,4 +38,3 @@
             </div>
         </div>
     </div>
-</div>

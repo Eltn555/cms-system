@@ -94,31 +94,19 @@
 {{--                            </ul>--}}
 {{--                        </div>--}}
                         <div class="product-details-action-wrap font-kyiv">
-                            <div class="product-count h4">
-                                <button class="border-0 bg-transparent">+</button>
-                                <span>1</span>
-                                <button class="border-0 bg-transparent">-</button>
-                            </div>
                             <div class="product-details-price p-3">
                                 <span class="p-1 {{($product->discount_price == "") ? 'd-none' : 'new-price'}}">{{$product->discount_price}}  {{$product->discount_price > 10000 ? 'сум' : '$'}}</span>
                                 <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} {{$product->price > 10000 ? 'сум' : '$'}}</span>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <div class="single-product-cart btn-hover w-50 pe-1 text-center">
-                                <a href="#" class="w-100 p-3 text-dark">Добавить в корзину</a>
+                            <div class="w-50 pe-1">
+                                @livewire('front.cart.cart-count-btn', ['product' => $product], key($product->id))
                             </div>
                             <div class="single-product-cart btn-hover w-50 ps-1 text-center">
                                 <a href="#" class="w-100 p-3 text-dark bg-light border border-1">Купить в один клик</a>
                             </div>
                         </div>
-{{--                        <div class="social-icon-style-4">--}}
-{{--                            <a href="#"><i class="fa fa-facebook"></i></a>--}}
-{{--                            <a href="#"><i class="fa fa-dribbble"></i></a>--}}
-{{--                            <a href="#"><i class="fa fa-pinterest-p"></i></a>--}}
-{{--                            <a href="#"><i class="fa fa-twitter"></i></a>--}}
-{{--                            <a href="#"><i class="fa fa-linkedin"></i></a>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
             </div>

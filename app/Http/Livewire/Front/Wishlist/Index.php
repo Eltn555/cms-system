@@ -19,7 +19,6 @@ class Index extends Component
     {
         if (Auth::check()) {
             $user = Auth::user();
-
             $cookie = json_decode(Cookie::get('wishlist', '[]'), true);
             if (!empty($cookie)) {
                 foreach ($cookie as $item) {
@@ -30,8 +29,6 @@ class Index extends Component
                 }
                 Cookie::queue(Cookie::forget('wishlist'));
             }
-
-
             $this->wishList = WishlistProduct::where('user_id', $user->id)->with('product')->get()->pluck('product');
         } else {
             $cookie = json_decode(Cookie::get('wishlist', '[]'), true);
@@ -48,7 +45,7 @@ class Index extends Component
 
     public function render()
     {
-        if ($this->wishList){
+        if (count($this->wishList) !== 0){
             return view('livewire.front.wishlist.index')->extends('front.layout')->section('content');
         }else{
             return view('livewire.front.wishlist.empty')->extends('front.layout')->section('content');

@@ -25,8 +25,12 @@ class CartItems extends Component
                 $productIds = [];
                 foreach ($cartArray as $item) {
                     $product = Product::where('id', $item['product_id'])->first();
-                    if (isset($item['product_id']) && $product != null) {
+                    if ($product != null) {
                         array_push($productIds, $product);
+                    }else {
+                        // Remove the invalid product from the cookie
+                        unset($cartArray[array_search($item, $cartArray)]);
+                        Cookie::queue('cart', json_encode($cartArray), 60 * 24 * 30);
                     }
                 }
                 // Fetch products from the database based on the product IDs

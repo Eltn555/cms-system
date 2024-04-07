@@ -5577,6 +5577,9 @@ textarea {
     font-size: 30px;
     line-height: 60px;
 }
+.single-product-cart{
+    transition: none !important;
+}
 
 .single-product-cart > a {
     display: inline-block;
@@ -8032,8 +8035,16 @@ textarea {
     padding: 5px 0;
     border: solid 0.5px lightgray;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    transition: none !important;
+}
+
+.product-count span,
+.product-count button{
+    font-weight: 500;
+    font-size: 20px;
+    padding: 11px 25px;
 }
 
 .product-details-content .product-details-meta {

@@ -52,7 +52,6 @@ class WishlistButton extends Component
                 // Add product to wishlist
                 $this->wishList[] = $this->product->id;
             }
-
             Cookie::queue('wishlist', json_encode($this->wishList), 60 * 24 * 30);
             // Update wishlist count and check if product is in wishlist
         }

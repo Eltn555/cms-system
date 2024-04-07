@@ -29,6 +29,9 @@ class WishlistCount extends Component
                     $product = Product::where('id', $productId)->whereNull('deleted_at')->first();
                     if ($product !== null) {
                         $totalProducts++;
+                    } else {
+                        unset($wishlistArray[array_search($productId, $wishlistArray)]);
+                        Cookie::queue('wishlist', json_encode($wishlistArray), 60*24*30);
                     }
                 }
                 return $totalProducts;
