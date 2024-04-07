@@ -27,7 +27,7 @@ class AccountController extends Controller
         $data = $request->all();
         $image = Storage::put('/images', $data['image']);
         $data['image'] = $image;
-        Account::create($data);
+        User::create($data);
         return redirect()->route('admin.account.index');
     }
     public function update(User $account, Request $request) {
