@@ -11,10 +11,12 @@ use Livewire\Component;
 class CartCount extends Component
 {
     public $cartCount = 0;
+    public $overall;
 
     protected $listeners = ['checkCount' => 'checkItems'];
 
     public function checkItems(){
+        $this->overall = 0;
         if (Auth::check()){
             $this->cartCount = CartProduct::where('user_id', auth()->user()->id)->sum('amount');
         }else{
@@ -22,6 +24,7 @@ class CartCount extends Component
             if ($cartCookie){
                 $cartArray = json_decode($cartCookie, true);
                 $totalAmount = 0;
+
                 foreach ($cartArray as $item) {
                     $product = Product::where('id', $item['product_id'])->first();
                     if (isset($item['amount']) && $product != null) {

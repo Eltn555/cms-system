@@ -94,7 +94,7 @@
 {{--                            </ul>--}}
 {{--                        </div>--}}
                         <div class="product-details-action-wrap font-kyiv">
-                            <div class="product-details-price p-3">
+                            <div class="product-details-price py-3">
                                 <span class="p-1 {{($product->discount_price == "") ? 'd-none' : 'new-price'}}">{{$product->discount_price}}  {{$product->discount_price > 10000 ? 'сум' : '$'}}</span>
                                 <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} {{$product->price > 10000 ? 'сум' : '$'}}</span>
                             </div>
@@ -133,7 +133,7 @@
                         <h3>1 review for Sleeve Button Cowl Neck</h3>
                         <div class="single-review">
                             <div class="review-img">
-                                <img src="assets/images/product-details/review-1.png" alt="">
+                                <img src="{{asset('no_photo.jpg')}}" alt="">
                             </div>
                             <div class="review-content">
                                 <div class="review-rating">

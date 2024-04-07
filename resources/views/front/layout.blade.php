@@ -82,7 +82,7 @@
         document.querySelector('.wishlist-count').innerText = event.detail.count;
     });
     window.addEventListener('cartUpdate', event => {
-        console.log(event.detail.count);
+        $('.cartItem'+event.detail.id).text(event.detail.count);
     });
     window.addEventListener('console', event => {
         console.log(event.detail.console);

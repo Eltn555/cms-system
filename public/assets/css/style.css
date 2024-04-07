@@ -1601,7 +1601,7 @@ textarea {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 70px;
     -ms-flex: 0 0 70px;
-    flex: 0 0 70px;
+    flex: 0 0 110px;
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-img a img {
@@ -1610,26 +1610,35 @@ textarea {
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title h4 {
-    font-size: 15px;
-    margin: 0 0 8px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'KyivType', sans-serif;
+    color: #232323;
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title h4 a {
-    color: #000000;
+    color: #232323;
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title h4 a:hover {
     color: var(--theme-color);
 }
 
-.sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title span {
-    font-size: 15px;
-    color: #000000;
+.cart-buttons button,
+.cart-buttons span{
+    padding: 5px 20px !important;
+}
+
+.sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title .span {
+    font-size: 14px;
+    color: #8c8c8c;
+    font-family: 'KyivType', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-delete {
@@ -7886,16 +7895,16 @@ textarea {
     }
 }
 
-.product-details-content .product-details-price {
+.product-details-price {
     margin: 0;
 }
 
-.product-details-content .product-details-price span {
+.product-details-price span {
     font-weight: 500;
     display: inline-block;
 }
 
-.product-details-content .product-details-price span.old-price {
+.product-details-price span.old-price {
     color: #777777;
     font-size: 25px;
     font-weight: 500;
@@ -7957,7 +7966,7 @@ textarea {
     -webkit-text-stroke: 1px rgba(202, 202, 202, 0.4); /* Set the text stroke for WebKit browsers (Chrome, Safari) */
 }
 
-.product-details-content .product-details-price span.new-price {
+.product-details-price span.new-price {
     color: #232323;
     font-size: 25px;
     font-weight: 700;
