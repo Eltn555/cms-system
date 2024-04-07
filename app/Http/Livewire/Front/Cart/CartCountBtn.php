@@ -13,10 +13,14 @@ class CartCountBtn extends Component
     public $cartCount;
     public $exists;
     public $productCount;
+    public $updatedCount;
+    public $cookie;
 
 
     public function mount($product){
         $this->product = $product;
+        $cartCookie = Cookie::get('cart');
+        $this->cookie = $cartCookie ? json_decode($cartCookie, true) : [];
         $this->update();
     }
 
@@ -35,39 +39,42 @@ class CartCountBtn extends Component
                 }
             } else {
                 CartProduct::create([
-                   'user_id' => $user->id,
-                   'product_id' => $this->product->id,
+                    'user_id' => $user->id,
+                    'product_id' => $this->product->id,
                     'amount' => 1
                 ]);
             }
         } else {
             $cartCookie = Cookie::get('cart');
-            $cartArray = $cartCookie ? json_decode($cartCookie, true) : [];
-
-            $amount = 1; // Default amount value
-
-            foreach ($cartArray as &$item) {
+            $this->cookie = $cartCookie ? json_decode($cartCookie, true) : [];
+            $amount = 0; // Default amount value
+            foreach ($this->cookie as $key => $item) {
                 if ($item['product_id'] == $this->product->id) {
                     $amount = $item['amount'];
                     if ($amount == 1 && $action == 'remove') {
-                        unset($item);
+                        unset($this->cookie[$key]); // Remove the item from the array
+                        $this->exists = null;
+                        $this->updatedCount = 0;
                     } elseif ($amount > 1 && $action == 'remove') {
-                        $item['amount'] = --$amount;
+                        $this->cookie[$key]['amount'] = --$amount; // Update the amount
+                        $this->updatedCount = --$amount;
                     } elseif ($action == 'add') {
-                        $item['amount'] = ++$amount;
+                        $this->cookie[$key]['amount'] = ++$amount; // Update the amount
+                        $this->updatedCount = ++$amount;
                     }
-                    break;
                 }
             }
 
-            if ($amount == 1 && $action == 'add') {
-                $cartArray[] = ['product_id' => $this->product->id, 'amount' => $amount];
+            if ($amount == 0 && $action == 'add') {
+                $this->cookie[] = ['product_id' => $this->product->id, 'amount' => $amount+1];
+                $this->updatedCount = 1;
             }
 
-            // Save updated cart data back to the cookie
-            Cookie::queue('cart', json_encode($cartArray), 60 * 24 * 30);
+//            $this->dispatchBrowserEvent('cartUpdate', ['count' => $this->cookie]);
+            Cookie::queue('cart', json_encode($this->cookie), 60 * 24 * 30);
         }
         $this->update();
+        $this->updateState();
     }
 
     public function add(){
@@ -78,29 +85,38 @@ class CartCountBtn extends Component
         $this->check('remove');
     }
 
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'cookie') {
+            $this->updateState();
+        }
+    }
+
     public function update(){
         if (Auth::check()){
             $user = Auth::user();
             $this->exists = CartProduct::where('user_id', $user->id)->where('product_id', $this->product->id)->first();
-            $this->cartCount = CartProduct::where('user_id', $user->id)->sum('amount');
             if ($this->exists){
                 $this->productCount = $this->exists->amount;
             }
         }else{
-            $cartCookie = Cookie::get('cart');
-            if ($cartCookie){
-                $cartArray = json_decode($cartCookie, true);
-
-                $totalAmount = 0;
-                foreach ($cartArray as $item) {
-                    if (isset($item['amount'])) {
-                        $totalAmount += $item['amount'];
+            $cookie = $this->cookie;
+            if ($cookie){
+                foreach ($cookie as $item) {
+                    if ($item['product_id'] == $this->product->id) {
+                        $this->exists = true;
+                        $this->productCount = $item['amount'];
                     }
                 }
-                $this->cartCount = $totalAmount;
             }
         }
-        $this->dispatchBrowserEvent('cartUpdate', ['count' => $this->cartCount]);
+    }
+
+    public function updateState()
+    {
+        $this->update();
+        $this->emit('checkItems');
+        $this->emit('checkCount');
     }
 
     public function render()

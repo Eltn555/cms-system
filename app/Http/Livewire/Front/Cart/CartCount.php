@@ -3,38 +3,40 @@
 namespace App\Http\Livewire\Front\Cart;
 
 use App\Models\CartProduct;
+use App\Models\Product;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CartCount extends Component
 {
-    public $cartCount;
+    public $cartCount = 0;
+
+    protected $listeners = ['checkCount' => 'checkItems'];
 
     public function checkItems(){
         if (Auth::check()){
-            return CartProduct::where('user_id', auth()->user()->id)->sum('amount');
+            $this->cartCount = CartProduct::where('user_id', auth()->user()->id)->sum('amount');
         }else{
             $cartCookie = Cookie::get('cart');
             if ($cartCookie){
                 $cartArray = json_decode($cartCookie, true);
-
                 $totalAmount = 0;
                 foreach ($cartArray as $item) {
-                    if (isset($item['amount'])) {
+                    $product = Product::where('id', $item['product_id'])->first();
+                    if (isset($item['amount']) && $product != null) {
                         $totalAmount += $item['amount'];
                     }
                 }
-                return $totalAmount;
+                $this->cartCount = $totalAmount;
             }
         }
-        return "0";
     }
 
 
     public function render()
     {
-        $this->cartCount = $this->checkItems();
+        $this->checkItems();
         return view('livewire.front.cart.cart-count');
     }
 }

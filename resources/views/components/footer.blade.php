@@ -1,4 +1,5 @@
 <footer class="footer-area">
+    <livewire:front.cart.cart-items/>
     <div class="bg-gray-2">
         <div class="mx-5">
             <div class="footer-top pt-80 pb-35">

@@ -6,6 +6,7 @@ use App\Models\WishlistProduct;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Cookie;
+use App\Models\Product;
 
 class WishlistCount extends Component
 {
@@ -23,7 +24,14 @@ class WishlistCount extends Component
             $wishlistCookie = Cookie::get('wishlist');
             if ($wishlistCookie) {
                 $wishlistArray = json_decode($wishlistCookie, true);
-                return count($wishlistArray);
+                $totalProducts = 0;
+                foreach ($wishlistArray as $productId) {
+                    $product = Product::where('id', $productId)->whereNull('deleted_at')->first();
+                    if ($product !== null) {
+                        $totalProducts++;
+                    }
+                }
+                return $totalProducts;
             }
         }
         return ""; // No wishlist items for non-logged-in users
