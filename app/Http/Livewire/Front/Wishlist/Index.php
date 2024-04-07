@@ -19,6 +19,19 @@ class Index extends Component
     {
         if (Auth::check()) {
             $user = Auth::user();
+
+            $cookie = json_decode(Cookie::get('wishlist', '[]'), true);
+            if (!empty($cookie)) {
+                foreach ($cookie as $item) {
+                    WishlistProduct::create([
+                        'user_id' => $user->id,
+                        'product_id' => $item
+                    ]);
+                }
+                Cookie::queue(Cookie::forget('wishlist'));
+            }
+
+
             $this->wishList = WishlistProduct::where('user_id', $user->id)->with('product')->get()->pluck('product');
         } else {
             $cookie = json_decode(Cookie::get('wishlist', '[]'), true);
