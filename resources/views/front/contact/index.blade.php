@@ -50,7 +50,7 @@
                     <p class="mb-0 fw-semibold">Ул. Паркентская, дом 241</p>
                 </div>
                 <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
-                    <input class="radio" type="radio" name="location" value="39.647911, 66.925854">
+                    <input class="radio" type="radio" name="location" value="39.663604, 66.922674">
                     <p class="mb-0 fw-semibold">г. Самарканд, Микрорайон (Напротив поликлиники)</p>
                 </div>
 
@@ -158,7 +158,7 @@
                     balloonContent: 'Ул. Паркентская, дом 241'
                 },
                 {
-                    coordinates: [39.647911, 66.925854],
+                    coordinates: [39.663604, 66.922674],
                     hintContent: 'г. Самарканд, Микрорайон (Напротив поликлиники)',
                     balloonContent: 'г. Самарканд, Микрорайон (Напротив поликлиники)'
                 }
