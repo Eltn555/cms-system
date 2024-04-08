@@ -107,7 +107,7 @@
                             <!-- SIDEBAR CATEGORY LIST -->
 
                             <div class="sidebar-widget-title mb-25">
-                                <h3>Product Categories</h3>
+                                <h3>Категории</h3>
                             </div>
 
                             <div class="sidebar-list-style">
@@ -123,7 +123,7 @@
 
                         <div class="sidebar-widget aos-init">
                             <div class="sidebar-widget-title mb-25">
-                                <h3>Tags</h3>
+                                <h3>Теги</h3>
                             </div>
                             <div class="sidebar-widget-tag">
                                 @foreach($tags as $tag)
