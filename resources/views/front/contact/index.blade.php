@@ -70,7 +70,7 @@
 {{--                        </a>--}}
 {{--                    </div>--}}
                     <div class="col-4 p-0">
-                        <a href="https://t.me/lumen_lux_light" class="p-1"><svg width="20" height="20" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <a href="https://t.me/lumen_lux_light" class="p-1"><svg width="24" height="24" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="18.67" height="18.67" fill="url(#pattern0_2361_14441)"/>
                                 <defs>
                                     <pattern id="pattern0_2361_14441" patternContentUnits="objectBoundingBox" width="1" height="1">
