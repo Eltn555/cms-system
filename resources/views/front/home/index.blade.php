@@ -127,8 +127,8 @@
             <div class="container">
                 <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
                     <div class="col-6">
-                        <h5 class="shadow-text-1 font-cormorant fw-bold">Новое<br>поступление</h5>
-                        <h5 class="shadow-text-2 font-cormorant fw-bold">Новое<br>поступление</h5>
+                        <h5 class="shadow-text-1 font-cormorant fw-bold">Новые<br>поступления</h5>
+                        <h5 class="shadow-text-2 font-cormorant fw-bold">Новые<br>поступления</h5>
                     </div>
                     <div class="col-6 justify-content-end align-items-end d-flex">
                         <div class="single-product-cart btn-hover ps-1 text-end">
