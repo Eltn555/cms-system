@@ -59,35 +59,35 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6" style="height: 100px">
-                                            <div class="single-input-item">
-                                                <label for="last-name" class="required">Фамилия</label>
-                                                <div class="position-relative">
-                                                    <input style="display:none;" type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname ?? ''}}"/>
-                                                    <span class="p-3 position-absolute top-50">{{ $profile->lastname ?? 'Undefined'}}</span>
-                                                    <div class="position-absolute icon-input">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <g clip-path="url(#clip0_1334_4361)">
-                                                                <circle cx="10" cy="7.5" r="2.5" stroke="#8C8C8C"
-                                                                        stroke-width="1.5"/>
-                                                                <circle cx="9.99935" cy="9.99996" r="8.33333"
-                                                                        stroke="#8C8C8C" stroke-width="1.5"/>
-                                                                <path
-                                                                    d="M14.974 16.6667C14.8414 14.2571 14.1037 12.5 9.99971 12.5C5.89576 12.5 5.15801 14.2571 5.02539 16.6667"
-                                                                    stroke="#8C8C8C" stroke-width="1.5"
-                                                                    stroke-linecap="round"/>
-                                                            </g>
-                                                            <defs>
-                                                                <clipPath id="clip0_1334_4361">
-                                                                    <rect width="20" height="20" fill="white"/>
-                                                                </clipPath>
-                                                            </defs>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+{{--                                        <div class="col-lg-6" style="height: 100px">--}}
+{{--                                            <div class="single-input-item">--}}
+{{--                                                <label for="last-name" class="required">Фамилия</label>--}}
+{{--                                                <div class="position-relative">--}}
+{{--                                                    <input style="display:none;" type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname ?? ''}}"/>--}}
+{{--                                                    <span class="p-3 position-absolute top-50">{{ $profile->lastname ?? 'Undefined'}}</span>--}}
+{{--                                                    <div class="position-absolute icon-input">--}}
+{{--                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"--}}
+{{--                                                             xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                            <g clip-path="url(#clip0_1334_4361)">--}}
+{{--                                                                <circle cx="10" cy="7.5" r="2.5" stroke="#8C8C8C"--}}
+{{--                                                                        stroke-width="1.5"/>--}}
+{{--                                                                <circle cx="9.99935" cy="9.99996" r="8.33333"--}}
+{{--                                                                        stroke="#8C8C8C" stroke-width="1.5"/>--}}
+{{--                                                                <path--}}
+{{--                                                                    d="M14.974 16.6667C14.8414 14.2571 14.1037 12.5 9.99971 12.5C5.89576 12.5 5.15801 14.2571 5.02539 16.6667"--}}
+{{--                                                                    stroke="#8C8C8C" stroke-width="1.5"--}}
+{{--                                                                    stroke-linecap="round"/>--}}
+{{--                                                            </g>--}}
+{{--                                                            <defs>--}}
+{{--                                                                <clipPath id="clip0_1334_4361">--}}
+{{--                                                                    <rect width="20" height="20" fill="white"/>--}}
+{{--                                                                </clipPath>--}}
+{{--                                                            </defs>--}}
+{{--                                                        </svg>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                         <div class="col-lg-6" style="height: 100px">
                                             <div class="single-input-item">
                                                 <label for="display-name" class="required">Телефон номер</label>
