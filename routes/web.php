@@ -41,8 +41,12 @@ Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('fron
 Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.category.index');
 Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('front.product.show');
 Route::get('/wishlist',\App\Http\Livewire\Front\Wishlist\Index::class)->name('front.wishlist.index');
-Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cart.index');
-Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
+
+Route::group(['prefix' => '/', 'middleware' => ['front_auth']], function (){
+    Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cartItems.index');
+    Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
+});
+
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/blog', Blog::class)->name('blog.index');
