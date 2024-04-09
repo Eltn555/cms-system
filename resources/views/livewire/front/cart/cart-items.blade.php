@@ -19,7 +19,7 @@
                             </div>
                             <div class="row w-100 d-flex justify-content-between m-0 p-0">
                                 <div class="col-9 col-sm-6 cart-buttons p-0">
-                                    @livewire('front.cart.cart-count-btn', ['product' => $item], key($item->id))
+{{--                                    <livewire:front.cart.cart-count-btn :product="$item" :wire:key="$item->id">--}}
                                 </div>
                                 <div class="col-2 d-flex justify-content-end p-0">
                                     <button wire:click="delete({{$item->id}})" class="border-0 bg-transparent">

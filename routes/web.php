@@ -42,9 +42,10 @@ Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.categ
 Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('front.product.show');
 Route::get('/wishlist',\App\Http\Livewire\Front\Wishlist\Index::class)->name('front.wishlist.index');
 
+Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cartItems.index');
+Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
 Route::group(['prefix' => '/', 'middleware' => ['front_auth']], function (){
-    Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cartItems.index');
-    Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
+    Route::get('/checkout',\App\Http\Livewire\Front\Checkout::class)->name('front.checkout.index');
 });
 
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');

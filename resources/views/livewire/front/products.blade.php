@@ -1,5 +1,5 @@
 @section('title', $product->title)
-@section('description', $product->seo_description)
+{{--@section('description', $product->seo_description)--}}
 @section('keyword', $product->seo_title)
 <div>
     <div class="product-details-area pb-100 pt-100">

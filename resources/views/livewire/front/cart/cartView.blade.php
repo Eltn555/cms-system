@@ -2,6 +2,7 @@
 @section('style')
     <style>
         .cart-imgs{
+            background-color: #f4f4f4;
             -webkit-box-flex: 0;
             -webkit-flex: 0 0 70px;
             -ms-flex: 0 0 70px;
@@ -26,7 +27,7 @@
                     @foreach($items as $item)
                         <li class="border-top border-1 d-flex py-4">
                             <div class="cart-imgs d-flex align-items-center">
-                                <a href="{{route('front.product.show', ['slug' => $item->slug])}}"><img src="{{asset(($item->images()->first()) ? 'storage/'.$item->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->title}}"></a>
+                                <a href="{{route('front.product.show', ['slug' => $item->slug])}}"><img class="border-0" src="{{asset(($item->images()->first()) ? 'storage/'.$item->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->title}}"></a>
                             </div>
                             <div class="cart-title w-100 px-3">
                                 <h5><a class="font-kyiv fw-bolder" href="{{route('front.product.show', ['slug' => $item->slug])}}">{{$item->title}}</a></h4>
@@ -39,7 +40,8 @@
                                 </div>
                                 <div class="row w-100 d-flex justify-content-between m-0 p-0">
                                     <div class="col-6 col-sm-6 cart-buttons p-0">
-                                        @livewire('front.cart.cart-count-btn', ['product' => $item], key($item->id))
+{{--                                        @livewire('', ['product' => $item], key($item->id))--}}
+                                        <livewire:front.cart.cart-count-btn :product="$item" :wire:key="$item->id">
                                     </div>
                                     <div class="col-6 d-flex justify-content-end p-0">
                                         <button wire:click="delete({{$item->id}})" class="border-0 bg-transparent">
@@ -49,7 +51,7 @@
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.663 26.3333H18.337C20.6559 26.3333 21.8154 26.3333 22.5693 25.5951C23.3231 24.8568 23.4003 23.6458 23.5545 21.2238L23.7768 17.7338C23.8605 16.4197 23.9023 15.7626 23.5241 15.3462C23.1459 14.9298 22.5073 14.9298 21.23 14.9298H14.77C13.4927 14.9298 12.8541 14.9298 12.4759 15.3462C12.0977 15.7626 12.1395 16.4197 12.2232 17.7338L12.4455 21.2238C12.5997 23.6458 12.6769 24.8568 13.4307 25.5951C14.1846 26.3333 15.3441 26.3333 17.663 26.3333ZM16.5386 18.1571C16.5042 17.7955 16.1979 17.5317 15.8545 17.5679C15.511 17.6041 15.2604 17.9264 15.2948 18.288L15.7114 22.674C15.7458 23.0355 16.0521 23.2993 16.3955 23.2631C16.739 23.227 16.9896 22.9046 16.9552 22.543L16.5386 18.1571ZM20.1455 17.5679C20.489 17.6041 20.7396 17.9264 20.7052 18.288L20.2886 22.674C20.2542 23.0355 19.9479 23.2993 19.6045 23.2631C19.261 23.227 19.0104 22.9046 19.0448 22.543L19.4614 18.1571C19.4958 17.7955 19.8021 17.5317 20.1455 17.5679Z" fill="#CBCBCB"/>
                                             </svg>
                                         </button>
-{{--                                        @livewire('front.wishlist.wishlist-button', ['product' => $item], key($item->id))--}}
+{{--                                        <livewire:front.wishlist.wishlist-button :product="$item" :wire:key="$item->id">--}}
                                     </div>
                                 </div>
                             </div>
