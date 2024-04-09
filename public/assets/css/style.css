@@ -11072,11 +11072,11 @@ textarea {
     margin-top: 50px;
 }
 
-.myaccount-content .account-details-form .single-input-item {
+.single-input-item {
     margin-bottom: 20px;
 }
 
-.myaccount-content .account-details-form .single-input-item label {
+.single-input-item label {
     font-size: 14px;
     text-transform: capitalize;
     display: block;
@@ -11084,8 +11084,8 @@ textarea {
     margin: 0 0 5px;
 }
 
-.myaccount-content .account-details-form .single-input-item input,
-.myaccount-content .account-details-form .single-input-item select{
+.single-input-item input,
+.single-input-item select{
     border: 1px solid #E0E0E0;
     height: 50px;
     background-color: #f4f4f4;
@@ -11096,12 +11096,12 @@ textarea {
     width: 100%;
 }
 
-.myaccount-content .account-details-form .single-input-item input:focus,
-.myaccount-content .account-details-form .single-input-item select:focus{
+.single-input-item input:focus,
+.single-input-item select:focus{
     border: 1px solid #F8B301;
 }
 
-.myaccount-content .account-details-form .single-input-item button {
+.single-input-item button {
     border: none;
     font-family: 'KyivType', sans-serif;
     background-color: var(--theme-color);

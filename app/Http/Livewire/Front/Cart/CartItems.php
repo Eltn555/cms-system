@@ -16,6 +16,8 @@ class CartItems extends Component
     public $cartArray;
     protected $listeners = ['render' => 'reRender', 'overall'];
     public $truePrice;
+    public $disc;
+    public $usd;
 
     public function overall($overall){
         $this->overall = $overall;
@@ -29,6 +31,36 @@ class CartItems extends Component
     public function mount(){
         $cartCookie = Cookie::get('cart');
         $this->cartArray = ($cartCookie) ? json_decode($cartCookie, true) : [];
+
+        if(auth()->user() && !empty($this->cartArray)) {
+            $user = auth()->user();
+            foreach($this->cartArray as $item) {
+                // Check if the product already exists in the user's cart
+                $existingCartItem = CartProduct::where('user_id', $user->id)
+                    ->where('product_id', $item['product_id'])
+                    ->first();
+
+                if (!$existingCartItem) {
+                    // Product doesn't exist in the cart, create a new entry
+                    CartProduct::create([
+                        'user_id' => $user->id,
+                        'product_id' => $item['product_id'],
+                        'amount' => $item['amount']
+                    ]);
+                } else {
+                    // Product already exists in the cart, update the amount if needed
+                    $existingCartItem->update([
+                        'amount' => $existingCartItem->amount + $item['amount']
+                    ]);
+                }
+            }
+
+            // Remove the cart cookie after processing its items
+            Cookie::queue(Cookie::forget('cart'));
+
+            // Refresh the cartArray with the user's updated cart items
+            $this->cartArray = $user->cartItems->toArray();
+        }
     }
 
     public function checkItems(){
@@ -77,16 +109,23 @@ class CartItems extends Component
     }
 
     public function check(){
+        $this->usd = 12650;
+        $this->disc = 0;
         $this->overall = 0;
         $this->truePrice = 0;
         if (Auth::check()){
-            $this->overall = CartProduct::where('user_id', auth()->user()->id)
-                ->with('product') // Assuming 'product' is the relationship between CartProduct and Product
-                ->get()
-                ->sum(function ($cartProduct) {
-                    // Calculate the total price of each cart item, considering discount if available
-                    return $cartProduct->product->discount_price ?? $cartProduct->product->price;
-                });
+            $cartArray = CartProduct::where('user_id', auth()->user()->id)->with('product')->get();
+            foreach ($cartArray as $item) {
+                $product = Product::where('id', $item['product_id'])->first();
+                if (isset($item['amount']) && $product != null) {
+                    $price1 = $product->discount_price ?? $product->price;
+                    $price = ($price1 > 10000) ? $price1 : $price1 * $this->usd;
+                    $truePric = ($product->price > 10000) ? $product->price : $product->price * $this->usd;
+                    $this->overall += $price * $item['amount'];
+                    $this->truePrice += $truePric * $item['amount'];
+                }
+            }
+            $this->disc = $this->truePrice - $this->overall;
         }else{
             $cartCookie = Cookie::get('cart');
             if ($cartCookie){
@@ -95,12 +134,15 @@ class CartItems extends Component
                 foreach ($cartArray as $item) {
                     $product = Product::where('id', $item['product_id'])->first();
                     if (isset($item['amount']) && $product != null) {
-                        $price = $product->discount_price ?? $product->price;
+                        $price1 = $product->discount_price ?? $product->price;
+                        $price = ($price1 > 10000) ? $price1 : $price1 * $this->usd;
+                        $truePric = ($product->price > 10000) ? $product->price : $product->price * $this->usd;
                         $this->overall += $price * $item['amount'];
-                        $this->truePrice += $product->price * $item['amount'];
+                        $this->truePrice += $truePric * $item['amount'];
                     }
                 }
             }
+            $this->disc = $this->truePrice - $this->overall;
         }
     }
 

@@ -68,22 +68,20 @@
                     </div>
                     <div class="font-kyiv d-flex justify-content-between">
                         <p class="fs-5 font-kyiv">Скидка:</p>
-                        <p class="fs-5 font-kyiv text-black font-semibold">{{number_format($disc, 0, '.', ' ')}} сум сум</p>
+                        <p class="fs-5 font-kyiv text-black font-semibold">{{number_format($disc, 0, '.', ' ')}} сум</p>
                     </div>
-                    <div class="font-kyiv d-flex justify-content-between">
+                    <div class="font-kyiv d-flex justify-content-between flex-column">
                         <p class="fs-5 font-kyiv">Добавьте примечание к вашему заказу:</p>
-                        <textarea>
-
-                        </textarea>
+                        <textarea wire:model="textareaValue" class="border-0 font-kyiv fw-semibold fs-6" placeholder="Напишите..."></textarea>
                     </div>
                 </div>
-                <div class="border-bottom border-1 text-secondary d-flex justify-content-between">
+                <div class="border-bottom border-1 mt-3 text-secondary d-flex justify-content-between">
                     <p class="font-kyiv fs-5">Промежуточный итог:</p>
                     <p class="font-kyiv fs-5 fw-bolder text-black">{{number_format($overall, 0, '.', ' ')}} сум</p>
                 </div>
                 <div class="row">
                     <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12">
-                        <a href="#" class="w-100 text-dark p-3">Перейти к оформление заказа</a>
+                        <a href="{{ route('front.checkout.index', ['textareaValue' => $textareaValue]) }}" class="w-100 text-dark p-3">Перейти к оформление заказа</a>
                     </div>
                 </div>
             </div>

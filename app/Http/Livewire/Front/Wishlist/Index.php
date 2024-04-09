@@ -20,12 +20,21 @@ class Index extends Component
         if (Auth::check()) {
             $user = Auth::user();
             $cookie = json_decode(Cookie::get('wishlist', '[]'), true);
-            if (!empty($cookie)) {
-                foreach ($cookie as $item) {
-                    WishlistProduct::create([
-                        'user_id' => $user->id,
-                        'product_id' => $item
-                    ]);
+            if (auth()->check() && !empty($cookie)) {
+                $user = auth()->user();
+                foreach ($cookie as $productId) {
+                    // Check if the product already exists in the user's wishlist
+                    $existingWishlistItem = WishlistProduct::where('user_id', $user->id)
+                        ->where('product_id', $productId)
+                        ->first();
+
+                    if (!$existingWishlistItem) {
+                        // Product doesn't exist in the wishlist, create a new entry
+                        WishlistProduct::create([
+                            'user_id' => $user->id,
+                            'product_id' => $productId
+                        ]);
+                    }
                 }
                 Cookie::queue(Cookie::forget('wishlist'));
             }
