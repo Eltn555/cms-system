@@ -29,6 +29,21 @@ class CartView extends Component
     public function mount(){
         $cartCookie = Cookie::get('cart');
         $this->cartArray = ($cartCookie) ? json_decode($cartCookie, true) : [];
+
+        if(auth()->user()){
+        if(!empty($this->cartArray)) {
+            foreach($this->cartArray as $item) {
+                dump($item);
+                CartProduct::create([
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $item['product_id'],
+                    'amount'=>$item['amount']
+                ]);
+            }
+            Cookie::queue(Cookie::forget('cart'));
+            $this->cartArray = auth()->user()->cartItems->toArray();
+        }
+        }
     }
 
     public function checkItems(){

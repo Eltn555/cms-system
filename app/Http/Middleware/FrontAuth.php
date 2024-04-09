@@ -17,7 +17,7 @@ class FrontAuth
 
     public function handle(Request $request, Closure $next)
     {
-        if ($request->expectsJson()) {
+        if (auth()->user()) {
             return $next($request);
         } else {
             return redirect()->route('front.profile.index')->with('error', 'You don\'t have permission to access this page');
