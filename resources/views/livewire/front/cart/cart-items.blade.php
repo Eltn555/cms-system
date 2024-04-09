@@ -46,7 +46,7 @@
             </div>
             <div class="row">
                 <div class="single-product-cart btn-hover pe-sm-1 p-0 pb-2 text-center col-12 col-sm-6">
-                    <a href="#" class="w-100 text-dark bg-light border border-1">Посмотреть корзину</a>
+                    <a href="{{ route('front.cartItems.index') }}" class="w-100 text-dark bg-light border border-1">Посмотреть корзину</a>
                 </div>
                 <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12 col-sm-6">
                     <a href="#" class="w-100 text-dark">Перейти к оплате</a>
