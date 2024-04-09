@@ -1597,14 +1597,15 @@ textarea {
     margin-bottom: 30px;
 }
 
-.sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-img {
+.cart-content ul li .cart-img {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 70px;
     -ms-flex: 0 0 70px;
     flex: 0 0 110px;
+    height: 150px;
 }
 
-.sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-img a img {
+.cart-content ul li .cart-img a img {
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -1628,9 +1629,14 @@ textarea {
     color: var(--theme-color);
 }
 
+.cart-buttons{
+    max-width: 185px;
+    min-width: 120px;
+}
+
 .cart-buttons button,
 .cart-buttons span{
-    padding: 5px 20px !important;
+    padding: 5px 15px !important;
 }
 
 .sidebar-cart-active .sidebar-cart-all .cart-content ul li .cart-title .span {
@@ -5011,25 +5017,23 @@ textarea {
     transition: all 0.4s ease 0s;
 }
 
-.product-wrap .product-img .product-action-wrap .product-action-btn-1 {
+.product-action-btn-1 {
     background-color: #fff;
-    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
     font-size: 23px;
-    height: 45px;
-    margin: 0 3px;
+    margin: 3px;
     text-align: center;
-    width: 45px;
     border: none;
-    border-radius: 6px;
     -webkit-transition: all 0.4s ease 0s;
     -o-transition: all 0.4s ease 0s;
     transition: all 0.4s ease 0s;
+    padding: 1px 6px;
+
 }
 
-.product-wrap .product-img .product-action-wrap .product-action-btn-1 i {
-    line-height: 45px;
+.prod-action{
+    width: 36px;
+    height: 36px;
 }
 
 .product-wrap .product-img .product-action-wrap .product-action-btn-1:first-child {
@@ -5044,9 +5048,13 @@ textarea {
     transform: translateY(20px);
 }
 
-.product-wrap .product-img .product-action-wrap .product-action-btn-1:hover {
+.product-wrap .product-img .product-action-wrap .product-action-btn-1>div:hover {
     color: #ffffff;
     background-color: var(--theme-color);
+}
+
+.product-action-btn-1>div{
+    background-color: rgb(244,244,244);
 }
 
 .product-wrap .product-img .product-action-2-wrap {

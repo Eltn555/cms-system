@@ -9,20 +9,20 @@ use Livewire\Component;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 
-class CartItems extends Component
+class CartView extends Component
 {
     public $items = [];
     public $overall = 0;
     public $cartArray;
     protected $listeners = ['render' => 'reRender', 'overall'];
     public $truePrice;
+    public $disc;
 
     public function overall($overall){
         $this->overall = $overall;
     }
 
     public function reRender(){
-        $this->mount();
         $this->check();
     }
 
@@ -37,20 +37,20 @@ class CartItems extends Component
             // User is authenticated, fetch products from the database
             $this->items = CartProduct::where('user_id', auth()->user()->id)->with('product')->get()->pluck('product');
         } elseif ($this->cartArray) {
-                // User is not authenticated, fetch products from the cookie
-                $productIds = [];
-                foreach ($this->cartArray as $item) {
-                    $product = Product::where('id', $item['product_id'])->first();
-                    if ($product != null) {
-                        array_push($productIds, $product);
-                    }else {
-                        // Remove the invalid product from the cookie
-                        unset($this->cartArray[array_search($item, $this->cartArray)]);
-                        Cookie::queue('cart', json_encode($this->cartArray), 60 * 24 * 30);
-                    }
+            // User is not authenticated, fetch products from the cookie
+            $productIds = [];
+            foreach ($this->cartArray as $item) {
+                $product = Product::where('id', $item['product_id'])->first();
+                if ($product != null) {
+                    array_push($productIds, $product);
+                }else {
+                    // Remove the invalid product from the cookie
+                    unset($this->cartArray[array_search($item, $this->cartArray)]);
+                    Cookie::queue('cart', json_encode($this->cartArray), 60 * 24 * 30);
                 }
-                // Fetch products from the database based on the product IDs
-                $this->items = $productIds;
+            }
+            // Fetch products from the database based on the product IDs
+            $this->items = $productIds;
         }
         $this->check();
     }
@@ -87,6 +87,14 @@ class CartItems extends Component
                     // Calculate the total price of each cart item, considering discount if available
                     return $cartProduct->product->discount_price ?? $cartProduct->product->price;
                 });
+            $this->truePrice = CartProduct::where('user_id', auth()->user()->id)
+                ->with('product') // Assuming 'product' is the relationship between CartProduct and Product
+                ->get()
+                ->sum(function ($cartProduct) {
+                    // Calculate the total price of each cart item, considering discount if available
+                    return $cartProduct->product->price;
+                });
+            $this->disc = $this->truePrice - $this->overall;
         }else{
             $cartCookie = Cookie::get('cart');
             if ($cartCookie){
@@ -101,6 +109,7 @@ class CartItems extends Component
                     }
                 }
             }
+            $this->disc = $this->truePrice - $this->overall;
         }
     }
 
@@ -108,6 +117,7 @@ class CartItems extends Component
     {
         $this->checkItems();
 
-        return view('livewire.front.cart.cart-items');
+
+        return view('livewire.front.cart.cartView')->extends('front.layout')->section('content');
     }
 }

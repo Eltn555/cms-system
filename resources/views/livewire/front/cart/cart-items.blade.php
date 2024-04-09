@@ -5,7 +5,7 @@
             <ul>
                 @foreach($items as $item)
                     <li>
-                        <div class="cart-img">
+                        <div class="cart-img d-flex align-items-center">
                             <a href="{{route('front.product.show', ['slug' => $item->slug])}}"><img src="{{asset(($item->images()->first()) ? 'storage/'.$item->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->title}}"></a>
                         </div>
                         <div class="cart-title w-100">

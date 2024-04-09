@@ -1,6 +1,9 @@
 <footer class="footer-area">
     <div class="sidebar-cart-active">
-        <livewire:front.cart.cart-items/>
+        @php
+        $sideBar = 'sidebar';
+        @endphp
+        @livewire('front.cart.cart-items', ['isSidebar' => 'sidebar'])
     </div>
     <div class="bg-gray-2">
         <div class="mx-5">
