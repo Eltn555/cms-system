@@ -91,8 +91,8 @@
     });
 </script>
 <!-- Main JS -->
-@stack('scripts')
 @yield('scripts')
+@stack('scripts')
 </body>
 
 </html>

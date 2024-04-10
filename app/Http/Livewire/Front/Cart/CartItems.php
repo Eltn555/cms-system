@@ -144,6 +144,7 @@ class CartItems extends Component
             }
             $this->disc = $this->truePrice - $this->overall;
         }
+        $this->emit('check');
     }
 
     public function render()

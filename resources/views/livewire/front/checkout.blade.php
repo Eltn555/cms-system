@@ -34,6 +34,26 @@
             overflow: hidden;
             transition: 1s !important;
         }
+        .bg-light{
+            background-color: rgb(244,244,244) !important;
+        }
+        .payment-meth{
+            height: 100px;
+            padding: 10px;
+        }
+        .payment-meth button{
+            border: 1px solid #F4F4F4;
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .payment-meth button:focus{
+            border: 1px solid #F8B301;
+        }
+        .payment-meth img{
+            width: 100%;
+        }
     </style>
 @endsection
 
@@ -42,6 +62,7 @@
         <h1 class="font-cormorant fw-bolder pb-4 mb-3">Оформление заказа</h1>
 
         <div class="col-12 col-lg-8 cart-content px-2">
+{{--            user Info--}}
             <div class="text-secondary p-4 border-1 border mb-5">
                 <h3 class="font-cormorant fw-bolder pb-3 border-bottom-1 mb-4">Информация покупателя</h3>
                 <div class="row">
@@ -59,10 +80,12 @@
                     </div>
                 </div>
             </div>
+
+{{--            delivery/collect--}}
             <div class="text-secondary p-4 border-1 border mb-5">
                 <h3 class="font-cormorant fw-bolder pb-3 border-bottom-1 mb-4">Информация доставки</h3>
 
-
+{{--collect Info--}}
                 <div class="mb-3">
                     <div class="p-3 d-flex align-items-center justify-content-between bg-light border showroom">
                         <div class="d-flex align-items-center ">
@@ -76,7 +99,7 @@
                         </div>
                         <p class="mb-0 fw-semibold">Ташкент, Самарканд</p>
                     </div>
-                    <div class="font-kyiv showroomList">
+                    <div class="font-kyiv showroomList {{($addressCollected)?'expanded':''}}">
                         <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio row m-0" wire:click="updateCollect('г. Ташкент, Ц5  (Напротив Респуликанской пожарки)')">
                             <div class="col-12 col-lg-8 d-flex align-items-center">
                                 <input class="radio mt-2 mt-lg-0" type="radio" name="location" {{($collect == 'г. Ташкент, Ц5  (Напротив Респуликанской пожарки)') ? 'checked' : ''}}>
@@ -107,7 +130,7 @@
                     </div>
                 </div>
 
-
+{{--                delivery Info--}}
                 <div class="">
                     <div class="p-3 d-flex align-items-center justify-content-between bg-light border delivery">
                         <div class="d-flex align-items-center ">
@@ -121,12 +144,12 @@
                         </div>
                         <p class="mb-0 fw-semibold">Бесплатная доставка по городу</p>
                     </div>
-                    <div class="font-kyiv deliverySet expanded">
-                        <div class="row mt-2">
+                    <div class="font-kyiv deliverySet {{(!$addressCollected)?'expanded':''}}">
+                        <div wire:ignore class="row mt-2">
                             <div class="col-lg-6">
                                 <div class="single-input-item">
                                     <label for="citySelect" class="required">Город</label>
-                                    <select id="citySelect" type="text">
+                                    <select id="citySelect" wire:click="$emit('Address', 'city', $event.target.options[$event.target.selectedIndex].text)" type="text">
                                         <option value="tashkent">Ташкент</option>
                                         <option value="tashkentobl">Ташкентская область</option>
                                         <option value="samarkand">Самарканд</option>
@@ -149,7 +172,7 @@
                             <div class="col-lg-6">
                                 <div class="single-input-item">
                                     <label for="regionSelect" class="required">Район</label>
-                                    <select id="regionSelect">
+                                    <select id="regionSelect" wire:click="$emit('Address', 'state', $event.target.options[$event.target.selectedIndex].text)">
 
                                     </select>
                                 </div>
@@ -157,18 +180,75 @@
                             <div class="col-lg-6">
                                 <div class="single-input-item">
                                     <label for="last-name" class="required">Улица</label>
-                                    <input type="text" id="last-name" placeholder="Напишите полное"
-                                           value="{{ $profile->address ?? ''}}"/>
+                                    <input wire:change="$emit('Address', 'address', $event.target.value)" type="text" id="last-name" placeholder="Напишите полное"
+                                           value="{{ $user->address ?? ''}}"/>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="single-input-item">
                                     <label for="display-name" class="required">Дом</label>
-                                    <input type="text" id="display-name"
+                                    <input wire:change="$emit('Address', 'home', $event.target.value)" type="text" id="display-name"
                                            placeholder="Напишите дом, подйез, этаж"
-                                           value="{{ $profile->home ?? ''}}"/>
+                                           value="{{ $user->home ?? ''}}"/>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{{--            payment--}}
+            <div wire:ignore class="text-secondary p-4 border-1 border mb-5">
+                <h3 class="font-cormorant fw-bolder pb-3 border-bottom-1 mb-4">Детали оплаты</h3>
+                <div class="row m-0">
+                    <div class="col-12 col-lg-4 p-0 px-lg-1 online">
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="delivery('Онлайн оплата')">
+                            <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
+                            <p class="mb-0 fw-semibold text-black">Онлайн оплата</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 p-0 px-lg-1">
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="delivery('Наличные')">
+                            <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Наличные') ? 'checked' : ''}}>
+                            <p class="mb-0 fw-semibold text-black">Наличные</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 p-0 px-lg-1">
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="delivery('Оплата на месте')">
+                            <input class="radio mt-2 mt-lg-0"  type="radio" name="payment" {{($payment == 'Оплата на месте') ? 'checked' : ''}}>
+                            <p class="mb-0 fw-semibold text-black">Оплата на месте</p>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1 d-flex flex-wrap overflow-hidden payments expanded">
+                        <div class="payment-meth">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Uzum')">
+                                <img src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
+                            </button>
+                        </div>
+                        <div class="payment-meth">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Click')">
+                                <img src="{{asset('storage/payment/click.jpg')}}" alt="Click LumenLux">
+                            </button>
+                        </div>
+                        <div class="payment-meth">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('PayMe')">
+                                <img src="{{asset('storage/payment/payme.png')}}" alt="PayMe LumenLux">
+                            </button>
+                        </div>
+                        <div class="payment-meth">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('UzCard')">
+                                <img src="{{asset('storage/payment/uzcard.png')}}" alt="UzCard LumenLux">
+                            </button>
+                        </div>
+                        <div class="payment-meth">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Humo')">
+                                <img src="{{asset('storage/payment/humo.png')}}" alt="Humo LumenLux">
+                            </button>
+                        </div>
+                        <div class="payment-meth">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Visa')">
+                                <img src="{{asset('storage/payment/visa.png')}}" alt="Visa LumenLux">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -179,33 +259,33 @@
             <div class="bg-light text-secondary p-3 border-1 border">
                 <h3 class="font-cormorant fw-bolder pb-3 border-bottom-1 mb-4">Чекаут</h3>
                 <div class="font-kyiv d-flex justify-content-between">
-                    <p class="pe-4">{{($collect) ? 'Забрать из шоурума:' : 'Доставка:'}}</p>
-                    <p class="text-black fw-500 text-end">{{$collect}}</p>
+                    <p class="pe-4">{{(!$addressCollected) ? 'Забрать из шоурума:' : 'Доставка:'}}</p>
+                    <p class="text-black fw-500 text-end">{{($collect) ? $collect : $addressCollected}}</p>
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
                     <p class="pe-4">Вид оплаты:</p>
-                    <p class="text-black fw-500 text-end">Наличные</p>
+                    <p class="text-black fw-500 text-end">{{$payment ? $payment : '-'}}</p>
                 </div>
-                <div class="font-kyiv d-flex justify-content-between">
+                <div class="font-kyiv d-flex justify-content-between {{(!$addressCollected)?'d-none':''}}">
                     <p class="pe-4">Сумма доставки:</p>
                     <p class="text-black fw-500 text-end">0</p>
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
                     <p class="pe-4">Цена товаров:</p>
-                    <p class="text-black fw-500 text-end">1200</p>
+                    <p class="text-black fw-500 text-end">{{$truePrice}} сум</p>
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
                     <p class="pe-4">Скидка:</p>
-                    <p class="text-black fw-500 text-end">-400</p>
+                    <p class="text-black fw-500 text-end">{{$disc}} сум</p>
                 </div>
                 <div class="border-top border-1 mb-0 pt-3 text-secondary d-flex justify-content-between align-items-end">
                     <p class="font-kyiv fs-5 fw-semibold mb-0">Итого:</p>
-                    <p class="font-kyiv fs-4 fw-bolder text-black mb-0"> сум</p>
+                    <p class="font-kyiv fs-4 fw-bolder text-black mb-0">{{$overall}} сум</p>
                 </div>
             </div>
             <div class="row p-3">
                 <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12">
-                    <a href="{{ route('front.checkout.index')}}" class="w-100 text-dark p-3">Перейти к оформление заказа</a>
+                    <a href="{{ route('front.checkout.index')}}" class="btn- w-100 text-dark p-3">Перейти к оформление заказа</a>
                 </div>
             </div>
         </div>
@@ -226,15 +306,17 @@
                 $('.showroomList').toggleClass('expanded');
                 $('.pick-up').toggleClass('d-none');
             });
+            $('.online').click(function() {
+                // Toggle the height of the showroomList element
+                $('.payments').toggleClass('expanded');
+            });
             $('.delivery').click(function() {
                 // Toggle the height of the showroomList element
                 $('.deliverySet').toggleClass('expanded');
                 $('.pick-down').toggleClass('d-none');
             });
         });
-    </script>
 
-    <script>
         // Define regions for each city
         const regions = {
             tashkent: ["Алмазарский район", "Чиланзарский район", "Шайхантахурский район", "Яккасарайский район", "Учтепинский район", "Мирабадский район", "Мирзо-Улугбекский район", "Сергелийский район", "Юнусабадский район", "Янгихаётский район", "Яшнободский район", "Bektemir district"],
@@ -273,10 +355,19 @@
             });
         }
 
+        window.addEventListener('livewire:load', function () {
+            Livewire.on('populateRegions', function (data) {
+                // Call your JavaScript function with the provided data
+                populateRegions(data.someData);
+            });
+        });
+
         window.onload = function () {
             populateRegions();
         };
-
+        setInterval(() => {
+            populateRegions();
+        }, 2000)
         // Event listener to populate regions when city is selected
         document.getElementById("citySelect").addEventListener("change", populateRegions);
     </script>
