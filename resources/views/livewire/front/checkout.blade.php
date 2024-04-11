@@ -54,6 +54,19 @@
         .payment-meth img{
             width: 100%;
         }
+        .flash-message{
+            top: 100px;
+            right: 10px;
+            opacity: 1;
+            transition: 0.2s;
+            position: fixed !important;
+        }
+        .hidden{
+            right: -500px;
+            opacity: 0;
+            transition: 1s;
+            position: fixed;
+        }
     </style>
 @endsection
 
@@ -202,51 +215,51 @@
                 <h3 class="font-cormorant fw-bolder pb-3 border-bottom-1 mb-4">Детали оплаты</h3>
                 <div class="row m-0">
                     <div class="col-12 col-lg-4 p-0 px-lg-1 online">
-                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="delivery('Онлайн оплата')">
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('Онлайн оплата')">
                             <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
                             <p class="mb-0 fw-semibold text-black">Онлайн оплата</p>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 p-0 px-lg-1">
-                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="delivery('Наличные')">
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('Наличные')">
                             <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Наличные') ? 'checked' : ''}}>
                             <p class="mb-0 fw-semibold text-black">Наличные</p>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4 p-0 px-lg-1">
-                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="delivery('Оплата на месте')">
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('Оплата на месте')">
                             <input class="radio mt-2 mt-lg-0"  type="radio" name="payment" {{($payment == 'Оплата на месте') ? 'checked' : ''}}>
                             <p class="mb-0 fw-semibold text-black">Оплата на месте</p>
                         </div>
                     </div>
                     <div class="col-12 p-1 d-flex flex-wrap overflow-hidden payments expanded">
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Uzum')">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Uzum')">
                                 <img src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Click')">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Click')">
                                 <img src="{{asset('storage/payment/click.jpg')}}" alt="Click LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('PayMe')">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('PayMe')">
                                 <img src="{{asset('storage/payment/payme.png')}}" alt="PayMe LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('UzCard')">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('UzCard')">
                                 <img src="{{asset('storage/payment/uzcard.png')}}" alt="UzCard LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Humo')">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Humo')">
                                 <img src="{{asset('storage/payment/humo.png')}}" alt="Humo LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="delivery('Visa')">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Visa')">
                                 <img src="{{asset('storage/payment/visa.png')}}" alt="Visa LumenLux">
                             </button>
                         </div>
@@ -285,15 +298,25 @@
             </div>
             <div class="row p-3">
                 <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12">
-                    <a href="{{ route('front.checkout.index')}}" class="btn- w-100 text-dark p-3">Перейти к оформление заказа</a>
+                    <a wire:click="button()" class="btn- w-100 text-dark p-3">Перейти к оформление заказа</a>
                 </div>
             </div>
         </div>
     </div>
+            <div class="hidden bg-danger flash-message position-absolute text-white px-4 py-2 rounded shadow">
+                Ошибка: {{ $flashMessage }}
+            </div>
 </div>
 
 @section('scripts')
     <script>
+        window.addEventListener('flashMessage', event => {
+            const flashMessage = document.querySelector('.flash-message');
+            flashMessage.text = event.detail.message;
+            flashMessage.classList.remove('hidden');
+            setTimeout(() => flashMessage.classList.add('hidden'), 2000);
+        });
+
         $(document).ready(function() {
             $('.map-radio').click(function() {
                 // Trigger click event on the radio button when the div is clicked
