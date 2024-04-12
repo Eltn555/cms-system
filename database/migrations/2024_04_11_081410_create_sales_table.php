@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('saleItem_id');
-            $table->decimal('price', 10, 2);
-            $table->decimal('discount', 10, 2);
+            $table->decimal('price', 20, 2);
+            $table->decimal('discount', 20, 2);
             $table->integer('total_amount');
             $table->string('status');
             $table->unsignedBigInteger('payment_id');

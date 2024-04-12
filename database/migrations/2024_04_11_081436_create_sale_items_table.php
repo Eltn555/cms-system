@@ -18,10 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('sales_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
-            $table->decimal('price', 10, 2);
-            $table->decimal('discount', 10, 2)->nullable();
+            $table->decimal('price', 20, 2);
+            $table->decimal('discount', 20, 2)->nullable();
             $table->integer('amount');
-            $table->decimal('overall', 10, 2);
+            $table->decimal('overall', 20, 2);
             $table->timestamps();
         });
     }

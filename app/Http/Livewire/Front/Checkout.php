@@ -8,6 +8,7 @@ use App\Models\Sale;
 use App\Models\SaleItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,6 @@ class Checkout extends Component
     public $disc;
     public $overall;
     public $truePrice;
-    public $text;
     public $collect;
     public $address;
     public $addressCollected;
@@ -58,6 +58,8 @@ class Checkout extends Component
                     $this->truePrice += $truePric * $item['amount'];
                     $this->itemAmount += $item['amount'];
                     $this->saleItems[] = [
+                        'name' => $product->title,
+                        'slug' => $product->slug,
                         'product_id' => $product->id,
                         'user_id' => $this->user->id,
                         'price' => $product->price,
@@ -94,19 +96,50 @@ class Checkout extends Component
     public function button(){
         $this->sale = $this->checker();
         if ($this->sale){
-//            dd($this->saleItems);
+            $products = '';
             $saleDb = Sale::create($this->sale);
             foreach ($this->saleItems as $item) {
+                $slug = $item['slug'];
+                $name = $item['name'];
+                unset($item['name']);
+                unset($item['slug']);
                 $item['sales_id'] = $saleDb->id;
                 SaleItem::create($item);
+                $url = route('front.product.show', ['slug' => $slug]);
+                $products .= "<a href='".$url."'><i>".$name."</i> - ".$item['amount']." x ".$item['price']." = ".$item['overall']."</a>\n";
             }
             CartProduct::where('user_id', auth()->user()->id)->delete();
+            $text = '<b>Клиент:'.$this->user->name.'
+Номер тел:<code>'.$this->user->phone.'</code>
+Адрес:'.$this->sale['address_place'].'
+Тип доставки:'.$this->sale['collecting_type'].'
+Продукты:
+'.$products.'Скидка: '.$this->truePrice - $this->overall.'
+Общая цена:'.$this->overall.'
+Форма оплата:'.$this->payment.'
+Дата:'.$saleDb['created_at'].'</b>';
+            $this->submitForm($text);
             return redirect()->route('front.profile.index');
         }
     }
 
+    public function submitForm($text)
+    {
+        // Validate form fields
+        $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+        $chatId = ['791430493', '1641704306']; //1641704306 You'll need to obtain your chat ID from your bot
+
+        foreach ($chatId as $chat){
+            $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
+                'chat_id' => $chat,
+                'text' => $text,
+                'parse_mode' => 'HTML',
+            ]);
+        }
+    }
+
     public function checker(){
-        if ($this->overall){
+        if ($this->overall != 0){
             $sales = [
                 'user_id' => $this->user->id,
                 'price' => $this->overall,
@@ -127,7 +160,7 @@ class Checkout extends Component
                 return null;
             }elseif ($this->collect){
                 $sales['address_place'] = $this->collect;
-                $sales['collecting_type'] = 'Забрать';
+                $sales['collecting_type'] = 'Самовывоз';
             }elseif($this->addressCollected){
                 if ($this->address['address'] && $this->address['state'] && $this->address['city']){
                     $sales['address_place'] = $this->addressCollected;
@@ -138,6 +171,10 @@ class Checkout extends Component
                     return null;
                 }
             }
+        } else {
+            $this->flashMessage = 'Выберите продукты, чтобы продолжить';
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите продукты, чтобы продолжить']);
+            return null;
         }
         return $sales;
     }
