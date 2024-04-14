@@ -322,7 +322,7 @@
 
     <div class="product-area pb-95 mt-4">
         <div class="container">
-            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
+            <div class="pt-3 mb-20 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="20">
                 <div class="col-6">
                     <h5 class="shadow-text-1 font-cormorant fw-bold">Трендовые<br>товары</h5>
                     <h5 class="shadow-text-2 font-cormorant fw-bold">Трендовые<br>товары</h5>
@@ -334,7 +334,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-content jump" data-aos="fade-up" data-aos-delay="100">
+            <div class="tab-content jump" data-aos="fade-up" data-aos-delay="50">
                 @if(isset($tagsIndex[0]))
                     @php
                         $tag = $tagsIndex[0];

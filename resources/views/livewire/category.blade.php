@@ -152,9 +152,12 @@
             document.title = event.detail.title;
         });
         window.addEventListener('urlChanged', event => {
-            AOS.init();
+            setTimeout(() => {
+                AOS.init();
                 window.history.replaceState(null, null, event.detail.url);
+            }, 100);
         });
+
         function toTop() {
             // Trigger a click event on the element with id #scrollUp
             document.getElementById('scrollUp').click();

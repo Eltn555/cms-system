@@ -14,6 +14,7 @@ class Categories extends Component
 {
     use WithPagination;
 
+    public $hasCategory;
     public $category;
     public $categories;
     public $icon;
@@ -46,24 +47,22 @@ class Categories extends Component
     public function setPrice($price)
     {
         $this->price = $price;
-        dd($price);
     }
 
     public function setCategory($slug, $mount = 0)
     {
-        $hasCategory = $this->category ? '' : 'category/';
         if (!request()->query('page')){
             $this->resetPage();
         }
+        $this->hasCategory = ($this->category) ? $slug : 'category/'.$slug;
         $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
         $this->dispatchBrowserEvent('metaChanged', [
             'title' => 'Lumen Lux | ' . $this->category->title,
             'description' => $this->category->seo_description ?? 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет',
             'keywords' => $this->category->seo_title.' '.$this->category->seo_description // Assuming you have seo_keywords
         ]);
-
         if (!$mount){
-            $this->dispatchBrowserEvent('urlChanged', ['url' => $hasCategory.$this->category->slug]);
+            $this->dispatchBrowserEvent('urlChanged', ['url' => $this->hasCategory]);
         }
         $this->tag = null;
     }

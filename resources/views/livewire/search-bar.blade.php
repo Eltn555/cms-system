@@ -19,10 +19,21 @@
                 </svg>
             </button>
         </form>
-        <div class="position-fixed width row shadow" style="width: 70vw; z-index: 99; right: -15vw; top: 65px">
+        <div class="position-fixed width row shadow bg-white p-0" style="width: 70vw; z-index: 99; right: 0; top: 65px">
                     @if($search != "")
             @foreach ($results as $result)
-                <a href="" class="bg-white col-sm-6 col-lg-6 p-3 flex-column" style="font-size: 1rem;"><div class="p-1 w-100 fw-semibold">{{ $result->title }}</div><div class="p-1 w-100 fw-semibold text-end pr-5 text-muted">{{ $result->price }} sum</div></a>
+                <a href="{{route('front.product.show', ['slug' => $result->slug])}}" class="m-0 rounded-1 border border-bottom border-end col-12 col-md-6 p-2 fs-6 row">
+                    <div class="col-3" style="height: 70px">
+                        <img class="h-100" src="{{asset(($result->images()->first()) ? 'storage/'.$result->images()->first()->image : 'no_photo.jpg')}}" alt="">
+                    </div>
+                    <div class="col-9 d-flex justify-content-center flex-column">
+                        <div class="p-1 fw-semibold text-black text-end">{{ $result->title }}</div>
+                        <div class="p-1 fw-semibold pr-5 text-muted font-kyiv text-end">
+                            <span class="p-1 {{($result->discount_price == "") ? 'visually-hidden hidden' : 'new-price-card'}}">{{$result->discount_price}}  {{$result->discount_price > 10000 ? 'сум' : '$'}}<br></span>
+                            <span class="p-1 {{($result->discount_price == "") ? 'new-price-card' : 'old-price-card'}}">{{$result->price}} {{$result->price > 10000 ? 'сум' : '$'}}</span>
+                        </div>
+                    </div>
+                </a>
             @endforeach
                     @endif
         </div>

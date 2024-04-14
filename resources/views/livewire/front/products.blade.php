@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12 mb-5">Главная / Магазин / {{$product->category->title}}</div>
                 <div class="col-lg-6">
-                    <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="50">
                         <div class="product-details-small-img-wrap">
                             <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style">
                                 <div class="swiper-wrapper">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="product-details-content" data-aos="fade-up" data-aos-delay="400">
+                    <div class="product-details-content" data-aos="fade-left" data-aos-delay="50">
                         <div class="d-flex">
                             <h2 class="font-cormorant fw-bold h1">{{$product->title}}</h2>
                             <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
@@ -114,7 +114,7 @@
     </div>
     <div class="description-review-area pb-85">
         <div class="container">
-            <div class="description-review-topbar nav" data-aos="fade-up" data-aos-delay="200">
+            <div class="description-review-topbar nav" data-aos="fade-down" data-aos-delay="50">
                 <a class="active" data-bs-toggle="tab" href="#des-details1"> Описание </a>
                 <a data-bs-toggle="tab" href="#des-details2" class=""> Характеристики </a>
                 <a data-bs-toggle="tab" href="#des-details3" class=""> Отзывы </a>
@@ -203,7 +203,7 @@
     @if(count($relatedProducts) > 0)
         <div class="related-product-area pb-95">
             <div class="container">
-                <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="50">
                     <h2 class="shadow-text-1 font-cormorant fw-bold">В одном <br>стиле</h2>
                     <h2 class="shadow-text-2 font-cormorant fw-bold">В одном <br>стиле</h2>
                 </div>
@@ -222,7 +222,7 @@
     @if(count($additionalProducts) > 0)
         <div class="related-product-area pb-95">
             <div class="container">
-                <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="pt-3 mb-75 font-cormorant position-relative" data-aos="fade-up" data-aos-delay="50">
                     <h2 class="shadow-text-1 font-cormorant fw-bold">Покупают с<br>этим</h2>
                     <h2 class="shadow-text-2 font-cormorant fw-bold">Покупают с<br>этим</h2>
                 </div>

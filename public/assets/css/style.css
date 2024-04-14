@@ -5001,6 +5001,8 @@ textarea {
 }
 
 .product-wrap .product-img .product-action-wrap {
+    width: fit-content;
+    margin: auto;
     display: inline-block;
     left: 0;
     opacity: 0;
