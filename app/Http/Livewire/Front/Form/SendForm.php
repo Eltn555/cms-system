@@ -13,37 +13,53 @@ class SendForm extends Component
 
     public $name;
     public $phone;
+    public $msg;
     public $images = [];
+    public $flashMessage;
 
     public function submitForm()
     {
         $imageUrls = [];
-        // Validate form fields
-        $validatedData = $this->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:20480', // Adjust image validation rules as needed
-        ]);
+
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
         $chatId = ['791430493',  '1641704306']; // You'll need to obtain your chat ID from your bot
         $message = "New form submission:\nName: {$this->name}\nPhone: {$this->phone}\nImages: " . implode(', ', $imageUrls);
 
         // Process image uploads (if any)
-        foreach ($this->images as $image) {
-            $imageData = file_get_contents($image->getRealPath());
-            foreach ($chatId as $chat){
-                $response = Http::attach('photo', $imageData, $image->getClientOriginalName())
-                    ->post("https://api.telegram.org/bot{$telegramBotToken}/sendPhoto", [
+        if ($this->images){
+            foreach ($this->images as $image) {
+                $imageData = file_get_contents($image->getRealPath());
+                foreach ($chatId as $chat){
+                    $response = Http::attach('photo', $imageData, $image->getClientOriginalName())
+                        ->post("https://api.telegram.org/bot{$telegramBotToken}/sendPhoto", [
+                            'chat_id' => $chat,
+                            'caption' => "Имя: {$this->name}\nНомер: {$this->phone}\n\nТекст {$this->msg}",
+                        ]);
+                }
+            }
+        }else{
+            if ($this->name && $this->phone){
+                foreach ($chatId as $chat){
+                    $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
                         'chat_id' => $chat,
-                        'caption' => "Имя: {$this->name}\nНомер: {$this->phone}",
+                        'text' => "Имя: {$this->name}\nНомер: {$this->phone}\n\nТекст {$this->msg}",
                     ]);
+                }
+            }else{
+                $this->flashMessage = 'Пожалуйста, введите номер телефона и имя, чтобы связаться с вами';
+                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, введите номер телефона и имя, чтобы связаться с вами', 'type' => 'error']);
             }
         }
-        $this->dispatchBrowserEvent('FormInfo', ['text' => $message]);
-        // Clear form fields after submission
-        $this->reset(['name', 'phone', 'images']);
-        // Show success message (optional)
-        session()->flash('message', 'Form submitted successfully!');
+        if ($response){
+            $this->dispatchBrowserEvent('FormInfo', ['text' => $message]);
+            // Clear form fields after submission
+            $this->reset(['name', 'phone', 'msg', 'images']);
+            $this->flashMessage = 'Ваше сообщение успешно отправлено';
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Ваше сообщение успешно отправлено', 'type' => 'success']);
+        }else{
+            $this->flashMessage = 'Произошла ошибка. Выберите фотографию размером не более 20 МБ или повторите попытку позже.';
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Произошла ошибка. Выберите фотографию размером не более 20 МБ или повторите попытку позже.', 'type' => 'error']);
+        }
     }
 
     public function render()

@@ -61,7 +61,7 @@
             transition: 0.2s;
             position: fixed !important;
         }
-        .hidden{
+        .hiddenmsg{
             right: -500px;
             opacity: 0;
             transition: 1s;
@@ -303,7 +303,7 @@
             </div>
         </div>
     </div>
-            <div class="hidden bg-danger flash-message position-absolute text-white px-4 py-2 rounded shadow">
+            <div class="hiddenmsg bg-danger flash-message position-absolute text-white px-4 py-2 rounded shadow">
                 Ошибка: {{ $flashMessage }}
             </div>
 </div>
@@ -313,8 +313,8 @@
         window.addEventListener('flashMessage', event => {
             const flashMessage = document.querySelector('.flash-message');
             flashMessage.text = event.detail.message;
-            flashMessage.classList.remove('hidden');
-            setTimeout(() => flashMessage.classList.add('hidden'), 2000);
+            flashMessage.classList.remove('hiddenmsg');
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
         });
 
         $(document).ready(function() {

@@ -5,6 +5,19 @@
 @section('style')
     <link rel="stylesheet" href="{{asset('assets/css/courusel.css')}}"/>
     <style>
+        .flash-message{
+            top: 100px;
+            right: 10px;
+            opacity: 1;
+            transition: 0.2s;
+            position: fixed !important;
+        }
+        .hiddenmsg{
+            right: -500px;
+            opacity: 0;
+            transition: 1s;
+            position: fixed;
+        }
         .file-input{
             display: inline-block;
             padding-top: 50px !important;
@@ -691,6 +704,12 @@
             }
             fileText.textContent = fileNames.join(', ');
         }
+        window.addEventListener('flashMessage', event => {
+            const flashMessage = document.querySelector('.flash-message');
+            flashMessage.text = event.detail.message;
+            flashMessage.classList.remove('hiddenmsg');
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
+        });
 
     </script>
 @endsection
