@@ -77,6 +77,13 @@
         .object path:hover{
             fill:red;
         }
+        .arrowRotate{
+            transition: 1s;
+        }
+        .r360{
+            transform: rotate(180deg);
+            transition: 1s;
+        }
     </style>
 @endsection
 
@@ -110,27 +117,61 @@
     </div>
 
     <div class="category-area py-5 pt-md-5 pt-sm-5">
-        <div class="container position-relative">
-            <div class="category-slider-active-2 swiper-container">
-                <div class="swiper-wrapper">
-                    @foreach($categories as $category)
-                        <div class="swiper-slide border p-1 me-0 d-flex justify-content-center align-items-end">
+        <div class="px-5 w-100 position-relative">
+            <div class="row px-xl-5 m-0">
+                @foreach($categories->take(5) as $category)
+                    <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border">
+                        <div class="p-1 me-0 d-flex justify-content-center align-items-end">
                             <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="50">
                                 <div class="category-img-2 overflow-hidden">
                                     <a href="{{ route('front.category.show', $category->slug) }}">
                                         @foreach($category->images as $image)
-                                            {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 80%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;>' : ''!!}
+                                            {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img px-lg-1 px-xl-2" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 80%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;">' : ''!!}
                                         @endforeach
                                     </a>
                                 </div>
                                 <div class="category-content-2">
-                                    <h4 class="w-100 mb-3"><a class="fs-6 text-dark"
-                                                              href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
-                                    </h4>
+                                    <p class="w-100 mb-3"><a class="text-dark" href="{{route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                @endforeach
+                    @foreach($categories as $index => $category)
+                        @if($index >= 5)
+                            <div class="extraCat col-6 col-md-4 col-lg-2 p-0 m-0 border d-none">
+                                <div class="p-1 me-0 d-flex justify-content-center align-items-end">
+                                    <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="50">
+                                        <div class="category-img-2 overflow-hidden">
+                                            <a href="{{ route('front.category.show', $category->slug) }}">
+                                                @foreach($category->images as $image)
+                                                    {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img px-lg-1 px-xl-2" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 80%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;">' : ''!!}
+                                                @endforeach
+                                            </a>
+                                        </div>
+                                        <div class="category-content-2">
+                                            <p class="w-100 mb-3"><a class="text-dark" href="{{route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
+                    <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border p-1 me-0 d-flex justify-content-between align-items-center flex-column">
+                            <div class="category-img-2 overflow-hidden h-100 w-100">
+                                <a class="openCategory h-100 w-100 d-flex align-items-center justify-content-center">
+                                    <svg class="arrowRotate" width="85" height="85" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="28.5833" cy="28" r="27.25" transform="rotate(-90 28.5833 28)" stroke="#F8B301" stroke-width="1.5"/>
+                                        <path d="M28.5834 21.7778L28.5834 34.2223M28.5834 34.2223L23.9167 29.5556M28.5834 34.2223L33.2501 29.5556" stroke="#F8B301" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="category-content-2 w-100">
+                                <p class="w-100 mb-3"><a class="text-center d-block w-100 openCategory">Показать все</a>
+                                </p>
+                            </div>
                 </div>
             </div>
         </div>
@@ -634,6 +675,12 @@
 
 @section('scripts')
     <script>
+        $(document).ready(function() {
+            $('.openCategory').on('click', function() {
+                $('.extraCat').toggleClass('d-none');
+                $('.arrowRotate').toggleClass('r360');
+            });
+        });
         var header = $('.blurry-backgorund');
         var $window = $(window);
         header.addClass('mainPage-navbar');
