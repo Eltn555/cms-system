@@ -159,89 +159,89 @@
             </div>
         </div>
     </div>
-{{--    <div class="product-area">--}}
-{{--        <div class="container pb-5">--}}
-{{--            <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">--}}
-{{--                <div class="col-8">--}}
-{{--                    <h5 class="shadow-text-1 font-cormorant fw-bold">Наша<br>команда</h5>--}}
-{{--                    <h5 class="shadow-text-2 font-cormorant fw-bold">Наша<br>команда</h5>--}}
-{{--                </div>--}}
-{{--                <div class="col-4 d-flex justify-content-end align-items-end">--}}
-{{--                    <div class="product-prev-1 border border-1 p-2 px-3 me-2" data-aos="fade-up" data-aos-delay="50"><i class="fa fa-angle-left fs-4"></i></div>--}}
-{{--                    <div class="product-next-1 border border-1 p-2 px-3" data-aos="fade-up" data-aos-delay="100"><i class="fa fa-angle-right fs-4"></i></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="pt-3 product-slider-active-1 swiper-container">--}}
-{{--                <div class="swiper-wrapper">--}}
-{{--                    <div class="swiper-slide slider-colleague">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a>--}}
-{{--                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content font-kyiv">--}}
-{{--                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>--}}
-{{--                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide slider-colleague">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a>--}}
-{{--                                    <img src="{{asset('aboutss/2.jpg')}}" alt="LumenLux team">--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content font-kyiv">--}}
-{{--                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>--}}
-{{--                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide slider-colleague">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a>--}}
-{{--                                    <img src="{{asset('aboutss/3.jpg')}}" alt="LumenLux team">--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content font-kyiv">--}}
-{{--                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>--}}
-{{--                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide slider-colleague">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a>--}}
-{{--                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content font-kyiv">--}}
-{{--                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>--}}
-{{--                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-slide slider-colleague">--}}
-{{--                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">--}}
-{{--                            <div class="product-img img-zoom mb-25">--}}
-{{--                                <a>--}}
-{{--                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                            <div class="product-content font-kyiv">--}}
-{{--                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>--}}
-{{--                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="product-area">
+        <div class="container pb-5">
+            <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
+                <div class="col-8">
+                    <h5 class="shadow-text-1 font-cormorant fw-bold">Наша<br>команда</h5>
+                    <h5 class="shadow-text-2 font-cormorant fw-bold">Наша<br>команда</h5>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-end">
+                    <div class="product-prev-1 border border-1 p-2 px-3 me-2" data-aos="fade-up" data-aos-delay="50"><i class="fa fa-angle-left fs-4"></i></div>
+                    <div class="product-next-1 border border-1 p-2 px-3" data-aos="fade-up" data-aos-delay="100"><i class="fa fa-angle-right fs-4"></i></div>
+                </div>
+            </div>
+            <div class="pt-3 product-slider-active-1 swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/2.jpg')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/3.jpg')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="brand-logo-area" data-aos="fade-up" data-aos-delay="50">
         <div class="container">
             <div class="pt-3 font-cormorant position-relative row" data-aos="fade-up" data-aos-delay="50">
