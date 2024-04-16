@@ -229,8 +229,8 @@
                     Description </a>
                 <a data-bs-toggle="tab" href="#des-details2" class="" aria-selected="false" role="tab" tabindex="-1">
                     Information </a>
-                <a data-bs-toggle="tab" href="#des-details3" class="" aria-selected="false" role="tab" tabindex="-1">
-                    Reviews </a>
+{{--                <a data-bs-toggle="tab" href="#des-details3" class="" aria-selected="false" role="tab" tabindex="-1">--}}
+{{--                    Reviews </a>--}}
             </div>
             <div class="tab-content">
                 <div id="des-details1" class="tab-pane active show" role="tabpanel">
