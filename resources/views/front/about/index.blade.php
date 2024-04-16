@@ -122,7 +122,7 @@
             <div class="col-12 row">
                 <div class="col-md-12 col-lg-6 order-lg-0 order-md-1 order-sm-1 order-1 mt-md-5 greeting-txt">
                     <h5 class="counter pt-md-5"></h5>
-                    <h1 class="font-cormorant mt-5">Lumenlux - где элегантность сочетается с освещением.</h1>
+                    <h1 class="font-cormorant mt-5">Lumen Lux - где элегантность сочетается с освещением.</h1>
                     <p class="font-kyiv mt-1 mt-sm-1 mt-md-3 mt-lg-5 mt-xl-5 mt-xxl-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</p>
                 </div>
                 <div class="col-md-12 col-lg-6 order-md-0 order-lg-1 order-sm-0 order-0 greeting-img position-relative">
