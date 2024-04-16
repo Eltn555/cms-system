@@ -54,7 +54,7 @@
             </div>
             <h1 class="font-cormorant">Список пожеланий</h1>
             <p class="font-kyiv">У вас нет сохраненных списков желаний</p>
-            <a href="/" class="seeMore py-3 px-4 text-dark font-kyiv">Посмотреть магазин</a>
+            <a href="https://lumenlux.uz/category" class="seeMore py-3 px-4 text-dark font-kyiv">Посмотреть магазин</a>
         </div>
     </div>
 </div>
