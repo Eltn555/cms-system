@@ -159,16 +159,16 @@
                             <span class="old-price">$25.89 </span>
                             <span class="new-price">$20.25</span>
                         </div>
-                        <div class="product-details-review">
-                            <div class="product-rating">
-                                <i class=" ti-star"></i>
-                                <i class=" ti-star"></i>
-                                <i class=" ti-star"></i>
-                                <i class=" ti-star"></i>
-                                <i class=" ti-star"></i>
-                            </div>
-                            <span>( 1 Customer Review )</span>
-                        </div>
+{{--                        <div class="product-details-review">--}}
+{{--                            <div class="product-rating">--}}
+{{--                                <i class=" ti-star"></i>--}}
+{{--                                <i class=" ti-star"></i>--}}
+{{--                                <i class=" ti-star"></i>--}}
+{{--                                <i class=" ti-star"></i>--}}
+{{--                                <i class=" ti-star"></i>--}}
+{{--                            </div>--}}
+{{--                            <span>( 1 Customer Review )</span>--}}
+{{--                        </div>--}}
                         <div class="product-color product-color-active product-details-color">
                             <span>Color :</span>
                             <ul>
