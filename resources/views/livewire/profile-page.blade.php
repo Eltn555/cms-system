@@ -88,32 +88,32 @@
 {{--                                                </div>--}}
 {{--                                            </div>--}}
 {{--                                        </div>--}}
-                                        <div class="col-lg-6" style="height: 100px">
-                                            <div class="single-input-item">
-                                                <label for="display-name" class="required">Телефон номер</label>
-                                                <div class="position-relative">
-                                                    <input style="display:none;" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
-                                                    <span class="p-3 position-absolute top-50">{{ $profile->phone ?? 'Undefined'}}</span>
-                                                    <div class="position-absolute icon-input">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M10.834 2.5C10.834 2.5 12.6673 2.66667 15.0007 5C17.334 7.33333 17.5007 9.16667 17.5007 9.16667"
-                                                                stroke="#8C8C8C" stroke-width="1.5"
-                                                                stroke-linecap="round"/>
-                                                            <path
-                                                                d="M11.0059 5.44641C11.0059 5.44641 11.8308 5.68211 13.0683 6.91955C14.3057 8.15699 14.5414 8.98194 14.5414 8.98194"
-                                                                stroke="#8C8C8C" stroke-width="1.5"
-                                                                stroke-linecap="round"/>
-                                                            <path
-                                                                d="M7.53132 5.26344L8.07217 6.23254C8.56025 7.10711 8.36432 8.25439 7.59559 9.02312C7.59559 9.02313 7.59559 9.02313 7.59559 9.02313C7.59548 9.02324 6.66325 9.95568 8.35376 11.6462C10.0436 13.3361 10.976 12.4052 10.9768 12.4044C10.9769 12.4043 10.9768 12.4044 10.9769 12.4043C11.7456 11.6356 12.8929 11.4397 13.7674 11.9278L14.7365 12.4686C16.0571 13.2056 16.2131 15.0577 15.0523 16.2185C14.3548 16.916 13.5003 17.4587 12.5558 17.4945C10.9656 17.5548 8.26523 17.1524 5.55642 14.4435C2.84761 11.7347 2.44518 9.03431 2.50546 7.4442C2.54127 6.49963 3.084 5.64516 3.7815 4.94765C4.9423 3.78686 6.79431 3.94282 7.53132 5.26344Z"
-                                                                stroke="#8C8C8C" stroke-width="1.5"
-                                                                stroke-linecap="round"/>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+{{--                                        <div class="col-lg-6" style="height: 100px">--}}
+{{--                                            <div class="single-input-item">--}}
+{{--                                                <label for="display-name" class="required">Телефон номер</label>--}}
+{{--                                                <div class="position-relative">--}}
+{{--                                                    <input style="display:none;" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>--}}
+{{--                                                    <span class="p-3 position-absolute top-50">{{ $profile->phone ?? 'Undefined'}}</span>--}}
+{{--                                                    <div class="position-absolute icon-input">--}}
+{{--                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"--}}
+{{--                                                             xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                            <path--}}
+{{--                                                                d="M10.834 2.5C10.834 2.5 12.6673 2.66667 15.0007 5C17.334 7.33333 17.5007 9.16667 17.5007 9.16667"--}}
+{{--                                                                stroke="#8C8C8C" stroke-width="1.5"--}}
+{{--                                                                stroke-linecap="round"/>--}}
+{{--                                                            <path--}}
+{{--                                                                d="M11.0059 5.44641C11.0059 5.44641 11.8308 5.68211 13.0683 6.91955C14.3057 8.15699 14.5414 8.98194 14.5414 8.98194"--}}
+{{--                                                                stroke="#8C8C8C" stroke-width="1.5"--}}
+{{--                                                                stroke-linecap="round"/>--}}
+{{--                                                            <path--}}
+{{--                                                                d="M7.53132 5.26344L8.07217 6.23254C8.56025 7.10711 8.36432 8.25439 7.59559 9.02312C7.59559 9.02313 7.59559 9.02313 7.59559 9.02313C7.59548 9.02324 6.66325 9.95568 8.35376 11.6462C10.0436 13.3361 10.976 12.4052 10.9768 12.4044C10.9769 12.4043 10.9768 12.4044 10.9769 12.4043C11.7456 11.6356 12.8929 11.4397 13.7674 11.9278L14.7365 12.4686C16.0571 13.2056 16.2131 15.0577 15.0523 16.2185C14.3548 16.916 13.5003 17.4587 12.5558 17.4945C10.9656 17.5548 8.26523 17.1524 5.55642 14.4435C2.84761 11.7347 2.44518 9.03431 2.50546 7.4442C2.54127 6.49963 3.084 5.64516 3.7815 4.94765C4.9423 3.78686 6.79431 3.94282 7.53132 5.26344Z"--}}
+{{--                                                                stroke="#8C8C8C" stroke-width="1.5"--}}
+{{--                                                                stroke-linecap="round"/>--}}
+{{--                                                        </svg>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                         <div class="col-lg-6" style="height: 100px">
                                             <div class="single-input-item">
                                                 <label for="email" class="required">Электронная почта</label>
