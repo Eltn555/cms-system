@@ -794,10 +794,6 @@ textarea {
     display: inline-block;
 }
 
-.logo a img {
-    max-width: 100%;
-}
-
 .welcome-text p {
     color: #383837;
     margin: 0;
