@@ -7902,7 +7902,7 @@ textarea {
 
 /*-------- 14. Product details style ---------*/
 .product-details-content {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 0px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
