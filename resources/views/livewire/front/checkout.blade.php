@@ -285,7 +285,7 @@
                     <p class="text-black fw-500 text-end">0</p>
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
-                    <p class="pe-4">Цена товаров:</p>
+                    <p class="pe-4">Сумма заказа:</p>
                     <p class="text-black fw-500 text-end">{{$truePrice}} сум</p>
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
