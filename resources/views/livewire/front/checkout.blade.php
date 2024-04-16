@@ -119,7 +119,7 @@
                                 <p class="mb-0 fw-semibold text-black">г. Ташкент, Ц5  (Напротив Респуликанской пожарки)</p>
                             </div>
                             <div class="col-12 col-lg-4 d-flex justify-content-lg-end justify-content-start align-items-center ps-5 ps-lg-0 p-0">
-                                <p class="mb-0">Пн - Су  09:00 - 20:00</p>
+                                <p class="mb-0">Пн - Сб  10:00 - 19:00</p>
                             </div>
                         </div>
                         <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio row m-0" wire:click="updateCollect('Ул. Паркентская, дом 241')">
@@ -128,7 +128,7 @@
                                 <p class="mb-0 fw-semibold text-black">Ул. Паркентская, дом 241</p>
                             </div>
                             <div class="col-12 col-lg-4 d-flex justify-content-lg-end justify-content-start align-items-center ps-5 ps-lg-0 p-0">
-                                <p class="mb-0">Пн - Су  09:00 - 20:00</p>
+                                <p class="mb-0">Пн - Сб  10:00 - 19:00</p>
                             </div>
                         </div>
                         <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio row m-0" wire:click="updateCollect('г. Самарканд, Микрорайон (Напротив поликлиники)')">
@@ -137,7 +137,7 @@
                                 <p class="mb-0 fw-semibold text-black">г. Самарканд, Микрорайон (Напротив поликлиники)</p>
                             </div>
                             <div class="col-12 col-lg-4 d-flex justify-content-lg-end justify-content-start align-items-center ps-5 ps-lg-0 p-0">
-                                <p class="mb-0">Пн - Су  09:00 - 20:00</p>
+                                <p class="mb-0">Пн - Сб  10:00 - 19:00</p>
                             </div>
                         </div>
                     </div>

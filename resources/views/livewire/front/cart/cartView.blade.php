@@ -63,7 +63,7 @@
                 <h1 class="font-cormorant fw-bolder pb-4 border-bottom border-1 mb-5">Чекаут</h1>
                 <div class="bg-light text-secondary p-4 border-1 border">
                     <div class="font-kyiv d-flex justify-content-between">
-                        <p class="fs-5 font-kyiv">Цена товаров:</p>
+                        <p class="fs-5 font-kyiv">Сумма заказа:</p>
                         <p class="fs-5 font-kyiv text-black font-semibold">{{number_format($truePrice, 0, '.', ' ')}} сум</p>
                     </div>
                     <div class="font-kyiv d-flex justify-content-between">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="row">
                     <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12">
-                        <a href="{{ route('front.checkout.index', ['textareaValue' => $textareaValue]) }}" class="w-100 text-dark p-3">Перейти к оформление заказа</a>
+                        <a href="{{ route('front.checkout.index', ['textareaValue' => $textareaValue]) }}" class="w-100 text-dark p-3">Перейти к оформлению заказа</a>
                     </div>
                 </div>
             </div>
