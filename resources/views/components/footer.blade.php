@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-list mb-40">
-                            <h3 class="footer-title text-white font-kyiv"><a href="tel:+998555005444">+998 555 005 444</a></h3>
+                            <h3 class="footer-title text-white font-kyiv"><a href="tel:+998555005444" style="color: #fff">+998 555 005 444</a></h3>
                             <ul>
                                 <div style="display: flex;" class="mt-5 p-0 m-0 infoLink">
                                     <div style="width: 10%;" class="p-0">
