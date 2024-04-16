@@ -152,13 +152,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="product-details-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                        <h2>New Modern Chair</h2>
-                        <div class="product-details-price">
-                            <span class="old-price">$25.89 </span>
-                            <span class="new-price">$20.25</span>
-                        </div>
+{{--                <div class="col-lg-6">--}}
+{{--                    <div class="product-details-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">--}}
+{{--                        <h2>New Modern Chair</h2>--}}
+{{--                        <div class="product-details-price">--}}
+{{--                            <span class="old-price">$25.89 </span>--}}
+{{--                            <span class="new-price">$20.25</span>--}}
+{{--                        </div>--}}
 {{--                        <div class="product-details-review">--}}
 {{--                            <div class="product-rating">--}}
 {{--                                <i class=" ti-star"></i>--}}
@@ -169,55 +169,55 @@
 {{--                            </div>--}}
 {{--                            <span>( 1 Customer Review )</span>--}}
 {{--                        </div>--}}
-                        <div class="product-color product-color-active product-details-color">
-                            <span>Color :</span>
-                            <ul>
-                                <li><a title="Pink" class="pink" href="#">pink</a></li>
-                                <li><a title="Yellow" class="active yellow" href="#">yellow</a></li>
-                                <li><a title="Purple" class="purple" href="#">purple</a></li>
-                            </ul>
-                        </div>
-                        <div class="product-details-action-wrap">
-                            <div class="product-quality">
-                                <div class="dec qtybutton">-</div>
-                                <input class="cart-plus-minus-box input-text qty text" name="qtybutton" value="1">
-                                <div class="inc qtybutton">+</div>
-                            </div>
-                            <div class="single-product-cart btn-hover">
-                                <a href="#">Add to cart</a>
-                            </div>
-                            <div class="single-product-wishlist">
-                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                            </div>
-                            <div class="single-product-compare">
-                                <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
-                            </div>
-                        </div>
-                        <div class="product-details-meta">
-                            <ul>
-                                <li><span class="title">SKU:</span> Ch-256xl</li>
-                                <li><span class="title">Category:</span>
-                                    <ul>
-                                        <li><a href="#">Office</a>,</li>
-                                        <li><a href="#">Home</a></li>
-                                    </ul>
-                                </li>
-                                <li><span class="title">Tags:</span>
-                                    <ul class="tag">
-                                        <li><a href="#">Furniture</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="social-icon-style-4">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
+{{--                        <div class="product-color product-color-active product-details-color">--}}
+{{--                            <span>Color :</span>--}}
+{{--                            <ul>--}}
+{{--                                <li><a title="Pink" class="pink" href="#">pink</a></li>--}}
+{{--                                <li><a title="Yellow" class="active yellow" href="#">yellow</a></li>--}}
+{{--                                <li><a title="Purple" class="purple" href="#">purple</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                        <div class="product-details-action-wrap">--}}
+{{--                            <div class="product-quality">--}}
+{{--                                <div class="dec qtybutton">-</div>--}}
+{{--                                <input class="cart-plus-minus-box input-text qty text" name="qtybutton" value="1">--}}
+{{--                                <div class="inc qtybutton">+</div>--}}
+{{--                            </div>--}}
+{{--                            <div class="single-product-cart btn-hover">--}}
+{{--                                <a href="#">Add to cart</a>--}}
+{{--                            </div>--}}
+{{--                            <div class="single-product-wishlist">--}}
+{{--                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>--}}
+{{--                            </div>--}}
+{{--                            <div class="single-product-compare">--}}
+{{--                                <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="product-details-meta">--}}
+{{--                            <ul>--}}
+{{--                                <li><span class="title">SKU:</span> Ch-256xl</li>--}}
+{{--                                <li><span class="title">Category:</span>--}}
+{{--                                    <ul>--}}
+{{--                                        <li><a href="#">Office</a>,</li>--}}
+{{--                                        <li><a href="#">Home</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+{{--                                <li><span class="title">Tags:</span>--}}
+{{--                                    <ul class="tag">--}}
+{{--                                        <li><a href="#">Furniture</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                        <div class="social-icon-style-4">--}}
+{{--                            <a href="#"><i class="fa fa-facebook"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-dribbble"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-pinterest-p"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-twitter"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-linkedin"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
