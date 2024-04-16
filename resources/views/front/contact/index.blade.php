@@ -120,7 +120,7 @@
 
                 </div>
                 <div class="col-lg-5 col-md-12">
-                        <livewire:front.form.send-form/>
+                    <livewire:front.form.send-form/>
                 </div>
             </div>
         </div>
