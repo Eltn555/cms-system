@@ -119,7 +119,9 @@ class Checkout extends Component
 Форма оплата:'.$this->payment.'
 Дата:'.$saleDb['created_at'].'</b>';
             $this->submitForm($text);
-            return redirect()->route('front.profile.index');
+            // For a route with the following URI: profile/{id}
+
+            return redirect()->route('front.profile.index', ['orders']);
         }
     }
 
@@ -145,7 +147,7 @@ class Checkout extends Component
                 'price' => $this->overall,
                 'discount' => $this->truePrice - $this->overall,
                 'total_amount' => $this->itemAmount,
-                'status' => 'Получено',
+                'status' => 'В ожидании',
             ];
             if($this->payment == ''){
                 $this->flashMessage = 'Выберите способ оплаты, пожалуйста';

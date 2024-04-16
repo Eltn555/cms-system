@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="myaccount-tab-menu nav" role="tablist">
-                    <a href="#account" class="active" data-bs-toggle="tab">Личная информация</a>
-                    <a href="#orders" data-bs-toggle="tab">Покупки</a>
+                    <a href="#account"  class="{{!$isOrders ? 'active' : ''}}" data-bs-toggle="tab">Личная информация</a>
+                    <a href="#orders" class="{{$isOrders ? 'active' : ''}}" data-bs-toggle="tab">Покупки</a>
                 </div>
             </div>
 
@@ -28,8 +28,8 @@
                 <div class="col-lg-9 col-md-12 col-sm-12">
                     <div class="tab-content mb-5" id="myaccountContent">
                         <!-- Single Tab Content Start -->
-                        <div class="tab-pane fade show active" id="account" role="tabpanel">
-                            <div class="myaccount-content font-kyiv">
+                        <div class="tab-pane fade {{!$isOrders ? 'show active' : ''}}" id="account" role="tabpanel">
+                            <div class="myaccount-content font-kyiv" data-aos="zoom-in" data-aos-delay="10">
                                 <h3 class="fw-semibold">Личная информация</h3>
                                 <div class="account-details-form">
                                     <form method="POST" action="{{ route('updateProfile') }}">
@@ -204,44 +204,153 @@
                         </div>
                         <!-- Single Tab Content End -->
                         <!-- Single Tab Content Start -->
-                        <div class="tab-pane fade" id="orders" role="tabpanel">
+                        <div class="tab-pane fade {{$isOrders ? 'show active' : ''}}" id="orders" role="tabpanel">
                             <div class="myaccount-content">
-                                <h3>Orders</h3>
-                                <div class="myaccount-table table-responsive text-center">
-                                    <table class="table table-bordered">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th>Order</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Total</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Aug 22, 2022</td>
-                                            <td>Pending</td>
-                                            <td>$3000</td>
-                                            <td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>July 22, 2022</td>
-                                            <td>Approved</td>
-                                            <td>$200</td>
-                                            <td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>June 12, 2017</td>
-                                            <td>On Hold</td>
-                                            <td>$990</td>
-                                            <td><a href="cart.html" class="check-btn sqr-btn ">View</a></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="container">
+                                    <div class="section-title-tab-wrap mb-75">
+                                        <div class="tab-style-1 nav w-100 row m-0 p-0" data-aos="fade-up" data-aos-delay="100">
+                                            <a class="active col-12 col-md-4 m-0 border-bottom" href="#pro-1" data-bs-toggle="tab">Все заказы</a>
+                                            <a class="col-12 col-md-4 m-0 border-bottom" href="#pro-2" data-bs-toggle="tab" class="">Активные</a>
+                                            <a class="col-12 col-md-4 m-0 border-bottom" href="#pro-3" data-bs-toggle="tab" class="">Завершенные</a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content jump">
+                                        <div id="pro-1" class="tab-pane active">
+                                            <div class="cart-content">
+                                                <ul>
+                                                    @foreach($items as $item)
+                                                        <li class="border-bottom pb-3 mb-3">
+                                                            <div class="cart-img d-flex align-items-center">
+                                                                <a href="{{route('front.product.show', ['slug' => $item->product->slug])}}"><img src="{{asset(($item->product->images()->first()) ? 'storage/'.$item->product->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->product->title}}"></a>
+                                                            </div>
+                                                            <div class="cart-title w-100 position-relative">
+                                                                <h4><a href="{{route('front.product.show', ['slug' => $item->product->slug])}}">{{mb_strimwidth($item->product->title, 0, 70, '..')}}</a></h4>
+                                                                <span class="span">{{mb_strimwidth($item->product->short_description, 0, 80, '..')}}</span><br>
+                                                                <span class="span">Количество: {{$item->amount}}шт</span><br>
+                                                                <span class="span">Дата заказа: {{$item->onUpdate}}</span>
+                                                                <div class="product-details-action-wrap font-kyiv">
+                                                                    <div class="product-details-price py-3">
+                                                                        <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
+                                                                    {!!($item->sale->status == 'Получено') ? ' text-success "><svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_250_5961)">
+<path d="M1.66602 10.0001C1.66602 6.07171 1.66602 4.10752 2.8864 2.88714C4.10679 1.66675 6.07098 1.66675 9.99935 1.66675C13.9277 1.66675 15.8919 1.66675 17.1123 2.88714C18.3327 4.10752 18.3327 6.07171 18.3327 10.0001C18.3327 13.9285 18.3327 15.8926 17.1123 17.113C15.8919 18.3334 13.9277 18.3334 9.99935 18.3334C6.07098 18.3334 4.10679 18.3334 2.8864 17.113C1.66602 15.8926 1.66602 13.9285 1.66602 10.0001Z" fill="#32C77F" stroke="#32C77F" stroke-width="1.5"/>
+<path d="M7.08398 10.4167L8.75065 12.0834L12.9173 7.91675" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_250_5961">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+' : ' text-warning"> <svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.666 2.43341V9.35841C11.666 10.2084 10.9743 10.9001 10.1243 10.9001H2.49935C2.04102 10.9001 1.66602 10.5251 1.66602 10.0667V4.74175C1.66602 3.04175 3.04102 1.66675 4.74102 1.66675H10.891C11.3243 1.66675 11.666 2.00841 11.666 2.43341Z" fill="#F8B301"/>
+<path d="M17.916 12.9167C18.1493 12.9167 18.3327 13.1001 18.3327 13.3334V14.1667C18.3327 15.5501 17.216 16.6667 15.8327 16.6667C15.8327 15.2917 14.7077 14.1667 13.3327 14.1667C11.9577 14.1667 10.8327 15.2917 10.8327 16.6667H9.16602C9.16602 15.2917 8.04102 14.1667 6.66602 14.1667C5.29102 14.1667 4.16602 15.2917 4.16602 16.6667C2.78268 16.6667 1.66602 15.5501 1.66602 14.1667V12.5001C1.66602 12.0417 2.04102 11.6667 2.49935 11.6667H10.416C11.566 11.6667 12.4993 10.7334 12.4993 9.58341V5.00008C12.4993 4.54175 12.8743 4.16675 13.3327 4.16675H14.0327C14.6327 4.16675 15.1827 4.49175 15.4827 5.00841L16.016 5.94175C16.091 6.07508 15.991 6.25008 15.8327 6.25008C14.6827 6.25008 13.7493 7.18341 13.7493 8.33341V10.8334C13.7493 11.9834 14.6827 12.9167 15.8327 12.9167H17.916Z" fill="#F8B301"/>
+<path d="M6.66667 18.3333C7.58714 18.3333 8.33333 17.5871 8.33333 16.6667C8.33333 15.7462 7.58714 15 6.66667 15C5.74619 15 5 15.7462 5 16.6667C5 17.5871 5.74619 18.3333 6.66667 18.3333Z" fill="#F8B301"/>
+<path d="M13.3327 18.3333C14.2532 18.3333 14.9993 17.5871 14.9993 16.6667C14.9993 15.7462 14.2532 15 13.3327 15C12.4122 15 11.666 15.7462 11.666 16.6667C11.666 17.5871 12.4122 18.3333 13.3327 18.3333Z" fill="#F8B301"/>
+<path d="M18.3333 10.4417V11.6667H15.8333C15.375 11.6667 15 11.2917 15 10.8333V8.33333C15 7.875 15.375 7.5 15.8333 7.5H16.9083L18.1167 9.61667C18.2583 9.86667 18.3333 10.15 18.3333 10.4417Z" fill="#F8B301"/>
+</svg>
+' !!} {{$item->sale->status}}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="pro-2" class="tab-pane">
+                                                                <div class="cart-content">
+                                                                    <ul>
+                                                                        @foreach($process as $item)
+                                                                            <li class="border-bottom pb-3 mb-3">
+                                                                                <div class="cart-img d-flex align-items-center">
+                                                                                    <a href="{{route('front.product.show', ['slug' => $item->product->slug])}}"><img src="{{asset(($item->product->images()->first()) ? 'storage/'.$item->product->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->product->title}}"></a>
+                                                                                </div>
+                                                                                <div class="cart-title w-100 position-relative">
+                                                                                    <h4><a href="{{route('front.product.show', ['slug' => $item->product->slug])}}">{{mb_strimwidth($item->product->title, 0, 70, '..')}}</a></h4>
+                                                                                    <span class="span">{{mb_strimwidth($item->product->short_description, 0, 80, '..')}}</span><br>
+                                                                                    <span class="span">Количество: {{$item->amount}}шт</span><br>
+                                                                                    <span class="span">Дата заказа: {{$item->onUpdate}}</span>
+                                                                                    <div class="product-details-action-wrap font-kyiv">
+                                                                                        <div class="product-details-price py-3">
+                                                                                            <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
+                                                                    {!!($item->sale->status == 'Получено') ? ' text-success "><svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_250_5961)">
+<path d="M1.66602 10.0001C1.66602 6.07171 1.66602 4.10752 2.8864 2.88714C4.10679 1.66675 6.07098 1.66675 9.99935 1.66675C13.9277 1.66675 15.8919 1.66675 17.1123 2.88714C18.3327 4.10752 18.3327 6.07171 18.3327 10.0001C18.3327 13.9285 18.3327 15.8926 17.1123 17.113C15.8919 18.3334 13.9277 18.3334 9.99935 18.3334C6.07098 18.3334 4.10679 18.3334 2.8864 17.113C1.66602 15.8926 1.66602 13.9285 1.66602 10.0001Z" fill="#32C77F" stroke="#32C77F" stroke-width="1.5"/>
+<path d="M7.08398 10.4167L8.75065 12.0834L12.9173 7.91675" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_250_5961">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+' : ' text-warning"> <svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.666 2.43341V9.35841C11.666 10.2084 10.9743 10.9001 10.1243 10.9001H2.49935C2.04102 10.9001 1.66602 10.5251 1.66602 10.0667V4.74175C1.66602 3.04175 3.04102 1.66675 4.74102 1.66675H10.891C11.3243 1.66675 11.666 2.00841 11.666 2.43341Z" fill="#F8B301"/>
+<path d="M17.916 12.9167C18.1493 12.9167 18.3327 13.1001 18.3327 13.3334V14.1667C18.3327 15.5501 17.216 16.6667 15.8327 16.6667C15.8327 15.2917 14.7077 14.1667 13.3327 14.1667C11.9577 14.1667 10.8327 15.2917 10.8327 16.6667H9.16602C9.16602 15.2917 8.04102 14.1667 6.66602 14.1667C5.29102 14.1667 4.16602 15.2917 4.16602 16.6667C2.78268 16.6667 1.66602 15.5501 1.66602 14.1667V12.5001C1.66602 12.0417 2.04102 11.6667 2.49935 11.6667H10.416C11.566 11.6667 12.4993 10.7334 12.4993 9.58341V5.00008C12.4993 4.54175 12.8743 4.16675 13.3327 4.16675H14.0327C14.6327 4.16675 15.1827 4.49175 15.4827 5.00841L16.016 5.94175C16.091 6.07508 15.991 6.25008 15.8327 6.25008C14.6827 6.25008 13.7493 7.18341 13.7493 8.33341V10.8334C13.7493 11.9834 14.6827 12.9167 15.8327 12.9167H17.916Z" fill="#F8B301"/>
+<path d="M6.66667 18.3333C7.58714 18.3333 8.33333 17.5871 8.33333 16.6667C8.33333 15.7462 7.58714 15 6.66667 15C5.74619 15 5 15.7462 5 16.6667C5 17.5871 5.74619 18.3333 6.66667 18.3333Z" fill="#F8B301"/>
+<path d="M13.3327 18.3333C14.2532 18.3333 14.9993 17.5871 14.9993 16.6667C14.9993 15.7462 14.2532 15 13.3327 15C12.4122 15 11.666 15.7462 11.666 16.6667C11.666 17.5871 12.4122 18.3333 13.3327 18.3333Z" fill="#F8B301"/>
+<path d="M18.3333 10.4417V11.6667H15.8333C15.375 11.6667 15 11.2917 15 10.8333V8.33333C15 7.875 15.375 7.5 15.8333 7.5H16.9083L18.1167 9.61667C18.2583 9.86667 18.3333 10.15 18.3333 10.4417Z" fill="#F8B301"/>
+</svg>
+' !!} {{$item->sale->status}}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="pro-3" class="tab-pane">
+                                                                                    <div class="cart-content">
+                                                                                        <ul>
+                                                                                            @foreach($complated as $item)
+                                                                                                <li class="border-bottom pb-3 mb-3">
+                                                                                                    <div class="cart-img d-flex align-items-center">
+                                                                                                        <a href="{{route('front.product.show', ['slug' => $item->product->slug])}}"><img src="{{asset(($item->product->images()->first()) ? 'storage/'.$item->product->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->product->title}}"></a>
+                                                                                                    </div>
+                                                                                                    <div class="cart-title w-100 position-relative">
+                                                                                                        <h4><a href="{{route('front.product.show', ['slug' => $item->product->slug])}}">{{mb_strimwidth($item->product->title, 0, 70, '..')}}</a></h4>
+                                                                                                        <span class="span">{{mb_strimwidth($item->product->short_description, 0, 80, '..')}}</span><br>
+                                                                                                        <span class="span">Количество: {{$item->amount}}шт</span><br>
+                                                                                                        <span class="span">Дата заказа: {{$item->onUpdate}}</span>
+                                                                                                        <div class="product-details-action-wrap font-kyiv">
+                                                                                                            <div class="product-details-price py-3">
+                                                                                                                <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
+                                                                    {!!($item->sale->status == 'Получено') ? ' text-success "><svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_250_5961)">
+<path d="M1.66602 10.0001C1.66602 6.07171 1.66602 4.10752 2.8864 2.88714C4.10679 1.66675 6.07098 1.66675 9.99935 1.66675C13.9277 1.66675 15.8919 1.66675 17.1123 2.88714C18.3327 4.10752 18.3327 6.07171 18.3327 10.0001C18.3327 13.9285 18.3327 15.8926 17.1123 17.113C15.8919 18.3334 13.9277 18.3334 9.99935 18.3334C6.07098 18.3334 4.10679 18.3334 2.8864 17.113C1.66602 15.8926 1.66602 13.9285 1.66602 10.0001Z" fill="#32C77F" stroke="#32C77F" stroke-width="1.5"/>
+<path d="M7.08398 10.4167L8.75065 12.0834L12.9173 7.91675" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_250_5961">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+' : ' text-warning"> <svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.666 2.43341V9.35841C11.666 10.2084 10.9743 10.9001 10.1243 10.9001H2.49935C2.04102 10.9001 1.66602 10.5251 1.66602 10.0667V4.74175C1.66602 3.04175 3.04102 1.66675 4.74102 1.66675H10.891C11.3243 1.66675 11.666 2.00841 11.666 2.43341Z" fill="#F8B301"/>
+<path d="M17.916 12.9167C18.1493 12.9167 18.3327 13.1001 18.3327 13.3334V14.1667C18.3327 15.5501 17.216 16.6667 15.8327 16.6667C15.8327 15.2917 14.7077 14.1667 13.3327 14.1667C11.9577 14.1667 10.8327 15.2917 10.8327 16.6667H9.16602C9.16602 15.2917 8.04102 14.1667 6.66602 14.1667C5.29102 14.1667 4.16602 15.2917 4.16602 16.6667C2.78268 16.6667 1.66602 15.5501 1.66602 14.1667V12.5001C1.66602 12.0417 2.04102 11.6667 2.49935 11.6667H10.416C11.566 11.6667 12.4993 10.7334 12.4993 9.58341V5.00008C12.4993 4.54175 12.8743 4.16675 13.3327 4.16675H14.0327C14.6327 4.16675 15.1827 4.49175 15.4827 5.00841L16.016 5.94175C16.091 6.07508 15.991 6.25008 15.8327 6.25008C14.6827 6.25008 13.7493 7.18341 13.7493 8.33341V10.8334C13.7493 11.9834 14.6827 12.9167 15.8327 12.9167H17.916Z" fill="#F8B301"/>
+<path d="M6.66667 18.3333C7.58714 18.3333 8.33333 17.5871 8.33333 16.6667C8.33333 15.7462 7.58714 15 6.66667 15C5.74619 15 5 15.7462 5 16.6667C5 17.5871 5.74619 18.3333 6.66667 18.3333Z" fill="#F8B301"/>
+<path d="M13.3327 18.3333C14.2532 18.3333 14.9993 17.5871 14.9993 16.6667C14.9993 15.7462 14.2532 15 13.3327 15C12.4122 15 11.666 15.7462 11.666 16.6667C11.666 17.5871 12.4122 18.3333 13.3327 18.3333Z" fill="#F8B301"/>
+<path d="M18.3333 10.4417V11.6667H15.8333C15.375 11.6667 15 11.2917 15 10.8333V8.33333C15 7.875 15.375 7.5 15.8333 7.5H16.9083L18.1167 9.61667C18.2583 9.86667 18.3333 10.15 18.3333 10.4417Z" fill="#F8B301"/>
+</svg>
+' !!} {{$item->sale->status}}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
