@@ -454,6 +454,7 @@
     .carousel .list .item:nth-child(2) .introduce .des,
     .carousel.showDetail .list .item:nth-child(2) .detail .des{
         overflow: auto;
+        margin-right: 20px;
     }
     .carousel.showDetail .list .item:nth-child(2) .detail .checkout{
         display: flex;
