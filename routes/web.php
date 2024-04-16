@@ -54,6 +54,8 @@ Route::get('/blog', Blog::class)->name('blog.index');
 Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.details');
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/', \App\Http\Livewire\Profile::class)->name('front.profile.index');
+    Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');
+
 });
 
 
