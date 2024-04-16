@@ -1165,7 +1165,7 @@ textarea {
 }
 
 .header-action-wrap .header-action-cart {
-    margin-right: 10px !important;
+    /*margin-right: 10px !important;*/
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
