@@ -299,7 +299,7 @@
             </div>
             <div class="row p-3">
                 <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12">
-                    <a wire:click="button()" class="btn- w-100 text-dark p-3">Перейти к оформление заказа</a>
+                    <a wire:click="button()" class="btn- w-100 text-dark p-3">Перейти к оформлению заказа</a>
                 </div>
             </div>
         </div>
