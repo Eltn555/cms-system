@@ -51,7 +51,7 @@
                 color: $theme-color;
                 @media #{$xs-layout} {
                     font-size: 16px;
-                    margin-right: 2px;
+                    margin-right: 0;
                 }
                 &:last-child {
                     margin-right: 0;
