@@ -31,6 +31,41 @@
                 padding-bottom: 55%; /* 16:9 */
             }
         }
+        .flash-message{
+            top: 100px;
+            right: 10px;
+            opacity: 1;
+            transition: 0.2s;
+            position: fixed !important;
+        }
+        .hiddenmsg{
+            right: -500px;
+            opacity: 0;
+            transition: 1s;
+            position: fixed;
+        }
+        .file-input{
+            display: inline-block;
+            padding-top: 50px !important;
+            padding-bottom: 0 !important;
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
+            height: 50px !important;
+        }
+        .file-text{
+            left: 20px;
+            top: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #757575;
+        }
+        .icon-input {
+            top: 0;
+            right: 0;
+            padding: 12px 15px;
+        }
     </style>
 @endsection
 @section('content')
@@ -184,5 +219,25 @@
                 myMap.geoObjects.add(newPlacemark);
             });
         }
+        document.addEventListener('livewire:load', function () {
+            window.livewire.on('FormInfo', (event) => {
+                console.log(event.text);
+            });
+        });
+        function updateFileText(input) {
+            var fileText = input.nextElementSibling;
+            var files = input.files;
+            var fileNames = [];
+            for (var i = 0; i < files.length; i++) {
+                fileNames.push(files[i].name);
+            }
+            fileText.textContent = fileNames.join(', ');
+        }
+        window.addEventListener('flashMessage', event => {
+            const flashMessage = document.querySelector('.flash-message');
+            flashMessage.text = event.detail.message;
+            flashMessage.classList.remove('hiddenmsg');
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
+        });
     </script>
 @endsection
