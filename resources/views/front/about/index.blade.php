@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layout')
 
 @section('style')
     <style>

@@ -25,6 +25,7 @@
 
     <!-- All CSS is here
 	============================================ -->
+    <link rel="icon" type="image/png" href="{{asset('title.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/vendor/pe-icon-7-stroke.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/vendor/themify-icons.css')}}"/>
