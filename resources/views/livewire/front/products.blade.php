@@ -104,7 +104,7 @@
                                 @livewire('front.cart.cart-count-btn', ['product' => $product], key($product->id))
                             </div>
                             <div class="single-product-cart btn-hover w-50 ps-1 text-center">
-                                <a href="#" class="w-100 p-3 text-dark bg-light border border-1">Купить в один клик</a>
+                                <button title="Купить в один клик" data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 p-3 text-dark bg-light border border-1">Купить в один клик</button>
                             </div>
                         </div>
                     </div>
@@ -238,4 +238,11 @@
             </div>
         </div>
     @endif
+    <div class="modal fade quickview-modal-style" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
 </div>

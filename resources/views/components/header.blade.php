@@ -5,7 +5,10 @@
                     <div class="row align-items-center mx-5">
                         <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
                             <div class="logo">
-                                <a href="/"><img height="75px" src="{{ asset('logo-black.png') }}" alt="logo"></a>
+                                <a href="/">
+                                    <img class="logo-black" height="55px" src="{{ asset('logo-black.png') }}" alt="logo">
+                                    <img class="logo-white d-none" height="55px" src="{{ asset('logo-white.png') }}" alt="logo">
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
@@ -17,36 +20,35 @@
                                         </li>
                                         <li class="">
                                             <a href="{{ route('front.category.index') }}">Каталог</a>
-                                            <ul class="mega-menu-style d mega-menu-mrg-1 p-4 rounded-1 category-hover">
+                                            <ul class="mega-menu-style mega-menu-mrg-1 pt-0 px-0 rounded-1 category-hover row d-flex">
                                                 {{--Category lists--}}
-                                                <li>
-                                                    <ul class="d-flex">
-                                                        @foreach($categoriesChild as $key => $category)
-                                                            <li>
-                                                                <a onmouseover="onHover({{$category->id}})" class="dropdown-title text-black">{{ $category->title }}</a>
-                                                                <ul>
-                                                                    @foreach($category->children as $childKey => $child)
-                                                                        <li>
-                                                                            <a onmouseover="onHover({{$child->id}})"
-                                                                               href="{{ route('front.category.show', $child->slug) }}" class="text-black">{{ $child->title }}</a>
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </li>
+                                                @foreach ($categories as $category)
+                                                    <li class="parent m-0 col-3 border-bottom pt-3 pb-2 ps-3 pe-0"><a class="py-3 w-100 border-end d-flex align-items-center justify-content-between" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }} <svg class="{{$category->children->isEmpty() ? 'd-none' : ''}} category-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </a>
+                                                    @if ($category->children->isNotEmpty())
+                                                        <ul class="children h-0 overflow-hidden ">
+                                                            @foreach ($category->children as $child)
+                                                                <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between" href="{{ route('front.category.show', $child->slug) }}">• {{ $child->title }} <svg class="{{$child->children->isEmpty() ? 'd-none' : ''}} child-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                        </svg>
+                                                                    </a>
+                                                                @if ($child->children->isNotEmpty())
+                                                                    <ul class="grandChild h-0 overflow-hidden">
+                                                                        @foreach ($child->children as $grandchild)
+                                                                            <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between ps-4" href="{{ route('front.category.show', $grandchild->slug) }}">{{ $grandchild->title }}</a>
+                                                                            </li>
+                                                                            <!-- Add more nested loops for additional generations if needed -->
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endif
+                                                                </li>
                                                             @endforeach
-                                                            <li>
-                                                                <ul>
-                                                                    @foreach($categories as $category)
-                                                                        <li>
-                                                                            <a onmouseover="onHover({{$category->id}})"
-                                                                               href="{{ route('front.category.show', $category->slug) }}" class="text-black">{{ $category->title }}</a>
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </li>
-                                                            {{--Category lists End--}}
-                                                    </ul>
-                                                </li>
+                                                        </ul>
+                                                    @endif
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></li>
@@ -117,25 +119,25 @@
                         <a href="{{ route('front.category.index') }}">Каталог</a>
                         <ul class="mega-menu-style d mega-menu-mrg-1 p-4 rounded-1 category-hover">
                             {{--Category lists--}}
-                            @foreach($categoriesChild as $key => $category)
-                                <li>
-                                    <a onmouseover="onHover({{$category->id}})" class="dropdown-title text-black">{{ $category->title }}</a>
-                                    <ul>
-                                        @foreach($category->children as $childKey => $child)
-                                            <li>
-                                                <a onmouseover="onHover({{$child->id}})"
-                                                   href="{{ route('front.category.show', $child->slug) }}" class="text-black">{{ $child->title }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endforeach
-                            @foreach($categories as $category)
-                                <li>
-                                    <a onmouseover="onHover({{$category->id}})"
-                                       href="{{ route('front.category.show', $category->slug) }}" class="text-black">{{ $category->title }}</a>
-                                </li>
-                            @endforeach
+{{--                            @foreach($categoriesChild as $key => $category)--}}
+{{--                                <li>--}}
+{{--                                    <a onmouseover="onHover({{$category->id}})" class="dropdown-title text-black">{{ $category->title }}</a>--}}
+{{--                                    <ul>--}}
+{{--                                        @foreach($category->children as $childKey => $child)--}}
+{{--                                            <li>--}}
+{{--                                                <a onmouseover="onHover({{$child->id}})"--}}
+{{--                                                   href="{{ route('front.category.show', $child->slug) }}" class="text-black">{{ $child->title }}</a>--}}
+{{--                                            </li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+{{--                            @endforeach--}}
+{{--                            @foreach($categories as $category)--}}
+{{--                                <li>--}}
+{{--                                    <a onmouseover="onHover({{$category->id}})"--}}
+{{--                                       href="{{ route('front.category.show', $category->slug) }}" class="text-black">{{ $category->title }}</a>--}}
+{{--                                </li>--}}
+{{--                            @endforeach--}}
                         </ul>
                     </li>
                     <li><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></li>

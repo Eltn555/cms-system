@@ -19,7 +19,7 @@ class HomeController extends Controller
         $banners = Banner::all();
         $sliders = Slider::all();
         $slider = Slider::all();
-        $categories = Category::with('images')->get();
+        $categories = Category::with('images')->where('is_active', 1)->get();
         $partners = Partner::all();
         $tagsIndex = Tag::take(4)->get();
         /*foreach ($tagsIndex as $tag) {

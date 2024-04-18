@@ -19,8 +19,28 @@ class Header extends Component
      */
     public function __construct()
     {
-        $this->categories = Category::doesnthave('children')->where('parent_category_id', null)->get();
-        $this->categoriesChild = Category::has('children')->get();
+        $this->categories = Category::where('parent_category_id', null)->where('is_active', 1)->with('childrenRecursive')->get();
+    }
+
+    function getChildrenRecursive($category, &$visited = []) {
+        // Check if the category has been visited
+        if (in_array($category->id, $visited)) {
+            // Category has been visited, return empty array to avoid infinite recursion
+            return [];
+        }
+
+        // Add the category to the visited array
+        $visited[] = $category->id;
+
+        $children = $category->children;
+
+        if ($children->isNotEmpty()) {
+            foreach ($children as $child) {
+                $child->children = getChildrenRecursive($child, $visited);
+            }
+        }
+
+        return $children;
     }
 
     public function onHover($id) {
