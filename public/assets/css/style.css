@@ -1063,6 +1063,11 @@ textarea {
     transition: 0.3s;
 }
 
+.children a{
+    font-weight: 500 !important;
+    font-family: 'KyivType', sans-serif !important;
+}
+
 .mega-menu-style li:hover .category-arrow{
     transform: rotate(90deg);
 }

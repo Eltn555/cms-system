@@ -40,6 +40,10 @@ Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::c
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
 Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.category.index');
 Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('front.product.show');
+Route::get('/calculator', function () {
+    return view('errors.soon');
+})->name('front.calculator.index');
+
 Route::get('/wishlist',\App\Http\Livewire\Front\Wishlist\Index::class)->name('front.wishlist.index');
 
 Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cartItems.index');

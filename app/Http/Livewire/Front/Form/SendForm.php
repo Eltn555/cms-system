@@ -24,6 +24,7 @@ class SendForm extends Component
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
         $chatId = ['791430493',  '1641704306']; // You'll need to obtain your chat ID from your bot
         $message = "New form submission:\nName: {$this->name}\nPhone: {$this->phone}\nImages: " . implode(', ', $imageUrls);
+        $text = "Имя: {$this->name}\nНомер: {$this->phone}\n\nТекст: {$this->msg}";
 
         // Process image uploads (if any)
         if ($this->images){
@@ -33,7 +34,7 @@ class SendForm extends Component
                     $response = Http::attach('photo', $imageData, $image->getClientOriginalName())
                         ->post("https://api.telegram.org/bot{$telegramBotToken}/sendPhoto", [
                             'chat_id' => $chat,
-                            'caption' => "Имя: {$this->name}\nНомер: {$this->phone}\n\nТекст {$this->msg}",
+                            'caption' => $text,
                         ]);
                 }
             }
@@ -42,7 +43,7 @@ class SendForm extends Component
                 foreach ($chatId as $chat){
                     $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
                         'chat_id' => $chat,
-                        'text' => "Имя: {$this->name}\nНомер: {$this->phone}\n\nТекст {$this->msg}",
+                        'text' => $text,
                     ]);
                 }
             }else{

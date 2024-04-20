@@ -4,6 +4,41 @@
 
 <div class="my-5 pt-1">
     <style>
+        .flash-message{
+            top: 100px;
+            right: 10px;
+            opacity: 1;
+            transition: 0.2s;
+            position: fixed !important;
+        }
+        .hiddenmsg{
+            right: -500px;
+            opacity: 0;
+            transition: 1s;
+            position: fixed;
+        }
+        .file-input{
+            display: inline-block;
+            padding-top: 50px !important;
+            padding-bottom: 0 !important;
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
+            height: 50px !important;
+        }
+        .file-text{
+            left: 20px;
+            top: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #757575;
+        }
+        .icon-input {
+            top: 0;
+            right: 0;
+            padding: 12px 15px;
+        }
         .blog-category{
             height: 48px;
             overflow-x: scroll;
@@ -180,28 +215,31 @@
     <div class="form-area pb-70">
         <div class="container bg-light">
             <div class="row">
-                <div class="col-lg-7 col-md-12 p-5 pe-1">
+                <div class="col-lg-7 col-md-12 p-1 p-lg-5 pe-1">
                     <div class="pt-5 ps-5">
                         <div class="d-flex position-relative">
-                            <h5  class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
-                            <h5  class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                            <h5 class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
+                            <h5 class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
                         </div>
                     </div>
                     <div class="p-5 pt-2">
                         <p class="font-kyiv fs-5">
-                            Загрузите изображение понравившейся люстры и введите свои данные и мы обязательно с вами свяжемся.
+                            Загрузите изображение понравившейся люстры и введите свои данные и мы обязательно с вами
+                            свяжемся.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12">
-
+                    <livewire:front.form.send-form/>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 @push('scripts')
     <script>
+
         window.addEventListener('metaChanged', event => {
             const {description, keywords} = event.detail;
             // Update meta description
@@ -214,6 +252,26 @@
             AOS.init();
             $('.notActive').removeClass('activeBlog');
             $('#blogCategory'+event.detail.id).addClass('activeBlog');
+        });
+        document.addEventListener('livewire:load', function () {
+            window.livewire.on('FormInfo', (event) => {
+                console.log(event.text);
+            });
+        });
+        function updateFileText(input) {
+            var fileText = input.nextElementSibling;
+            var files = input.files;
+            var fileNames = [];
+            for (var i = 0; i < files.length; i++) {
+                fileNames.push(files[i].name);
+            }
+            fileText.textContent = fileNames.join(', ');
+        }
+        window.addEventListener('flashMessage', event => {
+            const flashMessage = document.querySelector('.flash-message');
+            flashMessage.text = event.detail.message;
+            flashMessage.classList.remove('hiddenmsg');
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
         });
     </script>
 @endpush

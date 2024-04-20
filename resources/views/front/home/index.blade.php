@@ -96,9 +96,8 @@
                         <img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->title}}">
                         <div class="introduce">
                             <div class="topic d-flex pt-2">
-                                <h5 style="font-size: 120px;"
-                                    class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
-                                <h5 class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
+                                <h5 style=" font-size: 120px;" class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
+                                <h5 style="top:-20px; left: 100px; -webkit-text-stroke: 1px rgba(255, 215, 0, 0.4)" class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
                             </div>
                             <div class="des font-kyiv fs-5"
                                  style="color: rgba(182, 182, 182, 1);">{{$slide->text}}</div>
@@ -366,7 +365,7 @@
                     </div>
                     <div class="p-5 pt-2">
                         <div class="single-product-cart btn-hover text-start">
-                            <a href="#" class="p-2 ps-4 pe-4 text-dark font-kyiv">Рассчитать галогены</a>
+                            <a href="{{route('front.calculator.index')}}" class="p-2 ps-4 pe-4 text-dark font-kyiv">Рассчитать галогены</a>
                         </div>
                     </div>
                 </div>

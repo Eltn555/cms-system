@@ -23,14 +23,14 @@
                                             <ul class="mega-menu-style mega-menu-mrg-1 pt-0 px-0 rounded-1 category-hover row d-flex">
                                                 {{--Category lists--}}
                                                 @foreach ($categories as $category)
-                                                    <li class="parent m-0 col-3 border-bottom pt-3 pb-2 ps-3 pe-0"><a class="py-3 w-100 border-end d-flex align-items-center justify-content-between" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }} <svg class="{{$category->children->isEmpty() ? 'd-none' : ''}} category-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <li class="parent m-0 col-3 border-bottom pt-3 pb-2 ps-3 pe-0"><a class="py-3 w-100 border-end d-flex align-items-center justify-content-between fw-semibold font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }} <svg class="{{$category->children->isEmpty() ? 'd-none' : ''}} category-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             </svg>
                                                         </a>
                                                     @if ($category->children->isNotEmpty())
                                                         <ul class="children h-0 overflow-hidden ">
                                                             @foreach ($category->children as $child)
-                                                                <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between" href="{{ route('front.category.show', $child->slug) }}">• {{ $child->title }} <svg class="{{$child->children->isEmpty() ? 'd-none' : ''}} child-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $child->slug) }}">• {{ $child->title }} <svg class="{{$child->children->isEmpty() ? 'd-none' : ''}} child-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                             <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                         </svg>
                                                                     </a>
