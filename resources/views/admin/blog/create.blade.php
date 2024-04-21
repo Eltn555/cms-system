@@ -10,10 +10,8 @@
             New Blog
         </h2>
     </div>
-
-    <div class="intro-y mt-5 w-2/3">
         <!-- BEGIN: Form Layout -->
-        <div class="intro-y box">
+        <div class="intro-y box mt-5 p-3">
             <form method="POST" action="{{ route('admin.blog.store') }}" id="file-upload-form" class="uploader"
                   style="max-width:1000px!important;" enctype="multipart/form-data">
                 @csrf
@@ -61,7 +59,6 @@
             </form>
         </div>
         <!-- END: Form Layout -->
-    </div>
 @endsection
 
 @section('script')

@@ -90,58 +90,58 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'is_admin']], function (
     Route::resource('/account', AccountController::class, ['as'=>'admin']);
 
 })->middleware([\App\Http\Middleware\Authenticate::class, \App\Http\Middleware\IsAdmin::class]);
-Route::post('/teststore', function (\Illuminate\Http\Request $request){
-    $data = $request->all();
-    dd($data);
-    foreach ($data['filepond'] as $image){
-
-        $path = Storage::put('/images', $image);
-
-        \App\Models\Image::create([
-           'alt'=>$path,
-            'image'=>$path
-        ]);
-    }
-
-
-})->name('test.store');
-Route::get('/teststores', function (){
-
-    $category = Category::find(1);
-    dump(Product::where('category_id', $category->id)->get());
-    $products = Product::where('category_id', $category->id)
-        ->whereHas('tags', function ($query) {
-            $query->whereIn('tags.id',[1]);
-        })
-        ->get();
-    dd($products);
-
-    $products = Product::all();
-    dump($products);
-    $categories = Category::all();
-    dump($categories);
-    $newproducts = $categories[0]->products;
-    dump($newproducts);
-    $producttags = $newproducts->whereHas('tags', function ($tags) {
-        $tags->whereIn('id', [1]);
-    })->get();
-    dd($producttags);
-    $tags = Tag::all();
-    dump($tags[0]->products->toArray());
-    $id = $categories[0]->id;
-    $tagproducts = $tags[0]->products->where(function ($query, $id) {
-        $query->category->id = 1;
-    });
-    dump($tagproducts);
-
-
-
-
-
-
-    die();
-
-    return view('test');
-})->name('test.stores');
+//Route::post('/teststore', function (\Illuminate\Http\Request $request){
+//    $data = $request->all();
+//    dd($data);
+//    foreach ($data['filepond'] as $image){
+//
+//        $path = Storage::put('/images', $image);
+//
+//        \App\Models\Image::create([
+//           'alt'=>$path,
+//            'image'=>$path
+//        ]);
+//    }
+//
+//
+//})->name('test.store');
+//Route::get('/teststores', function (){
+//
+//    $category = Category::find(1);
+//    dump(Product::where('category_id', $category->id)->get());
+//    $products = Product::where('category_id', $category->id)
+//        ->whereHas('tags', function ($query) {
+//            $query->whereIn('tags.id',[1]);
+//        })
+//        ->get();
+//    dd($products);
+//
+//    $products = Product::all();
+//    dump($products);
+//    $categories = Category::all();
+//    dump($categories);
+//    $newproducts = $categories[0]->products;
+//    dump($newproducts);
+//    $producttags = $newproducts->whereHas('tags', function ($tags) {
+//        $tags->whereIn('id', [1]);
+//    })->get();
+//    dd($producttags);
+//    $tags = Tag::all();
+//    dump($tags[0]->products->toArray());
+//    $id = $categories[0]->id;
+//    $tagproducts = $tags[0]->products->where(function ($query, $id) {
+//        $query->category->id = 1;
+//    });
+//    dump($tagproducts);
+//
+//
+//
+//
+//
+//
+//    die();
+//
+//    return view('test');
+//})->name('test.stores');
 
 Auth::routes();

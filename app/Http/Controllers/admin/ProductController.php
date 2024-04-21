@@ -209,7 +209,6 @@ class ProductController extends Controller
         }
         // END
 
-        // Create product
         $product = Product::find($id)->update([
             'title' => $data['title'],
             'short_description' => $data['short_description'],
