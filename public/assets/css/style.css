@@ -5373,6 +5373,9 @@ textarea {
     .home-single-product-img {
         margin-left: 0px;
     }
+    .product-wrap .product-img {
+        height: 290px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

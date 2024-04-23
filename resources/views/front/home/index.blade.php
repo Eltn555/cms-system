@@ -395,7 +395,7 @@
                     @endphp
                 <div class="row">
                     @foreach($products as $product)
-                        <div class="col-6 col-md-6 col-lg-3 swiper-slide sw-sl align-self-stretch">
+                        <div class="col-6 col-md-6 col-lg-3 swiper-slide  align-self-stretch">
                             <livewire:front.component.product-card :product="$product" :key="$product->id"/>
                         </div>
                     @endforeach
