@@ -1961,7 +1961,6 @@ textarea {
 .slinky-mobile-menu ul li a span {
     color: #383838;
     font-size: 14px;
-    font-weight: 500;
 }
 
 .slinky-mobile-menu ul li a:not(.back) {
@@ -2050,12 +2049,20 @@ textarea {
     }
 }
 
+.logo-black,
+.logo-white{
+    height: 55px;
+}
+
 @media only screen and (max-width: 767px) {
     .header-responsive-padding {
         /*padding: 20px 0;*/
     }
+    .logo-black,
+    .logo-white{
+        height: 30px;
+    }
 }
-
 /*-------- 03. Slider style ---------*/
 .slider-height-1 {
     height: 770px;

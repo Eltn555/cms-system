@@ -213,28 +213,7 @@
         </div>
     </div>
     <div class="form-area pb-70">
-        <div class="container bg-light">
-            <div class="row">
-                <div class="col-lg-7 col-md-12 p-1 p-lg-5 pe-1">
-                    <div class="pt-5 ps-5">
-                        <div class="d-flex position-relative">
-                            <h5 class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
-                            <h5 class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
-                        </div>
-                    </div>
-                    <div class="p-5 pt-2">
-                        <p class="font-kyiv fs-5">
-                            Загрузите изображение понравившейся люстры и введите свои данные и мы обязательно с вами
-                            свяжемся.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-12">
-                    <livewire:front.form.send-form/>
-                </div>
-            </div>
-        </div>
-
+        <livewire:front.form.send-form/>
     </div>
 </div>
 @push('scripts')

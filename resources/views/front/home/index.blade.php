@@ -184,8 +184,8 @@
                         <h5 class="shadow-text-2 font-cormorant fw-bold">Новые<br>поступления</h5>
                     </div>
                     <div class="col-6 justify-content-end align-items-end d-flex">
-                        <div class="single-product-cart btn-hover ps-1 text-end">
-                            <a href="https://lumenlux.uz/category" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
+                        <div class="single-product-cart btn-hover ps-1 text-end d-none d-md-block">
+                            <a href="category" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
                                 магазин</a>
                         </div>
                     </div>
@@ -225,7 +225,12 @@
                             @endif
                         @endforeach
                     </div>
-
+                    <div class="w-100 justify-content-end align-items-end d-flex d-md-none">
+                        <div class="w-100 single-product-cart btn-hover ps-1 text-end">
+                            <a href="category" class="w-100 text-center mt-3 p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
+                                магазин</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -381,8 +386,8 @@
                     <h5 class="shadow-text-2 font-cormorant fw-bold">Трендовые<br>товары</h5>
                 </div>
                 <div class="col-6 justify-content-end align-items-end d-flex">
-                    <div class="single-product-cart btn-hover ps-1 text-end">
-                        <a href="category/?tagId" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
+                    <div class="single-product-cart btn-hover ps-1 text-end d-none d-md-block">
+                        <a href="category/?tagId={{$tagsIndex[0]->id}}" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
                             магазин</a>
                     </div>
                 </div>
@@ -400,6 +405,12 @@
                         </div>
                     @endforeach
                 </div>
+                    <div class="w-100 justify-content-end align-items-end d-flex d-md-none">
+                        <div class="w-100 single-product-cart btn-hover ps-1 text-end">
+                            <a href="category/?tagId={{$tagsIndex[0]->id}}" class="w-100 text-center mt-3 p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посетить в
+                                магазин</a>
+                        </div>
+                    </div>
                 @endif
             </div>
         </div>
@@ -480,28 +491,7 @@
         </div>
     </div>
     <div class="form-area pb-70">
-        <div class="container bg-light">
-            <div class="row">
-                <div class="col-lg-7 col-md-12 p-1 p-lg-5 pe-1">
-                    <div class="pt-5 ps-5">
-                        <div class="d-flex position-relative">
-                            <h5 class="shadow-text-1 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
-                            <h5 class="shadow-text-2 font-cormorant fw-bold">Не можете найти нужную люстру?</h5>
-                        </div>
-                    </div>
-                    <div class="p-5 pt-2">
-                        <p class="font-kyiv fs-5">
-                            Загрузите изображение понравившейся люстры и введите свои данные и мы обязательно с вами
-                            свяжемся.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-12">
-                    <livewire:front.form.send-form/>
-                </div>
-            </div>
-        </div>
-
+        <livewire:front.form.send-form/>
     </div>
     <div class="blog-area pb-70">
         <div class="container">

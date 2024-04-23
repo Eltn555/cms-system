@@ -391,6 +391,10 @@
     .carousel.showDetail .list .item:nth-child(2) .detail .title{
         font-size: 2em;
     }
+    .carousel .list .item img{
+        margin-top: 30px;
+        width: 80%;
+    }
 }
 @media screen and (max-width: 767px){
     #prev{
@@ -408,6 +412,7 @@
     }
     .carousel .list .item:nth-child(2) .introduce .des{
         margin-bottom: 1.5rem;
+        font-size: 14px !important;
     }
     .carousel .list .item:nth-child(2) .introduce .seeMore{
         font-size: 13px;
@@ -437,6 +442,8 @@
     }
 
     .carousel .list .item img{
+        margin-right: 25px;
+        margin-top: 70px;
         width: 70%;
     }
     .carousel.showDetail .list .item:nth-child(2) .detail{

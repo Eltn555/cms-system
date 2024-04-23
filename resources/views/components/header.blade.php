@@ -2,7 +2,7 @@
     <div class="header-bottom sticky-bar stick">
         <div class="blurry-backgorund">
             <div class="blurry-content">
-                    <div class="row align-items-center mx-5">
+                    <div class="row align-items-center mx-1 mx-md-5">
                         <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
                             <div class="logo">
                                 <a href="/">
@@ -118,26 +118,23 @@
                     <li class="">
                         <a href="{{ route('front.category.index') }}">Каталог</a>
                         <ul class="mega-menu-style d mega-menu-mrg-1 p-4 rounded-1 category-hover">
-                            {{--Category lists--}}
-{{--                            @foreach($categoriesChild as $key => $category)--}}
-{{--                                <li>--}}
-{{--                                    <a onmouseover="onHover({{$category->id}})" class="dropdown-title text-black">{{ $category->title }}</a>--}}
-{{--                                    <ul>--}}
-{{--                                        @foreach($category->children as $childKey => $child)--}}
-{{--                                            <li>--}}
-{{--                                                <a onmouseover="onHover({{$child->id}})"--}}
-{{--                                                   href="{{ route('front.category.show', $child->slug) }}" class="text-black">{{ $child->title }}</a>--}}
-{{--                                            </li>--}}
-{{--                                        @endforeach--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--                            @endforeach--}}
-{{--                            @foreach($categories as $category)--}}
-{{--                                <li>--}}
-{{--                                    <a onmouseover="onHover({{$category->id}})"--}}
-{{--                                       href="{{ route('front.category.show', $category->slug) }}" class="text-black">{{ $category->title }}</a>--}}
-{{--                                </li>--}}
-{{--                            @endforeach--}}
+                            @foreach ($categories as $category)
+                                <li class="parent m-0 border-bottom p-1"><a class="fw-bolder py-3 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}
+                                    </a>
+                                    @if ($category->children->isNotEmpty())
+                                        <ul class="overflow-hidden ">
+                                            <li class="mb-0 w-100"><a class="fw-bolder py-2 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}
+                                                </a>
+                                            </li>
+                                            @foreach ($category->children as $child)
+                                                <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $child->slug) }}">• {{ $child->title }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></li>
