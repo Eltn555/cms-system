@@ -120,13 +120,13 @@
                 <a data-bs-toggle="tab" href="#des-details3" class=""> Отзывы </a>
             </div>
             <div class="tab-content">
-                <div id="des-details1" class="tab-pane active">
+                <div id="des-details2" class="tab-pane active">
                     {!! $product->long_description !!}
-                </div>
-                <div id="des-details2" class="tab-pane">
                     <div class="specification-wrap table-responsive d-flex justify-content-center">
                         {!! $product->additional !!}
                     </div>
+                </div>
+                <div id="des-details1" class="tab-pane">
                 </div>
                 <div id="des-details3" class="tab-pane">
                     <div class="review-wrapper">

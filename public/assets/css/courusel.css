@@ -28,6 +28,7 @@
 .bg-carousel{
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: right;
 }
 /* carousel */
 .topic .shadow-text-2{

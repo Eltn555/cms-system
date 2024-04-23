@@ -1,26 +1,4 @@
-@section('title')
-    {{ $news->title }}
-@endsection
-<div class="breadcrumb-area bg-gray-4 breadcrumb-padding-1">
-    <div class="container">
-        <div class="breadcrumb-content text-center">
-            <h2 data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">Blog Details</h2>
-            <ul data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
-                <li><a href="index.html">Home</a></li>
-                <li><i class="ti-angle-right"></i></li>
-                <li>Blog</li>
-                <li><i class="ti-angle-right"></i></li>
-                <li>{{ $news->title }}</li>
-            </ul>
-        </div>
-    </div>
-    <div class="breadcrumb-img-1 aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">
-        <img src="assets/images/banner/breadcrumb-1.png" alt="">
-    </div>
-    <div class="breadcrumb-img-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
-        <img src="assets/images/banner/breadcrumb-2.png" alt="">
-    </div>
-</div>
+@section('title', $news->title)
 
 <div class="blog-details-area pt-100 pb-100">
     <div class="container">

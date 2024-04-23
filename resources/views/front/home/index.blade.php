@@ -212,7 +212,7 @@
                                     class="overflow-hidden col-xl-4 col-lg-6 col-md-6 col-sm-12 order-lg-1 order-md-0 order-sm-0 col-12 small-banner">
                                     <div class="overflow-hidden w-100 img-banner" data-aos="fade-up"
                                          data-aos-delay="50">
-                                        <a href="category/?tagId={{$banners[0]->tag->id}}" class="w-100 position-relative">
+                                        <a href="category/?tagId={{$banner->tag->id}}" class="w-100 position-relative">
                                             <img src="{{ asset('storage/' . $banner->image) }}" alt="{{$banner->title}}"
                                                  class="w-100"></a>
                                         <div class="btn-style-6 btn-style-6-position btn-hover d-block">
@@ -391,19 +391,15 @@
                 @if(isset($tagsIndex[0]))
                     @php
                         $tag = $tagsIndex[0];
-                        $products = $tag->products->take(8);
+                        $products = $tag->products->take(4);
                     @endphp
-                    <div id="pro-1" class="tab-pane active">
-                        <div class="product-slider-active-2 swiper-container">
-                            <div class="swiper-wrapper">
-                                @foreach($products as $product)
-                                    <div class="swiper-slide sw-sl align-self-stretch">
-                                        <livewire:front.component.product-card :product="$product" :key="$product->id"/>
-                                    </div>
-                                @endforeach
-                            </div>
+                <div class="row">
+                    @foreach($products as $product)
+                        <div class="col-6 col-md-6 col-lg-3 swiper-slide sw-sl align-self-stretch">
+                            <livewire:front.component.product-card :product="$product" :key="$product->id"/>
                         </div>
-                    </div>
+                    @endforeach
+                </div>
                 @endif
             </div>
         </div>
