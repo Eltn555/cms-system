@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Livewire\Front\Component;
+
+use Illuminate\Support\Facades\Http;
+use Livewire\Component;
+
+class Onclick extends Component
+{
+    public $name;
+    public $phone;
+    public $product;
+    public $text = 'hey';
+    public $flashMessage;
+
+
+    public function checker(){
+        $this->text = $this->product->title;
+        if ($this->phone && $this->name){
+            $url = route('front.product.show', ['slug' => $this->product->slug]);
+            $text = '<b>Клиент:'.$this->name.'
+Номер тел:<code>'.$this->phone.'</code>
+Продукты:
+'."<a href='".$url."'><i>".$this->product->title."</i></a></b>";
+            $this->submitForm($text);
+            $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите способ оплаты, пожалуйста', 'style' => 'bg-success']);
+        }else{
+            $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите способ оплаты, пожалуйста', 'style' => 'bg-danger']);
+        }
+
+    }
+
+    public function submitForm($text)
+    {
+        // Validate form fields
+        $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+        $chatId = ['791430493', '1641704306']; //1641704306 You'll need to obtain your chat ID from your bot
+
+        foreach ($chatId as $chat){
+            $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
+                'chat_id' => $chat,
+                'text' => $text,
+                'parse_mode' => 'HTML',
+            ]);
+        }
+    }
+
+    public function render()
+    {
+        return view('livewire.front.component.onclick');
+    }
+}

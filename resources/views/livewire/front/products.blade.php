@@ -112,11 +112,18 @@
             </div>
         </div>
     </div>
+    <div class="modal fade quickview-modal-style" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <livewire:front.component.onclick :product="$product" :key="$product->id" />
+            </div>
+        </div>
+    </div>
     <div class="description-review-area pb-85">
         <div class="container">
             <div class="description-review-topbar nav" data-aos="fade-down" data-aos-delay="50">
-                <a class="active" data-bs-toggle="tab" href="#des-details1"> Описание </a>
-                <a data-bs-toggle="tab" href="#des-details2" class=""> Характеристики </a>
+                <a class="active" data-bs-toggle="tab" href="#des-details2" class=""> Характеристики </a>
+                <a data-bs-toggle="tab" href="#des-details1"> Описание </a>
                 <a data-bs-toggle="tab" href="#des-details3" class=""> Отзывы </a>
             </div>
             <div class="tab-content">
@@ -238,11 +245,21 @@
             </div>
         </div>
     @endif
-    <div class="modal fade quickview-modal-style" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-            </div>
-        </div>
-    </div>
 </div>
+
+
+@section('scripts')
+    <script>
+        window.addEventListener('flashMessage', event => {
+            const flashMessage = document.querySelector('.flash-message');
+            flashMessage.text = event.detail.message;
+            flashMessage.classList.remove('hiddenmsg');
+            flashMessage.classList.add(event.detail.style);
+            if (event.detail.style === 'bg-success') {
+                modal = document.querySelector('.close');
+                modal.click();
+            }
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
+        });
+    </script>
+@endsection

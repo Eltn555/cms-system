@@ -5691,24 +5691,14 @@ textarea {
 }
 
 .quickview-modal-style .modal-dialog {
-    max-width: 1070px;
+    max-width: 700px;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .quickview-modal-style .modal-dialog {
-        max-width: 910px;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .quickview-modal-style .modal-dialog {
-        max-width: 700px;
-    }
-}
 
 @media only screen and (max-width: 767px) {
+
     .quickview-modal-style .modal-dialog {
-        max-width: 320px;
+        width: 95%;
         margin: 0 auto;
     }
 }
@@ -5722,7 +5712,7 @@ textarea {
 
 @media only screen and (min-width: 479px) and (max-width: 575px) {
     .quickview-modal-style .modal-dialog {
-        max-width: 450px;
+        width: 95%;
         margin: 0 auto;
     }
 }
@@ -5731,12 +5721,12 @@ textarea {
     border: none;
     border-radius: 0;
     position: relative;
-    padding: 20px;
+    padding: 0;
 }
 
 @media only screen and (max-width: 767px) {
     .quickview-modal-style .modal-dialog .modal-content {
-        padding: 15px 15px 30px;
+        padding: 0;
     }
 }
 
