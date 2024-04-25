@@ -24,10 +24,10 @@ class Onclick extends Component
 '."<a href='".$url."'><i>".$this->product->title."</i></a></b>";
             $this->submitForm($text);
             $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
-            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите способ оплаты, пожалуйста', 'style' => 'bg-success']);
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Заказ получен, мы вам перезвоним в ближайшее время.', 'style' => 'bg-success']);
         }else{
             $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
-            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите способ оплаты, пожалуйста', 'style' => 'bg-danger']);
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, заполните имя и номер телефона', 'style' => 'bg-danger']);
         }
 
     }

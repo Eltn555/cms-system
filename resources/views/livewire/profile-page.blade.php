@@ -4,12 +4,26 @@
             top: 12px;
             left: 2px;
         }
+        @media only screen and (max-width: 767px) {
+            .cart-content .position-absolute{
+                bottom: -12px !important;
+                right: -15px !important;
+            }
+            .cart-content li{
+                padding-bottom: 1.3rem!important;
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            .profile{
+                margin-top: 100px;
+            }
+        }
     </style>
 @endsection
 
 <div>
-    <div class="pt-3 ms-5 mb-5 font-cormorant position-relative row" style="margin-top: 150px">
-        <div class="col-6">
+    <div class="profile ms-md-5 mb-md-5 pt-5 pb-2 py-md-0 mx-0 font-cormorant position-relative row">
+        <div class="col-6 pt-2">
             <h5 class="shadow-text-1 font-cormorant fw-bold">Профиль</h5>
             <h5 class="shadow-text-2 font-cormorant fw-bold">Профиль</h5>
         </div>
@@ -194,9 +208,9 @@
                                             </div>
                                         </fieldset>
                                         <div class="single-input-item btn-hover">
-                                            <button class="check-btn sqr-btn edit" onclick="event.preventDefault();">Edit</button>
-                                            <button class="check-btn sqr-btn submit d-none" type="submit">Save Changes</button>
-                                            <button class="check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
+                                            <button class="check-btn sqr-btn edit" onclick="event.preventDefault();">Редактировать</button>
+                                            <button class="check-btn sqr-btn submit d-none" type="submit">Сохранить</button>
+                                            <button class="check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</button>
                                         </div>
                                     </form>
                                 </div>
@@ -219,7 +233,7 @@
                                             <div class="cart-content">
                                                 <ul>
                                                     @foreach($items as $item)
-                                                        <li class="border-bottom pb-3 mb-3">
+                                                        <li class="border-bottom pb-3 mb-3 position-relative">
                                                             <div class="cart-img d-flex align-items-center">
                                                                 <a href="{{route('front.product.show', ['slug' => $item->product->slug])}}"><img src="{{asset(($item->product->images()->first()) ? 'storage/'.$item->product->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->product->title}}"></a>
                                                             </div>
@@ -229,11 +243,12 @@
                                                                 <span class="span">Количество: {{$item->amount}}шт</span><br>
                                                                 <span class="span">Дата заказа: {{$item->onUpdate}}</span>
                                                                 <div class="product-details-action-wrap font-kyiv">
-                                                                    <div class="product-details-price py-3">
+                                                                    <div class="product-details-price py-md-3">
                                                                         <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
+                                                            </div>
+                                                            <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
                                                                     {!!($item->sale->status == 'Получено') ? ' text-success "><svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_250_5961)">
 <path d="M1.66602 10.0001C1.66602 6.07171 1.66602 4.10752 2.8864 2.88714C4.10679 1.66675 6.07098 1.66675 9.99935 1.66675C13.9277 1.66675 15.8919 1.66675 17.1123 2.88714C18.3327 4.10752 18.3327 6.07171 18.3327 10.0001C18.3327 13.9285 18.3327 15.8926 17.1123 17.113C15.8919 18.3334 13.9277 18.3334 9.99935 18.3334C6.07098 18.3334 4.10679 18.3334 2.8864 17.113C1.66602 15.8926 1.66602 13.9285 1.66602 10.0001Z" fill="#32C77F" stroke="#32C77F" stroke-width="1.5"/>
@@ -254,7 +269,6 @@
 </svg>
 ' !!} {{$item->sale->status}}
                                                                 </div>
-                                                            </div>
                                                         </li>
                                                     @endforeach
                                                 </ul>
@@ -264,7 +278,7 @@
                                                                 <div class="cart-content">
                                                                     <ul>
                                                                         @foreach($process as $item)
-                                                                            <li class="border-bottom pb-3 mb-3">
+                                                                            <li class="border-bottom pb-3 mb-3 position-relative">
                                                                                 <div class="cart-img d-flex align-items-center">
                                                                                     <a href="{{route('front.product.show', ['slug' => $item->product->slug])}}"><img src="{{asset(($item->product->images()->first()) ? 'storage/'.$item->product->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->product->title}}"></a>
                                                                                 </div>
@@ -274,11 +288,12 @@
                                                                                     <span class="span">Количество: {{$item->amount}}шт</span><br>
                                                                                     <span class="span">Дата заказа: {{$item->onUpdate}}</span>
                                                                                     <div class="product-details-action-wrap font-kyiv">
-                                                                                        <div class="product-details-price py-3">
+                                                                                        <div class="product-details-price py-md-3">
                                                                                             <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
+                                                                                </div>
+                                                                                <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
                                                                     {!!($item->sale->status == 'Получено') ? ' text-success "><svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_250_5961)">
 <path d="M1.66602 10.0001C1.66602 6.07171 1.66602 4.10752 2.8864 2.88714C4.10679 1.66675 6.07098 1.66675 9.99935 1.66675C13.9277 1.66675 15.8919 1.66675 17.1123 2.88714C18.3327 4.10752 18.3327 6.07171 18.3327 10.0001C18.3327 13.9285 18.3327 15.8926 17.1123 17.113C15.8919 18.3334 13.9277 18.3334 9.99935 18.3334C6.07098 18.3334 4.10679 18.3334 2.8864 17.113C1.66602 15.8926 1.66602 13.9285 1.66602 10.0001Z" fill="#32C77F" stroke="#32C77F" stroke-width="1.5"/>
@@ -299,7 +314,6 @@
 </svg>
 ' !!} {{$item->sale->status}}
                                                                 </div>
-                                                            </div>
                                                         </li>
                                                     @endforeach
                                                 </ul>
@@ -309,7 +323,7 @@
                                                                                     <div class="cart-content">
                                                                                         <ul>
                                                                                             @foreach($complated as $item)
-                                                                                                <li class="border-bottom pb-3 mb-3">
+                                                                                                <li class="border-bottom pb-3 mb-3 position-relative">
                                                                                                     <div class="cart-img d-flex align-items-center">
                                                                                                         <a href="{{route('front.product.show', ['slug' => $item->product->slug])}}"><img src="{{asset(($item->product->images()->first()) ? 'storage/'.$item->product->images()->first()->image : 'no_photo.jpg')}}" alt="{{$item->product->title}}"></a>
                                                                                                     </div>
@@ -319,10 +333,11 @@
                                                                                                         <span class="span">Количество: {{$item->amount}}шт</span><br>
                                                                                                         <span class="span">Дата заказа: {{$item->onUpdate}}</span>
                                                                                                         <div class="product-details-action-wrap font-kyiv">
-                                                                                                            <div class="product-details-price py-3">
+                                                                                                            <div class="product-details-price py-md-3">
                                                                                                                 <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
                                                                                                             </div>
                                                                                                         </div>
+                                                                                                    </div>
                                                                                                         <div class="w-100 d-flex justify-content-end m-0 p-3 fw-semibold position-absolute bottom-0 end-0
                                                                     {!!($item->sale->status == 'Получено') ? ' text-success "><svg class="me-1" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_250_5961)">
@@ -344,7 +359,6 @@
 </svg>
 ' !!} {{$item->sale->status}}
                                                                 </div>
-                                                            </div>
                                                         </li>
                                                     @endforeach
                                                 </ul>
@@ -357,7 +371,6 @@
                     </div>
                 </div>
         </div>
-
     </div>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf

@@ -76,7 +76,6 @@
                                                 <circle cx="12" cy="12" r="10" stroke="#232323" stroke-width="1.5"/>
                                                 <path d="M17.9692 20C17.8101 17.1085 16.9248 15 12 15C7.07527 15 6.18997 17.1085 6.03082 20" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
                                             </svg>
-
                                         </a>
                                     </div>
                                 </div>
@@ -102,7 +101,7 @@
     </div>
 </header>
 <div class="off-canvas-active">
-    <div class="off-canvas-wrap">
+    <div class="off-canvas-wrap position-relative">
         <div class="mb-20 font-cormorant position-relative row">
             <a class="off-canvas-close"><i class=" ti-close "></i></a>
             <div class="col-12">
@@ -145,25 +144,34 @@
         </div>
         <div class="language-currency-wrap language-currency-wrap-modify">
             <ul>
-                <li>
-                    <a class="d-flex off-canvas-close cart-active position-relative" style="width: unset; height: unset;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.79424 12.0291C4.33141 9.34329 4.59999 8.00036 5.48746 7.13543C5.65149 6.97557 5.82894 6.8301 6.01786 6.70061C7.04004 6 8.40956 6 11.1486 6H12.8515C15.5906 6 16.9601 6 17.9823 6.70061C18.1712 6.8301 18.3486 6.97557 18.5127 7.13543C19.4001 8.00036 19.6687 9.34329 20.2059 12.0291C20.9771 15.8851 21.3627 17.8131 20.475 19.1793C20.3143 19.4267 20.1267 19.6555 19.9157 19.8616C18.7501 21 16.7839 21 12.8515 21H11.1486C7.21622 21 5.25004 21 4.08447 19.8616C3.87342 19.6555 3.68582 19.4267 3.5251 19.1793C2.63744 17.8131 3.02304 15.8851 3.79424 12.0291Z" stroke="#8C8C8C" stroke-width="1.5"/>
-                            <path d="M9 6V5C9 3.34315 10.3431 2 12 2C13.6569 2 15 3.34315 15 5V6" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M9.1709 15C9.58273 16.1652 10.694 17 12.0002 17C13.3064 17 14.4177 16.1652 14.8295 15" stroke="#8C8C8C" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
+                <li class="d-flex">
+                    <livewire:front.cart.cart-count/>
+                    <a class="off-canvas-close cart-active position-relative ps-2">
                         <p class="ps-2 font-kyiv">Корзина</p>
                     </a>
                 </li>
-                <li>
-                    <a class="d-flex" href="{{route('front.wishlist.index')}}">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.96173 19.126L9.42605 18.537L8.96173 19.126ZM12 5.71572L11.4596 6.23582C11.601 6.38272 11.7961 6.46572 12 6.46572C12.2039 6.46572 12.399 6.38272 12.5404 6.23582L12 5.71572ZM15.0383 19.126L15.5026 19.715L15.0383 19.126ZM9.42605 18.537C7.91039 17.3422 6.25307 16.1753 4.93829 14.6949C3.64922 13.2433 2.75 11.5496 2.75 9.35219H1.25C1.25 12.0177 2.3605 14.0511 3.81672 15.6909C5.24723 17.3017 7.07077 18.5903 8.49742 19.715L9.42605 18.537ZM2.75 9.35219C2.75 7.20132 3.96537 5.39761 5.62436 4.63928C7.23607 3.90256 9.40166 4.09766 11.4596 6.23582L12.5404 5.19562C10.0985 2.65861 7.26409 2.24047 5.00076 3.27505C2.78471 4.28801 1.25 6.64012 1.25 9.35219H2.75ZM8.49742 19.715C9.00965 20.1188 9.55954 20.5494 10.1168 20.875C10.6739 21.2005 11.3096 21.4651 12 21.4651V19.9651C11.6904 19.9651 11.3261 19.8443 10.8736 19.5799C10.4213 19.3156 9.95208 18.9517 9.42605 18.537L8.49742 19.715ZM15.5026 19.715C16.9292 18.5903 18.7528 17.3017 20.1833 15.6909C21.6395 14.0511 22.75 12.0177 22.75 9.35219H21.25C21.25 11.5496 20.3508 13.2433 19.0617 14.6949C17.7469 16.1753 16.0896 17.3422 14.574 18.537L15.5026 19.715ZM22.75 9.35219C22.75 6.64012 21.2153 4.28801 18.9992 3.27505C16.7359 2.24047 13.9015 2.65861 11.4596 5.19562L12.5404 6.23582C14.5983 4.09766 16.7639 3.90256 18.3756 4.63928C20.0346 5.39761 21.25 7.20132 21.25 9.35219H22.75ZM14.574 18.537C14.0479 18.9517 13.5787 19.3156 13.1264 19.5799C12.6739 19.8443 12.3096 19.9651 12 19.9651V21.4651C12.6904 21.4651 13.3261 21.2005 13.8832 20.875C14.4405 20.5494 14.9903 20.1188 15.5026 19.715L14.574 18.537Z" fill="#8C8C8C"/>
-                        </svg>
+                <li class="d-flex">
+                    <livewire:front.wishlist.wishlist-count/>
+                    <a class="d-flex ps-2" href="{{route('front.wishlist.index')}}">
                         <p class="ps-2 font-kyiv">Пожеланий</p>
                     </a>
                 </li>
             </ul>
+        </div>
+        <div class="p-3 position-absolute bottom-0 end-0 start-0 single-input-item btn-hover">
+            @if(auth()->user())
+                <a href="{{ route('front.profile.index') }}">
+                    <div class="p-2 bg-light d-flex align-items-center justify-content-center">
+                        <svg class="dark-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="9" r="3" stroke="#232323" stroke-width="1.5"/>
+                            <circle cx="12" cy="12" r="10" stroke="#232323" stroke-width="1.5"/>
+                            <path d="M17.9692 20C17.8101 17.1085 16.9248 15 12 15C7.07527 15 6.18997 17.1085 6.03082 20" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <p class="ps-2 m-0 d-flex justify-content-center align-items-center">{{auth()->user()->name}}</p>
+                    </div>
+                </a>
+                <button class="mt-2 w-100 check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</button>
+            @endif
         </div>
     </div>
 </div>

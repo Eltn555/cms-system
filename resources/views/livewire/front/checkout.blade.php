@@ -214,19 +214,20 @@
             <div wire:ignore class="text-secondary p-4 border-1 border mb-5">
                 <h3 class="font-cormorant fw-bolder pb-3 border-bottom-1 mb-4">Детали оплаты</h3>
                 <div class="row m-0">
-                    <div class="col-12 col-lg-4 p-0 px-lg-1 online">
-                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('Онлайн оплата')">
-                            <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
-                            <p class="mb-0 fw-semibold text-black">Онлайн оплата</p>
+                    <div class="col-12 col-lg-4 p-0 px-lg-1 online disabled">
+{{--                        wire:click="payment('Онлайн оплата')"--}}
+                        <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('')">
+                            <input disabled class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
+                            <p class="mb-0 fw-semibold text-black text-muted">Онлайн оплата</p>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 p-0 px-lg-1">
+                    <div class="notOnline col-12 col-lg-4 p-0 px-lg-1">
                         <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('Наличные')">
                             <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Наличные') ? 'checked' : ''}}>
                             <p class="mb-0 fw-semibold text-black">Наличные</p>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 p-0 px-lg-1">
+                    <div class="notOnline col-12 col-lg-4 p-0 px-lg-1">
                         <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('Оплата на месте')">
                             <input class="radio mt-2 mt-lg-0"  type="radio" name="payment" {{($payment == 'Оплата на месте') ? 'checked' : ''}}>
                             <p class="mb-0 fw-semibold text-black">Оплата на месте</p>
@@ -329,9 +330,13 @@
                 $('.showroomList').toggleClass('expanded');
                 $('.pick-up').toggleClass('d-none');
             });
-            $('.online').click(function() {
+            // $('.online').click(function() {
+            //     // Toggle the height of the showroomList element
+            //     $('.payments').toggleClass('expanded');
+            // });
+            $('.notOnline').click(function() {
                 // Toggle the height of the showroomList element
-                $('.payments').toggleClass('expanded');
+                $('.payments').addClass('expanded');
             });
             $('.delivery').click(function() {
                 // Toggle the height of the showroomList element

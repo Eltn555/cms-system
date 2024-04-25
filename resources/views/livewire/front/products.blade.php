@@ -1,11 +1,48 @@
 @section('title', $product->title)
 {{--@section('description', $product->seo_description)--}}
 @section('keyword', $product->seo_title)
+@section('style')
+    <style>
+        @media only screen and (max-width: 767px) {
+            .priceBuy{
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                z-index: 9999;
+                background-color: white;
+                left: 0;
+                right: 0;
+                padding: 20px;
+            }
+            footer{
+                padding-bottom: 105px;
+            }
+            #scrollUp{
+                bottom: 160px;
+            }
+        }
+    </style>
+@endsection
+
 <div>
     <div class="product-details-area pb-100 pt-100">
         <div class="container">
-            <div class="row">
-                <div class="col-12 mb-5">Главная / Магазин / {{$product->category->title}}</div>
+            <div class="row mx-0">
+                <div class="col-12 d-md-block d-none mb-5"><a href="/">Главная</a> /
+                    <a class="" href="{{ route('front.category.index') }}">Каталог</a> /
+                    <a class="" href="{{ route('front.category.show', $product->category->slug) }}">{{$product->category->title}}</a>
+                </div>
+                <div class="col-12 d-md-none mb-5 d-flex">
+                    <a onclick="goBack()">
+                        <div class="">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="20" cy="20" r="20" fill="#F4F4F4"/>
+                                <path d="M25.3333 20H14.6666M14.6666 20L18.6666 16M14.6666 20L18.6666 24" stroke="#232323" stroke-width="0.895828" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
+                </div>
                 <div class="col-lg-6">
                     <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="50">
                         <div class="product-details-small-img-wrap">
@@ -46,10 +83,10 @@
                             <h2 class="font-cormorant fw-bold h1">{{$product->title}}</h2>
                             <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
                                 <div class="">
-                                    <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                    @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
                                 </div>
                                 <div class="single-product-compare">
-                                    <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>
+{{--                                    <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>--}}
                                 </div>
                             </div>
                         </div>
@@ -66,16 +103,16 @@
                         <div class="product-details-meta">
                             <ul>
                                 <li>{{$product->short_description}}</li>
-                                <li><span class="title">Tags:</span>
+                                <li><span class="title">Теги:</span>
                                     <ul >
                                         @foreach($product->tags as $tag)
                                             <li ><a class="" href="#">{{$tag->title}}</a>,</li>
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><span class="title">Categories</span>
-                                    <ul class="tag ">
-                                        <li><a class="" href="#">{{$product->category->title}}</a></li>
+                                <li><span class="title">Категория:</span>
+                                    <ul class="tag">
+                                        <li><a class="" href="{{ route('front.category.show', $product->category->slug) }}">{{$product->category->title}}</a></li>
                                     </ul>
                                 </li>
                                 <li><span class="title">Доступность:</span>
@@ -93,8 +130,10 @@
 {{--                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>--}}
 {{--                            </ul>--}}
 {{--                        </div>--}}
+                    </div>
+                    <div class="priceBuy">
                         <div class="product-details-action-wrap font-kyiv">
-                            <div class="product-details-price py-3">
+                            <div class="product-details-price py-md-3">
                                 <span class="p-1 {{($product->discount_price == "") ? 'd-none' : 'new-price'}}">{{$product->discount_price}}  {{$product->discount_price > 10000 ? 'сум' : '$'}}</span>
                                 <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{$product->price}} {{$product->price > 10000 ? 'сум' : '$'}}</span>
                             </div>
@@ -250,6 +289,10 @@
 
 @section('scripts')
     <script>
+        function goBack() {
+            window.history.back();
+        }
+
         window.addEventListener('flashMessage', event => {
             const flashMessage = document.querySelector('.flash-message');
             flashMessage.text = event.detail.message;

@@ -436,7 +436,7 @@
                         <p class="mb-0 fw-bolder">Быстрое проектирование</p>
                         <p class="px-5 text-muted">Высокое разрешение и красивый дизайн только для вас!</p>
                     </div>
-                    <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0" data-aos="fade-up"
+                    <div class="col-lg-4 col-md-12 text-center pt-4 pt-lg-0 px-3 py-0" data-aos="fade-up"
                          data-aos-delay="150">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv mb-3">
                             <svg width="30" height="29" viewBox="0 0 25 24" fill="none"
@@ -459,7 +459,7 @@
                         <p class="mb-0 fw-bolder">Бесплатная доставка</p>
                         <p class="px-5 text-muted">Мы несем ответственность за бесплатную и надежную доставку.</p>
                     </div>
-                    <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up"
+                    <div class="col-lg-4 col-md-12 text-center pt-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up"
                          data-aos-delay="250">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv mb-3">
                             <svg width="30" height="29" viewBox="0 0 25 24" fill="none"

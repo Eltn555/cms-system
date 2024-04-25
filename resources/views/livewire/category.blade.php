@@ -173,7 +173,7 @@
             </div>
         </div>
     </div>
-    <div class="filter-mobile filter-closed d-md-block d-lg-none">
+    <div class="filter-mobile overflow-scroll filter-closed d-md-block d-lg-none">
         <a class="filClose off-canvas-close"><i class=" ti-close "></i></a>
         <div class="sidebar-wrapper">
             {{--                        <div class="sidebar-widget sidebar-widget-border mb-20 pb-35 aos-init aos-animate"--}}

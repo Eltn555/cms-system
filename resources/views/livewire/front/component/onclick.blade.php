@@ -78,7 +78,7 @@
                     <div class="single-input-item">
                         <label for="display-name" class="required">Телефон номер</label>
                         <div class="position-relative">
-                            <input name="phone" wire:model="phone" type="tel" id="display-name" placeholder="+998 555 005 444" required/>
+                            <input name="phone" wire:model="phone" type="number" id="display-name" placeholder="+998 555 005 444" required/>
                             <div class="position-absolute icon-input">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">

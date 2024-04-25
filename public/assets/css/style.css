@@ -8014,6 +8014,7 @@ textarea {
 
 .product-details-price span.new-price {
     color: #232323;
+    text-wrap: nowrap;
     font-size: 25px;
     font-weight: 700;
 }
@@ -8410,12 +8411,21 @@ textarea {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     margin: 0 0 42px;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.description-review-topbar::-webkit-scrollbar {
+    display: none;
 }
 
 @media only screen and (max-width: 767px) {
     .description-review-topbar {
         padding: 13px 5px;
         margin: 0 0 28px;
+    }
+    .description-review-topbar a{
+        padding: 7px 10px !important;
     }
 }
 
@@ -8427,21 +8437,9 @@ textarea {
     border-bottom: 1px solid #A1A1A1;
 }
 
-@media only screen and (max-width: 767px) {
-    .description-review-topbar a {
-        margin: 0 8px;
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .description-review-topbar a {
-        margin: 0 15px;
-    }
-}
-
 .description-review-topbar a.active {
     color: #232323;
-    font-weight: 700;
+    font-weight: 600;
     height: 100%;
     border-bottom: 1px solid #232323;
 }
@@ -11073,7 +11071,7 @@ textarea {
 
 @media only screen and (max-width: 767px) {
     .myaccount-content {
-        padding: 20px 15px;
+        padding: 20px 5px;
     }
 }
 
