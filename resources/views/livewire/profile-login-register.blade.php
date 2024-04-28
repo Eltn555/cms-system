@@ -1,20 +1,29 @@
-    <div class="login-register-wrapper mx-5 mb-5" style="margin-top: 150px">
+@section('title', 'Вход')
+<div class="login-register-wrapper mx-5 mb-5" style="margin-top: 150px">
         <div class="login-register-tab-list nav" role="tablist">
-            <a class="active" data-bs-toggle="tab" href="#lg1" aria-selected="true" role="tab">
+            <a class="{{!$isRegister ? 'active' : ''}} logIn" data-bs-toggle="tab" href="#lg1" aria-selected="true" role="tab">
                 <h4> Вход </h4>
             </a>
-            <a data-bs-toggle="tab" href="#lg2" aria-selected="false" tabindex="-1" role="tab">
+            <a class="{{$isRegister ? 'active' : ''}} register" data-bs-toggle="tab" href="#lg2" aria-selected="false" tabindex="-1" role="tab">
                 <h4> Регистрация </h4>
             </a>
         </div>
         <div class="tab-content">
-            <div id="lg1" class="tab-pane active" role="tabpanel">
+            <div id="lg1" class="tab-pane {{!$isRegister ? 'active' : ''}}" role="tabpanel">
                 <div class="login-form-container">
                     <div class="login-register-form">
-                        <form action="{{ route('login') }}" method="POST">
+                        <form action="{{ route('login') }}" method="POST" autocomplete="off">
                             @csrf
-                            <input type="text" name="email" placeholder="Имя">
-                            <input type="password" name="password" placeholder="Пароль">
+                            @error('phone')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <label for="logPhone">Номер телефона</label>
+                            <input class="tel" id="logPhone" type="tel" value="{{ old('phone') }}" autocomplete="false" name="phone" placeholder="+998555005444">
+                            @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <label for="logPass">Пароль</label>
+                            <input id="logPass" type="password" name="password" placeholder="Пароль">
                             <div class="login-toggle-btn">
                                 <input type="checkbox">
                                 <label>Запомнить меня</label>
@@ -27,15 +36,27 @@
                     </div>
                 </div>
             </div>
-            <div id="lg2" class="tab-pane" role="tabpanel">
+            <div id="lg2" class="tab-pane {{$isRegister ? 'active' : ''}}" role="tabpanel">
                 <div class="login-form-container">
                     <div class="login-register-form">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-                            <input type="text" name="name" placeholder="Имя">
-                            <input name="email" placeholder="Email" type="Почта">
-                            <input type="password" name="password" placeholder="Пароль">
-                            <input type="password" name="password_confirmation" placeholder="Подтверждение пароля" required autocomplete="new-password">
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="Имя">
+                            @error('phone')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input class="tel" name="phone" value="{{ old('phone') }}" placeholder="+998555005444" type="tel">
+                            @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="password" name="password" autocomplete="new-password" placeholder="Пароль">
+                            @error('password_confirmation')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="password" name="password_confirmation" placeholder="Подтверждение пароля" autocomplete="new-password">
                             <div class="button-box btn-hover">
                                 <button type="submit">Регистрация</button>
                             </div>
@@ -45,3 +66,17 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('.register').click(function() {
+                    window.history.pushState(null, null, window.location.pathname + '?register');
+                });
+
+                $('.logIn').click(function() {
+                    window.history.pushState(null, null, window.location.pathname);
+                });
+            });
+        </script>
+    @endpush

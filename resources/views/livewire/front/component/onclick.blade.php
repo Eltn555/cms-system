@@ -45,7 +45,7 @@
                     <div class="single-input-item">
                         <label for="first-name" class="required">Имя</label>
                         <div class="position-relative">
-                            <input name="name" type="text" id="first-name" wire:model="name" placeholder="Ваш имя" required/>
+                            <input name="name" type="text" id="first-name" placeholder="Ваш имя" wire:model="name" required/>
                             <div class="position-absolute icon-input">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
                     <div class="single-input-item">
                         <label for="display-name" class="required">Телефон номер</label>
                         <div class="position-relative">
-                            <input name="phone" wire:model="phone" type="number" id="display-name" placeholder="+998 555 005 444" required/>
+                            <input class="tel" name="phone" wire:model="phone" type="tel" id="display-name" placeholder="+998 555 005 444" required/>
                             <div class="position-absolute icon-input">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -108,3 +108,4 @@
     </div>
     <a class="close d-none " data-bs-dismiss="modal" aria-label="Close"><i class=" ti-close "></i></a>
 </div>
+

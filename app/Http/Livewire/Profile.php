@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Sale;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class Profile extends Component
 {
@@ -16,8 +17,12 @@ class Profile extends Component
     public $items;
     public $complated = [];
     public $process = [];
+    public $isRegister;
 
     public function mount(Request $request) {
+        if ($request->has('register')) {
+            $this->isRegister = true;
+        }
         $this->profile = auth()->user();
         if ($this->profile){
             $this->items = SaleItem::where('user_id', auth()->user()->id)->with('sale')->orderBy('created_at', 'desc')->get();
@@ -65,6 +70,7 @@ class Profile extends Component
 
     public function render()
     {
+        Session::put('previousUrl', url()->previous());
         if($this->profile){
             return view('livewire.profile-page')->extends('front.layout')->section('content');
         }else{

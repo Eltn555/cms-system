@@ -8,6 +8,10 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -41,21 +45,41 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    protected function registered(Request $request, $user)
+    {
+        // Check if there's a previous URL stored in the session
+        if (Session::has('previousUrl')) {
+            // Redirect the user back to the stored URL
+            return redirect(Session::get('previousUrl'));
+        }
+
+        // If no previous URL is stored, redirect to the default location
+        return redirect($this->redirectTo);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'regex:/^\+\d{1,3}\d{5,15}$/', Rule::unique('users')->whereNull('deleted_at'),],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'name.required' => 'Введите ваше имя',
+            'phone.required' => 'Введите номер телефона, пожалуйста',
+            'phone.regex' => 'Неверный формат номера телефона',
+            'password.required' => 'Введите пароль, пожалуйста',
+            'phone.unique' => 'Аккаунт с этим номером телефона уже существует',
+            'password.min' => 'Пароль должен содержать не менее 8 символов ',
+            'password.confirmed' => 'Подтверждение пароля не совпадает.',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -66,7 +90,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
     }

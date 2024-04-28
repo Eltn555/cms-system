@@ -97,6 +97,14 @@
     window.addEventListener('console', event => {
         console.log(event.detail.console);
     });
+    $('.tel').on('input', function() {
+        // Get the input value
+        let inputValue = $(this).val();
+        // Remove non-numeric characters and '+' sign
+        inputValue = inputValue.replace(/[^0-9+]/g, '');
+        // Update the input value
+        $(this).val(inputValue);
+    });
 </script>
 <!-- Main JS -->
 @yield('scripts')

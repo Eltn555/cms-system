@@ -111,7 +111,7 @@
                                                 <div class="single-input-item">
                                                     <label for="display-name" class="required">Телефон номер</label>
                                                     <div class="position-relative">
-                                                        <input name="phone" class="d-none ps-4" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
+                                                        <input name="phone" class="tel d-none ps-4" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
                                                         <span class="ps-4 pt-3 position-absolute top-50 proInfo">{{ $profile->phone ?? '-'}}</span>
                                                         <div class="position-absolute icon-input">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"

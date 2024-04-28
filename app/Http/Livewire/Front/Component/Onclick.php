@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Component;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -12,6 +13,13 @@ class Onclick extends Component
     public $product;
     public $text = 'hey';
     public $flashMessage;
+    public $user;
+
+    public function mount(){
+        $this->user = Auth::user();
+        $this->name = $this->user->name;
+        $this->phone = $this->user->phone;
+    }
 
 
     public function checker(){
