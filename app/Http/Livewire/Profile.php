@@ -54,13 +54,13 @@ class Profile extends Component
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string',
-            'lastname' => 'string',
-            'city' => 'string',
-            'state' => 'string',
-            'address' => 'string',
-            'home' => 'string',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'required|string',
+            'lastname' => 'nullable|string',
+            'city' => 'nullable|string',
+            'state' => 'nullable|string',
+            'address' => 'nullable|string',
+            'home' => 'nullable|string',
         ]);
         $user = User::findOrFail(auth()->user()->id);
         $user->update($validatedData);

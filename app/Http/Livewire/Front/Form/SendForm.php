@@ -19,6 +19,7 @@ class SendForm extends Component
 
     public function submitForm()
     {
+        $response = null;
         $imageUrls = [];
 
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
@@ -48,7 +49,8 @@ class SendForm extends Component
                 }
             }else{
                 $this->flashMessage = 'Пожалуйста, введите номер телефона и имя, чтобы связаться с вами';
-                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, введите номер телефона и имя, чтобы связаться с вами', 'type' => 'error']);
+                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, введите номер телефона и имя, чтобы связаться с вами', 'type' => 'error', 'style' => 'bg-danger']);
+                return $this->flashMessage;
             }
         }
         if ($response){
@@ -56,10 +58,10 @@ class SendForm extends Component
             // Clear form fields after submission
             $this->reset(['name', 'phone', 'msg', 'images']);
             $this->flashMessage = 'Ваше сообщение успешно отправлено';
-            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Ваше сообщение успешно отправлено', 'type' => 'success']);
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Ваше сообщение успешно отправлено', 'type' => 'success', 'style' => 'bg-success']);
         }else{
             $this->flashMessage = 'Произошла ошибка. Выберите фотографию размером не более 20 МБ или повторите попытку позже.';
-            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Произошла ошибка. Выберите фотографию размером не более 20 МБ или повторите попытку позже.', 'type' => 'error']);
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Произошла ошибка. Выберите фотографию размером не более 20 МБ или повторите попытку позже.', 'type' => 'error', 'style' => 'bg-danger']);
         }
     }
 

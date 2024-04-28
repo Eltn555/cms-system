@@ -119,9 +119,9 @@ class Checkout extends Component
 Форма оплата:'.$this->payment.'
 Дата:'.$saleDb['created_at'].'</b>';
             $this->submitForm($text);
-            // For a route with the following URI: profile/{id}
+            $this->flashMessage = "Спасибо! Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.";
+            $this->dispatchBrowserEvent('flashMessage', ['message' => "Спасибо!\n\n\Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.", 'style' => 'bg-success']);
 
-            return redirect()->route('front.profile.index', ['orders']);
         }
     }
 
@@ -129,7 +129,7 @@ class Checkout extends Component
     {
         // Validate form fields
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
-        $chatId = ['791430493', '1641704306']; //1641704306 You'll need to obtain your chat ID from your bot
+        $chatId = []; //1641704306 You'll need to obtain your chat ID from your bot
 
         foreach ($chatId as $chat){
             $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
@@ -151,14 +151,14 @@ class Checkout extends Component
             ];
             if($this->payment == ''){
                 $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
-                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите способ оплаты, пожалуйста']);
+                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите способ оплаты, пожалуйста', 'style' => 'bg-danger']);
                 return null;
             }elseif($this->payment){
                 $sales['payment'] = $this->payment;
             }
             if (!$this->collect && !$this->addressCollected){
                 $this->flashMessage = 'Напишите адрес или выберите пункт самовывоза, пожалуйста';
-                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Напишите адрес или выберите пункт самовывоза, пожалуйста']);
+                $this->dispatchBrowserEvent('flashMessage', ['message' => 'Напишите адрес или выберите пункт самовывоза, пожалуйста', 'style' => 'bg-danger']);
                 return null;
             }elseif ($this->collect){
                 $sales['address_place'] = $this->collect;
@@ -169,13 +169,13 @@ class Checkout extends Component
                     $sales['collecting_type'] = 'Доставка';
                 }else{
                     $this->flashMessage = 'Пожалуйста, выберите город, район и улицу, пожалуйста';
-                    $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, выберите город, район и улицу, пожалуйста']);
+                    $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, выберите город, район и улицу, пожалуйста', 'style' => 'bg-danger']);
                     return null;
                 }
             }
         } else {
             $this->flashMessage = 'Выберите продукты, чтобы продолжить';
-            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите продукты, чтобы продолжить']);
+            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Выберите продукты, чтобы продолжить', 'style' => 'bg-danger']);
             return null;
         }
         return $sales;

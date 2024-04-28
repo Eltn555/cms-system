@@ -678,12 +678,15 @@
             }
             fileText.textContent = fileNames.join(', ');
         }
+
         window.addEventListener('flashMessage', event => {
             const flashMessage = document.querySelector('.flash-message');
             flashMessage.text = event.detail.message;
             flashMessage.classList.remove('hiddenmsg');
+            flashMessage.classList.add(event.detail.style);
             setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
         });
+
 
     </script>
 @endsection

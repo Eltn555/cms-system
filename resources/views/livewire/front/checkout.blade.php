@@ -304,20 +304,26 @@
             </div>
         </div>
     </div>
-            <div class="hiddenmsg bg-danger flash-message position-absolute text-white px-4 py-2 rounded shadow">
-                Ошибка: {{ $flashMessage }}
+            <div class="font-kyiv hiddenmsg flash-message position-absolute text-white fs-5 px-4 py-2 rounded shadow">
+                {{ $flashMessage }}
             </div>
 </div>
 
 @section('scripts')
     <script>
+
         window.addEventListener('flashMessage', event => {
             const flashMessage = document.querySelector('.flash-message');
             flashMessage.text = event.detail.message;
             flashMessage.classList.remove('hiddenmsg');
-            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
+            flashMessage.classList.add(event.detail.style);
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 3000);
+            if (event.detail.style == 'bg-success'){
+                setTimeout(function() {
+                    window.location.href = "{{ route('front.profile.index', ['orders']) }}";
+                }, 4000);
+            }
         });
-
         $(document).ready(function() {
             $('.map-radio').click(function() {
                 // Trigger click event on the radio button when the div is clicked
@@ -398,5 +404,13 @@
         }, 2000)
         // Event listener to populate regions when city is selected
         document.getElementById("citySelect").addEventListener("change", populateRegions);
+
+        @if(session('delayRedirect'))
+        // Wait for 3 seconds (adjust the delay as needed)
+        setTimeout(function() {
+            // Redirect to the desired route
+            window.location.href = "{{ route('front.profile.index', ['orders']) }}";
+        }, 3000); // 3 seconds delay
+        @endif
     </script>
 @endsection
