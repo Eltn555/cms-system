@@ -1,4 +1,4 @@
-@section('style')
+@push('styles')
     <style>
         .icon-input {
             top: 0;
@@ -35,13 +35,8 @@
             font-weight: 600;
             color: #757575;
         }
-        .icon-input {
-            top: 0;
-            right: 0;
-            padding: 12px 15px;
-        }
     </style>
-@endsection
+@endpush
 <div class="myaccount-content font-kyiv border-0">
     <div class="account-details-form mt-3">
         <form action="" enctype="multipart/form-data">

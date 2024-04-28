@@ -14,6 +14,11 @@
                 right: 0;
                 padding: 20px;
             }
+            .icon-input {
+                top: 0;
+                right: 0;
+                padding: 12px 15px;
+            }
             footer{
                 padding-bottom: 105px;
             }
