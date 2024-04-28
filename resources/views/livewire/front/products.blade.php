@@ -1,6 +1,6 @@
 @section('title', $product->title)
 {{--@section('description', $product->seo_description)--}}
-@section('keyword', $product->seo_title)
+@section('keyword', "$product->seo_title")
 @section('style')
     <style>
         @media only screen and (max-width: 767px) {
@@ -98,7 +98,7 @@
                                 <i class=" ti-star"></i>
                                 <i class=" ti-star"></i>
                             </div>
-                            <span>8 отзывов</span>
+{{--                            <span>8 отзывов</span>--}}
                         </div>
                         <div class="product-details-meta">
                             <ul>
@@ -130,6 +130,11 @@
 {{--                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>--}}
 {{--                            </ul>--}}
 {{--                        </div>--}}
+                        <div class="">
+                            <div class="w-50 pe-1">
+                                @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart_count'], key($product->id))
+                            </div>
+                        </div>
                     </div>
                     <div class="priceBuy">
                         <div class="product-details-action-wrap font-kyiv">
@@ -140,7 +145,7 @@
                         </div>
                         <div class="d-flex">
                             <div class="w-50 pe-1">
-                                @livewire('front.cart.cart-count-btn', ['product' => $product], key($product->id))
+                                @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
                             </div>
                             <div class="single-product-cart btn-hover w-50 ps-1 text-center">
                                 <button title="Купить в один клик" data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 p-3 text-dark bg-light border border-1">Купить в один клик</button>

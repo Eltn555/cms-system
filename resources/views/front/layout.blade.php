@@ -86,6 +86,13 @@
     });
     window.addEventListener('cartUpdate', event => {
         $('.cartItem'+event.detail.id).text(event.detail.count);
+        if (event.detail.count == 0){
+            $('.toPayment'+event.detail.id).addClass('d-none');
+            $('.add__Cart'+event.detail.id).removeClass('d-none');
+        } else {
+            $('.toPayment'+event.detail.id).removeClass('d-none');
+            $('.add__Cart'+event.detail.id).addClass('d-none');
+        }
     });
     window.addEventListener('console', event => {
         console.log(event.detail.console);

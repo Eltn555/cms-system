@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class CartCountBtn extends Component
 {
+    public $type;
     public $product;
     public $cartCount;
     public $exists;
@@ -35,6 +36,7 @@ class CartCountBtn extends Component
                 $amount = $cartProduct->amount;
                 if ($amount == 1 && $action == 'remove'){
                     $cartProduct->delete();
+                    $this->productCount = 0;
                 }elseif ($amount > 1 && $action == 'remove'){
                     $cartProduct->update(['amount' => --$amount]);
                 }elseif ($action == 'add'){
@@ -58,6 +60,7 @@ class CartCountBtn extends Component
                         unset($this->cookie[$key]); // Remove the item from the array
                         $this->exists = null;
                         $this->updatedCount = 0;
+                        $this->productCount = 0;
                     } elseif ($amount > 1 && $action == 'remove') {
                         $this->cookie[$key]['amount'] = --$amount; // Update the amount
                         $this->updatedCount = --$amount;
@@ -125,7 +128,11 @@ class CartCountBtn extends Component
 
     public function render()
     {
-        return view('livewire.front.cart.cart-count-btn');
+        if ($this->type == 'cart'){
+            return view('livewire.front.cart.cart-button');
+        } else {
+            return view('livewire.front.cart.cart-count-btn');
+        }
 
     }
 }

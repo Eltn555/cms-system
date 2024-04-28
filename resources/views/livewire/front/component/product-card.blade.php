@@ -16,7 +16,7 @@
 {{--                        <i class="pe-7s-look"></i>--}}
 {{--                    </button>--}}
                 </div>
-                @livewire('front.cart.cart-count-btn', ['product' => $product], key($product->id))
+                @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
             </div>
             <div class="product-content d-flex justify-content-between flex-column flex-grow-1">
                 <div>

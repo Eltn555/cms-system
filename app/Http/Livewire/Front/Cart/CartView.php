@@ -70,8 +70,8 @@ class CartView extends Component
             $this->items = CartProduct::where('user_id', auth()->user()->id)->with('product')->get()->pluck('product');
         } else {
             // User is not authenticated, fetch products from the cookie
+            $productIds = [];
             if ($this->cartArray){
-                $productIds = [];
                 foreach ($this->cartArray as $item) {
                     $product = Product::where('id', $item['product_id'])->first();
                     if ($product != null) {

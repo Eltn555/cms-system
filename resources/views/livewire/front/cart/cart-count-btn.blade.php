@@ -1,13 +1,7 @@
 <div>
-    @if($exists)
         <div class="product-action-2-wrap product-count mb-0 w-100 bg-light p-0">
-            <button wire:click="remove" class="border-0 bg-transparent">-</button>
-            <span class="cartItem{{$product->id}}">{{$productCount}}</span>
-            <button wire:click="add" class="border-0 bg-transparent">+</button>
+            <button wire:click="remove" data-action="{{$product->id}}" class="callProduct border-0 bg-transparent">-</button>
+            <span class="cartItem{{$product->id}}">{{$productCount ?? 0}}</span>
+            <button wire:click="add" data-action="{{$product->id}}" class="callProduct border-0 bg-transparent">+</button>
         </div>
-    @else
-        <div class="product-action-2-wrap single-product-cart btn-hover w-100 text-center">
-            <a wire:click="add" class="w-100 p-3 text-dark">Добавить в корзину</a>
-        </div>
-    @endif
 </div>
