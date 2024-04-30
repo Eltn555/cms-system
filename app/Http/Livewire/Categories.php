@@ -28,7 +28,6 @@ class Categories extends Component
     public function mount($slug = null)
     {
         $tagId = request()->query('tagId');
-        $this->categories = Category::all();
         $this->tags = Tag::all();
         if ($slug) {
             $this->setCategory($slug);
@@ -80,6 +79,8 @@ class Categories extends Component
 
     public function render()
     {
+        $this->mainCategories = Category::where('parent_category_id', null)->where('is_active', 1)->get();
+        $this->categories = $this->category ? $this->category->children : null;
         $products = Product::query();
 
         if ($this->category) {

@@ -30,9 +30,9 @@
                         <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">
                         </div>
                         <div class="intro-x mt-8">
-                            <input type="email" name="email" class="intro-x login__input form-control py-3 px-4 block"
+                            <input type="tel" name="phone" class="intro-x login__input form-control py-3 px-4 block"
                                    placeholder="Логин" required autocomplete="email" autofocus>
-                            @error('email')
+                            @error('phone')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

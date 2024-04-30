@@ -144,18 +144,34 @@
                             <!-- SIDEBAR CATEGORY LIST -->
 
                             <div class="sidebar-widget-title mb-25">
-                                <h3>Категории</h3>
+                                <h3>Основные категории</h3>
                             </div>
 
-                            <div class="sidebar-list-style">
+                            <div class="sidebar-list-style mb-25">
                                 <ul>
-                                    @foreach($categories as $category)
+                                    @foreach($mainCategories as $category)
                                         <li wire:click="setCategory('{{$category->slug}}')"><a
                                                 id="select-category-{{ $category->id }}">{{ $category->title }}
                                                 <span>{{ $category->products->count() }}</span></a></li>
                                     @endforeach
                                 </ul>
                             </div>
+
+                            @if($categories)
+                                <div class="sidebar-widget-title mb-25">
+                                    <h3>Категории</h3>
+                                </div>
+
+                                <div class="sidebar-list-style">
+                                    <ul>
+                                        @foreach($categories as $category)
+                                            <li wire:click="setCategory('{{$category->slug}}')"><a
+                                                    id="select-category-{{ $category->id }}">{{ $category->title }}
+                                                    <span>{{ $category->products->count() }}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="sidebar-widget aos-init">
@@ -203,20 +219,35 @@
                  data-aos="fade-up" data-aos-delay="200">
 
                 <!-- SIDEBAR CATEGORY LIST -->
-
                 <div class="sidebar-widget-title mb-25">
-                    <h3>Категории</h3>
+                    <h3>Основные категории</h3>
                 </div>
 
-                <div class="sidebar-list-style">
+                <div class="sidebar-list-style mb-25">
                     <ul>
-                        @foreach($categories as $category)
+                        @foreach($mainCategories as $category)
                             <li wire:click="setCategory('{{$category->slug}}')"><a
                                     id="select-category-{{ $category->id }}">{{ $category->title }}
                                     <span>{{ $category->products->count() }}</span></a></li>
                         @endforeach
                     </ul>
                 </div>
+
+                @if($categories)
+                    <div class="sidebar-widget-title mb-25">
+                        <h3>Категории</h3>
+                    </div>
+
+                    <div class="sidebar-list-style">
+                        <ul>
+                            @foreach($categories as $category)
+                                <li wire:click="setCategory('{{$category->slug}}')"><a
+                                        id="select-category-{{ $category->id }}">{{ $category->title }}
+                                        <span>{{ $category->products->count() }}</span></a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
 
             <div class="sidebar-widget aos-init">
