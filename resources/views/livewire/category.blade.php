@@ -150,7 +150,7 @@
                             <div class="sidebar-list-style mb-25">
                                 <ul>
                                     @foreach($mainCategories as $category)
-                                        <li wire:click="setCategory('{{$category->slug}}')"><a
+                                        <li wire:click="setCategory('{{$category->slug}}')" class="categoryList"><a
                                                 id="select-category-{{ $category->id }}">{{ $category->title }}
                                                 <span>{{ $category->products->count() }}</span></a></li>
                                     @endforeach
@@ -165,7 +165,7 @@
                                 <div class="sidebar-list-style">
                                     <ul>
                                         @foreach($categories as $category)
-                                            <li wire:click="setCategory('{{$category->slug}}')"><a
+                                            <li wire:click="setCategory('{{$category->slug}}')" class="categoryList"><a
                                                     id="select-category-{{ $category->id }}">{{ $category->title }}
                                                     <span>{{ $category->products->count() }}</span></a></li>
                                         @endforeach
@@ -226,7 +226,7 @@
                 <div class="sidebar-list-style mb-25">
                     <ul>
                         @foreach($mainCategories as $category)
-                            <li wire:click="setCategory('{{$category->slug}}')"><a
+                            <li wire:click="setCategory('{{$category->slug}}')" class="categoryList"><a
                                     id="select-category-{{ $category->id }}">{{ $category->title }}
                                     <span>{{ $category->products->count() }}</span></a></li>
                         @endforeach
@@ -241,8 +241,8 @@
                     <div class="sidebar-list-style">
                         <ul>
                             @foreach($categories as $category)
-                                <li wire:click="setCategory('{{$category->slug}}')"><a
-                                        id="select-category-{{ $category->id }}">{{ $category->title }}
+                                <li wire:click="setCategory('{{$category->slug}}')" class="categoryList"><a
+                                        id="">{{ $category->title }}
                                         <span>{{ $category->products->count() }}</span></a></li>
                             @endforeach
                         </ul>
@@ -270,6 +270,10 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.filClose').click(function() {
+                $('.filter-mobile').addClass('filter-closed');
+                $('.main-wrapper').removeClass('overlay-active-2');
+            });
+            $('.categoryList').click(function() {
                 $('.filter-mobile').addClass('filter-closed');
                 $('.main-wrapper').removeClass('overlay-active-2');
             });

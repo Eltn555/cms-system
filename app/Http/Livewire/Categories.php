@@ -27,6 +27,7 @@ class Categories extends Component
 
     public function mount($slug = null)
     {
+        $this->mainCategories = Category::where('parent_category_id', null)->where('is_active', 1)->get();
         $tagId = request()->query('tagId');
         $this->tags = Tag::all();
         if ($slug) {
@@ -54,7 +55,9 @@ class Categories extends Component
             $this->resetPage();
         }
         $this->hasCategory = ($this->category) ? $slug : 'category/'.$slug;
+
         $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
+        $this->categories = $this->category ? $this->category->children : null;
         $this->dispatchBrowserEvent('metaChanged', [
             'title' => 'Lumen Lux | ' . $this->category->title,
             'description' => $this->category->seo_description ?? 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет',
@@ -79,8 +82,6 @@ class Categories extends Component
 
     public function render()
     {
-        $this->mainCategories = Category::where('parent_category_id', null)->where('is_active', 1)->get();
-        $this->categories = $this->category ? $this->category->children : null;
         $products = Product::query();
 
         if ($this->category) {

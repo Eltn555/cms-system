@@ -171,6 +171,8 @@
                     </div>
                 </a>
                 <button class="mt-2 w-100 check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</button>
+            @else
+                <a href="/profile" class="d-block p-2 fw-bolder font-kyiv bg-light text-center mt-2 w-100 check-btn sqr-btn">Вход</a>
             @endif
         </div>
     </div>
