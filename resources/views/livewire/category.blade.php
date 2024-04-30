@@ -233,7 +233,7 @@
                     </ul>
                 </div>
 
-                @if($categories)
+                @if($categories !== null)
                     <div class="sidebar-widget-title mb-25">
                         <h3>Категории</h3>
                     </div>
