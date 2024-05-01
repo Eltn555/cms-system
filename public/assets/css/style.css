@@ -9016,7 +9016,7 @@ textarea {
 
 .sidebar-widget .sidebar-list-style ul li {
     display: block;
-    margin: 0 0 14px;
+    margin: 14px 0 0;
 }
 
 .sidebar-widget .sidebar-list-style ul li:last-child {

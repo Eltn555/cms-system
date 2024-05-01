@@ -46,6 +46,7 @@ class CategoriesController extends Controller
         $data = $request->except(['images', 'icon', 'background']);
         $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-');
         $data['is_active'] = $request->has('is_active') ? 1 : 0;
+        $data['image'] = $request->has('image') ? 1 : 0;
 
         if (empty($data['order_id'])) {
             unset($data['order_id']);
@@ -100,8 +101,9 @@ class CategoriesController extends Controller
 
         if ($field === 'title') {
             $data['slug'] = Str::slug(Transliterator::transliterate($value), '-');
+        }elseif ($field === 'images'){
+            $data['image'] = $value;
         }
-
         $category->update($data);
         return ['response' => $value];
     }

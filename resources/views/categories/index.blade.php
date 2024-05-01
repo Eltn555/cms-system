@@ -122,6 +122,7 @@
                         <th class="whitespace-nowrap">Parent Category</th>
                         <th class="whitespace-nowrap">Order</th>
                         <th class="text-center whitespace-nowrap">Status</th>
+                        <th class="text-center whitespace-nowrap">MainMenu</th>
                         <th class="text-center whitespace-nowrap">SEO_title</th>
                         <th class="text-center whitespace-nowrap">SEO_description</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -191,6 +192,11 @@
                                 <input class="form-check-input activation" data-field="is_active" type="checkbox" {{($category->is_active) ? 'checked' : ''}}>
                             </div>
                         </td>
+                            <td class="">
+                                <div class="form-check form-switch w-full h-full flex justify-center">
+                                    <input class="form-check-input activation" data-field="images" type="checkbox" {{($category->image) ? 'checked' : ''}}>
+                                </div>
+                            </td>
                             <td class="editable text-center tooltip" title="{{$category->seo_title}}" data-field="seo_title" data-action="read" data-selectable="text">
                                 <div class="text-center font-medium whitespace-nowrap">{{$category->seo_title}}</div>
                             </td>

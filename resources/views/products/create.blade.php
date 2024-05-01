@@ -170,9 +170,10 @@
                            placeholder="Enter a price...">
                 </div>
                 <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
-                    <label for="category" class="form-label"><b class="text-danger">* </b>Category</label>
-                    <select id="category" required name="category_id" class="form-select">
-                        <option value="" disabled selected>Not selected</option>
+                    <label for="category" class="form-label" id="category-label">Category</label>
+                    <select data-placeholder="Select tags" class="tom-select w-full tomselected"
+                            id="category" name="tags[]" required
+                            multiple="multiple" tabindex="-1" hidden="hidden">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">
                                 {{ $category->title }}
