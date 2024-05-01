@@ -1,7 +1,7 @@
         <div class="product-wrap h-100 d-flex flex-column">
             <div class="product-img img-zoom mb-25">
                 <a href="{{route('front.product.show', ['slug' => $product->slug])}}">
-                    <img src="{{asset(($image) ? 'storage/'.$image->image : 'no_photo.jpg')}}" alt="{{$product->title}}">
+                    <img class="image{{$product->id}}" src="{{asset(($image) ? 'storage/'.$image->image : 'no_photo.jpg')}}" alt="{{$product->title}}">
                 </a>
                 <div
                     class="product-badge flex justify-end badge-top badge-right badge-pink">

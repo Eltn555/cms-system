@@ -60,9 +60,10 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-6">
                             <div class="header-action-wrap">
-                                <div class="justify-content-end d-none d-md-none d-lg-flex d-xl-flex d-sm-none">
+                                <div class="justify-content-end d-none d-md-none d-lg-flex d-xl-flex d-sm-none position-relative">
                                     @livewire('search-bar')
                                     <livewire:front.cart.cart-count/>
+                                    <div class="basketShop position-absolute" style="height: 1px; width: 1px; background-color: red"></div>
                                     <livewire:front.wishlist.wishlist-count/>
                                     <div class="header-action-style" style="z-index: 1">
                                         <a href="{{ route('front.profile.index') }}" title="Login Register">

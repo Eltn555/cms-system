@@ -109,6 +109,49 @@
 <!-- Main JS -->
 @yield('scripts')
 @stack('scripts')
+<script>
+
+    $(function(){
+        $('.fly-to-basket').on('click', function () {
+            var cart = $('.basketShop');
+            var imgtodrag = $( '.'+$(this).attr('data-fly-to-basket') );
+            if (imgtodrag.length) {
+                var imgclone = imgtodrag.clone()
+                    .offset({
+                        top: imgtodrag.offset().top,
+                        left: imgtodrag.offset().left
+                    })
+                    .css({
+                        'opacity': '1',
+                        'position': 'absolute',
+                        'height': '150px',
+                        'width': '150px',
+                        'z-index': '100'
+                    })
+                    .appendTo($('body'))
+                    .animate({
+                        'top': cart.offset().top + 10,
+                        'left': cart.offset().left - 100,
+                        'width': 75,
+                        'height': 75
+                    }, 700, 'swing');
+
+                setTimeout(function () {
+                    cart.effect("shake", {
+                        times: 2
+                    }, 200);
+                }, 1500);
+
+                imgclone.animate({
+                    'width': 0,
+                    'height': 0
+                }, function () {
+                    $(this).detach()
+                });
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

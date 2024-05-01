@@ -85,7 +85,7 @@
                 <div class="col-lg-6">
                     <div class="product-details-content" data-aos="fade-left" data-aos-delay="50">
                         <div class="d-flex">
-                            <h2 class="font-cormorant fw-bold h1">{{$product->title}}</h2>
+                            <h2 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h2>
                             <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
                                 <div class="">
                                     @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
