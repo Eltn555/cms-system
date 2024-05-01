@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div id="lg2" class="tab-pane {{$isRegister ? 'active' : ''}}" role="tabpanel">
-                <div class="login-form-container">
+                <div class="login-form-container pb-0">
                     <div class="login-register-form">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -62,6 +62,7 @@
                             </div>
                         </form>
                     </div>
+                    <p class="pt-4 pb-2">Если у вас уже есть аккаунт, <a href="/profile" class="text-primary">войдите</a></p>
                 </div>
             </div>
         </div>

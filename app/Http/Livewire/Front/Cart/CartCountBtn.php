@@ -17,7 +17,7 @@ class CartCountBtn extends Component
     public $updatedCount;
     public $cookie;
 
-    protected $listeners = ['refreshCountButton' => '$refresh'];
+    protected $listeners = ['refreshCountButton' => '$refresh', 'updateState'];
 
     public function mount($product){
         $productCount = 0;
@@ -79,7 +79,6 @@ class CartCountBtn extends Component
 //            $this->dispatchBrowserEvent('cartUpdate', ['count' => $this->cookie]);
             Cookie::queue('cart', json_encode($this->cookie), 60 * 24 * 30);
         }
-        $this->update();
         $this->updateState();
         $this->dispatchBrowserEvent('cartUpdate', ['count' => $this->productCount, 'id' => $this->product->id]);
     }

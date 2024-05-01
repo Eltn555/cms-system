@@ -17,8 +17,10 @@ class Onclick extends Component
 
     public function mount(){
         $this->user = Auth::user();
-        $this->name = $this->user->name;
-        $this->phone = $this->user->phone;
+        if (Auth::user()){
+            $this->name = $this->user->name;
+            $this->phone = $this->user->phone;
+        }
     }
 
 

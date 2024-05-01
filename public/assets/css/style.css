@@ -10950,14 +10950,23 @@ textarea {
     width: 100%;
 }
 
+.login-register-form form input::placeholder {
+    color: slategrey !important;
+    opacity: 0.7; /* Firefox */
+}
+
+.login-register-form form input::-ms-input-placeholder { /* Edge 12-18 */
+    color: slategrey !important;
+}
+
 .login-register-wrapper .login-form-container .login-register-form form input::-moz-input-placeholder {
     opacity: 1;
-    color: #000000;
+    color: slategrey;
 }
 
 .login-register-wrapper .login-form-container .login-register-form form input::-webkit-input-placeholder {
     opacity: 1;
-    color: #000000;
+    color: slategrey;
 }
 
 .login-register-wrapper .login-form-container .login-register-form form input[type="checkbox"] {
@@ -10970,12 +10979,12 @@ textarea {
 }
 
 .login-register-wrapper .login-form-container .login-register-form form input[type="checkbox"]:-moz-input-placeholder {
-    color: #000000;
+    color: slategrey;
     opacity: 1;
 }
 
 .login-register-wrapper .login-form-container .login-register-form form input[type="checkbox"]:-webkit-input-placeholder {
-    color: #000000;
+    color: slategrey;
     opacity: 1;
 }
 

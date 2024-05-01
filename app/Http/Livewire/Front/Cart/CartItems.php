@@ -25,7 +25,7 @@ class CartItems extends Component
 
     public function reRender(){
         $this->mount();
-        $this->check();
+        $this->checkItems();
     }
 
     public function mount(){
@@ -63,6 +63,27 @@ class CartItems extends Component
         }
     }
 
+
+    public function delete($product){
+        if(Auth::check()){
+            $user = Auth::user();
+            $cartProduct = CartProduct::where('user_id', $user->id)->where('product_id', $product)->first();
+            if($cartProduct){
+                $cartProduct->delete();
+            }
+        } else {
+            foreach ($this->cartArray as $key => $item) {
+                if ($item['product_id'] == $product) {
+                    unset($this->cartArray[$key]); // Remove the item from the array
+                    Cookie::queue('cart', json_encode($this->cartArray), 60 * 24 * 30);
+                }
+            }
+        }
+        $this->check();
+        $this->emit('checkCount');
+        $this->dispatchBrowserEvent('cartUpdate', ['count' => 0, 'id' => $product]);
+    }
+
     public function checkItems(){
         $this->items = [];
         if (Auth::check()) {
@@ -87,28 +108,7 @@ class CartItems extends Component
         $this->check();
     }
 
-    public function delete($product){
-        if(Auth::check()){
-            $user = Auth::user();
-            $cartProduct = CartProduct::where('user_id', $user->id)->where('product_id', $product)->first();
-            if($cartProduct){
-                $cartProduct->delete();
-            }
-        } else {
-            foreach ($this->cartArray as $key => $item) {
-                if ($item['product_id'] == $product) {
-                    unset($this->cartArray[$key]); // Remove the item from the array
-                    Cookie::queue('cart', json_encode($this->cartArray), 60 * 24 * 30);
-                }
-            }
-        }
-        $this->emit('checkCount');
-        $this->check();
-        $this->render();
-        $this->dispatchBrowserEvent('cartUpdate', ['count' => 0, 'id' => $product]);
-    }
-
-    public function check(){
+    public function check($cookie = null){
         $this->usd = 12650;
         $this->disc = 0;
         $this->overall = 0;
@@ -129,7 +129,7 @@ class CartItems extends Component
         }else{
             $cartCookie = Cookie::get('cart');
             if ($cartCookie){
-                $cartArray = json_decode($cartCookie, true);
+                $cartArray = $this->cartArray;
 
                 foreach ($cartArray as $item) {
                     $product = Product::where('id', $item['product_id'])->first();
