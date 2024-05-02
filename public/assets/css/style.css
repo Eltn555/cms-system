@@ -1466,7 +1466,7 @@ textarea {
     opacity: 1;
 }
 
-.search-wrap-1 form button.button-search {
+.search-wrap-1 form div.button-search {
     position: absolute;
     right: 0;
     top: 50%;
@@ -1484,7 +1484,7 @@ textarea {
     line-height: 45px;
 }
 
-.search-wrap-1 form button.button-search:hover {
+.search-wrap-1 form div.button-search:hover {
     color: var(--theme-color);
 }
 
@@ -9020,7 +9020,7 @@ textarea {
 }
 
 .sidebar-widget .sidebar-list-style ul li:last-child {
-    margin: 0 0 0;
+    margin: 14px 0 0;
 }
 
 .sidebar-widget .sidebar-list-style ul li a {

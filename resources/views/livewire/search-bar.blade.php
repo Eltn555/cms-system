@@ -1,5 +1,5 @@
 <div class=" header-action-style header-search-1">
-    <a class="search-toggle {{($search == "") ? "" : "open"}}" href="#">
+    <a class="search-toggle searchFocuser {{($search == "") ? "" : "open"}}">
         <svg class="s-open white-icon d-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="11.5" cy="11.5" r="9.5" stroke="white" stroke-width="1.5"/>
             <path d="M18.5 18.5L22 22" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
@@ -11,13 +11,16 @@
         <i class="pe-7s-close s-close"></i>
     </a>
     <div class="search-wrap-1 {{($search == "") ? "" : "open"}}">
-        <form action="#">
-            <input placeholder="Search products…" type="text" wire:model="search">
-            <button class="button-search d-flex justify-content-center align-items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="11.5" cy="11.5" r="9.5" stroke="#232323" stroke-width="1.5"/>
-                    <path d="M18.5 18.5L22 22" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-            </button>
+        <form>
+            <input placeholder="Search products…" id="InputSearch" type="text" wire:model="search">
+            <div class="button-search d-flex justify-content-center align-items-center">
+                <a href="/category?search={{$search}}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11.5" cy="11.5" r="9.5" stroke="#232323" stroke-width="1.5"/>
+                        <path d="M18.5 18.5L22 22" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </a>
+            </div>
         </form>
         <div class="position-fixed width row shadow bg-white p-0" style="width: 70vw; z-index: 99; right: 0; top: 65px">
                     @if($search != "")

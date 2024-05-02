@@ -29,9 +29,13 @@ class Categories extends Component
     {
         $this->mainCategories = Category::where('parent_category_id', null)->where('is_active', 1)->get();
         $tagId = request()->query('tagId');
+        $search = request()->query('search');
         $this->tags = Tag::all();
         if ($slug) {
             $this->setCategory($slug);
+        }
+        if ($search){
+            $this->search = $search;
         }
         if ($tagId){
             $this->setTag($tagId);

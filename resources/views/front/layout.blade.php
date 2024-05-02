@@ -110,7 +110,9 @@
 @yield('scripts')
 @stack('scripts')
 <script>
-
+    $(".searchFocuser").click(function() {
+        setTimeout(function(){ $('#InputSearch'). focus (); }, 200);
+    });
     $(function(){
         $('.fly-to-basket').on('click', function () {
             var cart = $('.basketShop');
