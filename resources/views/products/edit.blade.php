@@ -120,7 +120,7 @@
 
 @section('content')
 
-    <h2 class="intro-y text-lg font-medium my-6">Create New Product</h2>
+    <h2 class="intro-y text-lg font-medium my-6">Edit Product</h2>
         <div class="intro-y box m-auto py-5 px-5 grid grid-cols-12 w-100">
             <div class="col-span-12">
                 <label class="form-label">Upload Image</label>
@@ -183,7 +183,7 @@
                            placeholder="Enter a price..." value="{{$products->price}}">
                 </div>
                 <div class="col-span-4 mx-2 sm:col-span-4 mt-3">
-                    <label for="category" class="form-label" id=""><b class="text-danger">* </b>Category</label>
+                    <label for="category" class="form-label" id=""><b class="text-danger">* </b>Categories</label>
                     <select data-placeholder="Select tags" class="w-full"
                             id="category" name="categories[]" required
                             multiple="multiple">
