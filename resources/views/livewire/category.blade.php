@@ -235,10 +235,19 @@
 
                     <div class="sidebar-list-style">
                         <ul>
-                            @foreach($categories as $category)
-                                <li wire:click="setCategory('{{$category->slug}}')" class="categoryList"><a
-                                        id="">{{ $category->title }}
-                                        <span>{{ $category->products->count() }}</span></a></li>
+                            @foreach($mainCategories as $categorMenu)
+                                <li wire:click="setCategory('{{$categorMenu->slug}}')" class="categoryList"><a
+                                        id="select-category-{{ $categorMenu->id }}" class="{{(isset($category) && $categorMenu->id == $category->id) ? 'text-warning fw-bolder' : ''}}">{{ $categorMenu->title }}
+                                        <span>{{ $categorMenu->products->count() }}</span></a>
+                                </li>
+                                <ul >
+                                    @foreach($categorMenu->children as $categoryMini)
+                                        <li wire:click="setCategory('{{$categoryMini->slug}}')" class="bg-light categoryList"><a
+                                                id="select-category-{{ $categoryMini->id }}" class="{{(isset($category) && $categoryMini->id == $category->id) ? 'text-warning fw-bolder' : ''}}"> • {{ $categoryMini->title }}
+                                                <span>{{ $categoryMini->products->count() }}</span></a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             @endforeach
                         </ul>
                     </div>

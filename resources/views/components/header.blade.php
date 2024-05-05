@@ -61,7 +61,7 @@
                         <div class="basketShop position-absolute p-0" style="top: 0; right: 0; height: 1px; width: 1px;"></div>
                         <div class="col-lg-3 col-md-6 col-6">
                             <div class="header-action-wrap">
-                                <div class="justify-content-end d-none d-md-none d-lg-flex d-xl-flex d-sm-none position-relative">
+                                <div class="justify-content-end d-none d-md-none d-lg-flex d-xl-flex d-sm-none position-relative ">
                                     @livewire('search-bar')
                                     <livewire:front.cart.cart-count/>
                                     <livewire:front.wishlist.wishlist-count/>
@@ -145,13 +145,13 @@
         </div>
         <div class="language-currency-wrap language-currency-wrap-modify">
             <ul>
-                <li class="d-flex">
+                <li class="d-flex mobile-icon">
                     <livewire:front.cart.cart-count/>
                     <a class="off-canvas-close cart-active position-relative ps-2">
                         <p class="ps-2 font-kyiv">Корзина</p>
                     </a>
                 </li>
-                <li class="d-flex">
+                <li class="d-flex mobile-icon">
                     <livewire:front.wishlist.wishlist-count/>
                     <a class="d-flex ps-2" href="{{route('front.wishlist.index')}}">
                         <p class="ps-2 font-kyiv">Пожеланий</p>

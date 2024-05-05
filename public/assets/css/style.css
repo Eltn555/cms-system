@@ -924,6 +924,12 @@ textarea {
     color: var(--theme-color);
 }
 
+.mobile-icon .dark-icon{
+    display: inline !important;
+}
+.mobile-icon .white-icon{
+    display: none !important;
+}
 .language-currency-wrap.language-currency-wrap-modify {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;

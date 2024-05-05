@@ -147,10 +147,10 @@
                 <div class="">
                     <div class="p-3 d-flex align-items-center justify-content-between bg-light border delivery">
                         <div class="d-flex align-items-center ">
-                            <svg class="pick-down" width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="pick-down d-none" width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15 7L8 1L1 7" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <svg class="pick-down d-none" width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="pick-down " width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15 1L8 7L1 1" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <p class="text-black mb-0 ms-4 ps-1 fw-semibold">Доставка</p>
@@ -399,9 +399,7 @@
         window.onload = function () {
             populateRegions();
         };
-        setInterval(() => {
-            populateRegions();
-        }, 2000)
+        
         // Event listener to populate regions when city is selected
         document.getElementById("citySelect").addEventListener("change", populateRegions);
 
