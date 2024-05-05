@@ -23,6 +23,7 @@ class Categories extends Component
     public $tag;
     public $tags;
     public $price;
+    public $mainCategories;
 
 
     public function mount($slug = null)
@@ -61,7 +62,7 @@ class Categories extends Component
         $this->hasCategory = ($this->category) ? $slug : 'category/'.$slug;
 
         $this->category = Category::with('images')->where('slug', $slug)->firstOrFail();
-        $this->categories = $this->category ? $this->category->children : null;
+
         $this->dispatchBrowserEvent('metaChanged', [
             'title' => 'Lumen Lux | ' . $this->category->title,
             'description' => $this->category->seo_description ?? 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет',
@@ -89,7 +90,9 @@ class Categories extends Component
         $products = Product::query();
 
         if ($this->category) {
-            $products->where('category_id', $this->category->id);
+            $products->whereHas('categories', function ($query) {
+                $query->where('categories.id', $this->category->id);
+            });
         }
 
         if ($this->tag) {

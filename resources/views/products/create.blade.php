@@ -1,6 +1,7 @@
 @extends('admin')
 
 @section('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .line {
             display: inline-block;
@@ -170,13 +171,12 @@
                            placeholder="Enter a price...">
                 </div>
                 <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
-                    <label for="category" class="form-label"><b class="text-danger">* </b>Category</label>
-                    <select id="category" required name="category_id" class="form-select">
-                        <option value="" disabled selected>Not selected</option>
+                    <label for="category" class="form-label" id=""><b class="text-danger">* </b>Category</label>
+                    <select data-placeholder="Select tags" class="w-full"
+                            id="category" name="categories[]" required
+                            multiple="multiple">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">
-                                {{ $category->title }}
-                            </option>
+                            <option value="{{ $category->title }}">{{ $category->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -244,7 +244,7 @@
                     <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar
                         products</label>
                     <select data-placeholder="Select tags" class="tom-select w-full tomselected"
-                            id="post-form-3" name="tags[]" required
+                            id="post-form-3" name="tags[]"
                             multiple="multiple" tabindex="-1" hidden="hidden">
                         @foreach($tags as $tag)
                             <option value="{{ $tag->title }}">{{ $tag->title }}</option>
@@ -261,7 +261,7 @@
                         products</label>
                     <select data-placeholder="Select categories" class="tom-select w-full tomselected"
                             id="post-form-3" name="additional_products[]"
-                            multiple="multiple" required tabindex="-1" hidden="hidden">
+                            multiple="multiple" tabindex="-1" hidden="hidden">
                         @foreach($tags as $tag)
                             <option value="{{ $tag->title }}">{{ $tag->title }}</option>
                         @endforeach
@@ -275,14 +275,57 @@
 
                 <div class="text-right mt-5 col-span-12">
                     <a href="{{ URL::previous() }}" type="button" class="btn btn-outline-secondary w-24 mr-1">Cancel</a>
-                    <button type="submit" class="btn btn-primary w-24">Save</button>
+                    <button id="saveButton" type="submit" class="btn btn-primary w-24">Save</button>
                 </div>
             </form>
         </div>
 @endsection
 
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript">
+        $(document).keydown(function(event) {
+            if (event.ctrlKey && event.key === 's') {
+                event.preventDefault();
+                $('#saveButton').click();
+            }
+        });
+        $(document).ready(function() {
+            // Initialize Select2 on the select element
+            $('#category').select2({
+                placeholder: 'Select or type to add',
+                tags: true, // Allow adding new tags
+                tokenSeparators: [',', ' '], // Separate tags by comma or space
+                createTag: function(params) {
+                    var term = $.trim(params.term);
+
+                    // Return null if the term is empty
+                    if (term === '') {
+                        return null;
+                    }
+
+                    // Return the tag object if the term doesn't exist
+                    return {
+                        id: term,
+                        text: term,
+                        newTag: true // Add a custom property to indicate it's a new tag
+                    };
+                }
+            });
+
+            // Handle the "select2:select" event
+            $('#category').on('select2:select', function(e) {
+                var data = e.params.data;
+
+                // Check if the selected option is a new tag
+                if (data.newTag) {
+                    // Add the new tag to the select element's options
+                    var option = new Option(data.text, data.id, true, true);
+                    $(this).append(option).trigger('change');
+                }
+            });
+        });
+
         tinymce.init({
             selector: 'textarea.tinyeditor',
             plugins: 'code table searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +

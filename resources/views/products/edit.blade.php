@@ -1,6 +1,7 @@
 @extends('admin')
 
 @section('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .line {
             display: inline-block;
@@ -181,14 +182,18 @@
                     <input id="Price" required name="price" type="number" class="form-control"
                            placeholder="Enter a price..." value="{{$products->price}}">
                 </div>
-                <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
-                    <label for="category" class="form-label"><b class="text-danger">* </b>Category</label>
-                    <select id="category" required name="category_id" class="form-select">
+                <div class="col-span-4 mx-2 sm:col-span-4 mt-3">
+                    <label for="category" class="form-label" id=""><b class="text-danger">* </b>Category</label>
+                    <select data-placeholder="Select tags" class="w-full"
+                            id="category" name="categories[]" required
+                            multiple="multiple">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">
-                                {{ $category->title }}
-                                @endforeach
-                            </option>
+                            @if($products->categories->contains($category->id))
+                                <option value="{{ $category->title }}" selected>{{ $category->title }}</option>
+                            @else
+                                <option value="{{ $category->title }}">{{ $category->title }}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-span-2 mx-3 sm:col-span-2 mt-3">
@@ -227,7 +232,7 @@
                     <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Similar
                         products</label>
                     <select data-placeholder="Select tags" class="tom-select w-full tomselected"
-                            id="post-form-3" name="tags[]" required
+                            id="post-form-3" name="tags[]"
                             multiple="multiple" tabindex="-1" hidden="hidden">
                         @foreach($tags as $tag)
                             @if($products->tags->contains($tag->id))
@@ -248,7 +253,7 @@
                         products</label>
                     <select data-placeholder="Select categories" class="tom-select w-full tomselected"
                             id="post-form-3" name="additional_products[]"
-                            multiple="multiple" required tabindex="-1" hidden="hidden">
+                            multiple="multiple" tabindex="-1" hidden="hidden">
                         @foreach($tags as $tag)
                             @if($products->additional_tags->contains($tag->id))
                                 <option value="{{ $tag->title }}" selected>{{ $tag->title }}</option>
@@ -266,7 +271,8 @@
 
                 <div class="text-right mt-5 col-span-12">
                     <a href="{{ URL::previous() }}" type="button" class="btn btn-outline-secondary w-24 mr-1">Cancel</a>
-                    <button type="submit" class="btn btn-primary w-24">Save</button>
+                    <input type="text" class="hidden" value="{{$currentPageNumber}}" name="page">
+                    <button id="saveButton" type="submit" class="btn btn-primary w-24">Save</button>
                 </div>
 
             </form>
@@ -274,11 +280,55 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript">
+        $(document).keydown(function(event) {
+            if (event.ctrlKey && event.key === 's') {
+                event.preventDefault();
+                $('#saveButton').click();
+            }
+        });
+        $(document).ready(function() {
+            // Initialize Select2 on the select element
+            $('#category').select2({
+                placeholder: 'Select or type to add',
+                tags: true, // Allow adding new tags
+                tokenSeparators: [',', ' '], // Separate tags by comma or space
+                createTag: function(params) {
+                    var term = $.trim(params.term);
+
+                    // Return null if the term is empty
+                    if (term === '') {
+                        return null;
+                    }
+
+                    // Return the tag object if the term doesn't exist
+                    return {
+                        id: term,
+                        text: term,
+                        newTag: true // Add a custom property to indicate it's a new tag
+                    };
+                }
+            });
+
+            // Handle the "select2:select" event
+            $('#category').on('select2:select', function(e) {
+                var data = e.params.data;
+
+                // Check if the selected option is a new tag
+                if (data.newTag) {
+                    alert('add');
+                    // Add the new tag to the select element's options
+                    var option = new Option(data.text, data.id, true, true);
+                    $(this).append(option).trigger('change');
+                }
+            });
+        });
 
         tinymce.init({
             selector: 'textarea.tinyeditor',
-            plugins: 'code table powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
+            plugins: 'code table searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +
+                'help charmap emoticons autosave',
             language: 'ru',
             promotion: false,
             branding: false

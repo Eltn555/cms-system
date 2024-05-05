@@ -258,14 +258,6 @@
                     </td>
                     <td class="text-center tooltip" title="{{$product->short_description}}">
                         <div class="editable" data-field="title" data-action="read" data-selectable="text">{{ substr($product->short_description, 0, 35) }}</div>
-                        <!-- BEGIN: Super Large Modal Content -->
-{{--                        <div id="short_description_{{ $product->id }}" class="modal" tabindex="-1" aria-hidden="true">--}}
-{{--                            <div class="modal-dialog modal-xl">--}}
-{{--                                <div class="modal-content py-10 px-10 ">--}}
-{{--                                    {!! substr($product->short_description, 0, 35) !!}--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div> <!-- END: Super Large Modal Content -->--}}
                         <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ substr($product->long_description, 0, 40) }}</div>
                     </td>
                     <td class="editable text-center" data-field="price" data-action="read" data-selectable="number">
@@ -276,14 +268,9 @@
                     </td>
                     <td>
                         <div class="w-full mt-3 xl:mt-0 flex-1">
-                            <select class="form-select edition" data-field="category_id">
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ ($product->category && $category->id == $product->category->id) ? 'selected' : '' }}>
-                                        {{ $category->title }}
-                                    </option>
-                                @endforeach
-                                <option value="" {{ (!$product->category) ? 'selected' : '' }}>Not Selected</option>
-                            </select>
+                            @foreach($product->categories as $category)
+                                 {{$category->title.", "}}
+                            @endforeach
                         </div>
                     </td>
                     <td class="">
@@ -335,7 +322,7 @@
                     </td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="{{route('admin.products.edit', $product->id)}}">
+                            <a class="flex items-center mr-3" href="{{route('admin.products.edit', [$product->id, 'page' => $currentPageNumber]) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"

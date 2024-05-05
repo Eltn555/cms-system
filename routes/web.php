@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\front\AboutController;
+use App\Http\Controllers\admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'is_admin']], function (
     });
     Route::resource('/blog', BlogController::class, ['as'=>'admin']);
     Route::resource('/account', AccountController::class, ['as'=>'admin']);
+    Route::get('/search', [HomeController::class, 'search'])->name('admin.search');
 
 })->middleware([\App\Http\Middleware\Authenticate::class, \App\Http\Middleware\IsAdmin::class]);
 //Route::post('/teststore', function (\Illuminate\Http\Request $request){

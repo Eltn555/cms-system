@@ -10,6 +10,7 @@ use Behat\Transliterator\Transliterator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\Product;
 
 // Make sure to import your Category model
 
@@ -18,6 +19,13 @@ class CategoriesController extends Controller
     // Show all categories
     public function index()
     {
+//        $products = Product::all();
+//        foreach ($products as $product) {
+//            $category = Category::find($product->category_id);
+//            if ($category) {
+//                $product->categories()->attach($category->id);
+//            }
+//        }
         $categories = Category::orderBy('order_id', 'asc')->get();
         $icon = '';
         $background = '';

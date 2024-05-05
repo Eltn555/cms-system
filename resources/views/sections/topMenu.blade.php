@@ -34,11 +34,12 @@
             </div>
             <a class="notification notification--light sm:hidden" href="">
                 <i data-lucide="search" class="notification__icon dark:text-slate-500"></i> </a>
-            <div class="search-result" style="max-height: 30vh">
-                <div id="search-result__content">
-                    <div class="search-result__content hidden">
 
-                    </div>
+        </div>
+        <div class="search-result p-2 rounded" style="height: 200vh !important; width: 100%; background-color: rgba(0,0,0,0.5)">
+            <div id="search-result__content" style="width: 85%; max-height: 150vh; background-color: #f4f4f4">
+                <div class="search-result__content hidden" style="background-color: white">
+
                 </div>
             </div>
         </div>

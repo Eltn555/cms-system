@@ -14,8 +14,7 @@ class Products extends Component
     public $categories;
 
     public function mount($slug){
-        $this->product = Product::with('images', 'tags', 'additional_tags', 'category')->where('slug', $slug)->firstOrFail();
-
+        $this->product = Product::with('images', 'tags', 'additional_tags', 'categories')->where('slug', $slug)->firstOrFail();
         $relatedTags = $this->product->tags()->with('products')->inRandomOrder()->take(10)->get();
         $additionalTags = $this->product->additional_tags()->with('products')->inRandomOrder()->take(10)->get();
 

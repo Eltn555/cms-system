@@ -35,7 +35,7 @@
             <div class="row mx-0">
                 <div class="col-12 d-md-block d-none mb-5"><a href="/">Главная</a> /
                     <a class="" href="{{ route('front.category.index') }}">Каталог</a> /
-                    <a class="" href="{{ route('front.category.show', $product->category->slug) }}">{{$product->category->title}}</a>
+                    <a class="" href="{{ route('front.category.show', $product->categories[0]->slug) }}">{{$product->categories[0]->title}}</a>
                 </div>
                 <div class="col-12 d-md-none mb-5 d-flex">
                     <a onclick="goBack()">
@@ -111,13 +111,17 @@
                                 <li><span class="title">Теги:</span>
                                     <ul >
                                         @foreach($product->tags as $tag)
-                                            <li ><a class="" href="#">{{$tag->title}}</a>,</li>
+                                            <li ><a class="" href="category/?tagId={{$tag->id}}">{{$tag->title}}</a>,</li>
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><span class="title">Категория:</span>
+                                <li><span class="title">Категории:</span>
                                     <ul class="tag">
-                                        <li><a class="" href="{{ route('front.category.show', $product->category->slug) }}">{{$product->category->title}}</a></li>
+                                        <li>
+                                            @foreach($product->categories as $category)
+                                                <a class="" href="{{ route('front.category.show', $category->slug) }}">{{$category->title}}</a>
+                                            @endforeach
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><span class="title">Доступность:</span>

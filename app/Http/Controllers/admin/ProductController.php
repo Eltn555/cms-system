@@ -23,11 +23,12 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $currentPageNumber = $request->query('page');
         $perPage = $request->input('perPage', 10); // Default to 10 items per page
         $categories = Category::all();
         $products = Product::orderBy('created_at', 'desc')->paginate($perPage);
         $tags = Tag::all();
-        return view('products.index', compact('products', 'categories', 'tags', 'perPage'));
+        return view('products.index', compact('products', 'categories', 'tags', 'perPage', 'currentPageNumber'));
     }
 
     public function create()
@@ -112,7 +113,6 @@ class ProductController extends Controller
             'price' => $data['price'],
             'discount_price' => $data['discount_price'],
             //'amount' => $data['amount'],
-            'category_id' => $data['category_id'],
             'additional' => $data['additional'],
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
@@ -136,32 +136,43 @@ class ProductController extends Controller
         }
 
         // Additional products (tags) process
-        foreach ($data['additional_products'] as $additional_product) {
-            $tag = Tag::firstOrCreate([
-                'title' => $additional_product
-            ], [
-                'visible' => 0
-            ]);
-            $product->additional_tags()->attach($tag->id);
+        if (array_key_exists('additional_products', $data)){
+            foreach ($data['additional_products'] as $additional_product) {
+                $tag = Tag::firstOrCreate([
+                    'title' => $additional_product
+                ], [
+                    'visible' => 0
+                ]);
+                $product->additional_tags()->attach($tag->id);
+            }
         }
 
-        foreach ($data['tags'] as $tagName) {
-            $tag = Tag::firstOrCreate([
-                'title' => $tagName
-            ], [
-                'visible' => 0
-            ]);
-            $product->tags()->attach($tag->id);
+        foreach ($data['categories'] as $categoryName) {
+            $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
+            $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
+            $product->categories()->attach($category->id);
+        }
+
+        if (array_key_exists('tags', $data)) {
+            foreach ($data['tags'] as $tagName) {
+                $tag = Tag::firstOrCreate([
+                    'title' => $tagName
+                ], [
+                    'visible' => 0
+                ]);
+                $product->tags()->attach($tag->id);
+            }
         }
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $categories = Category::all();
         $tags = Tag::all();
         $products = Product::findOrFail($id);
-        return view('products.edit', compact('products', 'categories', 'tags'));
+        $currentPageNumber = $request['page'];
+        return view('products.edit', compact('products', 'categories', 'tags', 'currentPageNumber'));
     }
 
     public function ajaxUpdate(Request $request, Product $product){
@@ -216,7 +227,6 @@ class ProductController extends Controller
             'price' => $data['price'],
             'discount_price' => $data['discount_price'],
             //'amount' => $data['amount'],
-            'category_id' => $data['category_id'],
             'additional' => $data['additional'],
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
@@ -238,18 +248,35 @@ class ProductController extends Controller
         }*/
         // Additional products (tags) process
 
-        // Update or attach tags
-        foreach ($request->input('tags', []) as $tagName) {
-            $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
-            $product->tags()->syncWithoutDetaching($tag->id); // Sync tags without detaching existing ones
+        $categoryIds = [];
+        foreach ($request->input('categories', []) as $categoryName) {
+            $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
+            $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
+            $categoryIds[] = $category->id;
+        }
+        $product->categories()->sync($categoryIds);
+
+        if (!empty($request['tags'])) {
+            $tagIds = [];
+            // Update or attach tags
+            foreach ($request->input('tags', []) as $tagName) {
+                $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
+                $tagIds[] = $tag->id;
+            }
+            $product->tags()->sync($tagIds);
         }
 
         // Update or attach additional products
-        foreach ($request->input('additional_products', []) as $additionalProductName) {
-            $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
-            $product->additional_tags()->syncWithoutDetaching($additionalProduct->id); // Sync additional products without detaching existing ones
+        if (!empty($request['additional_products'])){
+            $tagAddIds = [];
+            foreach ($request->input('additional_products', []) as $additionalProductName) {
+                $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
+                $tagAddIds[] = $additionalProduct->id;
+            }
+            $product->additional_tags()->sync($tagAddIds); // Sync additional products without detaching existing ones
         }
-        return redirect()->route('admin.products.index')->with('message', "This is Success Created");
+        return redirect()->route('admin.products.index', ['page' => $data['page']])
+            ->with('message', 'Product updated successfully');
     }
 }
 
