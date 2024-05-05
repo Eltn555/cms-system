@@ -49,7 +49,7 @@ Route::get('/wishlist',\App\Http\Livewire\Front\Wishlist\Index::class)->name('fr
 Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cartItems.index');
 Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
 Route::group(['prefix' => '/', 'middleware' => ['front_auth']], function (){
-    Route::get('/checkout',\App\Http\Livewire\Front\Checkout::class)->name('front.checkout.index');
+    Route::get('/checkout', \App\Http\Livewire\Front\Checkout::class)->name('front.checkout.index');
 });
 
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');

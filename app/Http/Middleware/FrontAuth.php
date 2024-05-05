@@ -20,6 +20,9 @@ class FrontAuth
         if (auth()->user()) {
             return $next($request);
         } else {
+            if ($request->getPathInfo() == '/checkout'){
+                return redirect()->route('front.profile.index', ['register' => 'true', 'checkout' => 'true'])->with('error', 'You don\'t have permission to access this page');
+            }
             return redirect()->route('front.profile.index', ['register' => 'true'])->with('error', 'You don\'t have permission to access this page');
         }
     }
