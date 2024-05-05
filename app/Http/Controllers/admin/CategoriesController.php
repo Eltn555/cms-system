@@ -19,13 +19,6 @@ class CategoriesController extends Controller
     // Show all categories
     public function index()
     {
-        $products = Product::all();
-        foreach ($products as $product) {
-            $category = Category::find($product->category_id);
-            if ($category) {
-                $product->categories()->attach($category->id);
-            }
-        }
         $categories = Category::orderBy('order_id', 'asc')->get();
         $icon = '';
         $background = '';
