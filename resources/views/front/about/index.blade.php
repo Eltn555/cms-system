@@ -24,43 +24,9 @@
             height: 0;
             margin-top: 75px;
         }
-
-        @media screen and (max-width: 2000px) and (min-width: 1200px) {
-            .product-wrap .product-img {
-                height: 310px;
-            }
+        .product-img{
+            height: 315px !important;
         }
-
-        @media only screen and (max-width: 991px) {
-            .product-wrap .product-img {
-                height: 235px;
-            }
-        }
-
-        @media only screen and (max-width: 767px) {
-            .product-wrap .product-img {
-                height: 265px;
-            }
-        }
-
-        @media only screen and (max-width: 576px) {
-            .product-wrap .product-img {
-                height: 510px;
-            }
-        }
-
-        @media only screen and (max-width: 500px) {
-            .product-wrap .product-img {
-                height: 430px;
-            }
-        }
-
-        @media only screen and (max-width: 400px) {
-            .product-wrap .product-img {
-                height: 430px;
-            }
-        }
-
         .video-container iframe {
             position: absolute;
             bottom: 0;
@@ -150,19 +116,12 @@
                 right: -50px;
             }
         }
-        .ovrflwx{
-            overflow-x: hidden;
-        }
-        .slider-colleague{
-            margin-right: -60px !important;
-            margin-left: 45px !important;
-        }
     </style>
 @endsection
 
 @section('content')
     <div class="container mt-5 pt-5">
-        <div class="row ovrflwx">
+        <div class="row">
             <div class="col-12 row">
                 <div class="col-md-12 col-lg-6 order-lg-0 order-md-1 order-sm-1 order-1 mt-md-5 greeting-txt">
                     <h5 class="counter pt-md-5"></h5>
@@ -217,7 +176,7 @@
             </div>
             <div class="pt-3 product-slider-active-1 swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -230,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -243,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -251,12 +210,12 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Продавец-консультант</a></h4>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Руководитель отдела продаж</a></h4>
                                 <h3 class="fw-bolder">Тиллаходжаев Бекзод</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -269,7 +228,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -282,7 +241,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -295,7 +254,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide slider-colleague">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
