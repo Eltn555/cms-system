@@ -184,7 +184,7 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Основатель</a></h4>
                                 <h3 class="fw-bolder">Алимов Матлаб</h3>
                             </div>
                         </div>
