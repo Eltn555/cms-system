@@ -1,5 +1,5 @@
 @extends('front.layout')
-
+@section('title', 'О нас')
 @section('style')
     <style>
         .greeting-txt h1{
@@ -20,9 +20,12 @@
         }
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 66%; /* 16:9 */
             height: 0;
             margin-top: 75px;
+        }
+        .product-img{
+            height: 315px !important;
         }
         .video-container iframe {
             position: absolute;
@@ -130,7 +133,7 @@
                 </div>
             </div>
             <div class="col-12 video-container">
-                <iframe src="https://www.youtube-nocookie.com/embed/y7_Spedf2BI?si=WEWJHwT3kSZR1UcW&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <img src="{{asset('/aboutss/our team bk-wh.webp')}}" style="width:100%" alt="Lumen Lux - О нас">
             </div>
             <div class="col-12">
                 <div class="row my-5 py-4 infoNumber">
@@ -177,7 +180,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/1.webp')}}" alt="LumenLux team">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -190,7 +193,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/2.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/2.webp')}}" alt="LumenLux team">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -203,7 +206,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/3.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/3.webp')}}" alt="LumenLux team">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -216,7 +219,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/4.webp')}}" alt="LumenLux team">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -229,7 +232,33 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/1.jpg')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/5.webp')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/6.webp')}}" alt="LumenLux team">
+                                </a>
+                            </div>
+                            <div class="product-content font-kyiv">
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
+                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slider-colleague">
+                        <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
+                            <div class="product-img img-zoom mb-25">
+                                <a>
+                                    <img src="{{asset('aboutss/7.webp')}}" alt="LumenLux team">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
