@@ -482,7 +482,7 @@
                                     stroke="#F8B301" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <p class="mb-0 fw-bolder">Бесплатная установка</p>
+                        <p class="mb-0 fw-bolder">Установка</p>
                         <p class="px-5 text-muted">Гарантированная установка и многолетняя гарантия
                             производительности!</p>
                     </div>
