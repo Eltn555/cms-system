@@ -185,7 +185,7 @@
                             </div>
                             <div class="product-content font-kyiv">
                                 <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h3 class="fw-bolder">Алимов Матлаб</h3>
                             </div>
                         </div>
                     </div>
