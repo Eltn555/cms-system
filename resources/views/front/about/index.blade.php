@@ -197,8 +197,8 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер по закупкам</a></h4>
+                                <h3 class="fw-bolder">Мирсалихов Мирабдуллох</h3>
                             </div>
                         </div>
                     </div>
@@ -210,8 +210,8 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Продавец-консультант</a></h4>
+                                <h3 class="fw-bolder">Тиллаходжаев Бекзод</h3>
                             </div>
                         </div>
                     </div>
@@ -223,8 +223,8 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Продавец-консультант</a></h4>
+                                <h3 class="fw-bolder">Шафигуллина Аида</h3>
                             </div>
                         </div>
                     </div>
@@ -236,8 +236,8 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Продавец-консультант</a></h4>
+                                <h3 class="fw-bolder">Авазхужаев Амир</h3>
                             </div>
                         </div>
                     </div>
@@ -249,8 +249,8 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Продавец-консультант</a></h4>
+                                <h3 class="fw-bolder">Абдусаттаров Абдувахид</h3>
                             </div>
                         </div>
                     </div>
@@ -262,8 +262,8 @@
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
-                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Менеджер</a></h4>
-                                <h3 class="fw-bolder">Ашмуродов Сардорбек Комильжонович</h3>
+                                <h4 class="mb-2 card-brand"><a class="card-brand" style="cursor: pointer;">Продавец-консультант</a></h4>
+                                <h3 class="fw-bolder">Носиржонов Дониёр</h3>
                             </div>
                         </div>
                     </div>
