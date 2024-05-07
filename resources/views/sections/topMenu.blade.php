@@ -1,6 +1,6 @@
 <!-- BEGIN: Top Bar -->
 <div
-    class="top-bar-boxed h-[70px] md:h-[65px] z-[51] border-b border-white/[0.08] mt-12 md:mt-0 -mx-3 sm:-mx-8 md:-mx-0 px-3 md:border-b-0 relative md:fixed md:inset-x-0 md:top-0 sm:px-8 md:px-10 md:pt-10 md:bg-gradient-to-b md:from-slate-100 md:to-transparent dark:md:from-darkmode-700">
+    class="top-bar-boxed h-[70px] md:h-[65px] z-[51] border-b border-white/[0.08] mt-12 md:mt-0 -mx-3 sm:-mx-8 md:-mx-0 px-3 md:border-b-0 md:fixed md:inset-x-0 md:top-0 sm:px-8 md:px-10 md:pt-10 md:bg-gradient-to-b md:from-slate-100 md:to-transparent dark:md:from-darkmode-700">
     <div class="h-full flex items-center">
         <!-- BEGIN: Logo -->
         <a href="" class="logo -intro-x hidden md:flex xl:w-[200px] block">
@@ -32,13 +32,10 @@
                 <input id="main-search" type="text" class="search__input form-control border-transparent" placeholder="Поиск...">
                 <i data-lucide="search" class="search__icon dark:text-slate-500"></i>
             </div>
-            <a class="notification notification--light sm:hidden" href="">
-                <i data-lucide="search" class="notification__icon dark:text-slate-500"></i> </a>
-
         </div>
-        <div class="search-result p-2 rounded" style="height: 200vh !important; width: 100%; background-color: rgba(0,0,0,0.5)">
-            <div id="search-result__content" style="width: 85%; max-height: 150vh; background-color: #f4f4f4">
-                <div class="search-result__content hidden" style="background-color: white">
+        <div class="search-result p-2" style="height: 200vh !important; width: 100%; top: 0; background-color: rgba(0,0,0,0.5)">
+            <div class="w-full h-full relative" style="padding-top: 65px">
+                <div id="search-result__content" class="rounded p-3" style="width: 85%; max-height: 150vh; margin: auto; background-color: #f4f4f4">
 
                 </div>
             </div>

@@ -25,7 +25,14 @@ class HomeController extends Controller
             ->orWhere('short_description', 'like', "%$query%")
             ->orWhere('price', 'like', "%$query%")
             ->orWhere('discount_price', 'like', "%$query%")
-            ->take(20)->get();
+            ->with('images') // Eager load the images relationship
+            ->take(20)
+            ->get()
+            ->map(function ($product) {
+                $firstImage = $product->images->first();
+                $product->image_url = $firstImage ? asset('storage/'.$firstImage->image) : asset('no_photo.jpg');
+                return $product;
+            });
 
         $categories = Category::where('title', 'like', "%$query%")->take(20)->get();
 

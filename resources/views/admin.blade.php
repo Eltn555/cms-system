@@ -9,6 +9,16 @@
 {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">--}}
     <script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
     @yield('styles')
+    <style>
+        .shadowSearch {
+            border-radius: 2px;
+            box-shadow: 1px 1px 4px 1px #ccc;
+            transition: 0.5s;
+        }
+        .shadowSearch:hover{
+            background-color: lightblue;
+        }
+    </style>
 </head>
 <body class="py-5 md:py-0">
 
@@ -54,9 +64,14 @@
                         // Iterate over products
                         if (response.products.length) {
                             var productsHtml = '<h3 class="text-lg font-semibold">Products</h3>';
-                            productsHtml += '<div class="grid grid-cols-3 gap-4">';
-                            response.products.slice(0, 3).forEach(function(product) {
-                                productsHtml += '<div class="col-span-1">' + product.title + '</div>';
+                            productsHtml += '<div class="grid grid-cols-4 gap-1">';
+                            response.products.slice(0, 20).forEach(function(product) {
+                                productsHtml += '<div class="shadowSearch col-span-1">' +
+                                    '<a href="/admin/products/' + product.id + '/edit" class="flex">' +
+                                    '<div class="bg-gray-200 w-16 h-16 flex items-center justify-center p-1">' +
+                                    '<img src="' + product.image_url + '" class="object-cover w-full h-full"></div>' +
+                                    '<div class="text-sm p-1"><b>' + product.title + '</b><br><span>'+product.price+'</span></div>' +
+                                    '</a></div>';
                             });
                             productsHtml += '</div>';
                             searchResultContent.append(productsHtml);
@@ -65,34 +80,33 @@
                         // Iterate over categories
                         if (response.categories.length) {
                             var categoriesHtml = '<h3 class="text-lg font-semibold">Categories</h3>';
-                            categoriesHtml += '<div class="grid grid-cols-3 gap-4">';
-                            response.categories.slice(0, 3).forEach(function(category) {
-                                categoriesHtml += '<div class="col-span-1">' + category.title + '</div>';
+                            categoriesHtml += '<div class="grid grid-cols-4 gap-1">';
+                            response.categories.slice(0, 18).forEach(function(category) {
+                                categoriesHtml += '<a href="category/'+ category.id +'"><div class="shadowSearch p-3 col-span-1">' + category.title + '</div></a>';
                             });
                             categoriesHtml += '</div>';
                             searchResultContent.append(categoriesHtml);
                         }
 
-                        // Iterate over tags
-                        if (response.tags.length) {
-                            var tagsHtml = '<h3 class="text-lg font-semibold">Tags</h3>';
-                            tagsHtml += '<div class="grid grid-cols-3 gap-4">';
-                            response.tags.slice(0, 3).forEach(function(tag) {
-                                tagsHtml += '<div class="col-span-1">' + tag.title + '</div>';
-                            });
-                            tagsHtml += '</div>';
-                            searchResultContent.append(tagsHtml);
-                        }
-
                         // Iterate over users
                         if (response.users.length) {
                             var usersHtml = '<h3 class="text-lg font-semibold">Users</h3>';
-                            usersHtml += '<div class="grid grid-cols-3 gap-4">';
+                            usersHtml += '<div class="grid grid-cols-4 gap-1">';
                             response.users.slice(0, 3).forEach(function(user) {
-                                usersHtml += '<div class="col-span-1">' + user.name + '</div>';
+                                usersHtml += '<a href="acoount/'+ user.id +'/edit"><div class="p-3 shadowSearch col-span-1">' + user.name + '</div></a>';
                             });
                             usersHtml += '</div>';
                             searchResultContent.append(usersHtml);
+                        }
+
+                        if (response.tags.length) {
+                            var tagsHtml = '<h3 class="text-lg font-semibold">Tags</h3>';
+                            tagsHtml += '<div class="grid grid-cols-4 gap-1">';
+                            response.tags.slice(0, 3).forEach(function(tag) {
+                                tagsHtml += '<a href="tags/'+ tag.id +'"><div class="p-3 shadowSearch col-span-1">' + tag.title + '</div></a>';
+                            });
+                            tagsHtml += '</div>';
+                            searchResultContent.append(tagsHtml);
                         }
                     } else {
                         // Display a message if there are no results
