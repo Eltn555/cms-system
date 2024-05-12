@@ -31,10 +31,10 @@ class Blog extends Component
     {
         $this->category1 = BlogCategory::with(['news' => function ($query) {
             $query->take(6);
-        }])->findOrFail(1);
+        }])->first();
         $this->category2 = BlogCategory::with(['news' => function ($query) {
             $query->take(6);
-        }])->findOrFail(2);
+        }])->skip(1)->first();
         $this->description = '';
         $this->categories = BlogCategory::all();
         foreach ($this->categories as $category){
