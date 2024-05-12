@@ -24,9 +24,43 @@
             height: 0;
             margin-top: 75px;
         }
-        .product-img{
-            height: 315px !important;
+
+        @media screen and (max-width: 2000px) and (min-width: 1200px) {
+            .product-wrap .product-img {
+                height: 310px;
+            }
         }
+
+        @media only screen and (max-width: 991px) {
+            .product-wrap .product-img {
+                height: 235px;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .product-wrap .product-img {
+                height: 265px;
+            }
+        }
+
+        @media only screen and (max-width: 576px) {
+            .product-wrap .product-img {
+                height: 510px;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .product-wrap .product-img {
+                height: 430px;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .product-wrap .product-img {
+                height: 430px;
+            }
+        }
+
         .video-container iframe {
             position: absolute;
             bottom: 0;
@@ -183,7 +217,7 @@
             </div>
             <div class="pt-3 product-slider-active-1 swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -196,7 +230,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -209,7 +243,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -222,7 +256,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -235,7 +269,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -248,7 +282,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
@@ -261,7 +295,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide slider-colleague">
+                    <div class="swiper-slide">
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
