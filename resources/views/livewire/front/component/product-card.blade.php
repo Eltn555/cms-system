@@ -3,12 +3,12 @@
                 <a href="{{route('front.product.show', ['slug' => $product->slug])}}">
                     <img class="image{{$product->id}}" src="{{asset(($image) ? 'storage/'.$image->image : 'no_photo.jpg')}}" alt="{{$product->title}}">
                 </a>
-                <div
-                    class="product-badge flex justify-end badge-top badge-right badge-pink">
-                        @foreach($tags as $tag)
-                            <div class="p-1 mb-1 rounded-1 text-white fw-semibold tag-view">{{ $tag->visible === 1 ? $tag->title : '' }}</div>
-                        @endforeach
-                </div>
+{{--                <div--}}
+{{--                    class="product-badge flex justify-end badge-top badge-right badge-pink">--}}
+{{--                        @foreach($tags as $tag)--}}
+{{--                            <div class="p-1 mb-1 rounded-1 text-white fw-semibold tag-view">{{ $tag->visible === 1 ? $tag->title : '' }}</div>--}}
+{{--                        @endforeach--}}
+{{--                </div>--}}
                 <div class="product-action-wrap">
                     @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
 {{--                    <button class="product-action-btn-1" title="Quick View"--}}

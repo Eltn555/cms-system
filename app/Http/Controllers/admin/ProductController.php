@@ -26,8 +26,26 @@ class ProductController extends Controller
         $currentPageNumber = $request->query('page');
         $perPage = $request->input('perPage', 10); // Default to 10 items per page
         $categories = Category::all();
-        $products = Product::orderBy('created_at', 'desc')->paginate($perPage);
         $tags = Tag::all();
+
+        $productsQuery = Product::orderBy('created_at', 'desc');
+
+        // If there is a search query
+        if ($request->has('search')) {
+            $searchQuery = $request->input('search');
+            $productsQuery->where(function($query) use ($searchQuery) {
+                $query->where('title', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('short_description', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('long_description', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('price', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('discount_price', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('seo_title', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('seo_description', 'like', '%'.$searchQuery.'%');
+            });
+        }
+
+        // Get paginated products
+        $products = $productsQuery->paginate($perPage);
         return view('products.index', compact('products', 'categories', 'tags', 'perPage', 'currentPageNumber'));
     }
 

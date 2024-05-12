@@ -40,6 +40,14 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/easyzoom.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins/slinky.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5JV7Z7GS');</script>
+    <!-- End Google Tag Manager -->
+
     @livewireStyles
     @stack('styles')
     @yield('style')
@@ -49,6 +57,12 @@
 </head>
 
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JV7Z7GS"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <div class="main-wrapper main-wrapper-2">
     <x-header></x-header>
     @yield('content')

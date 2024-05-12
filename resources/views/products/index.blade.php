@@ -190,16 +190,20 @@
             of {{ $products->count() }} entries
         </div>
         <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-            <div class="w-56 relative text-slate-500">
-                <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     icon-name="search" class="lucide lucide-search w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"
-                     data-lucide="search">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </div>
+            <form action="{{ url()->current() }}" method="GET" class="flex">
+                <div class="w-56 relative text-slate-500">
+                    <input type="text" name="search" class="form-control w-56 box pr-10" placeholder="Поиск...">
+                    <button type="submit" class="w-6 h-6 absolute my-auto inset-y-0 mr-3 right-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             icon-name="search" class="lucide lucide-search"
+                             data-lucide="search">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     <!-- END: Top Navigation -->
@@ -216,6 +220,7 @@
                 <th class="text-center whitespace-nowrap">Цена скидка</th>
                 <th class="text-center whitespace-nowrap">Каетегория товар</th>
                 <th class="text-center whitespace-nowrap">Статус</th>
+                <th class="text-center whitespace-nowrap">Наличие</th>
                 <th class="text-center whitespace-nowrap">Рейтинг</th>
                 <th class="text-center whitespace-nowrap">Действия</th>
             </tr>
@@ -276,6 +281,11 @@
                     <td class="">
                         <div class="form-check form-switch w-full h-full flex justify-center">
                             <input class="form-check-input activation" data-field="status" type="checkbox" {{($product->status) ? 'checked' : ''}}>
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="form-check form-switch w-full h-full flex justify-center">
+                            <input class="form-check-input activation" data-field="amount" type="checkbox" {{($product->amount) ? 'checked' : ''}}>
                         </div>
                     </td>
                     <td class="text-center">

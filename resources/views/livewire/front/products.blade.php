@@ -126,7 +126,7 @@
                                 </li>
                                 <li><span class="title">Доступность:</span>
                                     <ul class="tag">
-                                        <li class="text-success">Есть в наличии</li>
+                                        {!! ($product->amount) ? '<li class="text-success">Есть в наличии</li>' : '<li class="text-danger">Нет в наличии</li>' !!}
                                     </ul>
                                 </li>
                             </ul>
@@ -267,7 +267,7 @@
                     <h2 class="shadow-text-1 font-cormorant fw-bold">В одном <br>стиле</h2>
                     <h2 class="shadow-text-2 font-cormorant fw-bold">В одном <br>стиле</h2>
                 </div>
-                <div class="related-product-active swiper-container">
+                <div class="product-slider-active-1 pt-0 swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($relatedProducts as $product)
                             <div class="swiper-slide sw-sl align-self-stretch">
@@ -286,7 +286,7 @@
                     <h2 class="shadow-text-1 font-cormorant fw-bold">Покупают с<br>этим</h2>
                     <h2 class="shadow-text-2 font-cormorant fw-bold">Покупают с<br>этим</h2>
                 </div>
-                <div class="related-product-active swiper-container">
+                <div class="product-slider-active-1 pt-0 swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($additionalProducts as $product)
                             <div class="swiper-slide sw-sl align-self-stretch">

@@ -72,6 +72,7 @@ class Categories extends Component
             $this->dispatchBrowserEvent('urlChanged', ['url' => $this->hasCategory]);
         }
         $this->tag = null;
+        $this->search = null;
     }
 
     public function setTag($id)
