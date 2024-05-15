@@ -23,7 +23,7 @@ class SendForm extends Component
         $imageUrls = [];
 
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
-        $chatId = ['791430493',  '1641704306']; // You'll need to obtain your chat ID from your bot
+        $chatId = ['791430493',  '-1002108174754']; // You'll need to obtain your chat ID from your bot
         $message = "New form submission:\nName: {$this->name}\nPhone: {$this->phone}\nImages: " . implode(', ', $imageUrls);
         $text = "Имя: {$this->name}\nНомер: {$this->phone}\n\nТекст: {$this->msg}";
 
