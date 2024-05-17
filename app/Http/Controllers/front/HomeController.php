@@ -11,11 +11,13 @@ use App\Models\Banner;
 use Illuminate\Http\Request;
 use Behat\Transliterator\Transliterator;
 use Illuminate\Support\Str;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $latest =  Blog::latest()->take(4)->get();
         $banners = Banner::all();
         $sliders = Slider::all();
         $slider = Slider::all();
@@ -35,6 +37,6 @@ class HomeController extends Controller
 //            ];
 //            $category->update($data);
 //        }
-        return view('front.home.index', compact('slider', 'categories', 'partners', 'tagsIndex', 'banners'));
+        return view('front.home.index', compact('latest', 'slider', 'categories', 'partners', 'tagsIndex', 'banners'));
     }
 }

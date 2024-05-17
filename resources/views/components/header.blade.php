@@ -1,5 +1,7 @@
 <header class="header-area header-responsive-padding">
     <div class="header-bottom sticky-bar stick">
+        <div class="categoryBack w-100 position-absolute">
+            </div>
         <div class="blurry-backgorund">
             <div class="blurry-content">
                     <div class="row align-items-center mx-1 mx-md-5">
@@ -19,38 +21,39 @@
                                             <a style="line-height: 80px !important;" href="/">Магазин</a>
                                         </li>
                                         <li class="">
-                                            <a href="{{ route('front.category.index') }}">Каталог</a>
-                                            <ul class="mega-menu-style mega-menu-mrg-1 pt-0 px-0 rounded-1 category-hover row d-flex">
-                                                {{--Category lists--}}
+                                            <a class="onCategory" href="{{ route('front.category.index') }}">Каталог</a>
 
-                                                @foreach ($categories as $category)
-                                                    <li class="parent m-0 col-3 border-bottom pt-3 pb-2 ps-3 pe-0"><a class="py-3 w-100 border-end d-flex align-items-center justify-content-between fw-semibold font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }} <svg class="{{$category->children->isEmpty() ? 'd-none' : ''}} category-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                            </svg>
-                                                        </a>
-                                                    @if ($category->children->isNotEmpty())
-                                                        <ul class="children h-0 overflow-hidden ">
-                                                            @foreach ($category->children as $child)
-                                                                <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $child->slug) }}">• {{ $child->title }} <svg class="{{$child->children->isEmpty() ? 'd-none' : ''}} child-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                        </svg>
-                                                                    </a>
-                                                                @if ($child->children->isNotEmpty())
-                                                                    <ul class="grandChild h-0 overflow-hidden">
-                                                                        @foreach ($child->children as $grandchild)
-                                                                            <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between ps-4" href="{{ route('front.category.show', $grandchild->slug) }}">{{ $grandchild->title }}</a>
-                                                                            </li>
-                                                                            <!-- Add more nested loops for additional generations if needed -->
-                                                                        @endforeach
-                                                                    </ul>
-                                                                @endif
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                    </li>
-                                                @endforeach
-                                            </ul>
+                                                <ul class="megaCat mega-menu-style mega-menu-mrg-1 pt-0 px-0 rounded-1 category-hover row d-flex">
+                                                    {{--Category lists--}}
+
+                                                    @foreach ($categories as $category)
+                                                        <li class="parent m-0 col-3 border-bottom pt-3 pb-2 ps-3 pe-0"><a class="py-3 w-100 border-end d-flex align-items-center justify-content-between fw-semibold font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }} <svg class="{{$category->children->isEmpty() ? 'd-none' : ''}} category-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                            </a>
+                                                            @if ($category->children->isNotEmpty())
+                                                                <ul class="children h-0 overflow-hidden ">
+                                                                    @foreach ($category->children as $child)
+                                                                        <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $child->slug) }}">• {{ $child->title }} <svg class="{{$child->children->isEmpty() ? 'd-none' : ''}} child-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path d="M9 5L15 12L9 19" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                </svg>
+                                                                            </a>
+                                                                            @if ($child->children->isNotEmpty())
+                                                                                <ul class="grandChild h-0 overflow-hidden">
+                                                                                    @foreach ($child->children as $grandchild)
+                                                                                        <li class="mb-0 w-100"><a class="py-2 w-100 d-flex align-items-center justify-content-between ps-4" href="{{ route('front.category.show', $grandchild->slug) }}">{{ $grandchild->title }}</a>
+                                                                                        </li>
+                                                                                        <!-- Add more nested loops for additional generations if needed -->
+                                                                                    @endforeach
+                                                                                </ul>
+                                                                            @endif
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            @endif
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
                                         </li>
                                         <li><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></li>
                                         <li><a style="line-height: 80px !important;" href="{{route('blog.index')}}">Блог</a></li>

@@ -1049,7 +1049,7 @@ textarea {
 }
 
 .main-menu > nav > ul > li > ul.mega-menu-style.mega-menu-mrg-1 {
-    left: -85px;
+    left: -250px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1166,11 +1166,30 @@ textarea {
     transition: all .4s ease 0s;
 }
 
-.main-menu > nav > ul > li:hover > ul {
-    -webkit-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    visibility: visible;
+.categoryBack{
+    display: none;
+    z-index: 2;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.15);
+    visibility: hidden;
 }
+.categoryBackActive{
+    display: block !important;
+    visibility: visible !important;
+}
+
+.activeCategory{
+    -webkit-transform: rotateX(0deg) !important;
+        transform: rotateX(0deg) !important;
+        visibility: visible !important;
+}
+
+
+/*.main-menu > nav > ul > li:hover > ul {*/
+/*    -webkit-transform: rotateX(0deg);*/
+/*    transform: rotateX(0deg);*/
+/*    visibility: visible;*/
+
 
 .header-action-wrap {
     display: -webkit-box;

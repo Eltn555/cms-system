@@ -89,7 +89,7 @@
                             <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                                 <div class="blog-img-date-wrap mb-25">
                                     <div class="blog-img">
-                                        <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt=""></a>
+                                        <a href="{{ route('blog.details', ['id' => $blog->id]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="blog-content">
@@ -98,7 +98,7 @@
                                             {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                         </ul>
                                     </div>
-                                    <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                    <h3 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
                                     <p class="blog-text">{{$blog->description}}</p>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                                     <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
                                         <div class="blog-img-date-wrap mb-2">
                                             <div class="blog-img">
-                                                <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}"></a>
+                                                <a href="{{ route('blog.details', ['id' => $blog->id]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}"></a>
                                             </div>
                                         </div>
                                         <div class="blog-content">
@@ -127,7 +127,7 @@
                                                     {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                                 </ul>
                                             </div>
-                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
                                             <p class="blog-text mb-0">{{$blog->description}}</p>
                                         </div>
                                     </div>
@@ -140,7 +140,7 @@
                                     <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
                                         <div class="blog-img-date-wrap mb-2">
                                             <div class="blog-img" style="height: 630px">
-                                                <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}" style="height: 100%; width: unset;"></a>
+                                                <a href="{{ route('blog.details', ['id' => $blog->id]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}" style="height: 100%; width: unset;"></a>
                                             </div>
                                         </div>
                                         <div class="blog-content">
@@ -149,7 +149,7 @@
                                                     {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                                 </ul>
                                             </div>
-                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
                                             <p class="blog-text mb-0">{{$blog->description}}</p>
                                         </div>
                                     </div>
@@ -170,7 +170,7 @@
                                 <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
                                     <div class="blog-img-date-wrap mb-2">
                                         <div class="blog-img" style="height: 630px">
-                                            <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}" style="height: 100%; width: unset;"></a>
+                                            <a href="{{ route('blog.details', ['id' => $blog->id]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}" style="height: 100%; width: unset;"></a>
                                         </div>
                                     </div>
                                     <div class="blog-content">
@@ -179,7 +179,7 @@
                                                 {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                             </ul>
                                         </div>
-                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
                                         <p class="blog-text mb-0">{{$blog->description}}</p>
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@
                                 <div class="blog-wrap mb-2" data-aos="fade-up" data-aos-delay="50">
                                     <div class="blog-img-date-wrap mb-2">
                                         <div class="blog-img">
-                                            <a href="blog-details.html"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}"></a>
+                                            <a href="{{ route('blog.details', ['id' => $blog->id]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt="{{$blog->title}}"></a>
                                         </div>
                                     </div>
                                     <div class="blog-content">
@@ -201,7 +201,7 @@
                                                 {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                             </ul>
                                         </div>
-                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="blog-details.html">{{$blog->title}}</a></h3>
+                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
                                         <p class="blog-text mb-0">{{$blog->description}}</p>
                                     </div>
                                 </div>

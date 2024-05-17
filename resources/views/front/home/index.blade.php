@@ -507,88 +507,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                        <div class="blog-img-date-wrap mb-25">
-                            <div class="blog-img">
-                                <a href="blog-details.html"><img src="{{asset('/storage/blog/1.png')}}" alt=""></a>
+                @foreach($latest as $last)
+                    <div class="col-lg-3 col-md-6 px-2">
+                        <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
+                            <div class="blog-img-date-wrap mb-25">
+                                <div class="blog-img">
+                                    <a class="w-100 h-100 overflow-hidden" href="{{ route('blog.details', ['id' => $last->id]) }}"><img class="h-100" src="{{ asset('storage/' . $last->image) }}" alt="$last->title"></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul class="card-brand fw-bold font-kyiv">
-                                    15.01.2024
-                                </ul>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <ul class="card-brand fw-bold font-kyiv">
+                                        {{$last->created_at->format('d.m.Y')}}
+                                    </ul>
+                                </div>
+                                <h3 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $last->id]) }}">{{$last->title}}</a></h3>
+                                <p class="blog-text">{{ mb_strimwidth($last->description, 0, 77, '...') }}</p>
                             </div>
-                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Люстра Rivoli Adora
-                                    5041-306</a></h3>
-                            <p class="blog-text">Название этой серии переводится с итальянского как "обожаемая". В ней
-                                собрано все, что так любимо в светильниках - благородный оттенок золота,
-                                традиционны...</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                        <div class="blog-img-date-wrap mb-25">
-                            <div class="blog-img">
-                                <a href="blog-details.html" class="h-100"><img src="{{asset('/storage/blog/2.png')}}"
-                                                                               alt="" class="h-100"></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul class="card-brand fw-bold font-kyiv">
-                                    12.01.2024
-                                </ul>
-                            </div>
-                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Люстры в Ташкенте. Цена, где
-                                    купить?</a></h3>
-                            <p class="blog-text">Фабричное и собственное производство по эскизам гарантия все товары
-                                сертифицированы и имеют гарантию качес...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                        <div class="blog-img-date-wrap mb-25">
-                            <div class="blog-img">
-                                <a href="blog-details.html"><img src="{{asset('/storage/blog/3.png')}}" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul class="card-brand fw-bold font-kyiv">
-                                    04.01.2024
-                                </ul>
-                            </div>
-                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для
-                                    праздничных огней</a></h3>
-                            <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни
-                                облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 px-2">
-                    <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                        <div class="blog-img-date-wrap mb-25">
-                            <div class="blog-img">
-                                <a href="blog-details.html"><img src="{{asset('/storage/blog/4.png')}}" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul class="card-brand fw-bold font-kyiv">
-                                    01.01.2024
-                                </ul>
-                            </div>
-                            <h3 class="font-kyiv fs-5 fw-bold"><a href="blog-details.html">Отличная гармония для
-                                    праздничных огней</a></h3>
-                            <p class="blog-text">Короткая, недостойная близость не принесла в ее жизнь ни света, ни
-                                облегчения. Это запятнало и унизило ее, разрушило ее целос...</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

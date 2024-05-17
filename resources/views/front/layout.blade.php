@@ -124,6 +124,14 @@
 @yield('scripts')
 @stack('scripts')
 <script>
+    $(".onCategory").on('mouseenter', function () {
+        $('.categoryBack').addClass('categoryBackActive');
+        $('.megaCat').addClass('activeCategory');
+    })
+    $('.categoryBack').on('click', function () {
+        $('.categoryBack').removeClass('categoryBackActive');
+        $('.megaCat').removeClass('activeCategory');
+    })
     $(".searchFocuser").click(function() {
         setTimeout(function(){ $('#InputSearch'). focus (); }, 200);
     });
