@@ -73,7 +73,12 @@
                     <div class="single-input-item">
                         <label for="display-name" class="required">Телефон номер</label>
                         <div class="position-relative">
-                            <input class="tel" name="phone" wire:model="phone" type="tel" id="display-name" placeholder="+998 555 005 444" required/>
+                            <div class="position-relative">
+                                <div class="fw-bolder position-absolute h-100 top-0 left-0" style="padding: 0.90rem; font-size: 15px">
+                                    +998
+                                </div>
+                                <input class="tel telPadding" name="phone" wire:model="phone" type="tel" id="display-name" placeholder=" 555 005 444" required/>
+                            </div>
                             <div class="position-absolute icon-input">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">

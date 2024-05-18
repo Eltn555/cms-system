@@ -18,7 +18,12 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <label for="logPhone">Номер телефона</label>
-                            <input class="tel" id="logPhone" type="tel" value="{{ old('phone') }}" autocomplete="false" name="phone" placeholder="+998555005444">
+                            <div class="position-relative">
+                                <div class="position-absolute h-100 top-0 left-0 p-3">
+                                    +998
+                                </div>
+                                <input class="tel telPadding" id="logPhone" type="tel" value="{{ old('phone') }}" autocomplete="false" name="phone" placeholder="555005444">
+                            </div>
                             @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -48,7 +53,12 @@
                             @error('phone')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                            <input class="tel" name="phone" value="{{ old('phone') }}" placeholder="+998555005444" type="tel">
+                            <div class="position-relative">
+                                <div class="position-absolute h-100 top-0 left-0 p-3">
+                                    +998
+                                </div>
+                                <input class="tel telPadding" id="logPhone" type="tel" value="{{ old('phone') }}" autocomplete="false" name="phone" placeholder="555005444">
+                            </div>
                             @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

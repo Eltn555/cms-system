@@ -68,7 +68,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'regex:/^\+\d{1,3}\d{5,15}$/', Rule::unique('users')->whereNull('deleted_at'),],
+            'phone' => ['required', 'string', 'regex:/^\d{8,15}$/', Rule::unique('users')->whereNull('deleted_at'),],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],[
             'name.required' => 'Введите ваше имя',
@@ -79,6 +79,7 @@ class RegisterController extends Controller
             'password.min' => 'Пароль должен содержать не менее 8 символов ',
             'password.confirmed' => 'Подтверждение пароля не совпадает.',
         ]);
+
     }
     /**
      * Create a new user instance after a valid registration.
@@ -88,9 +89,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $phone = isset($data['phone']) ? substr($data['phone'], -9) : null;
+
         return User::create([
             'name' => $data['name'],
-            'phone' => $data['phone'],
+            'phone' => '+998'.$phone,
             'password' => Hash::make($data['password']),
         ]);
     }

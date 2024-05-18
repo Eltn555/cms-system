@@ -1052,6 +1052,10 @@ textarea {
     left: -250px;
 }
 
+.telPadding{
+    padding-left: 3.5rem !important;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .main-menu > nav > ul > li > ul.mega-menu-style.mega-menu-mrg-1 {
         left: -330px;

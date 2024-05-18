@@ -2,7 +2,7 @@
     <style>
         .icon-input{
             top: 12px;
-            left: 2px;
+            left: 15px;
         }
         @media only screen and (max-width: 767px) {
             .cart-content .position-absolute{
@@ -53,8 +53,8 @@
                                                 <div class="single-input-item">
                                                     <label for="first-name" class="required">Имя</label>
                                                     <div class="position-relative">
-                                                        <input name="name" class="d-none ps-4" type="text" id="first-name" placeholder="Ваш имя" value="{{ $profile->name ?? '' }}"/>
-                                                        <span class="ps-4 pt-3 position-absolute top-50 proInfo">{{ $profile->name ?? '-'}}</span>
+                                                        <input name="name" class="d-none ps-5" type="text" id="first-name" placeholder="Ваш имя" value="{{ $profile->name ?? '' }}"/>
+                                                        <span class="ps-5 pt-3 position-absolute top-50 proInfo">{{ $profile->name ?? '-'}}</span>
                                                         <div class="position-absolute icon-input">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                                  xmlns="http://www.w3.org/2000/svg">
@@ -82,8 +82,8 @@
                                                 <div class="single-input-item">
                                                     <label for="last-name" class="required">Фамилия</label>
                                                     <div class="position-relative">
-                                                        <input name="lastname" class="d-none ps-4" type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname ?? ''}}"/>
-                                                        <span class="ps-4 pt-3 position-absolute top-50 proInfo">{{ $profile->lastname ?? '-'}}</span>
+                                                        <input name="lastname" class="d-none ps-5" type="text" id="last-name" placeholder="Ваша фамилия" value="{{ $profile->lastname ?? ''}}"/>
+                                                        <span class="ps-5 pt-3 position-absolute top-50 proInfo">{{ $profile->lastname ?? '-'}}</span>
                                                         <div class="position-absolute icon-input">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                                  xmlns="http://www.w3.org/2000/svg">
@@ -111,8 +111,8 @@
                                                 <div class="single-input-item">
                                                     <label for="display-name" class="required">Телефон номер</label>
                                                     <div class="position-relative">
-                                                        <input name="phone" class="tel d-none ps-4" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
-                                                        <span class="ps-4 pt-3 position-absolute top-50 proInfo">{{ $profile->phone ?? '-'}}</span>
+                                                        <input name="phone" class="tel d-none ps-5" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
+                                                        <span class="ps-5 pt-3 position-absolute top-50 proInfo">{{ $profile->phone ?? '-'}}</span>
                                                         <div class="position-absolute icon-input">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                                  xmlns="http://www.w3.org/2000/svg">
@@ -137,8 +137,8 @@
                                                 <div class="single-input-item">
                                                     <label for="email" class="required">Электронная почта</label>
                                                     <div class="position-relative">
-                                                        <input name="email" class="d-none ps-4" type="email" id="email" placeholder="sample@mail.uz" value="{{ $profile->email ?? ''}}"/>
-                                                        <span class="ps-4 pt-3 position-absolute top-50 proInfo">{{ $profile->email ?? '-'}}</span>
+                                                        <input name="email" class="d-none ps-5" type="email" id="email" placeholder="sample@mail.uz" value="{{ $profile->email ?? ''}}"/>
+                                                        <span class="ps-5 pt-3 position-absolute top-50 proInfo">{{ $profile->email ?? '-'}}</span>
                                                         <div class="position-absolute icon-input">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                                  xmlns="http://www.w3.org/2000/svg">

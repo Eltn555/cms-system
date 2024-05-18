@@ -58,7 +58,7 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            'phone' => 'required|regex:/^\+\d{1,3}\d{5,15}$/',
+            'phone' => 'required|regex:/^\d{8,15}$/',
             'password' => 'required|string',
         ], [
             'phone.required' => 'Введите номер телефона, пожалуйста',
@@ -69,7 +69,10 @@ class LoginController extends Controller
 
     protected function credentials(Request $request)
     {
-        return $request->only('phone', 'password');
+        $phone = $request->input('phone');
+        $last9Digits = substr($phone, -9);
+        $phoneWithCountryCode = '+998' . $last9Digits;
+        return ['phone' => $phoneWithCountryCode, 'password' => $request->input('password')];
     }
 
     protected function sendFailedLoginResponse(Request $request)

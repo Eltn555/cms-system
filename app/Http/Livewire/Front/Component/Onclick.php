@@ -19,7 +19,7 @@ class Onclick extends Component
         $this->user = Auth::user();
         if (Auth::user()){
             $this->name = $this->user->name;
-            $this->phone = $this->user->phone;
+            $this->phone = substr($this->user->phone, -9);
         }
     }
 
@@ -29,7 +29,7 @@ class Onclick extends Component
         if ($this->phone && $this->name){
             $url = route('front.product.show', ['slug' => $this->product->slug]);
             $text = '<b>Клиент:'.$this->name.'
-Номер тел:<code>'.$this->phone.'</code>
+Номер тел:<code>+998'.$this->phone.'</code>
 Продукты:
 '."<a href='".$url."'><i>".$this->product->title."</i></a></b>";
             $this->submitForm($text);
