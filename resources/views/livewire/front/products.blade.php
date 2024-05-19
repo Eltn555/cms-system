@@ -26,6 +26,36 @@
                 bottom: 160px;
             }
         }
+        @media screen and (max-width: 2000px) and (min-width: 1200px) {
+            .product-wrap .product-img {
+                height: 310px;
+            }
+        }
+        @media only screen and (max-width: 991px) {
+            .product-wrap .product-img {
+                height: 235px;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .product-wrap .product-img {
+                height: 265px;
+            }
+        }
+        @media only screen and (max-width: 576px) {
+            .product-wrap .product-img {
+                height: 510px;
+            }
+        }
+        @media only screen and (max-width: 500px) {
+            .product-wrap .product-img {
+                height: 430px;
+            }
+        }
+        @media only screen and (max-width: 400px) {
+            .product-wrap .product-img {
+                height: 430px;
+            }
+        }
     </style>
 @endsection
 
@@ -270,7 +300,7 @@
                 <div class="product-slider-active-1 pt-0 swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($relatedProducts as $product)
-                            <div class="swiper-slide sw-sl align-self-stretch">
+                            <div class="swiper-slide align-self-stretch">
                                 <livewire:front.component.product-card :product="$product" :key="$product->id" />
                             </div>
                         @endforeach
@@ -289,7 +319,7 @@
                 <div class="product-slider-active-1 pt-0 swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($additionalProducts as $product)
-                            <div class="swiper-slide sw-sl align-self-stretch">
+                            <div class="swiper-slide align-self-stretch">
                                 <livewire:front.component.product-card :product="$product" :key="$product->id" />
                             </div>
                         @endforeach
