@@ -17,7 +17,7 @@
                   style="max-width:1000px!important;" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <input id="file-upload" type="file" name="image" accept="image/*" required/>
+                <input id="file-upload" type="file" name="image" accept="image/*"/>
                 <label for="file-upload" id="file-drag" class="uploadlabel my-5">
                     <div class="flex p-3">
                         <img class="" id="image" src="{{ asset('storage/' . $blog->image) }}" alt="Preview">
