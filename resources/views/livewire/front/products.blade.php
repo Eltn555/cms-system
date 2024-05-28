@@ -141,7 +141,7 @@
                                 <li><span class="title">Теги:</span>
                                     <ul >
                                         @foreach($product->tags as $tag)
-                                            <li ><a class="" href="category/?tagId={{$tag->id}}">{{$tag->title}}</a>,</li>
+                                            <li ><a class="" href="{{ route('front.category.index', ['tagId' => $tag->id]) }}">{{$tag->title}}</a>,</li>
                                         @endforeach
                                     </ul>
                                 </li>
