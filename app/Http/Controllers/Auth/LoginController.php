@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     protected function authenticated(Request $request, $user)
     {
@@ -43,7 +43,7 @@ class LoginController extends Controller
         }
 
         // If no previous URL is stored, redirect to the default location
-        return redirect($this->redirectTo);
+        return redirect()->route('index');
     }
     /**
      * Create a new controller instance.

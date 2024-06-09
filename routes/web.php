@@ -37,6 +37,8 @@ Route::group(['prefix'=>'/'], function (){
    Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
 });
 
+Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
+
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
 Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.category.index');

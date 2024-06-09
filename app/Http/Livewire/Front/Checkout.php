@@ -27,7 +27,8 @@ class Checkout extends Component
     public $itemAmount;
     public $sale;
     public $saleItems;
-    protected $listeners = ['Address', 'check'];
+
+    protected $listeners = ['Address', 'check', 'cartUpdated' => 'check'];
 
     public function mount(Request $request)
     {
@@ -37,11 +38,10 @@ class Checkout extends Component
         $this->collect = '';
         $this->user = Auth::user();
         $this->text = $request->input('textareaValue');
-        $this->check();
     }
 
     public function check(){
-        $this->usd = 12650;
+        $this->usd = 12700;
         $this->disc = 0;
         $this->overall = 0;
         $this->truePrice = 0;
@@ -183,6 +183,7 @@ class Checkout extends Component
 
     public function render()
     {
+        $this->check();
         return view('livewire.front.checkout')->extends('front.layout')->section('content');
     }
 }

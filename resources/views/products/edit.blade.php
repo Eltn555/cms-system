@@ -203,12 +203,16 @@
                                name="status" type="checkbox" value="{{$products->status}}" checked>
                     </div>
                 </div>
-                <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
+                <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
                     <label for="Discount-price" class="form-label">Discount Price</label>
                     <input id="Discount-price" name="discount_price" type="number" class="form-control"
                            placeholder="Enter a discount price... (optional)" value="{{$products->discount_price}}">
                 </div>
-
+                <div class="col-span-2 mx-2 sm:col-span-5 mt-3">
+                    <label for="Amount" class="form-label">Amount</label>
+                    <input id="Amount" name="amount" type="number" class="form-control"
+                           placeholder="Enter a quantity... (optional)" value="{{$products->amount}}">
+                </div>
                 <div class="col-span-12 sm:col-span-12 mt-3">
                     <label for="short-description" class="form-label">Description</label>
                     <textarea id="short-description" class="form-control h-[110px]" name="short_description"

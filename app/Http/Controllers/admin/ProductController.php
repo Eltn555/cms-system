@@ -23,7 +23,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $currentPageNumber = $request->query('page');
+        $currentPageNumber = $request->query('page', 1); // Default to page 1 if not provided
         $perPage = $request->input('perPage', 10); // Default to 10 items per page
         $categories = Category::all();
         $tags = Tag::all();
@@ -44,10 +44,15 @@ class ProductController extends Controller
             });
         }
 
-        // Get paginated products
-        $products = $productsQuery->paginate($perPage);
+        // Get paginated products with perPage parameter
+        $products = $productsQuery->paginate($perPage)->appends([
+            'perPage' => $perPage,
+            'search' => $request->input('search') // Preserve the search query
+        ]);
+
         return view('products.index', compact('products', 'categories', 'tags', 'perPage', 'currentPageNumber'));
     }
+
 
     public function create()
     {
@@ -130,11 +135,11 @@ class ProductController extends Controller
             'long_description' => $data['long_description'],
             'price' => $data['price'],
             'discount_price' => $data['discount_price'],
-            //'amount' => $data['amount'],
+            'amount' => $data['amount'],
             'additional' => $data['additional'],
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
-            //'status' => $data['status'],
+            'status' => $data['status'],
             'slug' => Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next,
         ]);
 
@@ -165,10 +170,12 @@ class ProductController extends Controller
             }
         }
 
-        foreach ($data['categories'] as $categoryName) {
-            $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
-            $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
-            $product->categories()->attach($category->id);
+        if (array_key_exists('categories', $data)){
+            foreach ($data['categories'] as $categoryName) {
+                $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
+                $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
+                $product->categories()->attach($category->id);
+            }
         }
 
         if (array_key_exists('tags', $data)) {
@@ -244,12 +251,12 @@ class ProductController extends Controller
             'long_description' => $data['long_description'],
             'price' => $data['price'],
             'discount_price' => $data['discount_price'],
-            //'amount' => $data['amount'],
+            'amount' => $data['amount'],
             'additional' => $data['additional'],
             'seo_title' => $data['seo_title'],
             'seo_description' => $data['seo_description'],
-            //'status' => $data['status'],
-            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-'),
+            'status' => $data['status'],
+            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-').'-'.$id,
         ]);
 
         $product = Product::find($id);

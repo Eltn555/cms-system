@@ -173,7 +173,7 @@
                 <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
                     <label for="category" class="form-label" id=""><b class="text-danger">* </b>Category</label>
                     <select data-placeholder="Select tags" class="w-full"
-                            id="category" name="categories[]" required
+                            id="category" name="categories[]"
                             multiple="multiple">
                         @foreach($categories as $category)
                             <option value="{{ $category->title }}">{{ $category->title }}</option>
@@ -187,10 +187,15 @@
                                name="status" type="checkbox" value="1" checked>
                     </div>
                 </div>
-                <div class="col-span-6 mx-2 sm:col-span-5 mt-3">
+                <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
                     <label for="Discount-price" class="form-label">Discount Price</label>
                     <input id="Discount-price" name="discount_price" type="number" class="form-control"
                            placeholder="Enter a discount price... (optional)">
+                </div>
+                <div class="col-span-2 mx-2 sm:col-span-5 mt-3">
+                    <label for="Amount" class="form-label">Amount</label>
+                    <input id="Amount" name="amount" type="number" class="form-control"
+                           placeholder="Enter a quantity... (optional)">
                 </div>
                 <div class="col-span-12 sm:col-span-12 mt-3">
                     <label for="short-description" class="form-label">Info</label>

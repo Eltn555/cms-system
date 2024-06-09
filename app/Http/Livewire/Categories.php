@@ -88,7 +88,7 @@ class Categories extends Component
 
     public function render()
     {
-        $products = Product::query();
+        $products = Product::where('status', '!=', 0);
 
         if ($this->category) {
             $products->whereHas('categories', function ($query) {

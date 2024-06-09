@@ -218,10 +218,9 @@
                 <th class="text-center whitespace-nowrap">Описание</th>
                 <th class="text-center whitespace-nowrap">Цена</th>
                 <th class="text-center whitespace-nowrap">Цена скидка</th>
+                <th class="text-center whitespace-nowrap">Наличие</th>
                 <th class="text-center whitespace-nowrap">Каетегория товар</th>
                 <th class="text-center whitespace-nowrap">Статус</th>
-                <th class="text-center whitespace-nowrap">Наличие</th>
-                <th class="text-center whitespace-nowrap">Рейтинг</th>
                 <th class="text-center whitespace-nowrap">Действия</th>
             </tr>
             </thead>
@@ -271,6 +270,9 @@
                     <td class="editable text-center" data-field="discount_price" data-action="read" data-selectable="number">
                         <div class="">{{$product->discount_price}}</div>
                     </td>
+                    <td class="editable text-center" data-field="amount" data-action="read" data-selectable="number">
+                        <div class="">{{$product->amount}}</div>
+                    </td>
                     <td>
                         <div class="w-full mt-3 xl:mt-0 flex-1">
                             @foreach($product->categories as $category)
@@ -281,53 +283,6 @@
                     <td class="">
                         <div class="form-check form-switch w-full h-full flex justify-center">
                             <input class="form-check-input activation" data-field="status" type="checkbox" {{($product->status) ? 'checked' : ''}}>
-                        </div>
-                    </td>
-                    <td class="">
-                        <div class="form-check form-switch w-full h-full flex justify-center">
-                            <input class="form-check-input activation" data-field="amount" type="checkbox" {{($product->amount) ? 'checked' : ''}}>
-                        </div>
-                    </td>
-                    <td class="text-center">
-                        <div class="flex items-center">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="star" data-lucide="star"
-                                     class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="star" data-lucide="star"
-                                     class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="star" data-lucide="star"
-                                     class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="star" data-lucide="star"
-                                     class="lucide lucide-star text-pending fill-pending/30 w-4 h-4 mr-1">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="star" data-lucide="star"
-                                     class="lucide lucide-star text-slate-400 fill-slate/30 w-4 h-4 mr-1">
-                                    <polygon
-                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                </svg>
-                            </div>
-                            <div class="text-xs text-slate-500 ml-1">(4.5+)</div>
                         </div>
                     </td>
                     <td class="table-report__action w-56">
@@ -357,7 +312,7 @@
     <!-- BEGIN: Pagination -->
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center grid grid-cols-12">
         <div class="" style="grid-column: span 8 / span 8;">
-            {{ $products->links('vendor.pagination.bootstrap-5') }}
+            {{ $products->appends(['perPage' => $perPage, 'search' => request()->input('search')])->links('vendor.pagination.bootstrap-5') }}
         </div>
         <div class="pagination-count col-span-4 flex justify-end">
             <form action="{{ route('admin.products.index') }}" method="get">

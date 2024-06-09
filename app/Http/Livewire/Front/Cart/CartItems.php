@@ -32,35 +32,7 @@ class CartItems extends Component
         $cartCookie = Cookie::get('cart');
         $this->cartArray = ($cartCookie) ? json_decode($cartCookie, true) : [];
 
-        if(auth()->user() && !empty($this->cartArray)) {
-            $user = auth()->user();
-            foreach($this->cartArray as $item) {
-                // Check if the product already exists in the user's cart
-                $existingCartItem = CartProduct::where('user_id', $user->id)
-                    ->where('product_id', $item['product_id'])
-                    ->first();
 
-                if (!$existingCartItem) {
-                    // Product doesn't exist in the cart, create a new entry
-                    CartProduct::create([
-                        'user_id' => $user->id,
-                        'product_id' => $item['product_id'],
-                        'amount' => $item['amount']
-                    ]);
-                } else {
-                    // Product already exists in the cart, update the amount if needed
-                    $existingCartItem->update([
-                        'amount' => $existingCartItem->amount + $item['amount']
-                    ]);
-                }
-            }
-
-            // Remove the cart cookie after processing its items
-            Cookie::queue(Cookie::forget('cart'));
-
-            // Refresh the cartArray with the user's updated cart items
-            $this->cartArray = $user->cartItems->toArray();
-        }
     }
 
 
@@ -109,7 +81,7 @@ class CartItems extends Component
     }
 
     public function check($cookie = null){
-        $this->usd = 12650;
+        $this->usd = 12700;
         $this->disc = 0;
         $this->overall = 0;
         $this->truePrice = 0;

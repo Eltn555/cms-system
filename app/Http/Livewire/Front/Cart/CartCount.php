@@ -12,8 +12,38 @@ class CartCount extends Component
 {
     public $cartCount = 0;
     public $overall;
+    public $cartArray;
 
     protected $listeners = ['checkCount' => 'checkItems'];
+
+    public function mount(){
+        $cartCookie = Cookie::get('cart');
+        $this->cartArray = ($cartCookie) ? json_decode($cartCookie, true) : [];
+
+        if(auth()->user() && !empty($this->cartArray)) {
+            $user = auth()->user();
+            foreach($this->cartArray as $item) {
+                // Check if the product already exists in the user's cart
+                $existingCartItem = CartProduct::where('user_id', $user->id)
+                    ->where('product_id', $item['product_id'])
+                    ->first();
+
+                if (!$existingCartItem) {
+                    // Product doesn't exist in the cart, create a new entry
+                    CartProduct::create([
+                        'user_id' => $user->id,
+                        'product_id' => $item['product_id'],
+                        'amount' => $item['amount']
+                    ]);
+                }
+            }
+            // Remove the cart cookie after processing its items
+            Cookie::queue(Cookie::forget('cart'));
+            // Refresh the cartArray with the user's updated cart items
+            $this->cartArray = $user->cartItems->toArray();
+            $this->emit('cartUpdated');
+        }
+    }
 
     public function checkItems(){
         $this->overall = 0;

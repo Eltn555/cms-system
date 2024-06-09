@@ -45,9 +45,7 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Find the blog record by ID
         $blog = Blog::findOrFail($id);
-
         // Update the blog record with the new data
         $blog->title = $request->title;
         $blog->description = $request->description;
