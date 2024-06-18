@@ -45,6 +45,7 @@ class Checkout extends Component
         $this->disc = 0;
         $this->overall = 0;
         $this->truePrice = 0;
+        $sales = [];
 
         if (Auth::check()){
             $cartArray = CartProduct::where('user_id', auth()->user()->id)->with('product')->get();
@@ -57,7 +58,7 @@ class Checkout extends Component
                     $this->overall += $price * $item['amount'];
                     $this->truePrice += $truePric * $item['amount'];
                     $this->itemAmount += $item['amount'];
-                    $this->saleItems[] = [
+                    $sales[] = [
                         'name' => $product->title,
                         'slug' => $product->slug,
                         'product_id' => $product->id,
@@ -69,6 +70,7 @@ class Checkout extends Component
                     ];
                 }
             }
+            $this->saleItems = $sales;
             $this->disc = $this->truePrice - $this->overall;
         }
     }
@@ -106,7 +108,7 @@ class Checkout extends Component
                 $item['sales_id'] = $saleDb->id;
                 SaleItem::create($item);
                 $url = route('front.product.show', ['slug' => $slug]);
-                $products .= "<a href='".$url."'><i>".$name."</i> - ".$item['amount']." x ".$item['price']." = ".$item['overall']."</a>\n";
+                $products .= "<a href='".$url."'><i>".$name."</i> - ".$item['amount']." x ".$item['discount']." = ".$item['overall']."</a>\n";
             }
             CartProduct::where('user_id', auth()->user()->id)->delete();
             $text = '<b>Клиент:'.$this->user->name.'
@@ -129,7 +131,7 @@ class Checkout extends Component
     {
         // Validate form fields
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
-        $chatId = ['791430493', '-1002108174754']; //1641704306 You'll need to obtain your chat ID from your bot
+        $chatId = ['791430493']; //1641704306 You'll need to obtain your chat ID from your bot
 
         foreach ($chatId as $chat){
             $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [

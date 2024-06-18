@@ -59,20 +59,21 @@ class MoyskladService
         }
 
         foreach ($allStock as $stock){
-            $product = Product::where('title', $stock['name'])->first();
-
+            $name = $stock['name'];
+            $product = Product::where('title', $name)->first();
             if ($product) {
                 // If the product exists, update the price and stock
                 $product->update([
-                    'price' => number_format($stock['salePrice'], 0, '', ''),
+                    'title' => $name,
+                    'price' => number_format($stock['salePrice'] / 100, 0, '', ''),
                     'amount' => number_format($stock['quantity'], 0, '', ''),
                 ]);
             } else {
                 $next = Product::orderBy('id', 'desc')->first()->id + 1;
                 // If the product does not exist, create a new one with is_active set to 0
                 Product::create([
-                    'title' => $stock['name'],
-                    'price' => number_format($stock['salePrice'], 0, '', ''),
+                    'title' => $name,
+                    'price' => number_format($stock['salePrice'] / 100, 0, '', ''),
                     'amount' => number_format($stock['quantity'], 0, '', ''),
                     'status' => 0,
                     'seo_title' => $stock['name'],
