@@ -131,13 +131,27 @@ class Checkout extends Component
     {
         // Validate form fields
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
-        $chatId = ['791430493', '-1002108174754']; //1641704306 You'll need to obtain your chat ID from your bot
+        $chatId = ['791430493']; //-1002108174754 1641704306 You'll need to obtain your chat ID from your bot
+        $inlineKeyboard = [
+            'inline_keyboard' => [
+                [
+                    ['text' => 'Получено', 'callback_data' => 'Получено'],
+                ],
+                [
+                    ['text' => 'Доставляется', 'callback_data' => 'Доставляется']
+                ],
+                [
+                    ['text' => 'В ожидании', 'callback_data' => 'В ожидании']
+                ]
+            ]
+        ];
 
         foreach ($chatId as $chat){
             $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
                 'chat_id' => $chat,
                 'text' => $text,
                 'parse_mode' => 'HTML',
+                'reply_markup' => $inlineKeyboard,
             ]);
         }
     }

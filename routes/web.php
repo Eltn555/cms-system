@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\TelegramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,13 +33,13 @@ use App\Http\Controllers\admin\HomeController;
 |f
 */
 
-
 Route::group(['prefix'=>'/'], function (){
    Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
 });
 
 Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
 
+Route::post('/telegram/webhook', [TelegramController::class, 'webhook']);
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
 Route::get('/category', \App\Http\Livewire\Categories::class)->name('front.category.index');
@@ -64,8 +65,6 @@ Route::group(['prefix' => 'profile'], function () {
     Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');
 
 });
-
-
 
 // ADMIN PANEL
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'is_admin']], function () {
