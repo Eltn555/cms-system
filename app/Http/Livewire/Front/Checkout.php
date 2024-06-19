@@ -111,8 +111,8 @@ class Checkout extends Component
                 $products .= "<a href='".$url."'><i>".$name."</i> - ".$item['amount']." x ".$item['discount']." = ".$item['overall']."</a>\n";
             }
             CartProduct::where('user_id', auth()->user()->id)->delete();
-            $text = '<b>Id:'.$saleDb->id
-.'Клиент:'.$this->user->name.'
+            $text = '<b>Id:'.$saleDb->id.'
+Клиент:'.$this->user->name.'
 Номер тел:<code>'.$this->user->phone.'</code>
 Адрес:'.$this->sale['address_place'].'
 Тип доставки:'.$this->sale['collecting_type'].'
@@ -132,7 +132,7 @@ class Checkout extends Component
     {
         // Validate form fields
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
-        $chatId = ['791430493']; //-1002108174754 1641704306 You'll need to obtain your chat ID from your bot
+        $chatId = ['791430493', '-1002108174754']; //-1002108174754 1641704306 You'll need to obtain your chat ID from your bot
         $inlineKeyboard = [
             'inline_keyboard' => [
                 [

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class TelegramController extends Controller
 {
@@ -37,16 +38,14 @@ class TelegramController extends Controller
                     $sale->status = $callbackData; // assuming callbackData contains the new status
                     $sale->save();
                     $responseText = "Sale ID: $idNumber has been updated to status: $callbackData";
+                    Log::info($responseText);
                 } else {
                     $responseText = "Sale with ID: $idNumber not found.";
+                    Log::warning($responseText);
                 }
             } else {
                 $responseText = "Invalid Sale ID.";
             }
-
-            // Process the callback query data here
-            // For example, send a response back to the user
-            $responseText = "Id: $idNumber\nYou clicked a button with data: $callbackData";
 
             // Respond to the callback query
             $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
@@ -61,6 +60,8 @@ class TelegramController extends Controller
                 'callback_query_id' => $callbackQuery['id'],
                 'text' => 'Button clicked!',
             ]);
+        } else {
+            Log::warning("No callback query found in the update.");
         }
 
         return response()->json(['status' => 'ok']);
