@@ -32,12 +32,12 @@ class TelegramController extends Controller
 
             if ($idNumber) {
                 // Find the Sale model by idNumber
-                $sale = Sale::find($idNumber);
+                $sale = Sale::find(69);
                 if ($sale) {
                     // Update the status of the Sale model based on callback data
                     $sale->status = $callbackData; // assuming callbackData contains the new status
                     $sale->save();
-                    $responseText = "Sale ID: $idNumber has been updated to status: $callbackData";
+                    $responseText = "Статус заказа с ID $idNumber изменен на $callbackData";
                     Log::info($responseText);
                 } else {
                     $responseText = "Sale with ID: $idNumber not found.";
