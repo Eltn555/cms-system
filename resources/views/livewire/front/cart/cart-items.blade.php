@@ -1,5 +1,5 @@
 <div class="sidebar-cart-all">
-        <a class="cart-close"><i class="pe-7s-close"></i></a>
+        <a class="cart-close cartX"><i class="pe-7s-close"></i></a>
         <h1 class="font-cormorant fw-bolder pb-4 border-bottom border-1 mb-5">Корзина</h1>
         <div class="cart-content">
             <ul>
@@ -49,7 +49,11 @@
                     <a href="{{route('front.cartItems.index')}}" class="w-100 text-dark bg-light border border-1">Посмотреть корзину</a>
                 </div>
                 <div class="single-product-cart btn-hover ps-sm-1 p-0 pb-2 text-center col-12 col-sm-6">
-                    <a href="{{route('front.checkout.index')}}" class="w-100 text-dark">Перейти к оплате</a>
+                    @if(auth()->user())
+                        <a href="{{route('front.checkout.index')}}" class="w-100 text-dark">Перейти к оплате</a>
+                    @else
+                        <a onclick="showReg()" class="w-100 text-dark cart-close">Перейти к оплате</a>
+                    @endif
                 </div>
             </div>
         </div>

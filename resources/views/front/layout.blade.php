@@ -111,6 +111,19 @@
     window.addEventListener('console', event => {
         console.log(event.detail.console);
     });
+</script>
+<!-- Main JS -->
+@yield('scripts')
+@stack('scripts')
+<script>
+    function onlyNumber(input) {
+        // Get the input value
+        let inputValue = $(input).val();
+        // Remove non-numeric characters
+        inputValue = inputValue.replace(/\D/g, '');
+        // Update the input value
+        $(input).val(inputValue);
+    }
     $('.tel').on('input', function() {
         // Get the input value
         let inputValue = $(this).val();
@@ -119,11 +132,6 @@
         // Update the input value
         $(this).val(inputValue);
     });
-</script>
-<!-- Main JS -->
-@yield('scripts')
-@stack('scripts')
-<script>
     $(".onCategory").on('mouseenter', function () {
         $('.categoryBack').addClass('categoryBackActive');
         $('.megaCat').addClass('activeCategory');
@@ -142,6 +150,12 @@
                 window.location.href = searchUrl; // Navigate to the URL
             }
         });
+    function showReg() {
+        Livewire.emit('showReg');
+    }
+    function closeModal() {
+        Livewire.emit('closeReg');
+    }
     $(function(){
         $('.fly-to-basket').on('click', function () {
             var cart = $('.basketShop');

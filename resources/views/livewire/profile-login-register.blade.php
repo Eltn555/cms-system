@@ -1,4 +1,3 @@
-@section('title', 'Вход')
 <div class="login-register-wrapper mx-5 mb-5" style="margin-top: 150px">
         <div class="login-register-tab-list nav" role="tablist">
             <a class="{{!$isRegister ? 'active' : ''}} logIn" data-bs-toggle="tab" href="#lg1" aria-selected="true" role="tab">

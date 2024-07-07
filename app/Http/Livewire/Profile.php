@@ -80,7 +80,7 @@ class Profile extends Component
         if($this->profile){
             return view('livewire.profile-page')->extends('front.layout')->section('content');
         }else{
-            return view('livewire.profile-login-register')->extends('front.layout')->section('content');
+            return view('errors.404')->extends('front.layout')->section('content');
         }
     }
 }

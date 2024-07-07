@@ -70,18 +70,33 @@
                                     <livewire:front.cart.cart-count/>
                                     <livewire:front.wishlist.wishlist-count/>
                                     <div class="header-action-style" style="z-index: 1">
-                                        <a href="{{ route('front.profile.index') }}" title="Login Register">
-                                            <svg class="white-icon d-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="12" cy="9" r="3" stroke="white" stroke-width="1.5"/>
-                                                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/>
-                                                <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                                            </svg>
-                                            <svg class="dark-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="12" cy="9" r="3" stroke="#232323" stroke-width="1.5"/>
-                                                <circle cx="12" cy="12" r="10" stroke="#232323" stroke-width="1.5"/>
-                                                <path d="M17.9692 20C17.8101 17.1085 16.9248 15 12 15C7.07527 15 6.18997 17.1085 6.03082 20" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
-                                            </svg>
-                                        </a>
+                                        @if(auth()->user())
+                                            <a href="{{ route('front.profile.index') }}" title="Login Register">
+                                                <svg class="white-icon d-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="9" r="3" stroke="white" stroke-width="1.5"/>
+                                                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/>
+                                                    <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                                </svg>
+                                                <svg class="dark-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="9" r="3" stroke="#232323" stroke-width="1.5"/>
+                                                    <circle cx="12" cy="12" r="10" stroke="#232323" stroke-width="1.5"/>
+                                                    <path d="M17.9692 20C17.8101 17.1085 16.9248 15 12 15C7.07527 15 6.18997 17.1085 6.03082 20" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        @else
+                                            <a onclick="showReg()" title="Login Register">
+                                                <svg class="white-icon d-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="9" r="3" stroke="white" stroke-width="1.5"/>
+                                                    <circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/>
+                                                    <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                                </svg>
+                                                <svg class="dark-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="12" cy="9" r="3" stroke="#232323" stroke-width="1.5"/>
+                                                    <circle cx="12" cy="12" r="10" stroke="#232323" stroke-width="1.5"/>
+                                                    <path d="M17.9692 20C17.8101 17.1085 16.9248 15 12 15C7.07527 15 6.18997 17.1085 6.03082 20" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
+                                                </svg>
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="header-action-style d-block d-lg-none">
@@ -177,8 +192,9 @@
                 </a>
                 <button class="mt-2 w-100 check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</button>
             @else
-                <a href="/profile?register" class="d-block p-2 fw-bolder font-kyiv bg-light text-center mt-2 w-100 check-btn sqr-btn">Вход</a>
+                <a onclick="showReg()" class="off-canvas-close d-block p-2 fw-bolder font-kyiv bg-light text-center mt-2 w-100 check-btn sqr-btn">Вход</a>
             @endif
         </div>
     </div>
 </div>
+<livewire:verification/>
