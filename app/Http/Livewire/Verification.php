@@ -47,7 +47,11 @@ class Verification extends Component
 
         $validatedData = Validator::make(
             ['phone' => $this->phone],
-            ['phone' => 'required|digits:9']
+            ['phone' => 'required|digits:9'],
+            [
+                'phone.required' => 'Поле телефона обязательно для заполнения.',
+                'phone.digits' => 'Номер телефона должен состоять из 9 цифр.'
+            ]
         )->validate();
 
         $this->phone = '998'.$this->phone;
@@ -132,7 +136,16 @@ class Verification extends Component
     {
         $validatedData = Validator::make(
             ['name' => $this->name, 'phone' => $this->phone],
-            ['name' => 'required|string|max:255', 'phone' => 'required']
+            [
+                'name' => 'required|string|max:255',
+                'phone' => 'required'
+            ],
+            [
+                'name.required' => 'Поле имени обязательно для заполнения.',
+                'name.string' => 'Имя должно быть строкой.',
+                'name.max' => 'Имя не должно превышать 255 символов.',
+                'phone.required' => 'Поле телефона обязательно для заполнения.'
+            ]
         )->validate();
 
         // Create new user account

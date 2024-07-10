@@ -6,37 +6,39 @@
                 <div class="position-absolute w-100 h-100" style="z-index: 999;" onclick="closeModal()">
 
                 </div>
-                <div class="p-4 rounded-1 bg-white registration" style="z-index: 1000">
+                <div class="p-4 rounded-1 bg-white registration single-input-item" style="z-index: 1000">
                     @if ($status == 'initial')
                         <form wire:submit.prevent="submitPhoneNumber">
-                            <div class="position-relative">
+                            <div class="position-relative mb-2">
                                 <div class="position-absolute h-100 top-0 left-0 p-3">
                                     +998
                                 </div>
                                 <input wire:model="phone" class="tel telPadding p-2" id="logPhone" type="tel" value="{{ old('phone') }}" autocomplete="false" name="phone" placeholder="555005444">
                             </div>
                             @error('phone') <span class="error">{{ $message }}</span> @enderror
-                            <button type="submit">Send Code</button>
+                            <button type="submit">Отправить код</button>
                         </form>
                     @elseif ($status == 'verifying')
-                        <p>SMS verification code sent to +{{ $phone }}</p>
-                        <input wire:model="inputCode" class="p-2 mb-2" type="number" name="code" placeholder="Enter Code">
-                        <button wire:click="verifyCode">Verify</button>
+                        <p>СМС-код подтверждения отправлен на номер +998{{ $phone }}</p>
+                        <form wire:submit.prevent="verifyCode">
+                            <input wire:model="inputCode" class="p-2 mb-2" type="number" name="code" placeholder="Введите код">
+                            <button type="submit">Проверять</button>
+                        </form>
                         @if ($showResendButton)
-                            <button wire:click="resendCode">Resend Code</button>
+                            <button wire:click="resendCode">Отправить еще раз</button>
                         @endif
                     @elseif($status == 'register')
-                        <form wire:submit.prevent="register">
-                            <input wire:model="name" class="p-2 mb-2" type="text" name="name" placeholder="Name">
-                            <button type="submit" class="btn btn-primary">Register</button>
+                        <form wire:submit.prevent="register" class="">
+                            <input wire:model="name" class="p-2 mb-2" type="text" name="name" placeholder="Имя">
+                            <button type="submit" class="btn btn-primary">Сохранять</button>
                         </form>
                     @elseif ($status == 'success')
-                        <p>Verification successful for +998{{ $phone }}</p>
+                        <p>Проверка успешна на +998{{ $phone }}</p>
                         <!-- Add logic here to log in or register the user -->
                     @elseif ($status == 'failed')
-                        <p>Verification failed. Please try again later.</p>
+                        <p>Проверка не удалась. Пожалуйста, повторите попытку позже.</p>
                         @if ($showResendButton)
-                            <button wire:click="resendCode">Resend Code</button>
+                            <button wire:click="resendCode">Отправить еще раз</button>
                         @endif
                     @endif
                 </div>
