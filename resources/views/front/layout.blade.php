@@ -116,6 +116,17 @@
 @yield('scripts')
 @stack('scripts')
 <script>
+    window.addEventListener('flashMessage', event => {
+        const flashMessage = document.querySelector('.flash-message');
+        flashMessage.text = event.detail.message;
+        flashMessage.classList.remove('hiddenmsg');
+        flashMessage.classList.add(event.detail.style);
+        if (event.detail.style === 'bg-success') {
+            modal = document.querySelector('.close');
+            modal.click();
+        }
+        setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
+    });
     function onlyNumber(input) {
         // Get the input value
         let inputValue = $(input).val();

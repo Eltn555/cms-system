@@ -35,15 +35,11 @@ class Onclick extends Component
             $this->submitForm($text);
             $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
             $this->dispatchBrowserEvent('flashMessage', ['message' => 'Заказ получен, мы вам перезвоним в ближайшее время.', 'style' => 'bg-success']);
-        }else{
-            $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
-            $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, заполните имя и номер телефона', 'style' => 'bg-danger']);
         }
     }
 
     public function submitForm($text)
     {
-        // Validate form fields
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
         $chatId = ['791430493', '-1002108174754']; //1641704306 You'll need to obtain your chat ID from your bot
 

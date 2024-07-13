@@ -3,6 +3,20 @@
 @section('keyword', "$product->seo_title")
 @section('style')
     <style>
+        .flash-message{
+            top: 100px;
+            right: 10px;
+            opacity: 1;
+            transition: 0.2s;
+            position: fixed !important;
+            z-index: 999;
+        }
+        .hiddenmsg{
+            right: -500px;
+            opacity: 0;
+            transition: 1s;
+            position: fixed;
+        }
         @media only screen and (max-width: 767px) {
             .priceBuy{
                 width: 100%;
@@ -60,6 +74,9 @@
 @endsection
 
 <div>
+    <div class="fs-5 fw-bold font-cormorant hiddenmsg bg-success flash-message position-absolute text-white px-4 py-2 rounded shadow">
+        Заказ получен, мы вам перезвоним в ближайшее время.
+    </div>
     <div class="product-details-area pb-100 pt-100">
         <div class="container">
             <div class="row mx-0">
@@ -156,7 +173,7 @@
                                 </li>
                                 <li><span class="title">Доступность:</span>
                                     <ul class="tag">
-                                        {!! ($product->amount) ? '<li class="text-success">Есть в наличии</li>' : '<li class="text-danger">Нет в наличии</li>' !!}
+                                        {!! ($product->amount) ? '<li class="text-success">Есть в наличии '.$product->amount.' шт.</li>' : '<li class="text-danger">Нет в наличии</li>' !!}
                                     </ul>
                                 </li>
                             </ul>
@@ -169,11 +186,13 @@
 {{--                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>--}}
 {{--                            </ul>--}}
 {{--                        </div>--}}
-                        <div class="">
-                            <div class="w-50 pe-1">
-                                @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart_count'], key($product->id))
+                        @if($product->amount > 0)
+                            <div class="">
+                                <div class="w-50 pe-1">
+                                    @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart_count'], key($product->id))
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                     <div class="priceBuy">
                         <div class="product-details-action-wrap font-kyiv">
@@ -183,11 +202,13 @@
                             </div>
                         </div>
                         <div class="d-flex">
-                            <div class="w-50 pe-1">
-                                @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
-                            </div>
+                            @if($product->amount > 0)
+                                <div class="w-50 pe-1">
+                                    @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
+                                </div>
+                            @endif
                             <div class="single-product-cart btn-hover w-50 ps-1 text-center">
-                                <button title="Купить в один клик" data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 p-3 text-dark bg-light border border-1">Купить в один клик</button>
+                                <button title="Купить в один клик" data-bs-toggle="modal" data-bs-target="#exampleModal" class="w-100 p-3 text-dark bg-light border border-1">{{($product->amount > 0) ? 'Купить в один клик' : 'Оставить заявку' }}</button>
                             </div>
                         </div>
                     </div>
@@ -337,16 +358,6 @@
             window.history.back();
         }
 
-        window.addEventListener('flashMessage', event => {
-            const flashMessage = document.querySelector('.flash-message');
-            flashMessage.text = event.detail.message;
-            flashMessage.classList.remove('hiddenmsg');
-            flashMessage.classList.add(event.detail.style);
-            if (event.detail.style === 'bg-success') {
-                modal = document.querySelector('.close');
-                modal.click();
-            }
-            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
-        });
+
     </script>
 @endsection

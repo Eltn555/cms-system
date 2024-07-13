@@ -10,7 +10,7 @@
                     @if ($status == 'initial')
                         <form wire:submit.prevent="submitPhoneNumber">
                             <div class="position-relative mb-2">
-                                <div class="position-absolute h-100 top-0 left-0 p-3">
+                                <div class="position-absolute h-100 top-0 left-0 p-3" style="padding-top: 0.9rem !important; color: #1f2226; font-size: 15px; font-weight: 600;">
                                     +998
                                 </div>
                                 <input wire:model="phone" class="tel telPadding p-2" id="logPhone" type="tel" value="{{ old('phone') }}" autocomplete="false" name="phone" placeholder="555005444">

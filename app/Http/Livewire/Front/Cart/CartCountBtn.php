@@ -84,11 +84,15 @@ class CartCountBtn extends Component
     }
 
     public function add(){
-        $this->check('add');
+        if ($this->productCount != $this->product->amount){
+            $this->check('add');
+        }
     }
 
     public function remove(){
-        $this->check('remove');
+        if ($this->productCount != 0){
+            $this->check('remove');
+        }
     }
 
     public function updated($propertyName)

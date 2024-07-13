@@ -105,11 +105,8 @@
             </div>
         </form>
         <p class="text-success mb-0 lh-1">
-            Отправьте свое имя и номер телефона и наши операторы свяжутся с вами в ближайшее время
+            Отправьте имя и номер телефона. Наши операторы свяжутся с вами в ближайшее время.
         </p>
-    </div>
-    <div class="hiddenmsg flash-message position-absolute text-white px-4 py-2 rounded shadow">
-        {{ $flashMessage }}
     </div>
     <a class="close d-none " data-bs-dismiss="modal" aria-label="Close"><i class=" ti-close "></i></a>
 </div>
