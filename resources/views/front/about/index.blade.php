@@ -318,7 +318,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="brand-logo-active  border-0 swiper-container">
+            <div class="brand-logo-active  border-0 swiper-container swp-cnt">
                 <div class="swiper-wrapper brand-container">
                     @foreach($partners as $key =>$partner)
                         <div class="swiper-slide d-flex justify-content-center align-items-center">
@@ -328,6 +328,10 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+            <div class="d-flex w-100 justify-content-end">
+                <div class="swiper-btn-prv px-3 py-1 me-2 border border-1"><i class="fa fa-angle-left fs-4"></i></div>
+                <div class="swiper-btn-nxt px-3 py-1 border border-1"><i class="fa fa-angle-right fs-4"></i></div>
             </div>
         </div>
     </div>
@@ -403,6 +407,24 @@
 @section('scripts')
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=da1d75ee-0a8e-4889-afe1-4f70ff26ee4d" type="text/javascript"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper('.swp-cnt', {
+                slidesPerView: 6, // Adjust this value as needed
+                spaceBetween: 10, // Adjust this value as needed
+                navigation: {
+                    nextEl: '.swiper-btn-nxt',
+                    prevEl: '.swiper-btn-prv',
+                },
+                // Optional parameters
+                loop: true,
+                loopAdditionalSlides: 3, // Additional slides to clone for smooth looping
+                loopedSlides: 3, // Number of slides to loop
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+            });
+        });
         setTimeout(function() {
             $('.counter-count').each(function () {
                 $(this).prop('Counter',0).animate({

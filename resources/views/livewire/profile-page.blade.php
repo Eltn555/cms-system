@@ -53,7 +53,7 @@
                                                 <div class="single-input-item">
                                                     <label for="first-name" class="required">Имя</label>
                                                     <div class="position-relative">
-                                                        <input name="name" class="d-none ps-5" type="text" id="first-name" placeholder="Ваш имя" value="{{ $profile->name ?? '' }}"/>
+                                                        <input name="name" class="d-none ps-5" type="text" id="first-name" placeholder="Ваше имя" value="{{ $profile->name ?? '' }}"/>
                                                         <span class="ps-5 pt-3 position-absolute top-50 proInfo">{{ $profile->name ?? '-'}}</span>
                                                         <div class="position-absolute icon-input">
                                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="col-lg-6" style="height: 100px">
                                                 <div class="single-input-item">
-                                                    <label for="display-name" class="required">Телефон номер</label>
+                                                    <label for="display-name" class="required">Номер телефона</label>
                                                     <div class="position-relative">
                                                         <input name="phone" class="tel d-none ps-5" type="tel" id="display-name" placeholder="+998 555 005 444" value="{{ $profile->phone ?? ''}}"/>
                                                         <span class="ps-5 pt-3 position-absolute top-50 proInfo">{{ $profile->phone ?? '-'}}</span>
@@ -193,7 +193,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="single-input-item">
                                                         <label for="street" class="required">Улица</label>
-                                                        <input name="address" class="adrs" disabled type="text" id="street" placeholder="Напишите полное"
+                                                        <input name="address" class="adrs" disabled type="text" id="street" placeholder="Введите полный адрес"
                                                                value="{{ $profile->address ?? ''}}"/>
                                                     </div>
                                                 </div>
@@ -201,7 +201,7 @@
                                                     <div class="single-input-item">
                                                         <label for="display-name" class="required">Дом</label>
                                                         <input name="home" class="adrs" disabled type="text" id="display-name"
-                                                               placeholder="Напишите дом, подйез, этаж"
+                                                               placeholder="Введите дом, подъезд, этаж"
                                                                value="{{ $profile->home ?? ''}}"/>
                                                     </div>
                                                 </div>

@@ -33,7 +33,7 @@
                                     <div class="single-input-item">
                                         <label for="first-name" class="required">Имя</label>
                                         <div class="position-relative">
-                                            <input name="name" type="text" id="first-name" wire:model="name" placeholder="Ваш имя" required/>
+                                            <input name="name" type="text" id="first-name" wire:model="name" placeholder="Ваше имя" required/>
                                             <div class="position-absolute icon-input">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="single-input-item">
-                                        <label for="display-name" class="required">Телефон номер</label>
+                                        <label for="display-name" class="required">Номер телефона</label>
                                         <div class="position-relative">
                                             <input name="phone" wire:model="phone" type="phone" id="display-name" placeholder="+998 555 005 444" required/>
                                             <div class="position-absolute icon-input">
@@ -84,9 +84,9 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="single-input-item">
-                                        <label for="msg" class="">Текст</label>
+                                        <label for="msg" class="">Ваш комментарий </label>
                                         <div class="position-relative">
-                                            <input name="msg" wire:model="msg" type="text" id="msg" placeholder="Текст..."/>
+                                            <input name="msg" wire:model="msg" type="text" id="msg" placeholder="Ваш комментарий..."/>
                                             <div class="position-absolute icon-input">
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="single-input-item">
-                                        <label for="file" class="required">Загрузите изображения</label>
+                                        <label for="file" class="required">Загрузите изображение</label>
                                         <div class="position-relative">
                                             <input name="images" class="file-input" onchange="updateFileText(this)" wire:model="images" multiple type="file" id="file" placeholder="png, jpg"/>
                                             <span class="file-text position-absolute">png, jpg   max-10MB</span>

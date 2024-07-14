@@ -84,7 +84,7 @@
                         <p class="text-black fw-500">{{$user->name}}</p>
                     </div>
                     <div class="col-12 col-md-4">
-                        <p class="mb-1">Телефон номер</p>
+                        <p class="mb-1">Номер телефона</p>
                         <p class="text-black fw-500">{{$user->phone}}</p>
                     </div>
                     <div class="col-12 col-md-4">
@@ -193,7 +193,7 @@
                             <div class="col-lg-6">
                                 <div class="single-input-item">
                                     <label for="last-name" class="required">Улица</label>
-                                    <input wire:change="$emit('Address', 'address', $event.target.value)" type="text" id="last-name" placeholder="Напишите полное"
+                                    <input wire:change="$emit('Address', 'address', $event.target.value)" type="text" id="last-name" placeholder="Введите полный адрес"
                                            value="{{ $user->address ?? ''}}"/>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                                 <div class="single-input-item">
                                     <label for="display-name" class="required">Дом</label>
                                     <input wire:change="$emit('Address', 'home', $event.target.value)" type="text" id="display-name"
-                                           placeholder="Напишите дом, подйез, этаж"
+                                           placeholder="Введите дом, подъезд, этаж"
                                            value="{{ $user->home ?? ''}}"/>
                                 </div>
                             </div>
@@ -317,11 +317,11 @@
             flashMessage.text = event.detail.message;
             flashMessage.classList.remove('hiddenmsg');
             flashMessage.classList.add(event.detail.style);
-            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 3000);
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 4000);
             if (event.detail.style == 'bg-success'){
                 setTimeout(function() {
                     window.location.href = "{{ route('front.profile.index', ['orders']) }}";
-                }, 4000);
+                }, 4500);
             }
         });
         $(document).ready(function() {
@@ -399,7 +399,7 @@
         window.onload = function () {
             populateRegions();
         };
-        
+
         // Event listener to populate regions when city is selected
         document.getElementById("citySelect").addEventListener("change", populateRegions);
 

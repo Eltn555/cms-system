@@ -45,7 +45,7 @@
                     <div class="single-input-item">
                         <label for="first-name" class="required">Имя</label>
                         <div class="position-relative">
-                            <input name="name" type="text" id="first-name" placeholder="Ваш имя" wire:model="name" required/>
+                            <input name="name" type="text" id="first-name" placeholder="Ваше имя" wire:model="name" required/>
                             <div class="position-absolute icon-input">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-12">
                     <div class="single-input-item">
-                        <label for="display-name" class="required">Телефон номер</label>
+                        <label for="display-name" class="required">Номер телефона</label>
                         <div class="position-relative">
                             <div class="position-relative">
                                 <div class="fw-bolder position-absolute h-100 top-0 left-0" style="padding: 0.90rem; font-size: 15px">

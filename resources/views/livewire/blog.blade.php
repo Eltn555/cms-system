@@ -251,7 +251,7 @@
             flashMessage.text = event.detail.message;
             flashMessage.classList.remove('hiddenmsg');
             flashMessage.classList.add(event.detail.style);
-            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 2000);
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 4000);
         });
     </script>
 @endpush

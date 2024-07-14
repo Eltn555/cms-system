@@ -185,8 +185,8 @@ class Checkout extends Component
                     $sales['address_place'] = $this->addressCollected;
                     $sales['collecting_type'] = 'Доставка';
                 }else{
-                    $this->flashMessage = 'Пожалуйста, выберите город, район и улицу, пожалуйста';
-                    $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, выберите город, район и улицу, пожалуйста', 'style' => 'bg-danger']);
+                    $this->flashMessage = 'Пожалуйста, выберите город, район и улицу';
+                    $this->dispatchBrowserEvent('flashMessage', ['message' => 'Пожалуйста, выберите город, район и улицу', 'style' => 'bg-danger']);
                     return null;
                 }
             }

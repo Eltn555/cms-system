@@ -74,7 +74,7 @@
 @endsection
 
 <div>
-    <div class="fs-5 fw-bold font-cormorant hiddenmsg bg-success flash-message position-absolute text-white px-4 py-2 rounded shadow">
+    <div class="fs-5 hiddenmsg bg-success flash-message position-absolute text-white px-4 py-2 rounded shadow">
         Заказ получен, мы вам перезвоним в ближайшее время.
     </div>
     <div class="product-details-area pb-100 pt-100">
