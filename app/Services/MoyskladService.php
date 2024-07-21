@@ -58,28 +58,36 @@ class MoyskladService
                 return ['error' => 'Request failed: ' . $e->getMessage()];
             }
         }
-
+        $checked = 0;
+        $created = 0;
+        $updated = 0;
         foreach ($allStock as $stock){
             $name = $stock['name'];
             $product = Product::where('title', $name)->first();
+            $newPrice = number_format($stock['salePrice'] / 100, 0, '', '');
+            $newAmount = number_format($stock['quantity'], 0, '', '');
             if ($product) {
                 // If the product exists, update the price and stock
-                $product->update([
-                    'title' => $name,
-                    'price' => number_format($stock['salePrice'] / 100, 0, '', ''),
-                    'amount' => number_format($stock['quantity'], 0, '', ''),
-                ]);
+                if ($product->price != $newPrice || $product->amount != $newAmount) {
+                    $product->update([
+                        'price' => $newPrice,
+                        'amount' => $newAmount,
+                    ]);
+                    $updated++;
+                }
+                $checked++;
             } else {
                 $next = Product::orderBy('id', 'desc')->first()->id + 1;
                 // If the product does not exist, create a new one with is_active set to 0
                 Product::create([
                     'title' => $name,
-                    'price' => number_format($stock['salePrice'] / 100, 0, '', ''),
-                    'amount' => number_format($stock['quantity'], 0, '', ''),
+                    'price' => $newPrice,
+                    'amount' => $newAmount,
                     'status' => 0,
-                    'seo_title' => $stock['name'],
-                    'slug' => Str::slug(Transliterator::transliterate($stock['name']), '-').'-'.$next,
+                    'seo_title' => $name,
+                    'slug' => Str::slug(Transliterator::transliterate($name), '-').'-'.$next,
                 ]);
+                $created++;
             }
 
         }
@@ -87,7 +95,7 @@ class MoyskladService
 
         $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
             'chat_id' => '791430493',
-            'text' => 'Sync finished '.date("h:i:sa"),
+            'text' => 'Синхронизация завершена - '.date("h:i:sa")."\n\nПроверено:$checked \nОтредактировано:$updated \nСоздано:$created",
             'parse_mode' => 'HTML',
         ]);
 
