@@ -19,7 +19,7 @@
                             <button type="submit">Отправить код</button>
                         </form>
                     @elseif ($status == 'verifying')
-                        <p>СМС-код подтверждения отправлен на номер +998{{ $phone }}</p>
+                        <p>СМС-код подтверждения отправлен на номер +{{ $phone }}</p>
                         <form wire:submit.prevent="verifyCode">
                             <input wire:model="inputCode" class="p-2 mb-2" type="number" name="code" placeholder="Введите код">
                             <button type="submit">Проверять</button>

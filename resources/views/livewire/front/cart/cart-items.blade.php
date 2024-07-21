@@ -52,7 +52,7 @@
                     @if(auth()->user())
                         <a href="{{route('front.checkout.index')}}" class="w-100 text-dark">Перейти к оплате</a>
                     @else
-                        <a onclick="showReg()" class="w-100 text-dark cart-close">Перейти к оплате</a>
+                        <a onclick="showReg(true)" class="w-100 text-dark cart-close">Перейти к оплате</a>
                     @endif
                 </div>
             </div>

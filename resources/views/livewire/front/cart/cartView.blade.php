@@ -84,7 +84,7 @@
                         @if(auth()->user())
                             <a href="{{ route('front.checkout.index', ['textareaValue' => $textareaValue]) }}" class="w-100 text-dark p-3">Перейти к оформлению заказа</a>
                         @else
-                            <a onclick="showReg()" class="w-100 text-dark p-3">Перейти к оформлению заказа</a>
+                            <a onclick="showReg(true)" class="w-100 text-dark p-3">Перейти к оформлению заказа</a>
                         @endif
                     </div>
                 </div>

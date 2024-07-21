@@ -6,6 +6,7 @@ use Behat\Transliterator\Transliterator;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use App\Models\Product;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class MoyskladService
@@ -16,8 +17,8 @@ class MoyskladService
 
     public function __construct()
     {
-        $this->token = '4b8f5b48ce0123f61359cafdd5bb62fd41cf9f29';
-        $this->baseUri = 'https://api.moysklad.ru/api/remap/1.2/';
+        $this->token = env('MOYSKLAD_KEY');
+        $this->baseUri = env('MOYSKLAD_BASE');
 
         $this->client = new Client([
             'base_uri' => $this->baseUri,
@@ -80,6 +81,14 @@ class MoyskladService
                     'slug' => Str::slug(Transliterator::transliterate($stock['name']), '-').'-'.$next,
                 ]);
             }
+            $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+            $chatId = ['']; //1641704306 You'll need to obtain your chat ID from your bot
+
+                $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
+                    'chat_id' => '791430493',
+                    'text' => 'Sync finished '.date("h:i:sa"),
+                    'parse_mode' => 'HTML',
+                ]);
         }
 
         return $allStock;

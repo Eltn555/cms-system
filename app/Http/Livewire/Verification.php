@@ -16,6 +16,7 @@ class Verification extends Component
     public $name = '';
     public $showModal = false;
     public $code = '';
+    public $checkout = false;
     public $verificationSent = false;
     public $verificationAttempts = 0;
     public $maxVerificationAttempts = 3;
@@ -30,10 +31,15 @@ class Verification extends Component
 
     }
 
-    public function showModal()
+    public function showModal($isCheckout)
     {
         $this->resetForm();
         $this->showModal = true;
+        if ($isCheckout){
+            $this->checkout = true;
+        }else{
+            $this->checkout = false;
+        }
     }
 
     public function closeModal()
@@ -59,7 +65,7 @@ class Verification extends Component
         $this->verificationSent = true;
         $this->showResendButton = false;
         $this->code = mt_rand(1000, 9999);
-        $this->sendMessage($this->phone, "Your verification code is: {$this->code}");
+        $this->sendMessage($this->phone, "Lumen Lux код подтверждения регистрации: {$this->code}");
 
         $this->verificationAttempts = 0;
     }
@@ -67,9 +73,11 @@ class Verification extends Component
     public function sendMessage($phoneNumber, $message, $messageId = '123', $originator = '3700')
     {
         $this->client = new Client();
+        $login = config('services.sms.login');
+        $pass = config('services.sms.password');
         try {
             $response = $this->client->post('https://send.smsxabar.uz/broker-api/send', [
-                'auth' => ['lumenlux', '|RU1&C#It6}s'],
+                'auth' => [$login, $pass],
                 'json' => [
                     'messages' => [
                         [
@@ -107,7 +115,11 @@ class Verification extends Component
                 // Log in user
                 Auth::login($user);
                 $this->closeModal();
-                $this->emit('userLoggedIn');
+                if ($this->checkout){
+                    return redirect()->route('front.checkout.index');
+                }else{
+                    $this->emit('userLoggedIn');
+                }
             } else {
                 $this->status = 'register';
             }
@@ -126,7 +138,7 @@ class Verification extends Component
     {
         // Resend SMS with verification code
         $this->code = mt_rand(1000, 9999); // Generate new code
-        $this->sendMessage($this->phone, "Your new verification code is: {$this->code}");
+        $this->sendMessage($this->phone, "Lumen Lux код подтверждения регистрации: {$this->code}");
         $this->showResendButton = false;
         $this->verificationAttempts = 0;
         $this->status = 'verifying';

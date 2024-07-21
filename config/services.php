@@ -31,4 +31,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'click' => [
+        'service_id' => env('CLICK_SERVICE_ID'),
+        'merchant_id' => env('CLICK_MERCHANT_ID'),
+        'secret_key' => env('CLICK_SECRET_KEY'),
+        'merchant_user_id' => env('CLICK_MERCHANT_USER_ID'),
+    ],
+
+    'sms' => [
+        'login' => env('play_login'),
+        'password' => env('play_pass'),
+    ],
+
 ];

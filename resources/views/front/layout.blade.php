@@ -161,8 +161,8 @@
                 window.location.href = searchUrl; // Navigate to the URL
             }
         });
-    function showReg() {
-        Livewire.emit('showReg');
+    function showReg(variable = null) {
+        Livewire.emit('showReg', variable !== null);
     }
     function closeModal() {
         Livewire.emit('closeReg');
