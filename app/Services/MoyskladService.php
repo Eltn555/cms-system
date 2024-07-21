@@ -81,15 +81,15 @@ class MoyskladService
                     'slug' => Str::slug(Transliterator::transliterate($stock['name']), '-').'-'.$next,
                 ]);
             }
-            $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
-            $chatId = ['']; //1641704306 You'll need to obtain your chat ID from your bot
 
-                $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
-                    'chat_id' => '791430493',
-                    'text' => 'Sync finished '.date("h:i:sa"),
-                    'parse_mode' => 'HTML',
-                ]);
         }
+        $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+
+        $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
+            'chat_id' => '791430493',
+            'text' => 'Sync finished '.date("h:i:sa"),
+            'parse_mode' => 'HTML',
+        ]);
 
         return $allStock;
     }
