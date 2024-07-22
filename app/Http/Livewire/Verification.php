@@ -75,7 +75,6 @@ class Verification extends Component
         $this->client = new Client();
         $login = env('PLAY_LOGIN');
         $pass = env('PLAY_PASS');
-        dd($login." ".$pass);
         try {
             $response = $this->client->post('https://send.smsxabar.uz/broker-api/send', [
                 'auth' => [$login, $pass],
