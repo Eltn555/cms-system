@@ -73,8 +73,8 @@ class Verification extends Component
     public function sendMessage($phoneNumber, $message, $messageId = '123', $originator = '3700')
     {
         $this->client = new Client();
-        $login = config('services.sms.login');
-        $pass = config('services.sms.password');
+        $login = env('play_login');
+        $pass = env('play_pass');
         dd($login." ".$pass);
         try {
             $response = $this->client->post('https://send.smsxabar.uz/broker-api/send', [
