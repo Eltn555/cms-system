@@ -96,6 +96,7 @@ class Verification extends Component
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return [
                 'success' => false,
                 'message' => $e->getMessage(),
