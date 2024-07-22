@@ -75,6 +75,7 @@ class Verification extends Component
         $this->client = new Client();
         $login = config('services.sms.login');
         $pass = config('services.sms.password');
+        dd($login." ".$pass);
         try {
             $response = $this->client->post('https://send.smsxabar.uz/broker-api/send', [
                 'auth' => [$login, $pass],
@@ -96,7 +97,6 @@ class Verification extends Component
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return [
                 'success' => false,
                 'message' => $e->getMessage(),
