@@ -304,7 +304,7 @@
             </div>
         </div>
     </div>
-            <div class="hiddenmsg flash-message position-absolute text-white fs-5 px-4 py-2 rounded shadow">
+            <div class="hiddenmsg flash-message position-absolute text-white fs-3 px-4 py-2 rounded shadow">
                 {{ $flashMessage }}
             </div>
 </div>
