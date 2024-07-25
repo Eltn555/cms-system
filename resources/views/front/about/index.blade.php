@@ -344,7 +344,7 @@
             <div class="col-lg-6 col-md-12 h-100 order-md-1 order-lg-0 font-kyiv px-md-0 px-lg-3 mt-lg-0 mt-md-3">
                 <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
                     <input class="radio" type="radio" name="location" value="41.328629, 69.273486">
-                    <p class="mb-0 fw-semibold">г. Ташкент, Ц5  (Напротив Респуликанской пожарки)</p>
+                    <p class="mb-0 fw-semibold">г. Ташкент, Ц5  (напротив Респуликанской пожарки)</p>
                 </div>
                 <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
                     <input class="radio" type="radio" name="location" value="41.309927, 69.335936">
@@ -352,7 +352,7 @@
                 </div>
                 <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
                     <input class="radio" type="radio" name="location" value="39.647911, 66.925854">
-                    <p class="mb-0 fw-semibold">г. Самарканд, Микрорайон (Напротив поликлиники)</p>
+                    <p class="mb-0 fw-semibold">г. Самарканд, Микрорайон (напротив поликлиники)</p>
                 </div>
 
                 <div class="row mb-2 mt-5 p-0 m-0 infoLink">
@@ -462,8 +462,8 @@
             var placemarks = [
                 {
                     coordinates: [41.328629, 69.273486],
-                    hintContent: 'г. Ташкент, Ц5  (Напротив Респуликанской пожарки)',
-                    balloonContent: 'г. Ташкент, Ц5  (Напротив Респуликанской пожарки)'
+                    hintContent: 'г. Ташкент, Ц5  (напротив Респуликанской пожарки)',
+                    balloonContent: 'г. Ташкент, Ц5  (напротив Респуликанской пожарки)'
                 },
                 {
                     coordinates: [41.309927, 69.335936],
@@ -472,8 +472,8 @@
                 },
                 {
                     coordinates: [39.647911, 66.925854],
-                    hintContent: 'г. Самарканд, Микрорайон (Напротив поликлиники)',
-                    balloonContent: 'г. Самарканд, Микрорайон (Напротив поликлиники)'
+                    hintContent: 'г. Самарканд, Микрорайон (напротив поликлиники)',
+                    balloonContent: 'г. Самарканд, Микрорайон (напротив поликлиники)'
                 }
             ];
 

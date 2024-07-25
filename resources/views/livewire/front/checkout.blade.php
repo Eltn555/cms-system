@@ -116,7 +116,7 @@
                         <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio row m-0" wire:click="updateCollect('г. Ташкент, Ц5  (Напротив Респуликанской пожарки)')">
                             <div class="col-12 col-lg-8 d-flex align-items-center">
                                 <input class="radio mt-2 mt-lg-0" type="radio" name="location" {{($collect == 'г. Ташкент, Ц5  (Напротив Респуликанской пожарки)') ? 'checked' : ''}}>
-                                <p class="mb-0 fw-semibold text-black">г. Ташкент, Ц5  (Напротив Респуликанской пожарки)</p>
+                                <p class="mb-0 fw-semibold text-black">г. Ташкент, Ц5  (напротив Респуликанской пожарки)</p>
                             </div>
                             <div class="col-12 col-lg-4 d-flex justify-content-lg-end justify-content-start align-items-center ps-5 ps-lg-0 p-0">
                                 <p class="mb-0">Пн - Сб  10:00 - 19:00</p>
@@ -134,7 +134,7 @@
                         <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio row m-0" wire:click="updateCollect('г. Самарканд, Микрорайон (Напротив поликлиники)')">
                             <div class="col-12 col-lg-8 d-flex align-items-center">
                                 <input class="radio mt-2 mt-lg-0" type="radio" name="location" {{($collect == 'г. Самарканд, Микрорайон (Напротив поликлиники)') ? 'checked' : ''}}>
-                                <p class="mb-0 fw-semibold text-black">г. Самарканд, Микрорайон (Напротив поликлиники)</p>
+                                <p class="mb-0 fw-semibold text-black">г. Самарканд, Микрорайон (напротив поликлиники)</p>
                             </div>
                             <div class="col-12 col-lg-4 d-flex justify-content-lg-end justify-content-start align-items-center ps-5 ps-lg-0 p-0">
                                 <p class="mb-0">Пн - Сб  10:00 - 19:00</p>
@@ -304,7 +304,7 @@
             </div>
         </div>
     </div>
-            <div class="font-kyiv hiddenmsg flash-message position-absolute text-white fs-5 px-4 py-2 rounded shadow">
+            <div class="hiddenmsg flash-message position-absolute text-white fs-5 px-4 py-2 rounded shadow">
                 {{ $flashMessage }}
             </div>
 </div>

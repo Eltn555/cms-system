@@ -121,10 +121,9 @@ class Checkout extends Component
 Общая цена:'.$this->overall.'
 Форма оплата:'.$this->payment.'
 Дата:'.$saleDb['created_at'].'</b>';
-            $this->submitForm($text);
             $this->flashMessage = "Спасибо! Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.";
             $this->dispatchBrowserEvent('flashMessage', ['message' => "Спасибо!\n\n\Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.", 'style' => 'bg-success']);
-
+            $this->submitForm($text);
         }
     }
 

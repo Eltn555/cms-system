@@ -66,6 +66,11 @@ class MoyskladService
             $product = Product::where('title', $name)->first();
             $newPrice = number_format($stock['salePrice'] / 100, 0, '', '');
             $newAmount = number_format($stock['quantity'], 0, '', '');
+
+            if ($newAmount < 0) {
+                $newAmount = 0;
+            }
+
             if ($product) {
                 // If the product exists, update the price and stock
                 if ($product->price != $newPrice || $product->amount != $newAmount) {
@@ -94,7 +99,7 @@ class MoyskladService
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
 
         $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
-            'chat_id' => '791430493',
+            'chat_id' => '-1002108174754',
             'text' => 'Синхронизация завершена - '.date("h:i:sa")."\n\nПроверено:$checked \nОтредактировано:$updated \nСоздано:$created",
             'parse_mode' => 'HTML',
         ]);

@@ -32,9 +32,9 @@ class Onclick extends Component
 Номер тел:<code>+998'.$this->phone.'</code>
 Продукты:
 '."<a href='".$url."'><i>".$this->product->title."</i></a></b>";
-            $this->submitForm($text);
             $this->flashMessage = 'Выберите способ оплаты, пожалуйста';
             $this->dispatchBrowserEvent('flashMessage', ['message' => 'Заказ получен, мы вам перезвоним в ближайшее время.', 'style' => 'bg-success']);
+            $this->submitForm($text);
         }
     }
 

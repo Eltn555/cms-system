@@ -20,9 +20,9 @@
                         <div class=" footer-widget footer-list mb-40">
                             <h3 class="footer-title text-white font-kyiv">Шоурумы</h3>
                             <ul class="text-white font-kyiv">
-                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGjUId">г. Ташкент, Ц5  (Напротив Республиканской пожарки)</a></li>
+                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGjUId">г. Ташкент, Ц5  (напротив Республиканской пожарки)</a></li>
                                 <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDV9z2jh">Ул. Паркентская, дом 241</a></li>
-                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDV97I1L">г. Самарканд, Микрорайон (Напротив поликлиники)</a></li>
+                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDV97I1L">г. Самарканд, Микрорайон (напротив поликлиники)</a></li>
                             </ul>
                         </div>
                     </div>
