@@ -304,7 +304,7 @@
             </div>
         </div>
     </div>
-            <div class="hiddenmsg flash-message position-absolute text-white fs-3 px-4 py-2 rounded shadow">
+            <div class="hiddenmsg flash-message position-absolute text-white fs-4 px-4 py-2 rounded shadow">
                 {{ $flashMessage }}
             </div>
 </div>
@@ -317,7 +317,7 @@
             flashMessage.text = event.detail.message;
             flashMessage.classList.remove('hiddenmsg');
             flashMessage.classList.add(event.detail.style);
-            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 4000);
+            setTimeout(() => flashMessage.classList.add('hiddenmsg'), 7000);
             if (event.detail.style == 'bg-success'){
                 setTimeout(function() {
                     window.location.href = "{{ route('front.profile.index', ['orders']) }}";

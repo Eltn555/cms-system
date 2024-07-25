@@ -74,7 +74,7 @@
 @endsection
 
 <div>
-    <div class="hiddenmsg bg-success flash-message position-absolute text-white px-4 py-2 rounded shadow fs-3">
+    <div class="hiddenmsg bg-success flash-message position-absolute text-white px-4 py-2 rounded shadow fs-4">
         Заказ получен, мы вам перезвоним в ближайшее время.
     </div>
     <div class="product-details-area pb-100 pt-100">

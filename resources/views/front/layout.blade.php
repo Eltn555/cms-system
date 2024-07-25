@@ -125,7 +125,7 @@
             modal = document.querySelector('.close');
             modal.click();
         }
-        setTimeout(() => flashMessage.classList.add('hiddenmsg'), 4000);
+        setTimeout(() => flashMessage.classList.add('hiddenmsg'), 7000);
     });
     function onlyNumber(input) {
         // Get the input value
