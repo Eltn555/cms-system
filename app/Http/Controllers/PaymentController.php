@@ -10,7 +10,6 @@ class PaymentController extends Controller
 {
     public function preparePayment(Request $request)
     {
-        dd('hey');
         $merchantTransId = $request->input('merchant_trans_id');
         $amount = $request->input('amount');
 
