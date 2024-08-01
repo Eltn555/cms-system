@@ -15,6 +15,7 @@ class PaymentController extends Controller
 
         // Verify the payment record exists and matches the amount
         $payment = Payment::where('order_id', $merchantTransId)->first();
+        $clickID = $request->input('click_trans_id');
 
         $response = Http::post("https://api.telegram.org/bot{7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c}/sendMessage", [
             'chat_id' => 791430493,
@@ -40,7 +41,7 @@ class PaymentController extends Controller
             return response()->json([
                 'error' => 0,
                 'error_note' => 'Success',
-                'click_trans_id' => $payment->click_trans_id,
+                'click_trans_id' => $clickID,
                 'merchant_trans_id' => $payment->order_id,
                 'merchant_prepare_id' => $payment->id,
             ]);
