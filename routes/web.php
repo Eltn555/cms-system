@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\TelegramController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::group(['prefix'=>'/'], function (){
 });
 
 Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
+
+Route::post('/click/prepare', [PaymentController::class, 'preparePayment']);
+Route::post('/click/complete', [PaymentController::class, 'completePayment']);
 
 Route::post('/telegram/webhook', [TelegramController::class, 'webhook']);
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
