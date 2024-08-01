@@ -36,7 +36,7 @@ class PaymentController extends Controller
                 'error_note' => 'Success',
                 'click_trans_id' => $payment->click_trans_id,
                 'merchant_trans_id' => $payment->order_id,
-                'merchant_prepare_id' => $payment->id,
+                'merchant_prepare_id' => $payment->order_id,
             ]);
         } else {
             return response()->json([
