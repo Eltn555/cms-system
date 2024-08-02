@@ -17,6 +17,12 @@ class PaymentController extends Controller
         $payment = Payment::where('order_id', $merchantTransId)->first();
         $clickID = $request->input('click_trans_id');
 
+        $response = Http::post("https://api.telegram.org/bot{7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c}/sendMessage", [
+            'chat_id' => 791430493,
+            'text' => $payment->amount,
+            'parse_mode' => 'HTML',
+        ]);
+
         if ($payment) {
             if ($payment->status === 'completed') {
                 return response()->json([
