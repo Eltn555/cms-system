@@ -127,7 +127,7 @@ class Checkout extends Component
                 $clickUrl = $this->generateClickPaymentUrl($saleDb->id, $this->overall);
                 Payment::create([
                         'order_id' => $saleDb->id,
-                        'click_trans_id' => null, // This will be updated after Click sends the completion request
+                        'click_trans_id' => 00000, // This will be updated after Click sends the completion request
                         'amount' => $this->overall,
                         'status' => 'pending',
                 ]);

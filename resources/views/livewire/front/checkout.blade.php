@@ -218,7 +218,7 @@
 {{--                        wire:click="payment('Онлайн оплата')"--}}
                         <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('')">
                             <input disabled class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
-                            <p class="mb-0 fw-semibold text-black text-muted">Онлайн оплата</p>
+                            <p class="mb-0 fw-semibold text-black">Онлайн оплата</p>
                         </div>
                     </div>
                     <div class="notOnline col-12 col-lg-4 p-0 px-lg-1">
@@ -235,13 +235,13 @@
                     </div>
                     <div class="col-12 p-1 d-flex flex-wrap overflow-hidden payments expanded">
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Uzum')">
-                                <img src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('click')">
+                                <img src="{{asset('storage/payment/click.jpg')}}" alt="Click LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Click')">
-                                <img src="{{asset('storage/payment/click.jpg')}}" alt="Click LumenLux">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Uzum')">
+                                <img src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
@@ -249,21 +249,21 @@
                                 <img src="{{asset('storage/payment/payme.png')}}" alt="PayMe LumenLux">
                             </button>
                         </div>
-                        <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('UzCard')">
-                                <img src="{{asset('storage/payment/uzcard.png')}}" alt="UzCard LumenLux">
-                            </button>
-                        </div>
-                        <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Humo')">
-                                <img src="{{asset('storage/payment/humo.png')}}" alt="Humo LumenLux">
-                            </button>
-                        </div>
-                        <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Visa')">
-                                <img src="{{asset('storage/payment/visa.png')}}" alt="Visa LumenLux">
-                            </button>
-                        </div>
+{{--                        <div class="payment-meth">--}}
+{{--                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('UzCard')">--}}
+{{--                                <img src="{{asset('storage/payment/uzcard.png')}}" alt="UzCard LumenLux">--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                        <div class="payment-meth">--}}
+{{--                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Humo')">--}}
+{{--                                <img src="{{asset('storage/payment/humo.png')}}" alt="Humo LumenLux">--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                        <div class="payment-meth">--}}
+{{--                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Visa')">--}}
+{{--                                <img src="{{asset('storage/payment/visa.png')}}" alt="Visa LumenLux">--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>
@@ -336,10 +336,10 @@
                 $('.showroomList').toggleClass('expanded');
                 $('.pick-up').toggleClass('d-none');
             });
-            // $('.online').click(function() {
-            //     // Toggle the height of the showroomList element
-            //     $('.payments').toggleClass('expanded');
-            // });
+            $('.online').click(function() {
+                // Toggle the height of the showroomList element
+                $('.payments').toggleClass('expanded');
+            });
             $('.notOnline').click(function() {
                 // Toggle the height of the showroomList element
                 $('.payments').addClass('expanded');
