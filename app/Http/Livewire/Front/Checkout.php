@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front;
 
 use App\Models\CartProduct;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Sale;
 use App\Models\SaleItem;
@@ -121,10 +122,35 @@ class Checkout extends Component
 Общая цена:'.$this->overall.'
 Форма оплата:'.$this->payment.'
 Дата:'.$saleDb['created_at'].'</b>';
+
+            if ($this->payment === 'click') {
+                $clickUrl = $this->generateClickPaymentUrl($saleDb->id, $this->overall);
+                Payment::create([
+                        'order_id' => $saleDb->id,
+                        'click_trans_id' => null, // This will be updated after Click sends the completion request
+                        'amount' => $this->overall,
+                        'status' => 'pending',
+                ]);
+                return redirect($clickUrl);
+            }
+
             $this->flashMessage = "Спасибо! Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.";
             $this->dispatchBrowserEvent('flashMessage', ['message' => "Спасибо!\n\n\Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.", 'style' => 'bg-success']);
             $this->submitForm($text);
         }
+    }
+
+    private function generateClickPaymentUrl($transactionId, $amount)
+    {
+        $queryParams = http_build_query([
+            'service_id' => env('CLICK_SERVICE_ID'),
+            'merchant_id' => env('CLICK_MERCHANT_ID'),
+            'amount' => $amount,
+            'transaction_param' => $transactionId,
+            'return_url' => route('front.profile.index', ['orders']),
+        ]);
+
+        return "https://my.click.uz/services/pay?$queryParams";
     }
 
     public function submitForm($text)
