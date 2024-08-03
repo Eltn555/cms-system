@@ -244,7 +244,34 @@
                                                                 <span class="span">Дата заказа: {{$item->onUpdate}}</span>
                                                                 <div class="product-details-action-wrap font-kyiv">
                                                                     <div class="product-details-price py-md-3">
-                                                                        <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум</span>
+                                                                        <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум </span>
+                                                                        @if(optional($item->sale->payments)->status)
+                                                                            @if($item->sale->payments->status == 'complated')
+                                                                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#029400">
+                                                                                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                                                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 10.1666 20.4518 8.46124 19.5103 7.03891L12.355 14.9893C11.6624 15.7589 10.4968 15.8726 9.66844 15.2513L6.4 12.8C5.95817 12.4686 5.86863 11.8418 6.2 11.4C6.53137 10.9582 7.15817 10.8686 7.6 11.2L10.8684 13.6513L18.214 5.48955C16.5986 3.94717 14.4099 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" fill="#00ff62"/> </g>
+                                                                            </svg>
+                                                                            @elseif($item->sale->payments->status == 'pending')
+                                                                                <svg width="25px" height="25px" viewBox="0 0 30 30" id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">
+                                                                                        .st0{fill:#FD6A7E;}
+                                                                                        .st1{fill:#17B978;}
+                                                                                        .st2{fill:#8797EE;}
+                                                                                        .st3{fill:#41A6F9;}
+                                                                                        .st4{fill:#37E0FF;}
+                                                                                        .st5{fill:#2FD9B9;}
+                                                                                        .st6{fill:#F498BD;}
+                                                                                        .st7{fill:#FFDF1D;}
+                                                                                        .st8{fill:#C6C9CC;}
+                                                                                    </style><path class="st8" d="M15,4C8.9,4,4,8.9,4,15s4.9,11,11,11s11-4.9,11-11S21.1,4,15,4z M21.7,16.8c-0.1,0.4-0.5,0.6-0.9,0.5l-5.6-1.1  c-0.2,0-0.4-0.2-0.6-0.3C14.2,15.7,14,15.4,14,15c0,0,0,0,0,0l0.2-8c0-0.5,0.4-0.8,0.8-0.8c0.4,0,0.8,0.4,0.8,0.8l0.1,6.9l5.2,1.8  C21.6,15.8,21.8,16.3,21.7,16.8z"/></svg>
+                                                                            @elseif($item->sale->payments->status == 'failed')
+                                                                                <svg width="25px" height="25px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ff0000" stroke="#ff0000">
+                                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                                    <g id="SVGRepo_iconCarrier"> <title>cancelled</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="add" fill="#000000" transform="translate(42.666667, 42.666667)"> <path d="M213.333333,1.42108547e-14 C331.15408,1.42108547e-14 426.666667,95.5125867 426.666667,213.333333 C426.666667,331.15408 331.15408,426.666667 213.333333,426.666667 C95.5125867,426.666667 4.26325641e-14,331.15408 4.26325641e-14,213.333333 C4.26325641e-14,95.5125867 95.5125867,1.42108547e-14 213.333333,1.42108547e-14 Z M42.6666667,213.333333 C42.6666667,307.589931 119.076736,384 213.333333,384 C252.77254,384 289.087204,370.622239 317.987133,348.156908 L78.5096363,108.679691 C56.044379,137.579595 42.6666667,173.894198 42.6666667,213.333333 Z M213.333333,42.6666667 C173.894198,42.6666667 137.579595,56.044379 108.679691,78.5096363 L348.156908,317.987133 C370.622239,289.087204 384,252.77254 384,213.333333 C384,119.076736 307.589931,42.6666667 213.333333,42.6666667 Z" id="Combined-Shape"> </path> </g> </g> </g>
+                                                                                </svg>
+                                                                            @endif
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -19,4 +19,9 @@ class Sale extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function payments()
+    {
+        return $this->hasOne(Payment::class, 'order_id');
+    }
 }

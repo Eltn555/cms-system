@@ -15,4 +15,9 @@ class Payment extends Model
         'amount',
         'status',
     ];
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class, 'order_id');
+    }
 }
