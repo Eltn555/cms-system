@@ -65,6 +65,8 @@ class PaymentController extends Controller
                 'click_trans_id' => $clickTransId,
             ]);
 
+            $this->sendTelegramMessageAsync('Заказ №'.$merchantTransId.' успешно оплачен');
+
             return response()->json([
                 'click_trans_id' => $clickTransId,
                 'merchant_trans_id' => $merchantTransId,
@@ -80,5 +82,20 @@ class PaymentController extends Controller
 
             return response()->json(['status' => 'error', 'message' => $errorNote]);
         }
+    }
+
+    protected function sendTelegramMessageAsync($message)
+    {
+        dispatch(function () use ($message) {
+            try {
+                Http::post("https://api.telegram.org/bot7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c/sendMessage", [
+                    'chat_id' => -1002108174754,
+                    'text' => $message,
+                    'parse_mode' => 'HTML',
+                ]);
+            } catch (\Exception $e) {
+
+            }
+        })->afterResponse();
     }
 }
