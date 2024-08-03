@@ -197,8 +197,8 @@
                     <div class="priceBuy">
                         <div class="product-details-action-wrap font-kyiv">
                             <div class="product-details-price py-md-3">
-                                <span class="p-1 {{($product->discount_price == "") ? 'd-none' : 'new-price'}}">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 1000 ? 'сум' : '$'}}</span>
-                                <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 1000 ? 'сум' : '$'}}</span>
+                                <span class="p-1 {{($product->discount_price == "") ? 'd-none' : 'new-price'}}">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}</span>
+                                <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
                             </div>
                         </div>
                         <div class="d-flex">

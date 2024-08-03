@@ -32,8 +32,8 @@
                     <div class="col-9 d-flex justify-content-center flex-column">
                         <div class="p-1 fw-semibold text-black text-end">{{ $result->title }}</div>
                         <div class="p-1 fw-semibold pr-5 text-muted font-kyiv text-end">
-                            <span class="p-1 {{($result->discount_price == "") ? 'visually-hidden hidden' : 'new-price-card'}}">{{$result->discount_price}}  {{$result->discount_price > 1000 ? 'сум' : '$'}}<br></span>
-                            <span class="p-1 {{($result->discount_price == "") ? 'new-price-card' : 'old-price-card'}}">{{$result->price}} {{$result->price > 1000 ? 'сум' : '$'}}</span>
+                            <span class="p-1 {{($result->discount_price == "") ? 'visually-hidden hidden' : 'new-price-card'}}">{{$result->discount_price}}  {{$result->discount_price > 999 ? 'сум' : '$'}}<br></span>
+                            <span class="p-1 {{($result->discount_price == "") ? 'new-price-card' : 'old-price-card'}}">{{$result->price}} {{$result->price > 999 ? 'сум' : '$'}}</span>
                         </div>
                     </div>
                 </a>
