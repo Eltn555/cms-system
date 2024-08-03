@@ -13,8 +13,8 @@
                             <span class="span">{{mb_strimwidth($item->short_description, 0, 42, '..')}}</span>
                             <div class="product-details-action-wrap font-kyiv">
                                 <div class="product-details-price py-3">
-                                    <span class="p-1 fs-6 {{($item->discount_price == "") ? 'd-none' : 'new-price'}}">{{$item->discount_price}}  {{$item->discount_price > 10000 ? 'сум' : '$'}}</span>
-                                    <span class="p-1 fs-6 {{($item->discount_price == "") ? 'new-price' : 'old-price'}}">{{$item->price}} {{$item->price > 10000 ? 'сум' : '$'}}</span>
+                                    <span class="p-1 fs-6 {{($item->discount_price == "") ? 'd-none' : 'new-price'}}">{{$item->discount_price}}  {{$item->discount_price > 1000 ? 'сум' : '$'}}</span>
+                                    <span class="p-1 fs-6 {{($item->discount_price == "") ? 'new-price' : 'old-price'}}">{{$item->price}} {{$item->price > 1000 ? 'сум' : '$'}}</span>
                                 </div>
                             </div>
                             <div class="row w-100 d-flex justify-content-between m-0 p-0">

@@ -91,8 +91,8 @@ class CartItems extends Component
                 $product = Product::where('id', $item['product_id'])->first();
                 if (isset($item['amount']) && $product != null) {
                     $price1 = $product->discount_price ?? $product->price;
-                    $price = ($price1 > 10000) ? $price1 : $price1 * $this->usd;
-                    $truePric = ($product->price > 10000) ? $product->price : $product->price * $this->usd;
+                    $price = ($price1 > 1000) ? $price1 : $price1 * $this->usd;
+                    $truePric = ($product->price > 1000) ? $product->price : $product->price * $this->usd;
                     $this->overall += $price * $item['amount'];
                     $this->truePrice += $truePric * $item['amount'];
                 }
@@ -107,8 +107,8 @@ class CartItems extends Component
                     $product = Product::where('id', $item['product_id'])->first();
                     if (isset($item['amount']) && $product != null) {
                         $price1 = $product->discount_price ?? $product->price;
-                        $price = ($price1 > 10000) ? $price1 : $price1 * $this->usd;
-                        $truePric = ($product->price > 10000) ? $product->price : $product->price * $this->usd;
+                        $price = ($price1 > 1000) ? $price1 : $price1 * $this->usd;
+                        $truePric = ($product->price > 1000) ? $product->price : $product->price * $this->usd;
                         $this->overall += $price * $item['amount'];
                         $this->truePrice += $truePric * $item['amount'];
                     }

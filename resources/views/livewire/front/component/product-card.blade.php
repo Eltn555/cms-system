@@ -27,8 +27,8 @@
                     <h3 class="fw-semibold fs-6 p-1 mb-1"><a href="{{route('front.product.show', ['slug' => $product->slug])}}" style="cursor: pointer;">{{ $product->title }}</a></h3>
                 </div>
                 <div class="font-kyiv">
-                    <span class="p-1 {{($product->discount_price == "") ? 'visually-hidden hidden' : 'new-price-card'}}">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 10000 ? 'сум' : '$'}}<br></span>
-                    <span class="p-1 {{($product->discount_price == "") ? 'new-price-card' : 'old-price-card'}}">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 10000 ? 'сум' : '$'}}</span>
+                    <span class="p-1 {{($product->discount_price == "") ? 'visually-hidden hidden' : 'new-price-card'}}">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 1000 ? 'сум' : '$'}}<br></span>
+                    <span class="p-1 {{($product->discount_price == "") ? 'new-price-card' : 'old-price-card'}}">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 1000 ? 'сум' : '$'}}</span>
                 </div>
             </div>
         </div>
