@@ -108,6 +108,13 @@ class Checkout extends Component
                 unset($item['slug']);
                 $item['sales_id'] = $saleDb->id;
                 SaleItem::create($item);
+
+                $product = Product::find($item['product_id']);
+                if ($product){
+                    $product->amount -= $item['amount'];
+                    $product->save();
+                }
+
                 $url = route('front.product.show', ['slug' => $slug]);
                 $products .= "<a href='".$url."'><i>".$name."</i> - ".$item['amount']." x ".$item['discount']." = ".$item['overall']."</a>\n";
             }

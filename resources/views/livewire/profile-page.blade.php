@@ -246,7 +246,7 @@
                                                                     <div class="product-details-price py-md-3">
                                                                         <span class="p-1 fs-6 new-price">{{number_format($item->overall, 0, '.', ' ')}} сум </span>
                                                                         @if(optional($item->sale->payments)->status)
-                                                                            @if($item->sale->payments->status == 'complated')
+                                                                            @if($item->sale->payments->status == 'completed')
                                                                             <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#029400">
                                                                                 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
                                                                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
