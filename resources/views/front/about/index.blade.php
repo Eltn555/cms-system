@@ -207,8 +207,8 @@
                     <h5 class="shadow-text-2 font-cormorant fw-bold">Наша<br>команда</h5>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-end">
-                    <div class="product-prev-1 border border-1 p-2 px-3 me-2" data-aos="fade-up" data-aos-delay="50"><i class="fa fa-angle-left fs-4"></i></div>
-                    <div class="product-next-1 border border-1 p-2 px-3" data-aos="fade-up" data-aos-delay="100"><i class="fa fa-angle-right fs-4"></i></div>
+                    <div class="product-prev-1 border border-1 py-1 px-3 me-2" data-aos="fade-up" data-aos-delay="50"><i class="fa fa-angle-left fs-4"></i></div>
+                    <div class="product-next-1 border border-1 py-1 px-3" data-aos="fade-up" data-aos-delay="100"><i class="fa fa-angle-right fs-4"></i></div>
                 </div>
             </div>
             <div class="pt-3 product-slider-active-1 swiper-container">

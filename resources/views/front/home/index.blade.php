@@ -119,7 +119,7 @@
         <div class="px-5 w-100 position-relative">
             <div class="row px-xl-5 m-0">
                 @foreach($categories->take(5) as $category)
-                    <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border">
+                    <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border" style="order: {{$category->order_id}};">
                         <div class="p-1 me-0 d-flex justify-content-center align-items-end">
                             <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="50">
                                 <div class="category-img-2 overflow-hidden">
@@ -139,7 +139,7 @@
                 @endforeach
                     @foreach($categories as $index => $category)
                         @if($index >= 5)
-                            <div class="extraCat col-6 col-md-4 col-lg-2 p-0 m-0 border d-none">
+                            <div class="extraCat col-6 col-md-4 col-lg-2 p-0 m-0 border d-none" style="order: {{$category->order_id}};">
                                 <div class="p-1 me-0 d-flex justify-content-center align-items-end">
                                     <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="50">
                                         <div class="category-img-2 overflow-hidden">
@@ -158,7 +158,7 @@
                             </div>
                         @endif
                     @endforeach
-                    <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border p-1 me-0 d-flex justify-content-between align-items-center flex-column">
+                    <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border p-1 me-0 d-flex justify-content-between align-items-center flex-column" style="order: 30;">
                             <div class="category-img-2 overflow-hidden h-100 w-100">
                                 <a class="openCategory h-100 w-100 d-flex align-items-center justify-content-center">
                                     <svg class="arrowRotate" width="85" height="85" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">

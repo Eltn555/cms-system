@@ -74,10 +74,20 @@ class MoyskladService
             if ($product) {
                 // If the product exists, update the price and stock
                 if ($product->price != $newPrice || $product->amount != $newAmount) {
-                    $product->update([
-                        'price' => $newPrice,
-                        'amount' => $newAmount,
-                    ]);
+                    if ($newAmount == 0 && $product->amount != 0){
+                        $product->update([
+                            'price' => $newPrice,
+                            'amount' => $newAmount,
+                            'status' => 0
+                        ]);
+                    }else{
+                        $product->update([
+                            'price' => $newPrice,
+                            'amount' => $newAmount,
+                        ]);
+                    }
+
+
                     $updated++;
                 }
                 $checked++;
