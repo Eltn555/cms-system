@@ -19,7 +19,7 @@ class Header extends Component
      */
     public function __construct()
     {
-        $this->categories = Category::where('parent_category_id', null)->where('is_active', 1)->with('childrenRecursive')->get();
+        $this->categories = Category::where('parent_category_id', null)->where('is_active', 1)->with('childrenRecursive')->orderBy('order_id', 'asc')->get();
     }
 
     function getChildrenRecursive($category, &$visited = []) {
