@@ -216,7 +216,7 @@
                                             <img src="{{ asset('storage/' . $banner->image) }}" alt="{{$banner->title}}"
                                                  class="w-100"></a>
                                         <div class="btn-style-6 btn-style-6-position btn-hover d-block">
-                                            <p class="card-brand mb-1 fw-semibold">{{$banner->tag->products->count()}}
+                                            <p class="card-brand mb-1 fw-semibold">{{$banner->tag->products()->where('is_active', 1)->count()}}
                                                 вида товаров</p>
                                             <h5 class="fw-bolder font-kyiv">{{$banner->title}}</h5>
                                         </div>

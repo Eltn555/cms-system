@@ -190,7 +190,7 @@
                     </div>
                     <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up" data-aos-delay="250">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
-                            <h5 class="counter-count fw-bold">10</h5><span>+</span>
+                            <h5 class="counter-count fw-bold">3</h5><span></span>
                         </div>
                         <p class="mb-0 fw-bolder">Количество наших филиалов!</p>
                         <p class="px-5">Возможность посетить любой из наших ближайших офисов!</p>
