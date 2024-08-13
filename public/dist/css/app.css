@@ -2578,10 +2578,14 @@ select{
     width: 0px;
     background-color: transparent;
 }
+
 .nav{
     display: flex;
     width: 100%;
 }
+
+
+
 .nav.nav-tabs{
     border-bottom-width: 1px;
     --tw-border-opacity: 1;

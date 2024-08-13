@@ -64,11 +64,24 @@
             .product-wrap .product-img {
                 height: 430px;
             }
+            .addCart{
+                width: 70% !important;
+            }
+            .disp{
+                display: block !important;
+
+            }
         }
         @media only screen and (max-width: 400px) {
             .product-wrap .product-img {
                 height: 430px;
             }
+            .addCart{
+                width: 85% !important;
+            }
+        }
+        .disp{
+            display: flex;
         }
     </style>
 @endsection
@@ -188,7 +201,7 @@
 {{--                        </div>--}}
                         @if($product->amount > 0)
                             <div class="">
-                                <div class="w-50 pe-1">
+                                <div class="w-50 addCart pe-1">
                                     @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart_count'], key($product->id))
                                 </div>
                             </div>
@@ -225,7 +238,7 @@
     </div>
     <div class="description-review-area pb-85">
         <div class="container">
-            <div class="d-sm-block description-review-topbar nav" data-aos="fade-down" data-aos-delay="50">
+            <div class=" description-review-topbar nav disp" data-aos="fade-down" data-aos-delay="50">
                 <a class="active" data-bs-toggle="tab" href="#des-details2" class=""> Характеристики </a>
                 <a data-bs-toggle="tab" href="#des-details1"> Описание </a>
                 <a data-bs-toggle="tab" href="#des-details3" class=""> Отзывы </a>
