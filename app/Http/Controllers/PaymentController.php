@@ -63,6 +63,9 @@ class PaymentController extends Controller
             return response()->json([
                 'result' => [
                     'allow' => 'true',
+                    'additional' => [
+                        'shop' => 'LumenLux'
+                    ],
                 ]
             ]);
         } elseif($payment && $payment->amount != $amount) {
