@@ -86,21 +86,10 @@ class PaymentController extends Controller
         $payment = Payment::where('order_id', $orderId)->first();
 
         if ($payment && $payment->status != 'completed') {
-            if ($amount == $payment->sale->total_amount && $payment->sale->total_amount == $payment->amount){
-                $payment->update([
-                    'click_trans_id' => $transactionId,
-                ]);
-            } elseif($payment->sale->total_amount == $payment->amount && $amount != $payment->sale->total_amount) {
-                $payment->update([
-                    'click_trans_id' => $transactionId,
-                    'amount' => $amount,
-                ]);
-            } else{
-                $payment->update([
-                    'click_trans_id' => $transactionId,
-                    'amount' => $payment->amount + $amount,
-                ]);
-            }
+            $payment->update([
+                'click_trans_id' => $transactionId,
+                'amount' => $amount,
+            ]);
 
             return response()->json([
                 'result' => [
