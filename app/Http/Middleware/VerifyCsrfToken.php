@@ -15,5 +15,6 @@ class VerifyCsrfToken extends Middleware
         'telegram/webhook',
         'click/prepare',
         'click/complete',
+        'payme/prepare'
     ];
 }
