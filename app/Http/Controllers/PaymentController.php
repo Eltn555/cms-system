@@ -15,6 +15,8 @@ class PaymentController extends Controller
         $method = $request->input('method');
 
         switch ($method) {
+            case 'CheckTransaction':
+                return $this->checkTransactionID($request);
             case 'CheckPerformTransaction':
                 return $this->checkTransaction($request);
             case 'CreateTransaction':
@@ -25,6 +27,27 @@ class PaymentController extends Controller
                 return $this->cancelTransaction($request);
             default:
                 return response()->json(['error' => ['code' => -32601, 'message' => 'Method not found']], 400);
+        }
+    }
+
+    public function checkTransactionID(Request $request){
+        $transactionId = $request->input('params.id');
+
+        $payment = Payment::where('click_trans_id', $transactionId)->first();
+
+        if ($payment){
+            return response()->json([
+                'result' => [
+                    'create_time' => $payment->updated_at->timestamp,
+                    'perform_time' => $payment->updated_at->timestamp,
+                    'cancel_time' => 0,
+                    'transaction' => $payment->id,
+                    'state' => $payment->status == 'completed' ? 2 : 1,
+                    'reason' => null
+                ]
+            ]);
+        } else {
+            return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 404);
         }
     }
 
