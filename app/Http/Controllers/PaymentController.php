@@ -2,12 +2,121 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Payment;
 
 class PaymentController extends Controller
 {
+    //PayMe
+    public function handleRequest(Request $request)
+    {
+        $method = $request->input('method');
+
+        switch ($method) {
+            case 'CheckTransaction':
+                return $this->checkTransaction($request);
+            case 'CreateTransaction':
+                return $this->createTransaction($request);
+            case 'PerformTransaction':
+                return $this->performTransaction($request);
+            case 'CancelTransaction':
+                return $this->cancelTransaction($request);
+            default:
+                return response()->json(['error' => ['code' => -32601, 'message' => 'Method not found']], 400);
+        }
+    }
+
+    public function checkTransaction(Request $request)
+    {
+        $transactionId = $request->input('params.account.orderID');
+        $amount = $request->input('params.amount');
+
+        // Find the transaction in the payments table
+        $payment = Payment::where('order_id', $transactionId)->first();
+
+        if ($payment && $payment->amount >= $amount) {
+            return response()->json([
+                'result' => [
+                    'allow' => 'true',
+                ]
+            ]);
+        } elseif($payment && $payment->amount != $amount) {
+            return response()->json(['result' => ['allow' => -31001, 'message' => 'Неверная сумма.']], 404);
+        } else{
+            return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 404);
+        }
+    }
+
+    public function createTransaction(Request $request)
+    {
+        $transactionId = $request->input('params.id');
+        $orderId = $request->input('params.account.orderID');
+        $amount = $request->input('params.amount');
+        $time = $request->input('params.time');
+
+        // Check if transaction already exists
+        $payment = Payment::where('order_id', $orderId)->first();
+
+        if ($payment && $payment->status != 'completed') {
+            if ($amount == $payment->sale->total_amount && $payment->sale->total_amount == $payment->amount){
+                $payment->update([
+                    'click_trans_id' => $transactionId,
+                ]);
+            } elseif($payment->sale->total_amount == $payment->amount && $amount != $payment->sale->total_amount) {
+                $payment->update([
+                    'click_trans_id' => $transactionId,
+                    'amount' => $amount,
+                ]);
+            } else{
+                $payment->update([
+                    'click_trans_id' => $transactionId,
+                    'amount' => $payment->amount + $amount,
+                ]);
+            }
+
+            return response()->json([
+                'result' => [
+                    'transaction' => $payment->click_trans_id,
+                    'state' => 1,
+                    'create_time' => $time
+                ]
+            ]);
+        } else {
+            return response()->json(['error' => ['code' => -31008, 'message' => 'Transaction already exists']], 409);
+        }
+    }
+
+    public function performTransaction(Request $request)
+    {
+        $transactionId = $request->input('params.id');
+
+        // Find the payment record by transaction ID
+        $payment = Payment::where('click_trans_id', $transactionId)->first();
+
+        if (!$payment) {
+            return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 404);
+        }
+
+        if ($payment->sale->total_amount == $payment->amount){
+            $payment->update([
+                'status' => 'completed',
+            ]);
+        }
+
+        return response()->json([
+            'result' => [
+                'transaction' => $payment->order_id,
+                'perform_time' => $payment->updated_at->timestamp,
+                'state' => 2 // Transaction completed
+            ]
+        ]);
+    }
+
+
+
+    //Click
     public function preparePayment(Request $request)
     {
         $merchantTransId = $request->input('merchant_trans_id');

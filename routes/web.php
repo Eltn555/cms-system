@@ -40,6 +40,7 @@ Route::group(['prefix'=>'/'], function (){
 
 Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
 
+Route::post('/payme/prepare', [PaymentController::class, 'handleRequest']);
 Route::post('/click/prepare', [PaymentController::class, 'preparePayment']);
 Route::post('/click/complete', [PaymentController::class, 'completePayment']);
 
