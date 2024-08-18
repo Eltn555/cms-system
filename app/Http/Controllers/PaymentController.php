@@ -31,7 +31,7 @@ class PaymentController extends Controller
     }
 
     public function checkTransactionID(Request $request){
-        $transactionId = $request->input('params.id');
+        $transactionId = trim($request->input('params.id'));
 
         $payment = Payment::where('click_trans_id', $transactionId)->first();
 
@@ -105,7 +105,7 @@ class PaymentController extends Controller
 
     public function performTransaction(Request $request)
     {
-        $transactionId = $request->input('params.id');
+        $transactionId = trim($request->input('params.id'));
 
         // Find the payment record by transaction ID
         $payment = Payment::where('click_trans_id', $transactionId)->first();
