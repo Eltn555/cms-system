@@ -15,7 +15,7 @@ class PaymentController extends Controller
         $method = $request->input('method');
 
         switch ($method) {
-            case 'CheckTransaction':
+            case 'CheckPerformTransaction':
                 return $this->checkTransaction($request);
             case 'CreateTransaction':
                 return $this->createTransaction($request);
