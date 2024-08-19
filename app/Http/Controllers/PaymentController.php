@@ -89,6 +89,7 @@ class PaymentController extends Controller
             $payment->update([
                 'click_trans_id' => $transactionId,
                 'amount' => $amount,
+                'status' => 'completed'
             ]);
 
             return response()->json([
