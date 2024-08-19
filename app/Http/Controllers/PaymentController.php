@@ -123,17 +123,16 @@ class PaymentController extends Controller
         if (!$payment) {
             return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 404);
         }
+        $currentTime = Carbon::now();
 
-        if ($payment->sale->total_amount == $payment->amount){
-            $payment->update([
-                'status' => 'completed',
-            ]);
-        }
-
+        $payment->update([
+            'status' => 'completed',
+            'perform_time' => $currentTime,
+        ]);
         return response()->json([
             'result' => [
                 'transaction' => $payment->order_id,
-                'perform_time' => $payment->updated_at->timestamp,
+                'perform_time' => $currentTime->valueOf(),
                 'state' => 2 // Transaction completed
             ]
         ]);
