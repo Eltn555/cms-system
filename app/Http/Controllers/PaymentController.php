@@ -134,8 +134,7 @@ class PaymentController extends Controller
                 'perform_time' => $currentTime,
             ]);
         }else{
-            $t = Carbon::parse($payment->perform_time);
-            $currentTime = $t->valueOf();
+            $currentTime = Carbon::parse($payment->perform_time);
         }
 
         return response()->json([
