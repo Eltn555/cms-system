@@ -85,23 +85,28 @@ class PaymentController extends Controller
         // Check if transaction already exists
         $payment = Payment::where('order_id', $orderId)->first();
 
-        if ($payment && $payment->status != 'completed') {
-            $payment->update([
-                'click_trans_id' => $transactionId,
-                'amount' => $amount,
-                'status' => 'completed'
-            ]);
+        if ($payment){
+            if ($payment->status != 'completed') {
+                $payment->update([
+                    'click_trans_id' => $transactionId,
+                    'amount' => $amount,
+                    'status' => 'completed'
+                ]);
 
-            return response()->json([
-                'result' => [
-                    'transaction' => "$payment->id",
-                    'state' => 1,
-                    'create_time' => $time
-                ]
-            ]);
-        } else {
-            return response()->json(['error' => ['code' => -31060, 'message' => 'Transaction already exists']], 409);
+                return response()->json([
+                    'result' => [
+                        'transaction' => "$payment->id",
+                        'state' => 1,
+                        'create_time' => $time
+                    ]
+                ]);
+            } else {
+                return response()->json(['error' => ['code' => -31060, 'message' => 'Transaction already exists']], 409);
+            }
+        }else{
+            return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 404);
         }
+
     }
 
     public function performTransaction(Request $request)
