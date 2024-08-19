@@ -139,6 +139,19 @@ class PaymentController extends Controller
             $currentTime = Carbon::createFromTimestampMs($performTimeMillis); // Create Carbon instance from milliseconds
         }
 
+        if ($payment->perform_time == null) {
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d H:i:s');
+
+            $payment->update([
+                'status' => 'completed',
+                'perform_time' => $formattedTime,
+            ]);
+        } else {
+            // Retrieve existing perform_time and parse it
+            $performTime = Carbon::parse($payment->perform_time);
+        }
+
         return response()->json([
             'result' => [
                 'transaction' => $payment->order_id,
