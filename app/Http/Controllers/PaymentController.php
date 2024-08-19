@@ -39,7 +39,7 @@ class PaymentController extends Controller
         if ($payment){
             return response()->json([
                 'result' => [
-                    'create_time' => $payment->created_time->timestamp,
+                    'create_time' => $payment->created_time->valueOf(),
                     'perform_time' => 0,
                     'cancel_time' => 0,
                     'transaction' => "$payment->id",
