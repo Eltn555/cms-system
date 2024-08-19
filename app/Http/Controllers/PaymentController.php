@@ -131,19 +131,19 @@ class PaymentController extends Controller
             $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
             $payment->update([
                 'status' => 'completed',
-                'perform_time' => $formattedTime, // Store as DATETIME
+                'perform_time' => $formattedTime,
             ]);
-            $performTimeMillis = $currentTime->valueOf();
+            $performTimeMillis = floor($currentTime->valueOf() / 100) * 100;
         } else {
             $performTime = Carbon::parse($payment->perform_time);
-            $performTimeMillis = $performTime->valueOf(); // Convert to milliseconds
+            $performTimeMillis = floor($performTime->valueOf() / 100) * 100;
         }
 
         return response()->json([
             'result' => [
                 'transaction' => $payment->order_id,
-                'perform_time' => $performTimeMillis, // Convert to milliseconds for the response
-                'state' => 2 // Transaction completed
+                'perform_time' => $performTimeMillis,
+                'state' => 2
             ]
         ]);
     }
