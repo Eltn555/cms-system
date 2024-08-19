@@ -126,15 +126,17 @@ class PaymentController extends Controller
             return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 404);
         }
 
-        if ($payment->perform_time == null){
+        if ($payment->perform_time == null) {
             $currentTime = Carbon::now();
+            $currentTimeMillis = $currentTime->valueOf(); // Get milliseconds
 
             $payment->update([
                 'status' => 'completed',
-                'perform_time' => $currentTime,
+                'perform_time' => $currentTimeMillis, // Store milliseconds
             ]);
-        }else{
-            $currentTime = Carbon::parse($payment->perform_time);
+        } else {
+            $performTimeMillis = $payment->perform_time; // Assuming it's stored as milliseconds
+            $currentTime = Carbon::createFromTimestampMs($performTimeMillis); // Create Carbon instance from milliseconds
         }
 
         return response()->json([
