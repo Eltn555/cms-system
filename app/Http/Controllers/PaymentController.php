@@ -101,7 +101,14 @@ class PaymentController extends Controller
                     ]
                 ]);
             } else {
-                return response()->json(['result' => ['code' => -31060, 'message' => 'Transaction already paid']], 200);
+                return response()->json([
+                    'result' => [
+                        'transaction' => "$payment->id",
+                        'state' => 1,
+                        'create_time' => $time
+                    ]
+                ]);
+//                return response()->json(['result' => ['code' => -31060, 'message' => 'Transaction already paid']], 200);
             }
         }else{
             return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 404);
