@@ -90,7 +90,6 @@ class PaymentController extends Controller
                 $payment->update([
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
-                    'status' => 'completed'
                 ]);
 
                 return response()->json([
@@ -101,7 +100,7 @@ class PaymentController extends Controller
                     ]
                 ]);
             } else {
-                return response()->json(['result' => ['code' => -31060, 'message' => 'Transaction already paid']], 409);
+                return response()->json(['result' => ['code' => -31060, 'message' => 'Transaction already paid']], 200);
             }
         }else{
             return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 404);
