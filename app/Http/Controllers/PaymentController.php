@@ -141,7 +141,7 @@ class PaymentController extends Controller
 
         return response()->json([
             'result' => [
-                'transaction' => $payment->order_id,
+                'transaction' => $payment->id,
                 'perform_time' => $performTimeMillis,
                 'state' => 2
             ]
