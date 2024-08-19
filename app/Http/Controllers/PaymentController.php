@@ -43,7 +43,7 @@ class PaymentController extends Controller
             return response()->json([
                 'result' => [
                     'create_time' => $time->valueOf(),
-                    'perform_time' => $performTime,
+                    'perform_time' => floor($performTime / 100) * 100,
                     'cancel_time' => 0,
                     'transaction' => "$payment->id",
                     'state' => $payment->status == 'completed' ? 2 : 1,
