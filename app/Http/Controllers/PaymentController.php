@@ -99,7 +99,7 @@ class PaymentController extends Controller
                 ]
             ]);
         } else {
-            return response()->json(['error' => ['code' => -31008, 'message' => 'Transaction already exists']], 409);
+            return response()->json(['error' => ['code' => -31060, 'message' => 'Transaction already exists']], 409);
         }
     }
 
