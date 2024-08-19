@@ -35,11 +35,12 @@ class PaymentController extends Controller
         $transactionId = trim($request->input('params.id'));
 
         $payment = Payment::where('click_trans_id', $transactionId)->first();
+        $time = Carbon::parse($payment->created_time);
 
         if ($payment){
             return response()->json([
                 'result' => [
-                    'create_time' => Carbon::parse($payment->created_time),
+                    'create_time' => $time->valueOf(),
                     'perform_time' => 0,
                     'cancel_time' => 0,
                     'transaction' => "$payment->id",
