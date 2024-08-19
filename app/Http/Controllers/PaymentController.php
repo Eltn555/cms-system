@@ -6,6 +6,7 @@ use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Payment;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -38,7 +39,7 @@ class PaymentController extends Controller
         if ($payment){
             return response()->json([
                 'result' => [
-                    'create_time' => $payment->updated_at->timestamp,
+                    'create_time' => $payment->created_time->timestamp,
                     'perform_time' => 0,
                     'cancel_time' => 0,
                     'transaction' => "$payment->id",
@@ -90,7 +91,10 @@ class PaymentController extends Controller
                 $payment->update([
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
+                    'created_time' => Carbon::createFromTimestampMs($time)->format('Y-m-d H:i:s.v'),
                 ]);
+
+
 
                 return response()->json([
                     'result' => [

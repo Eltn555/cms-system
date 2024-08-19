@@ -14,6 +14,10 @@ class Payment extends Model
         'click_trans_id',
         'amount',
         'status',
+        'perform_time',
+        'created_time',
+        'cancelled_time',
+        'info'
     ];
 
     public function sale()
