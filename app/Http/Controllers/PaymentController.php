@@ -93,7 +93,7 @@ class PaymentController extends Controller
 
             return response()->json([
                 'result' => [
-                    'transaction' => $payment->id,
+                    'transaction' => "$payment->id",
                     'state' => 1,
                     'create_time' => $time
                 ]
