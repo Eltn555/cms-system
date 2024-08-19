@@ -62,7 +62,7 @@ class PaymentController extends Controller
         if ($payment && $payment->amount >= $amount) {
             return response()->json([
                 'result' => [
-                    'allow' => 'true',
+                    'allow' => true,
                     'additional' => [
                         'shop' => 'LumenLux'
                     ],
