@@ -43,7 +43,7 @@ class PaymentController extends Controller
         $toDateTime = Carbon::createFromTimestampMs($toTime);
 
         // Retrieve transactions within the specified time range
-        $transactions = Payment::whereBetween('created_at', [$fromDateTime, $toDateTime])->get();
+        $transactions = Payment::whereBetween('created_at', [$fromDateTime, $toDateTime])->whereRaw('LENGTH(click_trans_id) > 11')->get();
 
         // Format the transactions for the response
         $formattedTransactions = $transactions->map(function ($payment) {
@@ -62,12 +62,10 @@ class PaymentController extends Controller
                 'transaction' => $payment->order_id,
                 'state' => $payment->status == 'completed' ? 2 : ($payment->status == 'canceled' ? -1 : 1),
                 'reason' => null,  // Set if there's a cancellation reason
-                'receivers' => $payment->receivers->map(function ($receiver) {
-                    return [
-                        'id' => $receiver->id,
-                        'amount' => $receiver->amount,
-                    ];
-                })->toArray()
+                'receivers' => [
+                        'id' => $payment->click_trans_id,
+                        'amount' => $payment->amount,
+                ],
             ];
         });
 
@@ -100,7 +98,7 @@ class PaymentController extends Controller
                 ]
             ]);
         } else {
-            return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 404);
+            return response()->json(['result' => ['code' => -31003, 'message' => 'Transaction not found']], 200);
         }
     }
 
