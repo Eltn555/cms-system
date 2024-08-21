@@ -155,7 +155,7 @@ class PaymentController extends Controller
                     ]
                 ]);
             }else{
-                return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found or already paid']], 200)
+                return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found or already paid']], 200);
             }
         }else{
             return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 200);
