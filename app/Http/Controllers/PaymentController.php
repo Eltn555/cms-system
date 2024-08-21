@@ -138,7 +138,7 @@ class PaymentController extends Controller
         $payment = Payment::where('order_id', $orderId)->first();
 
         if ($payment){
-            if ($payment->click_trans_id == 0) {
+            if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
@@ -154,8 +154,8 @@ class PaymentController extends Controller
                         'create_time' => $time
                     ]
                 ]);
-            }else{
-                return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found or already paid']], 200);
+            } else {
+                return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction already paid']], 200);
             }
         }else{
             return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 200);
