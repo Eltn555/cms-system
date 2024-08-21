@@ -138,7 +138,7 @@ class PaymentController extends Controller
         $payment = Payment::where('order_id', $orderId)->first();
 
         if ($payment){
-            if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId) {
+            if ($payment->click_trans_id == 0) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
