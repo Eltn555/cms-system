@@ -90,7 +90,7 @@ class PaymentController extends Controller
 
             return response()->json([
                 'result' => [
-                    'create_time' => floor($createdTime / 100) * 100,
+                    'create_time' => $createdTime,
                     'perform_time' => floor($performTime / 100) * 100,
                     'cancel_time' => 0,
                     'transaction' => "$payment->order_id",
@@ -154,6 +154,8 @@ class PaymentController extends Controller
                         'create_time' => $time
                     ]
                 ]);
+            }else{
+                return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found or already paid']], 200)
             }
         }else{
             return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 200);
