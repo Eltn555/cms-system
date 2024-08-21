@@ -18,6 +18,8 @@ class PaymentController extends Controller
         switch ($method) {
             case 'CheckTransaction':
                 return $this->checkTransactionID($request);
+            case 'GetStatement':
+                return $this->getStatement($request);
             case 'CheckPerformTransaction':
                 return $this->checkTransaction($request);
             case 'CreateTransaction':
@@ -31,18 +33,65 @@ class PaymentController extends Controller
         }
     }
 
+    public function getStatement(Request $request){
+        // Extract the 'from' and 'to' timestamps from the request
+        $fromTime = $request->input('params.from');
+        $toTime = $request->input('params.to');
+
+        // Convert timestamps to datetime format if necessary
+        $fromDateTime = Carbon::createFromTimestampMs($fromTime);
+        $toDateTime = Carbon::createFromTimestampMs($toTime);
+
+        // Retrieve transactions within the specified time range
+        $transactions = Payment::whereBetween('created_at', [$fromDateTime, $toDateTime])->get();
+
+        // Format the transactions for the response
+        $formattedTransactions = $transactions->map(function ($payment) {
+            $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
+            $performTime = $perform ? $perform->valueOf() : 0;
+            return [
+                'id' => $payment->click_trans_id,
+                'time' => $payment->created_at->timestamp * 1000,  // Convert to milliseconds
+                'amount' => $payment->amount,
+                'account' => [
+                    'phone' => $payment->sale->user->phone,  // Assuming you have a 'phone' field in your payment model
+                ],
+                'create_time' => $payment->created_at->timestamp * 1000,
+                'perform_time' => floor($performTime / 100) * 100,
+                'cancel_time' => $payment->status == 'failed' ? $payment->updated_at->timestamp * 1000 : 0,
+                'transaction' => $payment->order_id,
+                'state' => $payment->status == 'completed' ? 2 : ($payment->status == 'canceled' ? -1 : 1),
+                'reason' => null,  // Set if there's a cancellation reason
+                'receivers' => $payment->receivers->map(function ($receiver) {
+                    return [
+                        'id' => $receiver->id,
+                        'amount' => $receiver->amount,
+                    ];
+                })->toArray()
+            ];
+        });
+
+        // Return the response in the required format
+        return response()->json([
+            'result' => [
+                'transactions' => $formattedTransactions
+            ]
+        ]);
+    }
+
     public function checkTransactionID(Request $request){
         $transactionId = trim($request->input('params.id'));
 
         $payment = Payment::where('click_trans_id', $transactionId)->first();
-        $time = Carbon::parse($payment->created_time);
+        $time = $payment->created_time ? Carbon::parse($payment->created_time) : null;
+        $createdTime = $time ? $time->valueOf() : 0; // Default to 0 if null
         $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
         $performTime = $perform ? $perform->valueOf() : 0; // Default to 0 if null
 
         if ($payment){
             return response()->json([
                 'result' => [
-                    'create_time' => $time->valueOf(),
+                    'create_time' => floor($createdTime / 100) * 100,
                     'perform_time' => floor($performTime / 100) * 100,
                     'cancel_time' => 0,
                     'transaction' => "$payment->order_id",
@@ -73,9 +122,9 @@ class PaymentController extends Controller
                 ]
             ]);
         } elseif($payment && $payment->amount != $amount) {
-            return response()->json(['result' => ['allow' => -31001, 'message' => 'Неверная сумма.']], 404);
+            return response()->json(['result' => ['allow' => -31001, 'message' => 'Неверная сумма.']], 200);
         } else{
-            return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 404);
+            return response()->json(['result' => ['allow' => -31003, 'message' => 'Transaction not found']], 200);
         }
     }
 
