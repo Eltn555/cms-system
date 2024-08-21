@@ -81,12 +81,13 @@ class PaymentController extends Controller
         $transactionId = trim($request->input('params.id'));
 
         $payment = Payment::where('click_trans_id', $transactionId)->first();
-        $time = $payment->created_time ? Carbon::parse($payment->created_time) : null;
-        $createdTime = $time ? $time->valueOf() : 0; // Default to 0 if null
-        $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
-        $performTime = $perform ? $perform->valueOf() : 0; // Default to 0 if null
 
         if ($payment){
+            $time = $payment->created_time ? Carbon::parse($payment->created_time) : null;
+            $createdTime = $time ? $time->valueOf() : 0; // Default to 0 if null
+            $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
+            $performTime = $perform ? $perform->valueOf() : 0; // Default to 0 if null
+
             return response()->json([
                 'result' => [
                     'create_time' => floor($createdTime / 100) * 100,
