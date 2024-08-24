@@ -40,7 +40,7 @@
             padding: 12px 15px;
         }
         .blog-category{
-            height: 48px;
+            height: 35px;
             overflow-x: scroll;
         }
         .blog-category::-webkit-scrollbar{
@@ -72,11 +72,11 @@
             </div>
             <div class="col-12">
                 <div class="blog-category w-100 d-flex mt-4 font-kyiv">
-                    <a id="blogCategory" wire:click="setBlog('')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-4 notActive activeBlog">
+                    <a id="blogCategory" wire:click="setBlog('')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-3 notActive activeBlog">
                         Все
                     </a>
                     @foreach($categories as $category)
-                        <a id="blogCategory{{$category->id}}" wire:click="setBlog('{{$category->id}}')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-4 notActive">
+                        <a style="text-wrap: nowrap;" id="blogCategory{{$category->id}}" wire:click="setBlog('{{$category->id}}')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-3 notActive lh-1">
                             {{$category->title}}
                         </a>
                     @endforeach
