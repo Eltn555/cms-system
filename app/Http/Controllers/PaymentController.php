@@ -99,7 +99,7 @@ class PaymentController extends Controller
                 ]
             ]);
         } else {
-            return response()->json(['result' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
         }
     }
 
@@ -171,7 +171,7 @@ class PaymentController extends Controller
         $payment = Payment::where('click_trans_id', $transactionId)->first();
 
         if (!$payment) {
-            return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
         }
 
         if ($payment->perform_time == null) {
