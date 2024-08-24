@@ -121,9 +121,9 @@ class PaymentController extends Controller
                 ]
             ]);
         } elseif($payment && $payment->amount != $amount) {
-            return response()->json(['result' => ['allow' => -31001, 'message' => 'Неверная сумма.']], 200);
+            return response()->json(['error' => ['code' => -31001, 'message' => 'Неверная сумма.']], 200);
         } else{
-            return response()->json(['result' => ['allow' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
         }
     }
 
@@ -158,7 +158,7 @@ class PaymentController extends Controller
                 return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction already paid']], 200);
             }
         }else{
-            return response()->json(['result' => ['allow' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
         }
 
     }
