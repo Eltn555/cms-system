@@ -16,6 +16,13 @@ class PaymentController extends Controller
         $method = $request->input('method');
 
         switch ($method) {
+            case 'CancelTransaction':
+                return response()->json([
+                    'error' => [
+                        'code' => -32504,
+                        'message' => 'Transactions not found'
+                    ]
+                ]);
             case 'CheckTransaction':
                 return $this->checkTransactionID($request);
             case 'GetStatement':
