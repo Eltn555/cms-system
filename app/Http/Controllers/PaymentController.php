@@ -154,7 +154,7 @@ class PaymentController extends Controller
         // Check if transaction already exists
         $payment = Payment::where('order_id', $orderId)->first();
 
-        if ($payment){
+        if ($payment && $payment->amount == $amount){
             if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
