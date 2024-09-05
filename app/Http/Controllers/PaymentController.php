@@ -29,7 +29,7 @@ class PaymentController extends Controller
         $decodedCredentials = base64_decode($base64Credentials);
         list($username, $password) = explode(':', $decodedCredentials, 2);
 
-        $expectedPassword = 'O45M63%U6vfrq8P6KwblQDtkiKC7@GQcQ3vo';
+        $expectedPassword = 'O45M63%U6vdrq8P6KwbqQDtkiKC7@GQcQ3vo';
 
         if ($password != $expectedPassword) {
             return response()->json([
