@@ -37,7 +37,7 @@ class PaymentController extends Controller
                     'code' => -32504,
                     'message' => 'Unauthorized access: Invalid credentials'
                 ]
-            ], 401);
+            ]);
         }
 
         switch ($method) {
