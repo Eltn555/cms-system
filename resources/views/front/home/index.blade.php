@@ -214,7 +214,7 @@
                                          data-aos-delay="50">
                                         <a href="category/?tagId={{$banner->tag->id}}" class="w-100 position-relative">
                                             <img src="{{ asset('storage/' . $banner->image) }}" alt="{{$banner->title}}"
-                                                 class="w-100"></a>
+                                                 class="w-100" loading="lazy"></a>
                                         <div class="btn-style-6 btn-style-6-position btn-hover d-block">
                                             <p class="card-brand mb-1 fw-semibold">{{$banner->tag->products()->where('status', 1)->count()}}
                                                 вида товаров</p>
@@ -512,7 +512,7 @@
                         <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                             <div class="blog-img-date-wrap mb-25">
                                 <div class="blog-img">
-                                    <a class="w-100 h-100 overflow-hidden" href="{{ route('blog.details', ['id' => $last->id]) }}"><img class="h-100" src="{{ asset('storage/' . $last->image) }}" alt="$last->title"></a>
+                                    <a class="w-100 h-100 overflow-hidden" href="{{ route('blog.details', ['id' => $last->id]) }}"><img class="h-100" src="{{ asset('storage/' . $last->image) }}" alt="$last->title" loading="lazy"></a>
                                 </div>
                             </div>
                             <div class="blog-content">
