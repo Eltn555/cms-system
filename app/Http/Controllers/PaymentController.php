@@ -36,8 +36,6 @@ class PaymentController extends Controller
                 'error' => [
                     'code' => -32504,
                     'message' => 'Unauthorized access: Invalid credentials',
-                    'pass' => $password,
-                    'expected' => $expectedPassword
                 ]
             ]);
         }
@@ -201,7 +199,7 @@ class PaymentController extends Controller
                 return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction already paid']], 200);
             }
         }else{
-            return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -31001, 'message' => 'Transaction not found']], 200);
         }
 
     }
