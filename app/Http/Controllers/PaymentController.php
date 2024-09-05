@@ -31,11 +31,13 @@ class PaymentController extends Controller
 
         $expectedPassword = 'O45M63%U6vfrq8P6KwblQDtkiKC7@GQcQ3vo';
 
-        if ($password !== $expectedPassword) {
+        if ($password != $expectedPassword) {
             return response()->json([
                 'error' => [
                     'code' => -32504,
-                    'message' => 'Unauthorized access: Invalid credentials'
+                    'message' => 'Unauthorized access: Invalid credentials',
+                    'pass' => $password,
+                    'expected' => $expectedPassword
                 ]
             ]);
         }
