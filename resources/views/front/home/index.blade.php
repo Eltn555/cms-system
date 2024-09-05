@@ -93,7 +93,7 @@
             <div class="list">
                 @foreach($slider as $slide)
                     <div class="item">
-                        <img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->title}}">
+                        <img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->title}}" loading="lazy">
                         <div class="introduce">
                             <div class="topic d-flex pt-2">
                                 <h5 style=" font-size: 120px;" class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
@@ -125,7 +125,7 @@
                                 <div class="category-img-2 overflow-hidden">
                                     <a href="{{ route('front.category.show', $category->slug) }}">
                                         @foreach($category->images as $image)
-                                            {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img px-lg-1 px-xl-2" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 80%;"><img class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;">' : ''!!}
+                                            {!!strpos($image->alt, 'icon') !== false ? '<img class="category-normal-img px-lg-1 px-xl-2" loading="lazy" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 80%;"><img loading="lazy" class="category-hover-img" src="'.asset('storage/'.$image->image).'" alt="'.$image->alt.'" style="width: 100%;">' : ''!!}
                                         @endforeach
                                     </a>
                                 </div>
