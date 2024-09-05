@@ -22,7 +22,7 @@ class PaymentController extends Controller
                     'code' => -32504,
                     'message' => 'Authorization header missing or invalid format'
                 ]
-            ], 401);
+            ]);
         }
 
         $base64Credentials = substr($authHeader, 6);
