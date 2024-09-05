@@ -178,7 +178,10 @@ class PaymentController extends Controller
         // Check if transaction already exists
         $payment = Payment::where('order_id', $orderId)->first();
 
-        if ($payment && $payment->amount == $amount){
+        if ($payment){
+            if ($payment->amount != $amount){
+                return response()->json(['error' => ['code' => -31001, 'message' => 'Неверная сумма']], 200);
+            }
             if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
@@ -199,7 +202,7 @@ class PaymentController extends Controller
                 return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction already paid']], 200);
             }
         }else{
-            return response()->json(['error' => ['code' => -31001, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
         }
 
     }
