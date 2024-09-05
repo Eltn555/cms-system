@@ -13,7 +13,32 @@ class PaymentController extends Controller
     //PayMe
     public function handleRequest(Request $request)
     {
+        $authHeader = $request->header('Authorization');
         $method = $request->input('method');
+
+        if (!$authHeader || strpos($authHeader, 'Basic ') !== 0) {
+            return response()->json([
+                'error' => [
+                    'code' => -32504,
+                    'message' => 'Authorization header missing or invalid format'
+                ]
+            ], 401);
+        }
+
+        $base64Credentials = substr($authHeader, 6);
+        $decodedCredentials = base64_decode($base64Credentials);
+        list($username, $password) = explode(':', $decodedCredentials, 2);
+
+        $expectedPassword = 'O45M63%U6vfrq8P6KwblQDtkiKC7@GQcQ3vo';
+
+        if ($password !== $expectedPassword) {
+            return response()->json([
+                'error' => [
+                    'code' => -32504,
+                    'message' => 'Unauthorized access: Invalid credentials'
+                ]
+            ], 401);
+        }
 
         switch ($method) {
             case 'CancelTransaction':
@@ -51,14 +76,14 @@ class PaymentController extends Controller
         // Retrieve transactions within the specified time range
         $transactions = Payment::whereBetween('created_at', [$fromDateTime, $toDateTime])->whereRaw('LENGTH(click_trans_id) > 11')->get();
 
-        if ($transactions->isEmpty()) {
-            return response()->json([
-                'error' => [
-                    'code' => -32504,
-                    'message' => 'Transactions not found'
-                ]
-            ]);
-        }
+//        if ($transactions->isEmpty()) {
+//            return response()->json([
+//                'error' => [
+//                    'code' => -32504,
+//                    'message' => 'Transactions not found'
+//                ]
+//            ]);
+//        }
 
         // Format the transactions for the response
         $formattedTransactions = $transactions->map(function ($payment) {
@@ -115,7 +140,7 @@ class PaymentController extends Controller
                 ]
             ]);
         } else {
-            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -31003, 'message' => 'Transaction not found']], 200);
         }
     }
 
@@ -174,7 +199,7 @@ class PaymentController extends Controller
                 return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction already paid']], 200);
             }
         }else{
-            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
         }
 
     }
@@ -187,7 +212,7 @@ class PaymentController extends Controller
         $payment = Payment::where('click_trans_id', $transactionId)->first();
 
         if (!$payment) {
-            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
         }
 
         if ($payment->perform_time == null) {
