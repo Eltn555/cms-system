@@ -16,28 +16,30 @@ class PaymentController extends Controller
         $authHeader = $request->header('Authorization');
         $method = $request->input('method');
 
-        if (!$authHeader || strpos($authHeader, 'Basic ') !== 0) {
-            return response()->json([
-                'error' => [
-                    'code' => -32504,
-                    'message' => 'Authorization header missing or invalid format'
-                ]
-            ]);
-        }
+        if ($method != 'ChangePassword'){
+            if (!$authHeader || strpos($authHeader, 'Basic ') !== 0) {
+                return response()->json([
+                    'error' => [
+                        'code' => -32504,
+                        'message' => 'Authorization header missing or invalid format'
+                    ]
+                ]);
+            }
 
-        $base64Credentials = substr($authHeader, 6);
-        $decodedCredentials = base64_decode($base64Credentials);
-        list($username, $password) = explode(':', $decodedCredentials, 2);
+            $base64Credentials = substr($authHeader, 6);
+            $decodedCredentials = base64_decode($base64Credentials);
+            list($username, $password) = explode(':', $decodedCredentials, 2);
 
-        $expectedPassword = 'O45M63%U6vdrq8P6KwbqQDtkiKC7@GQcQ3vo';
+            $expectedPassword = 'O45M63%U6vdrq8P6KwbqQDtkiKC7@GQcQ3vo';
 
-        if ($password != $expectedPassword) {
-            return response()->json([
-                'error' => [
-                    'code' => -32504,
-                    'message' => 'Unauthorized access: Invalid credentials',
-                ]
-            ]);
+            if ($password != $expectedPassword) {
+                return response()->json([
+                    'error' => [
+                        'code' => -32504,
+                        'message' => 'Unauthorized access: Invalid credentials',
+                    ]
+                ]);
+            }
         }
 
         switch ($method) {
