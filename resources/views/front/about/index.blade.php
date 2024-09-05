@@ -166,11 +166,11 @@
                     <p class="font-kyiv mt-1 mt-sm-1 mt-md-3 mt-lg-5 mt-xl-5 mt-xxl-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</p>
                 </div>
                 <div class="col-md-12 col-lg-6 order-md-0 order-lg-1 order-sm-0 order-0 greeting-img position-relative">
-                    <img src="{{asset('abouthdr.png')}}" alt="lumen lux about">
+                    <img src="{{asset('abouthdr.png')}}" alt="lumen lux about" loading="lazy">
                 </div>
             </div>
             <div class="col-12 video-container">
-                <img src="{{asset('/aboutss/our team bk-wh.webp')}}" style="width:100%" alt="Lumen Lux - О нас">
+                <img src="{{asset('/aboutss/our team bk-wh.webp')}}" style="width:100%" alt="Lumen Lux - О нас" loading="lazy">
             </div>
             <div class="col-12">
                 <div class="row my-5 py-4 infoNumber">
@@ -217,7 +217,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/1.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/1.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -230,7 +230,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/2.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/2.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -243,7 +243,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/3.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/3.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -256,7 +256,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/4.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/4.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -269,7 +269,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/5.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/5.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -282,7 +282,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/6.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/6.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -295,7 +295,7 @@
                         <div class="product-wrap" data-aos="fade-up" data-aos-delay="200">
                             <div class="product-img img-zoom mb-25">
                                 <a>
-                                    <img src="{{asset('aboutss/7.webp')}}" alt="LumenLux team">
+                                    <img src="{{asset('aboutss/7.webp')}}" alt="LumenLux team" loading="lazy">
                                 </a>
                             </div>
                             <div class="product-content font-kyiv">
@@ -323,7 +323,7 @@
                     @foreach($partners as $key =>$partner)
                         <div class="swiper-slide d-flex justify-content-center align-items-center">
                             <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="50">
-                                <a href="#"><img src="{{asset('storage/' . $partner->image)}}" alt="LumenLux Pratners"></a>
+                                <a href="#"><img src="{{asset('storage/' . $partner->image)}}" alt="LumenLux Pratners" loading="lazy"></a>
                             </div>
                         </div>
                     @endforeach
