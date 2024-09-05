@@ -19,6 +19,7 @@ class PaymentController extends Controller
             case 'CancelTransaction':
                 return response()->json([
                     'error' => [
+                        'state' => -1,
                         'code' => -32504,
                         'message' => 'Transactions not found'
                     ]
@@ -33,8 +34,6 @@ class PaymentController extends Controller
                 return $this->createTransaction($request);
             case 'PerformTransaction':
                 return $this->performTransaction($request);
-            case 'CancelTransaction':
-                return $this->cancelTransaction($request);
             default:
                 return response()->json(['error' => ['code' => -32601, 'message' => 'Method not found']], 400);
         }
@@ -140,7 +139,7 @@ class PaymentController extends Controller
         } elseif($payment && $payment->amount != $amount) {
             return response()->json(['error' => ['code' => -31001, 'message' => 'Неверная сумма.']], 200);
         } else{
-            return response()->json(['error' => ['code' => -32504, 'message' => 'Transaction not found']], 200);
+            return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
         }
     }
 
