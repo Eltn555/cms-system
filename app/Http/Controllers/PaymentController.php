@@ -76,7 +76,7 @@ class PaymentController extends Controller
         $toDateTime = Carbon::createFromTimestampMs($toTime);
 
         // Retrieve transactions within the specified time range
-        $transactions = Payment::whereBetween('created_at', [$fromDateTime, $toDateTime])->whereRaw('LENGTH(click_trans_id) > 11')->get();
+        $transactions = Payment::whereBetween('created_time', [$fromDateTime, $toDateTime])->whereRaw('LENGTH(click_trans_id) > 11')->get();
 
 //        if ($transactions->isEmpty()) {
 //            return response()->json([
