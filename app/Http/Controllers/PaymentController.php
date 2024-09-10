@@ -71,9 +71,9 @@ class PaymentController extends Controller
         $fromTime = $request->input('params.from');
         $toTime = $request->input('params.to');
 
-        // Convert timestamps to datetime format if necessary
-        $fromDateTime = Carbon::createFromTimestampMs($fromTime);
-        $toDateTime = Carbon::createFromTimestampMs($toTime);
+        // Convert timestamps to datetime(3) format with milliseconds
+        $fromDateTime = Carbon::createFromTimestampMs($fromTime)->format('Y-m-d H:i:s.u');
+        $toDateTime = Carbon::createFromTimestampMs($toTime)->format('Y-m-d H:i:s.u');
 
         // Retrieve transactions within the specified time range
         $transactions = Payment::whereBetween('created_time', [$fromDateTime, $toDateTime])->whereRaw('LENGTH(click_trans_id) > 11')->get();
