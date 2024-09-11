@@ -84,6 +84,7 @@ class PaymentController extends Controller
                     ]);
                 }else{
                     $payment->update([
+                        'click_trans_id' => 0,
                         'status' => 'failed',
                         'cancelled_time' => $formattedTime,
                         'info' => $reason,
@@ -247,6 +248,7 @@ class PaymentController extends Controller
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
                     'created_time' => Carbon::createFromTimestampMs($time)->format('Y-m-d H:i:s.v'),
+                    'cancelled_time' => null
                 ]);
 
 
