@@ -66,7 +66,7 @@ class PaymentController extends Controller
         $status = $payment->sale->status;
 
         if ($payment){
-            if ($status == 'В ожидании'){
+            if ($status == 'В ожидании') {
                 $currentTime = Carbon::now();
                 $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
                 $payment->update([
@@ -75,13 +75,25 @@ class PaymentController extends Controller
                 ]);
                 $performTimeMillis = floor($currentTime->valueOf() / 100) * 100;
 
-                return response()->json([
-                    'result' => [
-                        'transaction' => $payment->order_id,
-                        'cancel_time' => $performTimeMillis,
-                        'state' => -2
-                    ]
-                ]);
+                if ($payment->cancelled_time){
+                    $cancelled = $payment->cancelled_time ? Carbon::parse($payment->cancelled_time) : null;
+                    $cancelled_time = $cancelled ? $cancelled->valueOf() : 0;
+                    return response()->json([
+                        'result' => [
+                            'transaction' => $payment->order_id,
+                            'cancel_time' => floor($cancelled_time / 100) * 100,
+                            'state' => -2
+                        ]
+                    ]);
+                }else{
+                    return response()->json([
+                        'result' => [
+                            'transaction' => $payment->order_id,
+                            'cancel_time' => $performTimeMillis,
+                            'state' => -2
+                        ]
+                    ]);
+                }
             }else{
                 return response()->json(['error' => ['code' => -31007, 'message' => 'Заказ выполнен. Невозможно отменить транзакцию.']], 200);
             }
