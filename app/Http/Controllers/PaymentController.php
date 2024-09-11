@@ -62,7 +62,7 @@ class PaymentController extends Controller
 
     public function cancellation(Request $request){
         $id = $request->input('params.id');
-        $reason = $id = $request->input('params.reason');
+        $reason = $request->input('params.reason');
         $payment = Payment::where('click_trans_id', $id)->first();
         $status = $payment->sale->status;
 
