@@ -171,15 +171,17 @@ class PaymentController extends Controller
             $performTime = $perform ? $perform->valueOf() : 0; // Default to 0 if null
 
             switch ($payment->status) {
-                case 'complated':
+                case 'completed':
                     $status = 2;
                     break;
                 case 'pending':
                     $status = 1;
+                    break;
                 case 'failed':
                     $status = -2;
+                    break;
                 default:
-                     $status = 0;
+                    $status = 0;
             }
 
             return response()->json([
