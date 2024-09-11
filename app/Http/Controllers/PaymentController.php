@@ -44,13 +44,7 @@ class PaymentController extends Controller
 
         switch ($method) {
             case 'CancelTransaction':
-                return response()->json([
-                    'error' => [
-                        'state' => -1,
-                        'code' => -32504,
-                        'message' => 'Transactions not found'
-                    ]
-                ]);
+                return $this->cancellation($request);
             case 'CheckTransaction':
                 return $this->checkTransactionID($request);
             case 'GetStatement':
@@ -63,6 +57,36 @@ class PaymentController extends Controller
                 return $this->performTransaction($request);
             default:
                 return response()->json(['error' => ['code' => -32601, 'message' => 'Method not found']], 400);
+        }
+    }
+
+    public function cancellation(Request $request){
+        $id = $request->input('params.id');
+        $payment = Payment::where('click_trans_id', $id)->first();
+        $status = $payment->sale->status;
+
+        if ($payment){
+            if ($status == 'В ожидании'){
+                $currentTime = Carbon::now();
+                $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
+                $payment->update([
+                    'status' => 'failed',
+                    'cancelled_time' => $formattedTime,
+                ]);
+                $performTimeMillis = floor($currentTime->valueOf() / 100) * 100;
+
+                return response()->json([
+                    'result' => [
+                        'transaction' => $payment->order_id,
+                        'cancel_time' => $performTimeMillis,
+                        'state' => -2
+                    ]
+                ]);
+            }else{
+                return response()->json(['error' => ['code' => -31007, 'message' => 'Заказ выполнен. Невозможно отменить транзакцию.']], 200);
+            }
+        }else{
+            return response()->json(['error' => ['code' => -31003, 'message' => 'Транзакция не найдена.']], 200);
         }
     }
 
@@ -91,6 +115,8 @@ class PaymentController extends Controller
         $formattedTransactions = $transactions->map(function ($payment) {
             $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
             $performTime = $perform ? $perform->valueOf() : 0;
+            $cancelled = $payment->cancelled_time ? Carbon::parse($payment->cancelled_time) : null;
+            $cancelled_time = $cancelled ? $cancelled->valueOf() : 0;
             return [
                 'id' => $payment->click_trans_id,
                 'time' => $payment->created_at->timestamp * 1000,  // Convert to milliseconds
@@ -101,7 +127,7 @@ class PaymentController extends Controller
                 ],
                 'create_time' => $payment->created_at->timestamp * 1000,
                 'perform_time' => floor($performTime / 100) * 100,
-                'cancel_time' => $payment->status == 'failed' ? $payment->updated_at->timestamp * 1000 : 0,
+                'cancel_time' => floor($cancelled_time / 100) * 100,
                 'transaction' => $payment->order_id,
                 'state' => $payment->status == 'completed' ? 2 : ($payment->status == 'canceled' ? -1 : 1),
                 'reason' => null,  // Set if there's a cancellation reason
@@ -115,8 +141,6 @@ class PaymentController extends Controller
         // Return the response in the required format
         return response()->json([
             'result' => [
-                'from' => $fromDateTime,
-                'to' => $toDateTime,
                 'transactions' => $formattedTransactions
             ]
         ]);
