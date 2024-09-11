@@ -170,13 +170,25 @@ class PaymentController extends Controller
             $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
             $performTime = $perform ? $perform->valueOf() : 0; // Default to 0 if null
 
+            switch ($payment->status) {
+                case 'complated':
+                    $status = 2;
+                    break;
+                case 'pending':
+                    $status = 1;
+                case 'failed':
+                    $status = -2;
+                default:
+                     $status = 0;
+            }
+
             return response()->json([
                 'result' => [
                     'create_time' => $createdTime,
                     'perform_time' => floor($performTime / 100) * 100,
                     'cancel_time' => 0,
                     'transaction' => "$payment->order_id",
-                    'state' => $payment->status == 'completed' ? 2 : 1,
+                    'state' => $status,
                     'reason' => null
                 ]
             ]);
