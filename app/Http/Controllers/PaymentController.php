@@ -62,6 +62,7 @@ class PaymentController extends Controller
 
     public function cancellation(Request $request){
         $id = $request->input('params.id');
+        $reason = $id = $request->input('params.reason');
         $payment = Payment::where('click_trans_id', $id)->first();
         $status = $payment->sale->status;
 
@@ -85,6 +86,7 @@ class PaymentController extends Controller
                     $payment->update([
                         'status' => 'failed',
                         'cancelled_time' => $formattedTime,
+                        'info' => $reason,
                     ]);
                     $performTimeMillis = floor($currentTime->valueOf() / 100) * 100;
                     return response()->json([
@@ -179,7 +181,7 @@ class PaymentController extends Controller
                     $status = 1;
                     break;
                 case 'failed':
-                    $status = -1;
+                    $status = -2;
                     break;
                 default:
                     $status = 0;
@@ -192,7 +194,7 @@ class PaymentController extends Controller
                     'cancel_time' => floor($cancelled_time / 100) * 100,
                     'transaction' => "$payment->order_id",
                     'state' => $status,
-                    'reason' => null
+                    'reason' => $payment->info,
                 ]
             ]);
         } else {
