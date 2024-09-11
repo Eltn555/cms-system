@@ -69,11 +69,7 @@ class PaymentController extends Controller
             if ($status == 'В ожидании') {
                 $currentTime = Carbon::now();
                 $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
-                $payment->update([
-                    'status' => 'failed',
-                    'cancelled_time' => $formattedTime,
-                ]);
-                $performTimeMillis = floor($currentTime->valueOf() / 100) * 100;
+
 
                 if ($payment->cancelled_time){
                     $cancelled = $payment->cancelled_time ? Carbon::parse($payment->cancelled_time) : null;
@@ -86,6 +82,11 @@ class PaymentController extends Controller
                         ]
                     ]);
                 }else{
+                    $payment->update([
+                        'status' => 'failed',
+                        'cancelled_time' => $formattedTime,
+                    ]);
+                    $performTimeMillis = floor($currentTime->valueOf() / 100) * 100;
                     return response()->json([
                         'result' => [
                             'transaction' => $payment->order_id,
