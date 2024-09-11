@@ -194,7 +194,7 @@ class PaymentController extends Controller
                     'cancel_time' => floor($cancelled_time / 100) * 100,
                     'transaction' => "$payment->order_id",
                     'state' => $status,
-                    'reason' => $payment->info,
+                    'reason' => intval($payment->info),
                 ]
             ]);
         } else {
