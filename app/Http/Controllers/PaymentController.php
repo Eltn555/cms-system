@@ -187,6 +187,8 @@ class PaymentController extends Controller
                     $status = 0;
             }
 
+            $reason = ($payment->info == null) ? null : intval($payment->info);
+
             return response()->json([
                 'result' => [
                     'create_time' => $createdTime,
@@ -194,7 +196,7 @@ class PaymentController extends Controller
                     'cancel_time' => floor($cancelled_time / 100) * 100,
                     'transaction' => "$payment->order_id",
                     'state' => $status,
-                    'reason' => intval($payment->info),
+                    'reason' => $reason,
                 ]
             ]);
         } else {
