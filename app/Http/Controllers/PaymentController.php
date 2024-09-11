@@ -179,7 +179,7 @@ class PaymentController extends Controller
                     $status = 1;
                     break;
                 case 'failed':
-                    $status = -2;
+                    $status = -1;
                     break;
                 default:
                     $status = 0;
