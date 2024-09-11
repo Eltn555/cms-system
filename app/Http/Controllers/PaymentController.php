@@ -83,7 +83,6 @@ class PaymentController extends Controller
                     ]);
                 }else{
                     $payment->update([
-                        'click_trans_id' => 0,
                         'status' => 'failed',
                         'cancelled_time' => $formattedTime,
                         'info' => $reason,
@@ -242,7 +241,7 @@ class PaymentController extends Controller
             if ($payment->amount != $amount){
                 return response()->json(['error' => ['code' => -31001, 'message' => 'Неверная сумма']], 200);
             }
-            if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId) {
+            if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId || $payment->cancelled_time) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
