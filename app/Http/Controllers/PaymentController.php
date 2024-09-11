@@ -185,6 +185,9 @@ class PaymentController extends Controller
                 default:
                     $status = 0;
             }
+            if ($payment->created_time && !$payment->perform_time && $payment->cancelled_time){
+                $status = -1;
+            }
 
             $reason = ($payment->info == null) ? null : intval($payment->info);
 
