@@ -131,24 +131,43 @@ class PaymentController extends Controller
             $performTime = $perform ? $perform->valueOf() : 0;
             $cancelled = $payment->cancelled_time ? Carbon::parse($payment->cancelled_time) : null;
             $cancelled_time = $cancelled ? $cancelled->valueOf() : 0;
+
+            switch ($payment->status) {
+                case 'completed':
+                    $status = 2;
+                    break;
+                case 'pending':
+                    $status = 1;
+                    break;
+                case 'failed':
+                    $status = -2;
+                    break;
+                default:
+                    $status = 0;
+            }
+            if ($payment->created_time && !$payment->perform_time && $payment->cancelled_time){
+                $status = -1;
+            }
+
+            $reason = ($payment->info == null) ? null : intval($payment->info);
+
             return [
                 'id' => $payment->click_trans_id,
                 'time' => $payment->created_at->timestamp * 1000,  // Convert to milliseconds
                 'amount' => $payment->amount,
                 'account' => [
                     'orderID' => $payment->order_id,
-                    'phone' => $payment->sale->user->phone,  // Assuming you have a 'phone' field in your payment model
                 ],
                 'create_time' => $payment->created_at->timestamp * 1000,
                 'perform_time' => floor($performTime / 100) * 100,
                 'cancel_time' => floor($cancelled_time / 100) * 100,
                 'transaction' => $payment->order_id,
-                'state' => $payment->status == 'completed' ? 2 : ($payment->status == 'canceled' ? -1 : 1),
-                'reason' => null,  // Set if there's a cancellation reason
-                'receivers' => [
-                        'id' => $payment->click_trans_id,
-                        'amount' => $payment->amount,
-                ],
+                'state' => $status,
+                'reason' => $reason,
+                'receivers' => $status >= 0 ? [
+                    'id' => $payment->click_trans_id,
+                    'amount' => $payment->amount,
+                ] : null,
             ];
         });
 
@@ -249,7 +268,9 @@ class PaymentController extends Controller
                     'click_trans_id' => $transactionId,
                     'amount' => $amount,
                     'created_time' => Carbon::createFromTimestampMs($time)->format('Y-m-d H:i:s.v'),
-                    'cancelled_time' => null
+                    'cancelled_time' => null,
+                    'info' => null,
+                    'status' => 'pending'
                 ]);
 
 
