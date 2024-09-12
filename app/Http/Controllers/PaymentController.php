@@ -151,7 +151,7 @@ class PaymentController extends Controller
 
             $reason = ($payment->info == null) ? null : intval($payment->info);
 
-            return [
+            $response = [
                 'id' => $payment->click_trans_id,
                 'time' => $payment->created_at->timestamp * 1000,  // Convert to milliseconds
                 'amount' => $payment->amount,
@@ -164,11 +164,16 @@ class PaymentController extends Controller
                 'transaction' => $payment->order_id,
                 'state' => $status,
                 'reason' => $reason,
-                'receivers' => $status >= 0 ? [
+            ];
+
+            if ($status >= 0) {
+                $response['receivers'] = [
                     'id' => $payment->click_trans_id,
                     'amount' => $payment->amount,
-                ] : null,
-            ];
+                ];
+            }
+
+            return $response;
         });
 
         // Return the response in the required format
