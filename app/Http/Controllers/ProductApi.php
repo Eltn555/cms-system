@@ -19,17 +19,17 @@ class ProductApi extends Controller
 
     public function index()
     {
+        echo 'started';
         $products = $this->moyskladService->getStockReport();
         if (isset($products['error'])) {
             Log::error('Failed to fetch products: ' . $products['error']);
             abort(500, 'Failed to fetch products');
         }
         foreach ($products as $product) {
-            if (strpos($product['name'], '24512/700') !== false) {
+            if ($product['stock'] < 1) {
                 dd($product);
             }
         }
-
-        dd($products);
+        echo 'complated';
     }
 }
