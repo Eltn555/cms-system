@@ -63,6 +63,11 @@ class MoyskladService
         $updated = 0;
         foreach ($allStock as $stock){
             $name = $stock['name'];
+
+            if ($name = 'Люстры [24512/700 CHROME]'){
+                dd($stock);
+            }
+
             $product = Product::where('title', $name)->first();
             $newPrice = number_format($stock['salePrice'] / 100, 0, '', '');
             $newAmount = number_format($stock['quantity'], 0, '', '');
