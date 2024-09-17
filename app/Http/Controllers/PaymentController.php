@@ -233,12 +233,12 @@ class PaymentController extends Controller
     public function checkTransaction(Request $request)
     {
         $transactionId = $request->input('params.account.orderID');
-        $amount = $request->input('params.amount');
+        $amount = $request->input('params.amount')*100;
 
         // Find the transaction in the payments table
         $payment = Payment::where('order_id', $transactionId)->first();
 
-        if ($payment && $payment->amount == $amount) {
+        if ($payment && $payment->amount*100 == $amount) {
             return response()->json([
                 'result' => [
                     'allow' => true,
@@ -247,7 +247,7 @@ class PaymentController extends Controller
                     ],
                 ]
             ]);
-        } elseif($payment && $payment->amount != $amount) {
+        } elseif($payment && $payment->amount*100 != $amount) {
             return response()->json(['error' => ['code' => -31001, 'message' => 'Неверная сумма.']], 200);
         } else{
             return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
@@ -258,20 +258,20 @@ class PaymentController extends Controller
     {
         $transactionId = $request->input('params.id');
         $orderId = $request->input('params.account.orderID');
-        $amount = $request->input('params.amount');
+        $amount = $request->input('params.amount')*100;
         $time = $request->input('params.time');
 
         // Check if transaction already exists
         $payment = Payment::where('order_id', $orderId)->first();
 
         if ($payment){
-            if ($payment->amount != $amount){
+            if ($payment->amount*100 != $amount){
                 return response()->json(['error' => ['code' => -31001, 'message' => 'Неверная сумма']], 200);
             }
             if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId || $payment->cancelled_time) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
-                    'amount' => $amount,
+                    'amount' => $amount/100,
                     'created_time' => Carbon::createFromTimestampMs($time)->format('Y-m-d H:i:s.v'),
                     'cancelled_time' => null,
                     'info' => null,
@@ -293,7 +293,6 @@ class PaymentController extends Controller
         }else{
             return response()->json(['error' => ['code' => -31099, 'message' => 'Transaction not found']], 200);
         }
-
     }
 
     public function performTransaction(Request $request)
