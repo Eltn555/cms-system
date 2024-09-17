@@ -319,6 +319,8 @@ class PaymentController extends Controller
             $performTime = Carbon::parse($payment->perform_time);
             $performTimeMillis = floor($performTime->valueOf() / 100) * 100;
         }
+        $name = $payment->sale->user->name;
+        $this->sendTelegramMessageAsync("🧾  № $transactionId \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->click_trans_id\n✅ Успешно оплачен");
 
         return response()->json([
             'result' => [
@@ -388,8 +390,9 @@ class PaymentController extends Controller
                 'status' => 'completed',
                 'click_trans_id' => $clickTransId,
             ]);
+            $name = $payment->sale->user->name;
 
-            $this->sendTelegramMessageAsync('Заказ №'.$merchantTransId.' успешно оплачен');
+            $this->sendTelegramMessageAsync("🧾  № $merchantTransId \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->click_trans_id\n✅ Успешно оплачен");
 
             return response()->json([
                 'click_trans_id' => $clickTransId,
