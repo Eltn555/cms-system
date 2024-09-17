@@ -64,7 +64,7 @@ class MoyskladService
         foreach ($allStock as $stock){
             $name = $stock['name'];
 
-            if ($name = 'Люстры [24512/700 CHROME]'){
+            if ($name === 'Люстры [24512/700 CHROME]'){
                 dd($stock);
             }
 
