@@ -166,7 +166,7 @@
                     <p class="font-kyiv mt-1 mt-sm-1 mt-md-3 mt-lg-5 mt-xl-5 mt-xxl-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</p>
                 </div>
                 <div class="col-md-12 col-lg-6 order-md-0 order-lg-1 order-sm-0 order-0 greeting-img position-relative">
-                    <img src="{{asset('abouthdr.png')}}" alt="lumen lux about" loading="lazy">
+                    <img src="{{asset('abouthdrLow.png')}}" alt="lumen lux about" loading="lazy">
                 </div>
             </div>
             <div class="col-12 video-container">
