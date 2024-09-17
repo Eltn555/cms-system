@@ -146,9 +146,6 @@
                 height: 430px;
             }
         }
-        .ovrflwx{
-            overflow-x: hidden;
-        }
         .slider-colleague{
             margin-right: -60px !important;
             margin-left: 45px !important;
