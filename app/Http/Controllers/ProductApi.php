@@ -25,7 +25,7 @@ class ProductApi extends Controller
             abort(500, 'Failed to fetch products');
         }
         foreach ($products as $product) {
-            if (strpos($product->name, '24512/700') !== false) {
+            if (strpos($product['name'], '24512/700') !== false) {
                 dd($product);
             }
         }
