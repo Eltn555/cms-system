@@ -271,7 +271,7 @@ class PaymentController extends Controller
             if ($payment->click_trans_id == 0 || $payment->click_trans_id == $transactionId || $payment->cancelled_time) {
                 $payment->update([
                     'click_trans_id' => $transactionId,
-                    'amount' => $amount,
+                    'amount' => $amount/100,
                     'created_time' => Carbon::createFromTimestampMs($time)->format('Y-m-d H:i:s.v'),
                     'cancelled_time' => null,
                     'info' => null,

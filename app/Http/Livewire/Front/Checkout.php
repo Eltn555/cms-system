@@ -159,9 +159,10 @@ class Checkout extends Component
     private function generatePaymeUrl($transactionID, $amount)
     {
         $merchantID = env('PAYMEMERCH');
+        $retutnURL=route('front.profile.index', ['orders']);
 
         // Prepare the string for base64 encoding
-        $data = "m=$merchantID;ac.orderID=$transactionID;a=$amount";
+        $data = "m=$merchantID;ac.orderID=$transactionID;a=$amount;c=$retutnURL";
 
         // Encode the data in base64 format
         $base64Data = base64_encode($data);

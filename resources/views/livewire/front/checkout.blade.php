@@ -217,7 +217,7 @@
                     <div class="col-12 col-lg-4 p-0 px-lg-1 online disabled">
 {{--                        wire:click="payment('Онлайн оплата')"--}}
                         <div class="bg-light d-flex align-items-center map-radio p-3" wire:click="payment('')">
-                            <input disabled class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
+                            <input class="radio mt-2 mt-lg-0" type="radio" name="payment" {{($payment == 'Онлайн оплата') ? 'checked' : ''}}>
                             <p class="mb-0 fw-semibold text-black">Онлайн оплата</p>
                         </div>
                     </div>
@@ -240,13 +240,13 @@
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Uzum')">
-                                <img src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('PayMe')">
+                                <img src="{{asset('storage/payment/payme.png')}}" alt="PayMe LumenLux">
                             </button>
                         </div>
                         <div class="payment-meth">
-                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('PayMe')">
-                                <img src="{{asset('storage/payment/payme.png')}}" alt="PayMe LumenLux">
+                            <button class="h-100 bg-white overflow-hidden" wire:click="payment('Uzum')">
+                                <img src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                             </button>
                         </div>
 {{--                        <div class="payment-meth">--}}
