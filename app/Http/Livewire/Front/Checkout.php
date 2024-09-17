@@ -140,11 +140,36 @@ class Checkout extends Component
                         'status' => 'pending',
                 ]);
                 return redirect($clickUrl);
+            }elseif ($this->payment === 'PayMe'){
+                $paymeURL = $this->generatePaymeUrl($saleDb->id, $this->overall*100);
+                Payment::create([
+                    'order_id' => $saleDb->id,
+                    'click_trans_id' => 00000, // This will be updated after Click sends the completion request
+                    'amount' => $this->overall,
+                    'status' => 'pending',
+                ]);
+                return redirect($paymeURL);
             }
 
             $this->flashMessage = "Спасибо! Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.";
             $this->dispatchBrowserEvent('flashMessage', ['message' => "Спасибо!\n\n\Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.", 'style' => 'bg-success']);
         }
+    }
+
+    private function generatePaymeUrl($transactionID, $amount)
+    {
+        $merchantID = env('PAYMEMERCH');
+
+        // Prepare the string for base64 encoding
+        $data = "m=$merchantID;ac.orderID=$transactionID;a=$amount";
+
+        // Encode the data in base64 format
+        $base64Data = base64_encode($data);
+
+        // Generate the final URL
+        $paymeUrl = "https://checkout.paycom.uz/$base64Data";
+
+        return $paymeUrl;
     }
 
     private function generateClickPaymentUrl($transactionId, $amount)
