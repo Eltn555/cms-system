@@ -25,7 +25,7 @@ class ProductApi extends Controller
             abort(500, 'Failed to fetch products');
         }
         foreach ($products as $product){
-            if ($product->name == "Люстры [24512/700 CHROME]"){
+            if ($product['name'] == "Люстры [24512/700 CHROME]"){
                 dd($product);
             }
         }
