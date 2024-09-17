@@ -24,8 +24,8 @@ class ProductApi extends Controller
             Log::error('Failed to fetch products: ' . $products['error']);
             abort(500, 'Failed to fetch products');
         }
-        foreach ($products as $product){
-            if ($product['name'] == "Люстры [24512/700 CHROME]"){
+        foreach ($products as $product) {
+            if (strpos($product->name, '24512/700') !== false) {
                 dd($product);
             }
         }
