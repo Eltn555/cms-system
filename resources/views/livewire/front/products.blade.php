@@ -252,7 +252,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 p-0 mt-md-3 mt-lg-0">
+                <div class="col-lg-2 p-0 mt-3 mt-lg-0 mt-xl-0">
                     <div class="p-3 info-delivery mb-4">
                         <div class="d-flex flex-wrap">
                             <div class="col-6 col-lg-12">
