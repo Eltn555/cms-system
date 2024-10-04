@@ -8147,7 +8147,7 @@ textarea {
 .product-details-content .product-details-meta > ul > li {
     color: #9f9e9e;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -8184,7 +8184,7 @@ textarea {
 .product-details-content .product-details-meta > ul > li ul li a {
     color: #9f9e9e;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .product-details-content .product-details-meta > ul > li ul li a:hover {
@@ -8462,7 +8462,7 @@ textarea {
     font-size: 20px;
     color: #919191;
     display: inline-block;
-    padding: 10px 25px;
+    padding: 10px 12.5px;
     border-bottom: 1px solid #A1A1A1;
 }
 
