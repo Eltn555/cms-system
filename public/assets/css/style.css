@@ -8450,16 +8450,31 @@ textarea {
 
 @media only screen and (max-width: 767px) {
     .description-review-topbar {
-        padding: 13px 5px;
+        background-color: #f4f4f4 !important;
+        padding: 2.5px;
         margin: 0 0 28px;
+        display: grid !important;
+        grid-template-columns: 50% 50%;
     }
     .description-review-topbar a{
-        padding: 7px 10px !important;
+        padding: 5px !important;
+        background-color: white;
+        border-bottom: none !important;
+        width: 100%;
+        font-size: 14px !important;
+    }
+    .description-review-topbar a.active {
+        color: #232323;
+        font-weight: 600;
+        background-color: #f4f4f4;
+    }
+    .description-review-topbar div{
+        padding: 2.5px;
     }
 }
 
 .description-review-topbar a {
-    font-size: 20px;
+    font-size: 18px;
     color: #919191;
     display: inline-block;
     padding: 10px 12.5px;

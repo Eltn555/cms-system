@@ -40,8 +40,13 @@
 <div class="myaccount-content font-kyiv border-0">
     <div class="account-details-form mt-3">
         <form action="" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-12">
+            <div class="row position-relative">
+                <h1 class="font-cormorant fw-bold">Затрудняетесь с выбором<br>освещения?</h1>
+                <a class="position-absolute p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style="top: 0; right: 0; width: 50px; height: 50px"><i class="pe-7s-close w-100 h-100" style="font-size: 50px"></i></a>
+                <p class="text-secondary my-3 lh-1">
+                    Оставьте ваш номер телефона и имя и наши специалисты перезвонять вам в ближайшее время
+                </p>
+                <div class="col-6">
                     <div class="single-input-item">
                         <label for="first-name" class="required">Имя</label>
                         <div class="position-relative">
@@ -69,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                     <div class="single-input-item">
                         <label for="display-name" class="required">Номер телефона</label>
                         <div class="position-relative">
@@ -99,14 +104,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-6">
+
+                </div>
+                <div class="col-6 d-flex">
+                    <div class="btn-hover w-50 my-3 pe-2">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="border-0 py-3 check-btn sqr-btn w-100 fw-bolder">Отмена</button>
+                    </div>
+                    <div class="single-input-item btn-hover w-50 my-3 ps-2">
+                        <button type="button" wire:click="checker({{$product}})" class="py-3 check-btn sqr-btn w-100 fw-bolder">Отправить</button>
+                    </div>
+                </div>
             </div>
-            <div class="single-input-item btn-hover w-100 my-3">
-                <button type="button" wire:click="checker({{$product}})" class="py-3 check-btn sqr-btn w-100 fw-bolder">Отправить</button>
-            </div>
+
         </form>
-        <p class="text-success mb-0 lh-1">
-            Отправьте имя и номер телефона. Наши операторы свяжутся с вами в ближайшее время.
-        </p>
     </div>
     <a class="close d-none " data-bs-dismiss="modal" aria-label="Close"><i class=" ti-close "></i></a>
 </div>

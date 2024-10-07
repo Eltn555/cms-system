@@ -54,10 +54,6 @@
             .product-wrap .product-img {
                 height: 265px;
             }
-            .disp{
-                display: block !important;
-
-            }
         }
         @media only screen and (max-width: 576px) {
             .product-wrap .product-img {
@@ -307,7 +303,7 @@
                     <div class="px-md-3 px-lg-0">
                         <div class="p-3 info-delivery">
                             <p class="hdln mb-0 font-kyiv text-lg-start text-center">Товар не представлен в нужном размере или цвете?</p>
-                            <p class="mb-0 text-center text-decoration-underline mt-2 fw-bold yel"><a class="p-4 px-1 yel" href="">Оставить заявку</a></p>
+                            <p class="mb-0 text-center text-decoration-underline mt-2 fw-bold yel"><a class="p-4 px-1 yel" data-bs-toggle="modal" data-bs-target="#exampleModal">Оставить заявку</a></p>
                         </div>
                     </div>
                 </div>
@@ -323,11 +319,11 @@
     </div>
     <div class="description-review-area pb-85">
         <div class="container px-xl-5 px-lg-1 px-md-0">
-            <div class=" description-review-topbar nav disp" data-aos="fade-down" data-aos-delay="50">
-                <a class="active" data-bs-toggle="tab" href="#des-details2" class=""> Характеристики </a>
-                <a data-bs-toggle="tab" href="#des-details1"> Описание </a>
-                <a data-bs-toggle="tab" href="#des-details4"> Оплата и доставка </a>
-                <a data-bs-toggle="tab" href="#des-details3" class=""> Отзывы </a>
+            <div class="description-review-topbar nav disp" data-aos="fade-down" data-aos-delay="50">
+                <div><a class="active" data-bs-toggle="tab" href="#des-details2" class=""> Характеристики </a></div>
+                <div><a data-bs-toggle="tab" href="#des-details1"> Описание </a></div>
+                <div><a data-bs-toggle="tab" href="#des-details4"> Оплата и доставка </a></div>
+                <div><a data-bs-toggle="tab" href="#des-details3" class=""> Отзывы </a></div>
             </div>
             <div class="tab-content">
                 <div id="des-details2" class="tab-pane active">
@@ -480,7 +476,5 @@
         function goBack() {
             window.history.back();
         }
-
-
     </script>
 @endsection
