@@ -12,9 +12,14 @@ class Products extends Component
     public $relatedProducts = [];
     public $additionalProducts = [];
     public $categories;
+    public $viewed;
 
     public function mount($slug){
         $this->product = Product::with('images', 'tags', 'additional_tags', 'categories')->where('slug', $slug)->firstOrFail();
+
+        $this->viewed = $this->product->image ?? 0;
+        $this->viewed += 1;
+        $this->product->update(['image' => $this->viewed]);
 
         $relatedTags = $this->product->tags()->with(['products' => function($query) {
             $query->where('status', 1);
