@@ -28,14 +28,19 @@ class BannerController extends Controller
         return view('admin.banner.edit', compact('banner', 'tags'));
     }
 
-    public function update(Banner $banner) {
-        $request = new Request;
-        $data = request()->validate([
-            'title'=> 'string',
-            'image' => 'string',
-            'tag_id' => 'string'
-        ]);
-        $banner->update($data);
+    public function update(Banner $banner, Request $request) {
+
+        $banner->title = $request->title;
+        $banner->tag_id = $request->tag_id;
+
+        if ($request->hasFile('image')) {
+            // Store the new image file
+            $imagePath = Storage::put('/images', $request['image']);
+            // Update the blog's image path
+            $banner->image = $imagePath;
+        }
+
+        $banner->save();
         return redirect()->route('admin.banner.index');
     }
 

@@ -65,6 +65,9 @@
                         <div class="basketShop position-absolute p-0" style="top: 0; right: 0; height: 1px; width: 1px;"></div>
                         <div class="col-lg-3 col-md-6 col-6">
                             <div class="header-action-wrap">
+                                <div class="d-flex d-md-flex d-lg-none d-xl-none d-sm-flex">
+                                    <livewire:front.cart.cart-count/>
+                                </div>
                                 <div class="justify-content-end d-none d-md-none d-lg-flex d-xl-flex d-sm-none position-relative ">
                                     @livewire('search-bar')
                                     <livewire:front.cart.cart-count/>
@@ -121,7 +124,7 @@
     </div>
 </header>
 <div class="off-canvas-active">
-    <div class="off-canvas-wrap position-relative">
+    <div class="pb-5 off-canvas-wrap position-relative">
         <div class="mb-20 font-cormorant position-relative row">
             <a class="off-canvas-close"><i class=" ti-close "></i></a>
             <div class="col-12">
@@ -178,7 +181,7 @@
                 </li>
             </ul>
         </div>
-        <div class="p-3 position-absolute bottom-0 end-0 start-0 single-input-item btn-hover">
+        <div class="pb-5 p-3 position-absolute bottom-0 end-0 start-0 single-input-item btn-hover">
             @if(auth()->user())
                 <a href="{{ route('front.profile.index') }}">
                     <div class="p-2 bg-light d-flex align-items-center justify-content-center">
