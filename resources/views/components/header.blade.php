@@ -66,6 +66,7 @@
                         <div class="col-lg-3 col-md-6 col-6">
                             <div class="header-action-wrap">
                                 <div class="d-flex d-md-flex d-lg-none d-xl-none d-sm-flex">
+                                    @livewire('search-bar')
                                     <livewire:front.cart.cart-count/>
                                 </div>
                                 <div class="justify-content-end d-none d-md-none d-lg-flex d-xl-flex d-sm-none position-relative ">
