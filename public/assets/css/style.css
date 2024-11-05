@@ -6253,6 +6253,14 @@ textarea {
     margin: 0 0 25px;
 }
 
+.blog-wrap .blog-content h2 {
+    font-size: 16px;
+    font-weight: 300;
+    color: #4a4a4a;
+    line-height: 28px;
+    margin: 0 0 25px;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .blog-wrap .blog-content p {
         margin: 0 0 15px;

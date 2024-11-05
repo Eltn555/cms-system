@@ -50,7 +50,7 @@
             color: #FFFFFF !important;
         }
 
-        .mega-menu-style li > a {
+        .mega-menu-style li > h2 > a {
             color: #0b0b0b !important;
         }
 
@@ -100,14 +100,13 @@
                                 <h5 style="top:-20px; left: 100px; -webkit-text-stroke: 1px rgba(255, 215, 0, 0.4)" class="lh-1 shadow-text-2 font-cormorant fw-bold">{{$slide->title}}</h5>
                             </div>
                             <div class="des font-kyiv fs-5"
-                                 style="color: rgba(182, 182, 182, 1);">{{$slide->text}}</div>
+                                 style="color: rgba(182, 182, 182, 1);"><h1 class="des font-kyiv fs-5 text-white">{{$slide->text}}</h1></div>
                             <a href="{{$slide->btn_link}}"
                                class="seeMore py-3 px-4 text-dark font-kyiv">{{$slide->btn_text}}</a>
                         </div>
                     </div>
                 @endforeach
             </div>
-
             <div class="arrows">
                 <button id="prev"><</button>
                 <button id="next">></button>
@@ -201,7 +200,7 @@
                             <div class="btn-style-6 btn-style-6-position btn-hover d-block">
                                 <p class="card-brand mb-1 fw-semibold">{{$banners[0]->tag->products->count()}} вида
                                     товаров</p>
-                                <h5 class="fw-bolder font-kyiv">{{ $banners[0]->title }}</h5>
+                                <h1 class="fs-5 text-white fw-bolder font-kyiv">{{ $banners[0]->title }}</h1>
                             </div>
                         </div>
                     </div>
@@ -218,7 +217,7 @@
                                         <div class="btn-style-6 btn-style-6-position btn-hover d-block">
                                             <p class="card-brand mb-1 fw-semibold">{{$banner->tag->products()->where('status', 1)->count()}}
                                                 вида товаров</p>
-                                            <h5 class="fw-bolder font-kyiv">{{$banner->title}}</h5>
+                                            <h1 class="fs-5 text-white fw-bolder font-kyiv">{{$banner->title}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -521,8 +520,8 @@
                                         {{$last->created_at->format('d.m.Y')}}
                                     </ul>
                                 </div>
-                                <h3 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $last->id]) }}">{{$last->title}}</a></h3>
-                                <p class="blog-text">{{ mb_strimwidth($last->description, 0, 77, '...') }}</p>
+                                <h1 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $last->id]) }}">{{$last->title}}</a></h1>
+                                <h2 class="blog-text fs-6 text-secondary">{{ mb_strimwidth($last->description, 0, 77, '...') }}</h2>
                             </div>
                         </div>
                     </div>

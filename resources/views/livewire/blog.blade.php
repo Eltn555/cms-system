@@ -77,7 +77,7 @@
                     </a>
                     @foreach($categories as $category)
                         <a style="text-wrap: nowrap;" id="blogCategory{{$category->id}}" wire:click="setBlog('{{$category->id}}')" class="d-flex h-100 fw-bolder justify-content-center align-items-center px-3 notActive lh-1">
-                            {{$category->title}}
+                            <h1 class="m-0 lh-1 fs-6 fw-semibold">{{$category->title}}</h1>
                         </a>
                     @endforeach
                 </div>
@@ -98,8 +98,8 @@
                                             {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                         </ul>
                                     </div>
-                                    <h3 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
-                                    <p class="blog-text">{{$blog->description}}</p>
+                                    <h1 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h1>
+                                    <h2 class="blog-text">{{$blog->description}}</h2>
                                 </div>
                             </div>
                         </div>
@@ -127,8 +127,8 @@
                                                     {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                                 </ul>
                                             </div>
-                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
-                                            <p class="blog-text mb-0">{{$blog->description}}</p>
+                                            <h1 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h1>
+                                            <h2 class="blog-text mb-0">{{$blog->description}}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -149,8 +149,8 @@
                                                     {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                                 </ul>
                                             </div>
-                                            <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
-                                            <p class="blog-text mb-0">{{$blog->description}}</p>
+                                            <h1 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h1>
+                                            <h2 class="blog-text mb-0">{{$blog->description}}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -179,8 +179,8 @@
                                                 {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                             </ul>
                                         </div>
-                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
-                                        <p class="blog-text mb-0">{{$blog->description}}</p>
+                                        <h1 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h1>
+                                        <h2 class="blog-text mb-0">{{$blog->description}}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -201,8 +201,8 @@
                                                 {{(new DateTime($blog->created_at))->format('d.m.Y')}}
                                             </ul>
                                         </div>
-                                        <h3 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h3>
-                                        <p class="blog-text mb-0">{{$blog->description}}</p>
+                                        <h1 class="font-kyiv fs-5 fw-bold mb-1 mt-0"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h1>
+                                        <h2 class="blog-text mb-0">{{$blog->description}}</h2>
                                     </div>
                                 </div>
                             </div>
