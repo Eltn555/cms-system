@@ -41,7 +41,7 @@
     <div class="account-details-form mt-3">
         <form action="" enctype="multipart/form-data">
             <div class="row position-relative">
-                <h1 class="font-cormorant fw-bold text-center text-md-start">Затрудняетесь с выбором<br>освещения?</h1>
+                <h2 class="fs-1 font-cormorant fw-bold text-center text-md-start">Затрудняетесь с выбором<br>освещения?</h2>
                 <a class="position-absolute p-0 d-none d-sm-block" data-bs-toggle="modal" data-bs-target="#exampleModal" style="top: 0; right: 0; width: 50px; height: 50px"><i class="pe-7s-close w-100 h-100" style="font-size: 50px"></i></a>
                 <p class="text-secondary my-3 lh-1 text-center text-md-start">
                     Оставьте ваш номер телефона и имя и наши специалисты перезвонять вам в ближайшее время

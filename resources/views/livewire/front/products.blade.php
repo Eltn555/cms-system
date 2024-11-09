@@ -178,7 +178,7 @@
                 <div class="col-lg-4 pe-1">
                     <div class="product-details-content" data-aos="fade-left" data-aos-delay="50">
                         <div class="d-flex">
-                            <h2 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h2>
+                            <h1 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h1>
                             <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
                                 <div class="">
                                     @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
@@ -225,7 +225,7 @@
                                 </li>
                                 <li><span class="title">Доступность:</span>
                                     <ul class="tag">
-                                        {!! ($product->amount) ? '<li class="text-success">Есть в наличии '.$product->amount.' шт.</li>' : '<li class="text-danger">Нет в наличии</li>' !!}
+                                        {!! ($product->amount) ? '<li class=""><h2 class="fs-6 text-success w-100">Есть в наличии '.$product->amount.' шт.</h2></li>' : '<li class="text-danger">Нет в наличии</li>' !!}
                                     </ul>
                                 </li>
                             </ul>
@@ -278,7 +278,7 @@
                                     <path d="M14.5 6H16.3212C17.7766 6 18.5042 6 19.0964 6.35371C19.6886 6.70742 20.0336 7.34811 20.7236 8.6295L22 11" stroke="#F8B301" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                                 <p class="hdln mb-0 font-kyiv">Доставка</p>
-                                <p class="prgrph font-kyiv">Доставка во все регионы Узбекистана </p>
+                                <h2 class="prgrph font-kyiv">Доставка во все регионы Узбекистана </h2>
 
                             </div>
                             <div class="col-6 col-lg-12">
@@ -290,8 +290,7 @@
                                 </svg>
 
                                 <p class="hdln mb-0 font-kyiv">Гарантия</p>
-                                <p class="prgrph font-kyiv">На все товары распространяется гарантия качества</p>
-
+                                <h2 class="prgrph font-kyiv">На все товары распространяется гарантия качества</h2>
                             </div>
                             <div class="col-6 col-lg-12">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,9 +299,8 @@
                                     <circle cx="18" cy="12" r="1" fill="#F8B301"/>
                                     <path d="M20.965 9C20.8873 7.1277 20.6366 5.97975 19.8284 5.17157C18.6569 4 16.7712 4 13 4L10 4C6.22876 4 4.34315 4 3.17157 5.17157C2 6.34315 2 8.22876 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20L13 20C16.7712 20 18.6569 20 19.8284 18.8284C20.6366 18.0203 20.8873 16.8723 20.965 15" stroke="#F8B301" stroke-width="1.5"/>
                                 </svg>
-
                                 <p class="hdln mb-0 font-kyiv">Удобный расчет</p>
-                                <p class="prgrph font-kyiv">Все виды оплаты для физических и юридических лиц</p>
+                                <h2 class="prgrph font-kyiv">Все виды оплаты для физических и юридических лиц</h2>
                             </div>
                             <div class="col-6 col-lg-12 d-flex flex-wrap">
                                 <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">

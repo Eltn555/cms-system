@@ -160,7 +160,7 @@
                 <div class="col-md-12 col-lg-6 order-lg-0 order-md-1 order-sm-1 order-1 mt-md-5 greeting-txt">
                     <h5 class="counter pt-md-5"></h5>
                     <h1 class="font-cormorant mt-5">Lumen Lux - где элегантность сочетается с освещением.</h1>
-                    <p class="font-kyiv mt-1 mt-sm-1 mt-md-3 mt-lg-5 mt-xl-5 mt-xxl-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</p>
+                    <h2 class="fs-5 font-kyiv mt-1 mt-sm-1 mt-md-3 mt-lg-5 mt-xl-5 mt-xxl-5">Что отличает нас от других, это непоколебимое стремление к совершенству. Каждая люстра в нашем ассортименте отбирается вручную, чтобы обеспечить качество и мастерство.</h2>
                 </div>
                 <div class="col-md-12 col-lg-6 order-md-0 order-lg-1 order-sm-0 order-0 greeting-img position-relative">
                     <img src="{{asset('abouthdrLow.png')}}" alt="lumen lux about" loading="lazy">
@@ -175,22 +175,22 @@
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">100</h5><span>+</span>
                         </div>
-                        <p class="mb-0 fw-bolder">Количество проектов!</p>
-                        <p class="px-5">Высокое разрешение и красивый дизайн только для вас!</p>
+                        <h2 class="mb-0 fw-bolder fs-6">Количество проектов!</h2>
+                        <h3 class="text-secondary px-5 fs-6">Высокое разрешение и красивый дизайн только для вас!</h3>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0" data-aos="fade-up" data-aos-delay="150">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">2500</h5><span>+</span>
                         </div>
-                        <p class="mb-0 fw-bolder">Довольные покупатели!</p>
-                        <p class="px-5">Покупатели очень благодарны за нашу работу!</p>
+                        <h2 class="mb-0 fw-bolder fs-6">Довольные покупатели!</h2>
+                        <h3 class="text-secondary px-5 fs-6">Покупатели очень благодарны за нашу работу!</h3>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up" data-aos-delay="250">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">3</h5><span></span>
                         </div>
-                        <p class="mb-0 fw-bolder">Количество наших филиалов!</p>
-                        <p class="px-5">Возможность посетить любой из наших ближайших офисов!</p>
+                        <h2 class="mb-0 fw-bolder fs-6">Количество наших филиалов!</h2>
+                        <h3 class="text-secondary px-5 fs-6">Возможность посетить любой из наших ближайших офисов!</h3>
                     </div>
                 </div>
             </div>

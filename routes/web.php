@@ -22,6 +22,8 @@ use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SitemapController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,8 @@ Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
 Route::post('/payme/prepare', [PaymentController::class, 'handleRequest']);
 Route::post('/click/prepare', [PaymentController::class, 'preparePayment']);
 Route::post('/click/complete', [PaymentController::class, 'completePayment']);
+Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+
 
 Route::post('/telegram/webhook', [TelegramController::class, 'webhook']);
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');

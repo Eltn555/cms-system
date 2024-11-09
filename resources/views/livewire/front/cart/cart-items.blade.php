@@ -1,6 +1,6 @@
 <div class="sidebar-cart-all">
         <a class="cart-close cartX"><i class="pe-7s-close"></i></a>
-        <h1 class="font-cormorant fw-bolder pb-4 border-bottom border-1 mb-5">Корзина</h1>
+        <p class="text-black fs-1 font-cormorant fw-bolder pb-4 border-bottom border-1 mb-5">Корзина</p>
         <div class="cart-content">
             <ul>
                 @foreach($items as $item)

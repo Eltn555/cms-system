@@ -55,9 +55,9 @@
     <div class="blog-details-area w-100 p-0">
         <div class="container px-0">
             <div class="row mt-5 pt-5 px-0 m-0">
-                <div class="col-12 d-md-block d-none mb-3"><a class="text-dark fw-semibold fs-5" href="/">Главная</a> /
-                    <a class="text-dark fw-semibold fs-5" href="{{ route('blog.index') }}">Блог</a> /
-                    <a class="text-muted fs-5" href="{{ route('blog.details', ['id' => $news->id]) }}">{{$news->title}}</a>
+                <div class="col-12 d-md-flex d-none mb-3"><a class="text-dark fw-semibold fs-5 me-1" href="/">Главная /</a>
+                    <a class="text-dark fw-semibold fs-5 me-1" href="{{ route('blog.index') }}"> Блог /</a>
+                    <a class="" href="{{ route('blog.details', ['id' => $news->id]) }}"><h1 class="text-muted fs-5">{{$news->title}}</h1></a>
                 </div>
                 <div class="col-12">
                     <div class="blog-details-wrapper overflow-hidden pb-5">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
 
-                        <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">{{ $news->description }}</p>
+                        <h2 data-aos="fade-up" data-aos-delay="200" class="fs-4 aos-init aos-animate">{{ $news->description }}</h2>
 
                         {!! html_entity_decode($news->content) !!}
                     </div>

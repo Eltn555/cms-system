@@ -29,8 +29,8 @@
 <div class="">
     <div class="container pt-5 mt-5">
         <div class="mt-4 mb-20 font-cormorant position-relative">
-            <h2 class="shadow-text-1 font-cormorant fw-bold">Магазин</h2>
-            <h2 class="shadow-text-2 font-cormorant fw-bold">Магазин</h2>
+            <h1 class="shadow-text-1 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h1>
+            <h2 class="shadow-text-2 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h2>
         </div>
         <div class="py-2 row">
             <div class="pe-0 single-product-cart btn-hover text-center d-lg-none col-2">
@@ -145,9 +145,8 @@
 
                             @if($mainCategories)
                                 <div class="sidebar-widget-title mb-25">
-                                    <h3>Категории</h3>
+                                    <h2 class="fs-5">Категории</h2>
                                 </div>
-
                                 <div class="sidebar-list-style">
                                     <ul>
                                         @foreach($mainCategories as $categorMenu)
