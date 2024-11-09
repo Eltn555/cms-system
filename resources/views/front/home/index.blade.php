@@ -50,7 +50,7 @@
             color: #FFFFFF !important;
         }
 
-        .mega-menu-style li > h2 > a {
+        .mega-menu-style li > h3 > a {
             color: #0b0b0b !important;
         }
 
