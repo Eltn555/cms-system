@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Lumen LUX | @yield('title')</title>
-    <meta name="robots" content="noindex, follow"/>
+    <meta name="robots" content="index, follow"/>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keyword')">
     <meta name="viewport" content="width=device-width, initial-scale=1">
