@@ -22,7 +22,7 @@
                             <ul class="text-white font-kyiv">
                                 <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDFGjUId">г. Ташкент, Ц5  (напротив Республиканской пожарки)</a></li>
                                 <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDV9z2jh">Ул. Паркентская, дом 241</a></li>
-                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDV97I1L">г. Самарканд, Микрорайон (напротив поликлиники)</a></li>
+                                <li><a class="text-white font-kyiv" href="https://yandex.com/maps/-/CDV97I1L">г. Самарканд, Микрорайон (напротив 7 поликлиники)</a></li>
                             </ul>
                         </div>
                     </div>
