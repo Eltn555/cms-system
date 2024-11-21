@@ -7,7 +7,7 @@
                     <div class="row align-items-center mx-1 mx-md-5">
                         <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
                             <div class="logo">
-                                <a  onclick="showNotification('New Message!', 'https://via.placeholder.com/40')">
+                                <a href="/">
                                     <img class="logo-black" height="55px" src="{{ asset('logo-black.png') }}" alt="LumenLux">
                                     <img class="logo-white d-none" height="55px" src="{{ asset('logo-white.png') }}" alt="LumenLux">
                                 </a>
