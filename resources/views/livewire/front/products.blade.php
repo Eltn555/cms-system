@@ -142,7 +142,7 @@
                     <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
                 </div>
                 <div class="col-lg-6">
-                    <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="50">
+                    <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="0">
                         <div class="product-details-small-img-wrap">
                             <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style">
                                 <div class="swiper-wrapper">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 pe-1">
-                    <div class="product-details-content" data-aos="fade-left" data-aos-delay="50">
+                    <div class="product-details-content" data-aos="fade-left" data-aos-delay="0">
                         <div class="d-flex">
                             <h1 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h1>
                             <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
