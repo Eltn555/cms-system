@@ -95,24 +95,7 @@
 <div class="main-wrapper main-wrapper-2">
     <x-header></x-header>
     <!-- Bootstrap Modal -->
-    <div class="modal fade show" id="notificationModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false" style="z-index: 1050;">
-        <div class="product-notify modal-dialog modal-sm modal-dialog-centered">
-            <div class="modal-content rounded-0 shadow-lg">
-                <div class="modal-body d-flex justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <img id="modalImage" src="" alt="Notification" class="rounded rounded-1 me-2" style="width: 80px; height: 80px;">
-                        <div style="height: 80px" class="ms-2 d-flex flex-column">
-                            <p class="fs-5 fw-semibold mb-2">Товар добавлен в корзину</p>
-                            <span id="modalTitle" style="font-size: 16px; color: #333;" class="fw-semibold"></span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-end justify-content-end pe-2">
-                        <a class="text-primary fs-6 fw-semibold" href="{{route('front.cartItems.index')}}">Прейти в корзину</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     @yield('content')
     <x-footer></x-footer>
 </div>
@@ -241,7 +224,7 @@
         Livewire.emit('closeReg');
     }
     $(function(){
-        $('.fly-to-basket').on('click', function () {
+        $('.fly-to-basketaaa').on('click', function () {
             var cart = $('.basketShop');
             var imgtodrag = $( '.'+$(this).attr('data-fly-to-basket') );
             if (imgtodrag.length) {
