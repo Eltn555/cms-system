@@ -188,6 +188,7 @@
             notificationModal.hide();
         }, 2000);
     }
+
     window.addEventListener('flashMessage', event => {
         const flashMessage = document.querySelector('.flash-message');
         flashMessage.text = event.detail.message;
