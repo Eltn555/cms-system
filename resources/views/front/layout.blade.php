@@ -51,6 +51,35 @@
     @livewireStyles
     @stack('styles')
     @yield('style')
+    <style>
+        .product-notify{
+            margin-top: 60px;
+            width: 60%;
+            max-width: unset !important;
+            min-height: unset !important;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .product-notify{
+                width: 85%;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .product-notify{
+                width: 80%;
+            }
+
+            .product-notify a, span{
+                font-size: 14px !important;
+            }
+
+            .product-notify p {
+                font-size: 16px !important;
+            }
+        }
+
+    </style>
     @livewireScripts
     <script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
     <script>  SaleBotPro.init({    onlineChatId: '2893'  });</script>
