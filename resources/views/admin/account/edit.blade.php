@@ -42,8 +42,8 @@
                                         <div class="mt-3"><label>Role</label>
                                             <div class="mt-2">
                                                 <select name="role" data-placeholder="Select a role for user" class="tom-select w-full">
-                                                    <option value="1">Admin</option>
-                                                    <option value="2">User</option>
+                                                    <option value="2" {{($account->role != 1) ? 'selected':''}}>User</option>
+                                                    <option value="1" {{($account->role == 1) ? 'selected':''}}>Admin</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -62,8 +62,8 @@
                                             <input id="state" type="text" class="form-control" name="state" value="{{ $account->state }}">
                                         </div>
                                         <div class="mt-3">
-                                            <label for="house" class="form-label">House</label>
-                                            <input id="house" type="text" class="form-control" name="house" value="{{ $account->house }}">
+                                            <label for="home" class="form-label">House</label>
+                                            <input id="home" type="text" class="form-control" name="home" value="{{ $account->home }}">
                                         </div>
                                     </div>
                                     <div class="mx-auto xl:mr-0 col-span-2 xl:ml-6">
