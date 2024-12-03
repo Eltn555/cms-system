@@ -6,7 +6,7 @@
                 <div
                     class="product-badge rounded-0 flex justify-end badge-pink" style="top: 5px; left: 5px;">
                         @foreach($tags as $tag)
-                            <div class="px-2 mb-1 d-flex justify-content-center align-items-center rounded-0 text-white fw-semibold tag-view">{{ $tag->visible == 1 ? $tag->title : '' }}</div>
+                            <div class="px-2 mb-1 d-flex justify-content-center align-items-center rounded-0 text-white fw-semibold" style="background-color: rgba(255, 0, 0, 0.6);">{{ $tag->visible == 1 ? $tag->title : '' }}</div>
                         @endforeach
                 </div>
                 @if($product->amount > 0)
