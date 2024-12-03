@@ -396,7 +396,7 @@
                 @if(isset($tagsIndex[0]))
                     @php
                         $tag = $tagsIndex[0];
-                        $products = $tag->products->filter(fn($product) => $product->status === 1)->take(4);
+                        $products = $tag->products->filter(fn($product) => $product->status == 1)->take(4);
                     @endphp
                 <div class="row">
                     @foreach($products as $product)
