@@ -35,10 +35,10 @@
                 </div>
                 <div class="font-kyiv">
                     @if($product->discount_price == "")
-                    <span class="p-1 new-price-card">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
+                    <span class="p-1" style="color: #232323; font-size: 20px; font-weight: 900;">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
                     @else
-                        <span class="p-1 old-price-card" style="font-size: 14px">Скидка:<span style="color: #ED4A67;">-{{number_format($profPercent, 0, '.', ' ')}}%</span> Выгода:<span style="color: #32C77F">{{number_format($profit, 0, '.', ' ')}}{{$product->price > 999 ? 'сум' : '$'}}</span></span><br>
-                        <span class="p-1 new-price-card">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}</span>
+                        <span class="p-1 old-price-card" style="font-size: 14px; color: #777777; font-weight: 400;">Скидка:<span style="color: #ED4A67;">-{{number_format($profPercent, 0, '.', ' ')}}%</span> Выгода:<span style="color: #32C77F">{{number_format($profit, 0, '.', ' ')}}{{$product->price > 999 ? 'сум' : '$'}}</span></span><br>
+                        <span class="p-1" style="color: #232323; font-size: 20px; font-weight: 900;">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}</span>
                     @endif
                 </div>
             </div>
