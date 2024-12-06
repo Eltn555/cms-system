@@ -129,6 +129,13 @@
         .hdln img{
             width: 45px;
         }
+        .new-price-card{
+            font-size: 24px;
+            font-weight: 700!important;
+        }
+        .old-price-card{
+            font-size: 16px;
+        }
     </style>
 @endsection
 
@@ -262,8 +269,12 @@
                     <div class="priceBuy">
                         <div class="product-details-action-wrap font-kyiv">
                             <div class="product-details-price py-md-3">
-                                <span class="p-1 {{($product->discount_price == "") ? 'd-none' : 'new-price'}}">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}</span>
-                                <span class="p-1 {{($product->discount_price == "") ? 'new-price' : 'old-price'}}">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
+                                @if($product->discount_price == "")
+                                    <span class="p-1 new-price-card">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
+                                @else
+                                    <span class="p-1 old-price-card">Скидка:<span style="color: #ED4A67;">-{{number_format($profPercent, 0, '.', ' ')}}%</span> Выгода:<span style="color: #32C77F">{{number_format($profit, 0, '.', ' ')}}{{$product->price > 999 ? 'сум' : '$'}}</span></span><br>
+                                    <span class="p-1 new-price-card">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}</span><span class="p-1 old-price-card text-decoration-line-through">{{number_format($product->price, 0, '.', ' ')}} {{$product->discount_price > 999 ? 'сум' : '$'}}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="d-flex btn-parent">

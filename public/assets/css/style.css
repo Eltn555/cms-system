@@ -7999,16 +7999,15 @@ textarea {
 }
 
 .old-price-card {
-    color: red;
-    font-size: 18px;
+    color: #777777;
+    font-size: 14px;
     font-weight: 400;
-    text-decoration: line-through;
 }
 
 .new-price-card {
-    color: #777777;
-    font-size: 18px;
-    font-weight: 600;
+    color: #232323;
+    font-size: 20px;
+    font-weight: 900;
 }
 
 .font-kyiv{

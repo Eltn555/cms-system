@@ -34,8 +34,12 @@
                     <h3 class="fw-semibold fs-6 p-1 mb-1"><a href="{{route('front.product.show', ['slug' => $product->slug])}}" style="cursor: pointer;">{{ $product->title }}</a></h3>
                 </div>
                 <div class="font-kyiv">
-                    <span class="p-1 {{($product->discount_price == "") ? 'visually-hidden hidden' : 'new-price-card'}}">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}<br></span>
-                    <span class="p-1 {{($product->discount_price == "") ? 'new-price-card' : 'old-price-card'}}">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
+                    @if($product->discount_price == "")
+                    <span class="p-1 new-price-card">{{number_format($product->price, 0, '.', ' ')}} {{$product->price > 999 ? 'сум' : '$'}}</span>
+                    @else
+                        <span class="p-1 old-price-card" style="font-size: 14px">Скидка:<span style="color: #ED4A67;">-{{number_format($profPercent, 0, '.', ' ')}}%</span> Выгода:<span style="color: #32C77F">{{number_format($profit, 0, '.', ' ')}}{{$product->price > 999 ? 'сум' : '$'}}</span></span><br>
+                        <span class="p-1 new-price-card">{{number_format($product->discount_price, 0, '.', ' ')}}  {{$product->discount_price > 999 ? 'сум' : '$'}}</span>
+                    @endif
                 </div>
             </div>
         </div>

@@ -80,7 +80,7 @@
     // Product slider active 1
     var sliderActiveTwo = new Swiper('.product-slider-active-1', {
         loop: true,
-        spaceBetween: 30,
+        spaceBetween: 0,
         navigation: {
             nextEl: '.product-next-1',
             prevEl: '.product-prev-1',
@@ -93,7 +93,7 @@
                 slidesPerView: 2
             },
             768: {
-                slidesPerView: 3
+                slidesPerView: 2.4
             },
             992: {
                 slidesPerView: 3

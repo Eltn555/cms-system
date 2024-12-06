@@ -13,6 +13,8 @@ class Products extends Component
     public $additionalProducts = [];
     public $categories;
     public $viewed;
+    public $profit;
+    public $profPercent;
 
     public function mount($slug){
         $this->product = Product::with('images', 'tags', 'additional_tags', 'categories')->where('slug', $slug)->firstOrFail();
@@ -20,6 +22,9 @@ class Products extends Component
         $this->viewed = $this->product->image ?? 0;
         $this->viewed += 1;
         $this->product->update(['image' => $this->viewed]);
+        $disc = $this->product->discount_price ?? 0;
+        $this->profit = $this->product->price - $disc;
+        $this->profPercent = ($this->profit / $this->product->price) * 100;
 
         $relatedTags = $this->product->tags()->with(['products' => function($query) {
             $query->where('status', 1);

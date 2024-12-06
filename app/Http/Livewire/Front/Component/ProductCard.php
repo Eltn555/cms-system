@@ -17,11 +17,16 @@ class ProductCard extends Component
     public $image;
     public $info;
     public $buttonClass;
+    public $profit;
+    public $profPercent;
     public function mount($product){
         $this->product = $product;
         $this->info = 'nothing yet';
         $this->tags = $product->tags()->where('visible', 1)->take(3)->get();
         $this->image = $product->images()->first();
+        $disc = $product->discount_price ?? 0;
+        $this->profit = $product->price - $disc;
+        $this->profPercent = ($this->profit / $product->price) * 100;
     }
 
     public function check($productid)
