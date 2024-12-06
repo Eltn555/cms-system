@@ -328,13 +328,13 @@
                             </div>
                             <div class="col-6 col-lg-12 d-flex flex-wrap">
                                 <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
-                                    <img class="w-100 " src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
-                                </div>
-                                <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100" src="{{asset('storage/payment/payme.png')}}" alt="Payme LumenLux">
                                 </div>
                                 <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100" src="{{asset('storage/payment/click.png')}}" alt="Click LumenLux">
+                                </div>
+                                <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
+                                    <img class="w-100 " src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                                 </div>
                                 <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100" src="{{asset('storage/payment/uzum_n.png')}}" alt="Uzum Nasiya LumenLux">
@@ -392,9 +392,9 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <p class="hdln mb-0 font-kyiv">Онлайн оплата
-                                <img class="" src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                                 <img class="" src="{{asset('storage/payment/payme.png')}}" alt="Payme LumenLux">
                                 <img class="" src="{{asset('storage/payment/click.png')}}" alt="Click LumenLux">
+                                <img class="" src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                                 <img class="" src="{{asset('storage/payment/uzum_n.png')}}" alt="Uzum nasiya LumenLux">
                             </p>
                             <p class="prgrph font-kyiv">Предостовляемая вами персональная информация является конфиденциальной и не подлежит разглашению.</p>

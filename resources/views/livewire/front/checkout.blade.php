@@ -145,7 +145,7 @@
 
 {{--                delivery Info--}}
                 <div class="">
-                    <div class="p-3 d-flex align-items-center justify-content-between bg-light border delivery">
+                    <div class="p-3 d-block d-md-flex align-items-center justify-content-between bg-light border delivery">
                         <div class="d-flex align-items-center ">
                             <svg class="pick-down d-none" width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15 7L8 1L1 7" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -155,7 +155,7 @@
                             </svg>
                             <p class="text-black mb-0 ms-4 ps-1 fw-semibold">Доставка</p>
                         </div>
-                        <p class="mb-0 fw-semibold">Бесплатная доставка по городу</p>
+                        <p class="mb-0 fw-semibold text-end">Бесплатная доставка по городу</p>
                     </div>
                     <div class="font-kyiv deliverySet {{(!$addressCollected)?'expanded':''}}">
                         <div wire:ignore class="row mt-2">

@@ -16,7 +16,7 @@
                         Телефон номер
                     </p>
                     @if ($status == 'initial')
-                        <form wire:submit.prevent="submitPhoneNumber">
+                        <form wire:submit.prevent="submitPhoneNumber" class="adapt-Registration">
                             <div class="position-relative mb-4">
                                 <div class="position-absolute h-100 top-0 left-0 p-3" style="padding-top: 0.9rem !important; color: #1f2226; font-size: 15px; font-weight: 600;">
                                     +998

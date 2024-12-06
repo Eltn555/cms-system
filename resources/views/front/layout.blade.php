@@ -59,6 +59,10 @@
             min-height: unset !important;
         }
 
+        .adapt-Registration{
+            width: 500px;
+        }
+
         @media only screen and (min-width: 768px) and (max-width: 991px) {
             .product-notify{
                 width: 85%;
@@ -70,6 +74,10 @@
                 width: 80%;
             }
 
+            .adapt-Registration{
+                width: 450px;
+            }
+
             .product-notify a, span{
                 font-size: 14px !important;
             }
@@ -79,6 +87,14 @@
             }
         }
 
+        @media only screen and (max-width: 500px) {
+            .adapt-Registration{
+                width: 100%;
+            }
+            .registration{
+                width: 100%;
+            }
+        }
     </style>
     @livewireScripts
     <script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
