@@ -26,7 +26,7 @@
     </style>
 @endsection
 <div class="">
-    <div class="modal fade show" id="notificationModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false" style="z-index: 1050;">
+    <div class="modal fade show pe-0" id="notificationModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false" style="z-index: 1050;">
         <div class="product-notify modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content rounded-0 shadow-lg">
                 <div class="modal-body d-flex justify-content-between">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end justify-content-end pe-2">
-                        <a class="text-primary fs-6 fw-semibold" href="{{route('front.cartItems.index')}}">Прейти в корзину</a>
+                        <a class="text-primary fs-6 fw-semibold notyText" href="{{route('front.cartItems.index')}}">Прейти в корзину</a>
                     </div>
                 </div>
             </div>

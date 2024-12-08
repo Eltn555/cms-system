@@ -530,10 +530,10 @@
             </div>
         </div>
     </div>
-    <div class="modal fade show" id="notificationModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false" style="z-index: 1050;">
+    <div class="modal fade show pe-0" id="notificationModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false" style="z-index: 1050;">
         <div class="product-notify modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content rounded-0 shadow-lg">
-                <div class="modal-body d-flex justify-content-between">
+                <div class="modal-body d-flex justify-content-between flex-column flex-md-row">
                     <div class="d-flex align-items-center">
                         <img id="modalImage" src="" alt="Notification" class="rounded rounded-1 me-2" style="width: 80px; height: 80px;">
                         <div style="height: 80px" class="ms-2 d-flex flex-column">
@@ -542,7 +542,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end justify-content-end pe-2">
-                        <a class="text-primary fs-6 fw-semibold" href="{{route('front.cartItems.index')}}">Прейти в корзину</a>
+                        <a class="text-primary fs-6 fw-semibold notyText" href="{{route('front.cartItems.index')}}">Прейти в корзину</a>
                     </div>
                 </div>
             </div>

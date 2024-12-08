@@ -71,7 +71,9 @@
 
         @media only screen and (max-width: 767px) {
             .product-notify{
-                width: 80%;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .adapt-Registration{
@@ -85,11 +87,32 @@
             .product-notify p {
                 font-size: 16px !important;
             }
+            .product-notify .modal-body{
+                padding: 10px !important;
+            }
+            .product-notify .pe-2{
+                padding-left: 0 !important;
+            }
+            .notyText{
+                min-width: 141px;
+            }
         }
 
         @media only screen and (max-width: 500px) {
             .adapt-Registration{
                 width: 100%;
+            }
+            .product-notify p {
+                font-size: 14px !important;
+            }
+            .product-notify a, span{
+                font-size: 12px !important;
+            }
+            .notyText{
+                min-width: 120px;
+            }
+            .product-notify{
+                width: 97%;
             }
             .registration{
                 width: 100%;
@@ -185,7 +208,7 @@
         // Automatically hide the modal after 3 seconds
         setTimeout(() => {
             notificationModal.hide();
-        }, 2000);
+        }, 200000);
     }
 
     window.addEventListener('flashMessage', event => {
