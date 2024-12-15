@@ -64,10 +64,6 @@ class MoyskladService
         foreach ($allStock as $stock){
             $name = $stock['name'];
 
-            if ($name == 'Люстры [24512/700 CHROME]'){
-                dd($stock);
-            }
-
             $product = Product::where('title', $name)->first();
             $newPrice = number_format($stock['salePrice'] / 100, 0, '', '');
             $newAmount = number_format($stock['quantity'], 0, '', '');
@@ -89,6 +85,7 @@ class MoyskladService
                         $product->update([
                             'price' => $newPrice,
                             'amount' => $newAmount,
+                            'status' => 1
                         ]);
                     }
 
@@ -110,6 +107,23 @@ class MoyskladService
                 $created++;
             }
 
+        }
+
+        $allStockNames = array_column($allStock, 'name'); // Extract names from $allStock
+
+        // Get all products from the database
+        $dbProducts = Product::all(['id', 'title', 'status'])->toArray();
+
+        // Find products in the database that are not in $allStock
+        $missingProducts = array_filter($dbProducts, function ($product) use ($allStockNames) {
+            return !in_array($product['title'], $allStockNames);
+        });
+
+        // Process the missing products
+        foreach ($missingProducts as $missingProduct) {
+            // Optionally, mark missing products as inactive
+            Product::where('id', $missingProduct['id'])->update(['status' => 0]);
+            echo "Marked product {$missingProduct['title']} as inactive.\n";
         }
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
 
