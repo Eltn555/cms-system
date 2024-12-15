@@ -61,6 +61,7 @@ class MoyskladService
         $checked = 0;
         $created = 0;
         $updated = 0;
+        $deactivated = 0;
         foreach ($allStock as $stock){
             $name = $stock['name'];
 
@@ -81,6 +82,7 @@ class MoyskladService
                             'amount' => $newAmount,
                             'status' => 0
                         ]);
+                        $deactivated++;
                     }else{
                         $product->update([
                             'price' => $newPrice,
@@ -121,15 +123,18 @@ class MoyskladService
 
         // Process the missing products
         foreach ($missingProducts as $missingProduct) {
-            // Optionally, mark missing products as inactive
-            Product::where('id', $missingProduct['id'])->update(['status' => 0]);
-            echo "Marked product {$missingProduct['title']} as inactive.\n";
+            if ($missingProduct['status'] != 0){
+                // Optionally, mark missing products as inactive
+                Product::where('id', $missingProduct['id'])->update(['status' => 0]);
+                echo "Marked product {$missingProduct['title']} as inactive.\n";
+                $deactivated++;
+            }
         }
         $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
 
         $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
             'chat_id' => '-1002108174754',
-            'text' => 'Синхронизация завершена - '.date("h:i:sa")."\n\nПроверено:$checked \nОтредактировано:$updated \nСоздано:$created",
+            'text' => 'Синхронизация завершена - '.date("h:i:sa")."\n\nПроверено:$checked \nОтредактировано:$updated \nСоздано:$created \nДеактивирован:$deactivated",
             'parse_mode' => 'HTML',
         ]);
 
