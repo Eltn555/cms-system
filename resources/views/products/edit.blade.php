@@ -185,7 +185,7 @@
                 <div class="col-span-4 mx-2 sm:col-span-4 mt-3">
                     <label for="category" class="form-label" id=""><b class="text-danger">* </b>Categories</label>
                     <select data-placeholder="Select tags" class="w-full"
-                            id="category" name="categories[]" required
+                            id="category" name="categories[]"
                             multiple="multiple">
                         @foreach($categories as $category)
                             @if($products->categories->contains($category->id))
