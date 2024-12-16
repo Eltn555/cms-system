@@ -43,6 +43,6 @@ class Products extends Component
         if (is_array($this->product->categories) && array_key_exists(0, $this->product->categories) && $this->product->status == 1){
             return view('livewire.front.products')->extends('front.layout')->section('content');
         }
-        return view('errors.404')->extends('front.layout')->section('content');
+        return response()->view('errors.404', [], 404);
     }
 }
