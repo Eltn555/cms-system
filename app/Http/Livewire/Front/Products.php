@@ -40,9 +40,12 @@ class Products extends Component
 
     public function render()
     {
-        if (is_array($this->product->categories) && array_key_exists(0, $this->product->categories) && $this->product->status == 1){
+
+        if ($this->product->status == 1) {
             return view('livewire.front.products')->extends('front.layout')->section('content');
         }
-        return view('errors.404', [], 404);
+
+        // Return a 404 error view if conditions are not met
+        return view('errors.404')->extends('front.layout')->section('content');
     }
 }
