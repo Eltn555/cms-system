@@ -81,6 +81,7 @@ public $loadedPrice = true;
         }
         $this->tag = null;
         $this->search = null;
+        $loadedPrice = true;
     }
 
     public function setTag($id)
@@ -92,6 +93,7 @@ public $loadedPrice = true;
         } else{
             $this->dispatchBrowserEvent('urlChanged', ['url' => '?tagId='.$id]);
         }
+        $loadedPrice = true;
     }
 
     public function render()
