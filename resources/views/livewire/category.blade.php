@@ -138,7 +138,7 @@
                                 <h3>Цена, сум</h3>
                             </div>
                             <div class="price-filter">
-                                <div wire:ignore id="slider-range"
+                                <div id="slider-range"
                                      class="slider-range-l ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
                                     <div class="ui-slider-range ui-corner-all ui-widget-header"
                                          style="left: 0%; width: 77.7778%;"></div>
