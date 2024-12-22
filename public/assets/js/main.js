@@ -350,6 +350,28 @@
             " - " + sliderrange.slider("values", 1).toLocaleString());
     });
 
+    // function initializeSlider(min, max) {
+    //     var sliderrange = $('.slider-range-l');
+    //     var amountprice = $('.amount-l');
+    //     var min2 = amountprice.data('first') || 0;
+    //     var max2 = amountprice.data('last') || 500000;
+    //     sliderrange.slider({
+    //         range: true,
+    //         min: min2,
+    //         max: max2,
+    //         step: 10000,
+    //         values: [min2, max2],
+    //         slide: function(event, ui) {
+    //             amountprice.val(ui.values[0].toLocaleString() + " - " + ui.values[1].toLocaleString());
+    //             Livewire.emit('priceUpdated', ui.values);
+    //         }
+    //     });
+    //
+    //     amountprice.val(
+    //         sliderrange.slider("values", 0).toLocaleString() +
+    //         " - " + sliderrange.slider("values", 1).toLocaleString()
+    //     );
+    // }
 
     /* NiceSelect */
     $('.nice-select').niceSelect();

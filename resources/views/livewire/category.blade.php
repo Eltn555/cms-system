@@ -138,7 +138,7 @@
                                 <h3>Цена, сум</h3>
                             </div>
                             <div class="price-filter">
-                                <div id="slider-range"
+                                <div wire:ignore id="slider-range"
                                      class="slider-range-l ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
                                     <div class="ui-slider-range ui-corner-all ui-widget-header"
                                          style="left: 0%; width: 77.7778%;"></div>
@@ -150,7 +150,7 @@
                                 <div class="price-slider-amount">
                                     <div class="label-input">
                                         <label>Price:</label>
-                                        <input data-first="{{$price[0]}}" data-last="{{$price[1]}}" class="amount-l" type="text" id="amount" name="price" placeholder="Add Your Price">
+                                        <input data-first="{{$price[0]}}" data-last="{{$price[1]}}" class="amount-l" type="text" id="amount" name="price" placeholder="{{$price[0].' - '.$price[1]}}">
                                     </div>
                                 </div>
                             </div>
