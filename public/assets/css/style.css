@@ -8961,7 +8961,7 @@ textarea {
     border: 2px solid #ffffff;
 }
 
-.sidebar-widget .price-filter #slider-range {
+.sidebar-widget .price-filter .slider-range-l {
     background: rgba(0, 0, 0, 0.1);
     border: medium none;
     border-radius: 0px;
@@ -8971,13 +8971,13 @@ textarea {
     margin-top: 5px;
 }
 
-.sidebar-widget .price-filter #slider-range span {
+.sidebar-widget .price-filter .slider-range-l span {
     -webkit-transition: all .0s ease 0s;
     -o-transition: all .0s ease 0s;
     transition: all .0s ease 0s;
 }
 
-.sidebar-widget .price-filter #slider-range .ui-slider-range {
+.sidebar-widget .price-filter .slider-rang-l .ui-slider-range {
     position: absolute;
     display: block;
     border: 0;
@@ -8988,7 +8988,7 @@ textarea {
     transition: all .0s ease 0s;
 }
 
-.sidebar-widget .price-filter #slider-range .ui-slider-handle {
+.sidebar-widget .price-filter .slider-range-l .ui-slider-handle {
     background: #ffffff;
     border: medium none;
     border-radius: 50%;
@@ -9031,7 +9031,7 @@ textarea {
 
 .sidebar-widget .price-filter .price-slider-amount .label-input input {
     height: auto;
-    width: 50%;
+    width: 100%;
     font-size: 14px;
     background-color: transparent;
     border: none;
@@ -9041,13 +9041,13 @@ textarea {
 
 @media only screen and (min-width: 1200px) and (max-width: 1365px) {
     .sidebar-widget .price-filter .price-slider-amount .label-input input {
-        width: 55%;
+        width: 100%;
     }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .sidebar-widget .price-filter .price-slider-amount .label-input input {
-        width: 65%;
+        width: 100%;
     }
 }
 

@@ -23,8 +23,11 @@ class Categories extends Component
     public $tag;
     public $tags;
     public $price;
+    public $price2;
     public $mainCategories;
+public $loadedPrice = true;
 
+    protected $listeners = ['priceUpdated'];
 
     public function mount($slug = null)
     {
@@ -45,13 +48,18 @@ class Categories extends Component
 
     public function gotoPage($page)
     {
-//        $this->dispatchBrowserEvent('urlChanged', ['url' => $this->category->slug ?? '' . "?page=" . $page]);
         $this->setPage($page);
     }
 
-    public function setPrice($price)
+//    public function setPrice($price)
+//    {
+//        $this->price = $price;
+//    }
+
+    public function priceUpdated($values)
     {
-        $this->price = $price;
+        $this->price2 = $values;
+        $this->loadedPrice = false;
     }
 
     public function setCategory($slug, $mount = 0)
@@ -113,26 +121,16 @@ class Categories extends Component
             });
         }
 
+        if ($this->loadedPrice){
+            $this->price2 = [$products->min('price'), $products->max('price')];
+            $this->price = [$products->min('price'), $products->max('price')];
+        }
+
+        if ($this->price2 != $this->price){
+            $products->whereBetween('price', [$this->price2[0], $this->price2[1]]);
+        }
+
         $products = $products->orderBy('created_at', 'desc')->paginate(12);
-//        if ($this->category && $this->tag === null) {
-//            $products = $this->category->products();
-//        } else if ($this->tag && $this->category) {
-//            $tagId = $this->tag->id;
-//            $products = Product::where('category_id', $this->category->id)
-//                ->whereHas('tags', function ($query) use ($tagId) {
-//                    $query->whereIn('tags.id',[$tagId]);
-//                });
-//        } else {
-//            $products = new Product;
-//        }
-//        $products = $products->where(function ($query) {
-//            $query->where('title', 'LIKE', '%' . $this->search . '%')->
-//            orWhere('short_description', 'LIKE', '%' . $this->search . '%')->
-//            orWhere('long_description', 'LIKE', '%' . $this->search . '%')->
-//            orWhere('price', 'LIKE', '%' . $this->search . '%')->
-//            orWhere('discount_price', 'LIKE', '%' . $this->search . '%')->
-//            orWhere('additional', 'LIKE', '%' . $this->search . '%');
-//        })->orderBy('created_at', 'desc')->paginate(12);
 
         return view('livewire.category', compact('products'))->extends('front.layout')
             ->section('content');

@@ -330,20 +330,24 @@
     /*---------------------
         Price range
     --------------------- */
-    var sliderrange = $('#slider-range');
-    var amountprice = $('#amount');
+    var sliderrange = $('.slider-range-l');
+    var amountprice = $('.amount-l');
     $(function() {
+        var min = amountprice.data('first') || 0;
+        var max = amountprice.data('last') || 500000;
         sliderrange.slider({
             range: true,
-            min: 20,
-            max: 200,
-            values: [0, 160],
+            min: min,
+            max: max,
+            step:10000,
+            values: [min, max],
             slide: function(event, ui) {
-                amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+                amountprice.val(ui.values[0].toLocaleString() + " - " + ui.values[1].toLocaleString());
+                Livewire.emit('priceUpdated', ui.values);
             }
         });
-        amountprice.val("$" + sliderrange.slider("values", 0) +
-            " - $" + sliderrange.slider("values", 1));
+        amountprice.val(sliderrange.slider("values", 0).toLocaleString() +
+            " - " + sliderrange.slider("values", 1).toLocaleString());
     });
 
 
