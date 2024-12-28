@@ -86,12 +86,9 @@ class MoyskladService
                     }else{
                         $product->update([
                             'price' => $newPrice,
-                            'amount' => $newAmount,
-                            'status' => 1
+                            'amount' => $newAmount
                         ]);
                     }
-
-
                     $updated++;
                 }
                 $checked++;

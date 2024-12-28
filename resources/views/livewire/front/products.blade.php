@@ -401,75 +401,9 @@
                         </div>
                     </div>
                 </div>
-{{--                <div id="des-details3" class="tab-pane">--}}
-{{--                    <div class="review-wrapper">--}}
-{{--                        <h3>1 review for Sleeve Button Cowl Neck</h3>--}}
-{{--                        <div class="single-review">--}}
-{{--                            <div class="review-img">--}}
-{{--                                <img src="{{asset('no_photo.jpg')}}" alt="">--}}
-{{--                            </div>--}}
-{{--                            <div class="review-content">--}}
-{{--                                <div class="review-rating">--}}
-{{--                                    <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                    <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                    <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                    <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                    <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                </div>--}}
-{{--                                <h5><span>HasTech</span> - April 29, 2022</h5>--}}
-{{--                                <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="ratting-form-wrapper">--}}
-{{--                        <h3>Add a Review</h3>--}}
-{{--                        <p>Your email address will not be published. Required fields are marked <span>*</span></p>--}}
-{{--                        <div class="your-rating-wrap">--}}
-{{--                            <span>Your rating</span>--}}
-{{--                            <div class="your-rating">--}}
-{{--                                <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                <a href="#"><i class="ti-star"></i></a>--}}
-{{--                                <a href="#"><i class="ti-star"></i></a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="ratting-form">--}}
-{{--                            <form action="#">--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-lg-6 col-md-6">--}}
-{{--                                        <div class="rating-form-style mb-15">--}}
-{{--                                            <label>Name <span>*</span></label>--}}
-{{--                                            <input type="text">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-6 col-md-6">--}}
-{{--                                        <div class="rating-form-style mb-15">--}}
-{{--                                            <label>Email <span>*</span></label>--}}
-{{--                                            <input type="email">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-12">--}}
-{{--                                        <div class="rating-form-style mb-15">--}}
-{{--                                            <label>Your review <span>*</span></label>--}}
-{{--                                            <textarea name="Your Review"></textarea>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-12">--}}
-{{--                                        <div class="save-email-option">--}}
-{{--                                            <p><input type="checkbox"> <label>Save my name, email, and website in this browser for the next time I comment.</label></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-12">--}}
-{{--                                        <div class="form-submit">--}}
-{{--                                            <input type="submit" value="Submit">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div id="des-details3" class="tab-pane">
+                    <livewire:front.component.reviews :product="$product"/>
+                </div>
             </div>
         </div>
     </div>
