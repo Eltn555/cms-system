@@ -16,4 +16,9 @@ class Review extends Model
         'product_id',
         'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
