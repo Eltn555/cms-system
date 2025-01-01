@@ -74,7 +74,7 @@
                             <p class="fs-6 font-kyiv text-secondary">{{count($reviews)}} отзыв(ы)</p>
                         </div>
                 @else
-                    <h3>Rate first</h3>
+                    <p class="fs-5 font-kyiv">Будьте первым</p>
                 @endif
             </div>
         </div>
