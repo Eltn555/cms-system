@@ -13,6 +13,7 @@ class Reviews extends Component
     public $text;
     public $rated;
     public $reviews;
+    public $showing = 3;
 
     public function mount($product){
         $this->product = $product;
@@ -29,6 +30,10 @@ class Reviews extends Component
                 $this->text = $review->text ?? ''; // Assuming the `text` column exists in the Review model
             }
         }
+    }
+
+    public function more() {
+        $this->showing += 10;
     }
 
     public function rate($point){
