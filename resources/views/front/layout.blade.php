@@ -52,6 +52,15 @@
     @stack('styles')
     @yield('style')
     <style>
+        @media only screen and (min-width: 200px) and (max-width: 767px) {
+            .card-price .first-price{
+                font-size: 15px !important;
+            }
+            .card-price .second-price{
+                font-size: 17px !important;
+            }
+        }
+
         .product-notify{
             margin-top: 60px;
             width: 60%;
