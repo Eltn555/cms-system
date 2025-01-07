@@ -7850,6 +7850,15 @@ textarea {
     }
 }
 
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+    .card-price .first-price{
+        font-size: 15px !important;
+    }
+    .card-price .second-price{
+        font-size: 17px !important;
+    }
+}
+
 @media only screen and (min-width: 479px) and (max-width: 575px) {
     .single-testimonial:after {
         bottom: -23px;
@@ -8144,7 +8153,7 @@ textarea {
 }
 
 .product-details-content .product-details-meta {
-    margin: 15px 0;
+    margin: 5px 0 0;
     padding-bottom: 10px;
 }
 

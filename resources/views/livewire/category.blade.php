@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="container pt-5 mt-5">
+    <div class="container pt-1 pt-md-5 mt-5">
         <div class="mt-4 mb-20 font-cormorant position-relative">
             <h1 class="shadow-text-1 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h1>
             <h2 class="shadow-text-2 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h2>
@@ -201,31 +201,29 @@
     <div class="filter-mobile overflow-scroll filter-closed d-md-block d-lg-none">
         <a class="filClose off-canvas-close"><i class=" ti-close "></i></a>
         <div class="sidebar-wrapper">
-                                    <div class="sidebar-widget sidebar-widget-border mb-20 pb-35 aos-init aos-animate"
-                                         data-aos="fade-up" data-aos-delay="200">
-                                        <div class="sidebar-widget-title mb-20">
-                                            <h3>Filter By Price</h3>
-                                        </div>
-                                        <div class="price-filter">
-                                            <div id="slider-range"
-                                                 class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                                     style="left: 0%; width: 77.7778%;"></div>
-                                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
-                                                      style="left: 0%;"></span><span tabindex="0"
-                                                                                     class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                                     style="left: 77.7778%;"></span></div>
-                                            <div class="price-slider-amount">
-                                                <div class="label-input">
-                                                    <label>Price:</label>
-                                                    <input wire:model="price" wire:change="setPrice($(this).val())" type="text" id="amount" name="price" placeholder="Add Your Price">
-                                                </div>
-                                                <button type="button">Filter</button>
-                                            </div>
-                                        </div>
-                                    </div>
-            <div class="sidebar-widget sidebar-widget-border mb-40 pb-35 aos-init aos-animate"
+            <div class="sidebar-widget sidebar-widget-border mb-20 pb-35 aos-init aos-animate"
                  data-aos="fade-up" data-aos-delay="200">
+                <div class="sidebar-widget-title mb-20">
+                    <h3>Цена, сум</h3>
+                </div>
+                <div class="price-filter">
+                    <div wire:ignore id="slider-range"
+                         class="slider-range-l ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                        <div class="ui-slider-range ui-corner-all ui-widget-header"
+                             style="left: 0%; width: 77.7778%;"></div>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"
+                              style="left: 0%;"></span><span tabindex="0"
+
+                                                             class="ui-slider-handle ui-corner-all ui-state-default"
+                                                             style="left: 77.7778%;"></span></div>
+                    <div class="price-slider-amount">
+                        <div class="label-input">
+                            <label>Price:</label>
+                            <input data-first="{{$price[0]}}" data-last="{{$price[1]}}" class="amount-l" type="text" id="amount" name="price" placeholder="{{$price[0].' - '.$price[1]}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                 <!-- SIDEBAR CATEGORY LIST -->
                 <div class="sidebar-widget-title mb-25">
