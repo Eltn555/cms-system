@@ -89,7 +89,8 @@
                 width: 450px;
             }
 
-            .product-notify a, span{
+            .product-notify a,
+            .product-notify span{
                 font-size: 14px !important;
             }
 
@@ -114,7 +115,8 @@
             .product-notify p {
                 font-size: 14px !important;
             }
-            .product-notify a, span{
+            .product-notify a,
+            .product-notify span{
                 font-size: 12px !important;
             }
             .notyText{
