@@ -31,7 +31,7 @@ public $loadedPrice = true;
 
     public function mount($slug = null)
     {
-        $this->mainCategories = Category::where('parent_category_id', null)->where('is_active', 1)->get();
+        $this->mainCategories = Category::where('parent_category_id', null)->where('is_active', 1)->orderBy('order_id', 'asc')->get();
         $tagId = request()->query('tagId');
         $search = request()->query('search');
         $this->tags = Tag::all();
