@@ -48,6 +48,7 @@ Route::post('/click/complete', [PaymentController::class, 'completePayment']);
 Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
 
 
+
 Route::post('/telegram/webhook', [TelegramController::class, 'webhook']);
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');

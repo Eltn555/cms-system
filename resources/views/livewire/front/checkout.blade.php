@@ -286,15 +286,15 @@
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
                     <p class="pe-4">Сумма заказа:</p>
-                    <p class="text-black fw-500 text-end">{{$truePrice}} сум</p>
+                    <p class="text-black fw-500 text-end">{{number_format($truePrice, 0, '.', ' ')}} сум</p>
                 </div>
                 <div class="font-kyiv d-flex justify-content-between">
                     <p class="pe-4">Скидка:</p>
-                    <p class="text-black fw-500 text-end">{{$disc}} сум</p>
+                    <p class="text-black fw-500 text-end">{{number_format($disc, 0, '.', ' ')}} сум</p>
                 </div>
                 <div class="border-top border-1 mb-0 pt-3 text-secondary d-flex justify-content-between align-items-end">
                     <p class="font-kyiv fs-5 fw-semibold mb-0">Итого:</p>
-                    <p class="font-kyiv fs-4 fw-bolder text-black mb-0">{{$overall}} сум</p>
+                    <p class="font-kyiv fs-4 fw-bolder text-black mb-0">{{number_format($overall, 0, '.', ' ')}} сум</p>
                 </div>
             </div>
             <div class="row p-3">

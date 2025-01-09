@@ -412,6 +412,94 @@ class PaymentController extends Controller
         }
     }
 
+    //Uzum
+    public function verifyUzumPayment(Request $request)
+    {
+        $merchantTransId = $request->input('params.Id');
+        $amount = $request->input('params.amount');
+        $serID = $request->input('params.amount');
+        $servID = env('UZUM_ID');
+
+        if ($serID != $servID){
+            return response()->json([
+                'serviceId' => $serID,
+                'timestamp' => Carbon::now(),
+                'status' => 'FAILED',
+                'errorCode' => '10001',
+            ]);
+        }
+
+        // Verify the payment record
+        $payment = Payment::where('order_id', $merchantTransId)->first();
+
+        if ($payment && $payment->amount == $amount) {
+            return response()->json([
+                'serviceId' => $serID,
+                'timestamp' => Carbon::now(),
+                'status' => 'OK',
+                'data' => [
+                    'phone' => $payment->sale->user->phone,
+                    'ID' => $payment->ID
+                ],
+            ]);
+        }
+
+        return response()->json([
+            'serviceId' => $serID,
+            'timestamp' => Carbon::now(),
+            'status' => 'NOT FOUND',
+            'errorCode' => '10003',
+        ]);
+    }
+
+    public function createUzumPayment(Request $request)
+    {
+        $merchantTransId = $request->input('params.Id');
+        $amount = $request->input('params.amount');
+        $serID = $request->input('params.amount');
+        $servID = env('UZUM_ID');
+        $transID = $request->input('transId');
+
+        if ($serID != $servID){
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'transTime' => Carbon::now(),
+                'status' => 'FAILED',
+                'errorCode' => '10001',
+            ]);
+        }
+
+        // Verify the payment exists
+        $payment = Payment::where('order_id', $merchantTransId)->first();
+        if ($payment && $payment->amount == $amount) {
+            $payment->update([
+                'created_time' => Carbon::now(),
+                'info' => $transID,
+                'status' => 'pending'
+            ]);
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'transTime' => Carbon::now(),
+                'status' => 'CREATED',
+                'data' => [
+                    'phone' => $payment->sale->user->phone,
+                    'ID' => $payment->ID
+                ],
+                'amount' => $amount
+            ]);
+        }
+
+        return response()->json([
+            'serviceId' => $serID,
+            'transId' => $transID,
+            'transTime' => Carbon::now(),
+            'status' => 'FAILED',
+            'errorCode' => '10001',
+        ]);
+    }
+
     protected function sendTelegramMessageAsync($message)
     {
         dispatch(function () use ($message) {

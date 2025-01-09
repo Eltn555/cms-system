@@ -39,7 +39,7 @@
         <div class="cart-bottom">
             <div class="border-bottom border-1 text-secondary d-flex justify-content-between">
                 <p class="font-kyiv fs-5">Промежуточный итог:</p>
-                <p class="font-kyiv fs-5 fw-bolder text-black">{{$overall}}</p>
+                <p class="font-kyiv fs-5 fw-bolder text-black">{{number_format($overall, 0, '.', ' ')}}</p>
             </div>
             <div class="pt-2">
                 <p class="text-secondary font-kyiv">Налоги, стоимость доставки рассчитывается при оформлении заказа.</p>
