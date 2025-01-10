@@ -417,7 +417,7 @@ class PaymentController extends Controller
     {
         $merchantTransId = $request->input('params.Id');
         $amount = $request->input('params.amount');
-        $serID = $request->input('params.amount');
+        $serID = $request->input('params.serviceId');
         $servID = env('UZUM_ID');
 
         if ($serID != $servID){
@@ -456,7 +456,7 @@ class PaymentController extends Controller
     {
         $merchantTransId = $request->input('params.Id');
         $amount = $request->input('params.amount');
-        $serID = $request->input('params.amount');
+        $serID = $request->input('params.serviceId');
         $servID = env('UZUM_ID');
         $transID = $request->input('transId');
 
@@ -497,6 +497,57 @@ class PaymentController extends Controller
             'transTime' => Carbon::now(),
             'status' => 'FAILED',
             'errorCode' => '10001',
+        ]);
+    }
+
+    public function confirmUzumPayment(Request $request)
+    {
+        $merchantTransId = $request->input('params.Id');
+        $serID = $request->input('params.serviceId');
+        $servID = env('UZUM_ID');
+        $transID = $request->input('transId');
+
+        if ($serID != $servID){
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'transTime' => Carbon::now(),
+                'status' => 'FAILED',
+                'errorCode' => '10001',
+            ]);
+        }
+
+        $payment = Payment::where('order_id', $merchantTransId)->first();
+
+        if ($payment && $payment->status == 'pending') {
+                $currentTime = Carbon::now();
+                $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
+                $payment->update([
+                    'status' => 'completed',
+                    'perform_time' => $formattedTime,
+                ]);
+            $name = $payment->sale->user->name;
+            $address = $payment->sale->address_place;
+            $this->sendTelegramMessageAsync("📍$address\n🧾  № $merchantTransId \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->info\n✅ Успешно оплачен");
+                return response()->json([
+                    'serviceId' => $serID,
+                    'transId' => $transID,
+                    'status' => 'CONFIRMED',
+                    'confirmTime' => Carbon::now(),
+                    'data' => [
+                        'phone' => $payment->sale->user->phone,
+                        'ID' => $payment->ID
+                    ],
+                    'amount' => $payment->amount
+                ]);
+        }
+
+        return response()->json([
+            'serviceId' => $serID,
+            'transId' => $transID,
+            'status' => 'FAILED',
+            'confirmTime' => Carbon::now(),
+            'errorCode' => '10003',
         ]);
     }
 
