@@ -48,7 +48,7 @@ class TelegramController extends Controller
             }
 
             // Respond to the callback query
-            $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+            $telegramBotToken = env('TG');
             Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
                 'chat_id' => $chatId,
                 'text' => $responseText,

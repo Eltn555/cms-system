@@ -222,14 +222,18 @@
         }, 2000);
     }
 
-    window.addEventListener('flashMessage', event => {
+    window.addEventListener('flashMessage', (event) => {
         const flashMessage = document.querySelector('.flash-message');
-        flashMessage.text = event.detail.message;
+        if (!flashMessage) {
+            console.error('Flash message element not found');
+            return;
+        }
+        flashMessage.textContent = event.detail.message; // Use textContent instead of text.
         flashMessage.classList.remove('hiddenmsg');
         flashMessage.classList.add(event.detail.style);
         if (event.detail.style === 'bg-success') {
-            modal = document.querySelector('.close');
-            modal.click();
+            const modal = document.querySelector('.close');
+            if (modal) modal.click(); // Check if modal exists before clicking.
         }
         setTimeout(() => flashMessage.classList.add('hiddenmsg'), 7000);
     });

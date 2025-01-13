@@ -127,7 +127,7 @@ class MoyskladService
                 $deactivated++;
             }
         }
-        $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+        $telegramBotToken = env('TG');
 
         $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
             'chat_id' => '-1002108174754',

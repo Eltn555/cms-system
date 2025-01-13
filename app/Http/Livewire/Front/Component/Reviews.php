@@ -14,6 +14,7 @@ class Reviews extends Component
     public $rated;
     public $reviews;
     public $showing = 3;
+    public $flashMessage;
 
     public function mount($product){
         $this->product = $product;
@@ -50,9 +51,19 @@ class Reviews extends Component
                     'rate' => $this->rated,
                 ]
             );
-            session()->flash('message', 'Rating submitted successfully!');
+            $this->flashMessage = 'Спасибо за вашу оценку';
+            $this->dispatchBrowserEvent('flashMessage', [
+                'message' => $this->flashMessage,
+                'type' => 'success',
+                'style' => 'bg-success',
+            ]);
         }else{
-            session()->flash('message', 'Please register!');
+            $this->flashMessage = 'Пожалуйста, зарегистрируйтесь или войдите';
+            $this->dispatchBrowserEvent('flashMessage', [
+                'message' => $this->flashMessage,
+                'type' => 'error',
+                'style' => 'bg-danger',
+            ]);
         }
     }
 
@@ -70,12 +81,27 @@ class Reviews extends Component
                         'text' => $this->text,
                     ]
                 );
-                session()->flash('message', 'Rating submitted successfully!');
+                $this->flashMessage = 'Спасибо за вашу оценку';
+                $this->dispatchBrowserEvent('flashMessage', [
+                    'message' => $this->flashMessage,
+                    'type' => 'success',
+                    'style' => 'bg-success',
+                ]);
             }else{
-                session()->flash('message', 'Please register!');
+                $this->flashMessage = 'Пожалуйста, зарегистрируйтесь или войдите';
+                $this->dispatchBrowserEvent('flashMessage', [
+                    'message' => $this->flashMessage,
+                    'type' => 'error',
+                    'style' => 'bg-danger',
+                ]);
             }
         }else{
-            session()->flash('message', 'Please rate!');
+            $this->flashMessage = 'Пожалуйста, оцените, чтобы написать текстовый отзыв';
+            $this->dispatchBrowserEvent('flashMessage', [
+                'message' => $this->flashMessage,
+                'type' => 'error',
+                'style' => 'bg-danger',
+            ]);
         }
     }
 

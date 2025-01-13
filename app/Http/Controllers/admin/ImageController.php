@@ -65,4 +65,25 @@ class ImageController extends Controller
         // Redirect to the index page
         return redirect()->route('admin.images.index');
     }
+
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
+        $imageIds = [];
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('uploads', 'public');
+                $image = Image::create([
+                    'image' => $path,
+                    'alt' => $file->getClientOriginalName(),
+                ]);
+                $imageIds[] = $image->id;
+            }
+        }
+        return response()->json(['image_ids' => $imageIds]);
+    }
 }

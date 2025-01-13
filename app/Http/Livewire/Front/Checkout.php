@@ -189,7 +189,7 @@ class Checkout extends Component
     public function submitForm($text)
     {
         // Validate form fields
-        $telegramBotToken = '7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c';
+        $telegramBotToken = env('TG');
         $chatId = ['791430493', '-1002108174754']; //-1002108174754 1641704306 You'll need to obtain your chat ID from your bot
         $inlineKeyboard = [
             'inline_keyboard' => [

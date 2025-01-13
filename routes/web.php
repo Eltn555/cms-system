@@ -39,16 +39,12 @@ use App\Http\Controllers\SitemapController;
 Route::group(['prefix'=>'/'], function (){
    Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
 });
-
 Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
-
 Route::post('/payme/prepare', [PaymentController::class, 'handleRequest']);
 Route::post('/click/prepare', [PaymentController::class, 'preparePayment']);
 Route::post('/click/complete', [PaymentController::class, 'completePayment']);
 Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
-
-
-
+Route::post('/upload-images', [ImageController::class, 'upload'])->name('images.upload');
 Route::post('/telegram/webhook', [TelegramController::class, 'webhook']);
 Route::get('/category/search',[\App\Http\Controllers\front\CategoryController::class,'search'])->name('front.category.search');
 Route::get('/category/{slug}', \App\Http\Livewire\Categories::class)->name('front.category.show');
@@ -57,15 +53,12 @@ Route::get('/product/{slug}', \App\Http\Livewire\Front\Products::class)->name('f
 Route::get('/calculator', function () {
     return view('errors.soon');
 })->name('front.calculator.index');
-
 Route::get('/wishlist',\App\Http\Livewire\Front\Wishlist\Index::class)->name('front.wishlist.index');
-
 Route::get('/cartItems',\App\Http\Livewire\Front\Cart\CartView::class)->name('front.cartItems.index');
 Route::resource('/cart',\App\Http\Controllers\front\CartController::class, ['as'=>'front']);
 Route::group(['prefix' => '/', 'middleware' => ['front_auth']], function (){
     Route::get('/checkout', \App\Http\Livewire\Front\Checkout::class)->name('front.checkout.index');
 });
-
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/blog', Blog::class)->name('blog.index');
@@ -73,7 +66,6 @@ Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.deta
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/', \App\Http\Livewire\Profile::class)->name('front.profile.index');
     Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');
-
 });
 
 // ADMIN PANEL

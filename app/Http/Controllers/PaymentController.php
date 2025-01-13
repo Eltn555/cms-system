@@ -554,8 +554,9 @@ class PaymentController extends Controller
     protected function sendTelegramMessageAsync($message)
     {
         dispatch(function () use ($message) {
+            $tg = env('TG');
             try {
-                Http::post("https://api.telegram.org/bot7089662981:AAGLhqK0L3VeeOy2KLfeWo1zvswVogy3K_c/sendMessage", [
+                Http::post("https://api.telegram.org/bot{$tg}/sendMessage", [
                     'chat_id' => -1002108174754,
                     'text' => $message,
                     'parse_mode' => 'HTML',
