@@ -127,13 +127,13 @@ class MoyskladService
                 $deactivated++;
             }
         }
-        $telegramBotToken = env('TG');
-
-        $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
-            'chat_id' => '-1002108174754',
-            'text' => 'Синхронизация завершена - '.date("h:i:sa")."\n\nПроверено:$checked \nОтредактировано:$updated \nСоздано:$created \nДеактивирован:$deactivated",
-            'parse_mode' => 'HTML',
-        ]);
+//        $telegramBotToken = env('TG');
+//
+//        $response = Http::post("https://api.telegram.org/bot{$telegramBotToken}/sendMessage", [
+//            'chat_id' => '-1002108174754',
+//            'text' => 'Синхронизация завершена - '.date("h:i:sa")."\n\nПроверено:$checked \nОтредактировано:$updated \nСоздано:$created \nДеактивирован:$deactivated",
+//            'parse_mode' => 'HTML',
+//        ]);
 
         return $allStock;
     }
