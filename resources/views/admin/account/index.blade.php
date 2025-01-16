@@ -48,7 +48,7 @@
                                          src="{{ $account->image === 'no_photo.jpg' ? asset($account->image) : asset('storage/' . $account->image) }}">
                                 </div>
                                 <div class="ml-4">
-                                    <a href=""
+                                    <a href="{{ route('admin.account.edit', $account->id) }}"
                                        class="font-medium whitespace-nowrap">{{ $account->lastname }} {{ $account->name }}</a>
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
                                         {{ $account->email }}</div>

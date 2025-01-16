@@ -7,10 +7,30 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reviews = Review::all();
-        return view('review.index', compact('reviews'));
+        $currentPageNumber = $request->query('page', 1); // Default to page 1 if not provided
+        $perPage = $request->input('perPage', 10); // Default to 10 items per page
+        $reviewsQuery = Review::orderBy('created_at', 'desc');
+
+        if ($request->has('search')) {
+            $searchQuery = $request->input('search');
+            $reviewsQuery->where(function($query) use ($searchQuery) {
+                $query->where('text', 'like', '%'.$searchQuery.'%')
+                    ->orWhereHas('user', function($subQuery) use ($searchQuery) {
+                        $subQuery->where('name', 'like', '%'.$searchQuery.'%')
+                            ->orWhere('lastname', 'like', '%'.$searchQuery.'%');
+                    })
+                    ->orWhere('rate', 'like', '%'.$searchQuery.'%');
+            });
+        }
+
+        $reviews = $reviewsQuery->paginate($perPage)->appends([
+            'perPage' => $perPage,
+            'search' => $request->input('search') // Preserve the search query
+        ]);
+
+        return view('review.index', compact('reviews', 'perPage', 'currentPageNumber'));
     }
 
     /**

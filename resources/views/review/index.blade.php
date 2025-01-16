@@ -1,11 +1,25 @@
 @extends('admin')
+@section('styles')
+    <style>
+        .select-search{
+            top: 100%;
+            background-color: white;
+            border-radius: 10px;
+            border: solid lightgray 1px;
+
+        }
+        .select-search button{
+            padding: 5px;
+        }
+    </style>
+@endsection
 @section('content')
     <h2 class="intro-y text-lg font-medium mt-10">
         Reviews
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button data-tw-toggle="modal" data-tw-target="#create-modal" class="btn btn-primary shadow-md mr-2">Add New Category</button>
+            <button id="createRev" data-tw-toggle="modal" class="btn btn-primary shadow-md mr-2">Add New Review</button>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -37,110 +51,41 @@
             <table class="table table-report -mt-2">
                 <thead>
                 <tr>
-                    <th class="whitespace-nowrap">Image</th>
-                    <th class="whitespace-nowrap">Category name</th>
-                    <th class="whitespace-nowrap">Parent Category</th>
-                    <th class="whitespace-nowrap">Order</th>
-                    <th class="text-center whitespace-nowrap">Desciption</th>
-                    <th class="text-center whitespace-nowrap">Status</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    <th class="whitespace-nowrap">USER</th>
+                    <th class="whitespace-nowrap">RATE</th>
+                    <th class="whitespace-nowrap">TEXT</th>
+                    <th class="whitespace-nowrap text-center">DATE</th>
+                    <th class="text-center whitespace-nowrap">PRODUCT</th>
+                    <th class="text-center whitespace-nowrap">DELETE</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($reviews as $review)
-                    <tr id="{{$review->id}}" class="intro-x" data-action="{{$review->id}}">
-                        <td class="">
-                            <div class="flex items-center">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <button class="rate" value="{{$i+1}}" data-field="rate">
-                                        @if ($i < $review->rate)
-                                            <svg color="yellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                        @else
-                                            {{-- Light Slate Star for Unrated --}}
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star text-slate-500"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                        @endif
-                                    </button>
-                                @endfor
-                            </div>
-                        </td>
-                        <td class="editable" data-field="title" data-action="read" data-selectable="text">
-                            <a href="#" class="font-medium whitespace-nowrap">{{ $review->text }}</a>
-                        </td>
-                        <td class="edition text-center" data-field="order_id" data-action="read" data-selectable="number">
-                            <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select class="form-select edition" data-field="user_id">
-{{--                                    @foreach($users as $user)--}}
-{{--                                            <option value="{{$user->id}}" {{($user->id == $review->user_id) ? 'selected' : ''}}>{{$user->name}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                    <option value="" {{ is_null($review->user_id) ? 'selected' : '' }}>Not Selected</option>--}}
-                                    <option value="1" selected >Not Selected</option>
-                                </select>
-                            </div>
-                        </td>
-                        <td class="edition text-center" data-field="order_id" data-action="read" data-selectable="number">
-                            <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select class="form-select edition" data-field="product_id">
-{{--                                    @foreach($products as $product)--}}
-{{--                                        <option value="{{$product->id}}" {{($product->id == $review->product_id) ? 'selected' : ''}}>{{$product->name}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                    <option value="" {{ is_null($review->product_id) ? 'selected' : '' }}>Not Selected</option>--}}
-                                    <option value="1" selected >Not Selected</option>
-                                </select>
-                            </div>
-                        </td>
-                        <td class="edition">
-                            <div class="form-check form-switch w-full h-full flex justify-center">
-                                <select class="form-select edition" data-field="status">
-                                    <option value="approved"  >Approved</option>
-                                    <option value="disabled"  >Disabled</option>
-                                    <option value="new" selected >New</option>
-                                </select>
-                            </div>
-                        </td>
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                            </div>
-                        </td>
-                    </tr>
+                    <livewire:admin.review.review :review="$review" :key="$review->id" />
                 @endforeach
                 </tbody>
             </table>
         </div>
-        <!-- END: Data List -->
-        <!-- BEGIN: Pagination -->
-        {{--            <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">--}}
-        {{--                <nav class="w-full sm:w-auto sm:mr-auto">--}}
-        {{--                    <ul class="pagination">--}}
-        {{--                        <li class="page-item">--}}
-        {{--                            <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>--}}
-        {{--                        </li>--}}
-        {{--                        <li class="page-item">--}}
-        {{--                            <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-left"></i> </a>--}}
-        {{--                        </li>--}}
-        {{--                        <li class="page-item"> <a class="page-link" href="#">...</a> </li>--}}
-        {{--                        <li class="page-item"> <a class="page-link" href="#">1</a> </li>--}}
-        {{--                        <li class="page-item active"> <a class="page-link" href="#">2</a> </li>--}}
-        {{--                        <li class="page-item"> <a class="page-link" href="#">3</a> </li>--}}
-        {{--                        <li class="page-item"> <a class="page-link" href="#">...</a> </li>--}}
-        {{--                        <li class="page-item">--}}
-        {{--                            <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-right"></i> </a>--}}
-        {{--                        </li>--}}
-        {{--                        <li class="page-item">--}}
-        {{--                            <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>--}}
-        {{--                        </li>--}}
-        {{--                    </ul>--}}
-        {{--                </nav>--}}
-        {{--                <select class="w-20 form-select box mt-3 sm:mt-0">--}}
-        {{--                    <option>10</option>--}}
-        {{--                    <option>25</option>--}}
-        {{--                    <option>35</option>--}}
-        {{--                    <option>50</option>--}}
-        {{--                </select>--}}
-        {{--            </div>--}}
-        <!-- END: Pagination -->
     </div>
+
+    <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center grid grid-cols-12">
+        <div class="" style="grid-column: span 8 / span 8;">
+            {{ $reviews->appends(['perPage' => $perPage, 'search' => request()->input('search')])->links('vendor.pagination.bootstrap-5') }}
+        </div>
+        <div class="pagination-count col-span-4 flex justify-end">
+            <form action="{{ route('admin.reviews.index') }}" method="get">
+                @csrf
+                <label for="perPage">Items per page:</label>
+                <select name="perPage" id="perPage" onchange="this.form.submit()">
+                    <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                    <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </form>
+        </div>
+    </div>
+
     <div id="message" class="m-0 fixed alert border-success bg-white show px-3 py-2 rounded absolute flex items-center text-success font-bold" style=" left:50%; transform: translateX(-50%); z-index: 9999; top: 100px; display: none" role="alert"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-check"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>  Updated</div>
     <!-- BEGIN: Delete Confirmation Modal -->
     <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
@@ -177,11 +122,6 @@
             });
         });
         let id;
-        $("body").bind("ajaxSend", function(elm, xhr, s){
-            if (s.type == "POST") {
-                xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
-            }
-        });
         $(document).ready(function () {
             $('.editable').on('dblclick', function () {
                 if ($(this).data('action') === 'read') {
@@ -190,48 +130,36 @@
                     $input.focus();
                 }
             });
+            $('.editablee').on('dblclick', function () {
+                if ($(this).data('action') === 'read') {
+                    $(this).children('a').addClass('hidden');
+                    $(this).children('.relative').removeClass('hidden');
+                    $(this).children('input').focus();
+                }
+            });
+            $('.close-s').on('click', function () {
+                    $('.text-div').addClass('hidden');
+                    $('.text-inform').removeClass('hidden');
+            });
             $(document).on('blur', '.editable input', function () {
                 var $editable = $(this).parent('.editable');
                 $editable.data('action', 'read');
                 var newValue = '<div class="font-medium whitespace-nowrap">' + $(this).val() + '</div>';
-                ajax($editable.data('field'), $(this).val(), $editable.parents('.intro-x').data('action'), 'PUT');
                 $editable.html(newValue);
-            });
-            $('.rate').on('click', function () {
-                var value = $(this).val();
-                ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'), 'PUT');
-            });
-            $('.edition, .activation').on('change', function () {
-                var value = $(this).hasClass('activation') ? this.checked ? 1 : 0 : $(this).val();
-                ajax($(this).data('field'), value, $(this).parents('.intro-x').data('action'), 'PUT');
+                // Livewire.emit('updateR', $editable.parents('.intro-x').data('action'), $(this).val(), $editable.data('field'));
             });
             $(document).on('click', '.deletion', function () {
                 id = $(this).parents('.intro-x').data('action');
             });
             $(document).on('click', '#delete', function () {
                 $('#'+id).addClass('hidden');
-                ajax('', '', id, 'Delete');
+                confirmDelete(id);
             });
-            function ajax(field, newValue, reviewID, method) {
-                $.ajax({
-                    url: "reviews/" + reviewID, // Replace with your route for updating the category
-                    method: method,
-                    dataType: "json",
-                    encode: true,
-                    data: {
-                        field: field,
-                        value: newValue,
-                        reviewID: reviewID,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function (response) {
-                        $("#message").fadeIn(500).fadeOut(2000);
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        console.error('Update failed:', error);
-                    }
-                });
+            $(document).on('click', '#createRev', function () {
+                Livewire.emit('createReview');
+            });
+            function confirmDelete(reviewId) {
+                Livewire.emit('deleteReview', reviewId);
             }
         });
     </script>

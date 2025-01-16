@@ -19,6 +19,7 @@
             background-color: lightblue;
         }
     </style>
+    @livewireStyles
 </head>
 <body class="py-5 md:py-0">
 
@@ -34,7 +35,7 @@
     </div>
 </div>
 
-
+@livewireScripts
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="{{ asset('dist/js/app.js') }}"></script>
 
