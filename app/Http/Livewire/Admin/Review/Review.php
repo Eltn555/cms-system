@@ -19,8 +19,6 @@ class Review extends Component
     public $productSearch;
     public $deleted = false;
 
-    protected $listeners = ['updateR', 'deleteReview', 'createReview'];
-
     public function mount($review){
         if ($review){
             $this->review = $review;
@@ -33,35 +31,6 @@ class Review extends Component
             $this->products = collect(); // Empty collection
             $this->text = '';
         }
-//        $this->reviews = \App\Models\Review::orderBy('created_at', 'desc')->get();
-    }
-
-    public function createReview(){
-        \App\Models\Review::Create(
-            [
-                'user_id' => 1,
-                'product_id' => 1,
-                'rate' => 0,
-                'text' => 'New'
-            ]
-        );
-        $this->reviews = \App\Models\Review::orderBy('created_at', 'desc')->get();
-    }
-
-    public function deleteReview($reviewId)
-    {
-        $review = \App\Models\Review::find($reviewId);
-
-        if ($review) {
-            $review->delete();
-            session()->flash('success', 'Review deleted successfully!');
-        } else {
-            session()->flash('error', 'Review not found.');
-        }
-        if ($reviewId == $this->review->id){
-            $this->deleted = true;
-        }
-        $this->reviews = \App\Models\Review::orderBy('created_at', 'desc')->get();
     }
 
     public function updatedUserSearch()

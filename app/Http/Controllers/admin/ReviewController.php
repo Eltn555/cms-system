@@ -12,7 +12,7 @@ class ReviewController extends Controller
         $currentPageNumber = $request->query('page', 1); // Default to page 1 if not provided
         $perPage = $request->input('perPage', 10); // Default to 10 items per page
         $reviewsQuery = Review::orderBy('created_at', 'desc');
-
+        $lastId = $reviewsQuery->first()->toArray();
         if ($request->has('search')) {
             $searchQuery = $request->input('search');
             $reviewsQuery->where(function($query) use ($searchQuery) {
@@ -30,7 +30,7 @@ class ReviewController extends Controller
             'search' => $request->input('search') // Preserve the search query
         ]);
 
-        return view('review.index', compact('reviews', 'perPage', 'currentPageNumber'));
+        return view('review.index', compact('reviews', 'perPage', 'currentPageNumber', 'lastId'));
     }
 
     /**
