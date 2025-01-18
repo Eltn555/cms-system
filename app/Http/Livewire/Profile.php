@@ -44,7 +44,6 @@ class Profile extends Component
             if ($request->has('orders')) {
                 $this->isOrders = true;
             }
-            dd($this->items);
         }
     }
 
