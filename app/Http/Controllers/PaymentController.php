@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Payment;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -556,13 +557,21 @@ class PaymentController extends Controller
         dispatch(function () use ($message) {
             $tg = env('TG');
             try {
-                Http::post("https://api.telegram.org/bot{$tg}/sendMessage", [
+                $response = Http::post("https://api.telegram.org/bot{$tg}/sendMessage", [
                     'chat_id' => -1002108174754,
                     'text' => $message,
                     'parse_mode' => 'HTML',
                 ]);
+                if ($response->failed()) {
+                    Log::error("Telegram API error: " . $response->body(), [
+                        'message' => $message,
+                    ]);
+                }
             } catch (\Exception $e) {
-
+                Log::error("Failed to send Telegram message: " . $e->getMessage(), [
+                    'message' => $message,
+                    'trace' => $e->getTraceAsString(),
+                ]);
             }
         })->afterResponse();
     }
