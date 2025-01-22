@@ -511,7 +511,6 @@ class PaymentController extends Controller
 
     public function confirmUzumPayment(Request $request)
     {
-        $merchantTransId = $request->input('params.Id');
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
         $transID = $request->input('transId');
@@ -526,7 +525,7 @@ class PaymentController extends Controller
             ]);
         }
 
-        $payment = Payment::where('order_id', $merchantTransId)->first();
+        $payment = Payment::where('info', $transID)->first();
 
         if ($payment && $payment->status == 'pending') {
                 $currentTime = Carbon::now();
@@ -537,7 +536,7 @@ class PaymentController extends Controller
                 ]);
             $name = $payment->sale->user->name;
             $address = $payment->sale->address_place;
-            $this->sendTelegramMessageAsync("📍$address\n🧾  № $merchantTransId \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->info\n✅ Успешно оплачен");
+            $this->sendTelegramMessageAsync("📍$address\n🧾  № $payment->order_id \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->info\n✅ Успешно оплачен");
                 return response()->json([
                     'serviceId' => $serID,
                     'transId' => $transID,

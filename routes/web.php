@@ -43,7 +43,7 @@ Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
 Route::post('/payme/prepare', [PaymentController::class, 'handleRequest']);
 Route::post('/click/prepare', [PaymentController::class, 'preparePayment']);
 Route::post('/click/complete', [PaymentController::class, 'completePayment']);
-Route::post('/uzum/verify', [PaymentController::class, 'verifyUzumPayment'])->middleware('basic.auth');
+Route::post('/uzum/check', [PaymentController::class, 'verifyUzumPayment'])->middleware('basic.auth');
 Route::post('/uzum/create', [PaymentController::class, 'createUzumPayment'])->middleware('basic.auth');
 Route::post('/uzum/confirm', [PaymentController::class, 'confirmUzumPayment'])->middleware('basic.auth');
 
