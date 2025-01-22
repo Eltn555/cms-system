@@ -417,8 +417,7 @@ class PaymentController extends Controller
     public function verifyUzumPayment(Request $request)
     {
         $merchantTransId = $request->input('params.Id');
-        $amount = $request->input('params.amount');
-        $serID = $request->input('params.serviceId');
+        $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
 
         if ($serID != $servID){
@@ -426,14 +425,23 @@ class PaymentController extends Controller
                 'serviceId' => $serID,
                 'timestamp' => Carbon::now(),
                 'status' => 'FAILED',
-                'errorCode' => '10001',
+                'errorCode' => '10006',
             ]);
         }
 
         // Verify the payment record
         $payment = Payment::where('order_id', $merchantTransId)->first();
 
-        if ($payment && $payment->amount == $amount) {
+        if ($payment && $payment->status == 'completed'){
+            return response()->json([
+                'serviceId' => $serID,
+                'timestamp' => Carbon::now(),
+                'status' => 'Already paid',
+                'errorCode' => '10008',
+            ]);
+        }
+
+        if ($payment) {
             return response()->json([
                 'serviceId' => $serID,
                 'timestamp' => Carbon::now(),
@@ -449,15 +457,15 @@ class PaymentController extends Controller
             'serviceId' => $serID,
             'timestamp' => Carbon::now(),
             'status' => 'NOT FOUND',
-            'errorCode' => '10003',
+            'errorCode' => '99999',
         ]);
     }
 
     public function createUzumPayment(Request $request)
     {
         $merchantTransId = $request->input('params.Id');
-        $amount = $request->input('params.amount');
-        $serID = $request->input('params.serviceId');
+        $amount = $request->input('amount');
+        $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
         $transID = $request->input('transId');
 
@@ -467,7 +475,7 @@ class PaymentController extends Controller
                 'transId' => $transID,
                 'transTime' => Carbon::now(),
                 'status' => 'FAILED',
-                'errorCode' => '10001',
+                'errorCode' => '10006',
             ]);
         }
 
@@ -497,14 +505,14 @@ class PaymentController extends Controller
             'transId' => $transID,
             'transTime' => Carbon::now(),
             'status' => 'FAILED',
-            'errorCode' => '10001',
+            'errorCode' => '10011',
         ]);
     }
 
     public function confirmUzumPayment(Request $request)
     {
         $merchantTransId = $request->input('params.Id');
-        $serID = $request->input('params.serviceId');
+        $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
         $transID = $request->input('transId');
 
@@ -514,7 +522,7 @@ class PaymentController extends Controller
                 'transId' => $transID,
                 'transTime' => Carbon::now(),
                 'status' => 'FAILED',
-                'errorCode' => '10001',
+                'errorCode' => '10006',
             ]);
         }
 
