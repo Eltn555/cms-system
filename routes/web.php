@@ -46,6 +46,8 @@ Route::post('/click/complete', [PaymentController::class, 'completePayment']);
 Route::post('/uzum/check', [PaymentController::class, 'verifyUzumPayment'])->middleware('basic.auth');
 Route::post('/uzum/create', [PaymentController::class, 'createUzumPayment'])->middleware('basic.auth');
 Route::post('/uzum/confirm', [PaymentController::class, 'confirmUzumPayment'])->middleware('basic.auth');
+Route::post('/uzum/status', [PaymentController::class, 'uzumStatus'])->middleware('basic.auth');
+Route::post('/uzum/reverse', [PaymentController::class, 'uzumReverse'])->middleware('basic.auth');
 
 Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
 Route::post('/upload-images', [ImageController::class, 'upload'])->name('images.upload');
