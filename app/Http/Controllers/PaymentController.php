@@ -17,6 +17,7 @@ class PaymentController extends Controller
         $authHeader = $request->header('Authorization');
         $method = $request->input('method');
 
+
         if ($method != 'ChangePassword'){
             if (!$authHeader || strpos($authHeader, 'Basic ') !== 0) {
                 return response()->json([
@@ -115,7 +116,9 @@ class PaymentController extends Controller
         $toDateTime = Carbon::createFromTimestampMs($toTime)->format('Y-m-d H:i:s.u');
 
         // Retrieve transactions within the specified time range
-        $transactions = Payment::whereBetween('created_time', [$fromDateTime, $toDateTime])->whereRaw('LENGTH(click_trans_id) > 11')->get();
+        $transactions = Payment::whereBetween('created_time', [$fromDateTime, $toDateTime])->whereHas('sale', function ($query){
+            $query->where('payment', 'PayMe');
+        })->get();
 
 //        if ($transactions->isEmpty()) {
 //            return response()->json([
@@ -482,9 +485,11 @@ class PaymentController extends Controller
         // Verify the payment exists
         $payment = Payment::where('order_id', $merchantTransId)->first();
         if ($payment && $payment->amount == $amount) {
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
             $payment->update([
-                'created_time' => Carbon::now(),
-                'info' => $transID,
+                'created_time' => $formattedTime,
+                'click_trans_id' => $transID,
                 'status' => 'pending'
             ]);
             return response()->json([
@@ -525,7 +530,7 @@ class PaymentController extends Controller
             ]);
         }
 
-        $payment = Payment::where('info', $transID)->first();
+        $payment = Payment::where('click_trans_id', $transID)->first();
 
         if ($payment && $payment->status == 'pending') {
                 $currentTime = Carbon::now();
@@ -556,6 +561,123 @@ class PaymentController extends Controller
             'status' => 'FAILED',
             'confirmTime' => Carbon::now(),
             'errorCode' => '10003',
+        ]);
+    }
+
+    public function uzumReverse(Request $request){
+        $serID = $request->input('serviceId');
+        $servID = env('UZUM_ID');
+        $transID = $request->input('transId');
+
+        if ($serID != $servID){
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'transTime' => Carbon::now(),
+                'status' => 'FAILED',
+                'errorCode' => '10006',
+            ]);
+        }
+
+        $payment = Payment::where('click_trans_id', $transID)->first();
+
+        if ($payment && $payment->sale->status == 'В ожидании') {
+            $currentTime = Carbon::now();
+            $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
+            $payment->update([
+                'status' => 'failed',
+                'cancelled_time' => $formattedTime,
+            ]);
+            $name = $payment->sale->user->name;
+            $address = $payment->sale->address_place;
+            $this->sendTelegramMessageAsync("📍$address\n🧾  № $payment->order_id \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->info\n❌ Платеж отменен");
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'status' => 'REVERSED',
+                'reverseTime' => Carbon::now(),
+                'data' => [
+                    'phone' => $payment->sale->user->phone,
+                    'ID' => $payment->ID
+                ],
+                'amount' => $payment->amount
+            ]);
+        } elseif($payment) {
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'status' => 'FAILED',
+                'confirmTime' => Carbon::now(),
+                'errorCode' => '10017',
+            ]);
+        }
+
+        return response()->json([
+            'serviceId' => $serID,
+            'transId' => $transID,
+            'status' => 'FAILED',
+            'confirmTime' => Carbon::now(),
+            'errorCode' => '10014',
+        ]);
+    }
+
+    public function uzumStatus(Request $request){
+        $serID = $request->input('serviceId');
+        $servID = env('UZUM_ID');
+        $transID = $request->input('transId');
+
+        if ($serID != $servID){
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'transTime' => Carbon::now(),
+                'status' => 'FAILED',
+                'errorCode' => '10006',
+            ]);
+        }
+        $payment = Payment::where('click_trans_id', $transID)->first();
+
+        $time = $payment->created_time ? Carbon::parse($payment->created_time) : null;
+        $createdTime = $time ? $time->valueOf() : 0; // Default to 0 if null
+        $perform = $payment->perform_time ? Carbon::parse($payment->perform_time) : null;
+        $performTime = $perform ? $perform->valueOf() : 0; // Default to 0 if null
+        $cancelled = $payment->cancelled_time ? Carbon::parse($payment->cancelled_time) : null;
+        $cancelled_time = $cancelled ? $cancelled->valueOf() : 0;
+        switch ($payment->status) {
+            case 'completed':
+                $status = 'CONFIRMED';
+                break;
+            case 'pending':
+                $status = 'CREATED';
+                break;
+            case 'failed':
+                $status = 'REVERSED';
+                break;
+            default:
+                $status = 'CREATED';
+        }
+        if ($payment) {
+            return response()->json([
+                'serviceId' => $serID,
+                'transId' => $transID,
+                'status' => $status,
+                'transTime' => $createdTime,
+                'confirmTime' => $performTime,
+                'reverseTime' => $cancelled_time,
+                'data' => [
+                    'phone' => $payment->sale->user->phone,
+                    'ID' => $payment->ID
+                ],
+                'amount' => $payment->amount
+            ]);
+        }
+
+        return response()->json([
+            'serviceId' => $serID,
+            'transId' => $transID,
+            'status' => 'FAILED',
+            'confirmTime' => Carbon::now(),
+            'errorCode' => '10014',
         ]);
     }
 
