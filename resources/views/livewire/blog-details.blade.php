@@ -75,15 +75,15 @@
                             <div class="blog-details-img">
                                 <img src="{{ asset('storage/' . $news->image) }}" alt="">
                             </div>
-                            <div class="border-bottom py-5 w-100 d-flex justify-content-center">
-                                <div style="width:64px; height: 64px;" class="border-1 me-4 border overflow-hidden rounded-circle">
-                                    <img src="{{asset('no_photo.jpg')}}" alt="{{$news->title}}" class="w-100 h-100">
-                                </div>
+{{--                            <div class="border-bottom py-5 w-100 d-flex justify-content-center">--}}
+{{--                                <div style="width:64px; height: 64px;" class="border-1 me-4 border overflow-hidden rounded-circle">--}}
+{{--                                    <img src="{{asset('no_photo.jpg')}}" alt="{{$news->title}}" class="w-100 h-100">--}}
+{{--                                </div>--}}
 {{--                                <div>--}}
 {{--                                    <h4 class="fw-semibold font-kyiv">{{$news->author->name}}</h4>--}}
 {{--                                    <p class="card-brand">Профессиональный дизайнер люстр</p>--}}
 {{--                                </div>--}}
-                            </div>
+{{--                            </div>--}}
                             <div class="blog-details-date">
                                 <h5>{{ $news->created_at->format('d') }} <span>{{ $news->created_at->format('M') }}</span>
                                 </h5>
