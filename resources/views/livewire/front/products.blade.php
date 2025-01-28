@@ -339,16 +339,16 @@
                                 <h2 class="prgrph font-kyiv">Все виды оплаты для физических и юридических лиц</h2>
                             </div>
                             <div class="col-6 col-lg-12 d-flex flex-wrap">
-                                <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
+                                <div class="col-sm-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100" src="{{asset('storage/payment/payme.png')}}" alt="Payme LumenLux">
                                 </div>
-                                <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
+                                <div class="col-sm-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100" src="{{asset('storage/payment/click.png')}}" alt="Click LumenLux">
                                 </div>
-                                <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
+                                <div class="col-sm-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100 " src="{{asset('storage/payment/uzum.png')}}" alt="Uzum LumenLux">
                                 </div>
-                                <div class="col-md-4 col-6 p-0 d-flex align-items-center justify-content-center">
+                                <div class="col-sm-4 col-6 p-0 d-flex align-items-center justify-content-center">
                                     <img class="w-100" src="{{asset('storage/payment/uzum_n.png')}}" alt="Uzum Nasiya LumenLux">
                                 </div>
                             </div>
