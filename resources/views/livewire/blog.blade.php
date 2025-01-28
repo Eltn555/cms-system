@@ -63,6 +63,15 @@
         .blog-categoryText h5{
             width: 40%;
         }
+        .blog-img a{
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .blog-img img{
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+        }
     </style>
     <div class="container mt-3 py-5">
         <div class="pt-3 row" data-aos-delay="50">

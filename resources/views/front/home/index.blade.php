@@ -512,7 +512,7 @@
                         <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
                             <div class="blog-img-date-wrap mb-25">
                                 <div class="blog-img">
-                                    <a class="w-100 h-100 overflow-hidden" href="{{ route('blog.details', ['id' => $last->id]) }}"><img class="h-100" src="{{ asset('storage/' . $last->image) }}" alt="$last->title" loading="lazy"></a>
+                                    <a class="w-100 h-100 overflow-hidden" href="{{ route('blog.details', ['id' => $last->id]) }}"><img style="object-fit: cover" class="h-100 w-100" src="{{ asset('storage/' . $last->image) }}" alt="$last->title" loading="lazy"></a>
                                 </div>
                             </div>
                             <div class="blog-content">
