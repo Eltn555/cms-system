@@ -126,7 +126,7 @@
 </header>
 <div class="off-canvas-active">
     <div class="pb-5 off-canvas-wrap position-relative">
-        <div class="mb-20 font-cormorant position-relative row">
+        <div class="mb-2 font-cormorant position-relative row">
             <a class="off-canvas-close"><i class=" ti-close "></i></a>
             <div class="col-12">
                 <h5 class="shadow-text-1 font-cormorant fw-bold" style="font-size: 40px !important;">Меню</h5>
@@ -140,7 +140,7 @@
                     </li>
                     <li class="">
                         <a href="{{ route('front.category.index') }}">Каталог</a>
-                        <ul class="mega-menu-style d mega-menu-mrg-1 p-4 rounded-1 category-hover">
+                        <ul class="mega-menu-style mega-menu-mrg-1 p-4 rounded-1 category-hover overflow-scroll" style="height: 60vh">
                             @foreach ($categories as $category)
                                 <li class="parent m-0 border-bottom p-1"><a class="fw-bolder py-3 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}
                                     </a>
@@ -182,7 +182,7 @@
                 </li>
             </ul>
         </div>
-        <div class="pb-5 p-3 position-absolute bottom-0 end-0 start-0 single-input-item btn-hover">
+        <div class="pb-5 p-3 mb-0 position-fixed bottom-0 end-0 start-0 single-input-item btn-hover bg-white" style="z-index: 10">
             @if(auth()->user())
                 <a href="{{ route('front.profile.index') }}">
                     <div class="p-2 bg-light d-flex align-items-center justify-content-center">

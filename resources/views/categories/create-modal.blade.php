@@ -58,7 +58,7 @@
                             @foreach($categories as $lilcat)
                                     <option value="{{$lilcat->id}}">{{$lilcat->title}}</option>
                             @endforeach
-                            <option value="5" selected>Not Selected</option>
+                            <option value='' selected>Not Selected</option>
                         </select>
                     </div>
                 </div>
