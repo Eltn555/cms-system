@@ -1,4 +1,7 @@
 <header class="header-area header-responsive-padding">
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
     <div class="header-bottom sticky-bar stick">
         <div class="categoryBack w-100 position-absolute">
             </div>
@@ -196,7 +199,7 @@
                 </a>
                 <button class="mt-2 w-100 check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</button>
             @else
-                <a onclick="showReg()" class="off-canvas-close d-block p-2 fw-bolder font-kyiv bg-light text-center mt-2 w-100 check-btn sqr-btn">Вход</a>
+                <button onclick="showReg()" style="height: unset;" class="off-canvas-close border border-opacity-10 check-btn sqr-btn d-block p-2 fw-bolder font-kyiv bg-light text-center mt-2 w-100 check-btn sqr-btn">Вход</button>
             @endif
         </div>
     </div>
