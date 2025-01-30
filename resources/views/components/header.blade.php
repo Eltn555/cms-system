@@ -128,7 +128,7 @@
     </div>
 </header>
 <div class="off-canvas-active">
-    <div class="pb-5 off-canvas-wrap position-relative">
+    <div class="off-canvas-wrap position-relative menu-container-i">
         <div class="mb-2 font-cormorant position-relative row">
             <a class="off-canvas-close"><i class=" ti-close "></i></a>
             <div class="col-12">
@@ -143,10 +143,10 @@
                     </li>
                     <li class="">
                         <a href="{{ route('front.category.index') }}">Каталог</a>
-                        <ul class="mega-menu-style mega-menu-mrg-1 p-4 rounded-1 category-hover overflow-scroll" style="height: 60vh">
+                        <ul class="mega-menu-style mega-menu-mrg-1 p-4 rounded-1 category-hover">
                             @foreach ($categories as $category)
-                                <li class="parent m-0 border-bottom p-1"><a class="fw-bolder py-3 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}
-                                    </a>
+                                <li class="parent m-0 border-bottom p-1">
+                                    <a class="fw-bolder py-3 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}</a>
                                     @if ($category->children->isNotEmpty())
                                         <ul class="overflow-hidden ">
                                             <li class="mb-0 w-100"><a class="fw-bolder py-2 w-100 d-flex align-items-center justify-content-between font-kyiv" href="{{ route('front.category.show', $category->slug) }}">{{ $category->title }}
@@ -167,9 +167,10 @@
                     <li><a style="line-height: 80px !important;" href="{{route('blog.index')}}">Блог</a></li>
                     <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">Контакты</a></li>
                 </ul>
+
             </div>
         </div>
-        <div class="language-currency-wrap language-currency-wrap-modify">
+        <div class="pb-4 language-currency-wrap language-currency-wrap-modify">
             <ul>
                 <li class="d-flex mobile-icon">
                     <livewire:front.cart.cart-count/>
@@ -185,7 +186,7 @@
                 </li>
             </ul>
         </div>
-        <div class="pb-5 p-3 mb-0 position-fixed bottom-0 end-0 start-0 single-input-item btn-hover bg-white" style="z-index: 10">
+        <div class="log-container pb-3 p-3 mb-0 position-fixed bottom-0 end-0 start-0 single-input-item btn-hover bg-white" style="z-index: 10">
             @if(auth()->user())
                 <a href="{{ route('front.profile.index') }}">
                     <div class="p-2 bg-light d-flex align-items-center justify-content-center">
@@ -199,7 +200,7 @@
                 </a>
                 <button class="mt-2 w-100 check-btn sqr-btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</button>
             @else
-                <button onclick="showReg()" style="height: unset;" class="off-canvas-close border border-opacity-10 check-btn sqr-btn d-block p-2 fw-bolder font-kyiv bg-light text-center mt-2 w-100 check-btn sqr-btn">Вход</button>
+                <button onclick="showReg()" style="height: unset;" class="position-static lh-2 fs-6 off-canvas-close border border-opacity-10 check-btn sqr-btn d-block p-2 fw-bolder font-kyiv bg-light text-center w-100">Вход</button>
             @endif
         </div>
     </div>

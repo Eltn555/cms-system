@@ -197,6 +197,9 @@
 @yield('scripts')
 @stack('scripts')
 <script>
+    const menuBottomHeight = $('.log-container').height();
+    $('.menu-container-i').css('padding-bottom', menuBottomHeight);
+
     function showNotification(title, imageUrl) {
         // Update modal content
         const modalImage = document.getElementById("modalImage");
