@@ -12,6 +12,8 @@ use App\Http\Controllers\admin\ReviewController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TagController;
 use App\Http\Livewire\Blog;
+use App\Http\Livewire\Admin\Portfolio\Portfolios;
+use App\Http\Livewire\Admin\Portfolio\CategoriesPortfolio;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
@@ -89,6 +91,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'is_admin']], function (
     Route::resource('categories', CategoriesController::class, ['as'=>'admin']);
     Route::resource('tags', TagController::class, ['as'=>'admin']);
     Route::resource('reviews', ReviewController::class, ['as'=>'admin']);
+    Route::get('/portfolio', Portfolios::class)->name('admin.portfolio.index');
+    Route::get('/portfolio/categories', CategoriesPortfolio::class)->name('admin.portfolioCategories.index');
     Route::resource('sliders', SliderController::class, ['as'=>'admin']);
     Route::get('/partners/search', [PartnersController::class, 'search'])->name('admin.partners.search');
     Route::resource('partners', PartnersController::class, ['as'=>'admin']);
