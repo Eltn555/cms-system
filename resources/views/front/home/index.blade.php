@@ -84,17 +84,20 @@
             transform: rotate(180deg);
             transition: 1s;
         }
+        .bg-carousel{
+            background-image: url('preview.webp');
+        }
     </style>
 @endsection
 
 @section('content')
     <h1 class="h-0 overflow-hidden"> LumenLux | Главная | Освещение | Люстры | Светильники </h1>
-    <div class="bg-carousel mt-5" style="background-image: url('{{asset('preview.png')}}')">
+    <div class="bg-carousel mt-5 bg-dark">
         <div class="carousel">
             <div class="list">
                 @foreach($slider as $slide)
                     <div class="item">
-                        <img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->title}}" loading="lazy">
+                        <img src="{{asset('storage/'.$slide->image)}}" alt="{{$slide->title}}">
                         <div class="introduce">
                             <div class="topic d-flex pt-2">
                                 <h5 style=" font-size: 120px;" class="lh-1 fl text-white shadow-text-1 font-cormorant fw-bold me-4">{{$slide->title}}</h5>
@@ -121,7 +124,7 @@
                 @foreach($categories->take(5) as $category)
                     <div class="col-6 col-md-4 col-lg-2 p-0 m-0 border" style="order: {{$category->order_id}};">
                         <div class="p-1 me-0 d-flex justify-content-center align-items-end">
-                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="50">
+                            <div class="single-category-wrap-2 text-center" data-aos="fade-up" data-aos-delay="20">
                                 <div class="category-img-2 overflow-hidden">
                                     <a href="{{ route('front.category.show', $category->slug) }}">
                                         @foreach($category->images as $image)
