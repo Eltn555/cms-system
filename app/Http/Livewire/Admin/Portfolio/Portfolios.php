@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class Portfolios extends Component
 {
+    public $portfolios = [];
+
     public function render()
     {
         return view('livewire.admin.portfolio.portfolios')->extends('admin')->section('content');

@@ -29,6 +29,7 @@
 @include('sections.topMenu')
 
 
+
 <div class="flex overflow-hidden">
     @include('sections.sidebar')
     <div class="content">
@@ -122,14 +123,8 @@
         });
     });
 </script>
+
 @livewireScripts
-
-
-// Show the search result container
-
-
-
-
 @stack('scripts')
 @yield('script')
 </body>

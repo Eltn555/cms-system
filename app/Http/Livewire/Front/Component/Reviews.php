@@ -20,7 +20,6 @@ class Reviews extends Component
         $this->product = $product;
         $this->reviews = Review::where('product_id', $this->product->id)->get();
 
-//        dd($this->reviews);
         if (Auth::user()){
             $review = Review::where('user_id', auth()->id())
                 ->where('product_id', $this->product->id)

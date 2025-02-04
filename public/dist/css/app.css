@@ -2352,12 +2352,12 @@ select{
           width: 600px;
         }
         .modal .modal-dialog.modal-xl {
-          width: 600px;
+          width: 630px;
         }
       }
 @media (min-width: 1024px) {
         .modal .modal-dialog.modal-xl {
-          width: 900px;
+          width: 1000px;
         }
       }
 .modal .modal-dialog .modal-content{
@@ -12258,7 +12258,7 @@ html body{
             }
 .side-nav {
     width: 260px;
-    z-index: 50;
+    z-index: 20;
     margin-top: -1rem;
     overflow-x: hidden;
     padding-left: 1.25rem;

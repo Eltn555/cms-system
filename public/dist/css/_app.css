@@ -12253,7 +12253,7 @@ html body{
             }
 .side-nav {
     width: 260px;
-    z-index: 50;
+    z-index: 20;
     margin-top: -1rem;
     overflow-x: hidden;
     padding-left: 1.25rem;
