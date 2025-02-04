@@ -76,6 +76,8 @@ Route::group(['prefix' => 'profile'], function () {
     Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');
 });
 
+Route::post('/upload-video', [ImageController::class, 'video']);
+Route::get('/get-video-path', [ImageController::class, 'getVideoPath']);
 // ADMIN PANEL
 Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'is_admin']], function () {
     Route::get('/', function (){

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -85,5 +86,47 @@ class ImageController extends Controller
             }
         }
         return response()->json(['image_ids' => $imageIds]);
+    }
+
+    public function video(Request $request){
+        $fileName = $request->fileName;
+        $chunkIndex = $request->chunkIndex;
+        $totalChunks = $request->totalChunks;
+        $file = $request->file('video');
+
+        $tempPath = storage_path("app/temp_uploads/{$fileName}");
+        if (!file_exists($tempPath)) {
+            mkdir($tempPath, 0777, true);
+        }
+
+        $file->move($tempPath, "chunk_{$chunkIndex}");
+
+        if (count(scandir($tempPath)) - 2 == $totalChunks) {
+            $finalPath = storage_path("/app/public/videos/{$fileName}");
+            $finalFile = fopen($finalPath, "ab");
+
+            for ($i = 0; $i < $totalChunks; $i++) {
+                $chunkFile = file_get_contents("$tempPath/chunk_$i");
+                fwrite($finalFile, $chunkFile);
+            }
+
+            fclose($finalFile);
+            Storage::deleteDirectory("temp_uploads/{$fileName}");
+
+            return response()->json([
+                "message" => "Upload complete!",
+                "video_path" => asset("storage/videos/{$fileName}")
+            ]);
+        }
+
+        return response()->json(["message" => "Chunk {$chunkIndex} uploaded"]);
+    }
+
+    public function getVideoPath(Request $request)
+    {
+        $fileName = $request->query('fileName');
+        $videoPath = asset("storage/videos/{$fileName}");
+
+        return response()->json(["video_path" => $videoPath]);
     }
 }

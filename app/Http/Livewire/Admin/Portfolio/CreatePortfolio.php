@@ -19,10 +19,11 @@ class CreatePortfolio extends Component
     public $image = [];
     public $gallery;
     public $video;
-    public $category;
+    public $categoryId;
     public $text;
+    public $oldVideo;
 
-    protected $listeners = ['updValues' => 'setVal'];
+    protected $listeners = ['updValues' => 'setVal', 'video' => 'videoSet'];
 
     public function mount(){
         if ($this->gallery === null){
@@ -31,10 +32,13 @@ class CreatePortfolio extends Component
         $this->categories = BlogCategory::all();
     }
 
+    public function videoSet($filepath){
+        dd($filepath);
+    }
+
     public function setVal($val, $varName)
     {
         if ($varName == "image"){
-            dd($this->gallery);
             $this->image = Image::find($val);
         }elseif ($varName == "gallery"){
             $ids = is_array($val)

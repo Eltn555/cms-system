@@ -7,7 +7,7 @@
         <div class="">
             <label for="file">
                 Image <b class="text-danger">*</b>
-                <div wire:key="image-container" class="border-opacity-10 border mt-3 flex items-center justify-start" style="border-radius: 10px;">
+                <div class="border-opacity-10 border mt-3 flex items-center justify-start" style="border-radius: 10px;">
                     @if($image == null)
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                              style="bottom:0; left: 0;" stroke-linejoin="round" class="w-10 h-10 fa-arrow-circle-up lucide lucide-upload">
@@ -42,17 +42,17 @@
                 <b class="text-danger">*</b></label>
             <select data-placeholder="Select categories" class="tom-select w-full tomselected"
                     id="post-form-3" name="category[]"
-                    tabindex="-1" hidden="hidden" wire:model="category" required>
+                    tabindex="-1" hidden="hidden" wire:model="categoryId" required>
                 <option value="{{ null }}"></option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                    <option value="{{ $category->id }}" {{$category->id == $categoryId ? 'selected' : ''}}>{{ $category->title }}</option>
                 @endforeach
             </select>
         </div>
         <div class="mt-3">
             <label for="gallery">
                 Gallery
-                <div wire:key="image-container" class="border-opacity-10 border flex-wrap flex items-center justify-start" style="border-radius: 10px;">
+                <div class="border-opacity-10 border flex-wrap flex items-center justify-start" style="border-radius: 10px;">
                     @if($gallery->isEmpty())
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                              style="bottom:0; left: 0;" stroke-linejoin="round" class="w-10 h-10 fa-arrow-circle-up lucide lucide-upload">
@@ -75,6 +75,32 @@
             <input class="d-none" type="hidden" id="image-ids"/>
         </div>
         <div class="mt-3" wire:ignore>
+            <label for="video">
+                Video
+                <div class="border-opacity-10 border flex-wrap flex items-center justify-start" style="border-radius: 10px;">
+                    <div class="videoUpload">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             style="bottom:0; left: 0;" stroke-linejoin="round" class="w-10 h-10 fa-arrow-circle-up lucide lucide-upload">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" x2="12" y1="3" y2="15"></line>
+                        </svg>
+                        <b class="imageLabels">Select Video to Upload</b>
+                    </div>
+                    <div class="videoUploading hidden w-1/2">
+                        <div id="videoProgress" class="bg-blue-800 text-xs h-6 p-2 font-medium text-blue-100 text-center p-0.5 leading-none rounded-full">
+                            Uploading... <b id="uploadingTxt">0</b>%
+                        </div>
+                    </div>
+                    <div class="uploaded text-success hidden">
+                        Video uploaded successfully! 🎉
+                        <video id="videoPreview" class="hidden" controls width="500"></video>
+                    </div>
+                </div>
+            </label>
+            <input id="video" class="h-0" type="file" accept="video/mp4,video/quicktime">
+        </div>
+        <div class="mt-3" wire:ignore>
             <label for="text-content" class="form-label">Long Description</label>
             <textarea wire:model="text" id="text-content" class="tinyeditor form-control h-[110px]" name="text"
                       placeholder="Text">
@@ -89,8 +115,95 @@
 </div>
 
 @push('scripts')
-{{--    <script type="text/javascript" src="{{ asset('dist/js/upload.js') }}"></script>--}}
-    <script type="text/javascript">
+    <script>
+        document.getElementById("video").addEventListener("change", async (event) => {
+            await processAndUpload(event.target.files[0]);
+        });
+
+        async function processAndUpload(file) {
+            const chunkSize = 2 * 1024 * 1024; // 2MB per chunk
+            const totalChunks = Math.ceil(file.size / chunkSize);
+            const progressBar = document.getElementById("videoProgress");
+            const progressText = document.getElementById("uploadingTxt");
+            const uploadDiv = document.querySelector(".videoUpload");
+            const uploadingDiv = document.querySelector(".videoUploading");
+            const uploadedDiv = document.querySelector(".uploaded");
+            const videoPreview = document.getElementById("videoPreview");
+
+            uploadDiv.classList.add('hidden');
+            uploadingDiv.classList.remove('hidden');
+
+            for (let i = 0; i < totalChunks; i++) {
+                const start = i * chunkSize;
+                const end = Math.min(start + chunkSize, file.size);
+                const chunk = file.slice(start, end);
+
+                const formData = new FormData();
+                formData.append("video", chunk);
+                formData.append("chunkIndex", i);
+                formData.append("totalChunks", totalChunks);
+                formData.append("fileName", file.name);
+
+                await fetch("/upload-video", { method: "POST", body: formData });
+
+                // Update progress
+                let progress = ((i + 1) / totalChunks) * 100;
+                progressBar.style.width = progress + "%";
+                progressText.textContent = `${Math.round(progress)}%`;
+            }
+
+            const response = await fetch(`/get-video-path?fileName=${file.name}`);
+            const data = await response.json();
+
+            uploadingDiv.classList.add('hidden');
+            uploadedDiv.classList.remove('hidden');
+            videoPreview.src = data.video_path;
+            videoPreview.classList.remove('hidden');
+
+        }
+
+        async function uploadVid(file) {
+            const chunkSize = 2 * 1024 * 1024; // 2MB per chunk
+            const totalChunks = Math.ceil(file.size / chunkSize);
+            const progressBar = document.getElementById("videoProgress");
+            const progressText = document.getElementById("uploadingTxt");
+            const uploadDiv = document.querySelector(".videoUpload");
+            const uploadingDiv = document.querySelector(".videoUploading");
+            const uploadedDiv = document.querySelector(".uploaded");
+            const videoPreview = document.getElementById("videoPreview");
+
+            uploadDiv.classList.add('hidden');
+            uploadingDiv.classList.remove('hidden');
+
+            for (let i = 0; i < totalChunks; i++) {
+                const start = i * chunkSize;
+                const end = Math.min(start + chunkSize, file.size);
+                const chunk = file.slice(start, end);
+
+                const formData = new FormData();
+                formData.append("video", chunk);
+                formData.append("chunkIndex", i);
+                formData.append("totalChunks", totalChunks);
+                formData.append("fileName", file.name);
+
+                const tempData = await fetch("/upload-video", { method: "POST", body: formData });
+
+                // Update progress
+                let progress = ((i + 1) / totalChunks) * 100;
+                progressBar.style.width = progress+"%";
+                progressText.textContent = `${Math.round(progress)}`;
+            }
+            const response = await fetch(`/get-video-path?fileName=${tempData}`);
+            const data = await response.json();
+
+            uploadingDiv.addClass('hidden');
+            uploadedDiv.removeClass('hidden');
+            videoPreview.src = data.video_path;
+            videoPreview.classList.remove('hidden');
+            Livewire.emit('video', data.video_path);
+            console.log("Upload complete!");
+        }
+
         $('.create-btn').on('click', function () {
             tinymce.remove('#text-content');
 
@@ -104,6 +217,9 @@
             });
         });
 
+        $('#create-modal').on('click', function () {
+            $('#videoPreview')[0].pause(); // Pause the video
+        });
 
         function updateFileText(input) {
             const fileInput = input;
