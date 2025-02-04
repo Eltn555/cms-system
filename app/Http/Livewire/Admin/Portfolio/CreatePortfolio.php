@@ -21,31 +21,43 @@ class CreatePortfolio extends Component
     public $video;
     public $category;
     public $text;
-    public $test = 'hehe';
-    public $tests = 'hehe';
-
-    public function fux()
-    {
-        $this->tests = 'haha';
-    }
 
     protected $listeners = ['updValues' => 'setVal'];
+
+    public function mount(){
+        if ($this->gallery === null){
+            $this->gallery = collect();
+        }
+        $this->categories = BlogCategory::all();
+    }
 
     public function setVal($val, $varName)
     {
         if ($varName == "image"){
-            $this->test = 'haha';
-            $this->image = Image::find($val)->toArray();
+            dd($this->gallery);
+            $this->image = Image::find($val);
+        }elseif ($varName == "gallery"){
+            $ids = is_array($val)
+                ? $val // If already an array, use as is
+                : (json_decode($val, true) ?: explode(',', $val)); // Try JSON decode, fallback to explode
+
+            $ids = array_filter(array_map('trim', (array) $ids), 'is_numeric');
+            $new = Image::whereIn('id', $ids)->get();
+
+            $this->gallery = $this->gallery->merge($new);
         }
     }
 
-    public function fix()
+    public function removeImg()
     {
-        $this->test = 'haha';
+        $this->image = [];
     }
 
-    public function mount(){
-        $this->categories = BlogCategory::all();
+    public function removeGal($id)
+    {
+        $this->gallery = $this->gallery->filter(function ($image) use ($id) {
+            return $image['id'] !== $id; // Keep all items where the ID is not equal to $id
+        });
     }
 
     public function submit(){

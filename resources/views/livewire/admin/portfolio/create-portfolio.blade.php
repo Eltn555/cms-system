@@ -4,9 +4,6 @@
 
 <div>
     <div class="modal-content p-5"> <!-- BEGIN: Modal Header -->
-        <h2 wire:click="fux" class="text-lg font-medium mr-auto">
-            Portfolios {{$tests}}
-        </h2>
         <div class="">
             <label for="file">
                 Image <b class="text-danger">*</b>
@@ -20,14 +17,14 @@
                         </svg>
                         <b class="imageLabel">Select image for portfolio</b>
                     @else
-                        <div class="w-32 h-32 overflow-hidden relative" style="border-radius: 10px">
-                            <img class="w-full h-full" style="object-fit: cover" src="{{asset('storage/'.$image['image'])}}" alt="">
-                            <button class="absolute bg-danger rounded-full w-6 h-6 flex justify-center align-center">✘</button>
+                        <div class="w-32 h-32 relative">
+                            <img class="w-full h-full" style="object-fit: cover; border-radius: 10px;" src="{{asset('storage/'.$image['image'])}}" alt="">
+                            <button wire:click="removeImg" class="z-50 absolute bg-danger rounded-full text-white h-6 w-6 flex justify-center align-center" style="top: -5px; right: -5px">✘</button>
                         </div>
                     @endif
                 </div>
             </label>
-            <input name="images" multiple class="file-input h-0" data-action="#image-id" data-var="image" data-selectable=".imageLabel" onchange="updateFileText(this)" type="file" id="file" placeholder="png, jpg, webp" accept="image/*" required/>
+            <input name="images" class="file-input h-0" data-action="#image-id" data-var="image" data-selectable=".imageLabel" onchange="updateFileText(this)" type="file" id="file" placeholder="png, jpg, webp" accept="image/*" required/>
             <input class="d-none" type="hidden" id="image-id"/>
         </div>
         <div>
@@ -40,7 +37,7 @@
                    placeholder="Description">
         </div>
         <!-- BEGIN: Basic Select -->
-        <div class="col-span-6 mx-2 sm:col-span-6 mt-3 h-[110px]" wire:ignore>
+        <div class="col-span-6 sm:col-span-6 mt-3 h-[80px]" wire:ignore>
             <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Category
                 <b class="text-danger">*</b></label>
             <select data-placeholder="Select categories" class="tom-select w-full tomselected"
@@ -51,6 +48,31 @@
                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="mt-3">
+            <label for="gallery">
+                Gallery
+                <div wire:key="image-container" class="border-opacity-10 border flex-wrap flex items-center justify-start" style="border-radius: 10px;">
+                    @if($gallery->isEmpty())
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             style="bottom:0; left: 0;" stroke-linejoin="round" class="w-10 h-10 fa-arrow-circle-up lucide lucide-upload">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" x2="12" y1="3" y2="15"></line>
+                        </svg>
+                        <b class="imageLabels">Select images for Gallery</b>
+                    @else
+                        @foreach($gallery as $photos)
+                            <div class="w-32 h-32 relative p-1">
+                                <img class="w-full h-full" style="object-fit: cover; border-radius: 10px;" src="{{asset('storage/'.$photos['image'])}}" alt="">
+                                <button wire:click="removeGal({{$photos['id']}})" class="z-50 absolute bg-danger rounded-full text-white h-6 w-6 flex justify-center align-center" style="top: -5px; right: -5px">✘</button>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </label>
+            <input name="gallery" multiple class="file-input h-0" data-action="#image-ids" data-var="gallery" data-selectable=".imageLabels" onchange="updateFileText(this)" type="file" id="gallery" placeholder="png, jpg, webp" accept="image/*"/>
+            <input class="d-none" type="hidden" id="image-ids"/>
         </div>
         <div class="mt-3" wire:ignore>
             <label for="text-content" class="form-label">Long Description</label>
