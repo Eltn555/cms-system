@@ -25,14 +25,19 @@ class CreatePortfolio extends Component
     public $text;
     public $oldVideo;
     public $flashMessage;
+    public $update;
 
-    protected $listeners = ['updValues' => 'setVal', 'video' => 'videoSet', 'updateTextContent' => 'setTextContent'];
+    protected $listeners = ['setToUpdate' => 'update' , 'updValues' => 'setVal', 'video' => 'videoSet', 'updateTextContent' => 'setTextContent'];
 
     public function mount(){
         if ($this->gallery === null){
             $this->gallery = collect();
         }
         $this->categories = PortfolioCategory::all();
+    }
+
+    public function update($update){
+        $this->update = $update;
     }
 
     public function videoSet($filepath){
@@ -83,6 +88,7 @@ class CreatePortfolio extends Component
     }
 
     public function submit(){
+//        dd($this->update);
         if ($this->categoryId && $this->title && $this->description && isset($this->image['image'])){
             $record = Portfolio::create([
                 'title' => $this->title,

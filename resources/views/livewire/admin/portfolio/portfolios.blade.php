@@ -39,7 +39,7 @@
                             <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                         </svg>
                         Edit Post </a>
-                    <a href="javascript:;" data-tw-toggle="modal"
+                    <a href="javascript:;" wire:click="delete({{$portfolio->id}})" data-tw-toggle="modal"
                        data-tw-target="#delete-confirmation-modal" class="deletion flex justify-center items-center p-3 w-1/2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -79,7 +79,7 @@
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <div class="p-5 text-center">
-                        <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x w-16 h-16 text-danger mx-auto mt-3"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
                         <div class="text-3xl mt-5">Are you sure?</div>
                         <div class="text-slate-500 mt-2">
                             Do you really want to delete these records?
@@ -89,7 +89,7 @@
                     </div>
                     <div class="px-5 pb-8 text-center">
                         <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                        <button id="delete" data-tw-dismiss="modal" type="button" class="btn btn-danger w-24">Delete</button>
+                        <button id="delete" wire:click="confirm()" data-tw-dismiss="modal" type="button" class="btn btn-danger w-24">Delete</button>
                     </div>
                 </div>
             </div>
@@ -97,13 +97,50 @@
     </div>
     <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-            @livewire('admin.portfolio.create-portfolio')
+            <div>
+                @livewire('admin.portfolio.create-portfolio')
+            </div>
         </div>
     </div>
 </div>
 
 @push('scripts')
     <script>
+        function removeDuplicateModals() {
+            let modals = document.querySelectorAll("#delete-confirmation-modal");
+
+            if (modals.length > 1) {
+                for (let i = 1; i < modals.length; i++) {
+                    modals[i].remove();
+                }
+            }
+        }
+
+        document.querySelectorAll('.deletion').forEach(button => {
+            button.addEventListener('click', () => {
+                removeDuplicateModals(); // Remove duplicates before showing modal
+            });
+        });
+
+        $('#updateBtn').on('click', function () {
+            tinymce.remove('#text-content');
+
+            tinymce.init({
+                selector: '#text-content',
+                plugins: 'code table searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +
+                    'help charmap emoticons autosave',
+                language: 'ru',
+                promotion: false,
+                branding: false,
+                setup: function (editor) {
+                    editor.on('input', function () {
+                        let content = editor.getContent(); // Get content from TinyMCE
+                        Livewire.emit('updateTextContent', content); // Emit to Livewire
+                    });
+                }
+            });
+        });
+
         window.addEventListener('flash-message', event => {
             showFlashMessage(event.detail.type, event.detail.message);
         });
