@@ -21,20 +21,17 @@
                             {{--<img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">--}}
                         </div>
                         <div class="ml-3 text-white mr-auto">
-                            <a href="" class="font-medium">{{ $portfolio->author->name }}</a>
                             <div class="text-xs mt-0.5">{{ $portfolio->created_at->diffForHumans() }}</div>
                         </div>
                     </div>
-                    <div class="absolute bottom-0 text-white px-5 pb-6 z-10"><a href="{{route('admin.blog.index', ['category' => $portfolio->category->id])}}"
-                                                                                class="bg-white/20 px-2 py-1 rounded">{{ $portfolio->category->title }}</a>
-                        <a href="{{ route('admin.blog.show', $portfolio->id) }}" class="block font-medium text-xl mt-3">{{ $portfolio->title }}</a></div>
+                    <div class="absolute bottom-0 text-white px-5 pb-6 z-10"><p class="bg-white/20 px-2 py-1 rounded">{{ $portfolio->category->title }}</p>
+                        <p class="block font-medium text-xl mt-3">{{ $portfolio->title }}</p></div>
                 </div>
                 <div class="p-5 text-slate-600 dark:text-slate-500">
                     {{ $portfolio->description }}
                 </div>
-                <div class="mb-auto flex items-center justify-content-around px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <div class=""> Likes: <span class="font-medium">{{ $portfolio->likes->count() }}</span> </div>
-                    <a href="{{route('admin.blog.edit', $portfolio->id)}}" class="flex">
+                <div class="mb-auto flex items-center justify-around border-t border-slate-200/60 dark:border-darkmode-400">
+                    <a id="updateBtn" href="javascript:;" data-tw-toggle="modal" data-tw-target="#create-modal" class="flex p-3 w-1/2 justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                              stroke-linecap="round" stroke-linejoin="round" icon-name="edit-2"
@@ -43,7 +40,7 @@
                         </svg>
                         Edit Post </a>
                     <a href="javascript:;" data-tw-toggle="modal"
-                       data-tw-target="#delete-confirmation-modal" class="deletion flex">
+                       data-tw-target="#delete-confirmation-modal" class="deletion flex justify-center items-center p-3 w-1/2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                              stroke-linecap="round" stroke-linejoin="round" icon-name="trash"

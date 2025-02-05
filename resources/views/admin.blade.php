@@ -11,6 +11,12 @@
     @yield('styles')
     @stack('styles')
     <style>
+        .justify-around{
+            justify-content: space-around;
+        }
+        .justify-between{
+            justify-content: space-between;
+        }
         .shadowSearch {
             border-radius: 2px;
             box-shadow: 1px 1px 4px 1px #ccc;
