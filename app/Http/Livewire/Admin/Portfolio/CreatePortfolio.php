@@ -23,7 +23,7 @@ class CreatePortfolio extends Component
     public $text;
     public $oldVideo;
 
-    protected $listeners = ['updValues' => 'setVal', 'video' => 'videoSet'];
+    protected $listeners = ['updValues' => 'setVal', 'video' => 'videoSet', 'updateTextContent' => 'setTextContent'];
 
     public function mount(){
         if ($this->gallery === null){
@@ -33,7 +33,7 @@ class CreatePortfolio extends Component
     }
 
     public function videoSet($filepath){
-        dd($filepath);
+        $this->video = $filepath;
     }
 
     public function setVal($val, $varName)
@@ -52,6 +52,11 @@ class CreatePortfolio extends Component
         }
     }
 
+    public function setTextContent($content)
+    {
+        $this->text = $content;
+    }
+
     public function removeImg()
     {
         $this->image = [];
@@ -65,7 +70,7 @@ class CreatePortfolio extends Component
     }
 
     public function submit(){
-        dd($this->title, $this->description, $this->image, $this->category, $this->text, $this->test, $this->tests);
+        dd($this->title, $this->description, $this->image, $this->categoryId, $this->gallery, $this->text, $this->video);
     }
 
     public function render()

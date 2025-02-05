@@ -89,7 +89,7 @@ class ImageController extends Controller
     }
 
     public function video(Request $request){
-        $fileName = $request->fileName;
+        $fileName = preg_replace('/[^A-Za-z0-9\-_\.]/', '_', $request->fileName);
         $chunkIndex = $request->chunkIndex;
         $totalChunks = $request->totalChunks;
         $file = $request->file('video');
@@ -115,7 +115,8 @@ class ImageController extends Controller
 
             return response()->json([
                 "message" => "Upload complete!",
-                "video_path" => asset("storage/videos/{$fileName}")
+                "video_path" => asset("storage/videos/{$fileName}"),
+                "name" => $finalPath
             ]);
         }
 

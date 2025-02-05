@@ -3,7 +3,7 @@
 @endpush
 
 <div>
-    <div class="modal-content p-5"> <!-- BEGIN: Modal Header -->
+    <div id="modalBody" class="modal-content p-5"> <!-- BEGIN: Modal Header -->
         <div class="">
             <label for="file">
                 Image <b class="text-danger">*</b>
@@ -133,6 +133,8 @@
             uploadDiv.classList.add('hidden');
             uploadingDiv.classList.remove('hidden');
 
+            let videoPath = null;
+
             for (let i = 0; i < totalChunks; i++) {
                 const start = i * chunkSize;
                 const end = Math.min(start + chunkSize, file.size);
@@ -144,7 +146,14 @@
                 formData.append("totalChunks", totalChunks);
                 formData.append("fileName", file.name);
 
-                await fetch("/upload-video", { method: "POST", body: formData });
+                const response = await fetch("/upload-video", { method: "POST", body: formData });
+                const tempJson = await response.json();
+                console.log(tempJson); // Debugging
+
+                if (i === totalChunks - 1) {
+                    videoPath = tempJson.video_path;
+                    alert("Final Video Path: " + videoPath);
+                }
 
                 // Update progress
                 let progress = ((i + 1) / totalChunks) * 100;
@@ -152,56 +161,20 @@
                 progressText.textContent = `${Math.round(progress)}%`;
             }
 
-            const response = await fetch(`/get-video-path?fileName=${file.name}`);
-            const data = await response.json();
+            if (!videoPath) {
+                alert("Error: Video path not received!");
+                return;
+            } else {
+                uploadingDiv.classList.add("hidden");
+                uploadedDiv.classList.remove("hidden");
+                videoPreview.src = videoPath;
+                videoPreview.classList.remove("hidden");
 
-            uploadingDiv.classList.add('hidden');
-            uploadedDiv.classList.remove('hidden');
-            videoPreview.src = data.video_path;
-            videoPreview.classList.remove('hidden');
-
-        }
-
-        async function uploadVid(file) {
-            const chunkSize = 2 * 1024 * 1024; // 2MB per chunk
-            const totalChunks = Math.ceil(file.size / chunkSize);
-            const progressBar = document.getElementById("videoProgress");
-            const progressText = document.getElementById("uploadingTxt");
-            const uploadDiv = document.querySelector(".videoUpload");
-            const uploadingDiv = document.querySelector(".videoUploading");
-            const uploadedDiv = document.querySelector(".uploaded");
-            const videoPreview = document.getElementById("videoPreview");
-
-            uploadDiv.classList.add('hidden');
-            uploadingDiv.classList.remove('hidden');
-
-            for (let i = 0; i < totalChunks; i++) {
-                const start = i * chunkSize;
-                const end = Math.min(start + chunkSize, file.size);
-                const chunk = file.slice(start, end);
-
-                const formData = new FormData();
-                formData.append("video", chunk);
-                formData.append("chunkIndex", i);
-                formData.append("totalChunks", totalChunks);
-                formData.append("fileName", file.name);
-
-                const tempData = await fetch("/upload-video", { method: "POST", body: formData });
-
-                // Update progress
-                let progress = ((i + 1) / totalChunks) * 100;
-                progressBar.style.width = progress+"%";
-                progressText.textContent = `${Math.round(progress)}`;
+                console.log("Upload complete!");
+                alert('Emit');
+                Livewire.emit('video', videoPath);
+                alert('finished');
             }
-            const response = await fetch(`/get-video-path?fileName=${tempData}`);
-            const data = await response.json();
-
-            uploadingDiv.addClass('hidden');
-            uploadedDiv.removeClass('hidden');
-            videoPreview.src = data.video_path;
-            videoPreview.classList.remove('hidden');
-            Livewire.emit('video', data.video_path);
-            console.log("Upload complete!");
         }
 
         $('.create-btn').on('click', function () {
@@ -213,11 +186,17 @@
                     'help charmap emoticons autosave',
                 language: 'ru',
                 promotion: false,
-                branding: false
+                branding: false,
+                setup: function (editor) {
+                    editor.on('input', function () {
+                        let content = editor.getContent(); // Get content from TinyMCE
+                        Livewire.emit('updateTextContent', content); // Emit to Livewire
+                    });
+                }
             });
         });
 
-        $('#create-modal').on('click', function () {
+        $('#modalBody').on('focusout', function () {
             $('#videoPreview')[0].pause(); // Pause the video
         });
 
