@@ -9,12 +9,10 @@ class Portfolio extends Model
 {
     use HasFactory;
 
-    use HasFactory;
+    protected $fillable = ['title', 'description', 'category_id', 'image', 'text', 'video', 'info'];
 
-    protected $fillable = ['title', 'description', 'image', 'text', 'video', 'info'];
-
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(PortfolioCategory::class, 'port_category');
+        return $this->belongsTo(PortfolioCategory::class, 'category_id');
     }
 }

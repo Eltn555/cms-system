@@ -78,7 +78,7 @@
             <label for="video">
                 Video
                 <div class="border-opacity-10 border flex-wrap flex items-center justify-start" style="border-radius: 10px;">
-                    <div class="videoUpload">
+                    <div class="videoUpload flex justify-start items-center">
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                              style="bottom:0; left: 0;" stroke-linejoin="round" class="w-10 h-10 fa-arrow-circle-up lucide lucide-upload">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -92,8 +92,9 @@
                             Uploading... <b id="uploadingTxt">0</b>%
                         </div>
                     </div>
-                    <div class="uploaded text-success hidden">
+                    <div class="uploaded text-success hidden w-full relative">
                         Video uploaded successfully! 🎉
+                        <button id="vidRemove" wire:click="vidRemove" class="rouned btn btn-danger m-2 absolute top-0 right-0">Delete</button>
                         <video id="videoPreview" class="hidden" controls width="500"></video>
                     </div>
                 </div>
@@ -125,6 +126,7 @@
             const totalChunks = Math.ceil(file.size / chunkSize);
             const progressBar = document.getElementById("videoProgress");
             const progressText = document.getElementById("uploadingTxt");
+            const videoIn = document.getElementById("video");
             const uploadDiv = document.querySelector(".videoUpload");
             const uploadingDiv = document.querySelector(".videoUploading");
             const uploadedDiv = document.querySelector(".uploaded");
@@ -132,6 +134,7 @@
 
             uploadDiv.classList.add('hidden');
             uploadingDiv.classList.remove('hidden');
+            videoIn.setAttribute('disabled', true);
 
             let videoPath = null;
 
@@ -152,7 +155,6 @@
 
                 if (i === totalChunks - 1) {
                     videoPath = tempJson.video_path;
-                    alert("Final Video Path: " + videoPath);
                 }
 
                 // Update progress
@@ -161,21 +163,28 @@
                 progressText.textContent = `${Math.round(progress)}%`;
             }
 
-            if (!videoPath) {
-                alert("Error: Video path not received!");
-                return;
-            } else {
+            if (videoPath) {
                 uploadingDiv.classList.add("hidden");
                 uploadedDiv.classList.remove("hidden");
                 videoPreview.src = videoPath;
                 videoPreview.classList.remove("hidden");
 
-                console.log("Upload complete!");
-                alert('Emit');
                 Livewire.emit('video', videoPath);
-                alert('finished');
             }
         }
+
+        $('#vidRemove').on('click', function (){
+            const videoIn = document.getElementById("video");
+            const uploadDiv = document.querySelector(".videoUpload");
+            const uploadedDiv = document.querySelector(".uploaded");
+            const videoPreview = document.getElementById("videoPreview");
+
+            uploadedDiv.classList.add("hidden");
+            videoPreview.classList.add("hidden");
+            videoPreview.src = null;
+            uploadDiv.classList.remove('hidden');
+            videoIn.removeAttribute('disabled', true);
+        });
 
         $('.create-btn').on('click', function () {
             tinymce.remove('#text-content');

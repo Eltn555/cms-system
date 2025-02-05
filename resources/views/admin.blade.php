@@ -19,8 +19,104 @@
         .shadowSearch:hover{
             background-color: lightblue;
         }
+        .fixed {
+            position: fixed;
+        }
+
+        .top-5 {
+            top: 1.25rem; /* 20px */
+        }
+
+        .right-40per {
+            right: 20%; /* 20px */
+        }
+
+        .z-50 {
+            z-index: 50;
+        }
+        .z-100 {
+            z-index: 100;
+        }
+        .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse))); /* 8px */
+            margin-bottom: calc(0.5rem * var(--tw-space-y-reverse)); /* 8px */
+        }
+
+        /* Flash Message Box */
+        .px-6 {
+            padding-left: 1.5rem; /* 24px */
+            padding-right: 1.5rem; /* 24px */
+        }
+
+        .py-4 {
+            padding-top: 1rem; /* 16px */
+            padding-bottom: 1rem; /* 16px */
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem; /* 8px */
+        }
+
+        .shadow-md {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Medium shadow */
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-x-reverse: 0;
+            margin-right: calc(0.75rem * var(--tw-space-x-reverse)); /* 12px */
+            margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse))); /* 12px */
+        }
+
+        /* Colors */
+        .bg-green-500 {
+            background-color: #22c55e; /* Tailwind green */
+        }
+
+        .bg-red-500 {
+            background-color: #ef4444; /* Tailwind red */
+        }
+
+        .text-white {
+            color: #ffffff; /* White text */
+        }
+
+        /* Button Close Icon */
+        .font-bold {
+            font-weight: 700; /* Bold */
+        }
+
+        .ml-4 {
+            margin-left: 1rem; /* 16px */
+        }
+
+        /* Animation Classes */
+        .opacity-100 {
+            opacity: 1;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        .transition-opacity {
+            transition-property: opacity;
+        }
+
+        .duration-500 {
+            transition-duration: 500ms;
+        }
     </style>
     @livewireStyles
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body class="py-5 md:py-0">
 
@@ -36,7 +132,7 @@
         @yield('content')
     </div>
 </div>
-
+<div id="flash-message-container" class="fixed top-5 right-40per z-100 space-y-2"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="{{ asset('dist/js/app.js') }}"></script>

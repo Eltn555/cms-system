@@ -105,8 +105,46 @@
     </div>
 </div>
 
-{{--@push('scripts')--}}
-{{--    <script>--}}
+@push('scripts')
+    <script>
+        window.addEventListener('flash-message', event => {
+            showFlashMessage(event.detail.type, event.detail.message);
+        });
 
-{{--    </script>--}}
-{{--@endpush--}}
+        function showFlashMessage(type, message) {
+            const container = document.getElementById("flash-message-container");
+
+            // Create message div
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add(
+                "px-6", "py-4", "rounded-lg", "shadow-md", "flex", "items-center", "space-x-3", "opacity-100", "transition-opacity", "duration-500"
+            );
+
+            // Add colors based on type
+            if (type === "success") {
+                messageDiv.classList.add("bg-success", "text-white");
+                messageDiv.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+            <span>${message}</span>
+            <button onclick="this.parentElement.remove()" class="text-white font-bold ml-4">×</button>
+        `;
+            } else if (type === "error") {
+                messageDiv.classList.add("bg-red-500", "text-white");
+                messageDiv.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+            <span>${message}</span>
+            <button onclick="this.parentElement.remove()" class="text-white font-bold ml-4">×</button>
+        `;
+            }
+
+            // Append to container
+            container.appendChild(messageDiv);
+
+            // Auto-hide after 4 seconds
+            setTimeout(() => {
+                messageDiv.classList.add("opacity-0");
+                setTimeout(() => messageDiv.remove(), 500);
+            }, 3000);
+        }
+    </script>
+@endpush

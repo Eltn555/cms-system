@@ -6,8 +6,10 @@ use Livewire\Component;
 use App\Models\BlogCategory;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
+use App\Models\PortfolioImage;
 use Livewire\WithFileUploads;
 use App\Models\Image;
+use Illuminate\Support\Facades\Storage;
 
 class CreatePortfolio extends Component
 {
@@ -22,6 +24,7 @@ class CreatePortfolio extends Component
     public $categoryId;
     public $text;
     public $oldVideo;
+    public $flashMessage;
 
     protected $listeners = ['updValues' => 'setVal', 'video' => 'videoSet', 'updateTextContent' => 'setTextContent'];
 
@@ -29,11 +32,21 @@ class CreatePortfolio extends Component
         if ($this->gallery === null){
             $this->gallery = collect();
         }
-        $this->categories = BlogCategory::all();
+        $this->categories = PortfolioCategory::all();
     }
 
     public function videoSet($filepath){
         $this->video = $filepath;
+    }
+
+    public function vidRemove(){
+        if ($this->video) {
+            $storagePath = str_replace(asset('storage/'), '', $this->video);
+            if (Storage::disk('public')->exists($storagePath)) {
+                Storage::disk('public')->delete($storagePath);
+                $this->video = null;
+            }
+        }
     }
 
     public function setVal($val, $varName)
@@ -70,7 +83,36 @@ class CreatePortfolio extends Component
     }
 
     public function submit(){
-        dd($this->title, $this->description, $this->image, $this->categoryId, $this->gallery, $this->text, $this->video);
+        if ($this->categoryId && $this->title && $this->description && isset($this->image['image'])){
+            $record = Portfolio::create([
+                'title' => $this->title,
+                'description' => $this->description,
+                'category_id' => $this->categoryId,
+                'image' => $this->image['image'],
+                'text' => $this->text,
+                'video' => $this->video,
+            ]);
+            if (!$this->gallery->isEmpty()){
+                foreach ($this->gallery as $image){
+                    PortfolioImage::create([
+                        'portfolio_id' => $record->id,
+                        'image_id' => $image['id']
+                    ]);
+                }
+            }
+            $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
+            return redirect()->to('/admin/portfolio');
+        }else{
+            if (!$this->title){
+                $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Title required!']);
+            }elseif(!$this->description){
+                $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Description required!']);
+            }elseif(!$this->categoryId){
+                $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Category required!']);
+            }elseif(!isset($this->image['image'])){
+                $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Image required!']);
+            }
+        }
     }
 
     public function render()

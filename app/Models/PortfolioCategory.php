@@ -13,6 +13,6 @@ class PortfolioCategory extends Model
 
     public function portfolios()
     {
-        return $this->belongsToMany(Portfolio::class, 'port_category');
+        return $this->hasMany(Portfolio::class, 'category_id');
     }
 }
