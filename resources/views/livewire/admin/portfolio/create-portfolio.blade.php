@@ -18,7 +18,7 @@
                         <b class="imageLabel">Select image for portfolio</b>
                     @else
                         <div class="w-32 h-32 relative">
-                            <img class="w-full h-full" style="object-fit: cover; border-radius: 10px;" src="{{asset('storage/'.$image['image'])}}" alt="">
+                            <img class="w-full h-full" style="object-fit: cover; border-radius: 10px;" src="{{asset('storage/'.$image)}}" alt="">
                             <button wire:click="removeImg" class="z-50 absolute bg-danger rounded-full text-white h-6 w-6 flex justify-center align-center" style="top: -5px; right: -5px">✘</button>
                         </div>
                     @endif
@@ -37,12 +37,12 @@
                    placeholder="Description">
         </div>
         <!-- BEGIN: Basic Select -->
-        <div class="col-span-6 sm:col-span-6 mt-3 h-[80px]" wire:ignore>
-            <label for="post-form-3-tomselected" class="form-label" id="post-form-3-ts-label">Category
-                <b class="text-danger">*</b></label>
-            <select data-placeholder="Select categories" class="tom-select w-full tomselected"
-                    id="post-form-3" name="category[]"
-                    tabindex="-1" hidden="hidden" wire:model="categoryId" required>
+        <div class="col-span-6 sm:col-span-6 mt-3 h-[80px] select-container ">
+            <label for="post-form-3-tom" class="form-label" id="post-form-3-ts-label">Category
+                <b class="text-danger">*</b></label><br>
+            <select wire:model="categoryId" data-placeholder="Select categories" class="w-1/2 rounded-md"
+                    id="post-form-3-tom" name="category[]"
+                    tabindex="-1" required>
                 <option value="{{ null }}"></option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" {{$category->id == $categoryId ? 'selected' : ''}}>{{ $category->title }}</option>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="uploaded text-success hidden w-full relative">
                         Video uploaded successfully! 🎉
-                        <button id="vidRemove" wire:click="vidRemove" class="rouned btn btn-danger m-2 absolute top-0 right-0">Delete</button>
+                        <button onclick="removeVid()" id="vidRemove" wire:click="vidRemove" class="rouned btn btn-danger m-2 absolute top-0 right-0">Delete</button>
                         <video id="videoPreview" class="hidden" controls width="500"></video>
                     </div>
                 </div>
@@ -173,7 +173,31 @@
             }
         }
 
-        $('#vidRemove').on('click', function (){
+        document.addEventListener('livewire:load', function () {
+            Livewire.on('setUpVid', function(variable) {
+                if (variable == null){
+                    removeVid();
+                }else{
+                    const videoIn = document.getElementById("video");
+                    const uploadDiv = document.querySelector(".videoUpload");
+                    const uploadedDiv = document.querySelector(".uploaded");
+                    const videoPreview = document.getElementById("videoPreview");
+                    const uploadingDiv = document.querySelector(".videoUploading");
+
+                    uploadedDiv.classList.remove('hidden');
+                    videoPreview.classList.remove('hidden');
+                    videoPreview.src = variable;
+                    uploadDiv.classList.add('hidden');
+                    uploadingDiv.classList.add('hidden');
+                    videoIn.setAttribute('disabled', true);
+                }
+            });
+            Livewire.on('close', function (){
+                document.getElementById('create-modal').click();
+            });
+        });
+
+        function removeVid(){
             const videoIn = document.getElementById("video");
             const uploadDiv = document.querySelector(".videoUpload");
             const uploadedDiv = document.querySelector(".uploaded");
@@ -184,9 +208,9 @@
             videoPreview.src = null;
             uploadDiv.classList.remove('hidden');
             videoIn.removeAttribute('disabled', true);
-        });
+        };
 
-        $('.create-btn').on('click', function () {
+        $('.create-btn, .editPortfolio').on('click', function () {
             tinymce.remove('#text-content');
 
             tinymce.init({

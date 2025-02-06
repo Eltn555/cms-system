@@ -4,7 +4,7 @@
             Portfolios
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button data-tw-toggle="modal" data-tw-target="#create-modal" class="create-btn btn btn-primary shadow-md mr-2">Add New Portfolio</button>
+            <button onclick="updateValue('create')" data-tw-toggle="modal" data-tw-target="#create-modal" class="create-btn btn btn-primary shadow-md mr-2">Add New Portfolio</button>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
             <div id="{{$portfolio->id}}" data-field="{{$portfolio->id}}" class="intro-y col-span-12 md:col-span-6 box">
                 <div
                     class="h-[320px] before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black/90 before:to-black/10 image-fit">
-                    <img class="rounded-t-md" src="{{ asset('storage/' . $portfolio->image) }}">
+                    <img alt="" class="rounded-t-md" src="{{ asset('storage/' . $portfolio->image) }}">
                     <div class="absolute w-full flex items-center px-5 pt-6 z-10">
                         <div class="w-10 h-10 flex-none image-fit">
                             {{--<img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">--}}
@@ -31,7 +31,7 @@
                     {{ $portfolio->description }}
                 </div>
                 <div class="mb-auto flex items-center justify-around border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a id="updateBtn" href="javascript:;" data-tw-toggle="modal" data-tw-target="#create-modal" class="flex p-3 w-1/2 justify-center items-center">
+                    <a href="javascript:;" onclick="updateValue({{$portfolio->id}})" data-tw-toggle="modal" data-tw-target="#create-modal" class="flex p-3 w-1/2 justify-center items-center editPortfolio">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                              stroke-linecap="round" stroke-linejoin="round" icon-name="edit-2"
@@ -106,6 +106,11 @@
 
 @push('scripts')
     <script>
+
+        function updateValue(val){
+            Livewire.emit('setToUpdate', val);
+        }
+
         function removeDuplicateModals() {
             let modals = document.querySelectorAll("#delete-confirmation-modal");
 

@@ -15,4 +15,9 @@ class Portfolio extends Model
     {
         return $this->belongsTo(PortfolioCategory::class, 'category_id');
     }
+
+    public function gallery()
+    {
+        return $this->belongsToMany(Image::class, 'portfolio_images', 'portfolio_id', 'image_id');
+    }
 }

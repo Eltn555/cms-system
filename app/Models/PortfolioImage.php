@@ -10,4 +10,16 @@ class PortfolioImage extends Model
     use HasFactory;
 
     protected $fillable = ['portfolio_id', 'image_id'];
+
+    protected $table = 'portfolio_images';
+
+    public function portfolio()
+    {
+        return $this->belongsTo(Portfolio::class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
 }

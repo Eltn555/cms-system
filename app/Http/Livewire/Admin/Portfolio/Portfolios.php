@@ -10,7 +10,13 @@ class Portfolios extends Component
     public $portfolios = [];
     public $delete;
 
+    protected $listeners = ['load' => 'loader'];
+
     public function mount(){
+        $this->portfolios = Portfolio::orderBy('created_at', 'desc')->get();
+    }
+
+    public function loader(){
         $this->portfolios = Portfolio::orderBy('created_at', 'desc')->get();
     }
 

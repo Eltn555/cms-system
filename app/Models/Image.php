@@ -15,4 +15,9 @@ class Image extends Model
         'image',
         'alt'
         ];
+
+    public function portfolios()
+    {
+        return $this->belongsToMany(Portfolio::class, 'portfolio_images', 'image_id', 'portfolio_id');
+    }
 }
