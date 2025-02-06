@@ -38,16 +38,7 @@ class CreatePortfolio extends Component
 
     public function update($update){
         if ($update == 'create' && $this->update != null){
-            $this->update = null;
-            $this->title = '';
-            $this->description = '';
-            $this->image = '';
-            $this->gallery = collect();
-            $this->video = '';
-            $this->oldVideo = '';
-            $this->categoryId = '';
-            $this->text = '';
-            $this->emit('setUpVid', null);
+            $this->resetFields();
         }elseif($update != 'create'){
             $prtflio = Portfolio::findOrFail($update);
             $this->update = $prtflio;
@@ -62,27 +53,33 @@ class CreatePortfolio extends Component
         }
     }
 
+    private function resetFields()
+    {
+        $this->update = null;
+        $this->title = '';
+        $this->description = '';
+        $this->image = '';
+        $this->gallery = collect();
+        $this->video = '';
+        $this->oldVideo = '';
+        $this->categoryId = '';
+        $this->text = '';
+        $this->emit('setUpVid', null);
+    }
+
     public function videoSet($filepath){
         $this->video = $filepath;
     }
 
     public function vidRemove(){
         if (!$this->update && $this->video) {
-            $storagePath = str_replace(asset('storage/'), '', $this->video);
-            if (Storage::disk('public')->exists($storagePath)) {
-                Storage::disk('public')->delete($storagePath);
-                $this->video = null;
-            }
+            $this->deletetion($this->video);
         } elseif($this->video && $this->oldVideo){
-            $storagePath = str_replace(asset('storage/'), '', $this->video);
-            if (Storage::disk('public')->exists($storagePath)) {
-                Storage::disk('public')->delete($storagePath);
-                $this->video = null;
-            }
+            $this->deletetion($this->video);
         } elseif($this->update && $this->video && !$this->oldVideo){
             $this->oldVideo = $this->video;
-            $this->video = null;
         }
+        $this->video = null;
     }
 
     public function setVal($val, $varName)
@@ -92,12 +89,10 @@ class CreatePortfolio extends Component
             $this->image = $img['image'];
         }elseif ($varName == "gallery"){
             $ids = is_array($val)
-                ? $val // If already an array, use as is
+                ? $val
                 : (json_decode($val, true) ?: explode(',', $val)); // Try JSON decode, fallback to explode
-
             $ids = array_filter(array_map('trim', (array) $ids), 'is_numeric');
             $new = Image::whereIn('id', $ids)->get();
-
             $this->gallery = $this->gallery->merge($new);
         }
     }
@@ -119,69 +114,77 @@ class CreatePortfolio extends Component
         });
     }
 
+    private function isValidData()
+    {
+        return $this->categoryId && $this->title && $this->description && $this->image;
+    }
+
+    private function prepareData()
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+            'category_id' => $this->categoryId,
+            'image' => $this->image,
+            'text' => $this->text,
+            'video' => $this->video,
+        ];
+    }
+
+    private function handleErrors()
+    {
+        if (!$this->title) {
+            $this->setFlashMessage('error', 'Title required!');
+        } elseif (!$this->description) {
+            $this->setFlashMessage('error', 'Description required!');
+        } elseif (!$this->categoryId) {
+            $this->setFlashMessage('error', 'Category required!');
+        } elseif (!$this->image) {
+            $this->setFlashMessage('error', 'Image required!');
+        }
+    }
+
+    public function deletetion($file){
+        $storagePath = str_replace(asset('storage/'), '', $file);
+        if (Storage::disk('public')->exists($storagePath)) {
+            Storage::disk('public')->delete($storagePath);
+        }
+    }
+
+    private function emitActions(){
+        $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
+        $this->emit('close');
+        $this->emit('load');
+//        $this->resetFields();
+    }
+
     public function submit(){
         if (!$this->update){
-            if ($this->categoryId && $this->title && $this->description && $this->image){
-                $record = Portfolio::create([
-                    'title' => $this->title,
-                    'description' => $this->description,
-                    'category_id' => $this->categoryId,
-                    'image' => $this->image,
-                    'text' => $this->text,
-                    'video' => $this->video,
-                ]);
+            if ($this->isValidData()){
+                $record = Portfolio::create($this->prepareData());
                 if (!$this->gallery->isEmpty()){
                     $imageIds = collect($this->gallery)->pluck('id')->toArray();
                     $record->gallery()->attach($imageIds);
                 }
-                $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
-                $this->emit('close');
-                $this->emit('load');
+                $this->emitActions();
+                return redirect()->to('/admin/portfolio');
             }else{
-                if (!$this->title){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Title required!']);
-                }elseif(!$this->description){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Description required!']);
-                }elseif(!$this->categoryId){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Category required!']);
-                }elseif($this->image){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Image required!']);
-                }
+                $this->handleErrors();
             }
         }elseif($this->update){
             if ($this->oldVideo){
-                $storagePath = str_replace(asset('storage/'), '', $this->oldVideo);
-                if (Storage::disk('public')->exists($storagePath)) {
-                    Storage::disk('public')->delete($storagePath);
-                    $this->oldVideo = null;
-                }
+                $this->deletetion($this->oldVideo);
+                $this->oldVideo = null;
             }
-            if ($this->categoryId && $this->title && $this->description && $this->image){
-                $this->update->update([
-                    'title' => $this->title,
-                    'description' => $this->description,
-                    'category_id' => $this->categoryId,
-                    'image' => $this->image,
-                    'text' => $this->text,
-                    'video' => $this->video,
-                ]);
+            if ($this->isValidData()){
+                $this->update->update($this->prepareData());
                 if (!$this->gallery->isEmpty()){
                     $imageIds = collect($this->gallery)->pluck('id')->toArray();
                     $this->update->gallery()->sync($imageIds);
                 }
-                $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
-                $this->emit('close');
-                $this->emit('load');
+                $this->emitActions();
             }else{
-                if (!$this->title){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Title required!']);
-                }elseif(!$this->description){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Description required!']);
-                }elseif(!$this->categoryId){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Category required!']);
-                }elseif($this->image){
-                    $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Image required!']);
-                }
+                $this->handleErrors();
             }
         }
     }
