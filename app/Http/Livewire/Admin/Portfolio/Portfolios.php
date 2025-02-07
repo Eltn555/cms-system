@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Admin\Portfolio;
 
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use App\Models\Portfolio;
 
 class Portfolios extends Component
 {
     public $portfolios = [];
-    public $delete;
 
-    protected $listeners = ['load' => 'loader'];
+    protected $listeners = ['load' => 'loader', 'deleted' => 'confirm'];
 
     public function mount(){
         $this->portfolios = Portfolio::orderBy('created_at', 'desc')->get();
@@ -20,15 +20,18 @@ class Portfolios extends Component
         $this->portfolios = Portfolio::orderBy('created_at', 'desc')->get();
     }
 
-    public function delete($deletion){
-        $this->delete = $deletion;
-    }
-
-    public function confirm(){
-        $portfolio = Portfolio::findOrFail($this->delete);
+    public function confirm($id){
+        $portfolio = Portfolio::findOrFail($id);
+        $this->deletetion($portfolio->video);
         $portfolio->delete();
         $this->portfolios = Portfolio::orderBy('created_at', 'desc')->get();
-        $this->delete = null;
+    }
+
+    public function deletetion($file){
+        $storagePath = str_replace(asset('storage/'), '', $file);
+        if (Storage::disk('public')->exists($storagePath)) {
+            Storage::disk('public')->delete($storagePath);
+        }
     }
 
     public function render()

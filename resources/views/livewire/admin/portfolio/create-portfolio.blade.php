@@ -151,7 +151,6 @@
 
                 const response = await fetch("/upload-video", { method: "POST", body: formData });
                 const tempJson = await response.json();
-                console.log(tempJson); // Debugging
 
                 if (i === totalChunks - 1) {
                     videoPath = tempJson.video_path;

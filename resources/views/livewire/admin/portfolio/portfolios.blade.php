@@ -39,8 +39,8 @@
                             <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                         </svg>
                         Edit Post </a>
-                    <a href="javascript:;" wire:click="delete({{$portfolio->id}})" data-tw-toggle="modal"
-                       data-tw-target="#delete-confirmation-modal" class="deletion flex justify-center items-center p-3 w-1/2">
+                    <a href="javascript:;" data-tw-toggle="modal"
+                       data-tw-target="#delete-confirmation" class="deletion flex justify-center items-center p-3 w-1/2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                              stroke-linecap="round" stroke-linejoin="round" icon-name="trash"
@@ -74,27 +74,6 @@
 {{--        </div>--}}
     </div>
 
-    <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <div class="p-5 text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x w-16 h-16 text-danger mx-auto mt-3"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-                        <div class="text-3xl mt-5">Are you sure?</div>
-                        <div class="text-slate-500 mt-2">
-                            Do you really want to delete these records?
-                            <br>
-                            This process cannot be undone.
-                        </div>
-                    </div>
-                    <div class="px-5 pb-8 text-center">
-                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                        <button id="delete" wire:click="confirm()" data-tw-dismiss="modal" type="button" class="btn btn-danger w-24">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="create-modal" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div>
@@ -185,5 +164,12 @@
                 setTimeout(() => messageDiv.remove(), 500);
             }, 3000);
         }
+        let id;
+        $(document).on('click', '.deletion', function () {
+            id = $(this).parents('.intro-y').data('field');
+        });
+        $(document).on('click', '#delete', function () {
+            Livewire.emit('deleted', id);
+        });
     </script>
 @endpush

@@ -46,10 +46,10 @@ class CreatePortfolio extends Component
             $this->description = $prtflio->description;
             $this->image = $prtflio->image;
             $this->gallery = $prtflio->gallery()->get();
-            $this->video = $prtflio->video;
+            $this->video = $prtflio->video == '' ? null : $prtflio->video;
             $this->categoryId = $prtflio->category_id;
             $this->text = $prtflio->text;
-            $this->emit('setUpVid', $prtflio->video);
+            $this->emit('setUpVid', $this->video);
         }
     }
 
@@ -134,13 +134,13 @@ class CreatePortfolio extends Component
     private function handleErrors()
     {
         if (!$this->title) {
-            $this->setFlashMessage('error', 'Title required!');
+            $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Title required!']);
         } elseif (!$this->description) {
-            $this->setFlashMessage('error', 'Description required!');
+            $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Description required!']);
         } elseif (!$this->categoryId) {
-            $this->setFlashMessage('error', 'Category required!');
+            $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Category required!']);
         } elseif (!$this->image) {
-            $this->setFlashMessage('error', 'Image required!');
+            $this->dispatchBrowserEvent('flash-message', ['type' => 'error', 'message' => 'Image required!']);
         }
     }
 
@@ -155,7 +155,7 @@ class CreatePortfolio extends Component
         $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
         $this->emit('close');
         $this->emit('load');
-//        $this->resetFields();
+        $this->resetFields();
     }
 
     public function submit(){
