@@ -2,43 +2,8 @@
 @section('description', 'Lumen Lux, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет'.$this->description)
 @section('keyword', 'LumenLux, lumen, lux, '.$this->description)
 
-<div class="my-5 pt-1">
+@push('styles')
     <style>
-        .flash-message{
-            top: 100px;
-            right: 10px;
-            opacity: 1;
-            transition: 0.2s;
-            position: fixed !important;
-        }
-        .hiddenmsg{
-            right: -500px;
-            opacity: 0;
-            transition: 1s;
-            position: fixed;
-        }
-        .file-input{
-            display: inline-block;
-            padding-top: 50px !important;
-            padding-bottom: 0 !important;
-            -webkit-box-sizing: border-box !important;
-            -moz-box-sizing: border-box !important;
-            box-sizing: border-box !important;
-            overflow: hidden !important;
-            height: 50px !important;
-        }
-        .file-text{
-            left: 20px;
-            top: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #757575;
-        }
-        .icon-input {
-            top: 0;
-            right: 0;
-            padding: 12px 15px;
-        }
         .blog-category{
             height: 35px;
             overflow-x: scroll;
@@ -73,6 +38,9 @@
             object-fit: cover;
         }
     </style>
+@endpush
+
+<div class="my-5 pt-1">
     <div class="container mt-3 py-5">
         <div class="pt-3 row" data-aos-delay="50">
             <div class="col-12 font-cormorant position-relative">
@@ -227,7 +195,6 @@
 </div>
 @push('scripts')
     <script>
-
         window.addEventListener('metaChanged', event => {
             const {description, keywords} = event.detail;
             // Update meta description
@@ -241,86 +208,5 @@
             $('.notActive').removeClass('activeBlog');
             $('#blogCategory'+event.detail.id).addClass('activeBlog');
         });
-
-        function updateFileText(input) {
-            const fileInput = input;
-            const fileTextSpan = document.querySelector('.file-text');
-            const files = fileInput.files;
-            const resizedFiles = [];
-
-            if (files && files.length > 0) {
-                Array.from(files).forEach((file) => {
-                    if (file.type.startsWith('image/')) {
-                        // Declare reader within the loop to ensure it's scoped properly
-                        const reader = new FileReader();
-                        reader.onload = function (e) {
-                            const img = new Image();
-                            img.onload = function () {
-                                const canvas = document.createElement('canvas');
-                                const ctx = canvas.getContext('2d');
-
-                                const maxSize = 1000;
-                                let width = img.width;
-                                let height = img.height;
-
-                                if (width > height) {
-                                    if (width > maxSize) {
-                                        height *= maxSize / width;
-                                        width = maxSize;
-                                    }
-                                } else {
-                                    if (height > maxSize) {
-                                        width *= maxSize / height;
-                                        height = maxSize;
-                                    }
-                                }
-
-                                canvas.width = width;
-                                canvas.height = height;
-                                ctx.drawImage(img, 0, 0, width, height);
-
-                                // Convert canvas to WebP
-                                canvas.toBlob((blob) => {
-                                    const resizedFile = new File([blob], file.name.replace(/\.[^/.]+$/, ".webp"), { type: 'image/webp' });
-                                    resizedFiles.push(resizedFile);
-
-                                    // Once all files are resized, you can send them to the backend
-                                    if (resizedFiles.length === files.length) {
-                                        uploadFiles(resizedFiles); // Your custom upload function
-                                    }
-                                    fileTextSpan.textContent = `${files.length} file(s) ready (compressed)`;
-                                }, 'image/webp', 0.5); // Adjust quality as needed
-                            };
-                            img.src = e.target.result;
-                        };
-                        reader.readAsDataURL(file); // Start reading the file
-                    }
-                });
-            }
-        }
-
-
-        function uploadFiles(files) {
-            const formData = new FormData();
-            files.forEach(file => formData.append('images[]', file));
-
-            fetch('/upload-images', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                },
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Uploaded image IDs:', data.image_ids);
-                    // Save IDs to a hidden input field or Livewire component
-                    const hiddenInput = document.querySelector('#image-ids');
-                    const imageIds = data.image_ids.join(',');
-                    hiddenInput.value = imageIds;
-                    Livewire.emit('updateImageIds', imageIds);
-                })
-                .catch(error => console.error('Error:', error));
-        }
     </script>
 @endpush
