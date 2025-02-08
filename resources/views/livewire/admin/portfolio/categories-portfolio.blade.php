@@ -1,6 +1,6 @@
 <div>
     <h2 class="intro-y text-lg font-medium mt-10">
-        Portfolio category
+        Portfolio category <br><b class="text-danger">* Udalit qilingan categoriya ichidigi elementlari bilan o'chib ketadi</b>
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <!-- BEGIN: Data List -->
