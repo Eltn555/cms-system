@@ -25,6 +25,8 @@ use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Livewire\Front\Portfolio\PortfoliosView;
+use App\Http\Livewire\Front\Portfolio\PortfoliosCollection;
 
 
 /*
@@ -70,7 +72,9 @@ Route::group(['prefix' => '/', 'middleware' => ['front_auth']], function (){
 Route::get('/contact', function () { return view('front.contact.index'); })->name('contact.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/blog', Blog::class)->name('blog.index');
+Route::get('/portfolio', PortfoliosCollection::class)->name('portfolio.index');
 Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.details');
+Route::get('/portfolio/{slug}', Portfolios::class)->name('portfolio.details');
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/', \App\Http\Livewire\Profile::class)->name('front.profile.index');
     Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');

@@ -94,7 +94,6 @@ class ProductController extends Controller
         }else{
             return ['Response' => 'Empty', 'id' => 'null'];
         }
-        return ['Response' => 'No images to store', 'images' => count($images)];
     }
 
     protected function storeImage($product, $file, $type)

@@ -15,7 +15,6 @@ class Blog extends Component
     public $category1;
     public $category2;
 
-
     public function setBlog($id){
         $this->categoryId = $id;
         $category = BlogCategory::find($id);
@@ -38,13 +37,13 @@ class Blog extends Component
         $this->description = '';
         $this->categories = BlogCategory::all();
         foreach ($this->categories as $category){
-            $this->description .= $category->title.' , ';
+            $this->description .= $category->title.', ';
         }
     }
 
     public function render()
     {
-        $this->news = ($this->categoryId) ? \App\Models\Blog::where('category_id', $this->categoryId)->take(8)->get() : \App\Models\Blog::take(8)->get();
+        $this->news = ($this->categoryId) ? \App\Models\Blog::where('category_id', $this->categoryId)->take(12)->get() : \App\Models\Blog::take(12)->get();
         foreach ($this->news as $item) {
             $item->created_at = Carbon::parse($item->created_at);
         }

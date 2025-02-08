@@ -1,5 +1,5 @@
 @section('title', 'Блог')
-@section('description', $this->description)
+@section('description', 'Lumen Lux, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет'.$this->description)
 @section('keyword', 'LumenLux, lumen, lux, '.$this->description)
 
 <div class="my-5 pt-1">

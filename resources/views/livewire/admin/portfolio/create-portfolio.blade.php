@@ -281,7 +281,7 @@
                                         uploadFiles(resizedFiles, varName); // Your custom upload function
                                     }
                                     fileTextSpan.textContent = `${files.length} file(s) ready (compressed)`;
-                                }, 'image/webp', 0.5); // Adjust quality as needed
+                                }, 'image/webp', 0.7); // Adjust quality as needed
                             };
                             img.src = e.target.result;
                         };
@@ -305,7 +305,6 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Uploaded image IDs:', data.image_ids);
-                    // Save IDs to a hidden input field or Livewire component
                     const imageIds = data.image_ids.join(',');
                     Livewire.emit('updValues', imageIds, varName);
                 })

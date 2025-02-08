@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Admin\Portfolio;
 
+use Behat\Transliterator\Transliterator;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use App\Models\BlogCategory;
 use App\Models\Portfolio;
@@ -119,8 +121,9 @@ class CreatePortfolio extends Component
         return $this->categoryId && $this->title && $this->description && $this->image;
     }
 
-    private function prepareData()
+    private function prepareData($id)
     {
+        $slug = Str::slug(Transliterator::transliterate($this->title), '-')."_$id";
         return [
             'title' => $this->title,
             'description' => $this->description,
@@ -161,7 +164,8 @@ class CreatePortfolio extends Component
     public function submit(){
         if (!$this->update){
             if ($this->isValidData()){
-                $record = Portfolio::create($this->prepareData());
+                $id = Portfolio::orderBy('id', 'desc')->first()->id + 1;
+                $record = Portfolio::create($this->prepareData($id));
                 if (!$this->gallery->isEmpty()){
                     $imageIds = collect($this->gallery)->pluck('id')->toArray();
                     $record->gallery()->attach($imageIds);
@@ -177,7 +181,7 @@ class CreatePortfolio extends Component
                 $this->oldVideo = null;
             }
             if ($this->isValidData()){
-                $this->update->update($this->prepareData());
+                $this->update->update($this->prepareData($this->update->id));
                 if (!$this->gallery->isEmpty()){
                     $imageIds = collect($this->gallery)->pluck('id')->toArray();
                     $this->update->gallery()->sync($imageIds);
