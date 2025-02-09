@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Http\Controllers\sitemapContoller;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,9 +17,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('sync:stock')->cron('0 */3 * * *');
-        $schedule->call(function (){
-           app(sitemapContoller::class)->generateSitemap();
-        })->daily();
+        $schedule->command('sitemap:update')->daily();
     }
 
     /**

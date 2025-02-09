@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\Blog;
@@ -76,6 +77,9 @@ class SitemapController extends Controller
         });
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
+        Http::get('https://www.google.com/ping?sitemap=' . url('sitemap.xml'));
+        Http::get('https://www.bing.com/ping?sitemap=' . url('sitemap.xml'));
+
 
         return response()->json(['message' => 'Sitemap generated successfully!']);
     }
