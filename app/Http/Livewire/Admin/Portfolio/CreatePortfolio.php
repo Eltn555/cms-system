@@ -131,6 +131,7 @@ class CreatePortfolio extends Component
             'image' => $this->image,
             'text' => $this->text,
             'video' => $this->video,
+            'info' => $slug,
         ];
     }
 

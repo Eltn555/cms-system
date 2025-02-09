@@ -25,8 +25,20 @@
             border: solid 1px #777777;
 
         }
+        .more{
+            background-color: #f4f4f4;
+            border: solid 2px #F8B301;
+        }
+        .more:hover{
+            background-color: #F8B301;
+            border: solid 2px #ffffff;
+            color: #f4f4f4;
+        }
         .blog-categoryText h5{
             width: 40%;
+        }
+        .blog-img{
+            height: 300px !important;
         }
         .blog-img a{
             width: 100% !important;
@@ -37,6 +49,61 @@
             height: 100% !important;
             object-fit: cover;
         }
+        .blog-img-date-wrap{
+            width: 60%;
+        }
+        .blog-content{
+            width: 40%;
+        }
+        @media (min-width: 992px) and (max-width: 1200px){
+            .blog-img-date-wrap{
+                width: 50%;
+            }
+            .blog-content{
+                width: 50%;
+            }
+            .blog-img{
+                height: 200px !important;
+            }
+            .blog-meta{
+                padding-bottom: 10px !important;
+            }
+        }
+        @media (min-width: 100px) and (max-width: 500px){
+            .blog-content{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 2;
+                left: 0;
+                top: 0;
+                padding: 0.5em !important;
+            }
+            .blog-content>.d-flex{
+                height: 100%;
+                background-color: rgba(0,0,0,0.4);
+            }
+            .blog-content>.d-flex>div{
+                padding-bottom: 15px !important;
+                justify-content: right;
+                display: flex;
+            }
+            .blog-content h2>a{
+                padding-top: 35px;
+                padding-left: 20px;
+                font-size: 30px;
+                color: #f4f4f4;
+            }
+            .blog-content h3{
+                padding-left: 20px;
+                font-size: 20px !important;
+                color: wheat !important;
+                padding-bottom: 70px;
+            }
+            .blog-img-date-wrap{
+                width: 100%;
+            }
+        }
     </style>
 @endpush
 
@@ -44,8 +111,8 @@
     <div class="container mt-5 py-5">
         <div class="pt-3 row" data-aos-delay="50">
             <div class="col-12 font-cormorant position-relative">
-                <h1 class="shadow-text-1 font-cormorant fw-bold">Наш портфолио</h1>
-                <h5 class="shadow-text-2 font-cormorant fw-bold">Наш портфолио</h5>
+                <h1 class="shadow-text-1 font-cormorant fw-bold">Наше портфолио</h1>
+                <h5 class="shadow-text-2 font-cormorant fw-bold">Наше портфолио</h5>
             </div>
             <div class="col-12">
                 <div class="blog-category w-100 d-flex mt-4 font-kyiv">
@@ -62,21 +129,23 @@
             <div class="col-12">
                 <div class="row pt-5">
                     @foreach($news as $blog)
-                        <div class="col-lg-4 col-xl-3 col-md-6 px-2">
-                            <div class="blog-wrap mb-30" data-aos="fade-up" data-aos-delay="50">
-                                <div class="blog-img-date-wrap mb-25">
+                        <div class="col-lg-6 col-xl-6 p-2 col-md-12" data-aos="fade-up" data-aos-delay="50">
+                            <div class="blog-wrap d-flex shadow bg-light relative">
+                                <div class="blog-img-date-wrap">
                                     <div class="blog-img">
-                                        <a href="{{ route('blog.details', ['id' => $blog->id]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt=""></a>
+                                        <a href="{{ route('portfolio.details', ['slug' => $blog->info]) }}"><img src="{{asset('/storage/'.$blog->image)}}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <div class="blog-meta">
-                                        <ul class="card-brand fw-bolder font-kyiv">
-                                            {{(new DateTime($blog->created_at))->format('d.m.Y')}}
-                                        </ul>
+                                    <div class="h-100 d-flex justify-content-between flex-column p-3">
+                                        <h2 class="font-kyiv fs-4 fw-bold pt-2"><a href="{{ route('portfolio.details', ['slug' => $blog->info]) }}">{{$blog->title}}</a></h2>
+                                        <h3 class="blog-text fs-6">{{$blog->description}}</h3>
+                                        <div class="blog-meta pb-5 w-100 d-flex justify-content-end">
+                                            <a href="{{ route('portfolio.details', ['slug' => $blog->info]) }}" style="text-wrap: nowrap;" class="m-0 lh-1 fs-6 fw-semibold h-100 px-3 py-2 lh-1 more">
+                                                Подробнее   〉〉
+                                            </a>
+                                        </div>
                                     </div>
-                                    <h2 class="font-kyiv fs-5 fw-bold"><a href="{{ route('blog.details', ['id' => $blog->id]) }}">{{$blog->title}}</a></h2>
-                                    <h3 class="blog-text">{{$blog->description}}</h3>
                                 </div>
                             </div>
                         </div>

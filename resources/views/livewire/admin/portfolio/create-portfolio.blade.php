@@ -87,8 +87,8 @@
                         </svg>
                         <b class="imageLabels">Select Video to Upload</b>
                     </div>
-                    <div class="videoUploading hidden w-1/2">
-                        <div id="videoProgress" class="bg-blue-800 text-xs h-6 p-2 font-medium text-blue-100 text-center p-0.5 leading-none rounded-full">
+                    <div class="videoUploading hidden w-full">
+                        <div id="videoProgress" class="bg-blue-800 text-xs h-6 p-2 font-medium text-white text-left p-0.5 leading-none rounded-full">
                             Uploading... <b id="uploadingTxt">0</b>%
                         </div>
                     </div>
