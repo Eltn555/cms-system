@@ -44,7 +44,7 @@ class SitemapController extends Controller
 
         Portfolio::all()->each(function (Portfolio $portfolio) use ($sitemap) {
             $sitemap->add(
-                Url::create("/portfolio/{$portfolio->id}")
+                Url::create("/portfolio/{$portfolio->info}")
                     ->setLastModificationDate($portfolio->updated_at)
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                     ->setPriority(0.7)
