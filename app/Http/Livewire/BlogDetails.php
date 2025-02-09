@@ -9,7 +9,6 @@ use Livewire\Component;
 
 class BlogDetails extends Component
 {
-
     public $news;
     public $blog;
     public $latest;

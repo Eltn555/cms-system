@@ -74,7 +74,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/blog', Blog::class)->name('blog.index');
 Route::get('/portfolio', PortfoliosCollection::class)->name('portfolio.index');
 Route::get('/blog/{id}', \App\Http\Livewire\BlogDetails::class)->name('blog.details');
-Route::get('/portfolio/{slug}', Portfolios::class)->name('portfolio.details');
+Route::get('/portfolio/{slug}', PortfoliosView::class)->name('portfolio.details');
 Route::group(['prefix' => 'profile'], function () {
     Route::get('/', \App\Http\Livewire\Profile::class)->name('front.profile.index');
     Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');

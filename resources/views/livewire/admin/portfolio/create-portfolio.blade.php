@@ -281,7 +281,7 @@
                                         uploadFiles(resizedFiles, varName); // Your custom upload function
                                     }
                                     fileTextSpan.textContent = `${files.length} file(s) ready (compressed)`;
-                                }, 'image/webp', 0.7); // Adjust quality as needed
+                                }, 'image/webp', 0.9); // Adjust quality as needed
                             };
                             img.src = e.target.result;
                         };

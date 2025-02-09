@@ -1,6 +1,6 @@
 @section('title', 'Блог')
-@section('description', 'Lumen Lux, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет'.$this->description)
-@section('keyword', 'LumenLux, lumen, lux, '.$this->description)
+@section('description', 'Lumen Lux, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет'.$description)
+@section('keyword', 'LumenLux, lumen, lux, '.$description)
 
 @push('styles')
     <style>
@@ -37,6 +37,17 @@
             height: 100% !important;
             object-fit: cover;
         }
+        .blog-category {
+            cursor: grab;
+            user-select: none; /* Prevent text selection */
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .blog-category.active {
+            cursor: grabbing;
+        }
+
     </style>
 @endpush
 
@@ -195,6 +206,37 @@
 </div>
 @push('scripts')
     <script>
+        const scrollContainer = document.querySelector(".blog-category");
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener("mousedown", (e) => {
+            isDown = true;
+            scrollContainer.classList.add("active");
+            startX = e.pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener("mouseleave", () => {
+            isDown = false;
+            scrollContainer.classList.remove("active");
+        });
+
+        scrollContainer.addEventListener("mouseup", () => {
+            isDown = false;
+            scrollContainer.classList.remove("active");
+        });
+
+        scrollContainer.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 1; // Adjust speed
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
+
         window.addEventListener('metaChanged', event => {
             const {description, keywords} = event.detail;
             // Update meta description

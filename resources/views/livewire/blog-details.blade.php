@@ -1,6 +1,8 @@
 @section('title', $news->title)
+@section('description', 'Lumen Lux, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет'.$news->title)
+@section('keyword', 'LumenLux, lumen, lux, '.$news->title)
 
-@section('style')
+@push('styles')
     <style>
         .object path:hover{
             fill:red;
@@ -22,7 +24,7 @@
             object-fit: cover;
         }
     </style>
-@endsection
+@endpush
 
 <div>
     <div class="blog-details-area w-100 p-0">
@@ -74,7 +76,7 @@
                 </div>
                 <div class="col-6 justify-content-end align-items-end d-flex">
                     <div class="single-product-cart btn-hover ps-1 text-end">
-                        <a href="https://lumenlux.uz/blog" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все</a>
+                        <a href="{{ route('blog.index') }}" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все</a>
                     </div>
                 </div>
             </div>
