@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -36,6 +37,15 @@ class SitemapController extends Controller
             $sitemap->add(
                 Url::create("/blog/{$blog->id}")
                     ->setLastModificationDate($blog->updated_at)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                    ->setPriority(0.7)
+            );
+        });
+
+        Portfolio::all()->each(function (Portfolio $portfolio) use ($sitemap) {
+            $sitemap->add(
+                Url::create("/portfolio/{$portfolio->id}")
+                    ->setLastModificationDate($portfolio->updated_at)
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                     ->setPriority(0.7)
             );
