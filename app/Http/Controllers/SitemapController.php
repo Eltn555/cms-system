@@ -30,6 +30,10 @@ class SitemapController extends Controller
             ->add(Url::create('/blog')
                 ->setLastModificationDate(now()->subDay())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(0.7))
+            ->add(Url::create('/portfolio')
+                ->setLastModificationDate(now()->subDay())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                 ->setPriority(0.7));
 
         // Add all blog posts
