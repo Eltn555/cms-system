@@ -126,7 +126,7 @@
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
         <a href="{{ route('admin.products.create') }}" class="btn btn-primary shadow-md mr-2">Add New Product</a>
         <div class="md:block mx-auto text-slate-500">Showing {{ $products->count() }}
-            of {{ $products->count() }} entries
+            of {{ $overall }} entries
         </div>
         <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
             <form action="{{ url()->current() }}" method="GET" class="flex">

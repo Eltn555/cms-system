@@ -29,7 +29,6 @@ class ProductController extends Controller
         $tags = Tag::all();
 
         $productsQuery = Product::orderBy('created_at', 'desc');
-
         // If there is a search query
         if ($request->has('search')) {
             $searchQuery = $request->input('search');
@@ -50,7 +49,7 @@ class ProductController extends Controller
             'search' => $request->input('search') // Preserve the search query
         ]);
 
-        return view('products.index', compact('products', 'categories', 'tags', 'perPage', 'currentPageNumber'));
+        return view('products.index', compact('products', 'overall', 'categories', 'tags', 'perPage', 'currentPageNumber'));
     }
 
 
