@@ -29,6 +29,7 @@ class ProductController extends Controller
         $tags = Tag::all();
 
         $productsQuery = Product::orderBy('created_at', 'desc');
+        $overall = count($productsQuery->get());
         // If there is a search query
         if ($request->has('search')) {
             $searchQuery = $request->input('search');

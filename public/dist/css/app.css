@@ -3147,7 +3147,7 @@ select{
     display: grid;
 }
 .hidden{
-    display: none !important;
+    display: none;
 }
 .h-0{
     height: 0px;
