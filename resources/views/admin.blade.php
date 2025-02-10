@@ -11,11 +11,11 @@
     @yield('styles')
     @stack('styles')
     <style>
-        .justify-around{
-            justify-content: space-around;
-        }
         .justify-between{
             justify-content: space-between;
+        }
+        .justify-around{
+            justify-content: space-around;
         }
         .shadowSearch {
             border-radius: 2px;
@@ -28,15 +28,12 @@
         .fixed {
             position: fixed;
         }
-
         .top-5 {
             top: 1.25rem; /* 20px */
         }
-
         .right-40per {
             right: 20%; /* 20px */
         }
-
         .z-50 {
             z-index: 50;
         }
@@ -95,16 +92,13 @@
         .font-bold {
             font-weight: 700; /* Bold */
         }
-
         .ml-4 {
             margin-left: 1rem; /* 16px */
         }
-
         /* Animation Classes */
         .opacity-100 {
             opacity: 1;
         }
-
         .opacity-0 {
             opacity: 0;
         }
