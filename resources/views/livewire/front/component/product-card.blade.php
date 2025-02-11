@@ -1,10 +1,23 @@
 @if (!app()->bound('livewire.styles_added'))
     @push('styles')
         <style>
+            .product-wrap:hover .product-action-2-wrap {
+                bottom: 0px;
+                opacity: 0;
+                visibility: hidden;
+            }
+            .product-wrap:hover .product-action-wrap {
+                opacity: 0;
+                visibility: hidden;
+            }
             @media (min-width: 768px) {
-                .coverLink{
-                    height: 0 !important;
-                    width: 0 !important;
+                .product-wrap:hover .product-action-2-wrap {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .product-wrap:hover .product-action-wrap {
+                    opacity: 1;
+                    visibility: visible;
                 }
             }
         </style>
@@ -40,9 +53,6 @@
                     @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
                 @endif
             </div>
-            <a class="coverLink position-absolute w-100 h-100" href="{{route('front.product.show', ['slug' => $product->slug])}}">
-
-            </a>
             <div class="product-content d-flex justify-content-between flex-column flex-grow-1">
                 <div>
                     <h3 class=" p-1 mb-0 card-brand"><a class="card-brand" href="{{route('front.product.show', ['slug' => $product->slug])}}" ')" style="cursor: pointer;">Lumen Lux</a></h3>
