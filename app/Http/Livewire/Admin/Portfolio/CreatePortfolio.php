@@ -165,7 +165,8 @@ class CreatePortfolio extends Component
     public function submit(){
         if (!$this->update){
             if ($this->isValidData()){
-                $id = Portfolio::orderBy('id', 'desc')->first()->id + 1;
+                $lastRecord = Portfolio::orderBy('id', 'desc')->first();
+                $id = $lastRecord ? $lastRecord->id + 1 : 1;
                 $record = Portfolio::create($this->prepareData($id));
                 if (!$this->gallery->isEmpty()){
                     $imageIds = collect($this->gallery)->pluck('id')->toArray();
