@@ -35,11 +35,11 @@ class Products extends Component
 
         $relatedTags = $this->product->tags()->with(['products' => function($query) {
             $query->where('status', 1);
-        }])->inRandomOrder()->take(10)->get();
+        }])->inRandomOrder()->take(12)->get();
 
         $additionalTags = $this->product->additional_tags()->with(['products' => function($query) {
             $query->where('status', 1);
-        }])->inRandomOrder()->take(10)->get();
+        }])->inRandomOrder()->take(12)->get();
 
         $this->relatedProducts = $relatedTags->pluck('products')->flatten()->shuffle()->unique('id')->take(10);
         $this->additionalProducts = $additionalTags->pluck('products')->flatten()->shuffle()->unique('id')->take(10);
