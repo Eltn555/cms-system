@@ -41,8 +41,8 @@ class Products extends Component
             $query->where('status', 1);
         }])->inRandomOrder()->take(12)->get();
 
-        $this->relatedProducts = $relatedTags->pluck('products')->flatten()->shuffle()->unique('id')->take(10);
-        $this->additionalProducts = $additionalTags->pluck('products')->flatten()->shuffle()->unique('id')->take(10);
+        $this->relatedProducts = $relatedTags->pluck('products')->flatten()->shuffle()->unique('id')->take(12);
+        $this->additionalProducts = $additionalTags->pluck('products')->flatten()->shuffle()->unique('id')->take(12);
     }
 
     public function render()
