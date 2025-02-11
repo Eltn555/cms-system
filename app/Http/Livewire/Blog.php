@@ -43,7 +43,7 @@ class Blog extends Component
 
     public function render()
     {
-        $this->news = ($this->categoryId) ? \App\Models\Blog::where('category_id', $this->categoryId)->take(12)->get() : \App\Models\Blog::take(12)->get();
+        $this->news = ($this->categoryId) ? \App\Models\Blog::orderBy('created_at', 'desc')->where('category_id', $this->categoryId)->take(12)->get() : \App\Models\Blog::orderBy('created_at', 'desc')->take(12)->get();
         foreach ($this->news as $item) {
             $item->created_at = Carbon::parse($item->created_at);
         }
