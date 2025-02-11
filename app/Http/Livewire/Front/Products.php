@@ -18,6 +18,7 @@ class Products extends Component
     public $profPercent;
     public $rate;
     public $rates;
+    public $description;
 
     public function mount($slug){
         $this->product = Product::with('images', 'tags', 'additional_tags', 'categories')->where('slug', $slug)->firstOrFail();
@@ -29,6 +30,8 @@ class Products extends Component
         $disc = $this->product->discount_price ?? 0;
         $this->profit = $this->product->price - $disc;
         $this->profPercent = ($this->profit / $this->product->price) * 100;
+        $desc = $this->product->short_description ?? $this->product->long_description;
+        $this->description = strip_tags($desc);
 
         $relatedTags = $this->product->tags()->with(['products' => function($query) {
             $query->where('status', 1);

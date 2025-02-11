@@ -7,22 +7,16 @@
     <meta name="robots" content="index, follow"/>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keyword')">
+    <meta property="og:title" content="Lumen LUX | @yield('title')">
+    <meta property="og:description" content="@yield('description')">
+    <meta property="og:image" content="@yield('image', asset('logo-white.png'))">
+    <meta property="og:url" content="https://lumenlux.uz">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_UZ"/>
+    <meta property="og:site_name" content="Lumen Lux"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <link rel="canonical" href="https://htmldemo.hasthemes.com/urdan/index.html"/>
-
-    <!-- Open Graph (OG) meta tags are snippets of code that control how URLs are displayed when shared on social media  -->
-    <meta property="og:locale" content="en_US"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Lumen LUX | @yield('title')"/>
-    <meta property="og:url" content="https://htmldemo.hasthemes.com/urdan/index.html"/>
-    <meta property="og:site_name" content="Lumen Lux"/>
-    <!-- For the og:image content, replace the # with a link of an image -->
-    <meta property="og:image" content="#"/>
-    <meta property="og:description"
-          content="@yield('description')"/>
-    <!-- Add site Favicon -->
-
     <!-- All CSS is here
 	============================================ -->
     <link rel="icon" type="image/png" href="{{asset('title.png')}}">

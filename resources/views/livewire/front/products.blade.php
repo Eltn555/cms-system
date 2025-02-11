@@ -1,6 +1,7 @@
 @section('title', $product->title)
-{{--@section('description', $product->seo_description)--}}
-@section('keyword', "$product->seo_title")
+@section('description', $product->title." - ".$description."Бра, люстрыб споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет")
+@section('keyword', $product->title.", ".$description." Бра, люстрыб споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет")
+@section('image', isset($product->images[0]) ? asset('storage/'.$product->images[0]->image) : '')
 @section('style')
     <style>
         .flash-message{
@@ -52,11 +53,11 @@
                 bottom: 160px;
             }
         }
-        @media screen and (max-width: 2000px) and (min-width: 1200px) {
-            .product-wrap .product-img {
-                height: 310px;
-            }
-        }
+        /*@media screen and (max-width: 2000px) and (min-width: 1200px) {*/
+        /*    .product-wrap .product-img {*/
+        /*        height: 310px;*/
+        /*    }*/
+        /*}*/
 
         @media screen and (max-width: 1350px) and (min-width: 992px) {
             .btn-parent {
@@ -70,40 +71,40 @@
             }
         }
 
-        @media only screen and (max-width: 991px) {
-            .product-wrap .product-img {
-                height: 235px;
-            }
-        }
-        @media only screen and (max-width: 767px) {
-            .product-wrap .product-img {
-                height: 265px;
-            }
-        }
-        @media only screen and (max-width: 576px) {
-            .product-wrap .product-img {
-                height: 510px;
-            }
-        }
-        @media only screen and (max-width: 500px) {
-            .product-wrap .product-img {
-                height: 430px;
-            }
-            .addCart{
-                width: 70% !important;
-            }
-            .product-details-price span{
-                font-size: 16px !important;
-            }
-        }
-        @media only screen and (max-width: 400px) {
-            .product-wrap .product-img {
-                height: 430px;
-            }
-            .addCart{
-                width: 85% !important;
-            }
-        }
+        /*@media only screen and (max-width: 991px) {*/
+        /*    .product-wrap .product-img {*/
+        /*        height: 235px;*/
+        /*    }*/
+        /*}*/
+        /*@media only screen and (max-width: 767px) {*/
+        /*    .product-wrap .product-img {*/
+        /*        height: 265px;*/
+        /*    }*/
+        /*}*/
+        /*@media only screen and (max-width: 576px) {*/
+        /*    .product-wrap .product-img {*/
+        /*        height: 510px;*/
+        /*    }*/
+        /*}*/
+        /*@media only screen and (max-width: 500px) {*/
+        /*    .product-wrap .product-img {*/
+        /*        height: 430px;*/
+        /*    }*/
+        /*    .addCart{*/
+        /*        width: 70% !important;*/
+        /*    }*/
+        /*    .product-details-price span{*/
+        /*        font-size: 16px !important;*/
+        /*    }*/
+        /*}*/
+        /*@media only screen and (max-width: 400px) {*/
+        /*    .product-wrap .product-img {*/
+        /*        height: 430px;*/
+        /*    }*/
+        /*    .addCart{*/
+        /*        width: 85% !important;*/
+        /*    }*/
+        /*}*/
         .disp{
             display: flex;
         }
@@ -426,15 +427,22 @@
                     <h2 class="shadow-text-1 font-cormorant fw-bold">В одном <br>стиле</h2>
                     <h2 class="shadow-text-2 font-cormorant fw-bold">В одном <br>стиле</h2>
                 </div>
-                <div class="product-slider-active-1 pt-0 swiper-container">
-                    <div class="swiper-wrapper">
-                        @foreach($relatedProducts as $product)
-                            <div class="swiper-slide align-self-stretch">
-                                <livewire:front.component.product-card :product="$product" :key="$product->id" />
-                            </div>
-                        @endforeach
-                    </div>
+                <div class="row">
+                    @foreach($relatedProducts as $product)
+                        <div class="col-6 col-md-4 col-lg-3 align-self-stretch p-1">
+                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                        </div>
+                    @endforeach
                 </div>
+{{--                <div class="product-slider-active-1 pt-0 swiper-container">--}}
+{{--                    <div class="swiper-wrapper">--}}
+{{--                        @foreach($relatedProducts as $product)--}}
+{{--                            <div class="swiper-slide align-self-stretch">--}}
+{{--                                <livewire:front.component.product-card :product="$product" :key="$product->id" />--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     @endif
@@ -445,15 +453,22 @@
                     <h2 class="shadow-text-1 font-cormorant fw-bold">Покупают с<br>этим</h2>
                     <h2 class="shadow-text-2 font-cormorant fw-bold">Покупают с<br>этим</h2>
                 </div>
-                <div class="product-slider-active-1 pt-0 swiper-container">
-                    <div class="swiper-wrapper">
-                        @foreach($additionalProducts as $product)
-                            <div class="swiper-slide align-self-stretch">
-                                <livewire:front.component.product-card :product="$product" :key="$product->id" />
-                            </div>
-                        @endforeach
-                    </div>
+                <div class="row">
+                    @foreach($additionalProducts as $product)
+                        <div class="col-6 col-md-4 col-lg-3 align-self-stretch p-1">
+                            <livewire:front.component.product-card :product="$product" :key="$product->id" />
+                        </div>
+                    @endforeach
                 </div>
+{{--                <div class="product-slider-active-1 pt-0 swiper-container">--}}
+{{--                    <div class="swiper-wrapper">--}}
+{{--                        @foreach($additionalProducts as $product)--}}
+{{--                            <div class="swiper-slide align-self-stretch">--}}
+{{--                                <livewire:front.component.product-card :product="$product" :key="$product->id" />--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     @endif
