@@ -149,6 +149,40 @@
         .review-box hr{
             color: rgba(180, 180, 180);
         }
+        .product-details-vertical-wrap .product-details-small-img-wrap {
+            position: relative;
+            height: 100px;
+            margin-top: 15px;
+            width: 90%;
+        }
+        .product-details-vertical-wrap .product-details-small-img-wrap .product-details-small-img-slider-1 {
+            width: 90%;
+        }
+        .pd-small-img-style .product-details-small-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .pd-nav-style {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: -20px;
+            z-index: 5;
+        }
+        .pd-nav-style.pd-next {
+            top: 50%;
+            left: auto;
+            right: -43px;
+            bottom: auto;
+        }
+        @media only screen and (max-width: 767px) {
+            .product-details-vertical-wrap .product-details-small-img-wrap .product-details-small-img-slider-1 {
+                height: 100px;
+            }
+        }
     </style>
 @endsection
 
@@ -175,23 +209,23 @@
                     <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
                 </div>
                 <div class="col-lg-6">
-                    <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="0">
-                        <div class="product-details-small-img-wrap">
-                            <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style">
-                                <div class="swiper-wrapper">
+                    <div class="product-details-img-wrap flex-column-reverse product-details-vertical-wrap w-100" data-aos="fade-up" data-aos-delay="0">
+                        <div class="product-details-small-img-wrap my-auto mt-2">
+                            <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style w-100 h-100">
+                                <div class="swiper-wrapper flex-row">
                                     @foreach($product->images as $image)
                                         <div class="swiper-slide">
-                                            <div class="product-details-small-img">
-                                                <img src="{{asset('storage/'.$image->image)}}" alt="{{$image->alt}}">
+                                            <div class="product-details-small-img w-100 h-100">
+                                                <img class="mx-auto" src="{{asset('storage/'.$image->image)}}" alt="{{$image->alt}}">
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="pd-prev pd-nav-style"> <i class="ti-angle-up"></i></div>
-                            <div class="pd-next pd-nav-style"> <i class="ti-angle-down"></i></div>
+                            <div class="pd-prev pd-nav-style"> <i class="ti-angle-left"></i></div>
+                            <div class="pd-next pd-nav-style"> <i class="ti-angle-right"></i></div>
                         </div>
-                        <div class="swiper-container product-details-big-img-slider-1 pd-big-img-style">
+                        <div class="swiper-container product-details-big-img-slider-1 pd-big-img-style w-100">
                             <div class="swiper-wrapper">
                                 @foreach($product->images as $image)
                                     <div class="swiper-slide">
@@ -429,7 +463,7 @@
                 </div>
                 <div class="row">
                     @foreach($relatedProducts as $product)
-                        <div class="col-6 col-md-4 col-lg-3 align-self-stretch p-1">
+                        <div class="col-6 col-md-4 col-lg-3 align-self-stretch p-2">
                             <livewire:front.component.product-card :product="$product" :key="$product->id" />
                         </div>
                     @endforeach

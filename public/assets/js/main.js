@@ -436,7 +436,7 @@
         loop: false,
         spaceBetween: 12,
         slidesPerView: 4,
-        direction: 'vertical',
+        direction: 'horizontal',
         navigation: {
             nextEl: '.pd-next',
             prevEl: '.pd-prev',
