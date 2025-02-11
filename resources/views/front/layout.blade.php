@@ -264,16 +264,6 @@
         $('.categoryBack').removeClass('categoryBackActive');
         $('.megaCat').removeClass('activeCategory');
     })
-    $(".searchFocuser").click(function() {
-        setTimeout(function(){ $('#InputSearch'). focus (); }, 200);
-    });
-        $('#InputSearch').keypress(function(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                var searchUrl = $('#searchBtN').attr('href'); // Get the URL from the anchor tag
-                window.location.href = searchUrl; // Navigate to the URL
-            }
-        });
     function showReg(variable = null) {
         Livewire.emit('showReg', variable !== null);
     }

@@ -1,10 +1,10 @@
 <div class=" header-action-style header-search-1">
-    <a class="search-toggle searchFocuser {{($search == "") ? "" : "open"}}">
-        <svg class="s-open white-icon d-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a href="#InputSearch" class="search-toggle searchFocuser {{($search == "") ? "" : "open"}}">
+        <svg wire:ignore class="s-open white-icon d-none" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="11.5" cy="11.5" r="9.5" stroke="white" stroke-width="1.5"/>
             <path d="M18.5 18.5L22 22" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <svg class="s-open dark-icon " width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg wire:ignore class="s-open dark-icon " width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="11.5" cy="11.5" r="9.5" stroke="#232323" stroke-width="1.5"/>
             <path d="M18.5 18.5L22 22" stroke="#232323" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
@@ -12,7 +12,7 @@
     </a>
     <div class="search-wrap-1 {{($search == "") ? "" : "open"}}">
         <form>
-            <input placeholder="Search products…" id="InputSearch" type="text" wire:model="search">
+            <input class="inputSearcher" placeholder="Search products…" id="InputSearch" type="text" wire:model="search">
             <div class="button-search d-flex justify-content-center align-items-center">
                 <a id="searchBtN" href="/category?search={{$search}}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +41,22 @@
                     @endif
         </div>
     </div>
-
-
 </div>
+
+@push('scripts')
+    <script>
+        $(".searchFocuser").on('click', function() {
+            setTimeout(function() {
+                $('.inputSearcher').focus();
+                setTimeout(() => $('.inputSearcher').focus(), 100);
+            }, 100);
+        });
+        $('#InputSearch').keypress(function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                var searchUrl = $('#searchBtN').attr('href'); // Get the URL from the anchor tag
+                window.location.href = searchUrl; // Navigate to the URL
+            }
+        });
+    </script>
+@endpush

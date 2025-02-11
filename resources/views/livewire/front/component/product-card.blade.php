@@ -1,4 +1,17 @@
-        <div class="product-wrap h-100 d-flex flex-column">
+@if (!app()->bound('livewire.styles_added'))
+    @push('styles')
+        <style>
+            @media (min-width: 768px) {
+                .coverLink{
+                    height: 0 !important;
+                    width: 0 !important;
+                }
+            }
+        </style>
+    @endpush
+    @php(app()->instance('livewire.styles_added', true))
+@endif
+<div class="product-wrap h-100 d-flex flex-column">
             <div class="product-img img-zoom mb-25">
                 <a href="{{route('front.product.show', ['slug' => $product->slug])}}">
                     <img class="image{{$product->id}}" src="{{asset(($image) ? 'storage/'.$image->image : 'no_photo.jpg')}}" alt="{{$product->title}}" loading="lazy">
@@ -27,6 +40,9 @@
                     @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
                 @endif
             </div>
+            <a class="coverLink position-absolute w-100 h-100" href="{{route('front.product.show', ['slug' => $product->slug])}}">
+
+            </a>
             <div class="product-content d-flex justify-content-between flex-column flex-grow-1">
                 <div>
                     <h3 class=" p-1 mb-0 card-brand"><a class="card-brand" href="{{route('front.product.show', ['slug' => $product->slug])}}" ')" style="cursor: pointer;">Lumen Lux</a></h3>
