@@ -208,7 +208,7 @@
                     </a>
                     <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
                 </div>
-                <div class="col-lg-5 px-0">
+                <div class="col-lg-6 px-0">
                     <div class="product-details-img-wrap flex-column-reverse product-details-vertical-wrap w-100" data-aos="fade-up" data-aos-delay="0">
                         <div class="product-details-small-img-wrap my-auto mt-2 me-0">
                             <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style w-100 h-100">
@@ -336,7 +336,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 p-0 mt-3 mt-lg-0 mt-xl-0 ps-lg-2">
+                <div class="col-lg-2 p-0 mt-3 mt-lg-0 mt-xl-0">
                     <div class="p-3 info-delivery mb-4">
                         <div class="d-flex flex-wrap">
                             <div class="col-6 col-lg-12">
