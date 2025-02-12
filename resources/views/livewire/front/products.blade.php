@@ -151,7 +151,7 @@
         }
         .product-details-vertical-wrap .product-details-small-img-wrap {
             position: relative;
-            height: 100px;
+            height: 150px;
             margin-top: 15px;
             width: 90%;
         }
@@ -175,7 +175,7 @@
         .pd-nav-style.pd-next {
             top: 50%;
             left: auto;
-            right: -43px;
+            right: -20px;
             bottom: auto;
         }
         @media only screen and (max-width: 767px) {
@@ -208,9 +208,9 @@
                     </a>
                     <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-5 px-0">
                     <div class="product-details-img-wrap flex-column-reverse product-details-vertical-wrap w-100" data-aos="fade-up" data-aos-delay="0">
-                        <div class="product-details-small-img-wrap my-auto mt-2">
+                        <div class="product-details-small-img-wrap my-auto mt-2 me-0">
                             <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style w-100 h-100">
                                 <div class="swiper-wrapper flex-row">
                                     @foreach($product->images as $image)
@@ -228,7 +228,7 @@
                         <div class="swiper-container product-details-big-img-slider-1 pd-big-img-style w-100">
                             <div class="swiper-wrapper">
                                 @foreach($product->images as $image)
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide px-0" style="padding-left: 0 !important; padding-right: 0 !important;">
                                         <div class="">
                                             <div class="">
                                                 <a class="img-popup" href="{{asset('storage/'.$image->image)}}">
@@ -336,7 +336,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 p-0 mt-3 mt-lg-0 mt-xl-0">
+                <div class="col-lg-3 p-0 mt-3 mt-lg-0 mt-xl-0 ps-lg-2">
                     <div class="p-3 info-delivery mb-4">
                         <div class="d-flex flex-wrap">
                             <div class="col-6 col-lg-12">
