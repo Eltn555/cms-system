@@ -251,7 +251,7 @@
                                 const canvas = document.createElement('canvas');
                                 const ctx = canvas.getContext('2d');
 
-                                const maxSize = 1000;
+                                const maxSize = 2000;
                                 let width = img.width;
                                 let height = img.height;
 
@@ -281,7 +281,7 @@
                                         uploadFiles(resizedFiles, varName); // Your custom upload function
                                     }
                                     fileTextSpan.textContent = `${files.length} file(s) ready (compressed)`;
-                                }, 'image/webp', 1); // Adjust quality as needed
+                                }, 'image/webp', 0.9); // Adjust quality as needed
                             };
                             img.src = e.target.result;
                         };
