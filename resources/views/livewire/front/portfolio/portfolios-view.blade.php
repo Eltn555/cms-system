@@ -1,7 +1,7 @@
 @section('title', $portfolio->title)
 @section('description', 'Lumen Lux, Люстры, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет'.$portfolio->description)
 @section('keyword', 'LumenLux, lumen, lux, Люстры, Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка,'.$portfolio->description)
-
+@section('image', isset($portfolio->image) ? asset('storage/'.$portfolio->image) : '')
 @push('styles')
     <style>
         .object path:hover{
