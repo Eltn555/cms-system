@@ -59,18 +59,6 @@
         /*    }*/
         /*}*/
 
-        @media screen and (max-width: 1350px) and (min-width: 992px) {
-            .btn-parent {
-                flex-direction: column;
-            }
-
-            .btn-parent>div{
-                width: 100% !important;
-                padding: 0 !important;
-                margin-bottom: 10px;
-            }
-        }
-
         /*@media only screen and (max-width: 991px) {*/
         /*    .product-wrap .product-img {*/
         /*        height: 235px;*/
@@ -183,6 +171,30 @@
                 height: 100px;
             }
         }
+        @media screen and (max-width: 2000px) and (min-width: 1350px) {
+            .product-details-vertical-wrap .product-details-small-img-wrap {
+                width: 120%;
+            }
+            .product-details-img-wrap{
+                padding-right: 2.5rem !important;
+                padding-left: 2.5rem !important;
+            }
+        }
+
+        @media screen and (max-width: 1350px) and (min-width: 992px) {
+            .btn-parent {
+                flex-direction: column;
+            }
+
+            .btn-parent>div{
+                width: 100% !important;
+                padding: 0 !important;
+                margin-bottom: 10px;
+            }
+            .product-details-vertical-wrap .product-details-small-img-wrap {
+                width: 100%;
+            }
+        }
     </style>
 @endsection
 
@@ -208,8 +220,8 @@
                     </a>
                     <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
                 </div>
-                <div class="col-lg-6 px-0">
-                    <div class="product-details-img-wrap flex-column-reverse product-details-vertical-wrap w-100" data-aos="fade-up" data-aos-delay="0">
+                <div class="col-lg-6 px-0 px-md-5">
+                    <div class="px-xl-3 product-details-img-wrap flex-column-reverse product-details-vertical-wrap w-100" data-aos="fade-up" data-aos-delay="0">
                         <div class="product-details-small-img-wrap my-auto mt-2 me-0">
                             <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style w-100 h-100">
                                 <div class="swiper-wrapper flex-row">
@@ -242,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 pe-1">
+                <div class="col-lg-4 ps-md-0">
                     <div class="product-details-content" data-aos="fade-left" data-aos-delay="0">
                         <div class="d-flex">
                             <h1 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h1>
