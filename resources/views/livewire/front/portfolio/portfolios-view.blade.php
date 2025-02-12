@@ -227,15 +227,14 @@
                         <h2 class="text-center font-kyiv">{{$portfolio->description}}</h2>
                     </div>
 
-                    <div class="w-100 video-container">
-                        <video class="w-100" autoplay loop controls muted playsinline>
-                            <source src="{{$portfolio->video}}" type="video/mp4">
-
-                            <!-- Caption files -->
-                            <!-- Fallback for browsers that don't support the <video> element -->
-                            <a>Video is not supported</a>
-                        </video>
-                    </div>
+                    @if($portfolio->video)
+                        <div class="w-100 video-container">
+                            <video class="w-100" autoplay loop controls muted playsinline>
+                                <source src="{{$portfolio->video}}" type="video/mp4">
+                                <a>Video is not supported</a>
+                            </video>
+                        </div>
+                    @endif
 
                     <div class="col-12 mt-3">
                         {!! html_entity_decode($portfolio->text) !!}
