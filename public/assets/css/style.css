@@ -983,13 +983,13 @@ textarea {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    margin-right: 36px;
+    margin-right: 32px;
     position: relative;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .main-menu > nav > ul > li {
-        margin-right: 16px;
+        margin-right: 14px;
     }
 }
 

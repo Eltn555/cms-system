@@ -215,7 +215,7 @@
         // Automatically hide the modal after 3 seconds
         setTimeout(() => {
             notificationModal.hide();
-        }, 2000);
+        }, 1000);
     }
 
     window.addEventListener('flashMessage', (event) => {

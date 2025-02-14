@@ -33,6 +33,8 @@
                                 <li class="text-white font-kyiv"><a href="{{asset('/')}}" class="text-white font-kyiv">Главная</a></li>
                                 <li class="text-white font-kyiv"><a href="{{ route('front.category.index') }}" class="text-white font-kyiv">Магазин</a></li>
                                 <li class="text-white font-kyiv"><a href="{{asset('/calculator')}}" class="text-white font-kyiv">Калькулятор</a></li>
+                                <li class="text-white font-kyiv"><a href="https://t.me/+2t8DrakAGgA5MzEy" target="_blank" class="text-white font-kyiv">3D-модели</a></li>
+                                <li class="text-white font-kyiv"><a href="https://lle.uz/" target="_blank" class="text-white font-kyiv">LL Engineering</a></li>
                             </ul>
                         </div>
                     </div>
@@ -42,6 +44,7 @@
                             <ul>
                                 <li class="text-white font-kyiv"><a href="{{route('about.index')}}" class="text-white font-kyiv">О нас</a></li>
                                 <li class="text-white font-kyiv"><a href="{{route('blog.index')}}" class="text-white font-kyiv">Блог</a></li>
+                                <li class="text-white font-kyiv"><a href="{{route('portfolio.index')}}" class="text-white font-kyiv">Проекты</a></li>
                                 <li class="text-white font-kyiv"><a href="{{route('contact.index')}}" class="text-white font-kyiv">Контакты</a></li>
                             </ul>
                         </div>

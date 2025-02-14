@@ -7,7 +7,7 @@
             </div>
         <div class="blurry-backgorund">
             <div class="blurry-content">
-                    <div class="row align-items-center mx-1 mx-md-5">
+                    <div class="row align-items-center mx-1 mx-md-2">
                         <div class="col-lg-3 col-md-6 col-6 p-2 " style="z-index: 1">
                             <div class="logo">
                                 <a href="/">
@@ -16,7 +16,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center">
+                        <div class="col-lg-6 d-none d-lg-block d-flex justify-content-center px-2">
                             <div class="main-menu text-center">
                                 <nav>
                                     <ul>
@@ -60,6 +60,7 @@
                                         </li>
                                         <li><h3 class="fs-6"><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></h3></li>
                                         <li><h3 class="fs-6"><a style="line-height: 80px !important;" href="{{route('blog.index')}}">Блог</a></h3></li>
+                                        <li><h3 class="fs-6"><a style="line-height: 80px !important;" href="{{route('portfolio.index')}}">Проекты</a></h3></li>
                                         <li><h3 class="fs-6"><a style="line-height: 80px !important;" href="{{route('contact.index')}}">Контакты</a></h3></li>
                                     </ul>
                                 </nav>
@@ -165,6 +166,7 @@
                     </li>
                     <li><a style="line-height: 80px !important;" href="{{route('about.index')}}">О нас</a></li>
                     <li><a style="line-height: 80px !important;" href="{{route('blog.index')}}">Блог</a></li>
+                    <li><a style="line-height: 80px !important;" href="{{route('portfolio.index')}}">Проекты</a></li>
                     <li><a style="line-height: 80px !important;" href="{{route('contact.index')}}">Контакты</a></li>
                 </ul>
 
