@@ -59,6 +59,18 @@
         /*    }*/
         /*}*/
 
+        @media screen and (max-width: 1350px) and (min-width: 992px) {
+            .btn-parent {
+                flex-direction: column;
+            }
+
+            .btn-parent>div{
+                width: 100% !important;
+                padding: 0 !important;
+                margin-bottom: 10px;
+            }
+        }
+
         /*@media only screen and (max-width: 991px) {*/
         /*    .product-wrap .product-img {*/
         /*        height: 235px;*/
@@ -137,64 +149,6 @@
         .review-box hr{
             color: rgba(180, 180, 180);
         }
-        .product-details-vertical-wrap .product-details-small-img-wrap {
-            position: relative;
-            height: 150px;
-            margin-top: 15px;
-            width: 90%;
-        }
-        .product-details-vertical-wrap .product-details-small-img-wrap .product-details-small-img-slider-1 {
-            width: 90%;
-        }
-        .pd-small-img-style .product-details-small-img img{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .pd-nav-style {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            left: -20px;
-            z-index: 5;
-        }
-        .pd-nav-style.pd-next {
-            top: 50%;
-            left: auto;
-            right: -20px;
-            bottom: auto;
-        }
-        @media only screen and (max-width: 767px) {
-            .product-details-vertical-wrap .product-details-small-img-wrap .product-details-small-img-slider-1 {
-                height: 100px;
-            }
-        }
-        @media screen and (max-width: 2000px) and (min-width: 1350px) {
-            .product-details-vertical-wrap .product-details-small-img-wrap {
-                width: 120%;
-            }
-            .product-details-img-wrap{
-                padding-right: 2.5rem !important;
-                padding-left: 2.5rem !important;
-            }
-        }
-
-        @media screen and (max-width: 1350px) and (min-width: 992px) {
-            .btn-parent {
-                flex-direction: column;
-            }
-
-            .btn-parent>div{
-                width: 100% !important;
-                padding: 0 !important;
-                margin-bottom: 10px;
-            }
-            .product-details-vertical-wrap .product-details-small-img-wrap {
-                width: 100%;
-            }
-        }
     </style>
 @endsection
 
@@ -220,27 +174,27 @@
                     </a>
                     <a href="/" class="font-kyiv p-2 ms-3 fs-5">Магазин</a>
                 </div>
-                <div class="col-lg-6 px-0 px-md-5">
-                    <div class="px-xl-3 product-details-img-wrap flex-column-reverse product-details-vertical-wrap w-100" data-aos="fade-up" data-aos-delay="0">
-                        <div class="product-details-small-img-wrap my-auto mt-2 me-0">
-                            <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style w-100 h-100">
-                                <div class="swiper-wrapper flex-row">
+                <div class="col-lg-6">
+                    <div class="product-details-img-wrap product-details-vertical-wrap" data-aos="fade-up" data-aos-delay="0">
+                        <div class="product-details-small-img-wrap">
+                            <div class="swiper-container product-details-small-img-slider-1 pd-small-img-style">
+                                <div class="swiper-wrapper">
                                     @foreach($product->images as $image)
                                         <div class="swiper-slide">
-                                            <div class="product-details-small-img w-100 h-100">
-                                                <img class="mx-auto" src="{{asset('storage/'.$image->image)}}" alt="{{$image->alt}}">
+                                            <div class="product-details-small-img">
+                                                <img src="{{asset('storage/'.$image->image)}}" alt="{{$image->alt}}">
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="pd-prev pd-nav-style"> <i class="ti-angle-left"></i></div>
-                            <div class="pd-next pd-nav-style"> <i class="ti-angle-right"></i></div>
+                            <div class="pd-prev pd-nav-style"> <i class="ti-angle-up"></i></div>
+                            <div class="pd-next pd-nav-style"> <i class="ti-angle-down"></i></div>
                         </div>
-                        <div class="swiper-container product-details-big-img-slider-1 pd-big-img-style w-100">
+                        <div class="swiper-container product-details-big-img-slider-1 pd-big-img-style">
                             <div class="swiper-wrapper">
                                 @foreach($product->images as $image)
-                                    <div class="swiper-slide px-0" style="padding-left: 0 !important; padding-right: 0 !important;">
+                                    <div class="swiper-slide">
                                         <div class="">
                                             <div class="">
                                                 <a class="img-popup" href="{{asset('storage/'.$image->image)}}">
@@ -254,7 +208,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 ps-md-0">
+                <div class="col-lg-4 ps-1">
                     <div class="product-details-content" data-aos="fade-left" data-aos-delay="0">
                         <div class="d-flex">
                             <h1 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h1>
@@ -263,7 +217,7 @@
                                     @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
                                 </div>
                                 <div class="single-product-compare">
-{{--                                    <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>--}}
+                                    {{--                                    <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>--}}
                                 </div>
                             </div>
                         </div>
@@ -309,14 +263,14 @@
                                 </li>
                             </ul>
                         </div>
-{{--                        <div class="product-color product-color-active product-details-color">--}}
-{{--                            <span>Color :</span>--}}
-{{--                            <ul>--}}
-{{--                                <li><a title="Pink" class="pink rounded-circle" href="#">pink</a></li>--}}
-{{--                                <li><a title="Yellow" class="active yellow rounded-circle" href="#">yellow</a></li>--}}
-{{--                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="product-color product-color-active product-details-color">--}}
+                        {{--                            <span>Color :</span>--}}
+                        {{--                            <ul>--}}
+                        {{--                                <li><a title="Pink" class="pink rounded-circle" href="#">pink</a></li>--}}
+                        {{--                                <li><a title="Yellow" class="active yellow rounded-circle" href="#">yellow</a></li>--}}
+                        {{--                                <li><a title="Purple" class="purple rounded-circle" href="#">purple</a></li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                         @if($product->amount > 0)
                             <div class="">
                                 <div class="w-50 addCart pe-1">
@@ -475,20 +429,20 @@
                 </div>
                 <div class="row">
                     @foreach($relatedProducts as $product)
-                        <div class="col-6 col-md-4 col-lg-3 align-self-stretch p-2">
+                        <div class="col-6 col-md-4 col-lg-3 align-self-stretch p-1">
                             <livewire:front.component.product-card :product="$product" :key="$product->id" />
                         </div>
                     @endforeach
                 </div>
-{{--                <div class="product-slider-active-1 pt-0 swiper-container">--}}
-{{--                    <div class="swiper-wrapper">--}}
-{{--                        @foreach($relatedProducts as $product)--}}
-{{--                            <div class="swiper-slide align-self-stretch">--}}
-{{--                                <livewire:front.component.product-card :product="$product" :key="$product->id" />--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="product-slider-active-1 pt-0 swiper-container">--}}
+                {{--                    <div class="swiper-wrapper">--}}
+                {{--                        @foreach($relatedProducts as $product)--}}
+                {{--                            <div class="swiper-slide align-self-stretch">--}}
+                {{--                                <livewire:front.component.product-card :product="$product" :key="$product->id" />--}}
+                {{--                            </div>--}}
+                {{--                        @endforeach--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
             </div>
         </div>
     @endif
@@ -506,15 +460,15 @@
                         </div>
                     @endforeach
                 </div>
-{{--                <div class="product-slider-active-1 pt-0 swiper-container">--}}
-{{--                    <div class="swiper-wrapper">--}}
-{{--                        @foreach($additionalProducts as $product)--}}
-{{--                            <div class="swiper-slide align-self-stretch">--}}
-{{--                                <livewire:front.component.product-card :product="$product" :key="$product->id" />--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="product-slider-active-1 pt-0 swiper-container">--}}
+                {{--                    <div class="swiper-wrapper">--}}
+                {{--                        @foreach($additionalProducts as $product)--}}
+                {{--                            <div class="swiper-slide align-self-stretch">--}}
+                {{--                                <livewire:front.component.product-card :product="$product" :key="$product->id" />--}}
+                {{--                            </div>--}}
+                {{--                        @endforeach--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
             </div>
         </div>
     @endif
