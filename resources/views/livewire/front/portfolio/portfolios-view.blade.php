@@ -196,9 +196,19 @@
         .modal-xl{
             height: 100vh;
         }
-        .button-arrows a{
-            height: 200px;
+        .button-arrows{
+            height: 60vh;
             transform: translateY(-50%);
+        }
+        #showGallery {
+            user-select: none;  /* Prevent text selection */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE */
+            touch-action: pan-y; /* Prevent swipe conflicts */
+        }
+        .account-details-form > form > div.row > div:nth-child(4){
+            display: none;
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
@@ -301,6 +311,9 @@
         <div class="modal-dialog modal-xl my-0">
             <img id="targetImg" src="http://127.0.0.1:8000/storage/uploads/RfdzzxWzUxVtQTrVWqxiEExqlAzNu1Lyeivn36gG.webp">
         </div>
+        <a class="top-0 end-0 p-4 position-absolute text-white" data-bs-dismiss="modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </a>
         <div class="button-arrows position-absolute w-100 top-50 d-flex justify-content-between">
             <a onclick="prevGlry()" class="text-light p-2 p-md-5 w-50 text-start d-flex align-items-center justify-content-start">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -320,6 +333,9 @@
     <!-- Include Plyr from CDN -->
 {{--    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>--}}
     <script>
+        // $(".form-headline").text("New text content!");
+        // $(".form-info").text("New text!");
+
         {{--<img class="showGallery" data-count="{{$loop->count}}" data-selectable="{{$loop->iteration}}" data-last="{{$loop->last}}" data-first="{{$loop->first}}" src="{{ asset('storage/' . $image->image) }}" alt="LumenLux | {{$portfolio->description}}">--}}
         let next;
         let prev;
@@ -330,11 +346,24 @@
             new bootstrap.Modal(document.getElementById('showGallery')).show();
         });
 
+        let startX = 0;
+        let endX = 0;
+
+        document.addEventListener("pointerdown", (e) => startX = e.clientX);
+        document.addEventListener("pointerup", (e) => {
+            endX = e.clientX;
+            if (startX - endX > 50) {
+                nextGlry();
+            } else if (endX - startX > 50) {
+                prevGlry();
+            }
+        });
+
         $(document).keydown(function(event) {
             switch (event.key) {
                 case "ArrowRight":
                     if (next){
-                        nextGlry()
+                        nextGlry();
                     }
                     break;
                 case "ArrowLeft":

@@ -114,6 +114,9 @@
         .blog-category.active {
             cursor: grabbing;
         }
+        .account-details-form > form > div.row > div:nth-child(4){
+            display: none;
+        }
     </style>
 @endpush
 
