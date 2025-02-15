@@ -209,25 +209,25 @@
             videoIn.removeAttribute('disabled', true);
         };
 
-        $('.create-btn, .editPortfolio').on('click', function () {
-            tinymce.remove('#text-content');
-            setTimeout(() => {
-                tinymce.init({
-                    selector: '#text-content',
-                    plugins: 'code table searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +
-                        'help charmap emoticons autosave',
-                    language: 'ru',
-                    promotion: false,
-                    branding: false,
-                    setup: function (editor) {
-                        editor.on('keyup change', function () {
-                            let content = editor.getContent(); // Get content from TinyMCE
-                            Livewire.emit('updateTextContent', content); // Emit to Livewire
-                        });
-                    }
-                });
-            }, 1000);
-        });
+        // $('.create-btn, .editPortfolio').on('click', function () {
+        //     tinymce.remove('#text-content');
+        //     setTimeout(() => {
+        //         tinymce.init({
+        //             selector: '#text-content',
+        //             plugins: 'code table searchreplace autolink directionality visualblocks visualchars image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +
+        //                 'help charmap emoticons autosave',
+        //             language: 'ru',
+        //             promotion: false,
+        //             branding: false,
+        //             setup: function (editor) {
+        //                 editor.on('keyup change', function () {
+        //                     let content = editor.getContent(); // Get content from TinyMCE
+        //                     Livewire.emit('updateTextContent', content); // Emit to Livewire
+        //                 });
+        //             }
+        //         });
+        //     }, 500);
+        // });
 
         $('#modalBody').on('focusout', function () {
             $('#videoPreview')[0].pause(); // Pause the video

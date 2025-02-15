@@ -88,25 +88,6 @@
 
         function updateValue(val){
             Livewire.emit('setToUpdate', val);
-        }
-
-        function removeDuplicateModals() {
-            let modals = document.querySelectorAll("#delete-confirmation-modal");
-
-            if (modals.length > 1) {
-                for (let i = 1; i < modals.length; i++) {
-                    modals[i].remove();
-                }
-            }
-        }
-
-        document.querySelectorAll('.deletion').forEach(button => {
-            button.addEventListener('click', () => {
-                removeDuplicateModals(); // Remove duplicates before showing modal
-            });
-        });
-
-        $('#updateBtn').on('click', function () {
             tinymce.remove('#text-content');
 
             tinymce.init({
@@ -122,6 +103,22 @@
                         Livewire.emit('updateTextContent', content); // Emit to Livewire
                     });
                 }
+            });
+        }
+
+        function removeDuplicateModals() {
+            let modals = document.querySelectorAll("#delete-confirmation-modal");
+
+            if (modals.length > 1) {
+                for (let i = 1; i < modals.length; i++) {
+                    modals[i].remove();
+                }
+            }
+        }
+
+        document.querySelectorAll('.deletion').forEach(button => {
+            button.addEventListener('click', () => {
+                removeDuplicateModals(); // Remove duplicates before showing modal
             });
         });
 
