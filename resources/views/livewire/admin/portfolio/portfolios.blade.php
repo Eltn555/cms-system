@@ -130,10 +130,15 @@
         });
 
         window.addEventListener('delayed-redirect', function () {
+            if (window.onbeforeunload) {
+                window.onbeforeunload = null;
+            }
+
             setTimeout(() => {
-                window.location.href = "/admin/portfolio"; // Redirect after 2 seconds
+                window.location.href = "/admin/portfolio"; // Redirect after 1 second
             }, 1000);
         });
+
 
 
         function showFlashMessage(type, message) {
