@@ -273,7 +273,7 @@
                 </div>
                 <div class="col-6 justify-content-end align-items-end d-flex">
                     <div class="single-product-cart btn-hover ps-1 text-end">
-                        <a href="{{ route('portfolio.index') }}" class="p-2 ps-4 pe-4 text-dark bg-light border border-1 font-kyiv">Посмотреть все</a>
+                        <a href="{{ route('portfolio.index') }}" class="p-2 text-dark bg-light border border-1 font-kyiv">Посмотреть все</a>
                     </div>
                 </div>
             </div>
