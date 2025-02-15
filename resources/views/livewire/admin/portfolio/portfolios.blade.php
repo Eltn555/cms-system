@@ -117,7 +117,7 @@
                 promotion: false,
                 branding: false,
                 setup: function (editor) {
-                    editor.on('input', function () {
+                    editor.on('keyup change', function () {
                         let content = editor.getContent(); // Get content from TinyMCE
                         Livewire.emit('updateTextContent', content); // Emit to Livewire
                     });
@@ -128,6 +128,13 @@
         window.addEventListener('flash-message', event => {
             showFlashMessage(event.detail.type, event.detail.message);
         });
+
+        window.addEventListener('delayed-redirect', function () {
+            setTimeout(() => {
+                window.location.href = "/admin/portfolio"; // Redirect after 2 seconds
+            }, 1000);
+        });
+
 
         function showFlashMessage(type, message) {
             const container = document.getElementById("flash-message-container");

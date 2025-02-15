@@ -220,7 +220,7 @@
                 promotion: false,
                 branding: false,
                 setup: function (editor) {
-                    editor.on('input', function () {
+                    editor.on('keyup change', function () {
                         let content = editor.getContent(); // Get content from TinyMCE
                         Livewire.emit('updateTextContent', content); // Emit to Livewire
                     });

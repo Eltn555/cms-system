@@ -156,10 +156,12 @@ class CreatePortfolio extends Component
     }
 
     private function emitActions(){
+        $this->resetFields();
         $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
         $this->emit('close');
         $this->emit('load');
-        $this->resetFields();
+
+        $this->dispatchBrowserEvent('delayed-redirect');
     }
 
     public function submit(){
@@ -173,7 +175,6 @@ class CreatePortfolio extends Component
                     $record->gallery()->attach($imageIds);
                 }
                 $this->emitActions();
-                return redirect()->to('/admin/portfolio');
             }else{
                 $this->handleErrors();
             }
@@ -189,7 +190,6 @@ class CreatePortfolio extends Component
                     $this->update->gallery()->sync($imageIds);
                 }
                 $this->emitActions();
-                return redirect()->to('/admin/portfolio');
             }else{
                 $this->handleErrors();
             }
