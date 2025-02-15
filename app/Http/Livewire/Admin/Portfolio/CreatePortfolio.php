@@ -156,7 +156,6 @@ class CreatePortfolio extends Component
     }
 
     private function emitActions(){
-        $this->resetFields();
         $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
         $this->emit('close');
         $this->emit('load');
