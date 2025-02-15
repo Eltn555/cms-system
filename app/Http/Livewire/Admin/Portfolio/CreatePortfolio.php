@@ -187,9 +187,9 @@ class CreatePortfolio extends Component
                 if (!$this->gallery->isEmpty()){
                     $imageIds = collect($this->gallery)->pluck('id')->toArray();
                     $this->update->gallery()->sync($imageIds);
-                    return redirect()->to('/admin/portfolio');
                 }
                 $this->emitActions();
+                return redirect()->to('/admin/portfolio');
             }else{
                 $this->handleErrors();
             }
