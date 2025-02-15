@@ -24,16 +24,16 @@
                     @endif
                 </div>
             </label>
-            <input name="images" class="file-input h-0" data-action="#image-id" data-var="image" data-selectable=".imageLabel" onchange="updateFileText(this)" type="file" id="file" placeholder="png, jpg, webp" accept="image/*" required/>
+            <input class="file-input h-0" data-action="#image-id" data-var="image" data-selectable=".imageLabel" onchange="updateFileText(this)" type="file" id="file" placeholder="png, jpg, webp" accept="image/*" required/>
             <input class="d-none" type="hidden" id="image-id"/>
         </div>
         <div>
             <label for="crud-form-1" class="form-label">Title <b class="text-danger">*</b></label>
-            <input id="crud-form-1" wire:model="title" type="text" name="title" class="form-control w-full" required placeholder="Title">
+            <input id="crud-form-1" wire:model="title" type="text" class="form-control w-full" required placeholder="Title">
         </div>
         <div class="mt-3">
             <label for="crud-form-1" class="form-label">Description <b class="text-danger">*</b></label>
-            <input id="crud-form-1" wire:model="description" type="text" name="description" class="form-control w-full" required
+            <input id="crud-form-1" wire:model="description" type="text" class="form-control w-full" required
                    placeholder="Description">
         </div>
         <!-- BEGIN: Basic Select -->
@@ -41,7 +41,7 @@
             <label for="post-form-3-tom" class="form-label" id="post-form-3-ts-label">Category
                 <b class="text-danger">*</b></label><br>
             <select wire:model="categoryId" data-placeholder="Select categories" class="w-1/2 rounded-md"
-                    id="post-form-3-tom" name="category[]"
+                    id="post-form-3-tom"
                     tabindex="-1" required>
                 <option value="{{ null }}"></option>
                 @foreach($categories as $category)
@@ -71,7 +71,7 @@
                     @endif
                 </div>
             </label>
-            <input name="gallery" multiple class="file-input h-0" data-action="#image-ids" data-var="gallery" data-selectable=".imageLabels" onchange="updateFileText(this)" type="file" id="gallery" placeholder="png, jpg, webp" accept="image/*"/>
+            <input multiple class="file-input h-0" data-action="#image-ids" data-var="gallery" data-selectable=".imageLabels" onchange="updateFileText(this)" type="file" id="gallery" placeholder="png, jpg, webp" accept="image/*"/>
             <input class="d-none" type="hidden" id="image-ids"/>
         </div>
         <div class="mt-3" wire:ignore>
@@ -103,7 +103,7 @@
         </div>
         <div class="mt-3" wire:ignore>
             <label for="text-content" class="form-label">Long Description</label>
-            <textarea wire:model="text" id="text-content" class="tinyeditor form-control h-[110px]" name="text"
+            <textarea wire:model="text" id="text-content" class="tinyeditor form-control h-[110px]"
                       placeholder="Text">
 
                         </textarea>
