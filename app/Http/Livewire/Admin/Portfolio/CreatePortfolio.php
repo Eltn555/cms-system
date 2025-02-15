@@ -159,7 +159,6 @@ class CreatePortfolio extends Component
         $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Uploaded successfully!']);
         $this->emit('close');
         $this->emit('load');
-
         $this->dispatchBrowserEvent('delayed-redirect');
     }
 
