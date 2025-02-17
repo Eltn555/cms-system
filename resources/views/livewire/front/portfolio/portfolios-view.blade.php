@@ -210,6 +210,11 @@
         .account-details-form > form > div.row > div:nth-child(4){
             display: none;
         }
+        .video-container video{
+            max-height: 80vh;
+            max-width: 100%;
+            object-fit: contain;
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
 @endpush
@@ -238,8 +243,8 @@
                     </div>
 
                     @if($portfolio->video)
-                        <div class="w-100 video-container">
-                            <video class="w-100" autoplay loop controls muted playsinline>
+                        <div class="w-100 video-container d-flex justify-content-center align-items-center">
+                            <video class="" autoplay loop controls muted playsinline>
                                 <source src="{{$portfolio->video}}" type="video/mp4">
                                 <a>Video is not supported</a>
                             </video>
