@@ -52,7 +52,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-list mb-40">
                             <h3 class="footer-title text-white font-kyiv"><a href="tel:+998555005444" style="color: #fff">+998 555 005 444</a></h3>
-                            <p class="text-white">Работаем ежедневно с 10:00 до 19:00 часовик<br>Прием заказов круглосуточно</p>
+                            <p class="text-white font-kyiv">Работаем ежедневно с 10:00 до 19:00 часовик<br>Прием заказов круглосуточно</p>
                             <ul>
                                 <div style="display: flex;" class="mt-5 p-0 m-0 infoLink">
                                     <div style="width: 10%;" class="p-0 me-1">
