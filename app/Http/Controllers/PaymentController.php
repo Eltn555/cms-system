@@ -451,7 +451,7 @@ class PaymentController extends Controller
                 'status' => 'OK',
                 'data' => [
                     'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->ID
+                    'ID' => $payment->id
                 ],
             ]);
         }
@@ -499,7 +499,7 @@ class PaymentController extends Controller
                 'status' => 'CREATED',
                 'data' => [
                     'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->ID
+                    'ID' => $payment->id
                 ],
                 'amount' => $amount
             ]);
@@ -549,7 +549,7 @@ class PaymentController extends Controller
                     'confirmTime' => Carbon::now()->valueOf(),
                     'data' => [
                         'phone' => $payment->sale->user->phone,
-                        'ID' => $payment->ID
+                        'ID' => $payment->id
                     ],
                     'amount' => $payment->amount
                 ]);
@@ -598,7 +598,7 @@ class PaymentController extends Controller
                 'reverseTime' => Carbon::now()->valueOf(),
                 'data' => [
                     'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->ID
+                    'ID' => $payment->id
                 ],
                 'amount' => $payment->amount
             ]);
@@ -666,7 +666,7 @@ class PaymentController extends Controller
                 'reverseTime' => $cancelled_time,
                 'data' => [
                     'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->ID
+                    'ID' => $payment->id
                 ],
                 'amount' => $payment->amount
             ]);
