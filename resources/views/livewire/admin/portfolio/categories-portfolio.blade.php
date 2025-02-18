@@ -9,7 +9,7 @@
                 <thead>
                 <tr>
                     <th class="whitespace-nowrap">Title</th>
-                    <th class="whitespace-nowrap">Description</th>
+                    <th class="whitespace-nowrap">Order</th>
                     <th class="whitespace-nowrap">Actions</th>
                 </tr>
                 </thead>
@@ -19,7 +19,7 @@
                         <input wire:model="title" type="text" name="title" class="form-control w-full" required placeholder="Title">
                     </td>
                     <td class="" data-field="description" data-action="read" data-selectable="description" style="min-width: 300px">
-                        <input wire:model="description" type="text" name="title" class="form-control w-full" placeholder="Description">
+                        <input wire:model="description" type="number" name="title" class="form-control w-full" placeholder="Number">
                     </td>
                     <td class="table-report__action w-32">
                         <a wire:click="create" class="rouned btn btn-success text-white m-2">Create</a>
@@ -33,7 +33,7 @@
                         </td>
                         <td class="editablee" data-field="description" data-action="read" data-selectable="description" style="min-width: 300px">
                             <a href="javascript:;" class="font-medium whitespace-nowrap">{{ $category->description }}</a>
-                            <input type="text" class="form-control relative hidden" value="{{$category->description}}">
+                            <input type="number" class="form-control relative hidden" value="{{$category->description}}">
                         </td>
                         <td class="table-report__action w-32">
                             <div class="flex justify-center items-center">

@@ -17,7 +17,7 @@ class PortfoliosCollection extends Component
     public function mount()
     {
         $this->description = '';
-        $this->categories = PortfolioCategory::all();
+        $this->categories = PortfolioCategory::orderBy('description', 'asc')->get();
         foreach ($this->categories as $category){
             $this->description .= $category->title.', ';
         }
@@ -36,7 +36,7 @@ class PortfoliosCollection extends Component
 
     public function render()
     {
-        $this->news = ($this->categoryId) ? Portfolio::where('category_id', $this->categoryId)->take(12)->get() : Portfolio::take(12)->get();
+        $this->news = ($this->categoryId) ? Portfolio::where('category_id', $this->categoryId)->orderBy('created_at', 'desc')->take(24)->get() : Portfolio::orderBy('created_at', 'desc')->take(48)->get();
         foreach ($this->news as $item) {
             $item->created_at = Carbon::parse($item->created_at);
         }

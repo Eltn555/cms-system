@@ -16,7 +16,7 @@ class CategoriesPortfolio extends Component
     protected $listeners = ['deletee' => 'confirmed', 'update' => 'updateField'];
 
     public function mount(){
-        $this->categories = PortfolioCategory::orderBy('created_at', 'desc')->get();
+        $this->categories = PortfolioCategory::orderBy('description', 'asc')->get();
     }
 
     public function updateField($field, $id, $newValue)
@@ -24,7 +24,7 @@ class CategoriesPortfolio extends Component
         $record = PortfolioCategory::findOrFail($id);
         $record->update([$field => $newValue]);
         $this->dispatchBrowserEvent('flash-message', ['type' => 'success', 'message' => 'Updated successfully!']);
-        $this->categories = PortfolioCategory::orderBy('created_at', 'desc')->get();
+        $this->categories = PortfolioCategory::orderBy('description', 'asc')->get();
     }
 
     public function create(){
@@ -33,7 +33,7 @@ class CategoriesPortfolio extends Component
                'title' => $this->title,
                'description' => $this->description
             ]);
-            $this->categories = PortfolioCategory::orderBy('created_at', 'desc')->get();
+            $this->categories = PortfolioCategory::orderBy('description', 'asc')->get();
             $this->title = '';
             $this->description = '';
         }else{
@@ -52,7 +52,7 @@ class CategoriesPortfolio extends Component
             }
         }
         $portfolio->delete();
-        $this->categories = PortfolioCategory::orderBy('created_at', 'desc')->get();
+        $this->categories = PortfolioCategory::orderBy('description', 'asc')->get();
     }
 
     public function deletetion($file){
