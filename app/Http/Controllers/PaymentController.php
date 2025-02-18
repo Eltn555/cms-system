@@ -426,7 +426,7 @@ class PaymentController extends Controller
         if ($serID != $servID){
             return response()->json([
                 'serviceId' => $serID,
-                'timestamp' => Carbon::now(),
+                'timestamp' => Carbon::now()->valueOf(),
                 'status' => 'FAILED',
                 'errorCode' => '10006',
             ]);
@@ -438,7 +438,7 @@ class PaymentController extends Controller
         if ($payment && $payment->status == 'completed'){
             return response()->json([
                 'serviceId' => $serID,
-                'timestamp' => Carbon::now(),
+                'timestamp' => Carbon::now()->valueOf(),
                 'status' => 'Already paid',
                 'errorCode' => '10008',
             ]);
@@ -447,7 +447,7 @@ class PaymentController extends Controller
         if ($payment) {
             return response()->json([
                 'serviceId' => $serID,
-                'timestamp' => Carbon::now(),
+                'timestamp' => Carbon::now()->valueOf(),
                 'status' => 'OK',
                 'data' => [
                     'phone' => $payment->sale->user->phone,
@@ -458,7 +458,7 @@ class PaymentController extends Controller
 
         return response()->json([
             'serviceId' => $serID,
-            'timestamp' => Carbon::now(),
+            'timestamp' => Carbon::now()->valueOf(),
             'status' => 'NOT FOUND',
             'errorCode' => '99999',
         ]);
@@ -476,7 +476,7 @@ class PaymentController extends Controller
             return response()->json([
                 'serviceId' => $serID,
                 'transId' => $transID,
-                'transTime' => Carbon::now(),
+                'transTime' => Carbon::now()->valueOf(),
                 'status' => 'FAILED',
                 'errorCode' => '10006',
             ]);
@@ -495,7 +495,7 @@ class PaymentController extends Controller
             return response()->json([
                 'serviceId' => $serID,
                 'transId' => $transID,
-                'transTime' => Carbon::now(),
+                'transTime' => Carbon::now()->valueOf(),
                 'status' => 'CREATED',
                 'data' => [
                     'phone' => $payment->sale->user->phone,
@@ -508,7 +508,7 @@ class PaymentController extends Controller
         return response()->json([
             'serviceId' => $serID,
             'transId' => $transID,
-            'transTime' => Carbon::now(),
+            'transTime' => Carbon::now()->valueOf(),
             'status' => 'FAILED',
             'errorCode' => '10011',
         ]);
@@ -524,7 +524,7 @@ class PaymentController extends Controller
             return response()->json([
                 'serviceId' => $serID,
                 'transId' => $transID,
-                'transTime' => Carbon::now(),
+                'transTime' => Carbon::now()->valueOf(),
                 'status' => 'FAILED',
                 'errorCode' => '10006',
             ]);
@@ -546,7 +546,7 @@ class PaymentController extends Controller
                     'serviceId' => $serID,
                     'transId' => $transID,
                     'status' => 'CONFIRMED',
-                    'confirmTime' => Carbon::now(),
+                    'confirmTime' => Carbon::now()->valueOf(),
                     'data' => [
                         'phone' => $payment->sale->user->phone,
                         'ID' => $payment->ID
@@ -559,7 +559,7 @@ class PaymentController extends Controller
             'serviceId' => $serID,
             'transId' => $transID,
             'status' => 'FAILED',
-            'confirmTime' => Carbon::now(),
+            'confirmTime' => Carbon::now()->valueOf(),
             'errorCode' => '10003',
         ]);
     }
@@ -573,7 +573,7 @@ class PaymentController extends Controller
             return response()->json([
                 'serviceId' => $serID,
                 'transId' => $transID,
-                'transTime' => Carbon::now(),
+                'transTime' => Carbon::now()->valueOf(),
                 'status' => 'FAILED',
                 'errorCode' => '10006',
             ]);
@@ -595,7 +595,7 @@ class PaymentController extends Controller
                 'serviceId' => $serID,
                 'transId' => $transID,
                 'status' => 'REVERSED',
-                'reverseTime' => Carbon::now(),
+                'reverseTime' => Carbon::now()->valueOf(),
                 'data' => [
                     'phone' => $payment->sale->user->phone,
                     'ID' => $payment->ID
@@ -607,7 +607,7 @@ class PaymentController extends Controller
                 'serviceId' => $serID,
                 'transId' => $transID,
                 'status' => 'FAILED',
-                'confirmTime' => Carbon::now(),
+                'confirmTime' => Carbon::now()->valueOf(),
                 'errorCode' => '10017',
             ]);
         }
@@ -616,7 +616,7 @@ class PaymentController extends Controller
             'serviceId' => $serID,
             'transId' => $transID,
             'status' => 'FAILED',
-            'confirmTime' => Carbon::now(),
+            'confirmTime' => Carbon::now()->valueOf(),
             'errorCode' => '10014',
         ]);
     }
@@ -630,7 +630,7 @@ class PaymentController extends Controller
             return response()->json([
                 'serviceId' => $serID,
                 'transId' => $transID,
-                'transTime' => Carbon::now(),
+                'transTime' => Carbon::now()->valueOf(),
                 'status' => 'FAILED',
                 'errorCode' => '10006',
             ]);
@@ -676,7 +676,7 @@ class PaymentController extends Controller
             'serviceId' => $serID,
             'transId' => $transID,
             'status' => 'FAILED',
-            'confirmTime' => Carbon::now(),
+            'confirmTime' => Carbon::now()->valueOf(),
             'errorCode' => '10014',
         ]);
     }
