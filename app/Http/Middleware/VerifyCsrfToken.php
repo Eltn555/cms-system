@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         'click/prepare',
         'click/complete',
         'payme/prepare',
-        '/upload-video'
+        '/upload-video',
+        '/uzum/*'
     ];
 }
