@@ -541,7 +541,7 @@ class PaymentController extends Controller
                 ]);
             $name = $payment->sale->user->name;
             $address = $payment->sale->address_place;
-            $this->sendTelegramMessageAsync("📍$address\n🧾  № $payment->order_id \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->info\n✅ Успешно оплачен");
+            $this->sendTelegramMessageAsync("📍$address\n🧾  № $payment->order_id \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->click_trans_id\n✅ Успешно оплачен");
                 return response()->json([
                     'serviceId' => $serID,
                     'transId' => $transID,
@@ -590,7 +590,7 @@ class PaymentController extends Controller
             ]);
             $name = $payment->sale->user->name;
             $address = $payment->sale->address_place;
-            $this->sendTelegramMessageAsync("📍$address\n🧾  № $payment->order_id \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->info\n❌ Платеж отменен");
+            $this->sendTelegramMessageAsync("📍$address\n🧾  № $payment->order_id \n👤 $name\n💰$payment->amount сум\n🕓 $payment->updated_at\n🆔 $payment->click_trans_id\n❌ Платеж отменен");
             return response()->json([
                 'serviceId' => $serID,
                 'transId' => $transID,
