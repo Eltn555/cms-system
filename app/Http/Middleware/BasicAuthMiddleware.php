@@ -18,9 +18,9 @@ class BasicAuthMiddleware
         $encodedCredentials = substr($authHeader, 6);
         $decodedCredentials = base64_decode($encodedCredentials);
         [$username, $password] = explode(':', $decodedCredentials, 2);
-        return response()->json(['error' => 'Unauthorized'.$username.$password], 401);
         $expectedUsername = env('UZUM_USERNAME');
         $expectedPassword = env('UZUM_PASSWORD');
+        return response()->json(['error' => 'Unauthorized'.$username.$password.$expectedUsername.$expectedPassword], 401);
 
         if ($username != $expectedUsername || $password != $expectedPassword) {
             return response()->json(['error' => 'Unauthorized'], 401);
