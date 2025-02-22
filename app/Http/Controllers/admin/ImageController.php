@@ -103,7 +103,7 @@ class ImageController extends Controller
 
         if (count(scandir($tempPath)) - 2 == $totalChunks) {
             $finalPath = storage_path("/app/public/videos/{$fileName}");
-            $finalFile = fopen($finalPath, "ab+");
+            $finalFile = fopen($finalPath, "wb");
 
             for ($i = 0; $i < $totalChunks; $i++) {
                 $chunkFile = file_get_contents("$tempPath/chunk_$i");
