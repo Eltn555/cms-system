@@ -160,6 +160,7 @@
                 let progress = ((i + 1) / totalChunks) * 100;
                 progressBar.style.width = progress + "%";
                 progressText.textContent = `${Math.round(progress)}%`;
+                console.log('Total:'+totalChunks+' | Current:'+i);
             }
 
             if (videoPath) {
@@ -167,7 +168,6 @@
                 uploadedDiv.classList.remove("hidden");
                 videoPreview.src = videoPath;
                 videoPreview.classList.remove("hidden");
-
                 Livewire.emit('video', videoPath);
             }
         }
