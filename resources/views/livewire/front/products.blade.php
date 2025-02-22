@@ -1,8 +1,42 @@
-@section('title', $product->title)
+@section('title', $product->categories[0]->title.' '.$product->title)
 @section('description', $product->title." - ".$description."Бра, люстрыб споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет")
 @section('keyword', $product->title.", ".$description." Бра, люстрыб споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет")
 @section('image', isset($product->images[0]) ? asset('storage/'.$product->images[0]->image) : '')
 @section('style')
+    <script type="application/ld+json">
+        {!! json_encode([
+            "@context" => "https://schema.org/",
+            "@type" => "Product",
+            "name" => $product->categories[0]->title . ' ' . $product->title,
+            "description" => "Бесплатная доставка! Гарантия качества до 5 лет, постоянные акции и скидки на маркетплейсе LumenLux",
+            "image" => isset($product->images[0]) ? asset('storage/'.$product->images[0]->image) : '',
+            "category" => $product->category->name ?? "Категория не указана",
+            "brand" => [
+                "@type" => "Brand",
+                "name" => "LumenLux"
+            ],
+            "offers" => [
+                "@type" => "Offer",
+                "price" => $product->discount_price ?? $product->price,
+                "priceCurrency" => "UZS",
+                "availability" => "https://schema.org/InStock",
+                "priceValidUntil" => now()->endOfYear()->toDateString(),
+                "url" => url("/product/{$product->slug}"),
+                "hasPriceSpecification" => [
+                    "@type" => "PriceSpecification",
+                    "price" => $product->discount_price ?? $product->price,
+                    "priceCurrency" => "UZS",
+                    "maxPrice" => $product->price
+                ]
+            ],
+            "aggregateRating" => [
+                "@type" => "AggregateRating",
+                "ratingValue" => number_format($rate, 1, '.', ''),
+                "reviewCount" => $rates
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
+
     <style>
         .flash-message{
             top: 100px;
