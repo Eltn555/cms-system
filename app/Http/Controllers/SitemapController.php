@@ -67,7 +67,7 @@ class SitemapController extends Controller
         });
 
         // Add all products
-        Product::all()->each(function (Product $product) use ($sitemap) {
+        Product::where('status', 1)->get()->each(function (Product $product) use ($sitemap) {
             $sitemap->add(
                 Url::create("/product/{$product->slug}")
                     ->setLastModificationDate($product->updated_at)
