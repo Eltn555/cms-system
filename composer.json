@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "behat/transliterator": "^1.5",
         "enyo/dropzone": "^5.9",
+        "google/apiclient": "^2.18",
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
