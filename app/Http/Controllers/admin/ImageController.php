@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
@@ -111,7 +112,7 @@ class ImageController extends Controller
             }
 
             fclose($finalFile);
-            Storage::deleteDirectory("temp_uploads/{$fileName}");
+            File::deleteDirectory(storage_path("app/temp_uploads/{$fileName}"));
 
             return response()->json([
                 "message" => "Upload complete!",
