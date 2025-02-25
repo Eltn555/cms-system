@@ -31,8 +31,8 @@
             ],
             "aggregateRating" => [
                 "@type" => "AggregateRating",
-                "ratingValue" => number_format($rate, 1, '.', ''),
-                "reviewCount" => $rates
+                "ratingValue" => ($rates > 0) ? number_format($rate, 1, '.', '') : "5.0", // Default rating
+                "reviewCount" => max($rates, 1)
             ]
         ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
     </script>
