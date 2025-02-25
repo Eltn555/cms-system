@@ -449,10 +449,7 @@ class PaymentController extends Controller
                 'serviceId' => $serID,
                 'timestamp' => Carbon::now()->valueOf(),
                 'status' => 'OK',
-                'data' => [
-                    'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->id
-                ],
+                'data' => [],
             ]);
         }
 
@@ -497,10 +494,7 @@ class PaymentController extends Controller
                 'transId' => $transID,
                 'transTime' => Carbon::now()->valueOf(),
                 'status' => 'CREATED',
-                'data' => [
-                    'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->id
-                ],
+                'data' => [],
                 'amount' => $amount
             ]);
         }
@@ -547,10 +541,7 @@ class PaymentController extends Controller
                     'transId' => $transID,
                     'status' => 'CONFIRMED',
                     'confirmTime' => Carbon::now()->valueOf(),
-                    'data' => [
-                        'phone' => $payment->sale->user->phone,
-                        'ID' => $payment->id
-                    ],
+                    'data' => [],
                     'amount' => $payment->amount
                 ]);
         }
@@ -596,10 +587,7 @@ class PaymentController extends Controller
                 'transId' => $transID,
                 'status' => 'REVERSED',
                 'reverseTime' => Carbon::now()->valueOf(),
-                'data' => [
-                    'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->id
-                ],
+                'data' => [],
                 'amount' => $payment->amount
             ]);
         } elseif($payment) {
@@ -664,10 +652,7 @@ class PaymentController extends Controller
                 'transTime' => $createdTime,
                 'confirmTime' => $performTime,
                 'reverseTime' => $cancelled_time,
-                'data' => [
-                    'phone' => $payment->sale->user->phone,
-                    'ID' => $payment->id
-                ],
+                'data' => [],
                 'amount' => $payment->amount
             ]);
         }
