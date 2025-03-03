@@ -176,6 +176,9 @@
 
 @push('scripts')
     <script>
+        $(".form-headline").text("Ищете профессиональное освещение?");
+        $(".form-info").text("Оставьте заявку сейчас!");
+
         const scrollContainer = document.querySelector(".blog-category");
 
         let isDown = false;

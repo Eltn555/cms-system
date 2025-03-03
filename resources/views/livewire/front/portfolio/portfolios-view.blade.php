@@ -338,10 +338,9 @@
     <!-- Include Plyr from CDN -->
 {{--    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>--}}
     <script>
-        // $(".form-headline").text("New text content!");
-        // $(".form-info").text("New text!");
+        $(".form-headline").text("Ищете профессиональное освещение?");
+        $(".form-info").text("Оставьте заявку сейчас!");
 
-        {{--<img class="showGallery" data-count="{{$loop->count}}" data-selectable="{{$loop->iteration}}" data-last="{{$loop->last}}" data-first="{{$loop->first}}" src="{{ asset('storage/' . $image->image) }}" alt="LumenLux | {{$portfolio->description}}">--}}
         let next;
         let prev;
         let src;
