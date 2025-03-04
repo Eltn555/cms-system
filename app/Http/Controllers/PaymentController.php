@@ -433,7 +433,7 @@ class PaymentController extends Controller
         }
 
         // Verify the payment record
-        $payment = Payment::where('order_id', intval($merchantTransId))->first();
+        $payment = Payment::where('order_id', (int) $merchantTransId)->first();
 
         if ($payment && $payment->status == 'completed'){
             return response()->json([
@@ -479,7 +479,8 @@ class PaymentController extends Controller
         }
 
         // Verify the payment exists
-        $payment = Payment::where('order_id', intval($merchantTransId))->first();
+        $payment = Payment::where('order_id', (int) $merchantTransId)->first();
+
         if ($payment && $payment->amount == $amount) {
             $currentTime = Carbon::now();
             $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
