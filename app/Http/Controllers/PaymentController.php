@@ -419,7 +419,7 @@ class PaymentController extends Controller
     //Uzum
     public function verifyUzumPayment(Request $request)
     {
-        $merchantTransId = $request->input('params.Id');
+        $merchantTransId = $request->input('params.ID');
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
 
@@ -462,7 +462,7 @@ class PaymentController extends Controller
 
     public function createUzumPayment(Request $request)
     {
-        $merchantTransId = $request->input('params.Id');
+        $merchantTransId = $request->input('params.ID');
         $amount = $request->input('amount');
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
