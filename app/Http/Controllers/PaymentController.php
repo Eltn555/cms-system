@@ -422,7 +422,8 @@ class PaymentController extends Controller
         $merchantTransId = $request->input('params.id');
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
-
+        $body = json_encode(request()->all());
+        $this->sendTelegramMessageAsync("Test:\n".$body);
         if ($serID != $servID){
             return response()->json([
                 'serviceId' => $serID,
