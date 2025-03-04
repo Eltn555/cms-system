@@ -495,7 +495,7 @@ class PaymentController extends Controller
                 'transId' => $transID,
                 'transTime' => Carbon::now()->valueOf(),
                 'status' => 'CREATED',
-                'amount' => $amount
+                'amount' => $amount*100
             ]);
         }
 
@@ -541,7 +541,7 @@ class PaymentController extends Controller
                     'transId' => $transID,
                     'status' => 'CONFIRMED',
                     'confirmTime' => Carbon::now()->valueOf(),
-                    'amount' => $payment->amount
+                    'amount' => $payment->amount*100
                 ]);
         }
 
@@ -586,7 +586,7 @@ class PaymentController extends Controller
                 'transId' => $transID,
                 'status' => 'REVERSED',
                 'reverseTime' => Carbon::now()->valueOf(),
-                'amount' => $payment->amount
+                'amount' => $payment->amount*100
             ]);
         } elseif($payment) {
             return response()->json([
@@ -650,7 +650,7 @@ class PaymentController extends Controller
                 'transTime' => $createdTime,
                 'confirmTime' => $performTime,
                 'reverseTime' => $cancelled_time,
-                'amount' => $payment->amount
+                'amount' => $payment->amount*100
             ]);
         }
 
