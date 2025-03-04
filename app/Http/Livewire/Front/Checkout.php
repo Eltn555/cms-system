@@ -144,11 +144,20 @@ class Checkout extends Component
                 $paymeURL = $this->generatePaymeUrl($saleDb->id, $this->overall*100);
                 Payment::create([
                     'order_id' => $saleDb->id,
-                    'click_trans_id' => 00000, // This will be updated after Click sends the completion request
+                    'click_trans_id' => 00000,
                     'amount' => $this->overall,
                     'status' => 'pending',
                 ]);
                 return redirect($paymeURL);
+            }elseif ($this->payment === 'PayMe'){
+                $uzumUrl = $this->generateUzumUrl($saleDb->id, $this->overall*100);
+                Payment::create([
+                    'order_id' => $saleDb->id,
+                    'click_trans_id' => 00000,
+                    'amount' => $this->overall,
+                    'status' => 'pending',
+                ]);
+                return redirect($uzumUrl);
             }
 
             $this->flashMessage = "Спасибо! Ваш заказ принят.Ожидайте звонка от менеджера для уточнения деталей заказа.";
@@ -156,18 +165,21 @@ class Checkout extends Component
         }
     }
 
+    private function generateUzumUrl($transactionID, $amount)
+    {
+        $merchantID = env('uzum_id');
+        $returnUrl=route('front.profile.index', ['orders']);
+        $data = "m=$merchantID;ac.orderID=$transactionID;a=$amount;c=$returnUrl";
+        $uzumUrl = "https://www.uzumbank.uz/open-service?serviceId={$merchantID}&type=order&id={$transactionID}&amount={$amount}&returnUrl={$returnUrl}";
+        return $uzumUrl;
+    }
+
     private function generatePaymeUrl($transactionID, $amount)
     {
         $merchantID = env('PAYMEMERCH');
         $retutnURL=route('front.profile.index', ['orders']);
-
-        // Prepare the string for base64 encoding
         $data = "m=$merchantID;ac.orderID=$transactionID;a=$amount;c=$retutnURL";
-
-        // Encode the data in base64 format
         $base64Data = base64_encode($data);
-
-        // Generate the final URL
         $paymeUrl = "https://checkout.paycom.uz/$base64Data";
 
         return $paymeUrl;
