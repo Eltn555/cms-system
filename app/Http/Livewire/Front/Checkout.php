@@ -149,7 +149,7 @@ class Checkout extends Component
                     'status' => 'pending',
                 ]);
                 return redirect($paymeURL);
-            }elseif ($this->payment === 'PayMe'){
+            }elseif ($this->payment === 'Uzum'){
                 $uzumUrl = $this->generateUzumUrl($saleDb->id, $this->overall*100);
                 Payment::create([
                     'order_id' => $saleDb->id,
