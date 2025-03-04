@@ -419,11 +419,10 @@ class PaymentController extends Controller
     //Uzum
     public function verifyUzumPayment(Request $request)
     {
-        $merchantTransId = $request->input('params.id');
+        $merchantTransId = $request->input('params.Id');
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
         $body = json_encode(request()->all());
-        $this->sendTelegramMessageAsync("Test:\n".$body);
         if ($serID != $servID){
             return response()->json([
                 'serviceId' => $serID,
@@ -434,7 +433,7 @@ class PaymentController extends Controller
         }
 
         // Verify the payment record
-        $payment = Payment::where('order_id', $merchantTransId)->first();
+        $payment = Payment::where('order_id', intval($merchantTransId))->first();
 
         if ($payment && $payment->status == 'completed'){
             return response()->json([
@@ -463,7 +462,7 @@ class PaymentController extends Controller
 
     public function createUzumPayment(Request $request)
     {
-        $merchantTransId = $request->input('params.id');
+        $merchantTransId = $request->input('params.Id');
         $amount = $request->input('amount');
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
@@ -480,7 +479,7 @@ class PaymentController extends Controller
         }
 
         // Verify the payment exists
-        $payment = Payment::where('order_id', $merchantTransId)->first();
+        $payment = Payment::where('order_id', intval($merchantTransId))->first();
         if ($payment && $payment->amount == $amount) {
             $currentTime = Carbon::now();
             $formattedTime = $currentTime->format('Y-m-d H:i:s.v');
