@@ -170,7 +170,7 @@ class Checkout extends Component
         $merchantID = env('UZUM_ID');
         $returnUrl=route('front.profile.index', ['orders']);
         $data = "m=$merchantID;ac.orderID=$transactionID;a=$amount;c=$returnUrl";
-        $uzumUrl = "https://www.uzumbank.uz/open-service?serviceId={$merchantID}&type=order&id={$transactionID}&amount={$amount}&returnUrl={$returnUrl}";
+        $uzumUrl = "https://www.uzumbank.uz/open-service?serviceId={$merchantID}&type=order&Id={$transactionID}&amount={$amount}&returnUrl={$returnUrl}";
         return $uzumUrl;
     }
 
