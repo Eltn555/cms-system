@@ -439,7 +439,7 @@ class PaymentController extends Controller
             return response()->json([
                 'serviceId' => $serID,
                 'timestamp' => Carbon::now()->valueOf(),
-                'status' => 'Already paid',
+                'status' => 'FAILED',
                 'errorCode' => '10008',
             ]);
         }
@@ -455,7 +455,7 @@ class PaymentController extends Controller
         return response()->json([
             'serviceId' => $serID,
             'timestamp' => Carbon::now()->valueOf(),
-            'status' => 'NOT FOUND',
+            'status' => 'FAILED',
             'errorCode' => '99999',
         ]);
     }
