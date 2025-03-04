@@ -464,6 +464,7 @@ class PaymentController extends Controller
     {
         $merchantTransId = $request->input('params.Id');
         $amount = $request->input('amount');
+        $amount = $amount/100;
         $serID = $request->input('serviceId');
         $servID = env('UZUM_ID');
         $transID = $request->input('transId');
