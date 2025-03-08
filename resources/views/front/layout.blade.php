@@ -122,6 +122,12 @@
                 width: 100%;
             }
         }
+        html {
+            touch-action: manipulation;
+        }
+        input, textarea, select {
+            font-size: 16px !important;
+        }
     </style>
     <script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
     <script>  SaleBotPro.init({    onlineChatId: '2893'  });</script>
