@@ -220,7 +220,7 @@
                         <!-- Single Tab Content Start -->
                         <div class="tab-pane fade {{$isOrders ? 'show active' : ''}}" id="orders" role="tabpanel">
                             <div class="myaccount-content">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="section-title-tab-wrap mb-75">
                                         <div class="tab-style-1 nav w-100 row m-0 p-0" data-aos="fade-up" data-aos-delay="100">
                                             <a class="active col-12 col-md-4 m-0 border-bottom" href="#pro-1" data-bs-toggle="tab">Все заказы</a>
@@ -231,7 +231,7 @@
                                     <div class="tab-content jump">
                                         <div id="pro-1" class="tab-pane active">
                                             <div class="cart-content">
-                                                <ul>
+                                                <ul class="pe-4">
                                                     @foreach($items as $item)
                                                         <li class="border-bottom pb-3 mb-3 position-relative">
                                                             <div class="cart-img d-flex align-items-center">

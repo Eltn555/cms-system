@@ -155,7 +155,7 @@
 
 @section('content')
     <div class="container mt-5 pt-5">
-        <div class="row ovrflwx">
+        <div class="row overflow-hidden">
             <div class="col-12 row">
                 <div class="col-md-12 col-lg-6 order-lg-0 order-md-1 order-sm-1 order-1 mt-md-5 greeting-txt">
                     <h5 class="counter pt-md-5"></h5>
@@ -178,14 +178,14 @@
                         <h2 class="mb-0 fw-bolder fs-6">Количество проектов!</h2>
                         <h3 class="text-secondary px-5 fs-6">Высокое разрешение и красивый дизайн только для вас!</h3>
                     </div>
-                    <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0" data-aos="fade-up" data-aos-delay="150">
+                    <div class="col-lg-4 col-md-12 text-center pt-4 pt-lg-0 px-3 py-0" data-aos="fade-up" data-aos-delay="150">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">2500</h5><span>+</span>
                         </div>
                         <h2 class="mb-0 fw-bolder fs-6">Довольные покупатели!</h2>
                         <h3 class="text-secondary px-5 fs-6">Покупатели очень благодарны за нашу работу!</h3>
                     </div>
-                    <div class="col-lg-4 col-md-12 text-center pt-md-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up" data-aos-delay="250">
+                    <div class="col-lg-4 col-md-12 text-center pt-4 pt-lg-0 px-3 py-0 border-0" data-aos="fade-up" data-aos-delay="250">
                         <div class="w-100 d-flex justify-content-center fw-bold font-kyiv">
                             <h5 class="counter-count fw-bold">3</h5><span></span>
                         </div>
@@ -320,7 +320,7 @@
                     @foreach($partners as $key =>$partner)
                         <div class="swiper-slide d-flex justify-content-center align-items-center">
                             <div class="single-brand-logo" data-aos="fade-up" data-aos-delay="50">
-                                <a href="#"><img src="{{asset('storage/' . $partner->image)}}" alt="LumenLux Pratners" loading="lazy"></a>
+                                <a href="javascript:;"><img src="{{asset('storage/' . $partner->image)}}" alt="LumenLux Pratners" loading="lazy"></a>
                             </div>
                         </div>
                     @endforeach
@@ -406,7 +406,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var swiper = new Swiper('.swp-cnt', {
-                slidesPerView: 6, // Adjust this value as needed
+                slidesPerView: 5.5, // Adjust this value as needed
                 spaceBetween: 10, // Adjust this value as needed
                 navigation: {
                     nextEl: '.swiper-btn-nxt',
@@ -417,7 +417,7 @@
                 loopAdditionalSlides: 3, // Additional slides to clone for smooth looping
                 loopedSlides: 3, // Number of slides to loop
                 autoplay: {
-                    delay: 2500,
+                    delay: 5000,
                     disableOnInteraction: false,
                 },
             });
