@@ -70,9 +70,9 @@
     </style>
 @endsection
 
-<div class="itemss container mt-5 pt-5">
-    <div class="row sidebar-cart-all pt-4">
-        <h1 class="font-cormorant fw-bolder pb-4 mb-3">Оформление заказа</h1>
+<div class="itemss container mt-0 mt-md-3 mt-lg-5 pt-5">
+    <div class="row sidebar-cart-all pt-4 overflow-hidden">
+        <h1 class="font-cormorant fw-bolder pb-0 pb-md-2 pb-lg-3 mb-2">Оформление заказа</h1>
 
         <div class="col-12 col-lg-8 cart-content px-2">
 {{--            user Info--}}
