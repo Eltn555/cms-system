@@ -129,8 +129,6 @@
             font-size: 16px !important;
         }
     </style>
-    <script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
-    <script>  SaleBotPro.init({    onlineChatId: '2893'  });</script>
     @livewireScripts
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CC8KGFRJ63"></script>
@@ -338,6 +336,8 @@
         });
     });
 </script>
+<script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
+<script>  SaleBotPro.init({    onlineChatId: '2893'  });</script>
 </body>
 
 </html>
