@@ -158,6 +158,8 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/100359328" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+
+    <script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
 </head>
 
 <body>
@@ -336,7 +338,6 @@
         });
     });
 </script>
-<script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
 <script>  SaleBotPro.init({    onlineChatId: '2893'  });</script>
 </body>
 
