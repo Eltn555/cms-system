@@ -43,7 +43,7 @@ use App\Http\Livewire\Front\Portfolio\PortfoliosCollection;
 Route::group(['prefix'=>'/'], function (){
    Route::resource('/',\App\Http\Controllers\front\HomeController::class, ['as'=>'front']);
 });
-Route::get('/proxy/salebot.js', 'SaleBotController@proxyScript');
+Route::get('/proxy/salebot.js', [\App\Http\Controllers\SaleBotController::class, 'proxyScript']);
 Route::get('/api', [\App\Http\Controllers\ProductApi::class, 'index']);
 Route::post('/payme/prepare', [PaymentController::class, 'handleRequest']);
 Route::post('/click/prepare', [PaymentController::class, 'preparePayment']);
