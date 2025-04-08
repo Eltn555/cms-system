@@ -219,6 +219,10 @@
     });
 </script>
 <!-- Main JS -->
+<script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
+<script>
+    SaleBotPro.init({    onlineChatId: '2893'  });
+</script>
 @yield('scripts')
 @stack('scripts')
 <script>
@@ -336,8 +340,6 @@
         });
     });
 </script>
-<script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
-<script>  SaleBotPro.init({    onlineChatId: '2893'  });</script>
 </body>
 
 </html>
