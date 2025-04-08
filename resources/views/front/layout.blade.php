@@ -219,7 +219,7 @@
     });
 </script>
 <!-- Main JS -->
-<script src='https://salebot.pro/js/salebot.js?v=1' charset='utf-8'></script>
+<script src="{{ url('/proxy/salebot.js') }}"></script>
 <script>
     SaleBotPro.init({    onlineChatId: '2893'  });
 </script>
