@@ -14,8 +14,8 @@ class PortfoliosView extends Component
     public $categories;
 
     public function mount($slug) {
-        $this->latest =  Portfolio::latest()->take(4)->get();
         $this->portfolio = Portfolio::where('info', $slug)->first();
+        $this->latest =  Portfolio::where('id', '!=', $this->portfolio->id)->latest()->take(12)->get();
         $this->portfolio->created_at = Carbon::parse($this->portfolio->created_at);
         $this->categories = PortfolioCategory::all();
     }

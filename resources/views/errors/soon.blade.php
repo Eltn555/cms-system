@@ -26,7 +26,7 @@
             color: #fff;
             cursor: default;
             letter-spacing: -10px;
-            font-size: 20em;
+            font-size: 6em;
         }
 
         .light {
@@ -37,6 +37,31 @@
             height: 100%;
             pointer-events: none;
             background: radial-gradient(circle at var(--x) var(--y), transparent -5%, rgba(0, 0, 0, 0.95) 20%);
+        }
+        @media (min-width: 576px) {
+            h2 {
+                font-size: 8em;
+            }
+        }
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 12em;
+            }
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            h2 {
+                font-size: 16em;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            h2 {
+                font-size: 20em;
+            }
         }
     </style>
 </head>

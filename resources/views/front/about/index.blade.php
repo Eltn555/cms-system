@@ -349,7 +349,7 @@
                 </div>
                 <div class="w-100 p-3 bg-light border d-flex align-items-center map-radio">
                     <input class="radio" type="radio" name="location" value="39.647911, 66.925854">
-                    <p class="mb-0 fw-semibold">г. Самарканд, Микрорайон (напротив поликлиники)</p>
+                    <p class="mb-0 fw-semibold">г. Самарканд, Микрорайон (напротив 7 поликлиники)</p>
                 </div>
 
                 <div class="row mb-2 mt-5 p-0 m-0 infoLink">
@@ -469,8 +469,8 @@
                 },
                 {
                     coordinates: [39.647911, 66.925854],
-                    hintContent: 'г. Самарканд, Микрорайон (напротив поликлиники)',
-                    balloonContent: 'г. Самарканд, Микрорайон (напротив поликлиники)'
+                    hintContent: 'г. Самарканд, Микрорайон (напротив 7 поликлиники)',
+                    balloonContent: 'г. Самарканд, Микрорайон (напротив 7 поликлиники)'
                 }
             ];
 
