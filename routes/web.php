@@ -81,6 +81,8 @@ Route::group(['prefix' => 'profile'], function () {
     Route::post('/update-profile', [\App\Http\Livewire\Profile::class, 'update'])->name('updateProfile');
 });
 
+Route::get('/calc', \App\Http\Livewire\Front\Calculator\Index::class)->name('front.calculator.index');
+
 Route::post('/upload-video', [ImageController::class, 'video']);
 Route::get('/get-video-path', [ImageController::class, 'getVideoPath']);
 // ADMIN PANEL
