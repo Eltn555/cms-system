@@ -69,7 +69,7 @@
                                     </div>
                                     <div style="width: 10%" class="p-0">
                                         <a href="https://t.me/lumen_lux_light" class="p-1">
-                                            <img id="image0_2361_14441" width="18.67" height="18.67" src="{{ asset('telegram.png') }}">
+                                            <i class="fa-solid fa-paper-plane" style="color: #f8b301; font-size: 18px; margin-top: 0.15rem;"></i>
                                         </a>
                                     </div>
                                     <div style="width: 10%" class="p-0">
