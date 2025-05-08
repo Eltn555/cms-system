@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/vendor/pe-icon-7-stroke.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/vendor/themify-icons.css')}}"/>
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/font-awesome.min.css')}}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/plugins/animate.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins/aos.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/plugins/magnific-popup.css')}}"/>
