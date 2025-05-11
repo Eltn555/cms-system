@@ -23,13 +23,13 @@ class Setting extends Model
         'options' => 'array',
     ];
 
-    public function getByKey($key)
+    public static function getByKey($key)
     {
-        return $this->where('setting_key', $key)->first();
+        return self::where('setting_key', $key)->first() ?? null;
     }
 
-    public function getByGroup($group)
+    public static function getByGroup($group)
     {
-        return $this->where('setting_group', $group)->get();
+        return self::where('setting_group', $group)->get() ?? collect([]);
     }
 }
