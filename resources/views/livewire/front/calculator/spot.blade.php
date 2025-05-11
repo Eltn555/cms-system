@@ -199,6 +199,15 @@
                 </div>
             </div>
         </div>
+        <!-- Result -->
+        <div class="col-3">
+            <h3 class="font-kyiv fs-5 fw-bold">Результат</h3>
+            <div class="row">
+                <div class="col-12">
+                    <p class="font-kyiv fs-5 fw-bold mb-0"></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

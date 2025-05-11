@@ -6,6 +6,10 @@ use Livewire\Component;
 
 class Spot extends Component
 {
+    public $roomType;
+    
+
+    
     public function render()
     {
         return view('livewire.front.calculator.spot');

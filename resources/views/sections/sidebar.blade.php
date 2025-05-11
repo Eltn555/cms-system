@@ -139,6 +139,29 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="side-menu">
+                <div class="side-menu__icon">
+                    <i data-lucide="settings"></i>
+                </div>
+                <div class="side-menu__title">
+                    Settings
+                    <div class="side-menu__sub-icon ">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{ route('admin.calculator.index') }}" class="side-menu">
+                        <div class="side-menu__icon">
+                            <i data-lucide="calculator"></i>
+                        </div>
+                        <div class="side-menu__title">Calculator</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
 
         <li>
