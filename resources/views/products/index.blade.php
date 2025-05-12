@@ -133,13 +133,7 @@
                 <div class="w-56 relative text-slate-500">
                     <input type="text" name="search" class="form-control w-56 box pr-10" placeholder="Поиск...">
                     <button type="submit" class="w-6 h-6 absolute my-auto inset-y-0 mr-3 right-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             icon-name="search" class="lucide lucide-search"
-                             data-lucide="search">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
+                        <i class="fa-solid fa-magnifying-glass text-primary"></i>
                     </button>
                 </div>
             </form>
@@ -227,13 +221,7 @@
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
                             <a class="flex items-center mr-3" href="{{route('admin.products.edit', [$product->id, 'page' => $currentPageNumber]) }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" icon-name="check-square" data-lucide="check-square"
-                                     class="lucide lucide-check-square w-4 h-4 mr-1">
-                                    <polyline points="9 11 12 14 22 4"></polyline>
-                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
-                                </svg>
+                                <i class="fa-solid fa-pen-to-square text-primary"></i>
                                 Edit </a>
                             <a class="flex items-center text-danger deletion" href="javascript:;" data-tw-toggle="modal"
                                data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2"
@@ -276,14 +264,7 @@
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <div class="p-5 text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             icon-name="x-circle" data-lucide="x-circle"
-                             class="lucide lucide-x-circle w-16 h-16 text-danger mx-auto mt-3">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="15" y1="9" x2="9" y2="15"></line>
-                            <line x1="9" y1="9" x2="15" y2="15"></line>
-                        </svg>
+                        <i class="fa-solid fa-xmark text-danger"></i>
                         <div class="text-3xl mt-5">Are you sure?</div>
                         <div class="text-slate-500 mt-2">
                             Do you really want to delete these records?

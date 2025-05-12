@@ -72,14 +72,7 @@
                                                 <img id="file-image" class="rounded-md" alt="Profile picture"
                                                      src="{{ $account->image === 'no_photo.jpg' ? asset($account->image) : asset('storage/' . $account->image) }}">
                                                 <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                         stroke-width="2"
-                                                         stroke-linecap="round" stroke-linejoin="round" icon-name="x"
-                                                         data-lucide="x" class="lucide lucide-x w-4 h-4">
-                                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                                    </svg>
+                                                    <i class="fa-solid fa-xmark"></i>
                                                 </div>
                                             </div>
                                             <div class="mx-auto cursor-pointer relative mt-5">

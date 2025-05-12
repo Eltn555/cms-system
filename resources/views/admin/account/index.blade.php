@@ -14,13 +14,7 @@
                 <form action="{{url()->current()}}" method="GET" class="flex">
                     <div class="w-56 relative text-slate-500">
                         <input type="text" name="search" class="form-control w-56 box pr-10" placeholder="Search...">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             icon-name="search" class="lucide lucide-search w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"
-                             data-lucide="search">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
+                        <i class="fa-solid fa-magnifying-glass text-primary absolute my-auto inset-y-0 mr-3 mt-4 right-0"></i>
                     </div>
                 </form>
             </div>

@@ -86,13 +86,7 @@
                                             <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
                                                 <img id="file-image" class="rounded-md" alt="Profile picture" src="">
                                                 <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                         stroke-linecap="round" stroke-linejoin="round" icon-name="x"
-                                                         data-lucide="x" class="lucide lucide-x w-4 h-4">
-                                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                                    </svg>
+                                                    <i class="fa-solid fa-xmark"></i>
                                                 </div>
                                             </div>
                                             <div class="mx-auto cursor-pointer relative mt-5">
@@ -166,7 +160,7 @@
                     </div>
                     <div class="flex justify-end mt-4">
                         <button type="button" class="btn btn-primary w-20 mr-auto">Save</button>
-                        <a href="" class="text-danger flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash-2" data-lucide="trash-2" class="lucide lucide-trash-2 w-4 h-4 mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete Account </a>
+                        <a href="" class="text-danger flex items-center"> <i class="fa-solid fa-trash-can"></i> Delete Account </a>
                     </div>
                 </div>
             </div>--}}
