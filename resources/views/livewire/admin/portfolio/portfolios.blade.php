@@ -32,23 +32,10 @@
                 </div>
                 <div class="mb-auto flex items-center justify-around border-t border-slate-200/60 dark:border-darkmode-400">
                     <a href="javascript:;" onclick="updateValue({{$portfolio->id}})" data-tw-toggle="modal" data-tw-target="#create-modal" class="flex p-3 w-1/2 justify-center items-center editPortfolio">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                             stroke-linecap="round" stroke-linejoin="round" icon-name="edit-2"
-                             data-lucide="edit-2" class="lucide lucide-edit-2 w-4 h-4 mr-2">
-                            <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                        </svg>
+                        <i class="fa-solid fa-pen-to-square text-primary mr-2"></i>
                         Edit Post </a>
-                    <a href="javascript:;" data-tw-toggle="modal"
-                       data-tw-target="#delete-confirmation" class="deletion flex justify-center items-center p-3 w-1/2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                             stroke-linecap="round" stroke-linejoin="round" icon-name="trash"
-                             data-lucide="trash" class="lucide lucide-trash w-4 h-4 mr-2">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path
-                                d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
-                        </svg>
+                    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation" class="deletion flex justify-center items-center p-3 w-1/2">
+                        <i class="fa-solid fa-trash text-danger mr-2"></i>
                         Delete Post </a>
                 </div>
             </div>
