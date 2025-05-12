@@ -134,7 +134,7 @@
         <div class="modal-content">
             <div class="modal-body p-0">
                 <div class="p-5 text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x w-16 h-16 text-danger mx-auto mt-3"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                    <i data-lucide="circle-x" class="w-16 h-16 text-danger mx-auto mt-3"></i>
                     <div class="text-3xl mt-5">Are you sure?</div>
                     <div class="text-slate-500 mt-2">
                         Do you really want to delete these records?
@@ -236,7 +236,10 @@
         });
     });
 </script>
-
+<script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
 @livewireScripts
 @stack('scripts')
 @yield('script')
