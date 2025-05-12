@@ -30,6 +30,6 @@ class Setting extends Model
 
     public static function getByGroup($group)
     {
-        return self::where('setting_group', $group)->get() ?? collect([]);
+        return self::where('setting_group', $group)->get();
     }
 }

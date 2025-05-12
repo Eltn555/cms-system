@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('media')->nullable(); // Assuming this is a path to a media file
             $table->json('options')->nullable(); // For storing structured data
             $table->string('setting_group')->nullable(); // Group/category for the setting
-            $table->string('setting_key')->unique(); // Required unique identifier
+            $table->string('setting_key')->nullable(); 
             $table->text('setting_value')->nullable(); // The actual setting value
             
             // Timestamps
