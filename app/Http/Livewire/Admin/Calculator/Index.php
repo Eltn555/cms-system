@@ -22,6 +22,7 @@ class Index extends Component
     public $currentSpotType = [];
     public $currentSpotLocation = [];
     public $updating = [ 'id' => 0, 'var' => '' ];
+    public $delete = '';
 
     public function mount()
     {
@@ -64,6 +65,26 @@ class Index extends Component
             $this->updating['id'] = $id;
             $this->updating['var'] = $var;
         }
+    }
+
+    public function delete($id){
+        $this->delete = $id;
+    }
+
+    public function cancelDelete(){
+        $this->delete = '';
+    }
+
+    public function confirmDelete(){
+        $setting = Setting::find($this->delete);
+        if($setting){
+            if($setting->setting_key == 'spot_types' || $setting->setting_key == 'spot_locations'){
+                Storage::disk('public')->delete($setting->media);
+            }
+            $setting->delete();
+        }
+        $this->delete = '';
+        $this->res();
     }
 
     public function update($var){

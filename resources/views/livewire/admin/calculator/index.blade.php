@@ -14,6 +14,29 @@
         .btn-primary:hover {
             background: linear-gradient(to right, hsl(210, 100%, 22%), hsl(210, 100%, 22%)) !important;
         }
+        .delete-modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .delete{
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .delete-modal.hidden{
+            display: none;
+        }
     </style>
 @endpush
 
@@ -75,7 +98,7 @@
                             </div>
                             <div>
                                 <button wire:click.prevent="edit({{ $roomType->id }}, 'currentRoomType')" type="button" class="btn btn-primary text-white">{{ $updating['id']==$roomType->id ? 'Отменить ' : '' }}<i class="ml-2 fa-solid fa-{{ $updating['id']==$roomType->id ? 'x' : 'pencil' }}"></i></button>
-                                <button wire:click.prevent="deleteRoomType({{ $roomType->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
+                                <button wire:click.prevent="delete({{ $roomType->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -138,7 +161,7 @@
                                 </div>
                                 <div>
                                     <button wire:click.prevent="edit({{ $spotType->id }}, 'currentSpotType')" type="button" class="btn btn-primary text-white">{{ $updating['id']==$spotType->id ? 'Отменить ' : '' }}<i class="ml-2 fa-solid fa-{{ $updating['id']==$spotType->id ? 'x' : 'pencil' }}"></i></button>
-                                    <button wire:click.prevent="deleteSpotType({{ $spotType->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
+                                    <button wire:click.prevent="delete({{ $spotType->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -200,12 +223,22 @@
                                 </div>
                                 <div>
                                     <button wire:click.prevent="edit({{ $spotLocation->id }}, 'currentSpotLocation')" type="button" class="btn btn-primary text-white">{{ $updating['id']==$spotLocation->id ? 'Отменить ' : '' }}<i class="ml-2 fa-solid fa-{{ $updating['id']==$spotLocation->id ? 'x' : 'pencil' }}"></i></button>
-                                    <button wire:click.prevent="deleteSpotLocation({{ $spotLocation->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
+                                    <button wire:click.prevent="delete({{ $spotLocation->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    </div>
+
+    <div class="delete-modal {{ $delete ? '' : 'hidden' }}">
+        <div class="delete rounded-1 p-2 shadow-sm">
+            <p class="font-kyiv fs-5 fw-bold mb-0 text-center">Вы уверены, что хотите удалить этот элемент?</p>
+            <div class="flex flex-row justify-end gap-2">
+                <button wire:click.prevent="cancelDelete" class="btn btn-primary">Отменить</button>
+                <button wire:click.prevent="confirmDelete" class="btn btn-danger">Удалить</button>
             </div>
         </div>
     </div>
