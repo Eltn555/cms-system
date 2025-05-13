@@ -29,6 +29,9 @@
                 </div>
                 <button wire:click.prevent="createNew('currentRoomType')" type="button" class="{{$updating!=0 ? 'hidden' : ''}} btn btn-success text-white" style="align-self: flex-start;">Добавить</button>
                 <button wire:click.prevent="update('currentRoomType')" type="button" class="{{$updating==0 ? 'hidden' : ''}} btn btn-primary text-white" style="align-self: flex-start;">Обновить</button>
+                <button wire:click.prevent="edit({{ $updating }})" type="button" class="btn btn-danger text-white {{ $updating==0 ? 'hidden' : '' }}" style="align-self: flex-start;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
             </div>
         </div>
         <h5 class="m-0 mt-2 p-0 text-sm text-gray-500 col-span-12 text-lg font-bold"><span class="font-bold text-danger">*</span>
@@ -52,7 +55,7 @@
                             <span class="text-sm text-gray-500">{{ $roomType->description }}</span>
                         </div>
                         <div>
-                            <button wire:click.prevent="edit({{ $roomType->id }})" type="button" class="btn btn-primary text-white">Редактировать</button>
+                            <button wire:click.prevent="edit({{ $roomType->id }})" type="button" class="btn btn-primary text-white">{{ $updating==$roomType->id ? 'Отменить' : 'Редактировать' }}</button>
                             <button wire:click.prevent="deleteRoomType({{ $roomType->id }})" type="button" class="btn btn-danger text-white">Удалить</button>
                         </div>
                     </div>

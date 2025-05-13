@@ -42,8 +42,12 @@ class Index extends Component
     }
 
     public function edit($id){
-        $this->currentRoomType = Setting::find($id)->toArray();
-        $this->updating = $id;
+        if($this->updating==$id){
+            $this->res();
+        }else{
+            $this->currentRoomType = Setting::find($id)->toArray();
+            $this->updating = $id;
+        }
     }
 
     public function update($var){
