@@ -5,9 +5,15 @@ namespace App\Http\Livewire\Admin\Calculator;
 use Livewire\Component;
 use Livewire\WithValidation;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use App\Models\Category;
+use Livewire\WithFileUploads;
 
 class Index extends Component
 {
+    use WithFileUploads;
+    public $categories;
     public $calc_options;
     public $roomTypes = [];
     public $spotTypes = [];
@@ -15,10 +21,11 @@ class Index extends Component
     public $currentRoomType = [];
     public $currentSpotType = [];
     public $currentSpotLocation = [];
-    public $updating = 0;
+    public $updating = [ 'id' => 0, 'var' => '' ];
 
     public function mount()
     {
+        $this->categories = Category::all();
         $this->res();
     }
 
@@ -37,21 +44,30 @@ class Index extends Component
             "$var.media.required" => 'Иконка обязательна',
             "$var.setting_value.required" => 'Настройки обязательны',
         ]);
+
+        if($var == 'currentSpotType' || $var == 'currentSpotLocation'){
+            $file = $data[$var]['media'];
+            $filename = $file->getClientOriginalName();
+            $filename = $file->storeAs('calc', $filename, 'public');
+            $data[$var]['media'] = $filename;
+        }
+
         Setting::create($data[$var]);
         $this->res();
     }
 
-    public function edit($id){
-        if($this->updating==$id){
+    public function edit($id, $var){
+        if($this->updating['id']==$id){
             $this->res();
         }else{
-            $this->currentRoomType = Setting::find($id)->toArray();
-            $this->updating = $id;
+            $this->$var = Setting::find($id)->toArray();
+            $this->updating['id'] = $id;
+            $this->updating['var'] = $var;
         }
     }
 
     public function update($var){
-        $id = $this->updating;
+        $id = $this->updating['id'];
         $data = $this->validate([
             "$var.title" => 'required',
             "$var.description" => 'required',
@@ -65,6 +81,20 @@ class Index extends Component
             "$var.media.required" => 'Иконка обязательна',
             "$var.setting_value.required" => 'Настройки обязательны',
         ]);
+        if($var == 'currentSpotType' || $var == 'currentSpotLocation'){
+            if($data[$var]['media']){
+                // Delete old file if it exists
+                $oldSetting = Setting::find($id);
+                if($oldSetting && $oldSetting->media) {
+                    Storage::disk('public')->delete($oldSetting->media);
+                }
+                // Upload new file
+                $file = $data[$var]['media'];
+                $filename = $file->getClientOriginalName();
+                $filename = $file->storeAs('calc', $filename, 'public');
+                $data[$var]['media'] = $filename;
+            }
+        }
         Setting::find($id)->update($data[$var]);
         $this->res();
     }
@@ -77,10 +107,10 @@ class Index extends Component
             $this->spotTypes = $this->calc_options->where('setting_key', 'spot_types')->values() ?? collect();
             $this->spotLocations = $this->calc_options->where('setting_key', 'spot_locations')->values() ?? collect();
         }
-        $this->updating = 0;
+        $this->updating = [ 'id' => 0, 'var' => '' ];
         $this->currentRoomType = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'room_types' ];
-        $this->currentSpotType = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_types' ];
-        $this->currentSpotLocation = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_locations' ];
+        $this->currentSpotType = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_types' ];
+        $this->currentSpotLocation = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_locations' ];
     }
 
     public function render()
