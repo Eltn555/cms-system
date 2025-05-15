@@ -34,169 +34,134 @@
             background-color: #f4f4f4;
         }
         .spot-icon img{
+            width: 75px;
+        }
+        .w-100{
+            max-width: 100%;
+        }
+        .room-size-result{
+            background-color: #f4f4f4;
+            height: 500px;
+            background-size: 30px 30px;
+            background-image: linear-gradient(45deg, #E0E0E0 5%, transparent 5%, transparent 50%, #E0E0E0 50%, #E0E0E0 55%, transparent 55%, transparent 100%);
+        }
+        .room-image{
+            max-height: 90%;
+            width: 70%;
+        }
+        .room-image > div{
             width: 100px;
+        }
+        .height-room{
+            top: 47%;
+            left: -17%;
+            transform: rotate(90deg);
+        }
+        .length-room{
+            left: 50%;
+        }
+        .width-room{
+            left: 50%;
         }
     </style>
 @endpush
 
-<div class="container pb-5 px-0">
-    <div class="row">
+<div class="container w-100 m-0 pb-5 px-0">
+    <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
         <!-- Room type -->
-        <div class="col-3 room-type px-0 d-grid gap-1">
+        <div class="col-3 room-type px-0 d-grid gap-1" wire:ignore>
             <h3 class="font-kyiv fs-5 fw-bold">Тип помещения</h3>
-            <label for="lux20" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">20 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Лестница, падвал</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-stairs fs-1"></i>
-                </div>
-                <input name="room-type" id="lux20" type="radio" value="20">
-            </label>
-            <label for="lux50" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">50 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Санузел, ванная</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-bath fs-1"></i>
-                </div>
-                <input name="room-type" id="lux50" type="radio" value="50">
-            </label>
-            <label for="lux75" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">75 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Холл, коридор</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-building-columns fs-1"></i>
-                </div>
-                <input name="room-type" id="lux75" type="radio" value="75">
-            </label>
-            <label for="lux100" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">100 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Сауна, бассейн</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-person-swimming fs-1"></i>
-                </div>
-                <input name="room-type" id="lux100" type="radio" value="100">
-            </label>
-            <label for="lux150" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">150 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Кухня, жилая комната</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-house fs-1"></i>
-                </div>
-                <input name="room-type" id="lux150" type="radio" value="150">
-            </label>
-            <label for="lux200" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">200 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Зал, переговорная</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-briefcase fs-1"></i>
-                </div>
-                <input name="room-type" id="lux200" type="radio" value="200">
-            </label>
-            <label for="lux300" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">300 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Офис, кабинет</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-building fs-1"></i>
-                </div>
-                <input name="room-type" id="lux300" type="radio" value="300">
-            </label>
-            <label for="lux500" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
-                <div class="w-100 ps-2 text-start">
-                    <h3 class="font-kyiv fs-5 fw-bold">500 - Люкс</h3>
-                    <p class="font-kyiv fs-6 fw-bolder mb-0">Офис, чертежные раб.</p>
-                </div>
-                <div class="room-icon">
-                    <i class="fa-solid fa-compass-drafting fs-1"></i>
-                </div>
-                <input name="room-type" id="lux500" type="radio" value="500">
-            </label>
+            @foreach ($roomTypes as $roomType)
+                <label for="lux{{ $roomType->setting_value }}" class="rounded-1 p-2 shadow-sm w-100 d-flex align-items-center justify-content-between">
+                    <div class="w-100 ps-2 text-start">
+                        <h3 class="font-kyiv fs-5 fw-bold">{{ $roomType->title }}</h3>
+                        <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $roomType->description }}</p>
+                    </div>
+                    <div class="room-icon">
+                        <i class="fa-solid {{ $roomType->media }} fs-1"></i>
+                    </div>
+                    <input name="room-type" id="lux{{ $roomType->setting_value }}" type="radio" value="{{ $roomType->setting_value }}">
+                </label>
+            @endforeach
         </div>
 
         <!-- Size of the room -->
-        <div class="col-6">
+        <div class="col-7">
+            <div class="row px-2 gap-1">
+                <h3 class="font-kyiv fs-5 fw-bold">Размер помещения</h3>
+                <div class="room-size row m-0">
+                    <div class="col-4 mb-2 px-1 position-relative">
+                        <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i style="transform: rotate(40deg);" class="fa-solid fa-arrows-left-right"></i> м</p>
+                        <input type="number" max="100" name="room-length" class="form-control" placeholder="Длина">
+                    </div>
+                    <div class="col-4 mb-2 px-1 position-relative">
+                        <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i style="transform: rotate(-40deg);" class="fa-solid fa-arrows-left-right"></i> м</p>
+                        <input type="number" max="100" name="room-width" class="form-control" placeholder="Ширина">
+                    </div>
+                    <div class="col-4 mb-2 px-1 position-relative">
+                        <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i class="fa-solid fa-arrows-up-down"></i> м</p>
+                        <input type="number" max="15" name="room-height" class="form-control" placeholder="Высота">
+                    </div>
+                    <div class="col-12 m-0 p-1">
+                        <div class="room-size-result d-flex justify-content-center align-items-center p-1">
+                            <div class="room-image w-75 position-relative">
+                                <div class="width-room position-absolute d-flex align-items-center justify-content-between">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    <p class="font-kyiv fs-5 fw-bold mb-0"> 10 м </p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                                <div class="length-room position-absolute d-flex align-items-center justify-content-between">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    <p class="font-kyiv fs-5 fw-bold mb-0"> 10 м </p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                                <div class="height-room position-absolute d-flex align-items-center justify-content-between">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    <p class="font-kyiv fs-5 fw-bold mb-0"> 10 м </p>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                                <img src="{{ asset('3droom.png') }}" class="w-100 h-100" alt="room">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
         <!-- Spot types -->
-        <div class="col-3 spotTypes px-0">
-            <h3 class="font-kyiv fs-5 fw-bold">Размер помещения</h3>
-            <div class="row room-size">
-                <div class="col-12 mb-2 p-0 position-relative">
-                    <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i class="fa-solid fa-arrows-left-right"></i> м</p>
-                    <input type="number" name="room-length" class="form-control" placeholder="Длина">
-                </div>
-                <div class="col-12 mb-2 p-0 position-relative   ">
-                    <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i style="transform: rotate(-45deg);" class="fa-solid fa-arrows-left-right"></i> м</p>
-                    <input type="number" name="room-width" class="form-control" placeholder="Ширина">
-                </div>
-                <div class="col-12 mb-2 p-0 position-relative">
-                    <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i class="fa-solid fa-arrows-up-down"></i> м</p>
-                    <input type="number" name="room-height" class="form-control" placeholder="Высота">
-                </div>
-            </div>
-            <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
-            <div class="row sType">
-                <div class="col-6 p-1 m-0">
-                    <label for="spotDot" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <div class="spot-icon">
-                            <img src="{{ asset('storage/calc/straight.png') }}" alt="Точечный">
-                        </div>
-                        <div class="w-100 text-center">
-                            <p class="font-kyiv fs-6 fw-bolder mb-0">Точечный</p>
-                        </div>
-                        <input name="spot-type" id="spotDot" type="radio" value="point">
-                    </label>
-                </div>
-                <div class="col-6 p-1 m-0">
-                    <label for="spotSpread" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <div class="spot-icon">
-                            <img src="{{ asset('storage/calc/spread.png') }}" alt="Россыпной">
-                        </div>
-                        <div class="w-100 text-center">
-                            <p class="font-kyiv fs-6 fw-bolder mb-0">Россыпной</p>
-                        </div>
-                        <input name="spot-type" id="spotSpread" type="radio" value="spread">
-                    </label>
-                </div>
+        <div class="col-2 spotTypes px-0">
+            <div class="row sType m-0">
+                <h3 class="font-kyiv fs-5 fw-bold">Освещение</h3>
+                @foreach ($spotTypes as $spotType)
+                    <div class="col-6 p-1 m-0">
+                        <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                            <div class="spot-icon">
+                                <img src="{{ asset('storage/'.$spotType->media) }}" alt="{{ $spotType->title }}">
+                            </div>
+                            <div class="w-100 text-center">
+                                <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $spotType->title }}</p>
+                            </div>
+                            <input name="spot-type" id="spot{{ $spotType->id }}" type="radio" value="{{ $spotType->setting_value }}">
+                        </label>
+                    </div>
+                @endforeach
             </div>
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
-            <div class="row sLocation">
-                <div class="col-6 p-1 m-0">
-                    <label for="spotInside" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <div class="spot-icon">
-                            <img src="{{ asset('storage/calc/inside.png') }}" alt="Внутри">
-                        </div>
-                        <div class="w-100 text-center">
-                            <p class="font-kyiv fs-6 fw-bolder mb-0">Внутри</p>
-                        </div>
-                        <input name="spot-location" id="spotInside" type="radio" value="inside">
-                    </label>
-                </div>
-                <div class="col-6 p-1 m-0">
-                    <label for="spotOutside" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <div class="spot-icon">
-                            <img src="{{ asset('storage/calc/outside.png') }}" alt="Снаружи">
-                        </div>
-                        <div class="w-100 text-center">
-                            <p class="font-kyiv fs-6 fw-bolder mb-0">Снаружи</p>
-                        </div>
-                        <input name="spot-location" id="spotOutside" type="radio" value="outside">
-                    </label>
-                </div>
+            <div class="row sLocation m-0">
+                @foreach ($spotLocations as $spotLocation)
+                    <div class="col-6 p-1 m-0">
+                        <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                            <div class="spot-icon">
+                                <img src="{{ asset('storage/'.$spotLocation->media) }}" alt="{{ $spotLocation->title }}">
+                            </div>
+                            <div class="w-100 text-center">
+                                <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $spotLocation->title }}</p>
+                            </div>
+                            <input name="spot-location" id="spot{{ $spotLocation->id }}" type="radio" value="{{ $spotLocation->setting_value }}">
+                        </label>
+                    </div>
+                @endforeach
             </div>
         </div>
         <!-- Result -->
@@ -213,6 +178,18 @@
 
 @push('scripts')
     <script>
+        document.querySelector('input[type="number"]').addEventListener('keydown', (event) => {
+            const input = event.target;
+            const maxValue = parseInt(input.getAttribute('max'));
+            const currentValue = parseInt(input.value);
+            const key = event.key;
+
+            if (key !== "Backspace" && key !== "Delete" && key !== "ArrowUp" && key !== "ArrowDown") {
+                if (key.match(/[0-9]/) && (parseInt(input.value + key) > maxValue)) {
+                    event.preventDefault();
+                }
+            }
+        });
         $(document).ready(function(){
             // remove active class from all siblings labels
             $('input[type="radio"]').change(function(){

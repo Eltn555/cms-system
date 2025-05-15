@@ -37,6 +37,16 @@
         .delete-modal.hidden{
             display: none;
         }
+        div:has(input[type="file"]){
+            align-self: flex-start;
+        }
+        input[type="file"]{
+            padding: 8.5px;
+            box-shadow: 0 0 0 1px #e0e0e0;
+        }
+        input[type="file"]::-webkit-file-upload-button{
+            display: none;
+        }
     </style>
 @endpush
 
