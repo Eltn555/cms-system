@@ -22,7 +22,79 @@
 
 @push('scripts')
     <script>
-        
+        // Handle all number inputs
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('keydown', (event) => {
+                const maxValue = parseFloat(input.getAttribute('max'));
+                const key = event.key;
+
+                // Allow decimal point
+                if (key === '.') {
+                    // Check if decimal point already exists
+                    if (input.value.includes('.') || input.value.includes(',')) {
+                        event.preventDefault();
+                    }
+                    return;
+                }
+
+                // Allow backspace, delete, arrows
+                if (key === "Backspace" || key === "Delete" || key === "ArrowUp" || key === "ArrowDown" || key === "ArrowLeft" || key === "ArrowRight") {
+                    return;
+                }
+
+                // Allow numbers
+                if (key.match(/[0-9]/)) {
+                    let currentValue = input.value;
+                    const hasDecimal = currentValue.includes('.');
+                    
+                    // If we already have 2 decimal places, prevent more numbers
+                    if (hasDecimal && currentValue.split('.')[1].length >= 2) {
+                        event.preventDefault();
+                        return;
+                    }
+                    // Check if adding this number would exceed max value
+                    let newValue = parseFloat(currentValue + key);
+                    if (newValue > maxValue) {
+                        newValue = parseFloat(currentValue + '.' + key);
+                        console.log(newValue);
+                        if(newValue > maxValue){
+                            event.preventDefault();
+                        }else{
+                            event.preventDefault();
+                            input.value = newValue;
+                        }
+                    }
+                } else {
+                    event.preventDefault();
+                }
+            });
+
+            // Handle paste event
+            input.addEventListener('paste', (event) => {
+                event.preventDefault();
+                const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+                const maxValue = parseFloat(input.getAttribute('max'));
+                
+                // Format the pasted number to have max 2 decimal places
+                const formattedNumber = parseFloat(pastedText).toFixed(2);
+                
+                // Check if pasted value is a valid number and within range
+                if (!isNaN(formattedNumber) && parseFloat(formattedNumber) <= maxValue) {
+                    input.value = formattedNumber;
+                }
+            });
+
+            // Handle input event to format the number
+            input.addEventListener('input', (event) => {
+                const value = event.target.value;
+                if (value.includes('.') || value.includes(',')) {
+                    const parts = value.split(/[.,]/);
+                    if (parts[1] && parts[1].length > 2) {
+                        event.target.value = parseFloat(value).toFixed(2);
+                    }
+                }
+            });
+        });
     </script>
 @endpush
 

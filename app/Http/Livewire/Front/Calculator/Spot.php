@@ -11,9 +11,14 @@ class Spot extends Component
     public $roomTypes;
     public $spotTypes;
     public $spotLocations;
-    public $roomType;
-    public $spotType;
-    public $spotLocation;
+    public $roomTypeValue;
+    public $spotTypeValue;
+    public $spotLocationValue;
+    public $roomSize = [
+        'length' => '',
+        'width' => '',
+        'height' => '',
+    ];
     
     public function mount()
     {
