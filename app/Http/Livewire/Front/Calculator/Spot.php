@@ -22,7 +22,8 @@ class Spot extends Component
     ];
     public $roomCube;
     public $lux;
-    
+    public $defaultCategory;
+
     public function mount()
     {
         $this->res();
@@ -40,6 +41,14 @@ class Spot extends Component
         $this->lux();
     }
 
+    public function updatedSpotTypeValue(){
+        $this->lux();
+    }
+
+    public function updatedSpotLocationValue(){
+        $this->lux();
+    }
+
     public function lux(){
         if($this->roomSize['length'] && $this->roomSize['width'] && $this->roomSize['height']){
             $this->roomCube = $this->roomSize['length'] * $this->roomSize['width'] * $this->roomSize['height'];
@@ -51,6 +60,20 @@ class Spot extends Component
         } else {
             $this->lux = 0;
         }
+
+        if($this->lux > 0){
+            // check and set spotType or spotLocation values are set
+            $categories[] = $this->defaultCategory->setting_value;
+            if($this->spotTypeValue){
+                $categories[] = $this->spotTypeValue;
+                $categories = array_diff($categories, [$this->defaultCategory->setting_value]);
+            }
+            if($this->spotLocationValue){
+                $categories[] = $this->spotLocationValue;
+                $categories = array_diff($categories, [$this->defaultCategory->setting_value]);
+            }
+            $this->emit('setProducts', $this->lux, $categories);
+        }
     }
 
     public function res(){
@@ -60,6 +83,7 @@ class Spot extends Component
             $this->roomTypes = $this->calculator->where('setting_key', 'room_types')->values() ?? collect();
             $this->spotTypes = $this->calculator->where('setting_key', 'spot_types')->values() ?? collect();
             $this->spotLocations = $this->calculator->where('setting_key', 'spot_locations')->values() ?? collect();
+            $this->defaultCategory = $this->calculator->where('setting_key', 'spot_category')->values()->first() ?? null;
         }
     }
 

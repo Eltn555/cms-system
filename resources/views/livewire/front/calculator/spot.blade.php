@@ -294,6 +294,7 @@
                     Room:{{ $roomCube }}<br>
                     Color:{{ $roomColor }}<br>
                     Lux:{{ $lux }}<br>
+
                     <p class="font-kyiv fs-5 fw-bold mb-0"></p>
                 </div>
             </div>
@@ -310,6 +311,9 @@
                 $(this).parent('label').siblings('label').removeClass('active');
                 $(this).parent('label').parent('div').siblings('div').children('label').removeClass('active');
             });
+        });
+        Livewire.on('setProducts', function(lux, categories){
+            console.log(lux, categories);
         });
     </script>
 @endpush
