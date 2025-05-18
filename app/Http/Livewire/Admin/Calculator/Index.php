@@ -20,9 +20,14 @@ class Index extends Component
     public $spotLocations = [];
     public $currentRoomType = [];
     public $currentSpotType = [];
+    public $allSpotCategory = [];
     public $currentSpotLocation = [];
     public $updating = [ 'id' => 0, 'var' => '' ];
     public $delete = '';
+
+    public $rules = [
+        'allSpotCategory.setting_value' => 'required|integer', // or whatever validation you need
+    ];
 
     public function mount()
     {
@@ -46,10 +51,30 @@ class Index extends Component
         ]);
     }
 
+    public function updateAllSpotCategory()
+    {
+        if(isset($this->allSpotCategory['id'])){
+            Setting::find($this->allSpotCategory['id'])->update([
+                'title' => $this->categories->where('id', $this->allSpotCategory['setting_value'])->first()->title,
+                'setting_value' => $this->allSpotCategory['setting_value'],
+            ]);
+        }else{
+            $this->allSpotCategory = Setting::create([
+                'title' => $this->categories->where('id', $this->allSpotCategory['setting_value'])->first()->title,
+                'setting_value' => $this->allSpotCategory['setting_value'],
+                'setting_group' => 'calculator',
+                'setting_key' => 'spot_category'
+            ]);
+        }
+        
+        $this->res();
+    }
+
     public function res(){
         $this->calc_options = Setting::getByGroup('calculator');
 
         if($this->calc_options){
+            $this->allSpotCategory = $this->calc_options->where('setting_key', 'spot_category')->values()->first();
             $this->roomTypes = $this->calc_options->where('setting_key', 'room_types')->values() ?? collect();
             $this->spotTypes = $this->calc_options->where('setting_key', 'spot_types')->values() ?? collect();
             $this->spotLocations = $this->calc_options->where('setting_key', 'spot_locations')->values() ?? collect();

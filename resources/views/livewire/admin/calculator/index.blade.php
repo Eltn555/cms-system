@@ -1,18 +1,17 @@
 @push('styles')
     <style>
-        .btn-danger {
-            background: linear-gradient(to right, hsl(0, 100%, 67%), #c51e00) !important;
-            transition: background 0.5s ease;
+        button.bg-white{
+            width: 40px;
+            height: 40px;
+            transition: all 0.6s ease;
         }
-        .btn-danger:hover {
-            background: linear-gradient(to right, #c51e00, #c51e00) !important;
+        button.text-primary:hover{
+            background-color: #001641 !important;
+            color: #fff !important;
         }
-        .btn-primary {
-            background: linear-gradient(to right, hsl(210, 69%, 30%), #001641) !important;
-            transition: background 0.5s ease;
-        }
-        .btn-primary:hover {
-            background: linear-gradient(to right, hsl(210, 100%, 22%), hsl(210, 100%, 22%)) !important;
+        button.text-danger:hover{
+            background-color: #c51e00 !important;
+            color: #fff !important;
         }
         .delete-modal{
             position: fixed;
@@ -107,8 +106,8 @@
                                 <span class="text-sm text-gray-500">{{ $roomType->description." = ".$roomType->setting_value." lux" }}</span>
                             </div>
                             <div>
-                                <button wire:click.prevent="edit({{ $roomType->id }}, 'currentRoomType')" type="button" class="btn btn-primary text-white">{{ $updating['id']==$roomType->id ? 'Отменить ' : '' }}<i class="ml-2 fa-solid fa-{{ $updating['id']==$roomType->id ? 'x' : 'pencil' }}"></i></button>
-                                <button wire:click.prevent="delete({{ $roomType->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
+                                <button wire:click.prevent="edit({{ $roomType->id }}, 'currentRoomType')" type="button" class="btn bg-white shadow-lg rounded-full text-primary py-3 px-4">{{ $updating['id']==$roomType->id ? 'Отменить ' : '' }}<i class="fa-solid fa-{{ $updating['id']==$roomType->id ? 'x' : 'pencil' }}"></i></button>
+                                <button wire:click.prevent="delete({{ $roomType->id }})" type="button" class="btn bg-white shadow-lg rounded-full text-danger py-3 px-4"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -117,6 +116,26 @@
             </div>
         </div>
     </div>
+    <!-- line -->
+    <hr class="my-5">
+    <!-- Add parent spot category to show all spots -->
+    <h3 class="text-lg font-medium mb-3 mt-5">
+        Добавить категорию спотов по умолчанию
+    </h3>
+    <div class="intro-y grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 box p-3 flex-row gap-2">
+            <h3 class="text-lg font-medium mb-2">{{ $allSpotCategory->title ?? 'Не выбрана категория' }}</h3>
+            <div class="flex flex-col">
+                <select wire:model="allSpotCategory.setting_value" wire:change="updateAllSpotCategory()" class="form-control" placeholder="категория">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ optional($allSpotCategory)->setting_value == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <p class="text-sm text-gray-500 col-span-12 pt-2">Выберите категорию спотов, которые будут использоваться в калькуляторе по умолчанию. Если тип спота не выбран, будут показаны все споты.</p>
+    </div>
+
     <!-- line -->
     <hr class="my-5">
     
@@ -170,8 +189,8 @@
                                     <span class="text-sm text-gray-500">Категория: {{ $categories->find($spotType->setting_value)->title }}</span>
                                 </div>
                                 <div>
-                                    <button wire:click.prevent="edit({{ $spotType->id }}, 'currentSpotType')" type="button" class="btn btn-primary text-white">{{ $updating['id']==$spotType->id ? 'Отменить ' : '' }}<i class="ml-2 fa-solid fa-{{ $updating['id']==$spotType->id ? 'x' : 'pencil' }}"></i></button>
-                                    <button wire:click.prevent="delete({{ $spotType->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
+                                    <button wire:click.prevent="edit({{ $spotType->id }}, 'currentSpotType')" type="button" class="btn bg-white shadow-lg rounded-full text-primary py-3 px-4">{{ $updating['id']==$spotType->id ? 'Отменить ' : '' }}<i class="fa-solid fa-{{ $updating['id']==$spotType->id ? 'x' : 'pencil' }}"></i></button>
+                                    <button wire:click.prevent="delete({{ $spotType->id }})" type="button" class="btn bg-white shadow-lg rounded-full text-danger py-3 px-4"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -232,8 +251,8 @@
                                     <span class="text-sm text-gray-500">Категория: {{ $categories->find($spotLocation->setting_value)->title }}</span>
                                 </div>
                                 <div>
-                                    <button wire:click.prevent="edit({{ $spotLocation->id }}, 'currentSpotLocation')" type="button" class="btn btn-primary text-white">{{ $updating['id']==$spotLocation->id ? 'Отменить ' : '' }}<i class="ml-2 fa-solid fa-{{ $updating['id']==$spotLocation->id ? 'x' : 'pencil' }}"></i></button>
-                                    <button wire:click.prevent="delete({{ $spotLocation->id }})" type="button" class="btn btn-danger text-white"><i class="ml-2 fa-solid fa-trash"></i></button>
+                                    <button wire:click.prevent="edit({{ $spotLocation->id }}, 'currentSpotLocation')" type="button" class="btn bg-white shadow-lg rounded-full text-primary py-3 px-4">{{ $updating['id']==$spotLocation->id ? 'Отменить ' : '' }}<i class="fa-solid fa-{{ $updating['id']==$spotLocation->id ? 'x' : 'pencil' }}"></i></button>
+                                    <button wire:click.prevent="delete({{ $spotLocation->id }})" type="button" class="btn bg-white shadow-lg rounded-full text-danger py-3 px-4"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
