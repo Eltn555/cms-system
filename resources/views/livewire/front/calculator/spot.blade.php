@@ -32,6 +32,48 @@
         .room-type label.active{
             background-color: #f4f4f4;
         }
+
+        .room-white{
+            background-color: #f4f4f4;
+        }
+        .room-white:hover{
+            background-color: #f4f4f4 !important;
+        }
+        .room-white.active{
+            background-color: #f4f4f4 !important;
+        }
+        .room-gray{
+            background-color: #8a8a8a;
+        }
+        .room-gray:hover{
+            background-color: #8a8a8a !important;
+        }
+        .room-gray.active{
+            background-color: #8a8a8a !important;
+        }
+        .room-black{
+            background-color: #313131;
+        }
+        .room-black:hover{
+            background-color: #313131 !important;
+        }
+        .room-black.active{
+            background-color: #313131 !important;
+        }
+        
+
+        .rColor label{
+            border: solid 1px rgb(216, 216, 216) !important;
+            width: 100%;
+            height: 38px;
+        }
+        .rColor label:hover{
+            border: solid 2px rgb(248, 179, 1) !important;
+        }
+        .rColor label.active{
+            border: solid 3px rgb(248, 179, 1) !important;
+        }
+
         .spotTypes label:hover{
             background-color: #f4f4f4;
         }
@@ -53,12 +95,16 @@
             width: 80%;
         }
         .room-image > div{
-            width: 100px;
+            width: 150px;
         }
+        
+        .room-image > div > p{
+                font-size: 16px !important;
+            }
         .height-room{
-            top: 47%;
-            left: -65px;
-            transform: rotate(90deg);
+            top: 51%;
+            left: -10px;
+            transform: translateX(-50%) translateY(-50%) rotate(90deg);
         }
         .length-room{
             top: 85%;
@@ -72,36 +118,60 @@
         }
         @media (max-width: 1200px) {
             .room-image{
-                width: 100%;
+                width: 80%;
             }
         }
         @media (max-width: 1024px) {
             .room-image{
-                width: 100%;
+                width: 70%;
+            }
+            .room-image > div {
+                width: 100px;
             }
         }
         @media (max-width: 992px) {
+            .room-image > div{
+                width: 120px;
+                font-size: 14px;
+            }
         }
         @media (max-width: 768px) {
             .room-image{
                 width: 100%;
+            }
+            .room-image > div{
+                width: 100px;
+            }
+            .room-image > div > p{
+                font-size: 16px !important;
             }
         }
         @media (max-width: 576px) {
             .room-image{
                 width: 100%;
             }
+            .room-image > div{  
+                width: 70px;
+            }
+            .room-image > div > p{
+                font-size: 14px !important;
+            }
+            .room-size input{
+                padding-left: 2px;
+                font-size: 12px !important;
+            }
         }
     </style>
 @endpush
 
-<div class="container w-100 m-0 pb-5 px-0">
+<div class="container pb-5 px-0" style="max-width: 1400px; margin: 0 auto;">
     <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
         <!-- Room type -->
-        <div class="col-12 col-md-3 mb-3 room-type px-0 d-flex flex-wrap align-self-start" wire:ignore>
+        <p class="text-danger m-0 p-0 col-12 {{ $roomCube && !$roomTypeValue ? '' : 'd-none' }}">*Выберите тип помещения</p>
+        <div class="col-12 col-lg-3 mb-3 room-type px-0 d-flex flex-wrap align-self-start" wire:ignore>
             <h3 class="font-kyiv fs-5 fw-bold w-100">Тип помещения</h3>
             @foreach ($roomTypes as $roomType)
-                <div style="padding: 0.1rem;" class="col-12 col-sm-6 col-md-12">
+                <div style="padding: 0.1rem;" class="col-12 col-sm-6 col-lg-12">
                     <label for="lux{{ $roomType->setting_value }}" class="rounded-1 p-1 p-md-2 w-100 h-100 shadow-sm d-flex align-items-center justify-content-between">
                         <div class="w-100 ps-2 text-start">
                         <h3 class="font-kyiv fs-6 fw-bold mb-0">{{ $roomType->title }}</h3>
@@ -117,55 +187,70 @@
         </div>
 
         <!-- Size of the room -->
-        <div class="col-12 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="0" wire:ignore>
+        <div class="col-12 col-lg-6 mb-3">
             <h3 class="font-kyiv fs-5 fw-bold">Размер помещения</h3>
-            <div class="row px-2 gap-1">
-                <div class="room-size row px-0 m-0">
+            <div class="row px-2 gap-1 pt-1">
+                <div class="room-size row px-0 m-0" wire:ignore>
                     <div class="col-4 mb-2 px-1 position-relative">
                         <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i style="transform: rotate(40deg);" class="fa-solid fa-arrows-left-right"></i>м</p>
-                        <input wire:model="roomSize.length" type="number" max="100" name="room-length" class="form-control" placeholder="3.5">
+                        <input wire:model="roomSize.length" type="number" max="100" name="room-length" class="form-control" placeholder="Д (3.5)">
                     </div>
                     <div class="col-4 mb-2 px-1 position-relative">
                         <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i style="transform: rotate(-40deg);" class="fa-solid fa-arrows-left-right"></i>м</p>
-                        <input wire:model="roomSize.width" type="number" max="100" name="room-width" class="form-control" placeholder="2.5">
+                        <input wire:model="roomSize.width" type="number" max="100" name="room-width" class="form-control" placeholder="Ш (2.5)">
                     </div>
                     <div class="col-4 mb-2 px-1 position-relative">
                         <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i class="fa-solid fa-arrows-up-down"></i>м</p>
-                        <input wire:model="roomSize.height" type="number" max="15" name="room-height" class="form-control" placeholder="3.1">
+                        <input wire:model="roomSize.height" type="number" max="15" name="room-height" class="form-control" placeholder="В (3.1)">
                     </div>
+                </div>
 
-                    <div class="col-12 m-0 p-1">
-                        <div class="room-size-result d-flex justify-content-center align-items-center p-5">
-                            <div class="room-image position-relative">
-                                <div class="width-room position-absolute d-flex align-items-center justify-content-between">
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                    <p class="font-kyiv fs-5 fw-bold mb-0"> {{$roomSize['length'] }} м </p>
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </div>
-                                <div class="length-room position-absolute d-flex align-items-center justify-content-between">
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                    <p class="font-kyiv fs-5 fw-bold mb-0"> {{$roomSize['width'] }} м</p>
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </div>
-                                <div class="height-room position-absolute d-flex align-items-center justify-content-between">
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                    <p class="font-kyiv fs-5 fw-bold mb-0"> {{$roomSize['height'] }} м </p>
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </div>
-                                <img src="{{ asset('3droom.png') }}" loading="lazy" class="w-100 h-100" alt="room">
+                <div class="col-12 m-0 p-1">
+                    <div class="room-size-result d-flex justify-content-center align-items-center p-5">
+                        <div class="room-image position-relative">
+                            <div class="width-room position-absolute d-flex align-items-center justify-content-between">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <p class="font-kyiv fs-md-5 fw-bold mb-0"> {{ $roomSize['length'] ?? '0'}} м </p>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </div>
+                            <div class="length-room position-absolute d-flex align-items-center justify-content-between">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <p class="font-kyiv fs-md-5 fw-bold mb-0"> {{$roomSize['width'] ?? '0'}} м</p>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                            <div class="height-room position-absolute d-flex align-items-center justify-content-between">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <p class="font-kyiv fs-md-5 fw-bold mb-0"> {{$roomSize['height'] ?? '0'}} м </p>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                            <img src="{{ asset('3droom.png') }}" loading="lazy" class="w-100 h-100" alt="room">
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
 
         <!-- Spot types -->
-        <div class="col-12 col-md-3 mb-3 spotTypes px-0" data-aos="fade-left" data-aos-delay="0" wire:ignore>
-            <h3 class="font-kyiv fs-5 fw-bold">Освещение</h3>
+        <div class="col-12 col-lg-3 mb-3 spotTypes px-0" data-aos="fade-left" data-aos-delay="0" wire:ignore>
+            <h3 class="font-kyiv fs-5 fw-bold">Оттенок помещения</h3>
+            <div class="row rColor m-0 pt-1">
+                <div class="col-4 p-0 m-0">
+                    <label for="white" class="room-white p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                        <input wire:model="roomColor" id="white" type="radio" value="0.9">
+                    </label>
+                </div>
+                <div class="col-4 p-0 m-0">
+                    <label for="gray" class="room-gray p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                        <input wire:model="roomColor" id="gray" type="radio" value="1">
+                    </label>
+                </div>
+                <div class="col-4 p-0 m-0">
+                    <label for="black" class="room-black p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                        <input wire:model="roomColor" id="black" type="radio" value="1.1">
+                    </label>
+                </div>
+            </div>
+            <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
             <div class="row sType m-0">
                 @foreach ($spotTypes as $spotType)
                     <div class="col-6 p-1 m-0">
@@ -206,7 +291,9 @@
                     Roomtype:{{ $roomTypeValue }}<br>
                     Spottype:{{ $spotTypeValue }}<br>
                     Spotlocation:{{ $spotLocationValue }}<br>
-                    Room:{{ $roomSize['length'].' x '.$roomSize['width'].' x '.$roomSize['height'] }}<br>
+                    Room:{{ $roomCube }}<br>
+                    Color:{{ $roomColor }}<br>
+                    Lux:{{ $lux }}<br>
                     <p class="font-kyiv fs-5 fw-bold mb-0"></p>
                 </div>
             </div>

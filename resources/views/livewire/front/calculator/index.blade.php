@@ -4,14 +4,17 @@
 
 @push('styles')
     <style>
-        
+        .container{
+            max-width: 1400px;
+            margin: 0 auto;
+        }
     </style>
 @endpush
 
 <div>
     <div class="container mt-5 py-5">
         <div class="pt-3 row" data-aos-delay="50">
-            <div class="col-12 font-cormorant position-relative">
+            <div class="col-12 mx-0 p-1 font-cormorant position-relative">
                 <h1 class="shadow-text-1 font-cormorant fw-bold">Калькулятор</h1>
                 <h5 class="shadow-text-2 font-cormorant fw-bold">Калькулятор</h5>
             </div>
@@ -56,12 +59,13 @@
                     let newValue = parseFloat(currentValue + key);
                     if (newValue > maxValue) {
                         newValue = parseFloat(currentValue + '.' + key);
-                        console.log(newValue);
                         if(newValue > maxValue){
                             event.preventDefault();
                         }else{
                             event.preventDefault();
                             input.value = newValue;
+                            // Trigger Livewire update
+                            input.dispatchEvent(new Event('input', { bubbles: true }));
                         }
                     }
                 } else {
