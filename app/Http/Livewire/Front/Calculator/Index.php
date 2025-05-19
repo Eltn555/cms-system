@@ -19,7 +19,6 @@ class Index extends Component
         $this->products = $this->categories->flatMap(function($category){
             return $category->products;
         });
-        dd($this->products);
     }
 
     public function render()
