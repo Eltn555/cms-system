@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 
-class ProductCard extends Component
+class ProductCalc extends Component
 {
     public $tags;
     public $product;
@@ -16,7 +16,9 @@ class ProductCard extends Component
     public $buttonClass;
     public $profit;
     public $profPercent;
-    public function mount($product){
+    public $lux;
+    public $product_lux;
+    public function mount($product, $lux){
         $this->product = $product;
         $this->info = 'nothing yet';
         $this->tags = $product->tags()->where('visible', 1)->take(3)->get();
@@ -24,6 +26,23 @@ class ProductCard extends Component
         $disc = $product->discount_price ?? 0;
         $this->profit = $product->price - $disc;
         $this->profPercent = ($this->profit / $product->price) * 100;
+        $this->lux = $lux;
+        $this->product_lux = 50;
+    }
+
+    public function updatedLux($value)
+    {
+        $this->lux = $value;
+    }
+
+    public function updatedProduct($value)
+    {
+        $this->product = $value;
+        $this->tags = $value->tags()->where('visible', 1)->take(3)->get();
+        $this->image = $value->images()->first();
+        $disc = $value->discount_price ?? 0;
+        $this->profit = $value->price - $disc;
+        $this->profPercent = ($this->profit / $value->price) * 100;
     }
 
     public function check($productid)
@@ -94,6 +113,6 @@ class ProductCard extends Component
 
     public function render()
     {
-        return view('livewire.front.component.product-card');
+        return view('livewire.front.component.product-calc');
     }
 }

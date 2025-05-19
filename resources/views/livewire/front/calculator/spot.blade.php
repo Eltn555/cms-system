@@ -294,7 +294,6 @@
                     Куб:{{ $roomCube }}<br>
                     Цвет:{{ $roomColor }}<br>
                     Люкс:{{ $lux }}<br>
-
                     <p class="font-kyiv fs-5 fw-bold mb-0"></p>
                 </div>
             </div>

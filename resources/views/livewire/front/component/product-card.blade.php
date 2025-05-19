@@ -44,10 +44,6 @@
                 @endif
                 <div class="product-action-wrap">
                     @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
-{{--                    <button class="product-action-btn-1" title="Quick View"--}}
-{{--                            data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-{{--                        <i class="pe-7s-look"></i>--}}
-{{--                    </button>--}}
                 </div>
                 @if($product->amount > 0)
                     @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
@@ -56,7 +52,6 @@
             <div class="product-content d-flex justify-content-between flex-column flex-grow-1">
                 <div>
                     <h3 class=" p-1 mb-0 card-brand"><a class="card-brand" href="{{route('front.product.show', ['slug' => $product->slug])}}" ')" style="cursor: pointer;">Lumen Lux</a></h3>
-{{--                    <h3 class=" p-1 mb-0"><a class="" wire:click="showProduct('{{ $product->slug }}')" style="font-size: 10px">{{$info}}</a></h3>--}}
                     <h3 class="fw-semibold fs-6 p-1 mb-1"><a href="{{route('front.product.show', ['slug' => $product->slug])}}" style="cursor: pointer;">{{ $product->title }}</a></h3>
                 </div>
                 <div class="font-kyiv card-price">

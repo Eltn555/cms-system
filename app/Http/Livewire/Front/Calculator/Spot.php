@@ -61,18 +61,27 @@ class Spot extends Component
             $this->lux = 0;
         }
 
-        if($this->lux > 0){
-            // check and set spotType or spotLocation values are set
+        $categories = [];
+            
+        // Add default category if no specific selections are made
+        if (!$this->spotTypeValue && !$this->spotLocationValue) {
             $categories[] = $this->defaultCategory->setting_value;
-            if($this->spotTypeValue){
-                $categories[] = $this->spotTypeValue;
-                $categories = array_diff($categories, [$this->defaultCategory->setting_value]);
-            }
-            if($this->spotLocationValue){
-                $categories[] = $this->spotLocationValue;
-                $categories = array_diff($categories, [$this->defaultCategory->setting_value]);
-            }
+        }
+        
+        // Add spot type if selected
+        if ($this->spotTypeValue) {
+            $categories[] = $this->spotTypeValue;
+        }
+        
+        // Add spot location if selected
+        if ($this->spotLocationValue) {
+            $categories[] = $this->spotLocationValue;
+        }
+            
+        if($this->lux > 0){
             $this->emit('setProducts', $this->lux, $categories);
+        } else {
+            $this->emit('setProducts', null, $categories);
         }
     }
 
