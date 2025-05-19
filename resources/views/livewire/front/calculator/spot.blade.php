@@ -288,12 +288,12 @@
             <h3 class="font-kyiv fs-5 fw-bold">Результат</h3>
             <div class="row">
                 <div class="col-12">
-                    Roomtype:{{ $roomTypeValue }}<br>
-                    Spottype:{{ $spotTypeValue }}<br>
-                    Spotlocation:{{ $spotLocationValue }}<br>
-                    Room:{{ $roomCube }}<br>
-                    Color:{{ $roomColor }}<br>
-                    Lux:{{ $lux }}<br>
+                    Тип помещения:{{ $roomTypeValue }}<br>
+                    Освещение:{{ $spotTypeValue }}<br>
+                    Расположение:{{ $spotLocationValue }}<br>
+                    Куб:{{ $roomCube }}<br>
+                    Цвет:{{ $roomColor }}<br>
+                    Люкс:{{ $lux }}<br>
 
                     <p class="font-kyiv fs-5 fw-bold mb-0"></p>
                 </div>
