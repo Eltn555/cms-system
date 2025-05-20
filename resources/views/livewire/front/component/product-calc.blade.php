@@ -1,6 +1,27 @@
 @if (!app()->bound('livewire.styles_added'))
     @push('styles')
         <style>
+            .product-img  img{
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover;
+                position:unset !important;
+                transform: unset !important;
+            }
+            .product-img a{
+                width: 100% !important;
+                height: 100% !important;
+            }
+            .product-img {
+                width: 100% !important;
+                aspect-ratio: 1/1;
+                overflow: hidden;
+                height: unset !important;
+            }
+            .product-wrap:hover .product-img a img {
+                width: 110% !important;
+                height: 110% !important;
+            }
             .product-wrap:hover .product-action-2-wrap {
                 bottom: 0px;
                 opacity: 0;
@@ -25,15 +46,17 @@
     @php(app()->instance('livewire.styles_added', true))
 @endif
 <div class="product-wrap h-100 d-flex flex-column">
-    <div class="product-img img-zoom mb-25">
-        <a href="{{route('front.product.show', ['slug' => $product->slug])}}">
+    <div class="product-img mb-1">
+        <a class="overflow-hidden d-flex justify-content-center align-items-center" href="{{route('front.product.show', ['slug' => $product->slug])}}">
             <img class="image{{$product->id}}" src="{{asset(($image) ? 'storage/'.$image->image : 'no_photo.jpg')}}" alt="{{$product->title}}" loading="lazy">
         </a>
-        <div
-            class="product-badge rounded-0 flex justify-end badge-pink" style="top: 5px; left: 5px;">
+        <div class="product-badge rounded-0 flex justify-end badge-pink" style="top: 5px; left: 5px;">
                 @foreach($tags as $tag)
                     <div class="px-2 mb-1 d-flex justify-content-center align-items-center rounded-1 text-white fw-semibold" style="background-color: rgba(255, 0, 0, 0.6);">{{ $tag->visible == 1 ? $tag->title : '' }}</div>
                 @endforeach
+        </div>
+        <div class="product-badge rounded-0 flex justify-end badge-pink" style="top: 5px; right: 5px;">
+            <div class="px-2 mb-1 d-flex justify-content-center align-items-center rounded-1 text-danger fw-semibold {{!$productPcsByLux > 0 ? 'd-none' : ''}}" style="background-color: rgba(250, 250, 250, 0.514);">{{ $productPcsByLux }} шт</div>
         </div>
         @if($product->amount > 0)
             <div class="position-absolute bottom-0 end-0">

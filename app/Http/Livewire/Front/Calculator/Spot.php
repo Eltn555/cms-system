@@ -37,7 +37,8 @@ class Spot extends Component
         $this->lux();
     }
 
-    public function updatedRoomColor(){
+    public function upRoomColor($value){
+        $this->roomColor = $this->roomColor == $value ? 0 : $value;
         $this->lux();
     }
 
@@ -51,12 +52,12 @@ class Spot extends Component
 
     public function lux(){
         if($this->roomSize['length'] && $this->roomSize['width'] && $this->roomSize['height']){
-            $this->roomCube = $this->roomSize['length'] * $this->roomSize['width'] * $this->roomSize['height'];
+            $this->roomCube = $this->roomSize['length'] * $this->roomSize['width'] * ($this->roomSize['height'] > 3 ? 1.5 : 1.25);
         } else {
             $this->roomCube = 0;
         }
         if($this->roomCube > 0 && $this->roomTypeValue){
-            $this->lux = $this->roomCube * $this->roomTypeValue * ($this->roomColor != 0 ? $this->roomColor : 1);
+            $this->lux = $this->roomCube * $this->roomTypeValue / ($this->roomColor != 0 ? $this->roomColor : 1);
         } else {
             $this->lux = 0;
         }

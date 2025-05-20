@@ -157,8 +157,7 @@
                 font-size: 14px !important;
             }
             .room-size input{
-                padding-left: 2px;
-                font-size: 12px !important;
+                padding-left: 3px;
             }
         }
     </style>
@@ -231,27 +230,27 @@
         </div>
 
         <!-- Spot types -->
-        <div class="col-12 col-lg-3 mb-3 spotTypes px-0" data-aos="fade-left" data-aos-delay="0" wire:ignore>
+        <div class="col-12 col-lg-3 mb-3 spotTypes px-0">
             <h3 class="font-kyiv fs-5 fw-bold">Оттенок помещения</h3>
             <div class="row rColor m-0 pt-1">
                 <div class="col-4 p-0 m-0">
-                    <label for="white" class="room-white p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <input wire:model="roomColor" id="white" type="radio" value="0.9">
+                    <label for="white" class="room-white p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.5 ? 'active' : '' }} align-items-center justify-content-between">
+                        <input wire:click="upRoomColor(0.5)" id="white" type="radio" class="">
                     </label>
                 </div>
                 <div class="col-4 p-0 m-0">
-                    <label for="gray" class="room-gray p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <input wire:model="roomColor" id="gray" type="radio" value="1">
+                    <label for="gray" class="room-gray p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.6 ? 'active' : '' }} align-items-center justify-content-between">
+                        <input wire:click="upRoomColor(0.6)" id="gray" type="radio" class="">
                     </label>
                 </div>
                 <div class="col-4 p-0 m-0">
-                    <label for="black" class="room-black p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
-                        <input wire:model="roomColor" id="black" type="radio" value="1.1">
+                    <label for="black" class="room-black p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.8 ? 'active' : '' }} align-items-center justify-content-between">
+                        <input wire:click="upRoomColor(0.8)" id="black" type="radio" class="">
                     </label>
                 </div>
             </div>
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
-            <div class="row sType m-0">
+            <div class="row sType m-0" wire:ignore>
                 @foreach ($spotTypes as $spotType)
                     <div class="col-6 p-1 m-0">
                         <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
@@ -267,7 +266,7 @@
                 @endforeach
             </div>
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
-            <div class="row sLocation m-0">
+            <div class="row sLocation m-0" wire:ignore>
                 @foreach ($spotLocations as $spotLocation)
                     <div class="col-6 p-1 m-0">
                         <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">

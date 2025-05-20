@@ -18,16 +18,9 @@ class ProductCalc extends Component
     public $profPercent;
     public $lux;
     public $product_lux;
+    public $productPcsByLux;
     public function mount($product, $lux){
-        $this->product = $product;
-        $this->info = 'nothing yet';
-        $this->tags = $product->tags()->where('visible', 1)->take(3)->get();
-        $this->image = $product->images()->first();
-        $disc = $product->discount_price ?? 0;
-        $this->profit = $product->price - $disc;
-        $this->profPercent = ($this->profit / $product->price) * 100;
-        $this->lux = $lux;
-        $this->product_lux = 50;
+        $this->updatedProduct($product, $lux);
     }
 
     public function updatedLux($value)
@@ -35,16 +28,19 @@ class ProductCalc extends Component
         $this->lux = $value;
     }
 
-    public function updatedProduct($value)
+    public function updatedProduct($product, $lux)
     {
-        $this->product = $value;
-        $this->tags = $value->tags()->where('visible', 1)->take(3)->get();
-        $this->image = $value->images()->first();
-        $disc = $value->discount_price ?? 0;
-        $this->profit = $value->price - $disc;
-        $this->profPercent = ($this->profit / $value->price) * 100;
+        $this->product = $product;
+        $this->lux = $lux;
+        $this->tags = $product->tags()->where('visible', 1)->take(3)->get();
+        $this->image = $product->images()->first();
+        $disc = $product->discount_price ?? 0;
+        $this->profit = $product->price - $disc;
+        $this->profPercent = ($this->profit / $product->price) * 100;
+        $this->lux = $lux;
+        $this->product_lux = 1080;
+        $this->productPcsByLux = $this->lux / $this->product_lux;
     }
-
     public function check($productid)
     {
         if (Auth::check()) {
