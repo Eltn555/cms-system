@@ -14,7 +14,7 @@ class Spot extends Component
     public $roomTypeValue;
     public $spotTypeValue;
     public $spotLocationValue;
-    public $roomColor;
+    public $roomColor = 0.6;
     public $roomSize = [
         'length' => '',
         'width' => '',
@@ -42,7 +42,7 @@ class Spot extends Component
     }
 
     public function upRoomColor($value){
-        $this->roomColor = $this->roomColor == $value ? 0 : $value;
+        $this->roomColor = $this->roomColor == $value ? 0.6 : $value;
         $this->lux();
     }
 

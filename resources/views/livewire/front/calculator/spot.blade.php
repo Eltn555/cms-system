@@ -235,7 +235,7 @@
             <div class="row rColor m-0 pt-1">
                 <div class="col-4 p-0 m-0">
                     <label for="white" class="room-white p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.8 ? 'active' : '' }} align-items-center justify-content-between">
-                        <input wire:click="upRoomColor(0.5)" id="white" type="radio" class="">
+                        <input wire:click="upRoomColor(0.8)" id="white" type="radio" class="">
                     </label>
                 </div>
                 <div class="col-4 p-0 m-0">
@@ -245,7 +245,7 @@
                 </div>
                 <div class="col-4 p-0 m-0">
                     <label for="black" class="room-black p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.4 ? 'active' : '' }} align-items-center justify-content-between">
-                        <input wire:click="upRoomColor(0.8)" id="black" type="radio" class="">
+                        <input wire:click="upRoomColor(0.4)" id="black" type="radio" class="">
                     </label>
                 </div>
             </div>
