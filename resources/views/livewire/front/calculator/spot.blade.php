@@ -292,7 +292,7 @@
                     Расположение:{{ $spotLocationTitle }}<br>
                     Куб:{{ $roomCube }}<br>
                     Цвет:{{ $roomColor }}<br>
-                    Люкс:{{ $lux }}<br>
+                    Люкс (расчетный: lux х кв х высота1,25-1,5 / Цвет):{{ $lux }}<br>
                     <p class="font-kyiv fs-5 fw-bold mb-0"></p>
                 </div>
             </div>

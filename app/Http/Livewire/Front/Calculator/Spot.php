@@ -63,7 +63,7 @@ class Spot extends Component
             $this->roomCube = 0;
         }
         if($this->roomCube > 0 && $this->roomTypeValue){
-            $this->lux = $this->roomCube * $this->roomTypeValue / ($this->roomColor != 0 ? $this->roomColor : 1);
+            $this->lux = $this->roomCube * $this->roomTypeValue / $this->roomColor;
         } else {
             $this->lux = 0;
         }
