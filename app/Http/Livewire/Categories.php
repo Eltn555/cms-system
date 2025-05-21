@@ -25,7 +25,7 @@ class Categories extends Component
     public $price;
     public $price2;
     public $mainCategories;
-public $loadedPrice = true;
+    public $loadedPrice = true;
 
     protected $listeners = ['priceUpdated'];
 
@@ -93,7 +93,7 @@ public $loadedPrice = true;
 
     public function render()
     {
-        $products = Product::where('status', '!=', 0);
+        $products = Product::where('status', '=', 1);
 
         if ($this->category) {
             $products->whereHas('categories', function ($query) {

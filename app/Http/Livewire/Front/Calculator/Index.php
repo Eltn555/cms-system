@@ -26,7 +26,7 @@ class Index extends Component
             // If only one category, get all products from that category
             $this->categories = Category::whereIn('id', $categories)->with('products')->get();
             $this->products = $this->categories->flatMap(function($category) {
-                return $category->products->where('is_active', 1)->take(20);
+                return $category->products->where('status', 1)->take(20);
             });
         } else {
             // If multiple categories, get products that exist in all categories
@@ -39,7 +39,7 @@ class Index extends Component
             $this->products = $firstCategoryProducts->filter(function($product) {
                 return $this->categories->every(function($category) use ($product) {
                     //get 20 products from category where is_active is 1
-                    $products = $category->products->where('is_active', 1)->take(20);
+                    $products = $category->products->where('status', 1)->take(20);
                     return $products->contains('id', $product->id);
                 });
             });
