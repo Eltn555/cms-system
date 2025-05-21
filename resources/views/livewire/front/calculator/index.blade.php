@@ -23,9 +23,9 @@
     <livewire:front.calculator.spot />
     Продуктов:{{ $products->count() }}<br>
     <div class="container">
-        <div class="row gap-1">
+        <div class="row">
             @foreach ($products as $product)
-                <div class="col-6 p-1 col-sm-4 col-md-3 col-lg-2" wire:key="product-{{ $product->id }}-{{ $lux }}">
+                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-2" wire:key="product-{{ $product->id }}-{{ $lux }}">
                     <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
                 </div>
             @endforeach
