@@ -39,7 +39,7 @@ class ProductCalc extends Component
         $this->profPercent = ($this->profit / $product->price) * 100;
         $this->lux = $lux;
         $this->product_lux = 1080;
-        $this->productPcsByLux = $this->lux / $this->product_lux;
+        $this->productPcsByLux = ceil($this->lux / $this->product_lux);
     }
     public function check($productid)
     {
