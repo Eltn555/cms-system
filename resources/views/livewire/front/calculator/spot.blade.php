@@ -288,8 +288,8 @@
             <div class="row">
                 <div class="col-12">
                     Тип помещения:{{ $roomTypeValue }}<br>
-                    Освещение:{{ Category::where('setting_value', $spotTypeValue)->first()->title }}<br>
-                    Расположение:{{ Category::where('setting_value', $spotLocationValue)->first()->title }}<br>
+                    Освещение:{{ $spotTypeTitle }}<br>
+                    Расположение:{{ $spotLocationTitle }}<br>
                     Куб:{{ $roomCube }}<br>
                     Цвет:{{ $roomColor }}<br>
                     Люкс:{{ $lux }}<br>

@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Front\Calculator;
 
 use Livewire\Component;
 use App\Models\Setting;
-
+use App\Models\Category;
 class Spot extends Component
 {
     public $calculator;
@@ -23,6 +23,10 @@ class Spot extends Component
     public $roomCube;
     public $lux;
     public $defaultCategory;
+
+    //testing
+    public $spotTypeTitle;
+    public $spotLocationTitle;
 
     public function mount()
     {
@@ -74,11 +78,13 @@ class Spot extends Component
         // Add spot type if selected
         if ($this->spotTypeValue) {
             $categories[] = $this->spotTypeValue;
+            $this->spotTypeTitle = Category::where('setting_value', $this->spotTypeValue)->first()->title;
         }
         
         // Add spot location if selected
         if ($this->spotLocationValue) {
             $categories[] = $this->spotLocationValue;
+            $this->spotLocationTitle = Category::where('setting_value', $this->spotLocationValue)->first()->title;
         }
             
         if($this->lux > 0){
