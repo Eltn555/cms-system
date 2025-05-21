@@ -17,8 +17,9 @@ class ProductCalc extends Component
     public $profit;
     public $profPercent;
     public $lux;
-    public $product_lux;
+    public $product_lm;
     public $productPcsByLux;
+
     public function mount($product, $lux){
         $this->updatedProduct($product, $lux);
     }
@@ -38,9 +39,10 @@ class ProductCalc extends Component
         $this->profit = $product->price - $disc;
         $this->profPercent = ($this->profit / $product->price) * 100;
         $this->lux = $lux;
-        $this->product_lux = 1080;
-        $this->productPcsByLux = ceil($this->lux / $this->product_lux);
+        $this->product_lm = $this->getLumen();
+        $this->productPcsByLux = ceil($this->lux / $this->product_lm);
     }
+    
     public function check($productid)
     {
         if (Auth::check()) {
@@ -100,6 +102,35 @@ class ProductCalc extends Component
             $this->emit('wishlistAddUpdated');
             $this->info = Cookie::get('wishlist');
         }
+    }
+
+    public function getLumen()
+    {
+        $info = $this->product->additional; // HTML table string
+
+        if (!$info) {
+            return null;
+        }
+
+        $doc = new \DOMDocument();
+        libxml_use_internal_errors(true); // Suppress HTML5 warnings
+        $doc->loadHTML('<?xml encoding="utf-8" ?>' . $info);
+        libxml_clear_errors();
+
+        $rows = $doc->getElementsByTagName('tr');
+        foreach ($rows as $row) {
+            $cells = $row->getElementsByTagName('td');
+            if ($cells->length >= 2) {
+                $label = trim($cells->item(0)->textContent);
+                if (mb_stripos($label, 'Поток') !== false) {
+                    $value = trim($cells->item(1)->textContent);
+                    if (preg_match('/(\d+)/', $value, $matches)) {
+                        return (int)$matches[1];
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public function showProduct($slug)

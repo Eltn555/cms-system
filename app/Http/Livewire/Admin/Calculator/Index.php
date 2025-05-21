@@ -89,10 +89,7 @@ class Index extends Component
         $data = $this->validation($var);
 
         if($var == 'currentSpotType' || $var == 'currentSpotLocation'){
-            $file = $data[$var]['media'];
-            $filename = $file->getClientOriginalName();
-            $filename = $file->storeAs('calc', $filename, 'public');
-            $data[$var]['media'] = $filename;
+            $data[$var]['media'] = $this->saveFile($data[$var]['media']);
         }
 
         Setting::create($data[$var]);
@@ -133,21 +130,26 @@ class Index extends Component
         $id = $this->updating['id'];
         $data = $this->validation($var);
         if($var == 'currentSpotType' || $var == 'currentSpotLocation'){
-            if($data[$var]['media']){
+            if($data[$var]['media'] && !is_string($data[$var]['media'])){
                 // Delete old file if it exists
                 $oldSetting = Setting::find($id);
                 if($oldSetting && $oldSetting->media) {
                     Storage::disk('public')->delete($oldSetting->media);
                 }
                 // Upload new file
-                $file = $data[$var]['media'];
-                $filename = $file->getClientOriginalName();
-                $filename = $file->storeAs('calc', $filename, 'public');
-                $data[$var]['media'] = $filename;
+                $data[$var]['media'] = $this->saveFile($data[$var]['media']);
             }
         }
         Setting::find($id)->update($data[$var]);
         $this->res();
+    }
+
+    public function saveFile($media){
+        $filename = $media->getClientOriginalName();
+        $filename = preg_replace('/[^a-zA-Z0-9]/', '', $filename);
+        $filename = str_replace(' ', '-', $filename);
+        $filename = $media->storeAs('calc', $filename, 'public');
+        return $filename;
     }
 
     public function render()
