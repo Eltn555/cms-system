@@ -78,13 +78,13 @@ class Spot extends Component
         // Add spot type if selected
         if ($this->spotTypeValue) {
             $categories[] = $this->spotTypeValue;
-            $this->spotTypeTitle = Category::where('setting_value', $this->spotTypeValue)->first()->title;
+            $this->spotTypeTitle = Category::find($this->spotTypeValue)->title;
         }
         
         // Add spot location if selected
         if ($this->spotLocationValue) {
             $categories[] = $this->spotLocationValue;
-            $this->spotLocationTitle = Category::where('setting_value', $this->spotLocationValue)->first()->title;
+            $this->spotLocationTitle = Category::find($this->spotLocationValue)->title;
         }
             
         if($this->lux > 0){
