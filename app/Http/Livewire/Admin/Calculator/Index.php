@@ -145,9 +145,7 @@ class Index extends Component
     }
 
     public function saveFile($media){
-        $filename = $media->getClientOriginalName();
-        $filename = preg_replace('/[^a-zA-Z0-9]/', '', $filename);
-        $filename = str_replace(' ', '-', $filename);
+        $filename = date('YmdHis') . '-' . rand(10000, 99999).'_'.rand(10000, 99999).'.'.$media->getClientOriginalExtension();
         $filename = $media->storeAs('calc', $filename, 'public');
         return $filename;
     }
