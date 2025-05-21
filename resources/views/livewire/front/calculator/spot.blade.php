@@ -250,7 +250,7 @@
                 </div>
             </div>
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
-            <div class="row sType m-0" wire:ignore>
+            <div class="row sType m-0">
                 @foreach ($spotTypes as $spotType)
                     <div class="col-6 p-1 m-0">
                         <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotTypeValue == $spotType->setting_value ? 'active' : '' }}">
@@ -266,7 +266,7 @@
                 @endforeach
             </div>
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
-            <div class="row sLocation m-0" wire:ignore>
+            <div class="row sLocation m-0">
                 @foreach ($spotLocations as $spotLocation)
                     <div class="col-6 p-1 m-0">
                         <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotLocationValue == $spotLocation->setting_value ? 'active' : '' }}">
