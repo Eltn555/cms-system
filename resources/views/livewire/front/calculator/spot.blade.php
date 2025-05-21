@@ -253,14 +253,14 @@
             <div class="row sType m-0" wire:ignore>
                 @foreach ($spotTypes as $spotType)
                     <div class="col-6 p-1 m-0">
-                        <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                        <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotTypeValue == $spotType->setting_value ? 'active' : '' }}">
                             <div class="spot-icon">
                                 <img src="{{ asset('storage/'.$spotType->media) }}" alt="{{ $spotType->title }}">
                             </div>
                             <div class="w-100 text-center">
                                 <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $spotType->title }}</p>
                             </div>
-                            <input wire:model="spotTypeValue" id="spot{{ $spotType->id }}" type="radio" value="{{ $spotType->setting_value }}">
+                            <input wire:click="upSpotTypeValue({{ $spotType->setting_value }})" id="spot{{ $spotType->id }}" type="radio">
                         </label>
                     </div>
                 @endforeach
@@ -269,14 +269,14 @@
             <div class="row sLocation m-0" wire:ignore>
                 @foreach ($spotLocations as $spotLocation)
                     <div class="col-6 p-1 m-0">
-                        <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between">
+                        <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotLocationValue == $spotLocation->setting_value ? 'active' : '' }}">
                             <div class="spot-icon">
                                 <img src="{{ asset('storage/'.$spotLocation->media) }}" alt="{{ $spotLocation->title }}">
                             </div>
                             <div class="w-100 text-center">
                                 <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $spotLocation->title }}</p>
                             </div>
-                            <input wire:model="spotLocationValue" id="spot{{ $spotLocation->id }}" type="radio" value="{{ $spotLocation->setting_value }}">
+                            <input wire:click="upSpotLocationValue({{ $spotLocation->setting_value }})" id="spot{{ $spotLocation->id }}" type="radio">
                         </label>
                     </div>
                 @endforeach
