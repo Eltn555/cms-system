@@ -38,7 +38,7 @@ class Index extends Component
             // Filter products that exist in all other categories
             $this->products = $firstCategoryProducts->filter(function($product) {
                 return $this->categories->every(function($category) use ($product) {
-                    return $category->products->contains('id', $product->id);
+                    return $category->products->contains('id', $product->id)->where('is_active', 1)->take(20);
                 });
             });
         }

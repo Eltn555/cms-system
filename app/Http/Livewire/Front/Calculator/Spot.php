@@ -43,12 +43,12 @@ class Spot extends Component
     }
 
     public function upSpotTypeValue($value){
-        $this->spotTypeValue = $value == 0 ? null : $value;
+        $this->spotTypeValue = $value == 0 ? '' : $value;
         $this->lux();
     }
 
     public function upSpotLocationValue($value){
-        $this->spotLocationValue = $value == 0 ? null : $value;
+        $this->spotLocationValue = $value == 0 ? '' : $value;
         $this->lux();
     }
 

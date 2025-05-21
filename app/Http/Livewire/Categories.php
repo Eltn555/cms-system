@@ -51,11 +51,6 @@ public $loadedPrice = true;
         $this->setPage($page);
     }
 
-//    public function setPrice($price)
-//    {
-//        $this->price = $price;
-//    }
-
     public function priceUpdated($values)
     {
         $this->price2 = $values;
