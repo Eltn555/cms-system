@@ -17,7 +17,6 @@ class ProductCalc extends Component
     public $profit;
     public $profPercent;
     public $lux;
-    public $product_lm;
     public $productPcsByLux;
 
     public function mount($product, $lux){
@@ -39,8 +38,7 @@ class ProductCalc extends Component
         $this->profit = $product->price - $disc;
         $this->profPercent = ($this->profit / $product->price) * 100;
         $this->lux = $lux;
-        $this->product_lm = $this->getLumen();
-        $this->productPcsByLux = ceil($this->lux / $this->product_lm);
+        $this->productPcsByLux = $this->getPcsByLm();
     }
     
     public function check($productid)
@@ -104,7 +102,7 @@ class ProductCalc extends Component
         }
     }
 
-    public function getLumen()
+    public function getPcsByLm()
     {
         $info = $this->product->additional; // HTML table string
 
@@ -125,7 +123,8 @@ class ProductCalc extends Component
                 if (mb_stripos($label, 'Поток') !== false) {
                     $value = trim($cells->item(1)->textContent);
                     if (preg_match('/(\d+)/', $value, $matches)) {
-                        return (int)$matches[1];
+                        $lm = (int)$matches[1];
+                        return ceil($this->lux / $lm);
                     }
                 }
             }

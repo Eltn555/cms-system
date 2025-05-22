@@ -68,8 +68,10 @@ class Spot extends Component
             $this->lux = 0;
         }
 
+        $this->spotTypeTitle = '';
+        $this->spotLocationTitle = '';
         $categories = [];
-            
+
         // Add default category if no specific selections are made
         if (!$this->spotTypeValue && !$this->spotLocationValue) {
             $categories[] = $this->defaultCategory->setting_value;
