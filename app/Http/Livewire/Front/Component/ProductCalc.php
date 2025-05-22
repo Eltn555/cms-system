@@ -28,8 +28,7 @@ class ProductCalc extends Component
         $this->lux = $value;
     }
 
-    public function updatedProduct($product, $lux)
-    {
+    public function updatedProduct($product, $lux){
         $this->product = $product;
         $this->lux = $lux;
         $this->tags = $product->tags()->where('visible', 1)->take(3)->get();
@@ -38,11 +37,11 @@ class ProductCalc extends Component
         $this->profit = $product->price - $disc;
         $this->profPercent = ($this->profit / $product->price) * 100;
         $this->lux = $lux;
-        $this->productPcsByLux = $this->getPcsByLm();
+        $lm = $this->getLm();
+        $this->productPcsByLux = ceil($this->lux / $lm);
     }
     
-    public function check($productid)
-    {
+    public function check($productid){
         if (Auth::check()) {
             // Check for logged-in user's wishlist
             return WishlistProduct::where('user_id', auth()->user()->id)
@@ -63,8 +62,7 @@ class ProductCalc extends Component
         }
     }
 
-    public function addProduct($productid)
-    {
+    public function addProduct($productid){
         if (Auth::check()) {
             if ($this->check($productid)) {
                 WishlistProduct::where('user_id', auth()->user()->id)
@@ -102,8 +100,7 @@ class ProductCalc extends Component
         }
     }
 
-    public function getPcsByLm()
-    {
+    public function getPcsByLm(){
         $info = $this->product->additional; // HTML table string
 
         if (!$info) {
@@ -123,8 +120,7 @@ class ProductCalc extends Component
                 if (mb_stripos($label, 'Поток') !== false) {
                     $value = trim($cells->item(1)->textContent);
                     if (preg_match('/(\d+)/', $value, $matches)) {
-                        $lm = (int)$matches[1];
-                        return ceil($this->lux / $lm);
+                        return (int)$matches[1];
                     }
                 }
             }
