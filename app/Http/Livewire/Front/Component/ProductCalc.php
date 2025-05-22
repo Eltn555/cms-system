@@ -100,7 +100,7 @@ class ProductCalc extends Component
         }
     }
 
-    public function getPcsByLm(){
+    public function getLm(){
         $info = $this->product->additional; // HTML table string
 
         if (!$info) {
