@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;

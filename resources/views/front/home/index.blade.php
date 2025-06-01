@@ -1,5 +1,5 @@
 @extends('front.layout')
-@section('title', 'Главная | Освещение | Люстры | Светильники')
+@section('title', 'Дизайнерские светильники и люстры в Ташкенте | Lumenlux.uz')
 @section('description', 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет')
 @section('keyword', 'Бра, споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет')
 @section('style')
@@ -56,7 +56,7 @@
 @endsection
 
 @section('content')
-    <h1 class="h-0 overflow-hidden"> LumenLux | Главная | Освещение | Люстры | Светильники </h1>
+    <h1 class="h-0 overflow-hidden"> Дизайнерские светильники и люстры в Ташкенте | Lumenlux.uz </h1>
     <div class="bg-carousel mt-5 bg-dark">
         <div class="carousel">
             <div class="list">

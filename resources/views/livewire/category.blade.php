@@ -3,6 +3,39 @@
 @section('keyword', $this->category ? ($this->category->seo_title.' '.$this->category->seo_description) : '')
 
 @section('style')
+    <script type="application/ld+json">
+        {!! json_encode([
+            "@context" => "https://schema.org",
+            "@type" => "ItemList",
+            "name" => "Каталог: " . $this->category ? $this->category->title : 'Магазин', // The name of the category page itself
+            "description" => "Просмотрите наши каталог - " . strtolower($this->category ? $this->category->title : 'Магазин') . ". Бесплатная доставка по Ташкенту и гарантия качества от LumenLux.", // A good description for the category
+            "numberOfItems" => $products->total(), // Total number of products in this category
+            "itemListElement" => $products->map(function ($product, $index) {
+                return [
+                    "@type" => "ListItem",
+                    "position" => $index + 1, // The position of the product in the list (1, 2, 3...)
+                    "item" => [
+                        "@type" => "Product",
+                        "name" => $product->title,
+                        "url" => url("/product/{$product->slug}"), // Direct URL to the product page
+                        "image" => isset($product->images[0]) ? asset('storage/'.$product->images[0]->image) : '',
+                        "description" => $product->short_description ?? "Узнайте больше о " . $product->title, // A short description is better here
+                        "brand" => [
+                            "@type" => "Brand",
+                            "name" => "LumenLux"
+                        ],
+                        "offers" => [
+                            "@type" => "Offer",
+                            "priceCurrency" => "UZS",
+                            "price" => $product->discount_price ?? $product->price,
+                            "availability" => "https://schema.org/InStock",
+                            "url" => url("/product/{$product->slug}")
+                        ]
+                    ]
+                ];
+            })
+        ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!}
+    </script>
     <style>
         .filter-mobile{
             position: fixed;
@@ -26,6 +59,7 @@
     </style>
 @endsection
 <div class="">
+    <h1 class="h-0 overflow-hidden"> Дизайнерские светильники и люстры в Ташкенте | {{$this->category->title ?? 'Магазин'}} - Lumenlux.uz </h1>
     <div class="modal fade show pe-0" id="notificationModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false" style="z-index: 1050;">
         <div class="product-notify modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content rounded-0 shadow-lg">
@@ -46,7 +80,7 @@
     </div>
     <div class="container pt-1 pt-md-5 mt-5">
         <div class="mt-4 mb-20 font-cormorant position-relative">
-            <h1 class="shadow-text-1 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h1>
+            <h2 class="shadow-text-1 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h1>
             <h2 class="shadow-text-2 font-cormorant fw-bold">{{$this->category->title ?? 'Магазин'}}</h2>
         </div>
         <div class="py-2 row">

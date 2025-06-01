@@ -1,4 +1,4 @@
-@section('title', $product->categories[0]->title.' '.$product->title)
+@section('title', isset($product->categories[0]) ? $product->categories[0]->title.' '.$product->title : $product->title)
 @section('description', $product->title." - ".$description."Бра, люстрыб споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет")
 @section('keyword', $product->title.", ".$description." Бра, люстрыб споты, трековые системы, Проектирование и светорасчет, Бесплатная доставка, Гарантия качества до 5 лет")
 @section('image', isset($product->images[0]) ? asset('storage/'.$product->images[0]->image) : '')
@@ -7,10 +7,10 @@
         {!! json_encode([
             "@context" => "https://schema.org/",
             "@type" => "Product",
-            "name" => $product->categories[0]->title . ' ' . $product->title,
+            "name" => isset($product->categories[0]) ? $product->categories[0]->title . ' ' . $product->title : $product->title,
             "description" => "Бесплатная доставка! Гарантия качества до 5 лет, постоянные акции и скидки на маркетплейсе LumenLux",
             "image" => isset($product->images[0]) ? asset('storage/'.$product->images[0]->image) : '',
-            "category" => $product->category->name ?? "Категория не указана",
+            "category" => isset($product->categories[0]) ? $product->categories[0]->title : "Категория не указана",
             "brand" => [
                 "@type" => "Brand",
                 "name" => "LumenLux"
@@ -195,7 +195,7 @@
             <div class="row mx-0 px-xl-5 px-lg-1 px-md-0">
                 <div class="col-12 d-md-block d-none mb-5"><a href="/">Главная</a> /
                     <a class="" href="{{ route('front.category.index') }}">Каталог</a> /
-                    <a class="" href="{{ route('front.category.show', $product->categories[0]->slug) }}">{{$product->categories[0]->title}}</a>
+                    <a class="" href="{{ route('front.category.show', isset($product->categories[0]) ? $product->categories[0]->slug : 'javascript:;') }}">{{isset($product->categories[0]) ? $product->categories[0]->title : $product->title}}</a>
                 </div>
                 <div class="col-12 d-md-none mb-5 d-flex">
                     <a onclick="goBack()">
