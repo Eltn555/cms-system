@@ -26,38 +26,26 @@
         label i{
             color: rgb(248, 179, 1);
         }
-        .room-type label:hover{
-            background-color: #f4f4f4;
-        }
-        .room-type label.active{
-            background-color: #f4f4f4;
+        .room-type label:hover, .room-type label.active{
+            background-color: #ffffff;
         }
 
         .room-white{
-            background-color: #f4f4f4;
+            background-color: #ffffff;
         }
-        .room-white:hover{
-            background-color: #f4f4f4 !important;
-        }
-        .room-white.active{
-            background-color: #f4f4f4 !important;
+        .room-white:hover, .room-white.active{
+            background-color: #ffffff !important;
         }
         .room-gray{
-            background-color: #8a8a8a;
+            background-color: #acacac;
         }
-        .room-gray:hover{
-            background-color: #8a8a8a !important;
-        }
-        .room-gray.active{
-            background-color: #8a8a8a !important;
+        .room-gray:hover, .room-gray.active{
+            background-color: #acacac !important;
         }
         .room-black{
             background-color: #313131;
         }
-        .room-black:hover{
-            background-color: #313131 !important;
-        }
-        .room-black.active{
+        .room-black:hover, .room-black.active{
             background-color: #313131 !important;
         }
         
@@ -68,18 +56,16 @@
             height: 38px;
         }
         .rColor label:hover{
-            border: solid 2px rgb(248, 179, 1) !important;
+            border: solid 2px #f8b301 !important;
         }
         .rColor label.active{
-            border: solid 3px rgb(248, 179, 1) !important;
+            border: solid 3px #f8b301 !important;
         }
 
-        .spotTypes label:hover{
-            background-color: #f4f4f4;
+        .spotTypes label:hover, .spotTypes label.active{
+            background-color: #ffffff;
         }
-        .spotTypes label.active{
-            background-color: #f4f4f4;
-        }
+
         .spot-icon img{
             width: 75px;
         }

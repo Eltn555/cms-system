@@ -8,11 +8,55 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+
+        /* text loop */
+        .notification-box{
+            background-color: #f8b301;
+            padding: 10px;
+            white-space: nowrap;
+        }
+        .notification-box > div{
+            display: flex;
+            align-items: top;
+            -webkit-animation: loop 10s infinite linear;
+            animation: loop 10s infinite linear;
+            padding-right: 15px;
+        }
+        @keyframes loop {
+            100% {
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+        }
+
+        .calc-menu{
+            padding: 10px;
+            white-space: nowrap;
+        }
+        .calc-menu a{
+            background-color: #f8b301;
+            color: white;
+            border: white solid 1px;
+            border-bottom: none;
+        }
+        .calc-menu a.active, .calc-menu a:hover{
+            background-color: #f8f9fa;
+            color: #f8b301;
+        }
+
+        .calc-content{
+            padding-top: 10px;
+            display: none;
+            background-color: #f8f9fa;
+        }
+        .calc-content.active{
+            display: block;
+        }
     </style>
 @endpush
 
 <div>
-    <div class="container mt-5 py-5">
+    <div class="container mt-5 pt-5 pb-2">
         <div class="pt-3 row" data-aos-delay="50">
             <div class="col-12 mx-0 p-1 font-cormorant position-relative">
                 <h1 class="shadow-text-1 font-cormorant fw-bold">Калькулятор</h1>
@@ -20,7 +64,40 @@
             </div>
         </div>
     </div>
-    <livewire:front.calculator.spot />
+
+    <!-- testing mode -->
+    <div class="notification-box d-flex">
+        <div>
+            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, поэтому некоторые данные могут быть неточными. </p>
+        </div>
+        <div>
+            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, поэтому некоторые данные могут быть неточными. </p>
+        </div>
+        <div>
+            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, поэтому некоторые данные могут быть неточными. </p>
+        </div>
+    </div>
+
+    <div class="container mt-2 m-0 p-0">
+        <div class="row calc-menu m-0 p-0">
+            <a href="javascript:showContent('spot');" id="spot-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 active">Споты</a>
+            <a href="javascript:showContent('led');" id="led-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Ленты</a>
+            <a href="javascript:showContent('track');" id="track-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Трековые системы</a>
+            <a href="javascript:showContent('chandelier');" id="chandelier-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Люстры</a>
+        </div>
+    </div>
+    <div id="spot" class="calc-content active">
+        <livewire:front.calculator.spot />
+    </div>
+    <div id="led" class="calc-content">
+        {{-- <livewire:front.calculator.led /> --}}
+    </div>
+    <div id="track" class="calc-content">
+        {{-- <livewire:front.calculator.track /> --}}
+    </div>
+    <div id="chandelier" class="calc-content">
+        {{-- <livewire:front.calculator.chandelier /> --}}
+    </div>
     Продуктов:{{ $products->count() }}<br>
     <div class="container">
         <div class="row">
@@ -35,6 +112,16 @@
 
 @push('scripts')
     <script>
+        function showContent(id){
+            document.querySelectorAll('.calc-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.calc-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+            document.getElementById(id + '-link').classList.add('active');
+        }
         // Handle all number inputs
         document.querySelectorAll('input[type="number"]').forEach(input => {
             input.addEventListener('keydown', (event) => {
