@@ -7,7 +7,7 @@
         {!! json_encode([
             "@context" => "https://schema.org",
             "@type" => "ItemList",
-            "name" => "Каталог: " . $this->category ? $this->category->title : 'Магазин', // The name of the category page itself
+            "name" => "Каталог: " . ($this->category ? $this->category->title : 'Магазин'), // The name of the category page itself
             "description" => "Просмотрите наши каталог - " . strtolower($this->category ? $this->category->title : 'Магазин') . ". Бесплатная доставка по Ташкенту и гарантия качества от LumenLux.", // A good description for the category
             "numberOfItems" => $products->total(), // Total number of products in this category
             "itemListElement" => $products->map(function ($product, $index) {
