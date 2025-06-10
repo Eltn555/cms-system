@@ -10,9 +10,11 @@ class Index extends Component
     public $lux;
     public $categories;
     public $products;
+    public $allProducts;
     protected $listeners = ['setProducts'];
     public $limit = 20;
     public $addLimit = 20;
+    public $allProductsCount;
 
     public function mount()
     {
@@ -34,11 +36,12 @@ class Index extends Component
             ? array_intersect(...$categoryProducts)
             : ($categoryProducts[0] ?? []);
 
-        $this->products = collect($this->categories->flatMap->products)
+        $this->allProducts = collect($this->categories->flatMap->products)
             ->where('status', 1)
             ->unique('id')
             ->whereIn('id', $commonProductIds)
             ->values();
+        $this->allProductsCount = $this->allProducts->count();
     }
 
     public function loadMore()
@@ -49,7 +52,7 @@ class Index extends Component
 
     public function render()
     {
-        $this->products = $this->products->take($this->limit);
+        $this->products = $this->allProducts->take($this->limit);
 
         return view('livewire.front.calculator.index', [
             'products' => $this->products,

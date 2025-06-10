@@ -129,7 +129,7 @@
                 </div>
             @endforeach
             {{-- hide button if no more products to show--}}
-            @if ($products->count() > $limit)
+            @if ($allProductsCount > $limit)
                 <div class="col-12 my-3 d-flex justify-content-center">
                     <button wire:click="loadMore" class="calc-more-btn">Посмотреть еще <i class="ps-2 fa fa-angles-down"></i></button>
                 </div>
