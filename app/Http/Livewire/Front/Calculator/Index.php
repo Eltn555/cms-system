@@ -11,6 +11,8 @@ class Index extends Component
     public $categories;
     public $products;
     protected $listeners = ['setProducts'];
+    public $limit = 20;
+    public $addLimit = 20;
 
     public function mount()
     {
@@ -36,8 +38,14 @@ class Index extends Component
             ->where('status', 1)
             ->unique('id')
             ->whereIn('id', $commonProductIds)
-            ->take(20)
+            ->take($this->limit)
             ->values();
+    }
+
+    public function loadMore()
+    {
+        $this->limit += $this->addLimit;
+        $this->setProducts($this->lux, $this->categories->pluck('id')->toArray());
     }
 
     public function render()

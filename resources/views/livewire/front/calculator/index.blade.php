@@ -52,6 +52,28 @@
         .calc-content.active{
             display: block;
         }
+
+        .calc-more-btn{
+            background-color: #f8b301;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calc-more-btn:hover{
+            background-color: #fdd05c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
     </style>
 @endpush
 
@@ -98,14 +120,17 @@
     <div id="chandelier" class="calc-content">
         {{-- <livewire:front.calculator.chandelier /> --}}
     </div>
-    Продуктов:{{ $products->count() }}<br>
     <div class="container">
         <div class="row">
+            <h3 class="mt-3 font-kyiv fs-3 fw-bold">Результаты</h3>
             @foreach ($products as $product)
                 <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-2" wire:key="product-{{ $product->id }}-{{ $lux }}">
                     <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
                 </div>
             @endforeach
+            <div class="col-12 my-3 d-flex justify-content-center">
+                <button wire:click="loadMore" class="calc-more-btn">Посмотреть еще <i class="ps-2 fa fa-angles-down"></i></button>
+            </div>
         </div>
     </div>
 </div>

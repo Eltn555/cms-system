@@ -235,7 +235,7 @@
                     </label>
                 </div>
             </div>
-            <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
+            {{-- <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
             <div class="row sType m-0">
                 @foreach ($spotTypes as $spotType)
                     <div class="col-6 p-1 m-0">
@@ -250,7 +250,7 @@
                         </label>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
             <div class="row sLocation m-0">
                 @foreach ($spotLocations as $spotLocation)
@@ -266,21 +266,6 @@
                         </label>
                     </div>
                 @endforeach
-            </div>
-        </div>
-        <!-- Result -->
-        <div class="col-12">
-            <h3 class="font-kyiv fs-5 fw-bold">Результат</h3>
-            <div class="row">
-                <div class="col-12">
-                    Тип помещения:{{ $roomTypeValue }}<br>
-                    Освещение:{{ $spotTypeTitle }}<br>
-                    Расположение:{{ $spotLocationTitle }}<br>
-                    Куб:{{ $roomCube }}<br>
-                    Цвет:{{ $roomColor }}<br>
-                    Люкс (расчетный: lux х кв х высота1,25-1,5 / Цвет):{{ $lux }}<br>
-                    <p class="font-kyiv fs-5 fw-bold mb-0"></p>
-                </div>
             </div>
         </div>
     </div>
