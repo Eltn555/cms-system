@@ -124,7 +124,7 @@
         <div class="row">
             <h3 class="mt-3 font-kyiv fs-3 fw-bold">Результаты</h3>
             @foreach ($products as $product)
-                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-2" wire:key="product-{{ $product->id }}-{{ $lux }}">
+                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id }}-{{ $lux }}">
                     <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
                 </div>
             @endforeach
