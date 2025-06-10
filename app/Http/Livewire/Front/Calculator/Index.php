@@ -12,8 +12,8 @@ class Index extends Component
     public $products;
     public $allProducts;
     protected $listeners = ['setProducts'];
-    public $limit = 20;
-    public $addLimit = 20;
+    public $limit = 24;
+    public $addLimit = 12;
     public $allProductsCount;
 
     public function mount()
