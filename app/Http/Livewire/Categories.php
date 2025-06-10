@@ -4,8 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\Tag;
-use App\Models\WishlistProduct;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
