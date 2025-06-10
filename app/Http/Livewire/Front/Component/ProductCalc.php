@@ -18,6 +18,7 @@ class ProductCalc extends Component
     public $profPercent;
     public $lux;
     public $productPcsByLux;
+    public $morePcs = 1.1; // 10% more pcs
 
     public function mount($product, $lux){
         $this->updatedProduct($product, $lux);
@@ -120,7 +121,7 @@ class ProductCalc extends Component
                     $value = trim($cells->item(1)->textContent);
                     if (preg_match('/(\d+)/', $value, $matches)) {
                         $lm = (int)$matches[1];
-                        return ceil($this->lux / $lm);
+                        return ceil($this->lux * $this->morePcs / $lm);
                     }
                 }
             }
