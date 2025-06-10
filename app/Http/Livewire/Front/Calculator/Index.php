@@ -38,7 +38,6 @@ class Index extends Component
             ->where('status', 1)
             ->unique('id')
             ->whereIn('id', $commonProductIds)
-            ->take($this->limit)
             ->values();
     }
 
@@ -50,6 +49,8 @@ class Index extends Component
 
     public function render()
     {
+        $this->products = $this->products->take($this->limit);
+
         return view('livewire.front.calculator.index', [
             'products' => $this->products,
             'lux' => $this->lux
