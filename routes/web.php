@@ -68,9 +68,7 @@ Route::get('/category/search',[CategoryController::class,'search'])->name('front
 Route::get('/category/{slug}', Categories::class)->name('front.category.show');
 Route::get('/category', Categories::class)->name('front.category.index');
 Route::get('/product/{slug}', Products::class)->name('front.product.show');
-Route::get('/calculator', function () {
-    return view('errors.soon');
-})->name('front.calculator.index');
+Route::get('/calculator', CalculatorIndex::class)->name('front.calculator.index');
 Route::get('/wishlist', WishlistIndex::class)->name('front.wishlist.index');
 Route::get('/cartItems', CartView::class)->name('front.cartItems.index');
 Route::resource('/cart', CartController::class, ['as'=>'front']);
@@ -87,7 +85,6 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/', Profile::class)->name('front.profile.index');
     Route::post('/update-profile', [Profile::class, 'update'])->name('updateProfile');
 });
-Route::get('/calc', CalculatorIndex::class)->name('front.calculator.index');
 
 Route::post('/upload-video', [ImageController::class, 'video']);
 Route::get('/get-video-path', [ImageController::class, 'getVideoPath']);
