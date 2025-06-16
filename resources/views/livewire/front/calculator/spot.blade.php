@@ -21,13 +21,15 @@
         }
         label{
             cursor: pointer;
-            border: solid 1px rgb(248, 179, 1);
+            border: solid 2px rgb(248, 179, 1);
         }
         label i{
             color: rgb(248, 179, 1);
         }
         .room-type label:hover, .room-type label.active{
             background-color: #ffffff;
+            box-shadow: inset 0 0 5px 1px #8ab2ff !important;
+            border: 2px solid #8ab2ff;
         }
 
         .room-white{
@@ -48,22 +50,20 @@
         .room-black:hover, .room-black.active{
             background-color: #313131 !important;
         }
-        
 
         .rColor label{
             border: solid 1px rgb(216, 216, 216) !important;
             width: 100%;
             height: 38px;
         }
-        .rColor label:hover{
-            border: solid 2px #f8b301 !important;
-        }
-        .rColor label.active{
-            border: solid 3px #f8b301 !important;
+        .rColor label.active, .rColor label:hover{
+            border: solid 3px #8ab2ff !important;
         }
 
         .spotTypes label:hover, .spotTypes label.active{
             background-color: #ffffff;
+            box-shadow: inset 0 0 5px 1px #8ab2ff !important;
+            border: 2px solid #8ab2ff;
         }
 
         .spot-icon img{
@@ -152,7 +152,6 @@
 <div class="container pb-5 px-0" style="max-width: 1400px; margin: 0 auto;">
     <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
         <!-- Room type -->
-        <p class="text-danger m-0 p-0 col-12 {{ $roomCube && !$roomTypeValue ? '' : 'd-none' }}">*Выберите тип помещения</p>
         <div class="col-12 col-lg-3 mb-3 room-type px-0 d-flex flex-wrap align-self-start" wire:ignore>
             <h3 class="font-kyiv fs-5 fw-bold w-100">Тип помещения</h3>
             @foreach ($roomTypes as $roomType)
@@ -267,6 +266,10 @@
                     </div>
                 @endforeach
             </div>
+            <div class="p-1 col-12 my-3 d-flex flex-column justify-content-center">
+                <button wire:click="lux" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
+                <p class="text-danger fs-6 mt-2 font-kyiv fw-bold m-0 p-0 col-12">{{ $error }}</p>
+            </div>
         </div>
     </div>
 </div>
@@ -280,9 +283,6 @@
                 $(this).parent('label').siblings('label').removeClass('active');
                 $(this).parent('label').parent('div').siblings('div').children('label').removeClass('active');
             });
-        });
-        Livewire.on('setProducts', function(lux, categories){
-            console.log(lux, categories);
         });
     </script>
 @endpush

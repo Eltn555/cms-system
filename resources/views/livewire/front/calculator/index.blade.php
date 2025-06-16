@@ -14,6 +14,7 @@
             background-color: #f8b301;
             padding: 10px;
             white-space: nowrap;
+            overflow: hidden;
         }
         .notification-box > div{
             display: flex;
@@ -100,7 +101,7 @@
         </div>
     </div>
 
-    <div class="container mt-2 m-0 p-0">
+    <div class="container mt-2 m-0 w-100 p-0">
         <div class="row calc-menu m-0 p-0">
             <a href="javascript:showContent('spot');" id="spot-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 active">Споты</a>
             <a href="javascript:showContent('led');" id="led-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Ленты</a>

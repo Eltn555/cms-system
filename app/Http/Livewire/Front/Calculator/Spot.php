@@ -23,6 +23,7 @@ class Spot extends Component
     public $roomCube;
     public $lux;
     public $defaultCategory;
+    public $error = '';
 
     //testing
     public $spotTypeTitle;
@@ -33,27 +34,16 @@ class Spot extends Component
         $this->res();
     }
 
-    public function updatedRoomSize(){
-        $this->lux();
-    }
-
-    public function updatedRoomTypeValue(){
-        $this->lux();
-    }
-
     public function upRoomColor($value){
         $this->roomColor = $this->roomColor == $value ? 0.6 : $value;
-        $this->lux();
     }
 
     public function upSpotTypeValue($value){
         $this->spotTypeValue = $this->spotTypeValue == $value ? '' : $value;
-        $this->lux();
     }
 
     public function upSpotLocationValue($value){
         $this->spotLocationValue = $this->spotLocationValue == $value ? '' : $value;
-        $this->lux();
     }
 
     public function lux(){
@@ -65,7 +55,9 @@ class Spot extends Component
         if($this->roomCube > 0 && $this->roomTypeValue){
             $this->lux = $this->roomCube * $this->roomTypeValue / $this->roomColor;
         } else {
+            $this->error = '* Выберите тип помещения и введите размеры помещения';
             $this->lux = 0;
+            return;
         }
 
         $this->spotTypeTitle = '';
