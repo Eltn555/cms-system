@@ -60,6 +60,7 @@ class Spot extends Component
             return;
         }
 
+        $this->error = '';
         $this->spotTypeTitle = '';
         $this->spotLocationTitle = '';
         $categories = [];
