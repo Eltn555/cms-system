@@ -186,7 +186,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium">{{ $spotType->title }}</h3>
-                                    <span class="text-sm text-gray-500">Категория: {{ $categories->find($spotType->setting_value)->title }}</span>
+                                    <span class="text-sm text-gray-500">Категория: {{ $categories->find($spotType->setting_value)->title ?? 'Удалено' }}</span>
                                 </div>
                                 <div>
                                     <button wire:click.prevent="edit({{ $spotType->id }}, 'currentSpotType')" type="button" class="btn bg-white shadow-lg rounded-full text-primary py-3 px-4">{{ $updating['id']==$spotType->id ? 'Отменить ' : '' }}<i class="fa-solid fa-{{ $updating['id']==$spotType->id ? 'x' : 'pencil' }}"></i></button>
@@ -248,7 +248,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium">{{ $spotLocation->title }}</h3>
-                                    <span class="text-sm text-gray-500">Категория: {{ $categories->find($spotLocation->setting_value)->title }}</span>
+                                    <span class="text-sm text-gray-500">Категория: {{ $categories->find($spotLocation->setting_value)->title ?? 'Удалено' }}</span>
                                 </div>
                                 <div>
                                     <button wire:click.prevent="edit({{ $spotLocation->id }}, 'currentSpotLocation')" type="button" class="btn bg-white shadow-lg rounded-full text-primary py-3 px-4">{{ $updating['id']==$spotLocation->id ? 'Отменить ' : '' }}<i class="fa-solid fa-{{ $updating['id']==$spotLocation->id ? 'x' : 'pencil' }}"></i></button>
