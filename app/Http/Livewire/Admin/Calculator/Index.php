@@ -3,10 +3,8 @@
 namespace App\Http\Livewire\Admin\Calculator;
 
 use Livewire\Component;
-use Livewire\WithValidation;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 use App\Models\Category;
 use Livewire\WithFileUploads;
 
@@ -19,14 +17,22 @@ class Index extends Component
     public $spotTypes = [];
     public $spotLocations = [];
     public $currentRoomType = [];
+    public $currentLedRoom = [];
+    public $ledRooms = [];
     public $currentSpotType = [];
     public $allSpotCategory = [];
+    public $allLedCategory = [];
+    public $allPowerBlockCategory = [];
+    public $allLedAccessoryCategory = [];
     public $currentSpotLocation = [];
     public $updating = [ 'id' => 0, 'var' => '' ];
     public $delete = '';
 
     public $rules = [
-        'allSpotCategory.setting_value' => 'required|integer', // or whatever validation you need
+        'allSpotCategory.setting_value' => 'required|integer',
+        'allLedCategory.setting_value' => 'required|integer',
+        'allPowerBlockCategory.setting_value' => 'required|integer',
+        'allLedAccessoryCategory.setting_value' => 'required|integer',
     ];
 
     public function mount()
@@ -51,22 +57,20 @@ class Index extends Component
         ]);
     }
 
-    public function updateAllSpotCategory()
-    {
-        if(isset($this->allSpotCategory['id'])){
-            Setting::find($this->allSpotCategory['id'])->update([
-                'title' => $this->categories->where('id', $this->allSpotCategory['setting_value'])->first()->title,
-                'setting_value' => $this->allSpotCategory['setting_value'],
+    public function updateCategories($var){
+        if(isset($this->$var['id'])){
+            Setting::find($this->$var['id'])->update([
+                'title' => $this->categories->where('id', $this->$var['setting_value'])->first()->title,
+                'setting_value' => $this->$var['setting_value'],
             ]);
         }else{
-            $this->allSpotCategory = Setting::create([
-                'title' => $this->categories->where('id', $this->allSpotCategory['setting_value'])->first()->title,
-                'setting_value' => $this->allSpotCategory['setting_value'],
+            $this->$var = Setting::create([
+                'title' => $this->categories->where('id', $this->$var['setting_value'])->first()->title,
+                'setting_value' => $this->$var['setting_value'],
                 'setting_group' => 'calculator',
-                'setting_key' => 'spot_category'
+                'setting_key' => $var
             ]);
         }
-        
         $this->res();
     }
 
@@ -76,10 +80,15 @@ class Index extends Component
         if($this->calc_options){
             $this->allSpotCategory = $this->calc_options->where('setting_key', 'spot_category')->values()->first();
             $this->roomTypes = $this->calc_options->where('setting_key', 'room_types')->values() ?? collect();
+            $this->ledRooms = $this->calc_options->where('setting_key', 'led_rooms')->values() ?? collect();
             $this->spotTypes = $this->calc_options->where('setting_key', 'spot_types')->values() ?? collect();
             $this->spotLocations = $this->calc_options->where('setting_key', 'spot_locations')->values() ?? collect();
+            $this->allLedCategory = $this->calc_options->where('setting_key', 'led_category')->values()->first();
+            $this->allPowerBlockCategory = $this->calc_options->where('setting_key', 'power_block_category')->values()->first();
+            $this->allLedAccessoryCategory = $this->calc_options->where('setting_key', 'led_accessory_category')->values()->first();
         }
         $this->updating = [ 'id' => 0, 'var' => '' ];
+        $this->currentLedRoom = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'led_rooms' ];
         $this->currentRoomType = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'room_types' ];
         $this->currentSpotType = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_types' ];
         $this->currentSpotLocation = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_locations' ];
@@ -88,7 +97,7 @@ class Index extends Component
     public function createNew($var){
         $data = $this->validation($var);
 
-        if($var == 'currentSpotType' || $var == 'currentSpotLocation'){
+        if($var == 'currentSpotType' || $var == 'currentSpotLocation' || $var == 'currentLedRoom'){
             $data[$var]['media'] = $this->saveFile($data[$var]['media']);
         }
 
@@ -117,7 +126,7 @@ class Index extends Component
     public function confirmDelete(){
         $setting = Setting::find($this->delete);
         if($setting){
-            if($setting->setting_key == 'spot_types' || $setting->setting_key == 'spot_locations'){
+            if($setting->setting_key == 'spot_types' || $setting->setting_key == 'spot_locations' || $setting->setting_key == 'led_rooms'){
                 Storage::disk('public')->delete($setting->media);
             }
             $setting->delete();
@@ -129,7 +138,7 @@ class Index extends Component
     public function update($var){
         $id = $this->updating['id'];
         $data = $this->validation($var);
-        if($var == 'currentSpotType' || $var == 'currentSpotLocation'){
+        if($var == 'currentSpotType' || $var == 'currentSpotLocation' || $var == 'currentLedRoom'){
             if($data[$var]['media'] && !is_string($data[$var]['media'])){
                 // Delete old file if it exists
                 $oldSetting = Setting::find($id);
