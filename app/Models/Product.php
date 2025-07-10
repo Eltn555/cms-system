@@ -27,7 +27,10 @@ class Product extends Model
         'similar_products',
         'additional_products',
         'status',
-        'rate'
+        'rate',
+        'watt',
+        'lumen',
+        'kelvin'
     ];
 
     public function images()
