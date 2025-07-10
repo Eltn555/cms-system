@@ -8,16 +8,15 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductImage;
-use App\Models\ProductTag;
 use App\Models\Tag;
 use App\Models\WishlistProduct;
 use Behat\Transliterator\Transliterator;
 use Carbon\Carbon;
-use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Melihovv\Base64ImageDecoder\Base64ImageDecoder;
+use App\Services\extractData;
 
 class ProductController extends Controller
 {
@@ -53,7 +52,6 @@ class ProductController extends Controller
         return view('products.index', compact('products', 'overall', 'categories', 'tags', 'perPage', 'currentPageNumber'));
     }
 
-
     public function create()
     {
         $categories = Category::all();
@@ -64,8 +62,6 @@ class ProductController extends Controller
             foreach ($images as $image){
                 ProductImage::destroy($image->id);
             }
-        }else{
-            dd('Images deleted', $images);
         }
         return view('products.create', compact('categories', 'tags', 'next'));
     }
@@ -124,7 +120,14 @@ class ProductController extends Controller
             Storage::put($fileName, $decoder->getDecodedContent());
             $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
         }
-        // END
+
+        if($data['additional']){
+            $extraction = new extractData();
+            $extractedData = $extraction->extractData($data['additional']);
+            $data['watt'] = $extractedData['watt'];
+            $data['lumen'] = $extractedData['lumen'];
+            $data['kelvin'] = $extractedData['kelvin'];
+        }
 
         $next = Product::orderBy('id', 'desc')->first()->id + 1;
         // Create product
@@ -242,23 +245,19 @@ class ProductController extends Controller
             Storage::put($fileName, $decoder->getDecodedContent());
             $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
         }
-        // END
 
-        $product = Product::find($id)->update([
-            'title' => $data['title'],
-            'short_description' => $data['short_description'],
-            'long_description' => $data['long_description'],
-            'price' => $data['price'],
-            'discount_price' => $data['discount_price'],
-            'amount' => $data['amount'],
-            'additional' => $data['additional'],
-            'seo_title' => $data['seo_title'],
-            'seo_description' => $data['seo_description'],
-            'status' => $data['status'],
-            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-').'-'.$id,
-        ]);
+        if($data['additional']){
+            $extraction = new extractData();
+            $extractedData = $extraction->extractData($data['additional']);
+            $data['watt'] = $extractedData['watt'];
+            $data['lumen'] = $extractedData['lumen'];
+            $data['kelvin'] = $extractedData['kelvin'];
+        }
 
+        $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-').'-'.$id;
         $product = Product::find($id);
+        $product->update($data);
+
         /*// Images process
         foreach ($data['images'] as $image) {
             $storage = Storage::put('/images', $image);
