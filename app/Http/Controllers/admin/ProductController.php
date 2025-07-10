@@ -128,22 +128,11 @@ class ProductController extends Controller
             $data['lumen'] = $extractedData['lumen'];
             $data['kelvin'] = $extractedData['kelvin'];
         }
-
+        
         $next = Product::orderBy('id', 'desc')->first()->id + 1;
+        $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next;
         // Create product
-        $product = Product::create([
-            'title' => $data['title'],
-            'short_description' => $data['short_description'],
-            'long_description' => $data['long_description'],
-            'price' => $data['price'],
-            'discount_price' => $data['discount_price'],
-            'amount' => $data['amount'],
-            'additional' => $data['additional'],
-            'seo_title' => $data['seo_title'],
-            'seo_description' => $data['seo_description'],
-            'status' => $data['status'],
-            'slug' => Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next,
-        ]);
+        $product = Product::create($data);
 
         $images = ProductImage::where('product_id', $next)->with('image')->get();
         // Images process
