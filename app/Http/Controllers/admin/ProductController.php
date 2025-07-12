@@ -110,17 +110,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // Process Short description images
-        preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
-
-        foreach ($matches[0] as $value) {
-            $encode = substr($value, 5, strlen($value) - 6);
-            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif']);
-            $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
-            Storage::put($fileName, $decoder->getDecodedContent());
-            $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
+        if($data['short_description']){
+            $data['short_description'] = $this->handleShortDescription($data['short_description']);
         }
-
+        
         if($data['additional']){
             $extraction = new extractData();
             $extractedData = $extraction->extractData($data['additional']);
@@ -128,12 +121,21 @@ class ProductController extends Controller
             $data['lumen'] = $extractedData['lumen'];
             $data['kelvin'] = $extractedData['kelvin'];
         }
+
+        $categories = $data['categories'];
+        $tags = $data['tags'];
+        $additional_products = $data['additional_products'];
+
+        // remove additional_products from data
+        unset($data['additional_products']);
+        unset($data['categories']);
+        unset($data['tags']);
         
         $next = Product::orderBy('id', 'desc')->first()->id + 1;
         $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next;
+
         // Create product
         $product = Product::create($data);
-
         $images = ProductImage::where('product_id', $next)->with('image')->get();
         // Images process
         foreach ($images as $productImage) {
@@ -150,8 +152,8 @@ class ProductController extends Controller
         }
 
         // Additional products (tags) process
-        if (array_key_exists('additional_products', $data)){
-            foreach ($data['additional_products'] as $additional_product) {
+        if ($additional_products != null){
+            foreach ($additional_products as $additional_product) {
                 $tag = Tag::firstOrCreate([
                     'title' => $additional_product
                 ], [
@@ -160,17 +162,18 @@ class ProductController extends Controller
                 $product->additional_tags()->attach($tag->id);
             }
         }
+        
 
-        if (array_key_exists('categories', $data)){
-            foreach ($data['categories'] as $categoryName) {
+        if ($categories != null){
+            foreach ($categories as $categoryName) {
                 $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
                 $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
                 $product->categories()->attach($category->id);
             }
         }
 
-        if (array_key_exists('tags', $data)) {
-            foreach ($data['tags'] as $tagName) {
+        if ($tags != null) {
+            foreach ($tags as $tagName) {
                 $tag = Tag::firstOrCreate([
                     'title' => $tagName
                 ], [
@@ -224,17 +227,10 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        // Process Short description images
-        preg_match_all('/src="([^"]*)"/', $data['short_description'], $matches);
-
-        foreach ($matches[0] as $value) {
-            $encode = substr($value, 5, strlen($value) - 6);
-            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif',]);
-            $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat();
-            Storage::put($fileName, $decoder->getDecodedContent());
-            $data['short_description'] = str_replace($encode, asset('storage/' . $fileName), $data['short_description']);
+        if($data['short_description']){
+            $data['short_description'] = $this->handleShortDescription($data['short_description']);
         }
-
+        
         if($data['additional']){
             $extraction = new extractData();
             $extractedData = $extraction->extractData($data['additional']);
@@ -246,19 +242,6 @@ class ProductController extends Controller
         $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-').'-'.$id;
         $product = Product::find($id);
         $product->update($data);
-
-        /*// Images process
-        foreach ($data['images'] as $image) {
-            $storage = Storage::put('/images', $image);
-
-            dump($storage);
-            $storedImage = Image::create([
-                'image' => $storage,
-                'alt' => $product->title
-            ]);
-            $product->images()->attach($storedImage->id);
-        }*/
-        // Additional products (tags) process
 
         $categoryIds = [];
         foreach ($request->input('categories', []) as $categoryName) {
@@ -289,6 +272,20 @@ class ProductController extends Controller
         }
         return redirect()->route('admin.products.index', ['page' => $data['page']])
             ->with('message', 'Product updated successfully');
+    }
+
+    private function handleShortDescription($shortDescription){
+        // Process Short description images
+        preg_match_all('/src="([^"]*)"/', $shortDescription, $matches);
+
+        foreach ($matches[0] as $value) { // Process Short description images
+            $encode = substr($value, 5, strlen($value) - 6); // Get the base64 encoded image
+            $decoder = new Base64ImageDecoder($encode, ['jpeg', 'jpg', 'png', 'gif']); // Decode the image
+            $fileName = 'images/' . Carbon::now()->format('Y-m-d_His') . '.' . $decoder->getFormat(); // Get the file name
+            Storage::put($fileName, $decoder->getDecodedContent()); // Save the image
+            $shortDescription = str_replace($encode, asset('storage/' . $fileName), $shortDescription); // Replace the image with the new image
+        }
+        return $shortDescription;
     }
 }
 
