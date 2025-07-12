@@ -240,21 +240,29 @@ class ProductController extends Controller
         }
 
         $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-').'-'.$id;
+        $categories = $data['categories'];
+        $tags = $data['tags'];
+        $additional_products = $data['additional_products'];
+
+        // remove additional_products from data
+        unset($data['additional_products']);
+        unset($data['categories']);
+        unset($data['tags']);
         $product = Product::find($id);
         $product->update($data);
 
         $categoryIds = [];
-        foreach ($request->input('categories', []) as $categoryName) {
+        foreach ($categories as $categoryName) {
             $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
             $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
             $categoryIds[] = $category->id;
         }
         $product->categories()->sync($categoryIds);
 
-        if (!empty($request['tags'])) {
+        if ($tags != null) {
             $tagIds = [];
             // Update or attach tags
-            foreach ($request->input('tags', []) as $tagName) {
+            foreach ($tags as $tagName) {
                 $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
                 $tagIds[] = $tag->id;
             }
@@ -262,9 +270,9 @@ class ProductController extends Controller
         }
 
         // Update or attach additional products
-        if (!empty($request['additional_products'])){
+        if ($additional_products != null){
             $tagAddIds = [];
-            foreach ($request->input('additional_products', []) as $additionalProductName) {
+            foreach ($additional_products as $additionalProductName) {
                 $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
                 $tagAddIds[] = $additionalProduct->id;
             }

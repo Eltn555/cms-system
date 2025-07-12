@@ -200,7 +200,7 @@
                     <label for="visible" class="form-label">Visible</label>
                     <div class="form-check form-switch p-0">
                         <input id="visible" class="form-check-input"
-                               name="status" type="checkbox" value="{{$products->status}}" checked>
+                               name="status" type="checkbox" value="{{$products->status}}" {{ $products->status == 1 ? 'checked' : '' }}>
                     </div>
                 </div>
                 <div class="col-span-4 mx-2 sm:col-span-5 mt-3">
