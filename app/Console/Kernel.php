@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('sync:stock')->cron('0 */3 * * *');
         $schedule->command('sitemap:update')->daily();
+        $schedule->command('delete:inactive')->monthly();
     }
 
     /**

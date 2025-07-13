@@ -214,6 +214,14 @@ class ProductController extends Controller
                 // Delete the Wishlist item
                 $cartItem->each->delete();
             }
+
+            if ($productDestroy->images) {
+                foreach ($productDestroy->images as $image) {
+                    Storage::delete('public/' . $image->image);
+                    $image->delete();
+                }
+            }
+
             $productDestroy->delete();
 
             return [
