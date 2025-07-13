@@ -72,7 +72,7 @@ class deleteInactiveProducts
             $tagsIds = ProductTag::whereIn('product_id', $productIds)->pluck('id');
             $additionalTagsIds = AdditionalTag::whereIn('product_id', $productIds)->pluck('id');
             $categoriesIds = CategoryProduct::whereIn('product_id', $productIds)->pluck('id');
-            $imagesIds = $images->image->pluck('id');
+            $imagesIds = $images->pluck('image_id');
 
             // Delete images from storage
             foreach ($images as $image) {
