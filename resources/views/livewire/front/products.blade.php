@@ -248,7 +248,7 @@
                             <h1 class="font-cormorant fw-bold h1 image{{$product->id}}">{{$product->title}}</h1>
                             <div style="width: 20%" class="h4 d-flex align-items-center justify-content-around flex-column">
                                 <div class="">
-                                    @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
+                                    @livewire('front.wishlist.wishlist-button', ['productId' => $product->id], key($product->id))
                                 </div>
                                 <div class="single-product-compare">
                                     {{--                                    <a title="Compare" href="#"><i class="pe-7s-shuffle"></i></a>--}}
