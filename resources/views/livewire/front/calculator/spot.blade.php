@@ -234,22 +234,6 @@
                     </label>
                 </div>
             </div>
-            {{-- <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
-            <div class="row sType m-0">
-                @foreach ($spotTypes as $spotType)
-                    <div class="col-6 p-1 m-0">
-                        <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotTypeValue == $spotType->setting_value ? 'active' : '' }}">
-                            <div class="spot-icon">
-                                <img src="{{ asset('storage/'.$spotType->media) }}" alt="{{ $spotType->title }}">
-                            </div>
-                            <div class="w-100 text-center">
-                                <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $spotType->title }}</p>
-                            </div>
-                            <input wire:click="upSpotTypeValue({{ $spotType->setting_value }})" id="spot{{ $spotType->id }}" type="radio">
-                        </label>
-                    </div>
-                @endforeach
-            </div> --}}
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
             <div class="row sLocation m-0">
                 @foreach ($spotLocations as $spotLocation)
@@ -267,10 +251,23 @@
                 @endforeach
             </div>
             <div class="p-1 col-12 my-3 d-flex flex-column justify-content-center">
-                <button wire:click="lux" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
+                <button wire:click="calculate" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
                 <p class="text-danger fs-6 mt-2 font-kyiv fw-bold m-0 p-0 col-12">{{ $error }}</p>
             </div>
         </div>
+    </div>
+    <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
+        <div class="col-12 my-3 d-flex justify-content-between gap-2 mt-3">
+            <h3 class="font-kyiv fs-3 fw-bold">Результаты</h3>
+            <div class="d-flex gap-2">
+                <button wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}><i class="fa fa-angles-right"></i></button>
+            </div>
+        </div>
+        @foreach ($convertedProducts as $product)
+            <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $lux }}">
+                <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+            </div>
+        @endforeach
     </div>
 </div>
 

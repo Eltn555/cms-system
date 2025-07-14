@@ -12,6 +12,9 @@ class extractData
         $batchSize = 100;
         $processed = 0;
         $page = 0;
+        $watt = 0;
+        $lumen = 0;
+        $kelvin = 0;
 
         do {
             $products = Product::select('id', 'additional')
@@ -26,7 +29,7 @@ class extractData
             foreach ($products as $product) {
                 $data = $this->extractData($product->additional);
                 // Use query builder for direct update (faster, no events)
-                if($data['watt'] && $data['lumen'] && $data['kelvin']){ // if the data is not null
+                if($data['watt'] || $data['lumen'] || $data['kelvin']){ // if the data is not null
                     Product::where('id', $product->id)->update([
                         'watt' => $data['watt'],
                         'lumen' => $data['lumen'],
@@ -36,10 +39,16 @@ class extractData
                 }
                 $processed++;
                 echo "$processed - {$product->id} - {$data['watt']} - {$data['lumen']} - {$data['kelvin']}\n";
+                $watt += $data['watt'] ? 1 : 0;
+                $lumen += $data['lumen'] ? 1 : 0;
+                $kelvin += $data['kelvin'] ? 1 : 0;
             }
             echo "Page: $page\n, Processed: $processed\n";
             $page++;
         } while ($count === $batchSize);
+        echo "Watt: $watt\n";
+        echo "Lumen: $lumen\n";
+        echo "Kelvin: $kelvin\n";
     }
 
     public function extractData($data)
@@ -53,7 +62,6 @@ class extractData
         // Load HTML
         $dom = new \DOMDocument();
         @$dom->loadHTML('<?xml encoding="utf-8" ?>' . $data); // suppress warnings
-
         $rows = $dom->getElementsByTagName('tr');
         foreach ($rows as $row) {
             
@@ -61,20 +69,23 @@ class extractData
             if ($cols->length < 2) continue; // skip if there is no second column
             
             $value = trim($cols->item(1)->textContent); // get the text of the second column
+            // Remove all whitespace (including non-breaking spaces)
+            $value = preg_replace('/\s+/u', '', $value);
 
             // Watt: look for number followed by w
-            if (preg_match('/(\\d{1,6})\\s*w/i', $value, $m) && !$result['watt']) { // if the value is a number followed by w
+            if (preg_match('/(\d{1,6})w/i', $value, $m) && !$result['watt']) { // if the value is a number followed by w
                 $result['watt'] = (int)$m[1]; // set the watt
             }
             // Lumen: look for number followed by lm
-            if (preg_match('/(\\d{1,6})\\s*lm/i', $value, $m) && !$result['lumen']) { // if the value is a number followed by lm
+            if (preg_match('/(\d{1,6})lm/i', $value, $m) && !$result['lumen']) { // if the value is a number followed by lm
                 $result['lumen'] = (int)$m[1]; // set the lumen
             }
             // Kelvin: look for number followed by k (optionally with ° or CCT)
-            if (preg_match('/(\\d{3,6})\\s*k/i', $value, $m) && !$result['kelvin']) { // if the value is a number followed by k
+            if (preg_match('/(\d{3,6})k/i', $value, $m) && !$result['kelvin']) { // if the value is a number followed by k
                 $result['kelvin'] = (int)$m[1]; // set the kelvin
             }
         }
+
         return $result;
     }
 }

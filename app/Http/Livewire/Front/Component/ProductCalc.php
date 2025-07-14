@@ -32,7 +32,7 @@ class ProductCalc extends Component
     public function updatedProduct($product, $lux){
         $this->product = $product;
         $this->lux = $lux;
-        $this->tags = $product->tags()->where('visible', 1)->take(3)->get();
+        $this->tags = $product->tags()->where('visible', 1)->take(3)->get() ?? collect();
         $this->image = $product->images()->first();
         $disc = $product->discount_price ?? 0;
         $this->profit = $product->price - $disc;
@@ -101,32 +101,13 @@ class ProductCalc extends Component
     }
 
     public function getPcsByLm(){
-        $info = $this->product->additional; // HTML table string
+        $lumen = $this->product->lumen; // lumens
 
-        if (!$info) {
+        if (!$lumen) {
             return null;
         }
 
-        $doc = new \DOMDocument();
-        libxml_use_internal_errors(true); // Suppress HTML5 warnings
-        $doc->loadHTML('<?xml encoding="utf-8" ?>' . $info);
-        libxml_clear_errors();
-
-        $rows = $doc->getElementsByTagName('tr');
-        foreach ($rows as $row) {
-            $cells = $row->getElementsByTagName('td');
-            if ($cells->length >= 2) {
-                $label = trim($cells->item(0)->textContent);
-                if (mb_stripos($label, 'Поток') !== false) {
-                    $value = trim($cells->item(1)->textContent);
-                    if (preg_match('/(\d+)/', $value, $matches)) {
-                        $lm = (int)$matches[1];
-                        return ceil($this->lux * $this->morePcs / $lm);
-                    }
-                }
-            }
-        }
-        return null;
+        return ceil($this->lux * $this->morePcs / $lumen);
     }
 
     public function showProduct($slug)

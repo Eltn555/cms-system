@@ -75,6 +75,9 @@
             padding: 10px 20px;
             border-radius: 5px;
         }
+        .calc-more-btn:disabled{
+            background-color: #fdd05c;
+        }
     </style>
 @endpush
 
@@ -113,29 +116,13 @@
         <livewire:front.calculator.spot />
     </div>
     <div id="led" class="calc-content">
-        {{-- <livewire:front.calculator.led /> --}}
+        <livewire:front.calculator.led />
     </div>
     <div id="track" class="calc-content">
         {{-- <livewire:front.calculator.track /> --}}
     </div>
     <div id="chandelier" class="calc-content">
         {{-- <livewire:front.calculator.chandelier /> --}}
-    </div>
-    <div class="container">
-        <div class="row">
-            <h3 class="mt-3 font-kyiv fs-3 fw-bold">Результаты</h3>
-            @foreach ($products as $product)
-                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id }}-{{ $lux }}">
-                    <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
-                </div>
-            @endforeach
-            {{-- hide button if no more products to show--}}
-            @if ($allProductsCount > $limit)
-                <div class="col-12 my-3 d-flex justify-content-center">
-                    <button wire:click="loadMore" class="calc-more-btn">Посмотреть еще <i class="ps-2 fa fa-angles-down"></i></button>
-                </div>
-            @endif
-        </div>
     </div>
 </div>
 
