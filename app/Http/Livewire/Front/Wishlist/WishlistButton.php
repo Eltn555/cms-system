@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Cookie;
 
 class WishlistButton extends Component
 {
-    public $product;
+    public $productId;
     public $isInWishlist;
     public $wishlistCount;
     public $wishList;
 
-    public function mount($product)
+    public function mount($productId)
     {
         $this->wishList = json_decode(Cookie::get('wishlist', '[]'), true);
-        $this->product = $product;
+        $this->productId = $productId;
         $this->updateWishlistData();
     }
 
@@ -31,7 +31,7 @@ class WishlistButton extends Component
         if (Auth::check()) {
             $user = Auth::user();
             $wishlistProduct = WishlistProduct::where('user_id', $user->id)
-                ->where('product_id', $this->product->id)
+                ->where('product_id', $this->productId)
                 ->first();
 
             if ($wishlistProduct) {
@@ -39,18 +39,18 @@ class WishlistButton extends Component
             } else {
                 WishlistProduct::create([
                     'user_id' => $user->id,
-                    'product_id' => $this->product->id
+                    'product_id' => $this->productId
                 ]);
             }
         } else {
             // Handle adding/removing product from cookie
             $this->wishList = json_decode(Cookie::get('wishlist', '[]'), true);
-            if (in_array($this->product->id, $this->wishList)) {
+            if (in_array($this->productId, $this->wishList)) {
                 // Remove product from wishlist
-                $this->wishList = array_diff($this->wishList, [$this->product->id]);
+                $this->wishList = array_diff($this->wishList, [$this->productId]);
             } else {
                 // Add product to wishlist
-                $this->wishList[] = $this->product->id;
+                $this->wishList[] = $this->productId;
             }
             Cookie::queue('wishlist', json_encode($this->wishList), 60 * 24 * 30);
             // Update wishlist count and check if product is in wishlist
@@ -64,11 +64,11 @@ class WishlistButton extends Component
             $user = Auth::user();
             $this->wishlistCount = WishlistProduct::where('user_id', $user->id)->count();
             $this->isInWishlist = WishlistProduct::where('user_id', $user->id)
-                ->where('product_id', $this->product->id)
+                ->where('product_id', $this->productId)
                 ->exists();
         } else {
             $this->wishlistCount = count($this->wishList);
-            $this->isInWishlist = in_array($this->product->id, $this->wishList);
+            $this->isInWishlist = in_array($this->productId, $this->wishList);
             $this->dispatchBrowserEvent('console', ['console' => $this->wishList]);
         }
         $this->dispatchBrowserEvent('wishlistUpdated', ['count' => $this->wishlistCount]);

@@ -43,7 +43,7 @@
                     </div>
                 @endif
                 <div class="product-action-wrap">
-                    @livewire('front.wishlist.wishlist-button', ['product' => $product], key($product->id))
+                    @livewire('front.wishlist.wishlist-button', ['productId' => $product->id], key($product->id))
                 </div>
                 @if($product->amount > 0)
                     @livewire('front.cart.cart-count-btn', ['product' => $product, 'type' => 'cart'], key($product->id))
