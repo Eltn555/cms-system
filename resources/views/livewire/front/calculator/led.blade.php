@@ -152,9 +152,9 @@
 <div class="container pb-5 px-0" style="max-width: 1400px; margin: 0 auto;">
     <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
         <!-- Room type -->
-        <div class="col-12 col-lg-3 mb-3 room-type px-0 d-flex flex-wrap align-self-start" wire:ignore>
+        <div class="col-12 mb-3 room-type px-0 d-flex flex-wrap align-self-start" wire:ignore>
             <h3 class="font-kyiv fs-5 fw-bold w-100">Тип помещения</h3>
-            @foreach ($roomTypes as $roomType)
+            {{-- @foreach ($roomTypesKelvin as $roomType)
                 <div style="padding: 0.1rem;" class="col-12 col-sm-6 col-lg-12">
                     <label for="lux{{ $roomType->setting_value }}" class="rounded-1 p-1 p-md-2 w-100 h-100 shadow-sm d-flex align-items-center justify-content-between">
                         <div class="w-100 ps-2 text-start">
@@ -167,7 +167,7 @@
                         <input wire:model="roomTypeValue" name="room-type" id="lux{{ $roomType->setting_value }}" type="radio" value="{{ $roomType->setting_value }}">
                     </label>
                 </div>
-            @endforeach
+            @endforeach --}}
         </div>
 
         <!-- Size of the room -->
@@ -218,7 +218,7 @@
         <div class="col-12 col-lg-3 mb-3 spotTypes px-0">
             <h3 class="font-kyiv fs-5 fw-bold">Оттенок помещения</h3>
             <div class="row rColor m-0 pt-1">
-                <div class="col-4 p-0 m-0">
+                {{-- <div class="col-4 p-0 m-0">
                     <label for="white" class="room-white p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.8 ? 'active' : '' }} align-items-center justify-content-between">
                         <input wire:click="upRoomColor(0.8)" id="white" type="radio" class="">
                     </label>
@@ -232,10 +232,26 @@
                     <label for="black" class="room-black p-2 shadow-sm d-flex flex-column {{ $roomColor == 0.4 ? 'active' : '' }} align-items-center justify-content-between">
                         <input wire:click="upRoomColor(0.4)" id="black" type="radio" class="">
                     </label>
-                </div>
+                </div> --}}
             </div>
+            {{-- <h3 class="font-kyiv fs-5 fw-bold mt-3">Освещение</h3>
+            <div class="row sType m-0">
+                @foreach ($spotTypes as $spotType)
+                    <div class="col-6 p-1 m-0">
+                        <label for="spot{{ $spotType->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotTypeValue == $spotType->setting_value ? 'active' : '' }}">
+                            <div class="spot-icon">
+                                <img src="{{ asset('storage/'.$spotType->media) }}" alt="{{ $spotType->title }}">
+                            </div>
+                            <div class="w-100 text-center">
+                                <p class="font-kyiv fs-6 fw-bolder mb-0">{{ $spotType->title }}</p>
+                            </div>
+                            <input wire:click="upSpotTypeValue({{ $spotType->setting_value }})" id="spot{{ $spotType->id }}" type="radio">
+                        </label>
+                    </div>
+                @endforeach
+            </div> --}}
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
-            <div class="row sLocation m-0">
+            {{-- <div class="row sLocation m-0">
                 @foreach ($spotLocations as $spotLocation)
                     <div class="col-6 p-1 m-0">
                         <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotLocationValue == $spotLocation->setting_value ? 'active' : '' }}">
@@ -251,36 +267,15 @@
                 @endforeach
             </div>
             <div class="p-1 col-12 my-3 d-flex flex-column justify-content-center">
-                <button wire:click="calculate" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
+                <button wire:click="lux" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
                 <p class="text-danger fs-6 mt-2 font-kyiv fw-bold m-0 p-0 col-12">{{ $error }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
-        <div class="col-12 my-3 d-flex justify-content-between gap-2 mt-3">
-            <h3 class="font-kyiv fs-3 fw-bold">Результаты</h3>
-        </div>
-        @foreach ($convertedProducts as $product)
-            <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $lux }}">
-                <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
-            </div>
-        @endforeach
-        <div class="d-flex gap-2 justify-content-center w-100 mt-3">
-            <button wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}>Показать ещё <i class="fa fa-angles-right"></i></button>
+            </div> --}}
         </div>
     </div>
 </div>
 
 @push('scripts')
     <script>
-        $(document).ready(function(){
-            // remove active class from all siblings labels
-            $('input[type="radio"]').change(function(){
-                $(this).parent('label').addClass('active');
-                $(this).parent('label').siblings('label').removeClass('active');
-                $(this).parent('label').parent('div').siblings('div').children('label').removeClass('active');
-            });
-        });
+
     </script>
 @endpush
-

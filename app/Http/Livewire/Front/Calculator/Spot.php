@@ -100,6 +100,6 @@ class Spot extends Component
             'convertedProducts' => $products,
             'lux' => $this->lux,
             'showMore' => $this->pagesize < $this->products->count()
-        ])->extends('front.layout')->section('content');
+        ]);
     }
 }

@@ -78,6 +78,20 @@
         .calc-more-btn:disabled{
             background-color: #fdd05c;
         }
+        .isLoading{
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            padding-top: 35vh;
+        }
+        .isLoading .spinner-border{
+            width: 3rem;
+            height: 3rem;
+        }
+        .isLoading .spinner-border-sm{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
     </style>
 @endpush
 
@@ -106,38 +120,43 @@
 
     <div class="container mt-2 m-0 w-100 p-0">
         <div class="row calc-menu m-0 p-0">
-            <a href="javascript:showContent('spot');" id="spot-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 active">Споты</a>
-            <a href="javascript:showContent('led');" id="led-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Ленты</a>
-            <a href="javascript:showContent('track');" id="track-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Трековые системы</a>
-            <a href="javascript:showContent('chandelier');" id="chandelier-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2">Люстры</a>
+            <a href="javascript:setLoading(true);" wire:click="setActiveTab('spot')" id="spot-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 {{ $activeTab == 'spot' ? 'active' : '' }}">Споты</a>
+            <a href="javascript:setLoading(true);" wire:click="setActiveTab('led')" id="led-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 {{ $activeTab == 'led' ? 'active' : '' }}">Ленты</a>
+            <a href="javascript:setLoading(true);" wire:click="setActiveTab('track')" id="track-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 {{ $activeTab == 'track' ? 'active' : '' }}">Трековые системы</a>
+            <a href="javascript:setLoading(true);" wire:click="setActiveTab('chandelier')" id="chandelier-link" class="text-center col-3 fw-bold fs-5 font-kyiv m-0 p-2 {{ $activeTab == 'chandelier' ? 'active' : '' }}">Люстры</a>
         </div>
     </div>
-    <div id="spot" class="calc-content active">
-        <livewire:front.calculator.spot />
-    </div>
-    <div id="led" class="calc-content">
-        <livewire:front.calculator.led />
-    </div>
-    <div id="track" class="calc-content">
-        {{-- <livewire:front.calculator.track /> --}}
-    </div>
-    <div id="chandelier" class="calc-content">
-        {{-- <livewire:front.calculator.chandelier /> --}}
+    <div id="spot" class="calc-content active position-relative">
+        <div class="isLoading d-flex justify-content-center w-100 h-100 position-absolute top-0 start-0 d-none">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        @switch($activeTab)
+            @case('spot')
+                <livewire:front.calculator.spot />
+                @break
+            @case('led')
+                <livewire:front.calculator.led />
+                @break
+        @endswitch
     </div>
 </div>
 
 @push('scripts')
     <script>
-        function showContent(id){
-            document.querySelectorAll('.calc-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.querySelectorAll('.calc-menu a').forEach(link => {
-                link.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-            document.getElementById(id + '-link').classList.add('active');
+        Livewire.hook('message.processed', (message, component) => {
+            $('.isLoading').addClass('d-none');
+        });
+
+        function setLoading(status){
+            if(status){
+                $('.isLoading').removeClass('d-none');
+            }else{
+                $('.isLoading').addClass('d-none');
+            }
         }
+        
         // Handle all number inputs
         document.querySelectorAll('input[type="number"]').forEach(input => {
             input.addEventListener('keydown', (event) => {
