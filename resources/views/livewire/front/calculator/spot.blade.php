@@ -251,7 +251,7 @@
                 @endforeach
             </div>
             <div class="p-1 col-12 my-3 d-flex flex-column justify-content-center">
-                <button wire:click="calculate" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
+                <button onclick="setLoading(true);" wire:click="calculate" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
                 <p class="text-danger fs-6 mt-2 font-kyiv fw-bold m-0 p-0 col-12">{{ $error }}</p>
             </div>
         </div>
@@ -266,7 +266,7 @@
             </div>
         @endforeach
         <div class="d-flex gap-2 justify-content-center w-100 mt-3">
-            <button wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}>Показать ещё <i class="fa fa-angles-right"></i></button>
+            <button onclick="setLoading(true);" wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}>Показать ещё <i class="fa fa-angles-right"></i></button>
         </div>
     </div>
 </div>
