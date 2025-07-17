@@ -122,15 +122,19 @@ class ProductController extends Controller
             $data['kelvin'] = $extractedData['kelvin'];
         }
 
-        $categories = $data['categories'];
-        $tags = $data['tags'];
-        $additional_products = $data['additional_products'];
+        if(isset($data['categories'])){
+            $categories = $data['categories'];
+            unset($data['categories']);
+        }
+        if(isset($data['tags'])){
+            $tags = $data['tags'];
+            unset($data['tags']);
+        }
+        if(isset($data['additional_products'])){
+            $additional_products = $data['additional_products'];
+            unset($data['additional_products']);
+        }
 
-        // remove additional_products from data
-        unset($data['additional_products']);
-        unset($data['categories']);
-        unset($data['tags']);
-        
         $next = Product::orderBy('id', 'desc')->first()->id + 1;
         $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-')."-".$next;
 
@@ -248,14 +252,20 @@ class ProductController extends Controller
         }
 
         $data['slug'] = Str::slug(Transliterator::transliterate($data['title']), '-').'-'.$id;
-        $categories = $data['categories'];
-        $tags = $data['tags'];
-        $additional_products = $data['additional_products'];
 
-        // remove additional_products from data
-        unset($data['additional_products']);
-        unset($data['categories']);
-        unset($data['tags']);
+        if(isset($data['categories'])){
+            $categories = $data['categories'];
+            unset($data['categories']);
+        }
+        if(isset($data['tags'])){
+            $tags = $data['tags'];
+            unset($data['tags']);
+        }
+        if(isset($data['additional_products'])){
+            $additional_products = $data['additional_products'];
+            unset($data['additional_products']);
+        }
+        
         $product = Product::find($id);
         $product->update($data);
 

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $activeTab = 'spot';
+    public $activeTab = 'led';
 
     public function setActiveTab($tab)
     {

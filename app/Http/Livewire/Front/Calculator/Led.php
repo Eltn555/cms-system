@@ -14,7 +14,7 @@ class Led extends Component
     public $ledCategory;
     public $ledAccessoriesCategory;
     public $ledPowerBlocksCategory;
-    public $ledMeter = 0;
+    public $ledMeter = '';
     public $error = '';
 
     public function mount()
