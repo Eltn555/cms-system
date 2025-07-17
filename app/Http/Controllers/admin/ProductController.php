@@ -155,37 +155,29 @@ class ProductController extends Controller
             $image->update(['alt' => $data['title']]);
         }
 
-        // Additional products (tags) process
-        if ($additional_products != null){
-            foreach ($additional_products as $additional_product) {
-                $tag = Tag::firstOrCreate([
-                    'title' => $additional_product
-                ], [
-                    'visible' => 0
-                ]);
-                $product->additional_tags()->attach($tag->id);
-            }
+        $categoryIds = [];
+        foreach (isset($categories) ? $categories : [] as $categoryName) {
+            $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
+            $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
+            $categoryIds[] = $category->id;
         }
-        
+        $product->categories()->sync($categoryIds);
 
-        if ($categories != null){
-            foreach ($categories as $categoryName) {
-                $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
-                $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
-                $product->categories()->attach($category->id);
-            }
+        $tagIds = [];
+        // Update or attach tags
+        foreach (isset($tags) ? $tags : [] as $tagName) {
+            $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
+            $tagIds[] = $tag->id;
         }
+        $product->tags()->sync($tagIds);
 
-        if ($tags != null) {
-            foreach ($tags as $tagName) {
-                $tag = Tag::firstOrCreate([
-                    'title' => $tagName
-                ], [
-                    'visible' => 0
-                ]);
-                $product->tags()->attach($tag->id);
-            }
+        $additionalTagIds = [];
+        foreach (isset($additional_products) ? $additional_products : [] as $additionalProductName) {
+            $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
+            $additionalTagIds[] = $additionalProduct->id;
         }
+        $product->additional_tags()->sync($additionalTagIds);
+
         return redirect()->route('admin.products.index')->with('message', "This is Success Created");
     }
 
@@ -270,32 +262,29 @@ class ProductController extends Controller
         $product->update($data);
 
         $categoryIds = [];
-        foreach ($categories as $categoryName) {
+        foreach (isset($categories) ? $categories : [] as $categoryName) {
             $slug = Str::slug(Transliterator::transliterate($categoryName), '-');
             $category = Category::firstOrCreate(['title' => $categoryName], ['isActive' => 1, 'slug' => $slug]);
             $categoryIds[] = $category->id;
         }
         $product->categories()->sync($categoryIds);
 
-        if ($tags != null) {
-            $tagIds = [];
-            // Update or attach tags
-            foreach ($tags as $tagName) {
-                $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
-                $tagIds[] = $tag->id;
-            }
-            $product->tags()->sync($tagIds);
+        $tagIds = [];
+        // Update or attach tags
+        foreach (isset($tags) ? $tags : [] as $tagName) {
+            $tag = Tag::firstOrCreate(['title' => $tagName], ['visible' => 0]);
+            $tagIds[] = $tag->id;
         }
+        $product->tags()->sync($tagIds);
 
         // Update or attach additional products
-        if ($additional_products != null){
-            $tagAddIds = [];
-            foreach ($additional_products as $additionalProductName) {
-                $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
-                $tagAddIds[] = $additionalProduct->id;
-            }
-            $product->additional_tags()->sync($tagAddIds); // Sync additional products without detaching existing ones
+        $tagAddIds = [];
+        foreach (isset($additional_products) ? $additional_products : [] as $additionalProductName) {
+            $additionalProduct = Tag::firstOrCreate(['title' => $additionalProductName], ['visible' => 0]);
+            $tagAddIds[] = $additionalProduct->id;
         }
+        $product->additional_tags()->sync($tagAddIds); // Sync additional products without detaching existing ones
+
         return redirect()->route('admin.products.index', ['page' => $data['page']])
             ->with('message', 'Product updated successfully');
     }
