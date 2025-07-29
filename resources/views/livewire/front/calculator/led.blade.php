@@ -107,6 +107,14 @@
             background-image: linear-gradient(to bottom, #000000, #00000000);
         }
 
+        .consumption-icon{
+            color: rgb(248, 179, 1);
+        }
+
+        .power-icon{
+            color: rgb(255, 8, 0);
+        }
+
         @media (max-width: 1200px) {
             .room-image{
                 width: 80%;
@@ -182,7 +190,7 @@
                 <div class="room-size row px-0 m-0" wire:ignore>
                     <div class="col-12 mb-2 px-1 position-relative">
                         <p class="font-kyiv fs-5 fw-bold mb-0 position-absolute"><i class="fa-solid fa-arrows-up-down"></i>м</p>
-                        <input wire:model="ledMeter" type="number" max="100" name="led-meter" class="form-control" placeholder="Д (3.5)">
+                        <input wire:model="ledMeter" type="number" max="100" name="led-meter" class="form-control" placeholder="М 3">
                     </div>
                 </div>
             </div>
@@ -199,8 +207,8 @@
                 <h3 class="font-kyiv fs-3 fw-bold">Результаты</h3>
             </div>
             @foreach ($convertedProducts as $product)
-                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $kelvin }}">
-                    <livewire:front.component.product-calc :product="$product" :lux="$kelvin" :wire:key="'calc-'.$product->id.'-'.$kelvin"/>
+                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $meter }}">
+                    <livewire:front.component.product-calc :product="$product" :value="$meter" :type="'led'" :wire:key="'calc-'.$product->id.'-'.$meter"/>
                 </div>
             @endforeach
             @if($showMore)
@@ -215,8 +223,8 @@
                 <h3 class="font-kyiv fs-3 fw-bold">Блок питания</h3>
             </div>
             @foreach ($allPowerBlocks as $product)
-                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $kelvin }}">
-                    <livewire:front.component.product-calc :product="$product" :lux="$kelvin" :wire:key="'calc-'.$product->id.'-'.$kelvin"/>
+                    <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $meter }}">
+                    <livewire:front.component.product-calc :product="$product" :value="1" :type="'power'" :wire:key="'calc-'.$product->id.'-'.$meter"/>
                 </div>
             @endforeach
         </div>
@@ -226,8 +234,8 @@
                 <h3 class="font-kyiv fs-3 fw-bold">Аксессуары</h3>
             </div>
             @foreach ($allAccessories as $product)
-                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $kelvin }}">
-                    <livewire:front.component.product-calc :product="$product" :lux="$kelvin" :wire:key="'calc-'.$product->id.'-'.$kelvin"/>
+                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $meter }}">
+                    <livewire:front.component.product-calc :product="$product" :value="null" :type="null" :wire:key="'calc-'.$product->id.'-'.$meter"/>
                 </div>
             @endforeach
         </div>

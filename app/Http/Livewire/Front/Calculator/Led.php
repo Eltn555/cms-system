@@ -114,8 +114,7 @@ class Led extends Component
 
         return view('livewire.front.calculator.led', [
             'convertedProducts' => $this->products,
-            'kelvin' => $this->ledRoomType,
-            'watt' => $this->watt,
+            'meter' => $this->ledMeter,
             'showMore' => $this->pagesize < $this->allProducts->count()
         ]);
     }
