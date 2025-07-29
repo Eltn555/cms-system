@@ -56,7 +56,12 @@
                 @endforeach
         </div>
         <div class="product-badge rounded-0 flex justify-end badge-pink" style="top: 5px; right: 5px;">
-            <div class="px-2 mb-1 d-flex justify-content-center align-items-center rounded-1 text-danger fw-semibold {{!$productPcsByLux > 0 ? 'd-none' : ''}}" style="background-color: rgba(250, 250, 250, 0.514);">{{ $productPcsByLux }} шт</div>
+            <div class="px-2 mb-1 d-flex justify-content-center align-items-center rounded-1 text-danger fw-semibold" style="background-color: rgba(250, 250, 250, 0.75);">
+                @if($meter && ($type == 'led' || $type == 'power'))
+                    <i class="{{$type == 'led' ? 'consumption-icon fa-solid fa-bolt' : 'power-icon fa-solid fa-plug'}} pe-1"></i>
+                @endif
+                {{ $infoCalc }}
+            </div>
         </div>
         @if($product->amount > 0)
             <div class="position-absolute bottom-0 end-0">

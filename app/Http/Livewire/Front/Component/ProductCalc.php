@@ -17,28 +17,45 @@ class ProductCalc extends Component
     public $profit;
     public $profPercent;
     public $lux;
-    public $productPcsByLux;
+    public $meter;
+    public $infoCalc;
+    public $type;
     public $morePcs = 1.1; // 10% more pcs
 
-    public function mount($product, $lux){
-        $this->updatedProduct($product, $lux);
+    public function mount($product, $value, $type){
+        $this->updatedProduct($product, $value, $type);
     }
 
-    public function updatedLux($value)
-    {
-        $this->lux = $value;
-    }
-
-    public function updatedProduct($product, $lux){
+    public function updatedProduct($product, $value, $type){
         $this->product = $product;
-        $this->lux = $lux;
         $this->tags = $product->tags()->where('visible', 1)->take(3)->get() ?? collect();
         $this->image = $product->images()->first();
         $disc = $product->discount_price ?? 0;
         $this->profit = $product->price - $disc;
         $this->profPercent = ($this->profit / $product->price) * 100;
-        $this->lux = $lux;
-        $this->productPcsByLux = $this->getPcsByLm();
+        $this->type = $type;
+
+        switch($type){
+            case 'spot':
+                $this->lux = $value;
+                $this->infoCalc = $this->getPcsByLm(); // pcs by lm
+                break;
+            case 'led':
+                $this->meter = $value;
+                $this->infoCalc = $this->getWattByM(); // watt by m
+                break;
+            case 'power':
+                $this->infoCalc = $product->watt; // pcs by lm
+                break;
+        }
+        
+        if($type == 'spot'){
+            $this->lux = $value;
+            $this->infoCalc = $this->getPcsByLm(); // pcs by lm
+        }elseif($type == 'led' || $type == 'power'){
+            $this->meter = $value;
+            $this->infoCalc = $this->getWattByM(); // watt by m
+        }
     }
     
     public function check($productid){
@@ -100,14 +117,22 @@ class ProductCalc extends Component
         }
     }
 
+    public function getWattByM(){
+        $watt = $this->product->watt;
+        if($watt && $this->meter){
+            return $watt * $this->meter .' Вт';
+        }
+        return null;
+    }
+
     public function getPcsByLm(){
         $lumen = $this->product->lumen; // lumens
 
-        if (!$lumen) {
+        if (!$lumen || !$this->lux) {
             return null;
         }
 
-        return ceil($this->lux * $this->morePcs / $lumen);
+        return ceil($this->lux * $this->morePcs / $lumen).' шт';
     }
 
     public function showProduct($slug)
