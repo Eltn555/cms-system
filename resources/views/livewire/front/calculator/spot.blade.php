@@ -152,11 +152,11 @@
 <div class="container pb-5 px-0" style="max-width: 1400px; margin: 0 auto;">
     <div class="row w-100 m-0 px-1 px-md-2 px-lg-3">
         <!-- Room type -->
-        <div class="col-12 col-lg-3 mb-3 room-type px-0 d-flex flex-wrap align-self-start" wire:ignore>
+        <div class="col-12 col-lg-3 mb-3 room-type px-0 d-flex flex-wrap align-self-start">
             <h3 class="font-kyiv fs-5 fw-bold w-100">Тип помещения</h3>
             @foreach ($roomTypes as $roomType)
                 <div style="padding: 0.1rem;" class="col-12 col-sm-6 col-lg-12">
-                    <label for="lux{{ $roomType->setting_value }}" class="rounded-1 p-1 p-md-2 w-100 h-100 shadow-sm d-flex align-items-center justify-content-between">
+                    <label for="lux{{ $roomType->setting_value }}" class="rounded-1 p-1 p-md-2 w-100 h-100 shadow-sm d-flex align-items-center justify-content-between {{ $roomTypeValue == $roomType->setting_value ? 'active' : '' }}">
                         <div class="w-100 ps-2 text-start">
                         <h3 class="font-kyiv fs-6 fw-bold mb-0">{{ $roomType->title }}</h3>
                         <p class="font-kyiv fw-bolder mb-0">{{ $roomType->description }}</p>
@@ -262,7 +262,7 @@
         </div>
         @foreach ($convertedProducts as $product)
             <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $lux }}">
-                <livewire:front.component.product-calc :product="$product" :lux="$lux" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+                <livewire:front.component.product-calc :product="$product" :value="$lux" :type="'spot'" :wire:key="'calc-'.$product->id.'-'.$lux"/>
             </div>
         @endforeach
         <div class="d-flex gap-2 justify-content-center w-100 mt-3">
