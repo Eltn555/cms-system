@@ -237,7 +237,7 @@
             <h3 class="font-kyiv fs-5 fw-bold mt-3">Расположение</h3>
             <div class="row sLocation m-0">
                 @foreach ($spotLocations as $spotLocation)
-                    <div class="col-6 p-1 m-0">
+                    <div class="col-6 col-md-4 col-lg-12 col-xl-6 p-1 m-0">
                         <label for="spot{{ $spotLocation->id }}" class="rounded-1 p-2 shadow-sm d-flex flex-column align-items-center justify-content-between {{ $spotLocationValue == $spotLocation->setting_value ? 'active' : '' }}">
                             <div class="spot-icon">
                                 <img src="{{ asset('storage/'.$spotLocation->media) }}" alt="{{ $spotLocation->title }}">
