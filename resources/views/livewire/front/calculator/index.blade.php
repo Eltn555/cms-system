@@ -149,6 +149,13 @@
             $('.isLoading').addClass('d-none');
         });
 
+        // Listen for URL update events from Livewire
+        window.addEventListener('update-url', event => {
+            const url = new URL(window.location);
+            url.searchParams.set('tab', event.detail.tab);
+            window.history.pushState({}, '', url);
+        });
+
         function setLoading(status){
             if(status){
                 $('.isLoading').removeClass('d-none');
