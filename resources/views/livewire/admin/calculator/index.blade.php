@@ -222,7 +222,7 @@
 
     <!-- Add parent power block category to show all -->
     <h3 class="text-lg font-medium mb-3 mt-5">
-        Добавить категорию блока питания по умолчанию
+        Добавить категорию блока питания по умолчанию для лент
     </h3>
     <div class="intro-y grid grid-cols-12">
         <div class="col-span-12 md:col-span-6 box p-3 flex-row gap-2">
@@ -240,7 +240,7 @@
 
     <!-- Add parent led accessory category to show all -->
     <h3 class="text-lg font-medium mb-3 mt-5">
-        Добавить категорию аксессуаров ленты по умолчанию
+        Добавить категорию аксессуаров ленты по умолчанию для лент
     </h3>
     <div class="intro-y grid grid-cols-12">
         <div class="col-span-12 md:col-span-6 box p-3 flex-row gap-2">
@@ -317,6 +317,124 @@
         </div>
     </div>
 
+    <!-- line -->
+    <hr class="my-5">
+
+    <!-- Add parent magnet reel category to show all -->
+    <h3 class="text-lg font-medium mb-3 mt-5">
+        Добавить категорию магнитных роликов по умолчанию
+    </h3>
+    <div class="intro-y grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 box p-3 flex-row gap-2">
+            <h3 class="text-lg font-medium mb-2">{{ $allMagnetReelCategory->title ?? 'Не выбрана категория' }}</h3>
+            <div class="flex flex-col">
+                <select wire:model="allMagnetReelCategory.setting_value" wire:change="updateCategories('allMagnetReelCategory')" class="form-control" placeholder="категория">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ optional($allMagnetReelCategory)->setting_value == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <p class="text-sm text-gray-500 col-span-12 pt-2">Выберите категорию магнитных роликов, которые будут использоваться в калькуляторе по умолчанию. Если тип магнитного ролика не выбран, будут показаны все магнитные ролики.</p>
+    </div>
+
+    <!-- Add parent reel power block category to show all -->
+    <h3 class="text-lg font-medium mb-3 mt-5">
+        Добавить категорию блока питания по умолчанию для магнитных роликов
+    </h3>
+    <div class="intro-y grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 box p-3 flex-row gap-2">
+            <h3 class="text-lg font-medium mb-2">{{ $allReelPowerBlockCategory->title ?? 'Не выбрана категория' }}</h3>
+            <div class="flex flex-col">
+                <select wire:model="allReelPowerBlockCategory.setting_value" wire:change="updateCategories('allReelPowerBlockCategory')" class="form-control" placeholder="категория">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ optional($allReelPowerBlockCategory)->setting_value == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <p class="text-sm text-gray-500 col-span-12 pt-2">Выберите категорию блоков питания, которые будут использоваться в калькуляторе по умолчанию. Если тип блока питания не выбран, будут показаны все блоки питания.</p>
+    </div>
+
+    <!-- Add parent reel accessory category to show all -->
+    <h3 class="text-lg font-medium mb-3 mt-5">
+        Добавить категорию аксессуаров по умолчанию для магнитных роликов
+    </h3>
+    <div class="intro-y grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 box p-3 flex-row gap-2">
+            <h3 class="text-lg font-medium mb-2">{{ $allReelAccessoryCategory->title ?? 'Не выбрана категория' }}</h3>
+            <div class="flex flex-col">
+                <select wire:model="allReelAccessoryCategory.setting_value" wire:change="updateCategories('allReelAccessoryCategory')" class="form-control" placeholder="категория">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ optional($allReelAccessoryCategory)->setting_value == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <p class="text-sm text-gray-500 col-span-12 pt-2">Выберите категорию аксессуаров, которые будут использоваться в калькуляторе по умолчанию. Если тип аксессуара не выбран, будут показаны все аксессуары.</p>
+    </div>
+
+        <!-- line -->
+    <hr class="my-5">
+
+    <!-- Led kelvin and room type -->
+    <h3 class="text-lg font-medium mb-0 mt-5">
+        Добавить тип магнитного ролика
+    </h3>
+    <div class="intro-y grid grid-cols-12">
+        <div class="col-span-12 flex flex-row gap-2">
+            <div class="flex flex-row gap-2">
+                <div class="flex flex-col">
+                    <input wire:model="currentReelType.title" type="text" class="form-control" placeholder="Название">
+                    @error('currentReelType.title') <p class="text-sm text-danger">{{ $message }}</p> @enderror
+                </div>
+                <div class="flex flex-col">
+                    <select wire:model="currentReelType.setting_value" class="form-control" placeholder="категория">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        @endforeach
+                    </select>
+                    @error('currentReelType.setting_value') <p class="text-sm text-danger">{{ $message }}</p> @enderror
+                </div>
+                <div class="flex flex-col">
+                    <input wire:model="currentReelType.media" type="file" accept="image/*" class="form-control bg-white h-full">
+                    @error('currentReelType.media') <p class="text-sm text-danger">{{ $message }}</p> @enderror
+                </div>
+                <button wire:click.prevent="createNew('currentReelType')" type="button" class="{{$updating['var']=='currentReelType' ? 'hidden' : ''}} btn btn-success text-white" style="align-self: flex-start;">Добавить</button>
+                <button wire:click.prevent="update('currentLedRoom')" type="button" class="{{$updating['var']!='currentLedRoom' ? 'hidden' : ''}} btn btn-primary text-white" style="align-self: flex-start;">Обновить</button>
+                <button wire:click.prevent="edit({{ $updating['id'] }}, 'currentReelType')" type="button" class="btn btn-danger text-white {{ $updating['var']!='currentReelType' ? 'hidden' : '' }}" style="align-self: flex-start;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="col-span-12">
+            <h3 class="text-lg font-medium mb-0 mt-5">
+                Типы магнитных роликов
+            </h3>
+            <div class="intro-y grid grid-cols-12 gap-3 mt-5">
+            @foreach($reelTypes as $reelType)
+                <div class="col-span-12 md:col-span-6 box">
+                    <div class="p-2 text-slate-600 dark:text-slate-500">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 flex-none image-fit mr-5">
+                                <img src="{{ asset('storage/'.$reelType->media) }}" alt="{{ $reelType->title }}" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-medium">{{ $reelType->title }}</h3>
+                                <span class="text-sm text-gray-500">Категория: {{ $categories->find($reelType->setting_value)->title }}</span>
+                            </div>
+                            <div>
+                                <button wire:click.prevent="edit({{ $reelType->id }}, 'currentReelType')" type="button" class="btn bg-white shadow-lg rounded-full text-primary py-3 px-4">{{ $updating['id']==$reelType->id ? 'Отменить ' : '' }}<i class="fa-solid fa-{{ $updating['id']==$reelType->id ? 'x' : 'pencil' }}"></i></button>
+                                <button wire:click.prevent="delete({{ $reelType->id }})" type="button" class="btn bg-white shadow-lg rounded-full text-danger py-3 px-4"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        </div>
+    </div>
+
     <div class="delete-modal {{ $delete ? '' : 'hidden' }}">
         <div class="delete rounded-1 p-2 shadow-sm">
             <p class="font-kyiv fs-5 fw-bold mb-0 text-center">Вы уверены, что хотите удалить этот элемент?</p>
@@ -326,4 +444,6 @@
             </div>
         </div>
     </div>
+
+
 </div>

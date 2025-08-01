@@ -13,18 +13,30 @@ class Index extends Component
     use WithFileUploads;
     public $categories;
     public $calc_options;
+
+    // Spot
+    public $allSpotCategory = [];
+    public $currentSpotType = [];
+    public $currentSpotLocation = [];
     public $roomTypes = [];
+    public $currentRoomType = [];
     public $spotTypes = [];
     public $spotLocations = [];
-    public $currentRoomType = [];
+
+    // Led
     public $currentLedRoom = [];
     public $ledRooms = [];
-    public $currentSpotType = [];
-    public $allSpotCategory = [];
     public $allLedCategory = [];
     public $allPowerBlockCategory = [];
     public $allLedAccessoryCategory = [];
-    public $currentSpotLocation = [];
+
+    // Magnet reels
+    public $reelTypes = [];
+    public $currentReelType = [];
+    public $allMagnetReelCategory = [];
+    public $allReelPowerBlockCategory = [];
+    public $allReelAccessoryCategory = [];
+
     public $updating = [ 'id' => 0, 'var' => '' ];
     public $delete = '';
 
@@ -33,6 +45,9 @@ class Index extends Component
         'allLedCategory.setting_value' => 'required|integer',
         'allPowerBlockCategory.setting_value' => 'required|integer',
         'allLedAccessoryCategory.setting_value' => 'required|integer',
+        'allMagnetReelCategory.setting_value' => 'required|integer',
+        'allReelPowerBlockCategory.setting_value' => 'required|integer',
+        'allReelAccessoryCategory.setting_value' => 'required|integer',
     ];
 
     public function mount()
@@ -86,18 +101,23 @@ class Index extends Component
             $this->allLedCategory = $this->calc_options->where('setting_key', 'led_category')->values()->first();
             $this->allPowerBlockCategory = $this->calc_options->where('setting_key', 'power_block_category')->values()->first();
             $this->allLedAccessoryCategory = $this->calc_options->where('setting_key', 'led_accessory_category')->values()->first();
+            $this->reelTypes = $this->calc_options->where('setting_key', 'reel_types')->values() ?? collect();
+            $this->allMagnetReelCategory = $this->calc_options->where('setting_key', 'allMagnetReelCategory')->values()->first();
+            $this->allReelPowerBlockCategory = $this->calc_options->where('setting_key', 'allReelPowerBlockCategory')->values()->first();
+            $this->allReelAccessoryCategory = $this->calc_options->where('setting_key', 'allReelAccessoryCategory')->values()->first();
         }
         $this->updating = [ 'id' => 0, 'var' => '' ];
         $this->currentLedRoom = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'led_rooms' ];
         $this->currentRoomType = [ 'title' => '', 'description' => '', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'room_types' ];
         $this->currentSpotType = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_types' ];
         $this->currentSpotLocation = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'spot_locations' ];
+        $this->currentReelType = [ 'title' => '', 'description' => 'desc', 'setting_value' => '', 'media' => '', 'setting_group' => 'calculator', 'setting_key' => 'reel_types' ];
     }
 
     public function createNew($var){
         $data = $this->validation($var);
 
-        if($var == 'currentSpotType' || $var == 'currentSpotLocation' || $var == 'currentLedRoom'){
+        if($var == 'currentSpotType' || $var == 'currentSpotLocation' || $var == 'currentLedRoom' || $var == 'currentReelType'){
             $data[$var]['media'] = $this->saveFile($data[$var]['media']);
         }
 
@@ -138,7 +158,7 @@ class Index extends Component
     public function update($var){
         $id = $this->updating['id'];
         $data = $this->validation($var);
-        if($var == 'currentSpotType' || $var == 'currentSpotLocation' || $var == 'currentLedRoom'){
+        if($var == 'currentSpotType' || $var == 'currentSpotLocation' || $var == 'currentLedRoom' || $var == 'currentReelType'){
             if($data[$var]['media'] && !is_string($data[$var]['media'])){
                 // Delete old file if it exists
                 $oldSetting = Setting::find($id);
