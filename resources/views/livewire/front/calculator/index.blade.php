@@ -139,6 +139,9 @@
             @case('led')
                 <livewire:front.calculator.led />
                 @break
+            @case('track')
+                <livewire:front.calculator.track />
+                @break
         @endswitch
     </div>
 </div>
