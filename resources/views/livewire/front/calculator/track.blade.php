@@ -237,10 +237,6 @@
                     </label>
                 </div>
             </div>
-        </div>
-
-        <!-- Track size -->
-        <div class="col-12 col-lg-3 mb-3">
             <div class="row m-0 mb-3 px-0 room-type d-flex flex-wrap align-items-start">
                 <h3 class="font-kyiv fs-5 fw-bold mt-3 w-100">Размер трека</h3>
                 @foreach ($trackSizes as $trackSize)
@@ -261,6 +257,11 @@
                 <button onclick="setLoading(true);" wire:click="calculate" class="calc-more-btn w-100">Рассчитать <i class="ps-2 fa fa-calculator"></i></button>
                 <p class="text-danger fs-6 mt-2 font-kyiv fw-bold m-0 p-0 col-12">{{ $error }}</p>
             </div>
+        </div>
+
+        <!-- Track size -->
+        <div class="col-12 col-lg-3 mb-3">
+            
         </div>
     </div>
 </div>

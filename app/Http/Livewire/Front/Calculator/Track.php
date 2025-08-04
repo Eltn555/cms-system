@@ -49,7 +49,32 @@ class Track extends Component
         $this->categoryChanged = true;
     }
 
+    public function updatedRoomSize(){
+        if ($this->roomSize['height'] > 3) {
+            $this->roomColor = 1.5;
+        } else {
+            $this->roomColor = 1.25;
+        }
+    }
+
     public function calculate(){
+        if($this->roomSize['length'] && $this->roomSize['width'] && $this->roomSize['height']){
+            $this->roomCube = $this->roomSize['length'] * $this->roomSize['width'] * ($this->roomSize['height'] > 3 ? 1.5 : 1.25);
+        } else {
+            $this->roomCube = 0;
+        }
+        if($this->roomCube > 0 && $this->roomTypeValue){
+            $this->lux = $this->roomCube * $this->roomTypeValue / $this->roomColor;
+        } else {
+            $this->error = '* Выберите тип помещения и введите размеры помещения';
+            $this->lux = 0;
+            return;
+        }
+
+        $this->error = '';
+
+        // Add default category if no specific selections are made
+        if ($this->categoryChanged && !$this->trackSizeValue && $this->lux > 0) {}
         return;
     }
 
