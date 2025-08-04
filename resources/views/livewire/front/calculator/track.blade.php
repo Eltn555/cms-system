@@ -240,17 +240,19 @@
             <div class="row m-0 mb-3 px-0 room-type d-flex flex-wrap align-items-start">
                 <h3 class="font-kyiv fs-5 fw-bold mt-3 w-100">Размер трека</h3>
                 @foreach ($trackSizes as $trackSize)
-                <div style="padding: 0.1rem;" class="col-6 col-md-3 col-lg-6 col-xl-6 col-xxl-6 ">
-                    <label onclick="setLoading(true);" for="lux{{ $trackSize->setting_value }}" class="rounded-1 w-100 h-100 shadow-sm d-flex align-items-center justify-content-between flex-column position-relative {{ $trackSize->setting_value == $trackSizeValue ? 'active' : '' }}">
-                        <div class="p-2 text-start position-absolute top-0 start-0 info-box w-100 py-3">
-                            <h3 class="font-kyiv fs-6 fw-bold mb-0 text-white">{{ $trackSize->title }}</h3>
+                    @if(!($roomSize['height'] > 3 && str_contains($trackSize->title, '20')))
+                        <div style="padding: 0.1rem;" class="col-6 col-md-3 col-lg-6 col-xl-6 col-xxl-6 ">
+                            <label onclick="setLoading(true);" for="lux{{ $trackSize->setting_value }}" class="rounded-1 w-100 h-100 shadow-sm d-flex align-items-center justify-content-between flex-column position-relative {{ ($trackSizeValue && $trackSize->setting_value == $trackSizeValue['setting_value']) ? 'active' : '' }}">
+                                <div class="p-2 text-start position-absolute top-0 start-0 info-box w-100 py-3">
+                                    <h3 class="font-kyiv fs-6 fw-bold mb-0 text-white">{{ $trackSize->title }}</h3>
+                                </div>
+                                <div class="room-icon w-100">
+                                    <img src="{{ asset('storage/'.$trackSize->media) }}" alt="{{ $trackSize->title }}" class="w-100 h-100 rounded-1 object-fit-cover">
+                                </div>
+                                <input wire:click="upTrackSizeValue({{ $trackSize }})" name="track-size" id="lux{{ $trackSize->setting_value }}" type="radio" value="{{ $trackSize->setting_value }}">
+                            </label>
                         </div>
-                        <div class="room-icon w-100">
-                            <img src="{{ asset('storage/'.$trackSize->media) }}" alt="{{ $trackSize->title }}" class="w-100 h-100 rounded-1 object-fit-cover">
-                        </div>
-                        <input wire:click="upTrackSizeValue({{ $trackSize->setting_value }})" name="track-size" id="lux{{ $trackSize->setting_value }}" type="radio" value="{{ $trackSize->setting_value }}">
-                    </label>
-                </div>
+                    @endif
                 @endforeach
             </div>
             <div class="p-1 col-12 my-3 d-flex flex-column justify-content-center">
@@ -259,9 +261,17 @@
             </div>
         </div>
 
-        <!-- Track size -->
-        <div class="col-12 col-lg-3 mb-3">
-            
+        <!-- Track results -->
+        <div class="col-12 my-3 d-flex justify-content-between gap-2 mt-3">
+            <h3 class="font-kyiv fs-3 fw-bold">Результаты</h3>
         </div>
+        @foreach ($convertedProducts as $product)
+        <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $lux }}">
+            <livewire:front.component.product-calc :product="$product" :value="$lux" :type="'spot'" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+        </div>
+    @endforeach
+    <div class="d-flex gap-2 justify-content-center w-100 mt-3">
+        <button onclick="setLoading(true);" wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}>Показать ещё <i class="fa fa-angles-right"></i></button>
+    </div>
     </div>
 </div>
