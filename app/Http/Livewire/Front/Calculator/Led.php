@@ -5,17 +5,13 @@ namespace App\Http\Livewire\Front\Calculator;
 use Livewire\Component;
 use App\Models\Setting;
 use App\Models\Category;
-use App\Models\Product;
 
 class Led extends Component
 {   
-    public $calculator;
     public $ledRoomTypes;
     public $ledRoomType;
     public $ledCategory;
     public $allProducts;
-    public $ledAccessoriesCategory;
-    public $ledPowerBlocksCategory;
     public $ledMeter = '';
     public $error = '';
     public $pagesize = 24;
@@ -26,13 +22,13 @@ class Led extends Component
 
     public function mount()
     {
-        $this->calculator = Setting::getByGroup('calculator');
+        $calculator = Setting::getByGroup('calculator');
 
-        if($this->calculator){
-            $this->ledRoomTypes = $this->calculator->where('setting_key', 'led_rooms')->values() ?? collect();
-            $this->ledCategory = $this->calculator->where('setting_key', 'led_category')->values()->first() ?? collect();
-            $this->ledAccessoriesCategory = $this->calculator->where('setting_key', 'led_accessory_category')->values()->first() ?? collect();
-            $this->ledPowerBlocksCategory = $this->calculator->where('setting_key', 'power_block_category')->values()->first() ?? collect();
+        if($calculator){
+            $this->ledRoomTypes = $calculator->where('setting_key', 'led_rooms')->values() ?? collect();
+            $this->ledCategory = $calculator->where('setting_key', 'led_category')->values()->first() ?? collect();
+            $ledAccessoriesCategory = $calculator->where('setting_key', 'led_accessory_category')->values()->first() ?? collect();
+            $ledPowerBlocksCategory = $calculator->where('setting_key', 'power_block_category')->values()->first() ?? collect();
         }
 
         $category = Category::find($this->ledCategory->setting_value);
@@ -46,7 +42,7 @@ class Led extends Component
             $this->allProducts = collect();
         }
 
-        $powerBlockCategory = Category::find($this->ledPowerBlocksCategory->setting_value);
+        $powerBlockCategory = Category::find($ledPowerBlocksCategory->setting_value);
 
         if($powerBlockCategory){
             $this->allPowerBlocks = $powerBlockCategory->products()->
@@ -57,7 +53,7 @@ class Led extends Component
             $this->allPowerBlocks = collect();
         }
 
-        $accessoriesCategory = Category::find($this->ledAccessoriesCategory->setting_value);
+        $accessoriesCategory = Category::find($ledAccessoriesCategory->setting_value);
 
         if($accessoriesCategory){
             $this->allAccessories = $accessoriesCategory->products()->
