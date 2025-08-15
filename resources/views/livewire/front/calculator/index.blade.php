@@ -108,13 +108,13 @@
     <!-- testing mode -->
     <div class="notification-box d-flex">
         <div>
-            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, поэтому некоторые данные могут быть неточными. </p>
+            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, некоторые данные могут быть неточными. </p>
         </div>
         <div>
-            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, поэтому некоторые данные могут быть неточными. </p>
+            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, некоторые данные могут быть неточными. </p>
         </div>
         <div>
-            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, поэтому некоторые данные могут быть неточными. </p>
+            <p class="text-center fw-bold fs-5 font-kyiv m-0 text-danger"> Калькулятор в разработке, некоторые данные могут быть неточными. </p>
         </div>
     </div>
 
