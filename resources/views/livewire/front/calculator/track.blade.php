@@ -266,12 +266,30 @@
             <h3 class="font-kyiv fs-3 fw-bold">Результаты</h3>
         </div>
         @foreach ($convertedProducts as $product)
-        <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $lux }}">
-            <livewire:front.component.product-calc :product="$product" :value="$lux" :type="'spot'" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+            <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}-{{ $lux }}">
+                <livewire:front.component.product-calc :product="$product" :value="$lux" :type="'spot'" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+            </div>
+         @endforeach
+        <div class="d-flex gap-2 justify-content-center w-100 mt-3">
+            <button onclick="setLoading(true);" wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}>Показать ещё <i class="fa fa-angles-right"></i></button>
         </div>
-    @endforeach
-    <div class="d-flex gap-2 justify-content-center w-100 mt-3">
-        <button onclick="setLoading(true);" wire:click="loadNext" class="calc-more-btn {{ $showMore ? '' : 'disabled' }}" {{ $showMore ? '' : 'disabled' }}>Показать ещё <i class="fa fa-angles-right"></i></button>
-    </div>
+
+        <div class="col-12 my-3 d-flex justify-content-between gap-2 mt-3">
+            <h3 class="font-kyiv fs-3 fw-bold">Блок питания</h3>
+        </div>
+        @foreach ($allPowerBlocks as $product)
+                <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}">
+                <livewire:front.component.product-calc :product="$product" :value="1" :type="'power'" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+            </div>
+        @endforeach
+
+        <div class="col-12 my-3 d-flex justify-content-between gap-2 mt-3">
+            <h3 class="font-kyiv fs-3 fw-bold">Аксессуары</h3>
+        </div>
+        @foreach ($allAccessories as $product)
+            <div class="col-6 p-2 col-sm-4 col-md-3 col-lg-3 col-xl-2" wire:key="product-{{ $product->id ?? $product['id'] }}">
+                <livewire:front.component.product-calc :product="$product" :value="null" :type="null" :wire:key="'calc-'.$product->id.'-'.$lux"/>
+            </div>
+        @endforeach
     </div>
 </div>

@@ -5,12 +5,9 @@ namespace App\Http\Livewire\Front\Calculator;
 use Livewire\Component;
 use App\Models\Setting;
 use App\Models\Category;
-use Illuminate\Support\Collection;
-use Psy\Command\WhereamiCommand;
 
 class Track extends Component
 {
-    public $calculator;
     public $roomTypes;
     public $roomTypeValue;
     public $roomSize = [
@@ -30,23 +27,47 @@ class Track extends Component
     public $pagesize = 24;
     public $allProducts;
     public $roomColor = 0.6;
+    public $allPowerBlocks;
+    public $allAccessories;
 
     public function mount()
     {
-        $this->calculator = Setting::getByGroup('calculator');
+        $calculator = Setting::getByGroup('calculator');
 
-        if($this->calculator){
-            $this->roomTypes = $this->calculator->where('setting_key', 'room_types')->values() ?? collect();
-            $this->trackSizes = $this->calculator->where('setting_key', 'reel_types')->values() ?? collect();
-            $this->categoryId = $this->calculator->where('setting_key', 'allMagnetReelCategory')->values()->first()->setting_value ?? null;
+        if($calculator){
+            $this->roomTypes = $calculator->where('setting_key', 'room_types')->values() ?? collect();
+            $this->trackSizes = $calculator->where('setting_key', 'reel_types')->values() ?? collect();
+            $this->categoryId = $calculator->where('setting_key', 'allMagnetReelCategory')->values()->first()->setting_value ?? null;
+            $powerBlockCategory = $calculator->where('setting_key', 'allReelPowerBlockCategory')->values()->first()->setting_value ?? null;
+            $accessoriesCategory = $calculator->where('setting_key', 'allReelAccessoryCategory')->values()->first()->setting_value ?? null;
         }
 
         $category = Category::find($this->categoryId);
             $this->products = $category->products()->
-            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen')->
+            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen', 'watt', 'kelvin')->
             with('images', 'tags')->
             where('status', 1)
             ->get();
+
+        if($powerBlockCategory){
+            $powerBlockCategory = Category::find($powerBlockCategory);
+            $this->allPowerBlocks = $powerBlockCategory->products()->
+            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'watt', 'kelvin')->
+            with('images', 'tags')->
+            where('status', 1)->take(24)->get();
+        } else {
+            $this->allPowerBlocks = collect();
+        }
+
+        if($accessoriesCategory){
+            $accessoriesCategory = Category::find($accessoriesCategory);
+            $this->allAccessories = $accessoriesCategory->products()->
+            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'watt', 'kelvin')->
+            with('images', 'tags')->
+            where('status', 1)->take(24)->get();
+        } else {
+            $this->allAccessories = collect();
+        }
     }
 
     public function upRoomColor($value){
@@ -85,7 +106,7 @@ class Track extends Component
         if($this->roomSize['height'] > 3 && !$this->trackSizeValue){ //if height is more than 3 and track size is not selected, show all products except 20mm
             $category = Category::find($this->categoryId);
             $this->products = $category->products()->
-            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen')->
+            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen', 'watt', 'kelvin')->
             with('images', 'tags')->
             where('status', 1)
             ->where('title', 'not like', '%20-%')->where('title', 'not like', '%20 %') // remove 20mm track size
@@ -96,14 +117,14 @@ class Track extends Component
         } elseif($this->trackSizeValue){ //if track size is selected, show products of this selected size
             $category = Category::find($this->trackSizeValue['setting_value']);
             $this->products = $category->products()->
-            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen')->
+            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen', 'watt', 'kelvin')->
             with('images', 'tags')->
             where('status', 1)
             ->get();
         } else { //if no track size is selected, show all products
             $category = Category::find($this->categoryId);
             $this->products = $category->products()->
-            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen')->
+            select('products.id', 'title', 'slug', 'price', 'discount_price', 'amount', 'lumen', 'watt', 'kelvin')->
             with('images', 'tags')->
             where('status', 1)
             ->get();
